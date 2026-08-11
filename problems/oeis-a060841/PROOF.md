@@ -1,45 +1,48 @@
-# OEIS A060841의 두 추측
+**English** | [한국어](PROOF.ko.md)
 
-모든 계산 보조 명제는 정수의 사칙연산, 소인수 지수와 정확한 유리수
-약분만 사용한다.
+# The two conjectures of OEIS A060841
 
-## 정의와 결론
+All computational auxiliary claims use only integer arithmetic,
+prime-factor exponents, and exact rational reduction.
+
+## Definitions and conclusions
 
 \[
 R_n:=\prod_{k=1}^n\frac{k^2}{\varphi(k)}
 =\frac{(n!)^2}{\prod_{k=1}^n\varphi(k)}, \tag{1}
 \]
 
-여기서 \(\varphi\)는 Euler의 토션트 함수다.
+where \(\varphi\) is Euler's totient function.
 
-**정리 1.**
+**Theorem 1.**
 
 \[
 \boxed{R_n\in\mathbb Z\iff n\in\{1,2,\ldots,34,36,38\}.} \tag{2}
 \]
 
-**정리 2.** \(R_n\)의 기약분모가 항상 2의 거듭제곱이라는 주장은
-거짓이다. 홀수 소수가 기약분모에 처음 나타나는 인덱스는 \(n=1807\)이고
+**Theorem 2.** The claim that the reduced denominator of \(R_n\) is
+always a power of 2 is false. The first index at which an odd prime
+appears in the reduced denominator is \(n=1807\), and
 
 \[
 \boxed{\operatorname{den}(R_{1807})=2^{2342}\cdot3.} \tag{3}
 \]
 
-## 모든 소수에 대한 지수 공식
+## Exponent formula for every prime
 
-소수 \(q\)에 대해 \(E_q(n):=v_q(R_n)\)로 둔다. Legendre 공식에 따라
+For a prime \(q\), set \(E_q(n):=v_q(R_n)\). By Legendre's formula,
 
 \[
 v_q(n!)=\sum_{j\ge1}\left\lfloor\frac{n}{q^j}\right\rfloor. \tag{4}
 \]
 
-\(k=\prod_p p^{a_p}\)이면
+If \(k=\prod_p p^{a_p}\), then
 
 \[
 \varphi(k)=\prod_{p\mid k}p^{a_p-1}(p-1),
 \]
 
-따라서
+hence
 
 \[
 v_q(\varphi(k))
@@ -47,14 +50,15 @@ v_q(\varphi(k))
 +\sum_{\substack{p\mid k\\p\ne q}}v_q(p-1). \tag{5}
 \]
 
-첫 항을 \(1\le k\le n\)에서 합하면
+Summing the first term over \(1\le k\le n\),
 
 \[
 \sum_{k\le n}\max(v_q(k)-1,0)
 =\sum_{j\ge2}\left\lfloor\frac{n}{q^j}\right\rfloor. \tag{6}
 \]
 
-두 번째 항에서 소수 \(p\)는 정확히 \(p\)의 배수마다 한 번씩 나타나므로
+In the second term, a prime \(p\) appears exactly once at each multiple
+of \(p\), so
 
 \[
 \sum_{k\le n}\sum_{\substack{p\mid k\\p\ne q}}v_q(p-1)
@@ -62,7 +66,7 @@ v_q(\varphi(k))
 v_q(p-1)\left\lfloor\frac np\right\rfloor. \tag{7}
 \]
 
-(1), (4)--(7)을 결합하면
+Combining (1), (4)--(7),
 
 \[
 \boxed{
@@ -73,11 +77,12 @@ v_q(p-1)\left\lfloor\frac np\right\rfloor.
 } \tag{8}
 \]
 
-이 공식은 전역 증명과 모든 유한 인증에 공통으로 쓰인다.
+This formula is used in common by the global proof and by every finite
+certification.
 
-## \(n\ge91\)에서 정수가 아님을 보이는 2-adic 경계
+## 2-adic bound showing non-integrality for \(n\ge91\)
 
-\(q=2\)를 (8)에 대입하면
+Substituting \(q=2\) into (8),
 
 \[
 E_2(n)=2\left\lfloor\frac n2\right\rfloor
@@ -86,7 +91,7 @@ E_2(n)=2\left\lfloor\frac n2\right\rfloor
 v_2(p-1)\left\lfloor\frac np\right\rfloor. \tag{9}
 \]
 
-양의 부분은
+The positive part is
 
 \[
 2\left\lfloor\frac n2\right\rfloor
@@ -94,8 +99,8 @@ v_2(p-1)\left\lfloor\frac np\right\rfloor. \tag{9}
 \le n+n\sum_{j\ge2}\frac1{2^j}=\frac{3n}{2}. \tag{10}
 \]
 
-음의 합에서는 홀수 소수 \(p\le79\)만 남겨도 충분하다. 가중치
-\(w_p=v_2(p-1)\)는 다음과 같다.
+In the negative sum it suffices to keep only the odd primes
+\(p\le79\). The weights \(w_p=v_2(p-1)\) are as follows.
 
 | \(p\) | 3 | 5 | 7 | 11 | 13 | 17 | 19 | 23 | 29 | 31 | 37 |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -105,7 +110,7 @@ v_2(p-1)\left\lfloor\frac np\right\rfloor. \tag{9}
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | \(w_p\) | 3 | 1 | 1 | 2 | 1 | 2 | 1 | 1 | 3 | 1 |
 
-정확한 합은
+The exact sums are
 
 \[
 W:=\sum_{\substack{3\le p\le79\\p\text{ prime}}}w_p=34, \tag{11}
@@ -120,7 +125,7 @@ C:=\sum_{\substack{3\le p\le79\\p\text{ prime}}}\frac{w_p}{p}
 \end{aligned} \tag{12}
 \]
 
-\(\lfloor x\rfloor>x-1\)을 사용하면
+Using \(\lfloor x\rfloor>x-1\),
 
 \[
 \sum_{\substack{3\le p\le79\\p\text{ prime}}}
@@ -128,7 +133,7 @@ w_p\left\lfloor\frac np\right\rfloor
 >nC-W>\frac{15n}{8}-34. \tag{13}
 \]
 
-(9), (10), (13)에서
+From (9), (10), (13),
 
 \[
 E_2(n)<\frac{3n}{2}-\left(\frac{15n}{8}-34\right)
@@ -140,18 +145,18 @@ n\ge91\implies34-\frac{3n}{8}
 \le34-\frac{273}{8}=-\frac18<0.
 \]
 
-따라서 \(E_2(n)<0\) for all \(n\ge91\). 즉 이 범위에서 \(R_n\)은
-항상 정수가 아니다.
+Hence \(E_2(n)<0\) for all \(n\ge91\). That is, in this range \(R_n\)
+is never an integer.
 
-## \(n\le90\)의 정확 유한 인증
+## Exact finite certification for \(n\le90\)
 
-유리수 점화식
+Reducing the rational recurrence
 
 \[
 R_0=1,\qquad R_n=R_{n-1}\frac{n^2}{\varphi(n)} \tag{15}
 \]
 
-을 매 단계 기약분수로 약분하면
+to lowest terms at every step gives
 
 \[
 \operatorname{den}(R_n)=1\qquad(1\le n\le34),
@@ -164,7 +169,7 @@ R_0=1,\qquad R_n=R_{n-1}\frac{n^2}{\varphi(n)} \tag{15}
 \quad\operatorname{den}(R_{38})=1. \tag{16}
 \]
 
-\(39\le n\le90\)에서는 (9)의 정확 정수값이 모두 음수다.
+For \(39\le n\le90\), the exact integer values of (9) are all negative.
 
 | \(n\) | \(E_2(n)\) | \(n\) | \(E_2(n)\) | \(n\) | \(E_2(n)\) | \(n\) | \(E_2(n)\) |
 |---:|---:|---:|---:|---:|---:|---:|---:|
@@ -182,20 +187,21 @@ R_0=1,\qquad R_n=R_{n-1}\frac{n^2}{\varphi(n)} \tag{15}
 |83|-22|84|-21|85|-27|86|-26|
 |87|-29|88|-26|89|-29|90|-30|
 
-따라서 이 구간에서는 모두 분모에 2가 남는다. (14)와 (16)을 결합하면
-정리 1이 증명된다.
+Hence throughout this interval a factor of 2 remains in the
+denominator. Combining (14) and (16) proves Theorem 1.
 
-## 첫 홀수 분모 \(n=1807\)
+## The first odd denominator \(n=1807\)
 
-(8)과 동치인 한 단계 갱신식은
+A one-step update rule equivalent to (8) is
 
 \[
 E_q(0)=0,
 \qquad E_q(n)=E_q(n-1)+2v_q(n)-v_q(\varphi(n)). \tag{17}
 \]
 
-기약분모에서 소수 \(q\)의 지수는 \(\max(0,-E_q(n))\)이다. (17)을 모든
-\(n\le1807\)과 모든 소수 \(q\le n\)에 정확히 적용하면
+The exponent of a prime \(q\) in the reduced denominator is
+\(\max(0,-E_q(n))\). Applying (17) exactly for all \(n\le1807\) and all
+primes \(q\le n\) yields
 
 \[
 E_q(n)\ge0
@@ -207,11 +213,12 @@ E_3(1807)=-1,
 \qquad E_q(1807)\ge0\quad(q\ge5\text{ prime}) \tag{19}
 \]
 
-을 얻는다. \(q>n\)이면 \(q\)는 \(1,\ldots,n\)의 어떤 \(k\)나
-\(\varphi(k)<k\)도 나누지 않으므로 \(E_q(n)=0\)이다. 따라서 (18)의 유한
-인증에서는 \(q\le n\)인 소수만 검사하면 충분하다.
+If \(q>n\), then \(q\) divides neither any \(k\) in \(1,\ldots,n\) nor
+\(\varphi(k)<k\), so \(E_q(n)=0\). Hence for the finite certification
+of (18) it suffices to check only the primes \(q\le n\).
 
-3-adic 경계는 (8)에서도 직접 보인다. \(n=1806\)에서 양의 부분은
+The 3-adic bound can also be seen directly from (8). At \(n=1806\) the
+positive part is
 
 \[
 2\left\lfloor\frac{1806}{3}\right\rfloor
@@ -223,32 +230,32 @@ E_3(1807)=-1,
 =1501,
 \]
 
-음의 소수 기여는 \(1500\)이므로
+and the negative prime contribution is \(1500\), so
 
 \[
 E_3(1806)=1. \tag{20}
 \]
 
-한편
+Meanwhile,
 
 \[
 1807=13\cdot139,
 \qquad \varphi(1807)=12\cdot138=1656=2^3\cdot3^2\cdot23.
 \]
 
-따라서 (17)의 한 단계 변화는
+Hence the one-step change of (17) is
 
 \[
 2v_3(1807)-v_3(\varphi(1807))=0-2=-2,
 \]
 
-이고
+and
 
 \[
 E_3(1807)=1-2=-1. \tag{21}
 \]
 
-동시에
+At the same time,
 
 \[
 E_2(1806)=-2339,
@@ -258,7 +265,7 @@ E_2(1806)=-2339,
 E_2(1807)=E_2(1806)-v_2(\varphi(1807))=-2339-3=-2342. \tag{22}
 \]
 
-(18)--(22)에 따라
+By (18)--(22),
 
 \[
 \operatorname{den}(R_{1806})=2^{2339},
@@ -266,5 +273,5 @@ E_2(1807)=E_2(1806)-v_2(\varphi(1807))=-2339-3=-2342. \tag{22}
 \operatorname{den}(R_{1807})=2^{2342}\cdot3.
 \]
 
-그러므로 \(1807\)이 홀수 소수가 기약분모에 나타나는 최소 인덱스이고
-정리 2가 증명된다.
+Therefore \(1807\) is the smallest index at which an odd prime appears
+in the reduced denominator, and Theorem 2 is proved.

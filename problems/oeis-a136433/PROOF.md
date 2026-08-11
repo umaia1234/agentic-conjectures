@@ -1,42 +1,46 @@
-# OEIS A136433 — 9-lag 선형 점화식의 상세 증명
+**English** | [한국어](PROOF.ko.md)
 
-이 문서는 2026-08-11에 작성된 상세 증명과 후속 수학 감사를 문제별로
-통합한 canonical 증명입니다. 유한 계산 인증서는 증명을 대체하지 않으며,
-정의·경계·도출 항등식을 독립적으로 재검산하는 역할만 합니다.
+# OEIS A136433 — Detailed proof of the 9-lag linear recurrence
 
-## 2.1. 정의와 한 단계 전이
+This document is the canonical proof, consolidating on a per-problem basis
+the detailed proof written on 2026-08-11 and the subsequent mathematical
+audit. The finite computational certificate does not replace the proof; its
+only role is to independently re-check the definitions, boundaries, and
+derived identities.
 
-수열은
+## 2.1. Definition and one-step transition
+
+The sequence is defined by
 
 \[
 a_1=11
 \]
 
-및 모든 \(n\ge0\)에 대한
+and, for all \(n\ge0\),
 
 \[
 a_{n+2}
-=((n\bmod3)+1)a_{n+1}+((n\bmod2)+1)
+=((n\bmod3)+1)a_{n+1}+((n\bmod2)+1).
 \tag{2.1}
 \]
 
-로 정의합니다. \(t=n+1\)로 치환하면 \(t\ge1\)이고
+Substituting \(t=n+1\), we have \(t\ge1\) and
 
 \[
 a_{t+1}=c_ta_t+d_t,
 \tag{2.2}
 \]
 
-여기서
+where
 
 \[
 c_t=((t-1)\bmod3)+1,\qquad
-d_t=((t-1)\bmod2)+1
+d_t=((t-1)\bmod2)+1.
 \tag{2.3}
 \]
 
-입니다. 두 계수열은 각각 \(c_{t+3}=c_t\), \(d_{t+2}=d_t\)를
-만족합니다. 처음 여섯 값을 쓰면 다음과 같습니다.
+The two coefficient sequences satisfy \(c_{t+3}=c_t\) and \(d_{t+2}=d_t\),
+respectively. Writing out the first six values gives the following.
 
 | \(t\bmod6\) | \(c_t\) | \(d_t\) |
 |---:|---:|---:|
@@ -47,19 +51,19 @@ d_t=((t-1)\bmod2)+1
 | \(5\) | \(2\) | \(1\) |
 | \(0\) | \(3\) | \(2\) |
 
-따라서 쌍 \((c_t,d_t)\)는 주기
-\(\operatorname{lcm}(3,2)=6\)을 가집니다.
+Therefore the pair \((c_t,d_t)\) has period
+\(\operatorname{lcm}(3,2)=6\).
 
-## 2.2. 세 단계 전이
+## 2.2. Three-step transition
 
-**보조정리 2.1.** 모든 \(t\ge1\)에 대하여
+**Lemma 2.1.** For all \(t\ge1\),
 
 \[
 a_{t+3}=6a_t+B_t,
 \tag{2.4}
 \]
 
-여기서
+where
 
 \[
 B_t=
@@ -69,9 +73,9 @@ d_{t+2}.
 \tag{2.5}
 \]
 
-또한 \(B_{t+6}=B_t\)입니다.
+Moreover \(B_{t+6}=B_t\).
 
-**증명.** (2.2)를 두 번 합성하면
+**Proof.** Composing (2.2) twice gives
 
 \[
 \begin{aligned}
@@ -81,7 +85,7 @@ a_{t+2}
 \end{aligned}
 \]
 
-한 번 더 적용하면
+Applying it once more gives
 
 \[
 \begin{aligned}
@@ -94,18 +98,19 @@ a_{t+3}
 \tag{2.6}
 \]
 
-\(c_t\)는 \(1,2,3\)을 주기적으로 반복하므로 연속한 세 값의 곱은
+Since \(c_t\) cycles periodically through \(1,2,3\), the product of any
+three consecutive values is
 
 \[
 c_{t+2}c_{t+1}c_t=1\cdot2\cdot3=6.
 \]
 
-따라서 (2.4), (2.5)가 성립합니다. \(B_t\)는
-\((c_t,d_t),(c_{t+1},d_{t+1}),(c_{t+2},d_{t+2})\)만으로
-결정되고 이 쌍들은 모두 6만큼 이동했을 때 같으므로
-\(B_{t+6}=B_t\)입니다. \(\square\)
+Therefore (2.4) and (2.5) hold. \(B_t\) is determined only by
+\((c_t,d_t),(c_{t+1},d_{t+1}),(c_{t+2},d_{t+2})\), and all of these pairs
+are unchanged when shifted by 6, so
+\(B_{t+6}=B_t\). \(\square\)
 
-한 주기의 \(B_t\)를 직접 계산하면
+Directly computing \(B_t\) over one period gives
 
 \[
 \begin{aligned}
@@ -118,35 +123,35 @@ B_6&=2\cdot1\cdot2+2\cdot1+2=8.
 \end{aligned}
 \]
 
-즉 \((B_1,\ldots,B_6)=(13,9,7,17,6,8)\)이고 이 여섯 값이
-반복됩니다.
+That is, \((B_1,\ldots,B_6)=(13,9,7,17,6,8)\), and these six values
+repeat.
 
-## 2.3. 9-lag 점화식
+## 2.3. The 9-lag recurrence
 
-**정리 2.2.** 모든 \(n\ge10\)에 대하여
+**Theorem 2.2.** For all \(n\ge10\),
 
 \[
 a_n=6a_{n-3}+a_{n-6}-6a_{n-9}
 \tag{2.7}
 \]
 
-가 성립합니다.
+holds.
 
-**증명.** (2.4)를 \(t\)에 적용하면
+**Proof.** Applying (2.4) at \(t\) gives
 
 \[
 B_t=a_{t+3}-6a_t.
 \tag{2.8}
 \]
 
-같은 식을 \(t+6\)에 적용하면
+Applying the same identity at \(t+6\) gives
 
 \[
 a_{t+9}=6a_{t+6}+B_{t+6}.
 \tag{2.9}
 \]
 
-\(B_{t+6}=B_t\)를 (2.8), (2.9)에 대입하면
+Substituting \(B_{t+6}=B_t\) into (2.8) and (2.9) gives
 
 \[
 \begin{aligned}
@@ -156,29 +161,28 @@ a_{t+9}
 \end{aligned}
 \]
 
-\(n=t+9\)로 두면
+Setting \(n=t+9\), we have
 
 \[
-t+6=n-3,\qquad t+3=n-6,\qquad t=n-9
+t+6=n-3,\qquad t+3=n-6,\qquad t=n-9,
 \]
 
-이므로 (2.7)을 얻습니다. 원래 전이식의 범위가 \(t\ge1\)이므로
-\(n=t+9\ge10\)입니다. 반대로 모든 \(n\ge10\)에 대해
-\(t=n-9\ge1\)이므로 논증을 적용할 수 있습니다. \(\square\)
+which yields (2.7). Since the range of the original transition is
+\(t\ge1\), we have \(n=t+9\ge10\). Conversely, for all \(n\ge10\) we have
+\(t=n-9\ge1\), so the argument applies. \(\square\)
 
-최초 경계값 \(n=10\)에서는
+At the first boundary value \(n=10\),
 
 \[
-a_{10}=6a_7+a_4-6a_1
+a_{10}=6a_7+a_4-6a_1,
 \]
 
-이고 실제 값으로도
+and with the actual values,
 
 \[
 2959=6\cdot491+79-6\cdot11
 \]
 
-이 성립합니다. \(n=9\)에서는 우변에 원래 정의되지 않은 \(a_0\)이
-나타나므로, \(n=10\)은 이 인덱싱에서 점화식을 쓸 수 있는 자연스러운
-최초 위치입니다.
-
+holds. At \(n=9\), the right-hand side would involve \(a_0\), which is not
+defined in the original setup, so \(n=10\) is the natural first position at
+which the recurrence can be used in this indexing.

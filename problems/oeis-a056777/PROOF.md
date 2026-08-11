@@ -1,8 +1,10 @@
-# A056777에서 \(n+12\)가 소수 거듭제곱인 경우의 배제
+**English** | [한국어](PROOF.ko.md)
 
-## 문제와 정리
+# Excluding a prime power \(n+12\) in A056777
 
-합성수 \(n\ge4\)가
+## Problem and theorem
+
+Suppose a composite number \(n\ge4\) simultaneously satisfies
 
 \[
 \varphi(n+12)=\varphi(n)+12, \tag{1}
@@ -12,18 +14,18 @@
 \sigma(n+12)=\sigma(n)+12 \tag{2}
 \]
 
-를 동시에 만족한다고 하자.
+**Theorem.** For a composite \(n\ge4\) satisfying (1) and (2), \(n+12\)
+cannot be a prime power.
 
-**정리.** (1), (2)를 만족하는 합성수 \(n\ge4\)에 대해 \(n+12\)는 소수
-거듭제곱일 수 없다.
+## Four auxiliary functions and invariants
 
-## 네 보조함수와 불변량
+Set
 
 \[
 N:=n+12
 \]
 
-로 두고
+and define
 
 \[
 A(m):=m-\varphi(m),
@@ -33,7 +35,7 @@ B(m):=\sigma(m)-m,
 T(m):=B(m)-A(m)
 \]
 
-로 정의한다. (1)에서
+From (1),
 
 \[
 \begin{aligned}
@@ -43,19 +45,19 @@ A(N)&=N-\varphi(N)\\
 \end{aligned}
 \]
 
-마찬가지로 (2)에서 \(B(N)=B(n)\), 따라서
+Similarly from (2), \(B(N)=B(n)\), hence
 
 \[
 A(N)=A(n),\qquad B(N)=B(n),\qquad T(N)=T(n). \tag{3}
 \]
 
-이제
+Now set
 
 \[
 Q(m):=A(m)B(m)-mT(m)
 \]
 
-로 둔다. 정의를 전개하면
+Expanding the definition,
 
 \[
 \begin{aligned}
@@ -66,7 +68,7 @@ Q(m)
 \end{aligned} \tag{4}
 \]
 
-(3)을 사용하면
+Using (3),
 
 \[
 \begin{aligned}
@@ -77,13 +79,15 @@ Q(n)
 \end{aligned} \tag{5}
 \]
 
-## 서로 다른 소인수가 둘 이상이면 \(Q(m)>m\)
+## If there are at least two distinct prime factors, then \(Q(m)>m\)
+
+Let
 
 \[
 m=\prod_i r_i^{e_i}
 \]
 
-라 하자. 각 소수 거듭제곱에서
+At each prime power,
 
 \[
 \varphi(r^e)\sigma(r^e)
@@ -91,66 +95,66 @@ m=\prod_i r_i^{e_i}
 =r^{2e}\left(1-\frac1{r^{e+1}}\right).
 \]
 
-곱셈성에 따라
+By multiplicativity,
 
 \[
 \varphi(m)\sigma(m)
 =m^2\prod_i\left(1-\frac1{r_i^{e_i+1}}\right).
 \]
 
-따라서
+Therefore
 
 \[
 Q(m)=m^2\left[1-\prod_i\left(1-\frac1{r_i^{e_i+1}}\right)\right]. \tag{6}
 \]
 
-\(m\)에 서로 다른 소인수가 적어도 두 개 있다고 하자. 최소 소인수를
-\(r\)라 하고
+Suppose \(m\) has at least two distinct prime factors. Let \(r\) be its
+smallest prime factor and write
 
 \[
 r^e\parallel m,\qquad m=r^eu
 \]
 
-로 쓰면 다른 소인수가 있으므로 \(u>r\)이다. (6)에서
+then \(u>r\) since there is another prime factor. From (6),
 
 \[
 1-\prod_i(1-x_i)>x_r=\frac1{r^{e+1}},
 \]
 
-따라서
+hence
 
 \[
 Q(m)>\frac{m^2}{r^{e+1}}=m\frac ur>m. \tag{7}
 \]
 
-## \(N=q^\ell\) 가정
+## The assumption \(N=q^\ell\)
 
-모순을 위해
+For contradiction, assume
 
 \[
 N=q^\ell
 \]
 
-이라고 가정하자. 여기서 \(q\)는 소수이고 \(\ell\ge1\)이다.
+where \(q\) is prime and \(\ell\ge1\).
 
-먼저 \(n=r^a\)도 합성 소수 거듭제곱이라고 가정하면 \(a\ge2\)이고,
-(3)에서
+First, if we also assume \(n=r^a\) is a composite prime power, then
+\(a\ge2\), and from (3)
 
 \[
 r^{a-1}=A(n)=A(N)=q^{\ell-1}. \tag{8}
 \]
 
-\(\ell=1\)이면 우변이 \(1\)인데 좌변은 \(r^{a-1}>1\)이므로 모순이다.
-\(\ell\ge2\)이면 유일분해에 따라 \(r=q,a=\ell\), 따라서 \(n=N\)이 되어
-\(N=n+12\)와 모순이다.
+If \(\ell=1\), the right-hand side is \(1\) while the left-hand side is
+\(r^{a-1}>1\), a contradiction. If \(\ell\ge2\), unique factorization
+gives \(r=q,a=\ell\), hence \(n=N\), contradicting \(N=n+12\).
 
-그러므로 \(n\)에는 서로 다른 소인수가 적어도 두 개 있고, (7)에 따라
+Therefore \(n\) has at least two distinct prime factors, and by (7),
 
 \[
 Q(n)>n. \tag{9}
 \]
 
-한편 \(N=q^\ell\)에 대해서는
+Meanwhile, for \(N=q^\ell\),
 
 \[
 A(N)=q^{\ell-1},
@@ -163,14 +167,14 @@ T(N)=\frac{q^{\ell-1}-1}{q-1},
 \qquad Q(N)=q^{\ell-1}.
 \]
 
-\(\ell=1\)이면 \(T(N)=0\)이고, \(\ell\ge2\)이면
-\(T(N)=1+q+\cdots+q^{\ell-2}\)다. (5)에 대입하면
+If \(\ell=1\) then \(T(N)=0\), and if \(\ell\ge2\) then
+\(T(N)=1+q+\cdots+q^{\ell-2}\). Substituting into (5),
 
 \[
 Q(n)=q^{\ell-1}+12\frac{q^{\ell-1}-1}{q-1}. \tag{10}
 \]
 
-\(n=q^\ell-12\)이므로
+Since \(n=q^\ell-12\),
 
 \[
 \boxed{
@@ -179,24 +183,25 @@ Q(n)=q^{\ell-1}+12\frac{q^{\ell-1}-1}{q-1}. \tag{10}
 } \tag{11}
 \]
 
-(9)에 따라 (11)의 좌변은 양수여야 한다.
+By (9), the left-hand side of (11) must be positive.
 
-## 모든 소수 \(q\)의 배제
+## Excluding every prime \(q\)
 
-### 경우 1: \(\ell=1\)
+### Case 1: \(\ell=1\)
 
-\(N=q=n+12\ge16\)이고 \(q\)가 소수이므로 \(q\ge17\)이다. (11)의
-우변은
+\(N=q=n+12\ge16\) and \(q\) is prime, so \(q\ge17\). The right-hand
+side of (11) is
 
 \[
 12-(q-1)^2+12(q-2)=-(q-1)(q-13)<0,
 \]
 
-모순이다. 이제부터 \(\ell\ge2\)라 하자.
+a contradiction. From now on assume \(\ell\ge2\).
 
-### 경우 2: \(q\ge7\)
+### Case 2: \(q\ge7\)
 
-\(12-(q-1)^2<0\)이고 \(q^{\ell-1}\ge q\)이므로 (11)의 우변은
+Since \(12-(q-1)^2<0\) and \(q^{\ell-1}\ge q\), the right-hand side of
+(11) satisfies
 
 \[
 \begin{aligned}
@@ -206,109 +211,111 @@ Q(n)=q^{\ell-1}+12\frac{q^{\ell-1}-1}{q-1}. \tag{10}
 \end{aligned}
 \]
 
-이는 좌변의 양수성과 모순이다.
+This contradicts the positivity of the left-hand side.
 
-### 경우 3: \(q=5\)
+### Case 3: \(q=5\)
 
-\(\ell=2\)이면 \(n=5^2-12=13\)으로 합성수 가정에 어긋난다.
-\(\ell\ge3\)이면 (11)의 우변은
+If \(\ell=2\), then \(n=5^2-12=13\), contradicting the compositeness
+assumption. If \(\ell\ge3\), the right-hand side of (11) is
 
 \[
 -4\cdot5^{\ell-1}+36<0,
 \]
 
-모순이다.
+a contradiction.
 
-### 경우 4: \(q=3\)
+### Case 4: \(q=3\)
 
-\(n=3^\ell-12\ge4\)이므로 \(\ell\ge3\)이다. 다음과 같이 둔다.
+Since \(n=3^\ell-12\ge4\), we have \(\ell\ge3\). Set
 
 \[
 m:=3^{\ell-1}-4.
 \]
 
-그러면
+Then
 
 \[
 n=3m,\qquad\gcd(3,m)=1,\qquad m\ge5,
 \]
 
-이고 \(m\)은 홀수다. 토션트 식 (1)은
+and \(m\) is odd. The totient equation (1) gives
 
 \[
 \varphi(n)=\varphi(3^\ell)-12=2\cdot3^{\ell-1}-12.
 \]
 
-한편 \(\gcd(3,m)=1\)이므로
+On the other hand, since \(\gcd(3,m)=1\),
 
 \[
 \varphi(n)=\varphi(3)\varphi(m)=2\varphi(m).
 \]
 
-따라서
+Therefore
 
 \[
 \varphi(m)=3^{\ell-1}-6=m-2,
 \]
 
-즉
+that is,
 
 \[
 m-\varphi(m)=2. \tag{12}
 \]
 
-\(m\)이 소수이면 \(m-\varphi(m)=1\)이므로 모순이다. \(m\)이 합성수이면
-최소 소인수를 \(p\)라 할 때 \(p\ge3,p\le\sqrt m\)이고, \(1,\ldots,m\)
-중 \(p\)의 배수만 세어도
+If \(m\) is prime, then \(m-\varphi(m)=1\), a contradiction. If \(m\)
+is composite, let \(p\) be its smallest prime factor; then
+\(p\ge3,p\le\sqrt m\), and counting only the multiples of \(p\) among
+\(1,\ldots,m\) already gives
 
 \[
 m-\varphi(m)\ge\frac mp\ge p\ge3,
 \]
 
-이므로 역시 (12)에 모순이다.
+again contradicting (12).
 
-### 경우 5: \(q=2\)
+### Case 5: \(q=2\)
 
-\(2^\ell-12\ge4\)이므로 \(\ell\ge4\)다. \(\ell=4\)이면 \(n=4\)이고,
-이는 위에서 배제한 합성 소수 거듭제곱이다.
+Since \(2^\ell-12\ge4\), we have \(\ell\ge4\). If \(\ell=4\), then
+\(n=4\), which is a composite prime power excluded above.
 
-이제 \(\ell\ge5\)라 하자. 약수합 식 (2)에서
+Now assume \(\ell\ge5\). From the divisor-sum equation (2),
 
 \[
 \sigma(n)=\sigma(2^\ell)-12=2^{\ell+1}-13,
 \]
 
-따라서 \(\sigma(n)\)은 홀수다.
+so \(\sigma(n)\) is odd.
 
-여기서 표준 보조사실을 직접 확인한다. \(m=\prod p^e\)에서 홀수 소수
-\(p\)에 대해
+Here we verify a standard auxiliary fact directly. In
+\(m=\prod p^e\), for an odd prime \(p\), the parity of
 
 \[
 \sigma(p^e)=1+p+\cdots+p^e
 \]
 
-의 홀짝은 \(e+1\)의 홀짝과 같으므로, 이것이 홀수일 필요충분조건은
-\(e\)가 짝수인 것이다. \(2^e\)의 약수합은 항상 홀수다. 따라서
+equals the parity of \(e+1\), so it is odd if and only if \(e\) is
+even. The divisor sum of \(2^e\) is always odd. Therefore
 
 \[
-\sigma(m)\text{이 홀수}
-\iff m\text{이 제곱수 또는 제곱수의 두 배}. \tag{13}
+\sigma(m)\text{ is odd}
+\iff m\text{ is a square or twice a square}. \tag{13}
 \]
 
-그런데
+However,
 
 \[
 n=2^\ell-12=4(2^{\ell-2}-3),
 \qquad v_2(n)=2.
 \]
 
-두 배의 제곱수는 2-adic 지수가 홀수이므로 \(n\)은 제곱수여야 한다.
-따라서 \(2^{\ell-2}-3\)도 홀수 제곱이어야 한다. 그러나 \(\ell\ge5\)이므로
+Twice a square has odd 2-adic valuation, so \(n\) must be a square.
+Hence \(2^{\ell-2}-3\) must also be an odd square. But since
+\(\ell\ge5\),
 
 \[
 2^{\ell-2}-3\equiv-3\equiv5\pmod8,
 \]
 
-반면 홀수 제곱은 \(1\pmod8\)이다. 모순이다.
+whereas an odd square is \(1\pmod8\). Contradiction.
 
-모든 소수 \(q\)가 배제되었으므로 정리가 증명된다.
+Every prime \(q\) has been excluded, so the theorem is proved.

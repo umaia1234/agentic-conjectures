@@ -1,27 +1,37 @@
+**English** | [한국어](README.ko.md)
+
 # Agentic Conjectures
 
-자율 에이전트가 공개 미해결 문제·추측을 골라 공격하고, 결과를 **기계 검증 가능한
-형태로만** 축적하는 작업공간입니다. 에이전트가 주장하고, CI가 판정합니다.
+A workspace where autonomous agents pick open problems and conjectures, attack
+them, and accumulate results **only in machine-verifiable form**. The agent
+claims; CI judges whether mathematics happened.
 
-결과 등급은 네 가지입니다.
+There are four result grades.
 
-| 등급 | 근거 요건 |
+| Grade | Evidence required |
 |---|---|
-| ✅ proved | `sorry`/추가 공리 없는 Lean 4 증명 또는 완결된 증명 문서 |
-| 🔴 refuted | 명시적 반례 + 독립 검증 스크립트 (SAT 결과는 DRUP/DRAT 인증서) |
-| 🟡 partial | 부분 결과·탐색 하한·부정적 탐색 ("N까지 반례 없음") |
-| ⚪ open | 해결 주장 없음 (조사·도구만) |
+| ✅ proved | A Lean 4 proof with no `sorry`/extra axioms, or a complete proof document |
+| 🔴 refuted | An explicit counterexample + independent verification script (DRUP/DRAT certificates for SAT results) |
+| 🟡 partial | Partial results, search lower bounds, negative searches ("no counterexample up to N") |
+| ⚪ open | No resolution claimed (survey/tooling only) |
 
-`Machine checks` 열은 CI가 실제로 재검증하는 것을 표시합니다 — `lean`은
-`lake build` + no-sorry + 공리 감사, `cert`는 인증서 스크립트 재실행,
-`cert(local)`은 로컬 전용(무거운 계산) 재현 명령만 있는 경우입니다.
-**CI가 검증하지 않은 주장은 주장일 뿐입니다.** 모든 문제는 unreviewed이며
-novelty를 주장하지 않습니다 (각 README의 면책 조항 참조).
+The `Machine checks` column shows what CI actually re-verifies — `lean` means
+`lake build` + the no-sorry gate + the axiom audit, `cert` means certificate
+scripts are re-run, and `cert(local)` means only local-only (heavy)
+reproduction commands exist. **A claim CI does not verify is just a claim.**
+Every problem here is unreviewed and claims no novelty (see the disclaimers
+in each problem README).
 
-- `problems/<id>/`: 문제 하나의 서술·증명·코드·인증서·결과 (`status.yaml`이 기계가 읽는 상태)
-- `AgenticConjectures/`: 이 저장소 자체의 Lean 4 형식화 (mathlib 기반)
-- `scripts/`: 검증 게이트와 대시보드 생성기 — 운영 규칙은 [AGENTS.md](AGENTS.md)
-- 재현 명령은 각 문제의 `README.md`를 따릅니다 (문제 디렉터리 기준 상대경로)
+- `problems/<id>/` — one problem's write-up, proofs, code, certificates, and
+  results (`status.yaml` is the machine-readable state)
+- `AgenticConjectures/` — this repository's own Lean 4 formalizations
+  (mathlib-based)
+- `scripts/` — verification gates and the dashboard generator; operating
+  rules are in [AGENTS.md](AGENTS.md)
+- [MATHEMATICAL_DETAILS.md](MATHEMATICAL_DETAILS.md) — definitions, lemmas,
+  and proofs for five of the problems collected in one place
+- Reproduction commands follow each problem's `README.md` (paths relative to
+  the problem directory)
 
 ## Dashboard
 
@@ -86,14 +96,16 @@ novelty를 주장하지 않습니다 (각 README의 면책 조항 참조).
 
 <!-- STATUS:END -->
 
-## 외부 원문 스냅샷
+## Upstream source snapshots
 
-조사에 사용한 외부 저장소 전체 clone 대신 현재 문제와 직접 대응하는 파일만
-각 문제의 `upstream/`에 보존합니다. 저장소 커밋, 복원 방법, 라이선스 및
-보존 범위는 [UPSTREAM_SOURCES.md](UPSTREAM_SOURCES.md)에 있습니다.
-`upstream/`의 Lean 파일은 추측의 **형식화 스냅샷**이며 `sorry`가 있는
-선언을 형식 증명으로 해석하면 안 됩니다.
+Instead of full clones of the external repositories used during
+investigation, only the files directly corresponding to each problem are
+preserved in that problem's `upstream/`. Repository commits, restoration
+instructions, licenses, and preservation scope are in
+[UPSTREAM_SOURCES.md](UPSTREAM_SOURCES.md). The Lean files under `upstream/`
+are **formalization snapshots** of the conjectures; declarations containing
+`sorry` must not be read as formal proofs.
 
-과거 실행을 기록한 일부 JSON의 `*_output` 값에는 정리 전 `agent_*` 경로가
-남아 있습니다. 이는 재현 경로가 아니라 원본 실행 메타데이터이므로 변경하지
-않았습니다.
+Some JSON files recording past runs keep pre-cleanup `agent_*` paths in their
+`*_output` values. These are original run metadata, not reproduction paths,
+and were left unchanged.

@@ -1,48 +1,53 @@
+**English** | [한국어](README.ko.md)
+
 # OEIS A340881
 
-[OEIS A340881](https://oeis.org/A340881)의 두 모듈러 주기성 추측을
-모든 법 \(m\ge2\)에 대해 해결합니다. 수열은
+We resolve the two modular periodicity conjectures of
+[OEIS A340881](https://oeis.org/A340881) for every modulus \(m\ge2\). The
+sequence is defined by
 
 \[
 A(n)=\sum_{k=0}^{n-1}2^{k(k+1)/2}
-       \prod_{j=k+1}^{n-1}(2^j-1),\qquad n\ge1
+       \prod_{j=k+1}^{n-1}(2^j-1),\qquad n\ge1.
 \]
 
-로 정의합니다.
+## Results
 
-## 결과
+- For odd \(m>1\) and \(L=\operatorname{ord}_m(2)\),
+  \(A(n+2L)\equiv A(n)\pmod m\) holds for all \(n\ge1\).
+  That is, we obtain an explicit period starting from the beginning, even
+  for odd composite moduli.
+- For a prime \(p\), the minimal period divides \(2(p-1)\). For \(p=2\),
+  \(A(n)\equiv1\pmod2\).
+- Writing \(m=2^eu\) with \(u\) odd, we obtain eventual periodicity for
+  every \(m\ge2\). When \(u>1\), \(2\operatorname{ord}_u(2)\) is a period
+  for \(n\ge\max(1,e)\), and when \(u=1\), period 2 holds for
+  \(n\ge e\).
 
-- 홀수 \(m>1\)과 \(L=\operatorname{ord}_m(2)\)에 대해
-  \(A(n+2L)\equiv A(n)\pmod m\)가 모든 \(n\ge1\)에서 성립합니다.
-  즉 홀수 합성수까지 처음부터 시작하는 명시적 주기를 얻습니다.
-- 소수 \(p\)에 대한 최소주기는 \(2(p-1)\)의 약수입니다. \(p=2\)에서는
-  \(A(n)\equiv1\pmod2\)입니다.
-- \(m=2^eu\), \(u\) 홀수로 쓰면 모든 \(m\ge2\)에서 궁극 주기성을
-  얻습니다. \(u>1\)일 때 \(2\operatorname{ord}_u(2)\)가
-  \(n\ge\max(1,e)\)에서 한 주기이고, \(u=1\)일 때 주기 2가
-  \(n\ge e\)에서 성립합니다.
+## Documents and certificate
 
-## 문서와 인증서
+- [Detailed proof](PROOF.md)
+- [Verification and reproduction record](VERIFICATION.md)
+- [Executable certificate](a340881_certificate.py)
 
-- [상세 증명](PROOF.md)
-- [검증·재현 기록](VERIFICATION.md)
-- [실행 가능한 인증서](a340881_certificate.py)
-
-저장소 루트에서 다음과 같이 재검산할 수 있습니다.
+It can be re-checked from the repository root as follows.
 
     python3 -m py_compile problems/oeis-a340881/a340881_certificate.py
     python3 problems/oeis-a340881/a340881_certificate.py
 
-## 연구 상태
+## Research status
 
-2026-08-11 당시 OEIS 원문은 두 명제를 “Conjecture”로 표시하고 있었습니다.
-정확한 식·초기항·핵심 주기식으로 공개 웹, arXiv, GitHub를 대조했으나 같은
-공개 증명을 찾지 못했다는 것이 당시의 감사 기록입니다. 이는 음성 검색 결과일
-뿐이며, 이 증명은 아직 동료 심사나 OEIS 편집자의 확인을 거치지 않았습니다.
+As of 2026-08-11, the OEIS entry marked both statements as a "Conjecture".
+The audit record from that time is that the public web, arXiv, and GitHub
+were checked against the exact formula, initial terms, and key period
+expressions, and no identical public proof was found. This is only a
+negative search result, and this proof has not yet undergone peer review or
+confirmation by an OEIS editor.
 
-## 상류 Lean 형식화
+## Upstream Lean formalization
 
-FormalConjectures의 [원문 스냅샷과 출처 기록](upstream/README.md)을
-[`340881_294a5574.lean`](upstream/340881_294a5574.lean)에 보존했다. 소수
-법의 주기를 적은 정리는 `by sorry`인 **추측 statement**이지 형식 증명이 아니다.
-이 폴더의 모든 법에 대한 더 강한 결과는 해당 Lean 스냅샷에 형식화되어 있지 않다.
+The FormalConjectures [original snapshot and provenance record](upstream/README.md)
+is preserved in [`340881_294a5574.lean`](upstream/340881_294a5574.lean).
+The theorem recording the period for prime moduli is a `by sorry`
+**conjecture statement**, not a formal proof. The stronger result of this
+folder for all moduli is not formalized in that Lean snapshot.

@@ -1,8 +1,10 @@
-# OEIS A063880: powerful core가 두 소수 이하인 경우
+**English** | [한국어](PROOF.ko.md)
 
-## 정의와 정리
+# OEIS A063880: the case of a powerful core with at most two primes
 
-단위약수합을
+## Definitions and theorem
+
+Define the unitary divisor sum by
 
 \[
 \sigma^*(n)
@@ -10,46 +12,47 @@
 =\prod_{p^e\parallel n}(1+p^e)
 \]
 
-로 정의한다. 다룰 방정식은
+The equation to be treated is
 
 \[
 \sigma(n)=2\sigma^*(n). \tag{1}
 \]
 
-\(n=\prod_p p^{e_p}\)일 때
+For \(n=\prod_p p^{e_p}\), let
 
 \[
 C(n):=\prod_{e_p\ge2}p^{e_p}
 \]
 
-를 \(n\)의 powerful core라 한다. (1)의 해 \(n\)이 **primitive**라는 것은
-(1)을 만족하는 양의 진약수 \(d<n\)가 존재하지 않는다는 뜻이다.
+be the powerful core of \(n\). A solution \(n\) of (1) is
+**primitive** if there is no positive proper divisor \(d<n\) satisfying
+(1).
 
-**정리.** \(n\)이 (1)을 만족하고 \(\omega(C(n))\le2\)이면
+**Theorem.** If \(n\) satisfies (1) and \(\omega(C(n))\le2\), then
 
 \[
 C(n)=108=2^2\cdot3^3.
 \]
 
-따라서 이 부분족의 해는 정확히
+Hence the solutions in this subfamily are exactly
 
 \[
 \boxed{n=108s,\qquad s\ge1\text{ squarefree},\qquad\gcd(s,108)=1.} \tag{2}
 \]
 
-이 부분족에서 유일한 primitive 해는 \(108\)이고, 모든 해가
-\(n\equiv108\pmod{216}\)을 만족한다.
+In this subfamily the unique primitive solution is \(108\), and every
+solution satisfies \(n\equiv108\pmod{216}\).
 
-## powerful core로의 환원
+## Reduction to the powerful core
 
-국소비율을
+Define the local ratio
 
 \[
 R(p,e):=\frac{\sigma(p^e)}{\sigma^*(p^e)}
 =\frac{1+p+\cdots+p^e}{1+p^e}
 \]
 
-로 둔다. 곱셈성에 따라
+By multiplicativity,
 
 \[
 \frac{\sigma(n)}{\sigma^*(n)}
@@ -60,13 +63,13 @@ R(p,e):=\frac{\sigma(p^e)}{\sigma^*(p^e)}
 R(p,1)=\frac{1+p}{1+p}=1.
 \]
 
-따라서 지수가 1인 소수는 (3)의 값에 영향을 주지 않으며,
+Hence primes with exponent 1 do not affect the value of (3), and
 
 \[
-n\text{이 (1)을 만족}\iff C(n)\text{이 (1)을 만족}. \tag{4}
+n\text{ satisfies (1)}\iff C(n)\text{ satisfies (1)}. \tag{4}
 \]
 
-\(e\ge2\)이면 \(R(p,e)>1\)이고
+If \(e\ge2\), then \(R(p,e)>1\) and
 
 \[
 R(p,e)
@@ -74,16 +77,17 @@ R(p,e)
 <\frac p{p-1}, \tag{5}
 \]
 
-왜냐하면 \(p^{e+1}-1<p(p^e+1)\)이기 때문이다.
+because \(p^{e+1}-1<p(p^e+1)\).
 
-core에 소수가 없으면 비율은 \(1\)이고, 소수가 하나이면
+If the core contains no prime, the ratio is \(1\); if it contains one
+prime, then
 
 \[
 R(p,e)<\frac p{p-1}\le2
 \]
 
-이므로 비율이 정확히 \(2\)일 수 없다. core에 서로 다른 홀수 소수
-\(p<q\) 두 개만 있으면 \(p\ge3,q\ge5\)이므로
+so the ratio cannot be exactly \(2\). If the core contains only two
+distinct odd primes \(p<q\), then \(p\ge3,q\ge5\), so
 
 \[
 R(p,a)R(q,b)
@@ -91,7 +95,7 @@ R(p,a)R(q,b)
 \le\frac32\cdot\frac54=\frac{15}{8}<2.
 \]
 
-따라서 남는 유일한 형태는
+Hence the only remaining shape is
 
 \[
 C=2^a q^b,
@@ -99,13 +103,15 @@ C=2^a q^b,
 \qquad a,b\ge2. \tag{6}
 \]
 
-## 두 소수 core의 완전분류
+## Complete classification of two-prime cores
+
+Setting
 
 \[
 x:=2^a
 \]
 
-로 두면
+we have
 
 \[
 R(2,a)=\frac{2x-1}{x+1},
@@ -113,62 +119,62 @@ R(2,a)=\frac{2x-1}{x+1},
 R(q,b)=\frac{q^{b+1}-1}{(q-1)(q^b+1)}.
 \]
 
-\(R(2,a)R(q,b)=2\)의 분모를 제거하면
+Clearing denominators in \(R(2,a)R(q,b)=2\),
 
 \[
 (2x-1)(q^{b+1}-1)
 =2(x+1)(q-1)(q^b+1). \tag{7}
 \]
 
-전개하고 정리하면
+Expanding and rearranging,
 
 \[
 2xq(q^{b-1}-1)
 =3q^{b+1}-2q^b+2q-3. \tag{8}
 \]
 
-(8)을 \(q\)로 보아 합동을 취하면 좌변은 \(0\), 우변은 \(-3\)이므로
-\(q\mid3\). \(q\)가 홀수 소수이므로
+Taking (8) modulo \(q\), the left-hand side is \(0\) and the right-hand
+side is \(-3\), so \(q\mid3\). Since \(q\) is an odd prime,
 
 \[
 q=3.
 \]
 
-(8)에 \(q=3\)을 대입하고 3으로 나누면
+Substituting \(q=3\) into (8) and dividing by 3,
 
 \[
 2x(3^{b-1}-1)=7\cdot3^{b-1}+1.
 \]
 
-\(x=2^a\)를 다시 대입하여 정리하면
+Substituting \(x=2^a\) back in and rearranging,
 
 \[
 (2^{a+1}-7)3^{b-1}=2^{a+1}+1,
 \]
 
-즉
+that is,
 
 \[
 (2^{a+1}-7)(3^{b-1}-1)=8. \tag{9}
 \]
 
-\(a\ge2\)이므로 \(2^{a+1}-7\)은 양의 홀수다. (9)에서 이 수는 8의
-양의 홀수 약수여야 하므로
+Since \(a\ge2\), \(2^{a+1}-7\) is a positive odd number. By (9) this
+number must be a positive odd divisor of 8, so
 
 \[
 2^{a+1}-7=1,
 \]
 
-따라서 \(a=2\)다. 다시 (9)에 대입하면 \(3^{b-1}-1=8\), 따라서
-\(b=3\)이다. 결국
+hence \(a=2\). Substituting back into (9), \(3^{b-1}-1=8\), hence
+\(b=3\). Consequently only
 
 \[
 C=2^2\cdot3^3=108
 \]
 
-만 가능하다.
+is possible.
 
-실제로
+Indeed,
 
 \[
 \sigma(108)=\sigma(2^2)\sigma(3^3)=7\cdot40=280,
@@ -178,44 +184,45 @@ C=2^2\cdot3^3=108
 \sigma^*(108)=5\cdot28=140,
 \]
 
-이므로 \(108\)은 (1)의 해다.
+so \(108\) is a solution of (1).
 
-## 모든 해의 복원과 primitive 성질
+## Recovering all solutions and the primitive property
 
-\(C(n)=108\)이면 \(2,3\)의 지수는 각각 정확히 \(2,3\)이고, 나머지
-소수의 지수는 모두 \(1\)이다. 따라서
+If \(C(n)=108\), the exponents of \(2,3\) are exactly \(2,3\)
+respectively, and the exponents of all other primes are \(1\). Hence
 
 \[
 n=108s,
 \]
 
-여기서 \(s\ge1\)은 squarefree이고 \(\gcd(s,108)=1\)이다. 역으로 이런
-\(s\)에 대해서는 새로 붙은 모든 소수의 지수가 \(1\)이므로 국소비율은
-\(1\)이다. 따라서
+where \(s\ge1\) is squarefree and \(\gcd(s,108)=1\). Conversely, for
+such \(s\), every newly attached prime has exponent \(1\), so its local
+ratio is \(1\). Therefore
 
 \[
 \frac{\sigma(108s)}{\sigma^*(108s)}
 =\frac{\sigma(108)}{\sigma^*(108)}=2.
 \]
 
-\(s>1\)이면 \(108\)이 \(108s\)의 해인 진약수이므로 \(108s\)는
-primitive가 아니다.
+If \(s>1\), then \(108\) is a proper divisor of \(108s\) that is a
+solution, so \(108s\) is not primitive.
 
-반면 \(d\mid108\)인 진약수 \(d<108\)가 해라고 가정하자. 자동으로
-\(\omega(C(d))\le2\)이고, 정리 앞부분에 따라 \(C(d)=108\)이어야 하므로
-\(108\mid d\)인데 \(d<108\)과 모순이다. 따라서 \(108\)은 primitive다.
+On the other hand, suppose a proper divisor \(d<108\) with \(d\mid108\)
+were a solution. Automatically \(\omega(C(d))\le2\), and by the first
+part of the theorem we would need \(C(d)=108\), hence \(108\mid d\),
+contradicting \(d<108\). Therefore \(108\) is primitive.
 
-마지막으로 \(\gcd(s,108)=1\)이면 \(s\)는 홀수이므로
+Finally, if \(\gcd(s,108)=1\), then \(s\) is odd, so
 
 \[
 108s-108=108(s-1)
 \]
 
-은 \(216\)의 배수다. 따라서
+is a multiple of \(216\). Therefore
 
 \[
 108s\equiv108\pmod{216}.
 \]
 
-그러므로 가상적인 추가 primitive 해가 존재한다면 그 powerful core에는
-서로 다른 소수가 적어도 세 개 있어야 한다.
+Consequently, if a hypothetical additional primitive solution exists,
+its powerful core must contain at least three distinct primes.

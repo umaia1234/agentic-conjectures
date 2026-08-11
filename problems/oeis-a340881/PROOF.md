@@ -1,97 +1,99 @@
-# OEIS A340881 — 모듈러 주기성의 상세 증명
+**English** | [한국어](PROOF.ko.md)
 
-이 문서는 2026-08-11에 작성된 상세 증명과 후속 수학 감사를 문제별로
-통합한 canonical 증명입니다. 유한 계산 인증서는 증명을 대체하지 않으며,
-정의·경계·도출 항등식을 독립적으로 재검산하는 역할만 합니다.
+# OEIS A340881 — Detailed proof of the modular periodicity
 
-아래에서 “주기 \(T\)”는 \(T\)가 하나의 주기라는 뜻이며, 별도로
-최소성을 보이지 않는 한 최소주기가 정확히 \(T\)라는 뜻은 아닙니다.
-빈 곱은 \(1\)로 정의합니다.
+This document is the canonical proof, consolidating on a per-problem basis
+the detailed proof written on 2026-08-11 and the subsequent mathematical
+audit. The finite computational certificate does not replace the proof; its
+only role is to independently re-check the definitions, boundaries, and
+derived identities.
 
-## 1.1. 정의
+Below, "period \(T\)" means that \(T\) is a period; unless minimality is
+shown separately, it does not mean that the minimal period is exactly
+\(T\). The empty product is defined to be \(1\).
 
-\(n\ge1\)에 대하여
+## 1.1. Definition
+
+For \(n\ge1\), define
 
 \[
 A(n)=\sum_{k=0}^{n-1}
 2^{E(k)}
 \prod_{j=k+1}^{n-1}(2^j-1),
 \qquad
-E(k):=\frac{k(k+1)}2
+E(k):=\frac{k(k+1)}2.
 \tag{1.1}
 \]
 
-로 정의합니다. 예를 들어 \(n=1\)에서는 합의 유일한 항 \(k=0\)에
-나타나는 곱이 빈 곱이므로
+For example, at \(n=1\) the product appearing in the sum's only term
+\(k=0\) is the empty product, so
 
 \[
 A(1)=2^{E(0)}=1.
 \]
 
-증명할 내용은 다음 두 명제입니다.
+The statements to be proved are the following two.
 
-1. 소수 \(p\)에 대해 \(A(n)\bmod p\)는 \(n=1\)부터 주기적이며,
-   최소주기는 \(2(p-1)\)의 약수입니다.
-2. 모든 정수 \(m\ge2\)에 대해 \(A(n)\bmod m\)는 결국 주기적입니다.
+1. For a prime \(p\), \(A(n)\bmod p\) is periodic from \(n=1\), and the
+   minimal period divides \(2(p-1)\).
+2. For every integer \(m\ge2\), \(A(n)\bmod m\) is eventually periodic.
 
-실제로는 홀수 법에 대해 더 강한 명시적 주기를 얻습니다.
+In fact, for odd moduli we obtain a stronger explicit period.
 
-## 1.2. 홀수 법에서의 순수 주기
+## 1.2. Pure period for odd moduli
 
-홀수 \(m>1\)을 고정합니다. \(2\)는
-\((\mathbb Z/m\mathbb Z)^\times\)의 원소이므로 곱셈 위수
+Fix an odd \(m>1\). Since \(2\) is an element of
+\((\mathbb Z/m\mathbb Z)^\times\), the multiplicative order
 
 \[
 L=\operatorname{ord}_m(2)
 \]
 
-가 정의됩니다. 즉 \(L\)은
+is defined. That is, \(L\) is the smallest positive integer satisfying
 
 \[
-2^L\equiv1\pmod m
+2^L\equiv1\pmod m.
 \]
 
-을 만족하는 최소 양의 정수입니다.
-
-**보조정리 1.1.** 모든 \(n\ge1\)에 대하여
+**Lemma 1.1.** For all \(n\ge1\),
 
 \[
 A(n+2L)\equiv A(n)\pmod m
 \tag{1.2}
 \]
 
-가 성립합니다.
+holds.
 
-**증명.** \(T=2L\)이라 둡니다. 정의에서
+**Proof.** Set \(T=2L\). From the definition,
 
 \[
 A(n+T)=
 \sum_{k=0}^{n+T-1}
 2^{E(k)}
-\prod_{j=k+1}^{n+T-1}(2^j-1)
+\prod_{j=k+1}^{n+T-1}(2^j-1).
 \]
 
-입니다. 이 합을 \(0\le k<T\)인 부분과 \(T\le k\le n+T-1\)인
-부분으로 나눕니다.
+Split this sum into the part with \(0\le k<T\) and the part with
+\(T\le k\le n+T-1\).
 
-먼저 \(0\le k<T\)라 하겠습니다. 그러면 \(k+1\le T\)이고,
-\(n\ge1\)이므로 \(T\le n+T-1\)입니다. 따라서 곱의 지표 구간
+First suppose \(0\le k<T\). Then \(k+1\le T\), and since \(n\ge1\), we
+have \(T\le n+T-1\). Therefore the index range of the product,
 
 \[
-k+1\le j\le n+T-1
+k+1\le j\le n+T-1,
 \]
 
-에는 반드시 \(j=T\)가 포함됩니다. 그런데
+necessarily contains \(j=T\). But
 
 \[
-2^T-1=2^{2L}-1\equiv1-1=0\pmod m
+2^T-1=2^{2L}-1\equiv1-1=0\pmod m,
 \]
 
-이므로 이 부분의 모든 항은 \(m\)을 법으로 \(0\)입니다.
+so every term of this part is \(0\) modulo \(m\).
 
-이제 \(T\le k\le n+T-1\)인 항을 봅니다. \(k=\ell+T\)로
-치환하면 정확히 \(0\le\ell\le n-1\)입니다. 곱 안에서
-\(j=r+T\)로 치환하면
+Now consider the terms with \(T\le k\le n+T-1\). Substituting
+\(k=\ell+T\) gives exactly \(0\le\ell\le n-1\). Substituting \(j=r+T\)
+inside the product,
 
 \[
 k+1\le j\le n+T-1
@@ -99,14 +101,14 @@ k+1\le j\le n+T-1
 \ell+1\le r\le n-1.
 \]
 
-각 인수는
+Each factor is
 
 \[
-2^{r+T}-1=2^r2^T-1\equiv2^r-1\pmod m
+2^{r+T}-1=2^r2^T-1\equiv2^r-1\pmod m.
 \tag{1.3}
 \]
 
-입니다. 앞에 곱해진 2의 지수도 비교하면
+Comparing the exponents of the powers of 2 in front as well,
 
 \[
 \begin{aligned}
@@ -119,7 +121,7 @@ E(\ell+T)-E(\ell)
 \tag{1.4}
 \]
 
-따라서 지수 차가 \(L\)의 배수이고,
+Therefore the exponent difference is a multiple of \(L\), and
 
 \[
 \begin{aligned}
@@ -130,8 +132,8 @@ E(\ell+T)-E(\ell)
 \tag{1.5}
 \]
 
-(1.3), (1.5)를 함께 쓰면 \(k=\ell+T\)인 항은 \(A(n)\)의
-\(\ell\)번째 항과 합동입니다. 그러므로
+Combining (1.3) and (1.5), the term with \(k=\ell+T\) is congruent to the
+\(\ell\)-th term of \(A(n)\). Therefore
 
 \[
 \begin{aligned}
@@ -144,94 +146,92 @@ A(n+T)
 \end{aligned}
 \]
 
-\(n=1\)에서도 같은 계산이 성립합니다. 이때 나타날 수 있는 빈 곱은
-정의상 \(1\)이므로 예외가 없습니다. \(\square\)
+The same computation holds at \(n=1\) as well. Any empty product that may
+appear there is \(1\) by definition, so there is no exception. \(\square\)
 
-따라서 홀수 \(m>1\)에서는 \(2\operatorname{ord}_m(2)\)가
-\(A(n)\bmod m\)의 처음부터 시작하는 하나의 주기입니다.
+Therefore, for odd \(m>1\), \(2\operatorname{ord}_m(2)\) is a period of
+\(A(n)\bmod m\) starting from the beginning.
 
-## 1.3. 최소주기가 임의의 주기를 나눈다는 사실
+## 1.3. The fact that the minimal period divides any period
 
-**보조정리 1.2.** \(x_1,x_2,\ldots\)가 첫 항부터 주기적이고 최소 양의
-주기가 \(d\)라고 하겠습니다. \(T\)가 이 수열의 다른 양의 주기이면
-\(d\mid T\)입니다.
+**Lemma 1.2.** Suppose \(x_1,x_2,\ldots\) is periodic from the first term
+with minimal positive period \(d\). If \(T\) is another positive period of
+this sequence, then \(d\mid T\).
 
-**증명.** 유클리드 나눗셈으로
+**Proof.** By Euclidean division, write
 
 \[
-T=qd+r,\qquad0\le r<d
+T=qd+r,\qquad0\le r<d.
 \]
 
-라 씁니다. \(d\)가 주기이므로 \(qd\)도 주기이고,
+Since \(d\) is a period, \(qd\) is also a period, and
 
 \[
 x_{n+qd+r}=x_{n+r}.
 \]
 
-한편 \(T\)도 주기이므로
+On the other hand, since \(T\) is also a period,
 
 \[
 x_{n+qd+r}=x_{n+T}=x_n.
 \]
 
-따라서 \(x_{n+r}=x_n\)이 모든 \(n\ge1\)에서 성립합니다.
-\(r>0\)이면 \(r\)이 \(d\)보다 작은 양의 주기가 되어 최소성에
-모순입니다. 따라서 \(r=0\), 즉 \(d\mid T\)입니다. \(\square\)
+Therefore \(x_{n+r}=x_n\) holds for all \(n\ge1\).
+If \(r>0\), then \(r\) would be a positive period smaller than \(d\),
+contradicting minimality. Therefore \(r=0\), i.e. \(d\mid T\). \(\square\)
 
-## 1.4. 소수 법에 대한 결론
+## 1.4. Conclusion for prime moduli
 
-**정리 1.3.** 소수 \(p\)에 대해 \(A(n)\bmod p\)는 처음부터
-주기적이고, 최소주기는 \(2(p-1)\)의 약수입니다.
+**Theorem 1.3.** For a prime \(p\), \(A(n)\bmod p\) is periodic from the
+beginning, and the minimal period divides \(2(p-1)\).
 
-**증명.** 먼저 \(p\)가 홀수라고 하겠습니다.
-\(L=\operatorname{ord}_p(2)\)라 하면 라그랑주 정리에 의해
+**Proof.** First suppose \(p\) is odd.
+Setting \(L=\operatorname{ord}_p(2)\), Lagrange's theorem gives
 
 \[
 L\mid p-1.
 \]
 
-보조정리 1.1에 의해 \(2L\)은 주기입니다. 최소주기를 \(d\)라 하면
-보조정리 1.2에서
+By Lemma 1.1, \(2L\) is a period. Letting \(d\) be the minimal period,
+Lemma 1.2 gives
 
 \[
 d\mid2L.
 \]
 
-또한 \(L\mid p-1\)이므로 \(2L\mid2(p-1)\)이고, 따라서
+Also, since \(L\mid p-1\), we have \(2L\mid2(p-1)\), and therefore
 
 \[
 d\mid2(p-1).
 \]
 
-\(p=2\)인 경우에는 \(k\ge1\)일 때 \(E(k)\ge1\)이므로
-\(2^{E(k)}\)가 짝수입니다. \(k=0\)인 항은
+In the case \(p=2\), for \(k\ge1\) we have \(E(k)\ge1\), so
+\(2^{E(k)}\) is even. The term with \(k=0\) is
 
 \[
-\prod_{j=1}^{n-1}(2^j-1)
+\prod_{j=1}^{n-1}(2^j-1),
 \]
 
-이고 모든 인수가 홀수입니다. \(n=1\)에서는 빈 곱 \(1\)입니다.
-따라서 정확히 \(k=0\)인 항만 홀수이고
+and every factor is odd. At \(n=1\) it is the empty product \(1\).
+Therefore exactly the term with \(k=0\) is odd, and
 
 \[
 A(n)\equiv1\pmod2
 \]
 
-가 모든 \(n\ge1\)에서 성립합니다. 이 경우 최소주기는 \(1\)이고,
-\(1\mid2(p-1)=2\)입니다. \(\square\)
+holds for all \(n\ge1\). In this case the minimal period is \(1\), and
+\(1\mid2(p-1)=2\). \(\square\)
 
-## 1.5. 1차 점화식
+## 1.5. First-order recurrence
 
-**보조정리 1.4.** 모든 \(n\ge1\)에 대하여
+**Lemma 1.4.** For all \(n\ge1\),
 
 \[
-A(n+1)=(2^n-1)A(n)+2^{E(n)}
+A(n+1)=(2^n-1)A(n)+2^{E(n)}.
 \tag{1.6}
 \]
 
-입니다.
-
-**증명.** 정의에서
+**Proof.** From the definition,
 
 \[
 A(n+1)=
@@ -240,112 +240,113 @@ A(n+1)=
 \prod_{j=k+1}^{n}(2^j-1).
 \]
 
-\(0\le k\le n-1\)인 항에서는 곱의 마지막 인수를 분리할 수 있습니다.
+In the terms with \(0\le k\le n-1\), the last factor of the product can be
+separated.
 
 \[
 \prod_{j=k+1}^{n}(2^j-1)
 =(2^n-1)\prod_{j=k+1}^{n-1}(2^j-1).
 \]
 
-따라서 이 항들의 합은 \((2^n-1)A(n)\)입니다. 남은 \(k=n\) 항의
-곱은 빈 곱이므로 그 값은 \(2^{E(n)}\)입니다. 두 부분을 합하면
-(1.6)을 얻습니다. \(\square\)
+Therefore the sum of these terms is \((2^n-1)A(n)\). The product of the
+remaining term \(k=n\) is the empty product, so its value is
+\(2^{E(n)}\). Adding the two parts gives (1.6). \(\square\)
 
-## 1.6. 2의 거듭제곱 법
+## 1.6. Power-of-two moduli
 
-**보조정리 1.5.** \(e\ge1\)이면 모든 \(n\ge e\)에 대하여
+**Lemma 1.5.** If \(e\ge1\), then for all \(n\ge e\),
 
 \[
-A(n+1)\equiv-A(n)\pmod{2^e}
+A(n+1)\equiv-A(n)\pmod{2^e},
 \tag{1.7}
 \]
 
-이고, 따라서
+and therefore
 
 \[
 A(n+2)\equiv A(n)\pmod{2^e}.
 \tag{1.8}
 \]
 
-**증명.** \(n\ge e\)이면
+**Proof.** If \(n\ge e\), then
 
 \[
 2^n-1\equiv-1\pmod{2^e}.
 \]
 
-또한 \(n\ge1\)에서
+Also, for \(n\ge1\),
 
 \[
-E(n)=\frac{n(n+1)}2\ge n\ge e
+E(n)=\frac{n(n+1)}2\ge n\ge e,
 \]
 
-이므로 \(2^{E(n)}\equiv0\pmod{2^e}\)입니다. 이를 (1.6)에
-대입하면 (1.7)을 얻습니다. 같은 식을 \(n+1\)에 다시 적용하면
+so \(2^{E(n)}\equiv0\pmod{2^e}\). Substituting these into (1.6) gives
+(1.7). Applying the same identity again at \(n+1\),
 
 \[
 A(n+2)\equiv-A(n+1)\equiv A(n)\pmod{2^e},
 \]
 
-즉 (1.8)을 얻습니다. 따라서 \(2^e\)를 법으로 한 수열은 늦어도
-\(n=e\)부터 주기 \(2\)를 가집니다. 이 주기가 최소라는 주장은
-아닙니다. 예를 들어 \(e=1\)에서는 수열이 상수라 최소주기는
-\(1\)입니다. \(\square\)
+i.e. (1.8). Therefore the sequence modulo \(2^e\) has period \(2\) at the
+latest from \(n=e\). This is not a claim that this period is minimal. For
+example, at \(e=1\) the sequence is constant, so the minimal period is
+\(1\). \(\square\)
 
-## 1.7. 모든 법에서의 궁극 주기
+## 1.7. Eventual period for all moduli
 
-**정리 1.6.** 모든 정수 \(m\ge2\)에 대해 \(A(n)\bmod m\)는 결국
-주기적입니다.
+**Theorem 1.6.** For every integer \(m\ge2\), \(A(n)\bmod m\) is
+eventually periodic.
 
-더 구체적으로
+More concretely, writing
 
 \[
-m=2^e u,\qquad e\ge0,\qquad u\text{는 홀수}
+m=2^e u,\qquad e\ge0,\qquad u\text{ odd},
 \]
 
-라 쓰면 다음이 성립합니다.
+the following holds.
 
-- \(u>1\)이면
+- If \(u>1\), then
   \[
   T=2\operatorname{ord}_u(2)
   \]
-  가 \(n\ge\max(1,e)\)에서 하나의 주기입니다.
-- \(u=1\), 즉 \(m=2^e\)이면 \(T=2\)가 \(n\ge e\)에서 하나의
-  주기입니다.
+  is a period for \(n\ge\max(1,e)\).
+- If \(u=1\), i.e. \(m=2^e\), then \(T=2\) is a period for
+  \(n\ge e\).
 
-**증명.** 먼저 \(u>1\)이라 하고
+**Proof.** First suppose \(u>1\) and set
 
 \[
-L=\operatorname{ord}_u(2),\qquad T=2L
+L=\operatorname{ord}_u(2),\qquad T=2L.
 \]
 
-로 둡니다. 보조정리 1.1에 의해
+By Lemma 1.1,
 
 \[
 A(n+T)\equiv A(n)\pmod u
 \]
 
-가 모든 \(n\ge1\)에서 성립합니다.
+holds for all \(n\ge1\).
 
-\(e=0\)이면 \(m=u\)이므로 이것으로 끝납니다. \(e\ge1\)이면
-보조정리 1.5를 반복 적용하여 \(n\ge e\), \(r\ge0\)에서
-
-\[
-A(n+r)\equiv(-1)^rA(n)\pmod{2^e}
-\]
-
-를 얻습니다. \(T=2L\)은 짝수이므로
+If \(e=0\), then \(m=u\), so this finishes the proof. If \(e\ge1\),
+repeatedly applying Lemma 1.5 gives, for \(n\ge e\), \(r\ge0\),
 
 \[
-A(n+T)\equiv A(n)\pmod{2^e}
+A(n+r)\equiv(-1)^rA(n)\pmod{2^e}.
 \]
 
-입니다. 따라서 \(n\ge\max(1,e)\)에서 두 합동식이 동시에 성립합니다.
-\(\gcd(2^e,u)=1\)이므로 중국인의 나머지 정리에 의해
+Since \(T=2L\) is even,
+
+\[
+A(n+T)\equiv A(n)\pmod{2^e}.
+\]
+
+Therefore both congruences hold simultaneously for \(n\ge\max(1,e)\).
+Since \(\gcd(2^e,u)=1\), the Chinese remainder theorem gives
 
 \[
 A(n+T)\equiv A(n)\pmod{2^eu}=\pmod m.
 \]
 
-\(u=1\)이면 \(m=2^e\)이고 \(m\ge2\)이므로 \(e\ge1\)입니다.
-이 경우에는 보조정리 1.5가 직접 \(n\ge e\)에서 주기 \(2\)를
-줍니다. \(\square\)
+If \(u=1\), then \(m=2^e\), and since \(m\ge2\), we have \(e\ge1\).
+In this case Lemma 1.5 directly gives period \(2\) for \(n\ge e\).
+\(\square\)

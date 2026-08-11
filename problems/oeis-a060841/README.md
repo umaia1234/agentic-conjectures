@@ -1,6 +1,8 @@
+**English** | [한국어](README.ko.md)
+
 # OEIS A060841
 
-## 판정
+## Verdict
 
 \[
 R_n:=\frac1{\det M_n}
@@ -8,63 +10,73 @@ R_n:=\frac1{\det M_n}
 =\frac{(n!)^2}{\prod_{k=1}^n\varphi(k)}.
 \]
 
-OEIS에 함께 적혀 있던 두 추측의 판정은 다음과 같다.
+The verdicts on the two conjectures recorded together on OEIS are as
+follows.
 
-1. **정수성 추측은 참이다.** 정확히
+1. **The integrality conjecture is true.** Exactly
    \[
    R_n\in\mathbb Z\iff n\in\{1,2,\ldots,34,36,38\}.
    \]
-2. **모든 기약분모가 2의 거듭제곱이라는 추측은 거짓이다.** 홀수 소수가
-   분모에 처음 나타나는 인덱스는 \(n=1807\)이고
+2. **The conjecture that every reduced denominator is a power of 2 is
+   false.** The first index at which an odd prime appears in the
+   denominator is \(n=1807\), and
    \[
    \operatorname{den}(R_{1807})=2^{2342}\cdot3.
    \]
 
-모든 \(n\ge91\)을 닫는 2-adic 경계, \(n\le90\)의 유한 인증, 최소 홀수
-분모의 독립적인 두 계산은 [PROOF.md](PROOF.md)에 정리되어 있다. 두 번째
-결과는 관련 [OEIS A260897](https://oeis.org/A260897)의 “모든 항이 2의
-거듭제곱”이라는 주장도 반증한다.
+The 2-adic bound closing every \(n\ge91\), the finite certification for
+\(n\le90\), and two independent computations of the smallest odd
+denominator are collected in [PROOF.md](PROOF.md). The second result
+also refutes the claim on the related
+[OEIS A260897](https://oeis.org/A260897) that "every term is a power of
+2".
 
-## 원문 상태와 결과의 범위
+## Status of the source and scope of the results
 
-- 2026-08-11에 확인한 [OEIS A060841](https://oeis.org/A060841) revision
-  #37에서는 두 명제가 2015-08-02자 `Conjecture`로 남아 있었다.
-- 당시 [공식 b-file](https://oeis.org/A060841/b060841.txt)은 분자의
-  \(n=1,\ldots,400\) 값을 제공했다. 이 항 개수를 추측의 범위나 여기의
-  전수검색 상한으로 해석하지 않는다.
-- 정수성 분류는 \(n\ge91\)에 대한 증명과 \(n\le90\)의 정확 인증을
-  결합한 전역 결과다. 최소 홀수 분모는 \(n\le1807\)을 정확히 검사한다.
-- 같은 공개 반례·증명을 당시 공개 웹, arXiv, 수학 Q&A, SeqFan,
-  GitHub에서 찾지 못했으나 이는 음성 검색 결과일 뿐이다. 아직 동료평가나
-  OEIS 제출을 거치지 않았으므로 신규성을 단정하지 않는다.
+- In [OEIS A060841](https://oeis.org/A060841) revision #37, checked on
+  2026-08-11, both statements remained as a `Conjecture` dated
+  2015-08-02.
+- At that time the [official b-file](https://oeis.org/A060841/b060841.txt)
+  provided the numerator values for \(n=1,\ldots,400\). We do not
+  interpret this term count as the range of the conjecture or as the
+  exhaustive-search bound used here.
+- The integrality classification is a global result combining a proof
+  for \(n\ge91\) with exact certification for \(n\le90\). The smallest
+  odd denominator is checked exactly for \(n\le1807\).
+- The same public counterexample and proof could not be found on the
+  open web, arXiv, math Q&A sites, SeqFan, or GitHub at the time, but
+  this is only a negative search result. Since it has not yet gone
+  through peer review or an OEIS submission, we do not assert novelty.
 
-## 재현
+## Reproduction
 
-[`a060841_certificate.py`](a060841_certificate.py)는 Python 표준
-라이브러리만 사용하고 다음 두
-독립 경로를 모두 실행한다.
+[`a060841_certificate.py`](a060841_certificate.py) uses only the Python
+standard library and runs both of the following
+two independent paths.
 
-- `fractions.Fraction`으로 \(R_n\)을 직접 누적·약분;
-- 각 소수 \(q\)에 대해 \(v_q(R_n)\)을 정수로 누적.
+- accumulate and reduce \(R_n\) directly with `fractions.Fraction`;
+- accumulate \(v_q(R_n)\) as an integer for each prime \(q\).
 
-두 경로 모두 최초 홀수 분모를 \((n,q)=(1807,3)\)으로 판정한다. 저장소
-루트에서 실행한다.
+Both paths determine the first odd denominator to be
+\((n,q)=(1807,3)\). Run from the repository root.
 
 ```bash
 python3 problems/oeis-a060841/a060841_certificate.py
 ```
 
-2026-08-11 재검산 당시 파일의 SHA-256은 다음과 같았다.
+At the recheck on 2026-08-11, the SHA-256 of the file was as follows.
 
 ```text
 82364fbe79c32c30009ce3193aefc0a1be6e824682cf236e7de80f75ac507464  problems/oeis-a060841/a060841_certificate.py
 ```
 
-당시 `python3 -m py_compile`을 통과했고 실행 시간은 약 0.46초였다.
+At that time it passed `python3 -m py_compile` and the run time was
+about 0.46 seconds.
 
-## 상류 Lean 형식화
+## Upstream Lean formalization
 
-FormalConjectures의 [원문 스냅샷과 출처 기록](upstream/README.md)을
-[`60841_4cba886e.lean`](upstream/60841_4cba886e.lean)에 보존했다. 그 파일의
-`by sorry` 정리는 두 OEIS 추측을 함께 적은 **statement**이지 형식 증명이 아니다.
-여기서는 정수성 분류를 증명하는 한편 분모 명제는 `n=1807`로 반증한다.
+The FormalConjectures [original snapshot and provenance record](upstream/README.md)
+is preserved in [`60841_4cba886e.lean`](upstream/60841_4cba886e.lean). The
+`by sorry` theorem in that file is a **statement** recording the two OEIS
+conjectures together, not a formal proof. Here we prove the integrality
+classification while refuting the denominator statement with `n=1807`.

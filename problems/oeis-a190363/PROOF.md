@@ -1,46 +1,51 @@
-# OEIS A190363 점화식의 반증
+**English** | [한국어](PROOF.ko.md)
 
-모든 계산 보조 명제는 정수의 사칙연산, 정수 제곱 비교와 정수 제곱근만
-사용한다.
+# Disproof of the OEIS A190363 recurrence
 
-## 정의와 정리
+All computational auxiliary claims use only integer arithmetic, integer
+square comparisons, and integer square roots.
 
-수열을
+## Definition and theorem
+
+Define the sequence by
 
 \[
 a(n)=2n+\left\lfloor\frac{n\sqrt5}{2}\right\rfloor
-  +\left\lfloor\frac n4\right\rfloor\qquad(n\ge1)
+  +\left\lfloor\frac n4\right\rfloor\qquad(n\ge1).
 \]
 
-로 정의한다. 검토할 점화식은
+The recurrence under examination is
 
 \[
 a(n+21)=a(n+17)+a(n+4)-a(n). \tag{1}
 \]
 
-**정리.** (1)의 첫 실패 기준 인덱스는 \(n=140\), 즉 첫 실패 출력항은
-\(a(161)\)이다. 더 나아가 (1)은 무한히 많은 인덱스에서 실패한다.
+**Theorem.** The first failing base index of (1) is \(n=140\), i.e. the
+first failing output term is \(a(161)\). Furthermore, (1) fails at
+infinitely many indices.
 
-## 점화식 결함의 단순화
+## Simplification of the recurrence defect
+
+Set
 
 \[
-\alpha=\frac{\sqrt5}{2},\qquad \delta=17\alpha-19
+\alpha=\frac{\sqrt5}{2},\qquad \delta=17\alpha-19.
 \]
 
-로 둔다. \(38^2<5\cdot17^2<40^2\)이므로
+Since \(38^2<5\cdot17^2<40^2\),
 
 \[
 19<17\alpha<20,\qquad 0<\delta<1.
 \]
 
-각 \(k\ge1\)에 대해
+For each \(k\ge1\), define \(\varepsilon_k\) by
 
 \[
 \left\lfloor(k+17)\alpha\right\rfloor
-=\lfloor k\alpha\rfloor+19+\varepsilon_k \tag{2}
+=\lfloor k\alpha\rfloor+19+\varepsilon_k; \tag{2}
 \]
 
-로 정의하면 \(\varepsilon_k\in\{0,1\}\)이고
+then \(\varepsilon_k\in\{0,1\}\) and
 
 \[
 \varepsilon_k=1
@@ -48,30 +53,30 @@ a(n+21)=a(n+17)+a(n+4)-a(n). \tag{1}
 \iff \{k\alpha\}\ge1-\delta. \tag{3}
 \]
 
-점화식 결함을
+Define the recurrence defect as
 
 \[
-D(n):=a(n+21)-a(n+17)-a(n+4)+a(n)
+D(n):=a(n+21)-a(n+17)-a(n+4)+a(n).
 \]
 
-으로 둔다. 선형항은
+The linear terms cancel, since
 
 \[
-(n+21)-(n+17)-(n+4)+n=0
+(n+21)-(n+17)-(n+4)+n=0.
 \]
 
-으로 소거된다. 또한
+Moreover,
 
 \[
 \left\lfloor\frac{n+21}{4}\right\rfloor
 -\left\lfloor\frac{n+17}{4}\right\rfloor=1,
 \quad
 \left\lfloor\frac{n+4}{4}\right\rfloor
--\left\lfloor\frac n4\right\rfloor=1
+-\left\lfloor\frac n4\right\rfloor=1,
 \]
 
-이므로 \(\lfloor n/4\rfloor\) 항도 소거된다. 남은 Beatty 항에 (2)를 두 번
-적용하면
+so the \(\lfloor n/4\rfloor\) terms cancel as well. Applying (2) twice to
+the remaining Beatty terms gives
 
 \[
 \begin{aligned}
@@ -83,88 +88,88 @@ D(n)
 \end{aligned} \tag{4}
 \]
 
-따라서 (1)은 정확히 \(\varepsilon_{n+4}=\varepsilon_n\)일 때 성립한다.
+Therefore (1) holds exactly when \(\varepsilon_{n+4}=\varepsilon_n\).
 
-## 바닥함수의 정확한 정수 판정
+## Exact integer test for the floor function
 
-\(\alpha\)는 무리수이므로
+Since \(\alpha\) is irrational,
 
 \[
 q_k:=\lfloor k\alpha\rfloor+1=\lceil k\alpha\rceil.
 \]
 
-(3)에서 \(\varepsilon_k=1\)일 필요충분조건은
+By (3), \(\varepsilon_k=1\) holds if and only if
 
 \[
-q_k+19<(k+17)\alpha
+q_k+19<(k+17)\alpha.
 \]
 
-이다. 양변이 양수이므로 제곱해도 동치이고,
+Both sides are positive, so squaring preserves equivalence, and
 
 \[
 \varepsilon_k=1
 \iff 4(q_k+19)^2<5(k+17)^2. \tag{5}
 \]
 
-따라서 정수
+Therefore it suffices to compute the integer
 
 \[
-H(k):=4(q_k+19)^2-5(k+17)^2 \tag{6}
+H(k):=4(q_k+19)^2-5(k+17)^2. \tag{6}
 \]
 
-만 계산하면 된다. \(H(k)=0\)은 \(\sqrt5\)의 무리성 때문에 불가능하며
+\(H(k)=0\) is impossible by the irrationality of \(\sqrt5\), and
 
 \[
 H(k)>0\iff\varepsilon_k=0,
 \qquad H(k)<0\iff\varepsilon_k=1. \tag{7}
 \]
 
-바닥함수 자체도 정수 제곱근으로 계산할 수 있다.
+The floor function itself can also be computed with integer square roots.
 
 \[
 \left\lfloor\frac{n\sqrt5}{2}\right\rfloor
 =\left\lfloor\frac{\lfloor\sqrt{5n^2}\rfloor}{2}\right\rfloor. \tag{8}
 \]
 
-## 첫 반례와 최소성
+## First counterexample and minimality
 
-정확 정수 계산은
+Exact integer computation gives
 
 \[
 \min_{1\le k\le143}H(k)=H(127)=4>0, \tag{9}
 \]
 
 \[
-H(144)=-5<0 \tag{10}
+H(144)=-5<0. \tag{10}
 \]
 
-을 준다. 따라서 \(1\le k\le143\)에서는 \(\varepsilon_k=0\)이고
-\(\varepsilon_{144}=1\)이다. \(1\le n\le139\)이면 \(n,n+4\le143\)이므로
-(4)에서 \(D(n)=0\)이다. 반면
+Therefore \(\varepsilon_k=0\) for \(1\le k\le143\), and
+\(\varepsilon_{144}=1\). If \(1\le n\le139\), then \(n,n+4\le143\), so
+\(D(n)=0\) by (4). On the other hand,
 
 \[
 D(140)=\varepsilon_{144}-\varepsilon_{140}=1.
 \]
 
-그러므로 \(140\)이 첫 실패 기준 인덱스다. 실제 네 항의 정확 인증은
-다음과 같다.
+Therefore \(140\) is the first failing base index. The exact certifications
+of the four actual terms are as follows.
 
-| \(m\) | \(\lfloor m\sqrt5/2\rfloor\) | 정확한 제곱 인증 | \(a(m)\) |
+| \(m\) | \(\lfloor m\sqrt5/2\rfloor\) | Exact square certification | \(a(m)\) |
 |---:|---:|---:|---:|
 | \(140\) | \(156\) | \(312^2<5\cdot140^2<314^2\) | \(471\) |
 | \(144\) | \(160\) | \(320^2<5\cdot144^2<322^2\) | \(484\) |
 | \(157\) | \(175\) | \(350^2<5\cdot157^2<352^2\) | \(528\) |
 | \(161\) | \(180\) | \(360^2<5\cdot161^2<362^2\) | \(542\) |
 
-따라서
+Therefore
 
 \[
 a(157)+a(144)-a(140)=528+484-471=541\ne542=a(161).
 \]
 
-## Pell 방정식에서 나오는 무한 반례족
+## Infinite family of counterexamples from a Pell equation
 
-다음 정수쌍을 정의한다.
+Define the following integer pairs.
 
 \[
 (p_0,q_0)=(161,144), \tag{11}
@@ -175,45 +180,48 @@ p_{t+1}=9p_t+10q_t,
 \qquad q_{t+1}=8p_t+9q_t. \tag{12}
 \]
 
-직접 전개하면
+Direct expansion gives
 
 \[
 4p_{t+1}^2-5q_{t+1}^2=4p_t^2-5q_t^2.
 \]
 
-초항에서 \(4\cdot161^2-5\cdot144^2=4\)이므로 모든 \(t\ge0\)에 대해
+Since \(4\cdot161^2-5\cdot144^2=4\) at the initial term, for all \(t\ge0\)
 
 \[
 4p_t^2-5q_t^2=4. \tag{13}
 \]
 
-또한 \(p_t,q_t>0\)이고 \(q_{t+1}=8p_t+9q_t>q_t\)이므로 서로 다른 해가
-무한히 생성된다.
+Moreover \(p_t,q_t>0\) and \(q_{t+1}=8p_t+9q_t>q_t\), so infinitely many
+distinct solutions are generated.
+
+Set
 
 \[
-\eta_t:=p_t-q_t\alpha
+\eta_t:=p_t-q_t\alpha.
 \]
 
-로 둔다. (13)에서
+By (13),
 
 \[
-(p_t-q_t\alpha)(p_t+q_t\alpha)=1
+(p_t-q_t\alpha)(p_t+q_t\alpha)=1,
 \]
 
-이므로
+so
 
 \[
 \eta_t=\frac1{p_t+q_t\alpha}
 =\frac2{2p_t+q_t\sqrt5}>0. \tag{14}
 \]
 
-(12)를 사용하면
+Using (12),
 
 \[
 \eta_{t+1}=(9-4\sqrt5)\eta_t. \tag{15}
 \]
 
-\(0<9-4\sqrt5<1\)이므로 \(\eta_t\)는 양수인 채 감소한다. 초항에서
+Since \(0<9-4\sqrt5<1\), \(\eta_t\) decreases while remaining positive. At
+the initial term,
 
 \[
 \eta_0<\delta
@@ -221,25 +229,25 @@ p_{t+1}=9p_t+10q_t,
 \iff360<161\sqrt5,
 \]
 
-마지막 부등식은
+and the last inequality is confirmed by
 
 \[
-360^2=129600<129605=5\cdot161^2
+360^2=129600<129605=5\cdot161^2.
 \]
 
-로 확인된다. 따라서
+Therefore
 
 \[
 0<\eta_t<\delta\qquad(t\ge0). \tag{16}
 \]
 
-이제
+Now set
 
 \[
-\rho:=\{4\alpha\}=2\sqrt5-4
+\rho:=\{4\alpha\}=2\sqrt5-4.
 \]
 
-로 둔다. 다음 두 부등식이 성립한다.
+The following two inequalities hold.
 
 \[
 \delta<\rho\iff13\sqrt5<30,
@@ -247,14 +255,15 @@ p_{t+1}=9p_t+10q_t,
 \delta+\rho<1\iff21\sqrt5<48.
 \]
 
-이는 각각 \(845<900\), \(2205<2304\)의 제곱 비교다. 따라서
+These are the square comparisons \(845<900\) and \(2205<2304\),
+respectively. Therefore
 
 \[
 0<\eta_t<\delta<\rho,
 \qquad \eta_t+\rho<1.
 \]
 
-(14)에서 \(q_t\alpha=p_t-\eta_t\)이므로
+By (14), \(q_t\alpha=p_t-\eta_t\), so
 
 \[
 \{q_t\alpha\}=1-\eta_t,
@@ -266,7 +275,7 @@ p_{t+1}=9p_t+10q_t,
 \{(q_t+4)\alpha\}=\rho-\eta_t.
 \]
 
-(3)을 적용하면
+Applying (3) gives
 
 \[
 \varepsilon_{q_t}=1,
@@ -274,17 +283,18 @@ p_{t+1}=9p_t+10q_t,
 \qquad \varepsilon_{q_t+4}=0.
 \]
 
-마지막으로 (4)에서
+Finally, by (4),
 
 \[
 D(q_t-4)=1,
 \qquad D(q_t)=-1. \tag{17}
 \]
 
-따라서 \(q_t-4\)와 \(q_t\)는 모든 \(t\ge0\)에서 반례다. 첫 반례들은
+Therefore \(q_t-4\) and \(q_t\) are counterexamples for every \(t\ge0\).
+The first counterexamples are
 
 \[
 140,\ 144,\ 2580,\ 2584,\ 46364,\ 46368,\ldots
 \]
 
-이며, 동일한 점화식 (1)은 어느 인덱스 이후에도 계속 성립하지 않는다.
+and the same recurrence (1) never holds permanently beyond any index.

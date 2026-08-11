@@ -1,77 +1,83 @@
-# OEIS A397621 — Pascal mod 2 선형복잡도의 상세 증명
+**English** | [한국어](PROOF.ko.md)
 
-이 문서는 2026-08-11에 작성된 상세 증명과 후속 수학 감사를 문제별로
-통합한 canonical 증명입니다. 유한 계산 인증서는 증명을 대체하지 않으며,
-정의·경계·도출 항등식을 독립적으로 재검산하는 역할만 합니다.
+# OEIS A397621 — Detailed Proof of the Pascal mod 2 Linear Complexity
 
-## 3.1. 유한 이진 단어의 선형복잡도
+This document is the canonical proof, consolidated per problem, of the
+detailed proof written on 2026-08-11 together with the follow-up
+mathematical audit. The finite computational certificate does not
+replace the proof; its only role is to independently recheck the
+definitions, boundary values, and derived identities.
 
-유한 이진 단어를
+## 3.1. Linear complexity of a finite binary word
+
+Let a finite binary word be
 
 \[
-\mathbf{s}=(s_0,s_1,\ldots,s_n)\in\mathbf F_2^{\,n+1}
+\mathbf{s}=(s_0,s_1,\ldots,s_n)\in\mathbf F_2^{\,n+1}.
 \]
 
-라 하겠습니다. 여기서 \(\mathbf F_2=\{0,1\}\)이고 모든 덧셈과 곱셈은
-mod \(2\)로 계산합니다.
+Here \(\mathbf F_2=\{0,1\}\) and all additions and multiplications are
+computed mod \(2\).
 
-이 단어가 길이 또는 span \(L\)인 선형점화식을 만족한다는 것은 어떤
+That this word satisfies a linear recurrence of length, or span, \(L\)
+means that there exist some
 
 \[
 c_1,\ldots,c_L\in\mathbf F_2
 \]
 
-가 존재하여
+such that
 
 \[
 s_i+c_1s_{i-1}+c_2s_{i-2}+\cdots+c_Ls_{i-L}=0
 \tag{3.1}
 \]
 
-이 모든 \(i=L,L+1,\ldots,n\)에 대해 성립한다는 뜻입니다. 단어의
-선형복잡도 \(\operatorname{LC}(\mathbf s)\)는 이러한 \(L\) 중 가장 작은
-값입니다.
+holds for all \(i=L,L+1,\ldots,n\). The linear complexity
+\(\operatorname{LC}(\mathbf s)\) of the word is the smallest such \(L\).
 
-\(L=0\)일 때 (3.1)은 단순히
-
-\[
-s_i=0\qquad(0\le i\le n)
-\]
-
-이라는 조건입니다. 따라서 영단어만 선형복잡도 \(0\)을 가지며, 비영
-단어의 선형복잡도는 적어도 \(1\)입니다.
-
-점화식 (3.1)의 특성다항식은
+When \(L=0\), (3.1) is simply the condition
 
 \[
-\chi_L(z)=z^L+c_1z^{L-1}+\cdots+c_L
+s_i=0\qquad(0\le i\le n).
 \]
 
-이고, 곱셈을 이용할 때 편리한 역수형 연결다항식은
+Hence only the zero word has linear complexity \(0\), and the linear
+complexity of a nonzero word is at least \(1\).
+
+The characteristic polynomial of the recurrence (3.1) is
+
+\[
+\chi_L(z)=z^L+c_1z^{L-1}+\cdots+c_L,
+\]
+
+and the reciprocal connection polynomial, convenient when using
+multiplication, is
 
 \[
 C_L(x)=1+c_1x+\cdots+c_Lx^L
-      =x^L\chi_L(x^{-1})
+      =x^L\chi_L(x^{-1}).
 \tag{3.2}
 \]
 
-입니다. 유한 단어에서는 \(c_L=0\)일 수도 있으므로 \(C_L(x)\)의 실제
-다항식 차수가 \(L\)보다 작아질 수 있습니다. 여기서 최소화하는 양은
-Berlekamp--Massey 알고리즘이 반환하는 점화식 span \(L\)입니다. 아래
-하한은 \(c_L\)에 아무 조건도 두지 않고 모든 \(L<d\)를 배제하며, 상한에
-사용하는 다항식은 실제 차수도 정확히 \(d\)이므로 이 관례상의 문제는
-최종 결론에 영향을 주지 않습니다.
+For a finite word we may have \(c_L=0\), so the actual polynomial degree
+of \(C_L(x)\) can be smaller than \(L\). The quantity minimized here is
+the recurrence span \(L\) returned by the Berlekamp--Massey algorithm.
+The lower bound below places no condition on \(c_L\) and rules out all
+\(L<d\), and the polynomial used for the upper bound also has actual
+degree exactly \(d\), so this matter of convention does not affect the
+final conclusion.
 
-## 3.2. 점화식과 다항식 곱 조건의 정확한 동치
+## 3.2. Exact equivalence of the recurrence and the polynomial product condition
 
-단어 \(\mathbf s\)의 위치생성다항식을
+Let the position generating polynomial of the word \(\mathbf s\) be
 
 \[
-S(x)=\sum_{i=0}^{n}s_ix^i
+S(x)=\sum_{i=0}^{n}s_ix^i.
 \tag{3.3}
 \]
 
-라 하겠습니다. \(c_0=1\)로 놓으면
+Setting \(c_0=1\),
 
 \[
 \begin{aligned}
@@ -80,7 +86,7 @@ S(x)=\sum_{i=0}^{n}s_ix^i
 \end{aligned}
 \]
 
-특히 \(L\le i\le n\)이면
+In particular, if \(L\le i\le n\), then
 
 \[
 [x^i]\bigl(C_LS\bigr)
@@ -88,70 +94,70 @@ S(x)=\sum_{i=0}^{n}s_ix^i
 \tag{3.4}
 \]
 
-따라서 길이 \(L\)의 점화식 (3.1)이 성립할 필요충분조건은
+Therefore the recurrence (3.1) of length \(L\) holds if and only if
 
 \[
 [x^i]\bigl(C_L(x)S(x)\bigr)=0
-\qquad(L\le i\le n)
+\qquad(L\le i\le n).
 \tag{3.5}
 \]
 
-입니다.
+It is important here that the range is exactly \(L\le i\le n\).
 
-여기서 범위가 정확히 \(L\le i\le n\)이라는 점이 중요합니다.
+- The coefficients with \(i<L\) involve the first \(L\) initial values,
+  so they need not be 0.
+- The coefficients with \(i>n\) concern how the given finite word is
+  extended beyond its end, so they carry no condition either.
+- Therefore all of \(C_LS\) need not be 0; only the coefficients of the
+  middle range \(L,\ldots,n\) corresponding to the observed word must
+  be 0.
 
-- \(i<L\)인 계수에는 처음 \(L\)개의 초기값이 들어가므로 0일 필요가
-  없습니다.
-- \(i>n\)인 계수는 주어진 유한 단어 뒤를 어떻게 연장할지에 관한 값이므로
-  역시 아무 조건도 없습니다.
-- 따라서 \(C_LS\) 전체가 0일 필요는 없고, 관측된 단어에 해당하는
-  중간 구간 \(L,\ldots,n\)의 계수만 0이면 됩니다.
+## 3.3. The binary word of A001317 and the Pascal coefficient polynomial
 
-## 3.3. A001317의 이진 단어와 Pascal 계수다항식
-
-다음을 두겠습니다.
+Set the following.
 
 \[
 b_k=\binom nk\bmod 2,\qquad 0\le k\le n.
 \]
 
-A001317의 \(n\)번째 항은 이 비트들을 이진수로
-읽은 정수이며,
+The \(n\)-th term of A001317 is the integer obtained by reading these
+bits as a binary number, and can be written as
 
 \[
-\operatorname{A001317}(n)=\sum_{k=0}^{n}b_k2^k
+\operatorname{A001317}(n)=\sum_{k=0}^{n}b_k2^k.
 \tag{3.6}
 \]
 
-로 쓸 수 있습니다. 양 끝 계수는
+The two end coefficients are
 
 \[
-b_0=b_n=1
+b_0=b_n=1,
 \]
 
-이므로 이 정수의 이진 표현에는 선행 0이 없고 길이가 정확히 \(n+1\)입니다.
+so the binary representation of this integer has no leading zeros and
+has length exactly \(n+1\).
 
-정수의 MSB-first 이진 단어는 원래
+The MSB-first binary word of the integer is originally
 
 \[
-(b_n,b_{n-1},\ldots,b_0)
+(b_n,b_{n-1},\ldots,b_0).
 \]
 
-입니다. 그러나 이항계수의 대칭성으로
+However, by the symmetry of the binomial coefficients,
 
 \[
 b_{n-k}=\binom n{n-k}\bmod2
-       =\binom nk\bmod2=b_k
+       =\binom nk\bmod2=b_k,
 \]
 
-이므로 이 단어는 정확히
+so this word is exactly equal to
 
 \[
-(b_0,b_1,\ldots,b_n)
+(b_0,b_1,\ldots,b_n).
 \]
 
-과 같습니다. 따라서 A397621이 요구하는 MSB-first 방향의 단어에 대해
-(3.3)의 위치생성다항식을 쓰면
+Therefore, writing the position generating polynomial (3.3) for the word
+in the MSB-first orientation that A397621 requires,
 
 \[
 S_n(x)=\sum_{k=0}^{n}b_kx^k=(1+x)^n
@@ -159,13 +165,13 @@ S_n(x)=\sum_{k=0}^{n}b_kx^k=(1+x)^n
 \tag{3.7}
 \]
 
-즉, 아래에서 \(S_n(x)=(1+x)^n\)을 사용하는 것은 비트 순서를 뒤집은
-것이 아닙니다. Pascal 행 자체가 회문이기 때문에 MSB-first 단어와
-낮은 차수부터 나열한 계수열이 일치합니다.
+That is, using \(S_n(x)=(1+x)^n\) below is not a reversal of the bit
+order. Because the Pascal row itself is a palindrome, the MSB-first word
+coincides with the coefficient sequence listed from the lowest degree.
 
-## 3.4. 주정리
+## 3.4. Main theorem
 
-**정리 3.1.** 모든 \(n\ge1\)에 대해
+**Theorem 3.1.** For all \(n\ge1\),
 
 \[
 \operatorname{A397621}\bigl(\operatorname{A001317}(n)\bigr)
@@ -173,7 +179,7 @@ S_n(x)=\sum_{k=0}^{n}b_kx^k=(1+x)^n
 \tag{3.8}
 \]
 
-따라서
+Therefore
 
 \[
 \operatorname{A397621}\bigl(\operatorname{A001317}(n)\bigr)
@@ -181,53 +187,54 @@ S_n(x)=\sum_{k=0}^{n}b_kx^k=(1+x)^n
 \tag{3.9}
 \]
 
-**증명.** \(n\ge1\)을 고정하고
+**Proof.** Fix \(n\ge1\) and set
 
 \[
-h=\lfloor\log_2n\rfloor,\qquad q=2^h
+h=\lfloor\log_2n\rfloor,\qquad q=2^h.
 \]
 
-라 두겠습니다. 그러면
+Then
 
 \[
 q\le n<2q.
 \]
 
-유일한 \(r\)에 대해
+For a unique \(r\) we can write
 
 \[
-n=q+r,\qquad 0\le r<q
+n=q+r,\qquad 0\le r<q.
 \tag{3.10}
 \]
 
-로 쓸 수 있습니다. 증명할 선형복잡도 값을
+Denote the linear-complexity value to be proved by
 
 \[
-d=q-r=2q-n
+d=q-r=2q-n.
 \tag{3.11}
 \]
 
-이라 두겠습니다. \(0\le r<q\)이므로
+Since \(0\le r<q\),
 
 \[
 1\le d\le q\le n.
 \tag{3.12}
 \]
 
-따라서 이후 구성하는 길이 \(d\)의 점화식은 빈 조건으로 성립하는
-점화식이 아니라 실제로 주어진 단어 안에서 적용되는 점화식입니다.
+Hence the recurrence of length \(d\) constructed below is not a
+recurrence holding vacuously, but one actually applied within the given
+word.
 
-### 3.4.1. Pascal 행에 나타나는 0 구간
+### 3.4.1. The zero run appearing in the Pascal row
 
-특성 \(2\)에서 Frobenius 항등식에 의해
+In characteristic \(2\), by the Frobenius identity,
 
 \[
-(1+x)^q=1+x^q
+(1+x)^q=1+x^q.
 \tag{3.13}
 \]
 
-입니다. 실제로 \(q=2^h\)이므로 중간 이항계수들이 모두 짝수입니다.
-(3.7), (3.10), (3.13)을 이용하면
+Indeed, since \(q=2^h\), the middle binomial coefficients are all even.
+Using (3.7), (3.10), (3.13),
 
 \[
 \begin{aligned}
@@ -240,105 +247,108 @@ S_n(x)
 \tag{3.14}
 \]
 
-\(P_r(x)=(1+x)^r\)라 쓰면 \(\deg P_r=r<q\)이고
+Writing \(P_r(x)=(1+x)^r\), we have \(\deg P_r=r<q\) and
 
 \[
 S_n(x)=P_r(x)+x^qP_r(x).
 \tag{3.15}
 \]
 
-첫 블록 \(P_r\)의 지지집합은 차수 \(0,\ldots,r\) 안에 있고, 둘째 블록
-\(x^qP_r\)의 지지집합은 차수 \(q,\ldots,q+r=n\) 안에 있습니다.
-따라서 두 블록 사이에서
+The support of the first block \(P_r\) lies within degrees
+\(0,\ldots,r\), and the support of the second block \(x^qP_r\) lies
+within degrees \(q,\ldots,q+r=n\). Therefore, between the two blocks,
 
 \[
-[x^i]S_n(x)=0\qquad(r+1\le i\le q-1)
+[x^i]S_n(x)=0\qquad(r+1\le i\le q-1).
 \tag{3.16}
 \]
 
-입니다. 또한 \(P_r\)의 상수항이 1이므로 둘째 블록의 첫 계수는
+Moreover, since the constant term of \(P_r\) is 1, the first coefficient
+of the second block is
 
 \[
 [x^q]S_n(x)=1.
 \tag{3.17}
 \]
 
-즉, 위치 \(q\)의 1 바로 앞에는 위치
+That is, immediately before the 1 at position \(q\) there are
+consecutive 0s at positions
 
 \[
-r+1,r+2,\ldots,q-1
+r+1,r+2,\ldots,q-1.
 \]
 
-의 연속된 0들이 있습니다. 이 0 구간의 길이는
+The length of this zero run is
 
 \[
-q-r-1=d-1
+q-r-1=d-1.
 \tag{3.18}
 \]
 
-입니다.
+### 3.4.2. Lower bound \(\operatorname{LC}(S_n)\ge d\)
 
-### 3.4.2. 하한 \(\operatorname{LC}(S_n)\ge d\)
-
-반대로 \(L<d\)인 점화식이 존재한다고 가정하겠습니다. 정수이므로
+Suppose, to the contrary, that a recurrence with \(L<d\) exists. Since
+\(L\) is an integer,
 
 \[
 0\le L\le d-1.
 \tag{3.19}
 \]
 
-또한 \(d\le q\le n\)이므로
+Also, since \(d\le q\le n\),
 
 \[
 L\le q\le n.
 \]
 
-따라서 점화식 (3.1)을 위치 \(i=q\)에 적용할 수 있습니다.
+Hence the recurrence (3.1) can be applied at position \(i=q\).
 
-각 \(j=1,\ldots,L\)에 대해 (3.19)로부터
+For each \(j=1,\ldots,L\), from (3.19),
 
 \[
-q-j\ge q-L\ge q-(d-1)=r+1
+q-j\ge q-L\ge q-(d-1)=r+1,
 \]
 
-이고 자명하게 \(q-j\le q-1\)입니다. 따라서 (3.16)에 의해
+and trivially \(q-j\le q-1\). Therefore, by (3.16),
 
 \[
 s_{q-j}=0\qquad(1\le j\le L).
 \tag{3.20}
 \]
 
-한편 (3.17)에 의해 \(s_q=1\)입니다. 위치 \(q\)에서 점화식의 왼쪽은
+On the other hand, by (3.17), \(s_q=1\). At position \(q\) the left-hand
+side of the recurrence would be
 
 \[
 s_q+c_1s_{q-1}+\cdots+c_Ls_{q-L}
  =1+c_1\cdot0+\cdots+c_L\cdot0
- =1
+ =1,
 \]
 
-이 되어야 하지만 점화식은 이것이 0이라고 요구합니다. 이는
-\(\mathbf F_2\)에서도 \(1\ne0\)이므로 모순입니다.
+but the recurrence requires this to be 0. Since \(1\ne0\) also in
+\(\mathbf F_2\), this is a contradiction.
 
-이 논증은 \(L=0\)도 포함합니다. 그 경우 합은 빈 합이고 위치 \(q\)의
-조건이 곧 \(s_q=0\)인데 실제로는 \(s_q=1\)입니다. 따라서 모든
-\(L<d\)가 배제되며
+This argument includes \(L=0\) as well. In that case the sum is empty
+and the condition at position \(q\) is precisely \(s_q=0\), whereas in
+fact \(s_q=1\). Therefore all \(L<d\) are ruled out and
 
 \[
 \operatorname{LC}(S_n)\ge d.
 \tag{3.21}
 \]
 
-### 3.4.3. 상한 \(\operatorname{LC}(S_n)\le d\)
+### 3.4.3. Upper bound \(\operatorname{LC}(S_n)\le d\)
 
-이제 다음 연결다항식을 명시적으로 택합니다.
+Now we explicitly choose the following connection polynomial.
 
 \[
 C_d(x)=(1+x)^d.
 \tag{3.22}
 \]
 
-상수항과 최고차항이 모두 1이므로 이것은 실제 차수가 정확히 \(d\)인
-정당한 연결다항식입니다. (3.7)과 (3.11)에 의해
+Since both the constant term and the leading term are 1, this is a
+legitimate connection polynomial of actual degree exactly \(d\). By
+(3.7) and (3.11),
 
 \[
 \begin{aligned}
@@ -351,21 +361,22 @@ C_d(x)S_n(x)
 \tag{3.23}
 \]
 
-\(2q=2^{h+1}\)도 2의 거듭제곱이므로 다시 Frobenius 항등식을 적용하면
+Since \(2q=2^{h+1}\) is also a power of 2, applying the Frobenius
+identity again gives
 
 \[
 C_d(x)S_n(x)=1+x^{2q}.
 \tag{3.24}
 \]
 
-그런데
+But
 
 \[
-n=q+r\le2q-1
+n=q+r\le2q-1,
 \]
 
-이므로 \(1+x^{2q}\)의 차수 \(d,d+1,\ldots,n\) 계수는 전부 0입니다.
-즉,
+so the coefficients of degrees \(d,d+1,\ldots,n\) of \(1+x^{2q}\) are
+all 0. That is,
 
 \[
 [x^i]\bigl(C_dS_n\bigr)=0
@@ -373,21 +384,22 @@ n=q+r\le2q-1
 \tag{3.25}
 \]
 
-3.2절의 동치에 의해 \(S_n\)의 계수열은 길이 \(d\)인 점화식을
-만족합니다. 구체적인 점화식의 계수는
+By the equivalence of Section 3.2, the coefficient sequence of \(S_n\)
+satisfies a recurrence of length \(d\). The coefficients of the concrete
+recurrence are
 
 \[
-c_j=\binom dj\bmod2,\qquad 1\le j\le d
+c_j=\binom dj\bmod2,\qquad 1\le j\le d.
 \]
 
-입니다. 따라서
+Therefore
 
 \[
 \operatorname{LC}(S_n)\le d.
 \tag{3.26}
 \]
 
-(3.21)과 (3.26)을 합치면
+Combining (3.21) and (3.26),
 
 \[
 \operatorname{LC}(S_n)=d=2q-n
@@ -395,82 +407,85 @@ c_j=\binom dj\bmod2,\qquad 1\le j\le d
 \tag{3.27}
 \]
 
-마지막으로 A080079는 \(n\)보다 큰 가장 가까운
-2의 거듭제곱까지의 거리입니다. \(q\le n<2q\)에서 그 2의 거듭제곱은
-\(2q\)이므로
+Finally, A080079 is the distance to the nearest power of 2 greater than
+\(n\). From \(q\le n<2q\) that power of 2 is \(2q\), so
 
 \[
 \operatorname{A080079}(n)=2q-n=d.
 \tag{3.28}
 \]
 
-따라서 (3.9)가 모든 \(n\ge1\)에서 성립합니다. \(\square\)
+Therefore (3.9) holds for all \(n\ge1\). \(\square\)
 
-## 3.5. 경계 사례 점검
+## 3.5. Boundary case checks
 
-위 증명에 숨어 있는 예외가 없음을 다음과 같이 직접 확인할 수 있습니다.
+That there are no exceptions hidden in the above proof can be confirmed
+directly as follows.
 
-### (i) 최소 입력 \(n=1\)
+### (i) Minimal input \(n=1\)
 
-이때
+In this case
 
 \[
 q=1,\qquad r=0,\qquad d=1.
 \]
 
-Pascal 행은 \((1,1)\)이고
+The Pascal row is \((1,1)\) and
 
 \[
 S_1(x)=1+x.
 \]
 
-길이 \(0\)의 점화식은 비영 단어에 불가능하고,
+A recurrence of length \(0\) is impossible for a nonzero word, and
 
 \[
-(1+x)S_1(x)=(1+x)^2=1+x^2
+(1+x)S_1(x)=(1+x)^2=1+x^2,
 \]
 
-이므로 길이 \(1\)의 점화식이 존재합니다. 따라서 복잡도는 정확히 1입니다.
+so a recurrence of length \(1\) exists. Therefore the complexity is
+exactly 1.
 
-### (ii) \(n\)이 2의 거듭제곱인 경우
+### (ii) The case where \(n\) is a power of 2
 
-\(n=q\), 즉 \(r=0\)이면
+If \(n=q\), that is \(r=0\), then
 
 \[
 d=q,\qquad S_q(x)=1+x^q.
 \]
 
-위치 \(1,\ldots,q-1\)가 모두 0이고 위치 \(q\)가 1이므로 길이
-\(L<q\)인 점화식은 위치 \(q\)의 1을 만들 수 없습니다. 한편
+Positions \(1,\ldots,q-1\) are all 0 and position \(q\) is 1, so a
+recurrence of length \(L<q\) cannot produce the 1 at position \(q\). On
+the other hand,
 
 \[
 (1+x)^qS_q(x)
  =(1+x^q)^2
- =1+x^{2q}
+ =1+x^{2q},
 \]
 
-이므로 길이 \(q\)는 가능합니다. 따라서
+so length \(q\) is possible. Therefore
 
 \[
 \operatorname{LC}(S_q)=q.
 \]
 
-특히 A080079에서 \(q\)보다 **엄격히 큰** 다음 2의 거듭제곱은
-\(2q\)이므로 \(\operatorname{A080079}(q)=2q-q=q\)와 일치합니다.
+In particular, in A080079 the next power of 2 **strictly greater** than
+\(q\) is \(2q\), so this agrees with
+\(\operatorname{A080079}(q)=2q-q=q\).
 
-### (iii) 구간의 오른쪽 끝 \(n=2q-1\)
+### (iii) The right end of the interval, \(n=2q-1\)
 
-이때
+In this case
 
 \[
 r=q-1,\qquad d=1.
 \]
 
-0 구간 \(r+1,\ldots,q-1\)은 빈 구간이지만 하한 논증에는 문제가
-없습니다. 배제해야 할 값은 \(L<1\), 즉 \(L=0\)뿐이고 단어가 비영이므로
-이는 불가능합니다.
+The zero run \(r+1,\ldots,q-1\) is an empty interval, but the
+lower-bound argument is unaffected. The only value to be ruled out is
+\(L<1\), i.e. \(L=0\), which is impossible because the word is nonzero.
 
-또한
+Also,
 
 \[
 (1+x)S_{2q-1}(x)
@@ -478,67 +493,67 @@ r=q-1,\qquad d=1.
  =1+x^{2q},
 \]
 
-따라서 길이 \(1\)의 점화식이 존재합니다. 실제로
+so a recurrence of length \(1\) exists. Indeed,
 
 \[
-S_{2q-1}(x)=1+x+x^2+\cdots+x^{2q-1}
+S_{2q-1}(x)=1+x+x^2+\cdots+x^{2q-1},
 \]
 
-이므로 비트가 전부 1이고, 점화식 \(s_i+s_{i-1}=0\)을 만족합니다.
-따라서 복잡도는 정확히 1입니다.
+so the bits are all 1 and satisfy the recurrence \(s_i+s_{i-1}=0\).
+Therefore the complexity is exactly 1.
 
-### (iv) MSB-first 방향과 선행 0
+### (iv) MSB-first orientation and leading zeros
 
-A001317의 각 항은 \(b_n=1\)이므로 이진수의 길이가 정확히 \(n+1\)이며
-선행 0 삭제로 단어 길이가 변하지 않습니다. 또한 \(b_k=b_{n-k}\)이므로
-MSB-first와 반대 방향이 동일합니다. 따라서 방향 선택으로 인한 예외도
-없습니다.
+Each term of A001317 has \(b_n=1\), so the binary number has length
+exactly \(n+1\) and deletion of leading zeros does not change the word
+length. Moreover, since \(b_k=b_{n-k}\), the MSB-first and the reverse
+orientation are identical. Hence there is no exception due to the choice
+of orientation either.
 
 ### (v) \(n=0\)
 
-정리의 범위는 \(n\ge1\)입니다. 이는 A080079의 공식적인 시작 첨자가
-1이기 때문이며, 증명에서 \(q=2^{\lfloor\log_2n\rfloor}\)를 정의하기
-위해서도 \(n\ge1\)이 필요합니다. 따라서 \(n=0\)은 누락된 경계가 아니라
-원래 명제의 범위 밖입니다.
+The range of the theorem is \(n\ge1\). This is because the official
+starting index of A080079 is 1, and \(n\ge1\) is also needed in the
+proof to define \(q=2^{\lfloor\log_2n\rfloor}\). Therefore \(n=0\) is
+not a missing boundary but outside the range of the original statement.
 
-## 3.6. 예시: \(n=5\)
+## 3.6. Example: \(n=5\)
 
-\(n=5\)이면
+If \(n=5\), then
 
 \[
 q=4,\qquad r=1,\qquad d=3.
 \]
 
-따라서
+Therefore
 
 \[
 S_5(x)=(1+x)^5=1+x+x^4+x^5.
 \]
 
-계수열은
+The coefficient sequence is
 
 \[
-(1,1,0,0,1,1)
+(1,1,0,0,1,1),
 \]
 
-이며, 위치 \(4\)의 1 바로 앞에 \(d-1=2\)개의 0이 있습니다. 그러므로
-길이 \(0,1,2\)인 점화식은 위치 \(4\)에서 모두 실패합니다. 반면
+and immediately before the 1 at position \(4\) there are \(d-1=2\)
+zeros. Hence recurrences of lengths \(0,1,2\) all fail at position
+\(4\). On the other hand, for
 
 \[
 C_3(x)=(1+x)^3=1+x+x^2+x^3
 \]
 
-에 대해
+we have
 
 \[
 C_3(x)S_5(x)=(1+x)^8=1+x^8.
 \]
 
-차수 \(3,4,5\)의 계수가 모두 0이므로 길이 \(3\)의 점화식이 존재합니다.
-따라서 선형복잡도는 정확히
+The coefficients of degrees \(3,4,5\) are all 0, so a recurrence of
+length \(3\) exists. Therefore the linear complexity is exactly
 
 \[
-3=8-5=\operatorname{A080079}(5)
+3=8-5=\operatorname{A080079}(5).
 \]
-
-입니다.

@@ -1,125 +1,131 @@
-# OEIS A245211 진행 보고서
+**English** | [한국어](README.ko.md)
 
-확인일: 2026-08-11
+# OEIS A245211 progress report
 
-## 결론과 한계
+Date checked: 2026-08-11
 
-**전체 추측은 아직 해결되지 않았다.** 이 문서가 증명하는 것은 강한 필요조건,
-몇 가지 완전한 부분분류, 그리고 명시된 범위의 exact 계산뿐이다.
+## Conclusion and limitations
 
-[OEIS A245211](https://oeis.org/A245211)은
+**The full conjecture is not yet resolved.** What this document proves is
+only a strong necessary condition, a few complete partial classifications,
+and an exact computation over the stated range.
+
+[OEIS A245211](https://oeis.org/A245211) is defined by
 
 \[
  a(n)=\sum_{\substack{d\mid n\\d<n}}d\,\tau(d)
 \]
 
-로 정의되며, `a(n)=n`의 유일한 해가 `n=21`이라는 추측을 싣고 있다.
-아래 결과로 반례가 존재한다면 다음 두 계열 중 하나에 속해야 한다.
+and carries the conjecture that the only solution of `a(n)=n` is `n=21`.
+By the results below, if a counterexample exists it must belong to one of
+the following two families.
 
-1. 지수가 무제한인 nonsquarefree 수;
-2. 서로 다른 소인수가 홀수 개이고 그 개수가 적어도 5인 squarefree 수.
+1. A nonsquarefree number with unbounded exponents;
+2. A squarefree number with an odd number of distinct prime factors, that
+   number being at least 5.
 
-또한 그런 반례는 `2*3*5*7*11=2310`과 서로소여야 한다.
+Moreover, such a counterexample must be coprime to `2*3*5*7*11=2310`.
 
-## 곱 형태
+## Product form
 
-소인수분해를
+Write the prime factorization as
 
 \[
 n=\prod_{i=1}^r p_i^{a_i},\qquad
 D=\tau(n)=\prod_{i=1}^r(a_i+1)
 \]
 
-라 하고
+and write
 
 \[
-H_a(x)=\sum_{j=0}^a(j+1)x^j
+H_a(x)=\sum_{j=0}^a(j+1)x^j.
 \]
 
-라 쓰자. 함수 \(d\mapsto d\tau(d)\)의 약수합은 곱셈적이므로
+Since the divisor sum of the function \(d\mapsto d\tau(d)\) is
+multiplicative,
 
 \[
 \sum_{d\mid n}d\tau(d)=\prod_i H_{a_i}(p_i).
 \]
 
-따라서 `a(n)=n`은 정확히
+Therefore `a(n)=n` is exactly equivalent to
 
 \[
-\boxed{\prod_i H_{a_i}(p_i)=n(D+1)} \tag{1}
+\boxed{\prod_i H_{a_i}(p_i)=n(D+1)}. \tag{1}
 \]
 
-과 동치이다. \(n=21\)은 실제로 이 식을 만족한다.
+\(n=21\) does indeed satisfy this equation.
 
-## 증명된 보조정리
+## Proven lemmas
 
-### 1. 각 소인수에 대한 하계
+### 1. Lower bound for each prime factor
 
-\(p_i^{a_i}\Vert n\)라 하자. 원래 proper-divisor 합에서
-\(d=n/p_i\)에 해당하는 한 항은
+Let \(p_i^{a_i}\Vert n\). In the original proper-divisor sum, the single
+term corresponding to \(d=n/p_i\) is
 
 \[
 \frac{n}{p_i}\tau(n/p_i)
 =\frac{n}{p_i}\frac{a_iD}{a_i+1}.
 \]
 
-다른 항들도 양수이므로 이 한 항은 \(n\)보다 작다. 따라서 모든 해는
+Since the other terms are also positive, this single term is less than
+\(n\). Therefore every solution satisfies
 
 \[
 \boxed{p_i>a_i\frac{D}{a_i+1}
 =a_i\prod_{j\ne i}(a_j+1)}. \tag{2}
 \]
 
-을 만족한다.
-
-특히 \(p_{\min}>\Omega(n)\)이다. 실제로
+In particular, \(p_{\min}>\Omega(n)\). Indeed,
 
 \[
-\prod_{j\ne i}(a_j+1)\ge 1+\sum_{j\ne i}a_j
+\prod_{j\ne i}(a_j+1)\ge 1+\sum_{j\ne i}a_j,
 \]
 
-이고, 우변에 \(a_i\)를 곱한 것은 \(\sum_j a_j\) 이상이다.
+and multiplying the right-hand side by \(a_i\) gives at least
+\(\sum_j a_j\).
 
-### 2. 소수거듭제곱은 해가 아니다
+### 2. Prime powers are not solutions
 
-\(n=p^a\)이면 (1)을 \(p^a\)로 나누어
+If \(n=p^a\), dividing (1) by \(p^a\) gives
 
 \[
-\frac a p+\frac{a-1}{p^2}+\cdots+\frac1{p^a}=1
+\frac a p+\frac{a-1}{p^2}+\cdots+\frac1{p^a}=1.
 \]
 
-을 얻는다. (2)에 의해 \(p>a\)이고, 좌변은
+By (2), \(p>a\), and the left-hand side is
 
 \[
 <\frac a p\left(1+\frac1p+\cdots\right)
-=\frac{a}{p-1}\le1
+=\frac{a}{p-1}\le1,
 \]
 
-이므로 모순이다.
+a contradiction.
 
-### 3. 홀수 입력에서의 정확한 2진 valuation
+### 3. Exact 2-adic valuation at odd inputs
 
-홀수 \(x\)에 대해 다음 항등식이 성립한다.
+For odd \(x\), the following identity holds.
 
 \[
 \boxed{v_2(H_a(x))
 =v_2\!\left(\frac{(a+1)(a+2)}2\right)}. \tag{3}
 \]
 
-증명하자. \(m=a+1\), \(x=1+2u\),
-\(T=m(m+1)/2\)라 두면
+Let us prove it. Setting \(m=a+1\), \(x=1+2u\),
+\(T=m(m+1)/2\), we have
 
 \[
 H_a(x)=\sum_{k=1}^m kx^{k-1}.
 \]
 
-이항전개와 hockey-stick 항등식으로
+By the binomial expansion and the hockey-stick identity,
 
 \[
 H_a(1+2u)-T
 =\sum_{t=1}^{m-1}2^tu^t(t+1){m+1\choose t+2}.
 \]
 
-각 계수와 \(T\)의 비의 2진 valuation은
+The 2-adic valuation of the ratio of each coefficient to \(T\) is
 
 \[
 v_2\!\left(
@@ -130,26 +136,26 @@ v_2\!\left(
 \right)\ge1,
 \]
 
-왜냐하면 \(v_2(t+2)\le t\)이기 때문이다. 따라서
-\(H_a(x)\equiv T\pmod {2^{v_2(T)+1}}\)이고 (3)이 따른다.
+because \(v_2(t+2)\le t\). Therefore
+\(H_a(x)\equiv T\pmod {2^{v_2(T)+1}}\), and (3) follows.
 
-이제 \(n\)이 홀수이면 (1)의 2진 valuation을 취해 지수만으로 결정되는
-필요조건
+Now if \(n\) is odd, taking the 2-adic valuation of (1) yields a necessary
+condition determined by the exponents alone:
 
 \[
 \boxed{
 \sum_i v_2\!\left(\frac{(a_i+1)(a_i+2)}2\right)
-=v_2(D+1)} \tag{4}
+=v_2(D+1)}. \tag{4}
 \]
 
-을 얻는다.
+### 4. Exclusion of the small prime factors 2, 3, 5, 7, 11
 
-### 4. 작은 소인수 2, 3, 5, 7, 11의 배제
-
-- `2`: 서로 다른 소인수가 둘 이상이면 (2)의 우변이 적어도 2이므로
-  `2 > a_i D/(a_i+1)`일 수 없다. 소수거듭제곱은 이미 배제했다.
-- `3`: (2)에서 \(3>a_iD_i\), \(D_i\ge2\)이므로
-  \(a_i=1,D_i=2\)뿐이다. 즉 \(n=3q\)이다. squarefree semiprime 식은
+- `2`: If there are at least two distinct prime factors, the right-hand
+  side of (2) is at least 2, so `2 > a_i D/(a_i+1)` is impossible. Prime
+  powers were already excluded.
+- `3`: By (2), \(3>a_iD_i\) with \(D_i\ge2\), so only
+  \(a_i=1,D_i=2\) is possible. That is, \(n=3q\). The squarefree semiprime
+  equation is
 
   \[
   (2p+1)(2q+1)=5pq
@@ -157,89 +163,94 @@ v_2\!\left(
   (p-2)(q-2)=5,
   \]
 
-  이므로 \(n=3\cdot7=21\)만 남는다.
-- `5`: (2)에서 \(5>a_iD_i\)인 지수형은
-  `(1;1)`, `(1;2)`, `(1;3)`, `(1;1,1)`, `(2;1)`뿐이다.
-  첫 경우는 위 semiprime 분류, 가운데 세 nonsquarefree 경우는 (4),
-  squarefree 세 소인수 경우는 다음 절의 정리로 배제된다.
-- `7`: (2)와 (4)를 적용하면 semiprime/squarefree 세 소인수 경우 외에
-  `(1;4)`와 `(1;5)`만 남는다. 후자의 두 경우가 \(n=7q^b\)라면
-  (1)에서 \(q^b\mid H_1(7)=15\)인데 \(b\ge4\)이므로 불가능하다.
-- `11`: (2), (4), 아래 squarefree 분류 뒤에 남는 지수형은
+  so only \(n=3\cdot7=21\) remains.
+- `5`: The exponent patterns with \(5>a_iD_i\) in (2) are only
+  `(1;1)`, `(1;2)`, `(1;3)`, `(1;1,1)`, `(2;1)`.
+  The first case is handled by the semiprime classification above, the
+  middle three nonsquarefree cases by (4), and the squarefree
+  three-prime-factor case by the theorem of the next section.
+- `7`: Applying (2) and (4), apart from the semiprime/squarefree
+  three-prime-factor cases only `(1;4)` and `(1;5)` remain. If the latter
+  two cases were \(n=7q^b\), then by (1) \(q^b\mid H_1(7)=15\), which is
+  impossible since \(b\ge4\).
+- `11`: After (2), (4), and the squarefree classification below, the
+  remaining exponent patterns are
 
   \[
   (1;4),(1;5),(1;8),(1;9),(4;1),(5;1),(1;1,4).
   \]
 
-  첫 네 경우는 \(q^b\mid H_1(11)=23\) 때문에 불가능하다.
-  `(4;1)`과 `(5;1)`은 (1)을 직접 정리하면 각각
+  The first four cases are impossible because \(q^b\mid H_1(11)=23\).
+  For `(4;1)` and `(5;1)`, directly rearranging (1) gives, respectively,
 
   \[
-  q=78915/3221,\qquad q=1045221/3221
+  q=78915/3221,\qquad q=1045221/3221,
   \]
 
-  이 되어 정수가 아니다. 마지막 경우를
-  \(n=11pq^4\)라 쓰고
+  which are not integers. For the last case, write
+  \(n=11pq^4\) and set
 
   \[
-  B=H_4(q)=5q^4+4q^3+3q^2+2q+1
+  B=H_4(q)=5q^4+4q^3+3q^2+2q+1;
   \]
 
-  이라 하면 (1)은
+  then (1) becomes
 
   \[
   p=\frac{23B}{q^4-184q^3-138q^2-92q-46}. \tag{5}
   \]
 
-  양수이려면 소수 \(q\ge191\)이고, 이 범위에서는 분모가 \(q^3\)보다
-  크므로 (5)에서 \(p<138q\)이다. 한편 (1)을 \(q^4\)로 보아
-  \(q^4\mid23(2p+1)\)이고 \(q\ne23\)이므로
-  \(q^4\mid2p+1\)이다. 이는 \(2p+1<277q<q^4\)와 모순이다.
+  For positivity we need the prime \(q\ge191\), and in this range the
+  denominator exceeds \(q^3\), so (5) gives \(p<138q\). On the other hand,
+  viewing (1) modulo \(q^4\), we get \(q^4\mid23(2p+1)\), and since
+  \(q\ne23\), \(q^4\mid2p+1\). This contradicts \(2p+1<277q<q^4\).
 
-따라서 \(n\ne21\)인 반례는 \(2310\)과 서로소이다.
+Therefore any counterexample \(n\ne21\) is coprime to \(2310\).
 
-### 5. squarefree 세 소인수의 완전 배제
+### 5. Complete exclusion of squarefree three prime factors
 
-\(n=xyz\), \(5\le x<y<z\)가 squarefree 해라고 하자. 식 (1)은
+Suppose \(n=xyz\), \(5\le x<y<z\) is a squarefree solution. Equation (1)
+becomes
 
 \[
 (2x+1)(2y+1)(2z+1)=9xyz. \tag{6}
 \]
 
-가장 큰 소수 \(z\)는 \(2x+1\) 또는 \(2y+1\)을 나누어야 하고,
-두 수가 \(2z\)보다 작고 홀수이므로 실제로 그중 하나와 같다.
+The largest prime \(z\) must divide \(2x+1\) or \(2y+1\), and since both
+numbers are less than \(2z\) and odd, it is in fact equal to one of them.
 
-- \(z=2y+1\)이면 (6)에서
+- If \(z=2y+1\), then (6) gives
   \((x-4)(y-6)=27\).
-- \(z=2x+1\)이면 (6)에서
+- If \(z=2x+1\), then (6) gives
   \((x-6)(y-4)=27\).
 
-27의 양의 약수를 대입하면 소수 조건과 \(x<y<z\)를 동시에 만족하는
-경우가 없다.
+Substituting the positive divisors of 27, no case satisfies the primality
+conditions and \(x<y<z\) simultaneously.
 
-### 6. squarefree이고 서로 다른 소인수가 짝수 개이면 불가능
+### 6. Squarefree with an even number of distinct prime factors is impossible
 
-소인수 개수를 짝수 \(r\ge4\)라 하자. (2)에서 모든 \(p_i>2^{r-1}\),
-특히 \(p_i\ne3\)이다. 식 (1)은
+Let the number of prime factors be an even \(r\ge4\). By (2), every
+\(p_i>2^{r-1}\); in particular \(p_i\ne3\). Equation (1) becomes
 
 \[
 \prod_i(2p_i+1)=(2^r+1)\prod_i p_i. \tag{7}
 \]
 
-짝수 \(r\)에서는 \(3\nmid2^r+1\)이다. 따라서 좌변의 어느 인자도
-3으로 나누어지지 않아 모든 \(p_i\equiv2\pmod3\)이어야 한다.
-그러면 (7)의 좌변은 mod 3에서 \(2^r=1\), 우변은
-\((2^r+1)2^r=2\)가 되어 모순이다.
+For even \(r\), \(3\nmid2^r+1\). Therefore no factor on the left-hand side
+is divisible by 3, so every \(p_i\equiv2\pmod3\). But then the left-hand
+side of (7) is \(2^r=1\) mod 3, while the right-hand side is
+\((2^r+1)2^r=2\), a contradiction.
 
-## Exact 계산 결과
+## Exact computation results
 
-### 1. 모든 정수 `n <= 10^9`
+### 1. All integers `n <= 10^9`
 
-분할 소인수분해로 \(D\)와 \(\prod H_a(p)\)를 정수로 계산하여 (1)을
-직접 비교했다. 위에서 증명된 2, 3, 5, 7 배수 배제를 사용해
-`gcd(n,210)=1`인 수만 검사하고 21을 별도로 넣었다.
+Using segmented factorization, \(D\) and \(\prod H_a(p)\) were computed as
+integers and (1) was compared directly. Using the multiples-of-2, 3, 5, 7
+exclusions proved above, only numbers with `gcd(n,210)=1` were tested, and
+21 was included separately.
 
-결과:
+Result:
 
 ```text
 limit 1000000000
@@ -248,18 +259,18 @@ coarse_inequality_survivors 227185758
 solutions 21
 ```
 
-이는 `n <= 10^9`라는 유한 범위의 exact 계산이지, 무한 명제의 증명이
-아니다.
+This is an exact computation over the finite range `n <= 10^9`, not a proof
+of the infinite statement.
 
-소스:
+Source:
 
 ```text
-절대경로: /home/user/projects/agentic-conjectures/problems/oeis-a245211/a245211_scan.cpp
-작업공간 루트 기준: problems/oeis-a245211/a245211_scan.cpp
+Absolute path: /home/user/projects/agentic-conjectures/problems/oeis-a245211/a245211_scan.cpp
+Relative to workspace root: problems/oeis-a245211/a245211_scan.cpp
 SHA256:   712cb0294def17f7300b921ca1a393a9618865f5a55609a819c0681f533f345e
 ```
 
-재현:
+Reproduction:
 
 ```bash
 g++ -O3 -march=native -std=c++17 -Wall -Wextra \
@@ -267,89 +278,93 @@ g++ -O3 -march=native -std=c++17 -Wall -Wextra \
 /tmp/a245211_scan 1000000000 1000000
 ```
 
-### 2. 서로 다른 소인수가 정확히 두 개인 경우
+### 2. The case of exactly two distinct prime factors
 
-\(n=p^a q^b\), \(p<q\)라 하자. 식 (1)에서
-\(q^b\mid H_a(p)\)이다. 또한 (2)와
-\(H_a(p)<(a+2)p^a\)를 쓰면 \(b>a\)일 수 없으므로 \(b\le a\)이다.
+Let \(n=p^a q^b\), \(p<q\). From equation (1),
+\(q^b\mid H_a(p)\). Moreover, using (2) and
+\(H_a(p)<(a+2)p^a\), \(b>a\) is impossible, so \(b\le a\).
 
-고정된 \((a,b)\)에서 (2)는 \(p>a(b+1)\)을 준다. 정규화된 local
-factor가 소수에 대해 감소하므로
+For fixed \((a,b)\), (2) gives \(p>a(b+1)\). Since the normalized local
+factor is decreasing in the prime, it suffices to test \(p\) only while
 
 \[
 H_a(p)H_b(p)>(D+1)p^{a+b}
 \]
 
-인 동안만 \(p\)를 검사하면 되고, 이 조건이 처음 실패한 뒤의 모든
-소수는 자동 배제된다. 따라서 \(p\)의 범위가 유한하다.
+holds, and every prime after the first failure of this condition is
+automatically excluded. Therefore the range of \(p\) is finite.
 
-한 \(p\)가 정해졌다고 하자. 다음을 둔다.
+Suppose a \(p\) is fixed. Set
 
 \[
 G=(D+1)p^a-(b+1)H_a(p),\qquad y=G/H_a(p).
 \]
 
-필요한 \(q\)는
+The required \(q\) must satisfy
 
 \[
-y=\frac bq+\frac{b-1}{q^2}+\cdots+\frac1{q^b}
+y=\frac bq+\frac{b-1}{q^2}+\cdots+\frac1{q^b}.
 \]
 
-를 만족해야 한다. 그런데
+But
 
 \[
 \frac bq\le y<\frac b{q-1},
 \]
 
-이므로 길이 1 미만의 구간에서
+so within an interval of length less than 1 only the single value
 
 \[
 q=\left\lceil\frac{bH_a(p)}G\right\rceil
 \]
 
-하나만 가능하다. 코드는 이 정수의 소수성과 원래 식 (1)을 exact
-integer arithmetic으로 재검사한다.
+is possible. The code re-checks the primality of this integer and the
+original equation (1) with exact integer arithmetic.
 
-`1 <= b <= a <= 200`의 모든 지수쌍을 검사한 결과:
+Result of testing all exponent pairs with `1 <= b <= a <= 200`:
 
 ```text
-2-adic 조건을 통과한 지수쌍: 4204
-exact하게 검사한 소수 후보: 388919
-해: (p,a,q,b) = (3,1,7,1)
+Exponent pairs passing the 2-adic condition: 4204
+Prime candidates checked exactly: 388919
+Solutions: (p,a,q,b) = (3,1,7,1)
 ```
 
-이 계산은 각 지수쌍에서는 소수 \(p,q\)의 크기에 상계를 따로 두지
-않고 가능한 범위를 완전히 검사한다. 그러나 지수 `a,b <= 200`이라는
-제한은 남아 있다.
+For each exponent pair, this computation checks the entire possible range
+without imposing a separate upper bound on the size of the primes \(p,q\).
+However, the restriction to exponents `a,b <= 200` remains.
 
-소스:
+Source:
 
 ```text
-절대경로: /home/user/projects/agentic-conjectures/problems/oeis-a245211/a245211_two_prime.py
-작업공간 루트 기준: problems/oeis-a245211/a245211_two_prime.py
+Absolute path: /home/user/projects/agentic-conjectures/problems/oeis-a245211/a245211_two_prime.py
+Relative to workspace root: problems/oeis-a245211/a245211_two_prime.py
 SHA256:   7d1a9fb86f08eac506c4081f0d90d690cc98eccee0f0ad59dee8e73224ff3fed
 ```
 
-재현:
+Reproduction:
 
 ```bash
 python3 problems/oeis-a245211/a245211_two_prime.py 200
 ```
 
-## 남은 문제
+## Remaining problems
 
-증명으로 완전히 처리되지 않은 핵심은 다음과 같다.
+The core cases not fully handled by proof are the following.
 
-- 두 소인수이지만 지수가 200을 넘는 경우;
-- 세 개 이상의 소인수를 가지는 일반 nonsquarefree 경우;
-- squarefree이고 서로 다른 소인수 개수가 홀수 \(r\ge5\)인 경우.
+- Two prime factors but with exponents exceeding 200;
+- The general nonsquarefree case with three or more prime factors;
+- The squarefree case with an odd number \(r\ge5\) of distinct prime
+  factors.
 
-따라서 본 결과는 A245211 추측의 증명이 아니라, 이후 증명이 다뤄야 할
-형태를 크게 줄인 부분 진전이다.
+Therefore the present result is not a proof of the A245211 conjecture, but
+partial progress that greatly reduces the forms a future proof must
+address.
 
-## 상류 Lean 형식화
+## Upstream Lean formalization
 
-FormalConjectures의 [원문 스냅샷과 출처 기록](upstream/README.md)을
-[`245211_cbf46b82.lean`](upstream/245211_cbf46b82.lean)에 보존했다. `21`의
-유일성을 적은 정리는 `by sorry`인 **추측 statement**이지 형식 증명이 아니다.
-이 폴더의 결과도 위에 명시한 필요조건과 부분분류에 한정된다.
+The FormalConjectures [original snapshot and provenance record](upstream/README.md)
+is preserved in [`245211_cbf46b82.lean`](upstream/245211_cbf46b82.lean).
+The theorem recording the uniqueness of `21` is a `by sorry` **conjecture
+statement**, not a formal proof. The results of this folder are likewise
+limited to the necessary conditions and partial classifications stated
+above.

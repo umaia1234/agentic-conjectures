@@ -1,37 +1,45 @@
+**English** | [한국어](UPSTREAM_SOURCES.ko.md)
+
 # Upstream source snapshots
 
-이 작업공간에서 조사에 사용한 외부 저장소 전체 복제본은 문제별 정리 후
-삭제했습니다. 현재 문제와 직접 대응하는 Lean 원문은 각 문제 디렉터리의
-`upstream/`에 보존하고, 대응하는 성공 결과가 없던 AlphaProof Nexus 기록은
-해당 문제의 `README.md`에 사실과 범위만 남겼습니다.
+The full clones of external repositories used for investigation in this
+workspace were deleted after the per-problem cleanup. The Lean sources
+directly corresponding to each current problem are preserved in that
+problem's `upstream/` directory, and AlphaProof Nexus records that had no
+corresponding successful result were reduced to facts and scope in the
+problem's `README.md`.
 
-## 고정한 저장소 상태
+## Pinned repository states
 
-| 저장소 | 커밋 | 당시 용도 |
+| Repository | Commit | Purpose at the time |
 |---|---|---|
-| [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) | [`9118d083ffca1536f521f9a7d103201f537ea670`](https://github.com/google-deepmind/formal-conjectures/tree/9118d083ffca1536f521f9a7d103201f537ea670) | 2026-08-11 `main`; 수동 OEIS·Erdős·WOWII·기타 형식화의 canonical 원문 |
-| [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) | [`67338a157bbb8d87e9a349d662f82a868bda6327`](https://github.com/google-deepmind/formal-conjectures/tree/67338a157bbb8d87e9a349d662f82a868bda6327) | `auto_oeis` 작업 스냅샷; 자동 형식화 OEIS 원문 |
-| [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) | [`7a41db3d761324599812d6ca6cb6a9f311046dc7`](https://github.com/google-deepmind/formal-conjectures/tree/7a41db3d761324599812d6ca6cb6a9f311046dc7) | FormalBench 후보 집합을 확인한 스냅샷 |
-| [AlphaProof Nexus Results](https://github.com/google-deepmind/alphaproof-nexus-results) | [`0647711a71183c1ea492ad60860776617ce1ea88`](https://github.com/google-deepmind/alphaproof-nexus-results/tree/0647711a71183c1ea492ad60860776617ce1ea88) | 공개 성공 결과와 시도 목록의 교집합 감사 |
+| [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) | [`9118d083ffca1536f521f9a7d103201f537ea670`](https://github.com/google-deepmind/formal-conjectures/tree/9118d083ffca1536f521f9a7d103201f537ea670) | `main` as of 2026-08-11; canonical sources of the manually formalized OEIS/Erdős/WOWII/other statements |
+| [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) | [`67338a157bbb8d87e9a349d662f82a868bda6327`](https://github.com/google-deepmind/formal-conjectures/tree/67338a157bbb8d87e9a349d662f82a868bda6327) | `auto_oeis` working snapshot; auto-formalized OEIS sources |
+| [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) | [`7a41db3d761324599812d6ca6cb6a9f311046dc7`](https://github.com/google-deepmind/formal-conjectures/tree/7a41db3d761324599812d6ca6cb6a9f311046dc7) | Snapshot at which the FormalBench candidate set was checked |
+| [AlphaProof Nexus Results](https://github.com/google-deepmind/alphaproof-nexus-results) | [`0647711a71183c1ea492ad60860776617ce1ea88`](https://github.com/google-deepmind/alphaproof-nexus-results/tree/0647711a71183c1ea492ad60860776617ce1ea88) | Audit of the intersection between public success results and attempt lists |
 
-네 작업트리는 모두 삭제 직전 `git status --short`가 비어 있었습니다.
-`formal-auto-oeis`와 `formal-bench`는 첫 번째 저장소의 detached linked
-worktree였고, 나머지 둘은 독립 clone이었습니다.
+All four worktrees had an empty `git status --short` immediately before
+deletion. `formal-auto-oeis` and `formal-bench` were detached linked
+worktrees of the first repository; the other two were independent clones.
 
-## 보존 범위
+## Preservation scope
 
-- 대응 Lean 파일은 원래 basename, 저작권 헤더, 정확한 바이트를 유지합니다.
-- 각 `upstream/README.md`에는 원래 경로, 고정 커밋 URL, SHA-256, 중심 선언,
-  현재 문제 결과와의 관계를 기록합니다.
-- 이 파일들은 원 추측의 **형식화 스냅샷**입니다. `sorry`가 있는 선언을
-  형식 증명으로 해석하면 안 됩니다.
-- Formal Conjectures 전용 import와 보조 정의 전체를 다시 vendoring하지
-  않았으므로 로컬 Lean 파일 하나만으로는 보통 컴파일되지 않습니다. 빌드가
-  필요하면 아래처럼 해당 커밋의 원 저장소를 복원해야 합니다.
-- 현재 35개 문제와 무관한 수천 개 형식화, `.git` 객체, `.lake` 캐시, 사이트
-  소스와 CI 설정은 문제 디렉터리로 복제하지 않았습니다.
+- Corresponding Lean files keep their original basenames, copyright headers,
+  and exact bytes.
+- Each `upstream/README.md` records the original path, pinned commit URL,
+  SHA-256, central declaration, and the relationship to the current problem's
+  results.
+- These files are **formalization snapshots** of the original conjectures.
+  Declarations containing `sorry` must not be read as formal proofs.
+- The Formal Conjectures-specific imports and auxiliary definitions were not
+  re-vendored in full, so a local Lean file alone usually does not compile.
+  If a build is needed, restore the original repository at the corresponding
+  commit as shown below.
+- The thousands of formalizations unrelated to the current 35 problems, the
+  `.git` objects, `.lake` caches, site sources, and CI configuration were not
+  copied into the problem directories.
 
-## 원 저장소 복원
+## Restoring the original repositories
 
 ```bash
 git clone https://github.com/google-deepmind/formal-conjectures.git /tmp/formal-conjectures
@@ -42,15 +50,17 @@ git clone https://github.com/google-deepmind/alphaproof-nexus-results.git /tmp/a
 git -C /tmp/alphaproof-nexus-results checkout 0647711a71183c1ea492ad60860776617ce1ea88
 ```
 
-다른 두 Formal Conjectures 스냅샷도 같은 clone에서 해당 커밋을 fetch하고
-checkout하면 복원할 수 있습니다.
+The other two Formal Conjectures snapshots can be restored from the same
+clone by fetching and checking out the corresponding commits.
 
-## 라이선스와 제3자 출처
+## Licenses and third-party sources
 
-복사한 Formal Conjectures Lean 소스는 원문의 Apache-2.0 저작권 헤더를
-유지합니다. [Apache-2.0 전문](THIRD_PARTY_LICENSES/Apache-2.0.txt)도 함께
-보존했고 [upstream AUTHORS](THIRD_PARTY_LICENSES/Formal-Conjectures-AUTHORS.txt)도
-같은 snapshot에서 옮겼습니다. 원 저장소는 기타 자료를 CC BY 4.0으로 배포하며, OEIS,
-Wikipedia, MathOverflow에서 유래한 자료에는 CC BY-SA 4.0 등 원 출처의
-조건이 별도로 적용될 수 있다고 고지합니다. 각 문제의 canonical 원문 링크와
-고정 upstream 링크를 함께 유지하는 이유입니다.
+The copied Formal Conjectures Lean sources keep the original Apache-2.0
+copyright headers. The [full Apache-2.0 text](THIRD_PARTY_LICENSES/Apache-2.0.txt)
+is preserved alongside, and the
+[upstream AUTHORS](THIRD_PARTY_LICENSES/Formal-Conjectures-AUTHORS.txt) file
+was copied from the same snapshot. The original repository distributes other
+material under CC BY 4.0 and notes that material originating from OEIS,
+Wikipedia, or MathOverflow may carry the original sources' terms, such as
+CC BY-SA 4.0. This is why each problem keeps both the canonical source link
+and the pinned upstream link.

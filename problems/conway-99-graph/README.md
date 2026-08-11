@@ -1,46 +1,53 @@
+**English** | [한국어](README.ko.md)
+
 # Conway 99-graph
 
-확인 기준일: 2026-08-11.
+Status checked as of: 2026-08-11.
 
-## 문제
+## Problem
 
-강정규 그래프
+The question is whether a strongly regular graph
 
 ```text
 srg(99,14,1,2)
 ```
 
-가 존재하는지를 묻는다. 즉 99개 정점을 가지며 모든 정점의 차수가 14이고,
-인접한 두 정점은 공통 이웃을 1개, 비인접한 두 정점은 공통 이웃을 2개
-가지는 그래프의 존재 문제이다. 동치로, 각 변은 정확히 한 삼각형에 놓이고
-각 비변은 정확히 한 4-cycle에 놓인다.
+exists. That is, it is the existence problem of a graph with 99 vertices in
+which every vertex has degree 14, any two adjacent vertices have 1 common
+neighbor, and any two non-adjacent vertices have 2 common neighbors.
+Equivalently, every edge lies in exactly one triangle and every non-edge
+lies in exactly one 4-cycle.
 
-## 현재 상태와 알려진 부분결과
+## Current status and known partial results
 
-2025년 동료평가 논문도 이 존재 문제를 미해결 문제로 명시한다. 그 논문은
-가상 그래프의 자기동형군을 `G`라 할 때 다음을 컴퓨터 없이 증명했다.
+A 2025 peer-reviewed paper also explicitly states this existence problem as
+unresolved. Writing `G` for the automorphism group of a putative graph, that
+paper proved the following without computer assistance.
 
-- `2 | |G|`이면 `|G| | 6`이다.
-- `7 | |G|`이면 `G`는 순환군 `Z_7`이다.
+- If `2 | |G|`, then `|G| | 6`.
+- If `7 | |G|`, then `G` is the cyclic group `Z_7`.
 
-여기에는 존재 또는 비존재를 판정하는 새 계산 결과가 없다. 이 문서는 향후
-계산 탐색 후보의 명제와 이미 알려진 제한을 기록한다.
+It contains no new computational result deciding existence or nonexistence.
+This document records the statement as a candidate for future computational
+search and the restrictions already known.
 
-## 계산 관점
+## Computational perspective
 
-한 정점을 고정하면 나머지 정점은 거리 층에 따라 `1 + 14 + 84`로
-분해된다. 정규성, 공통이웃 등식, canonical augmentation을 SAT,
-정수계획 또는 완전탐색에 직접 넣을 수 있다. 다만 실제 그래프의 대칭이
-거의 없을 수도 있으므로 큰 자기동형군을 가정한 부분공간의 배제만으로 전체
-문제를 해결할 수는 없다.
+Fixing one vertex, the remaining vertices decompose by distance layers as
+`1 + 14 + 84`. Regularity, the common-neighbor equations, and canonical
+augmentation can be fed directly into SAT, integer programming, or
+exhaustive search. However, since the actual graph may have almost no
+symmetry, ruling out subspaces that assume a large automorphism group cannot
+by itself resolve the whole problem.
 
-## FormalConjectures 원본
+## FormalConjectures upstream
 
-[로컬 upstream snapshot](upstream/README.md)은 99개 정점에 대한 정확한
-Lean 명제와 고정 commit 정보를 보존한다. 이 파일은 `sorry`가 있는 문제
-명제이며, 여기의 상태 조사도 존재·비존재를 판정하지 않는다.
+The [local upstream snapshot](upstream/README.md) preserves the exact Lean
+statement for 99 vertices and the pinned commit information. That file is a
+problem statement containing `sorry`, and the status survey here likewise
+does not decide existence or nonexistence.
 
-## 근거
+## Evidence
 
 - M. Cesarz and A. Woldar,
   [On the automorphism group of a putative Conway 99-graph](https://alco.centre-mersenne.org/articles/10.5802/alco.418/),

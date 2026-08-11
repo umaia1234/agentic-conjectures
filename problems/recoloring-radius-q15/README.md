@@ -1,10 +1,13 @@
+**English** | [한국어](README.ko.md)
+
 # Graph-colouring reconfiguration radius, Question 15
 
-Cambie–Cames van Batenburg–Cranston Q15의 반례를 exact BFS로 탐색합니다.
+We search for counterexamples to Cambie–Cames van Batenburg–Cranston Q15
+by exact BFS.
 
-- `recolor_radius_search.py`: NetworkX graph atlas 기반 Python 검사
-- `recolor_radius_exact.cpp`: graph6 입력과 shard 탐색을 지원하는 C++ 구현
-- `recolor_radius_exact`: 저장된 Linux x86-64 빌드 산출물
+- `recolor_radius_search.py`: Python check based on the NetworkX graph atlas
+- `recolor_radius_exact.cpp`: C++ implementation supporting graph6 input and shard search
+- `recolor_radius_exact`: stored Linux x86-64 build artifact
 
 ```bash
 python3 problems/recoloring-radius-q15/recolor_radius_search.py --help

@@ -1,118 +1,120 @@
-# OEIS A067720의 소수 거듭제곱 부분정리
+**English** | [한국어](PROOF.ko.md)
 
-## 문제와 정리
+# A prime-power partial theorem for OEIS A067720
 
-다음 방정식을 생각한다.
+## Problem and theorem
+
+Consider the following equation.
 
 \[
 \varphi(k^2+1)=k\varphi(k+1). \tag{1}
 \]
 
-**정리.**
+**Theorem.**
+
+Assume
 
 \[
 k+1=p^a,\qquad p\text{ prime},\qquad a\ge2
 \]
 
-라고 가정하자.
-
-1. \(p=2\)이면 (1)의 해가 없다.
-2. \(p\)가 홀수이고
+1. If \(p=2\), then (1) has no solution.
+2. If \(p\) is odd and
    \[
    V:=v_2(p^a-1)+v_2(p-1)\le5
    \]
-   이면 유일한 해는
+   then the unique solution is
    \[
    (p,a,k)=(3,2,8)
    \]
-   이다.
 
-이 정리는 모든 합성수 \(k+1\)을 다루지 않으며, 홀수 \(p\)에서
-\(V\ge6\)인 경우도 남긴다.
+This theorem does not treat every composite \(k+1\), and it also leaves
+the cases with odd \(p\) and \(V\ge6\).
 
-## \(p=2\)의 배제
+## Excluding \(p=2\)
 
 \[
 k=2^a-1
 \]
 
-은 홀수이고
+is odd, and in
 
 \[
 M:=k^2+1=2N
 \]
 
-에서 \(N\)은 홀수다. 따라서
+\(N\) is odd. Hence
 
 \[
 \varphi(M)=\varphi(2N)=\varphi(N)\le N=\frac{k^2+1}{2}.
 \]
 
-\(a\ge2\)이므로 \(k>1\)이고
+Since \(a\ge2\), we have \(k>1\) and
 
 \[
 \frac{k^2+1}{2}<\frac{k(k+1)}2=k\varphi(2^a).
 \]
 
-따라서 (1)은 성립할 수 없다.
+Hence (1) cannot hold.
 
-## 홀수 \(p\)에서 \(M=k^2+1\)의 구조
+## Structure of \(M=k^2+1\) for odd \(p\)
 
-이제 \(p\)가 홀수라고 하자. \(M=k^2+1\)이 소수라면
+Now let \(p\) be odd. If \(M=k^2+1\) were prime, then
 
 \[
 \varphi(M)=M-1=k^2.
 \]
 
-(1)을 \(k\)로 나누면
+Dividing (1) by \(k\),
 
 \[
 p^a-1=p^{a-1}(p-1),
 \]
 
-즉 \(p^{a-1}=1\)이라는 모순이 생긴다. 따라서 \(M\)은 합성수다.
+i.e. \(p^{a-1}=1\), a contradiction. Hence \(M\) is composite.
 
-또한 \(\gcd(M,k)=1\)이다. \(k\equiv-1\pmod p\)이므로
+Moreover \(\gcd(M,k)=1\). Since \(k\equiv-1\pmod p\),
 
 \[
 M=k^2+1\equiv2\pmod p,
 \]
 
-따라서 \(\gcd(M,p)=1\)이다. \(p-1\mid k\)이므로
+so \(\gcd(M,p)=1\). Since \(p-1\mid k\),
 
 \[
 M\equiv1\pmod{p-1},
 \]
 
-따라서 \(\gcd(M,p-1)=1\)이다. 한편 (1)의 우변은
+so \(\gcd(M,p-1)=1\). Meanwhile the right-hand side of (1) is
 
 \[
 k\varphi(p^a)=kp^{a-1}(p-1).
 \]
 
-그러므로
+Therefore
 
 \[
 \gcd(M,\varphi(M))=1. \tag{2}
 \]
 
-만약 어떤 소수 \(q\)에 대해 \(q^2\mid M\)이면 \(q\mid\varphi(M)\)도
-성립하므로 (2)에 모순이다. 따라서 \(M\)은 squarefree다.
+If \(q^2\mid M\) for some prime \(q\), then \(q\mid\varphi(M)\) also
+holds, contradicting (2). Hence \(M\) is squarefree.
 
-\(p\)가 홀수이므로 \(k=p^a-1\)은 짝수이고 \(M\)은 홀수다. 또
-\(q\mid M\)이면
+Since \(p\) is odd, \(k=p^a-1\) is even and \(M\) is odd. Also, if
+\(q\mid M\), then
 
 \[
 k^2\equiv-1\pmod q.
 \]
 
-\(q\)는 홀수이고 \(-1\)이 \(q\)에 대한 이차잉여이므로
+Since \(q\) is odd and \(-1\) is a quadratic residue modulo \(q\),
 
 \[
 q\equiv1\pmod4. \tag{3}
 \]
 
-따라서 \(M\)의 서로 다른 소인수 수를 \(\omega(M)\)라 하면
+Hence, writing \(\omega(M)\) for the number of distinct prime factors
+of \(M\),
 
 \[
 v_2(\varphi(M))
@@ -120,7 +122,7 @@ v_2(\varphi(M))
 \ge2\omega(M). \tag{4}
 \]
 
-반면 (1)에서
+On the other hand, from (1),
 
 \[
 v_2(\varphi(M))
@@ -128,33 +130,35 @@ v_2(\varphi(M))
 =v_2(p^a-1)+v_2(p-1)=V. \tag{5}
 \]
 
-\(V\le5\)이므로 \(2\omega(M)\le5\). \(M\)은 합성 squarefree 수라서
-\(\omega(M)\ge2\)이고, 결국 \(\omega(M)=2\)다. 따라서 서로 다른 홀수
-소수 \(q\le r\)에 대해
+Since \(V\le5\), \(2\omega(M)\le5\). \(M\) is a composite squarefree
+number, so \(\omega(M)\ge2\), and consequently \(\omega(M)=2\). Hence
+for distinct odd primes \(q\le r\),
 
 \[
 M=qr. \tag{6}
 \]
 
-## 두 소인수의 합과 곱
+## Sum and product of the two prime factors
+
+Set
 
 \[
 h:=p^{a-1}-1,\qquad S:=q+r
 \]
 
-로 둔다. (6)에서
+From (6),
 
 \[
 \varphi(M)=(q-1)(r-1)=qr-q-r+1=k^2+2-S.
 \]
 
-(1)과 \(k=p^a-1\)을 사용하면
+Using (1) and \(k=p^a-1\),
 
 \[
 k^2+2-S=kp^{a-1}(p-1).
 \]
 
-따라서
+Therefore
 
 \[
 \begin{aligned}
@@ -165,23 +169,25 @@ S
 \end{aligned}
 \]
 
-결국
+Consequently
 
 \[
 q+r=kh+2,
 \qquad qr=k^2+1. \tag{7}
 \]
 
-## 정수근 사이의 부등식
+## Inequalities between the integer roots
+
+Set
 
 \[
 f(x):=x(S-x)
 \]
 
-로 둔다. 그러면 \(f(q)=qr=k^2+1\)이다. \(q\le r\)이므로 \(q\le S/2\)이고,
-\(f\)는 \([0,S/2]\)에서 엄격히 증가한다.
+Then \(f(q)=qr=k^2+1\). Since \(q\le r\), we have \(q\le S/2\), and
+\(f\) is strictly increasing on \([0,S/2]\).
 
-\(p\ge3, a\ge2\)이므로 \(k\ge p^2-1\), \(h\ge p-1\)이고
+Since \(p\ge3, a\ge2\), we have \(k\ge p^2-1\), \(h\ge p-1\), and
 
 \[
 \begin{aligned}
@@ -192,50 +198,52 @@ S-2(p+2)
 \end{aligned} \tag{8}
 \]
 
-따라서 \(p,p+1,p+2\)도 모두 \(S/2\)보다 작다.
+Hence \(p,p+1,p+2\) are all smaller than \(S/2\).
+
+Setting
 
 \[
 z:=p^{a-1}
 \]
 
-로 두면 \(k=pz-1\), \(h=z-1\)이다. 직접 전개하여
+we have \(k=pz-1\), \(h=z-1\). Direct expansion gives
 
 \[
 f(p)-(k^2+1)=-(p-1)(pz+p-2)<0. \tag{9}
 \]
 
-### \(a\ge3\)인 경우
+### The case \(a\ge3\)
 
-이때 \(z\ge p^2\)이고
+In this case \(z\ge p^2\) and
 
 \[
 f(p+1)-(k^2+1)=pz^2-p^2z-z-p^2+p. \tag{10}
 \]
 
-우변을 \(g(z)\)라 하면
+Writing \(g(z)\) for the right-hand side,
 
 \[
 g'(z)=2pz-p^2-1>0\qquad(z\ge p^2,\ p\ge3).
 \]
 
-따라서 \(g\)는 이 구간에서 증가하고,
+Hence \(g\) is increasing on this range, and
 
 \[
 g(p^2)=p(p^4-p^3-2p+1)>0.
 \]
 
-그러므로
+Therefore
 
 \[
 f(p)<k^2+1<f(p+1).
 \]
 
-\(f\)가 \([0,S/2]\)에서 엄격히 증가하고 \(f(q)=k^2+1\)이므로
-\(p<q<p+1\)이어야 하는데, 이는 정수 \(q\)에 대해 불가능하다.
+Since \(f\) is strictly increasing on \([0,S/2]\) and \(f(q)=k^2+1\),
+we would need \(p<q<p+1\), which is impossible for an integer \(q\).
 
-### \(a=2\)인 경우
+### The case \(a=2\)
 
-이때 \(z=p\)이고 직접 전개하면
+In this case \(z=p\), and direct expansion gives
 
 \[
 f(p+1)-(k^2+1)=-p^2<0, \tag{11}
@@ -245,22 +253,22 @@ f(p+1)-(k^2+1)=-p^2<0, \tag{11}
 f(p+2)-(k^2+1)=p(p-3)(p+1). \tag{12}
 \]
 
-\(p>3\)이면
+If \(p>3\), then
 
 \[
 f(p+1)<k^2+1<f(p+2),
 \]
 
-따라서 \(p+1<q<p+2\)가 되어 모순이다. \(p=3\)이면 (12)가 \(0\)이므로
+so \(p+1<q<p+2\), a contradiction. If \(p=3\), then (12) is \(0\), so
 
 \[
 q=5,\qquad r=13,\qquad k=3^2-1=8.
 \]
 
-실제로
+Indeed,
 
 \[
 \varphi(8^2+1)=\varphi(65)=48=8\varphi(9).
 \]
 
-이로써 정리가 증명된다.
+This proves the theorem.

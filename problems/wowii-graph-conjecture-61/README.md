@@ -1,47 +1,53 @@
+**English** | [한국어](README.ko.md)
+
 # WOWII Graph Conjecture 61
 
-## 원 추측과 부분 결과
+## The original conjecture and partial results
 
-유한 단순 연결 그래프 \(G\)에 대해 \(f(G)\)를 최대 유도 숲의 정점 수,
-\(r(G)\)를 Havel--Hakimi residue, \(D(G)\)를 지름이라 하자. 원 추측은
+For a finite simple connected graph \(G\), let \(f(G)\) be the number of
+vertices of a maximum induced forest, \(r(G)\) the Havel--Hakimi
+residue, and \(D(G)\) the diameter. The original conjecture is
 
 \[
-f(G)\ge r(G)+\left\lceil\frac{D(G)}3\right\rceil
+f(G)\ge r(G)+\left\lceil\frac{D(G)}3\right\rceil.
 \]
 
-이다. 이 폴더에서는 다음 네 결과를 증명한다.
+In this folder we prove the following four results.
 
-1. 모든 유한 단순 연결 그래프에서
+1. In every finite simple connected graph,
    \[
    f(G)\ge\alpha(G)+\left\lceil\frac{D(G)}4\right\rceil.
    \]
-2. 정점이 두 개 이상이면 \(f(G)\ge\alpha(G)+1\)이고,
-   \(f(G)=\alpha(G)+1\)이면 \(D(G)\le4\)이다.
-3. 원 추측은
+2. If there are at least two vertices, then \(f(G)\ge\alpha(G)+1\), and
+   if \(f(G)=\alpha(G)+1\), then \(D(G)\le4\).
+3. The original conjecture holds in every connected graph with
    \[
-   D(G)\in\{0,1,2,3,5,6,9\}
+   D(G)\in\{0,1,2,3,5,6,9\}.
    \]
-   인 모든 연결 그래프에서 성립한다.
-4. 모든 유한 나무는 지름과 관계없이 원 추측을 만족한다.
+4. Every finite tree satisfies the original conjecture regardless of
+   diameter.
 
-상세 증명은 [PROOF.md](PROOF.md)에 있다. 이 결과들은 일반 그래프의
-나머지 지름을 닫지 않으므로 원 추측 전체의 해결이 아니다.
+The detailed proof is in [PROOF.md](PROOF.md). These results do not
+close the remaining diameters for general graphs, so they are not a
+resolution of the full original conjecture.
 
-## FormalConjectures 원본
+## FormalConjectures upstream
 
-[로컬 upstream snapshot](upstream/README.md)은 원 부등식의 정확한 Lean
-선언을 고정 commit에서 보존한다. 선언은 `sorry`가 있는 문제 명제이며,
-이 폴더의 부분 결과들은 그 일반 명제를 닫지 않는다.
+The [local upstream snapshot](upstream/README.md) preserves the exact
+Lean declaration of the original inequality at a pinned commit. The
+declaration is a problem statement with a `sorry`, and the partial
+results in this folder do not close that general statement.
 
-## 원문 상태와 검증 범위
+## Source status and scope of verification
 
-- [WOWII Conjecture 61 원문
-  링크](http://cms.dt.uh.edu/faculty/delavinae/research/wowII/)는
-  FormalConjectures가 인용한 출처다.
-- 2026-08-11에 확인한 FormalConjectures main commit
-  `9118d083ffca1536f521f9a7d103201f537ea670`의
-  [`GraphConjecture61.lean`](https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/WrittenOnTheWallII/GraphConjecture61.lean)은
-  원 부등식을 `category research open`으로 표시했다.
-- 이 폴더에는 계산 인증서나 완성된 Lean 증명이 없다. 결론은
-  [PROOF.md](PROOF.md)의 조합론적 논증과 기본 부등식
-  \(r(G)\le\alpha(G)\)에 의존한다.
+- The [WOWII Conjecture 61 original
+  link](http://cms.dt.uh.edu/faculty/delavinae/research/wowII/) is the
+  source cited by FormalConjectures.
+- As checked on 2026-08-11, the FormalConjectures main commit
+  `9118d083ffca1536f521f9a7d103201f537ea670`'s
+  [`GraphConjecture61.lean`](https://github.com/google-deepmind/formal-conjectures/blob/main/FormalConjectures/WrittenOnTheWallII/GraphConjecture61.lean)
+  marked the original inequality as `category research open`.
+- This folder contains no computational certificate and no completed
+  Lean proof. The conclusions rely on the combinatorial arguments of
+  [PROOF.md](PROOF.md) and the basic inequality
+  \(r(G)\le\alpha(G)\).

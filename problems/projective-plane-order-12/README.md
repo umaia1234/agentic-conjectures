@@ -1,46 +1,52 @@
+**English** | [한국어](README.ko.md)
+
 # Finite projective plane of order 12
 
-확인 기준일: 2026-08-11.
+Date of verification: 2026-08-11.
 
-## 문제
+## Problem
 
-order 12인 유한 projective plane이 존재하는지를 묻는다. 이는 대칭
-`2-(157,13,1)` design의 존재와 동치이다. 행과 열의 합이 13인
-`157 x 157` 영일 incidence matrix `A`를 사용하면 조건을
+We ask whether a finite projective plane of order 12 exists. This is
+equivalent to the existence of a symmetric `2-(157,13,1)` design. Using
+a `157 x 157` zero-one incidence matrix `A` whose row and column sums
+are 13, the condition can be written as
 
 ```text
 A A^T = 12 I + J
 ```
 
-로 쓸 수 있다.
+## Current status and known partial results
 
-## 현재 상태와 알려진 부분결과
+The primary 2026 sources record 12 as the smallest order whose existence
+status is unknown. A 2023 paper ruled out collineation groups of
+order 4, and combined with earlier results the only possible full
+collineation group orders are 1, 2, and 3.
 
-2026년 1차 자료는 12를 존재 여부가 알려지지 않은 가장 작은 order로
-기록한다. 2023년 논문은 order 4인 collineation group을 배제했고, 기존
-결과와 합치면 가능한 전체 collineation group의 order는 1, 2, 3뿐이다.
+This directory records only the problem and its character as a
+computational candidate, and claims no new existence or nonexistence
+result.
 
-이 디렉터리는 문제와 계산 후보로서의 성격만 기록하며 새로운 존재·비존재
-결과를 주장하지 않는다.
+## Computational perspective
 
-## 계산 관점
+The incidence condition lends itself well to formulation as exact cover
+or SAT, but the number of variables is large. Because of the known
+symmetry-exclusion results, the comparatively easy searches that assume
+a large cyclic symmetry are already blocked. Hence a canonical search
+handling trivial or very small automorphism groups is the key
+bottleneck.
 
-Incidence 조건은 exact cover나 SAT로 표현하기 좋지만 변수 수가 크다.
-알려진 대칭 배제 결과 때문에 큰 순환대칭을 가정하는 비교적 쉬운 탐색은
-이미 막혀 있다. 따라서 trivial 또는 매우 작은 자기동형군을 다루는
-canonical search가 핵심 병목이다.
+## FormalConjectures upstream
 
-## FormalConjectures 원본
+The [local upstream snapshot](upstream/README.md) preserves the `eq_12`
+Lean declaration of Erdős problem 723 and the pinned commit information.
+The declaration is an existence-problem statement with a `sorry`, and
+this directory provides no new existence or nonexistence result.
 
-[로컬 upstream snapshot](upstream/README.md)은 Erdős problem 723의
-`eq_12` Lean 선언과 고정 commit 정보를 보존한다. 선언은 `sorry`가 있는
-존재 문제 명제이고, 이 디렉터리는 새 존재·비존재 결과를 주지 않는다.
-
-## 근거
+## References
 
 - Alexeev--Mixon,
   [Forbidden Sidon subsets of perfect difference sets](https://arxiv.org/html/2510.19804v2)
-  (2026 판).
+  (2026 edition).
 - Akiyama--Suetake--Tanaka,
   [Projective planes of order 12 do not have a collineation group of order 4](https://doi.org/10.1002/jcd.21869),
   *Journal of Combinatorial Designs* 31 (2023), 87--123.

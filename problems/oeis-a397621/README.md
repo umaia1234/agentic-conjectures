@@ -1,13 +1,16 @@
+**English** | [한국어](README.ko.md)
+
 # OEIS A397621
 
-[OEIS A397621](https://oeis.org/A397621)의 Pascal mod 2 행
-선형복잡도 추측을 증명합니다. [A001317](https://oeis.org/A001317)은
-Pascal 삼각형의 \(n\)번째 행을 mod 2로 줄여 이진수로 읽은 수이고,
-A397621은 그 MSB-first 이진 단어의 GF(2) 선형복잡도입니다.
+We prove the Pascal mod 2 row linear-complexity conjecture of
+[OEIS A397621](https://oeis.org/A397621). [A001317](https://oeis.org/A001317)
+is the number obtained by reducing the \(n\)-th row of Pascal's triangle
+mod 2 and reading it as a binary number, and A397621 is the GF(2) linear
+complexity of that MSB-first binary word.
 
-## 결과
+## Results
 
-모든 \(n\ge1\)에 대해
+For all \(n\ge1\),
 
 \[
 \operatorname{A397621}(\operatorname{A001317}(n))
@@ -15,27 +18,31 @@ A397621은 그 MSB-first 이진 단어의 GF(2) 선형복잡도입니다.
 =\operatorname{A080079}(n).
 \]
 
-하한은 Pascal 행의 두 블록 사이에 생기는 연속 0 구간으로 얻고, 상한은
-연결다항식 \(C(x)=(1+x)^d\)를 명시적으로 구성해 얻습니다.
+The lower bound is obtained from the run of consecutive zeros arising
+between the two blocks of the Pascal row, and the upper bound is
+obtained by explicitly constructing the connection polynomial
+\(C(x)=(1+x)^d\).
 
-## 문서와 인증서
+## Documents and certificates
 
-- [상세 증명](PROOF.md)
-- [검증·재현 기록](VERIFICATION.md)
-- [canonical 인증서](a397621_certificate.py)
-- [초기 v1 인증서](legacy/a397621_certificate.py)
+- [Detailed proof](PROOF.md)
+- [Verification and reproduction record](VERIFICATION.md)
+- [Canonical certificate](a397621_certificate.py)
+- [Initial v1 certificate](legacy/a397621_certificate.py)
 
-후속 감사를 반영한 루트의 인증서가 canonical입니다. 초기 인증서는
-재현성과 변경 이력 보존을 위해 그대로 둡니다.
+The certificate at the root, which incorporates the follow-up audit, is
+canonical. The initial certificate is left as is for reproducibility and
+to preserve the change history.
 
     python3 -m py_compile problems/oeis-a397621/a397621_certificate.py
     python3 problems/oeis-a397621/a397621_certificate.py
 
-## 연구 상태
+## Research status
 
-2026-08-11 당시 A397621의 Formula 절은 이 등식을 “Conjecture”로
-표시하고 있었습니다. 공개 검색에서 같은 증명을 찾지 못했다는 당시 기록은
-신규성의 확정이 아닙니다. 인접한 이항수열 선형복잡도 문헌은 Pascal
-삼각형의 무한 대각선 수열을 다루며, 여기의 고정된 유한 행 문제와는
-구별됩니다. 이 증명은 아직 동료 심사나 OEIS 편집자의 확인을 거치지
-않았습니다.
+As of 2026-08-11 the Formula section of A397621 marked this identity as
+"Conjecture". The record from that time — that public searches did not
+find the same proof — is not a confirmation of novelty. The adjacent
+literature on linear complexity of binomial sequences deals with
+infinite diagonal sequences of Pascal's triangle, which is distinct from
+the fixed finite-row problem here. This proof has not yet undergone peer
+review or confirmation by the OEIS editors.

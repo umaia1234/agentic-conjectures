@@ -11,7 +11,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-README = ROOT / "README.md"
+READMES = [ROOT / "README.md", ROOT / "README.ko.md"]
 BEGIN, END = "<!-- STATUS:BEGIN (scripts/gen_readme.py) -->", "<!-- STATUS:END -->"
 
 BADGE = {"proved": "✅ proved", "refuted": "🔴 refuted", "partial": "🟡 partial", "open": "⚪ open"}
@@ -67,22 +67,30 @@ def main() -> int:
     lines.append(END)
     block = "\n".join(lines)
 
-    text = README.read_text(encoding="utf-8")
-    if BEGIN in text and END in text:
-        head, rest = text.split(BEGIN, 1)
-        _, tail = rest.split(END, 1)
-        new = head + block + tail
-    else:
-        new = text.rstrip() + "\n\n## Dashboard\n\n" + block + "\n"
+    stale = []
+    for readme in READMES:
+        if not readme.exists():
+            continue
+        text = readme.read_text(encoding="utf-8")
+        if BEGIN in text and END in text:
+            head, rest = text.split(BEGIN, 1)
+            _, tail = rest.split(END, 1)
+            new = head + block + tail
+        else:
+            new = text.rstrip() + "\n\n## Dashboard\n\n" + block + "\n"
+        if check:
+            if new != text:
+                stale.append(readme.name)
+        else:
+            readme.write_text(new, encoding="utf-8")
 
     if check:
-        if new != text:
-            print("README.md dashboard is stale; run scripts/gen_readme.py")
+        if stale:
+            print(f"stale dashboard in {stale}; run scripts/gen_readme.py")
             return 1
-        print("README dashboard up to date")
+        print("README dashboards up to date")
         return 0
-    README.write_text(new, encoding="utf-8")
-    print(f"README dashboard regenerated: {total} problems")
+    print(f"README dashboards regenerated: {total} problems")
     return 0
 
 
