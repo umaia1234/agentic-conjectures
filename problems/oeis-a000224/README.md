@@ -2,7 +2,7 @@
 
 # OEIS A000224 Conjecture Attack Log
 
-Date of verification: 2026-08-11.
+Date of verification: 2026-08-12.
 
 Let `R(n)` denote the number of distinct quadratic residues modulo `n`
 (including 0). [OEIS A000224](https://oeis.org/A000224) conjectures the
@@ -64,6 +64,23 @@ Hence the quotient is exactly 4.
 If `n` is even, then `n^2-1` is odd, whereas the product `R(R-1)` of
 two consecutive integers is even, so this case is immediately
 impossible.
+
+This even-input exclusion is also kernel-checked in Lean 4. The theorem
+[`even_not_conjecture_rhs`](../../AgenticConjectures/OeisA000224.lean) uses
+the exact `A000224` definition and `Nat.ModEq` congruence from the pinned
+upstream snapshot. It retains the upstream `n=0` convention and natural-number
+subtraction, while its `1<n` hypothesis excludes the boundary values. The proof
+only formalizes the even subcase: it reduces the claimed congruence modulo 2
+and contradicts the parity of an even square. The axiom audit reports only
+`propext`, `Classical.choice`, and `Quot.sound`.
+
+```bash
+lake build
+python3 scripts/check_axioms.py
+```
+
+With the mathlib cache already populated, the full build took 7.3 seconds and
+the axiom audit took 3.6 seconds on the verification machine (2026-08-12).
 
 Now let `n=p^e` with `p` odd and `e>=2`.
 

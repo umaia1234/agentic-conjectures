@@ -3,9 +3,9 @@ title: OEIS A000224 — R(n)(R(n)-1) divides n^2-1 iff n is an odd prime
 domain: oeis
 source_url: https://oeis.org/A000224
 claimed_status: partial
-claim: Proves there is no composite counterexample among even n, odd prime powers p^e (e>=2), and products
-  of two distinct odd primes, plus a Pell-orbit scan covering all K<=375, n<=10^18 with omega(n)<=3; explicitly
-  does not claim to resolve the OEIS conjecture.
+claim: Lean-verifies that no even n>1 satisfies the congruence, and proves there is no composite counterexample
+  among odd prime powers p^e (e>=2) or products of two distinct odd primes; a Pell-orbit scan covers all
+  K<=375, n<=10^18 with omega(n)<=3, but the full conjecture remains unresolved.
 artifacts:
 - path: README.md
   kind: informal-proof
@@ -26,10 +26,19 @@ verify:
 - cmd: python3 pell_quotient_scan.py --max-k 375 --max-n 1000000000000000000 --output /tmp/a000224_pell_result.json
   expected_runtime: ~8-27s; requires SymPy. Output goes to /tmp so reruns do not churn the committed result.json
   ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.OeisA000224
+  theorems:
+  - AgenticConjectures.OeisA000224.even_not_conjecture_rhs
 attribution:
 - model: GPT-5.6 Sol
   harness: unspecified
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: General p^e q^f and >=4 distinct-prime-factor cases remain unproved; Pell-seed completeness relies
-  on SymPy's diop_DN, so that part is CAS-assisted rather than independent; OEIS records verification
-  to 10^8; upstream Lean statement is sorry-backed.
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: Lean 4 formalization of the even-n exclusion
+notes: The even-n exclusion is kernel-checked against the exact upstream residue-count definition and congruence;
+  the odd-prime-power argument remains an informal proof, and the semiprime and Pell results remain script-checked.
+  General p^e q^f and >=4 distinct-prime-factor cases are unproved; Pell-seed completeness relies on SymPy's
+  diop_DN; OEIS records verification to 10^8; the full upstream Lean conjecture remains sorry-backed.
