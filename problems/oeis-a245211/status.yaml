@@ -23,6 +23,10 @@ verify:
 - cmd: python3 a245211_two_prime.py 200
   expected_runtime: unknown (388,919 exact prime-candidate checks)
   ci_feasible: false
+attribution:
+- model: GPT-5.6 Sol
+  harness: unspecified
+  scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: README opens by stating the full conjecture remains unresolved; remaining gaps are two-prime cases
   with exponents > 200, nonsquarefree n with >= 3 prime factors, and squarefree n with an odd number r
   >= 5 of prime factors; upstream Lean uniqueness theorem is a sorry-marked conjecture statement.

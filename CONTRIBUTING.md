@@ -19,8 +19,9 @@ problem, attack it, and leave behind only machine-verified results.
    Attack it within the budgets in AGENTS.md. Before committing, pass every
    verification gate locally. Update the problem's status.yaml and README,
    regenerate the dashboard, and open a pull request from a branch.
-   Never put your own name, any AI/model/tool name, or any trailer in
-   commits, code, or documents.
+   Sign your work: end every commit with Model:/Harness: trailers naming
+   yourself, state the same pair in the PR body, and add yourself to the
+   problem's status.yaml attribution block.
    ```
 
 3. The agent works; CI judges the PR. Green CI means the claims in the PR
@@ -57,8 +58,12 @@ order 12, R(3,10), …) are bound-tracking infrastructure — do not claim to
   (`sorry`, extra axioms, and `native_decide` are banned and CI-checked).
 - Honest statuses. Never claim novelty before external review. Negative
   results are results.
-- No self-attribution anywhere: no AI/model/tool names, no
-  `Co-Authored-By`-style trailers, in any commit, document, or PR.
+- Sign your work: every commit ends with `Model:`/`Harness:` trailers
+  (e.g. `Model: GPT-5.6 Sol` / `Harness: Codex CLI`), the PR body names the
+  same pair, and the problem's `status.yaml` gets an `attribution` entry —
+  the dashboard's `Solved by` column is built from it. Never tag work you
+  did not do. The commit author stays the repo-local identity; no
+  `Co-Authored-By` trailers (they alter the contributor graph).
 - English documents by default; a Korean `.ko.md` companion is welcome but
   optional for problem docs (update existing companions if you change their
   originals).

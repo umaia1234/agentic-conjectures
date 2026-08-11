@@ -17,6 +17,10 @@ verify:
 - cmd: python3 a060841_certificate.py
   expected_runtime: about 0.46 seconds
   ci_feasible: true
+attribution:
+- model: GPT-5.6 Sol
+  harness: unspecified
+  scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: 'Mixed resolution: conjecture 1 (integrality) is claimed proved, conjecture 2 (power-of-2 denominators)
   is claimed refuted at n=1807, which also refutes an OEIS A260897 claim; two independent computational
   paths (Fraction accumulation and per-prime valuations) agree; unreviewed, not submitted to OEIS, novelty

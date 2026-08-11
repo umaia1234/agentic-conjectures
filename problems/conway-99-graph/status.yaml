@@ -11,6 +11,10 @@ artifacts:
 - path: upstream/README.md
   kind: upstream-lean
 verify: []
+attribution:
+- model: GPT-5.6 Sol
+  harness: unspecified
+  scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: Korean-language survey dated 2026-08-11; explicitly states it contains no new existence/nonexistence
   result and that ruling out symmetric subcases cannot settle the problem; upstream Lean statement is
   sorry-backed.

@@ -8,19 +8,23 @@ machine-verifiable results**.
 
 ## Iron rules
 
-1. **Never write your own name anywhere (absolute rule, no exceptions).**
-   An agent never reveals itself in any artifact of this repository.
-   - Commit author/committer must be the **repo-local git identity
-     (umaia1234 noreply) only**. Never the global config or any other email.
-   - **No trailers of any kind** — `Co-Authored-By`, `Generated-by`,
-     `Signed-off-by`, `Reviewed-by`, …. If a tool attaches one automatically,
-     disable it or strip it.
-   - No AI/model/tool names in commit messages, code comments, documents,
-     PR titles/bodies, or issues. Anything that could register on the GitHub
-     contributor list is forbidden.
+1. **Sign your work with your model and harness names — and keep human
+   identities out.** Model attribution is mandatory and truthful:
+   - Every commit message ends with two trailers naming who did the work,
+     e.g. `Model: GPT-5.6 Sol` + `Harness: Codex CLI`, or
+     `Model: Claude Fable 5` + `Harness: Claude Code`.
+   - PR bodies state the same model/harness pair.
+   - When you create or change a problem's results, record it in that
+     problem's `status.yaml` under `attribution:` (model, harness, scope).
+     The dashboard's "Solved by" column is generated from this.
+   - **Never tag work you did not do, and never impersonate another model.**
+     Attribution follows the same honesty bar as the mathematics.
+   - Commit author/committer stays the **repo-local git identity
+     (umaia1234 noreply) only** — never a personal account or email, and no
+     `Co-Authored-By:` trailers (they alter the GitHub contributor graph);
+     model attribution lives in the `Model:`/`Harness:` trailers instead.
    - Before every push, run `git log --format='%an <%ae>%n%B' -1` and check
-     the author and message for foreign matter. Fix violating commits with
-     amend BEFORE pushing.
+     that the author is the repo identity and the trailers are present.
 2. **Every claim must be machine-reverifiable.** Counterexamples need an
    independent verification script (ideally two independent implementations);
    SAT results need DRUP/DRAT certificates; proofs are Lean 4 (`sorry`,
@@ -116,6 +120,13 @@ verify:                     # relative to the problem dir; CI runs only ci_feasi
 lean:                       # only once formalized
   modules: [AgenticConjectures.Foo]
   theorems: [AgenticConjectures.Foo.bar]
+attribution:                # who did the work (iron rule 1)
+  - model: "GPT-5.6 Sol"
+    harness: "unspecified"
+    scope: "original research artifacts"
+  - model: "Claude Fable 5"
+    harness: "Claude Code"
+    scope: "Lean 4 formalization"
 notes: "what a skeptical reviewer should know"
 ```
 

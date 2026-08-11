@@ -15,6 +15,10 @@ verify:
 - cmd: g++ -O3 -std=c++17 recolor_radius_exact.cpp -o /tmp/recolor_radius_exact
   expected_runtime: unknown
   ci_feasible: true
+attribution:
+- model: GPT-5.6 Sol
+  harness: unspecified
+  scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: 'README is a five-line tool inventory: no findings, no negative-search bound, no source URL, no
   runtimes; the previously shipped prebuilt binary is now gitignored (rebuild from source); the only listed
   commands are a --help invocation and a compile, not an actual reproduction of any result.'

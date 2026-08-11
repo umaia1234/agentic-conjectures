@@ -16,6 +16,10 @@ verify:
 - cmd: g++ -O3 -std=c++17 ep430_experiment.cpp -o build_ep385 && rm -f build_ep385
   expected_runtime: unknown
   ci_feasible: true
+attribution:
+- model: GPT-5.6 Sol
+  harness: unspecified
+  scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: Korean README; only compile commands are given (no run invocation or recorded outcome), so nothing
   beyond 'experiments exist' is claimed; ep430_* filenames kept for reproduction history; AlphaProof Nexus
   attempt provenance only, no success recorded; upstream Lean statements are sorry-backed.

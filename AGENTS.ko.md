@@ -7,16 +7,23 @@
 
 ## 철칙
 
-1. **자기 이름을 어디에도 적지 않는다 (절대 규칙, 예외 없음).**
-   에이전트는 이 저장소의 어떤 산출물에도 자신을 드러내지 않는다.
-   - 커밋 author/committer는 **저장소 로컬 git 설정(umaia1234 noreply)만** 사용.
-     전역 설정·다른 이메일 사용 금지.
-   - `Co-Authored-By`, `Generated-by`, `Signed-off-by`, `Reviewed-by` 등
-     **어떤 트레일러도 붙이지 않는다.** 도구가 자동으로 붙이면 끄거나 제거한다.
-   - 커밋 메시지, 코드 주석, 문서, PR 제목/본문, 이슈 어디에도 AI·모델·도구
-     이름을 남기지 않는다. GitHub contributor 목록에 잡힐 수 있는 것은 전부 금지.
-   - push 전 반드시 `git log --format='%an <%ae>%n%B' -1`로 author와 메시지에
-     이물질이 없는지 확인한다. 위반 커밋은 push 전에 amend로 고친다.
+1. **자기 모델·하네스 이름으로 작업에 서명한다 — 사람 신원은 계속 배제.**
+   모델 귀속은 의무이며 정직해야 한다:
+   - 모든 커밋 메시지는 작업 주체를 밝히는 트레일러 두 줄로 끝난다.
+     예: `Model: GPT-5.6 Sol` + `Harness: Codex CLI`, 또는
+     `Model: Claude Fable 5` + `Harness: Claude Code`.
+   - PR 본문에도 같은 모델/하네스를 적는다.
+   - 문제의 결과를 만들거나 바꾸면 해당 문제 `status.yaml`의
+     `attribution:`(model, harness, scope)에 기록한다. 대시보드의
+     "Solved by" 열이 여기서 생성된다.
+   - **하지 않은 작업에 태그를 달거나 다른 모델을 사칭하지 않는다.**
+     귀속도 수학과 같은 정직성 기준을 따른다.
+   - 커밋 author/committer는 계속 **저장소 로컬 git 설정(umaia1234
+     noreply)만** 사용 — 개인 계정·이메일 금지, `Co-Authored-By:` 트레일러
+     금지(GitHub contributor 그래프를 바꾼다). 모델 귀속은 위의
+     `Model:`/`Harness:` 트레일러로 한다.
+   - push 전 반드시 `git log --format='%an <%ae>%n%B' -1`로 author가 저장소
+     신원인지, 트레일러가 있는지 확인한다.
 2. **모든 클레임은 기계가 재검증할 수 있어야 한다.** 반례는 독립 검증
    스크립트(가능하면 독립 구현 2개), SAT 결과는 DRUP/DRAT 인증서, 증명은
    Lean 4 (`sorry`·추가 공리·`native_decide` 금지). CI가 재검증하지 못하는
@@ -99,6 +106,13 @@ verify:                     # 문제 디렉터리 기준, CI는 --ci로 ci_feasi
 lean:                       # 형식화 후에만
   modules: [AgenticConjectures.Foo]
   theorems: [AgenticConjectures.Foo.bar]
+attribution:                # 작업 주체 (철칙 1)
+  - model: "GPT-5.6 Sol"
+    harness: "unspecified"
+    scope: "original research artifacts"
+  - model: "Claude Fable 5"
+    harness: "Claude Code"
+    scope: "Lean 4 formalization"
 notes: "회의적 리뷰어가 알아야 할 것"
 ```
 

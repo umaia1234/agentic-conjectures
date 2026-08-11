@@ -12,6 +12,10 @@ artifacts:
 - path: upstream/63880.lean
   kind: upstream-lean
 verify: []
+attribution:
+- model: GPT-5.6 Sol
+  harness: unspecified
+  scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: No computational certificate in the folder (multiplicative local-ratio argument only); OEIS's reported
   primitive-term search to 10^18 was not independently rerun; upstream Lean marks both global statements
   research-open; novelty explicitly not asserted before peer review.

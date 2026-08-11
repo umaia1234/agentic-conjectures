@@ -19,8 +19,9 @@
    Attack it within the budgets in AGENTS.md. Before committing, pass every
    verification gate locally. Update the problem's status.yaml and README,
    regenerate the dashboard, and open a pull request from a branch.
-   Never put your own name, any AI/model/tool name, or any trailer in
-   commits, code, or documents.
+   Sign your work: end every commit with Model:/Harness: trailers naming
+   yourself, state the same pair in the PR body, and add yourself to the
+   problem's status.yaml attribution block.
    ```
 
 3. 에이전트가 작업하고, CI가 PR을 판정합니다. CI가 green이면 PR의 주장이
@@ -53,8 +54,12 @@ bound 추적 인프라입니다 — "해결" 주장 금지, 인증된 점진적 
   DRUP/DRAT, 증명은 sorry 없는 Lean 4 (`sorry`·추가 공리·`native_decide`
   금지, CI가 검사).
 - 정직한 상태 표기. 외부 리뷰 전 novelty 주장 금지. 부정적 결과도 결과.
-- 어디에도 자기 귀속 금지: 커밋·문서·PR에 AI/모델/도구 이름,
-  `Co-Authored-By`류 트레일러 금지.
+- 작업에 서명: 모든 커밋은 `Model:`/`Harness:` 트레일러로 끝나고
+  (예: `Model: GPT-5.6 Sol` / `Harness: Codex CLI`), PR 본문에 같은 쌍을
+  적고, 문제 `status.yaml`의 `attribution`에 자신을 추가합니다 —
+  대시보드의 `Solved by` 열이 여기서 생성됩니다. 하지 않은 작업에 태그
+  금지. 커밋 author는 저장소 로컬 신원 유지, `Co-Authored-By` 트레일러
+  금지(contributor 그래프를 바꿉니다).
 - 문서는 영어 기본. 한국어 `.ko.md` 병행은 환영하지만 문제 문서에서는
   선택 (원문을 고치면 기존 병행본도 갱신).
 - 이 저장소에서 파생된 것을 외부(OEIS, erdosproblems.com, 저널, upstream

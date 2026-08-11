@@ -48,6 +48,15 @@ def checks_cell(status: dict) -> str:
     return " + ".join(tags) if tags else "—"
 
 
+def solved_by_cell(status: dict) -> str:
+    models = []
+    for a in status.get("attribution") or []:
+        m = a.get("model")
+        if m and m not in models:
+            models.append(m)
+    return " · ".join(f"`{m}`" for m in models) if models else "—"
+
+
 def main() -> int:
     check = "--check" in sys.argv
     rows = {d: [] for d in DOMAIN_ORDER}
@@ -60,7 +69,8 @@ def main() -> int:
         d = s.get("domain") if s.get("domain") in rows else "other"
         rows[d].append(
             f"| [{esc(s.get('title', s['id']))}](problems/{s['id']}/README.md) "
-            f"| {BADGE.get(st, st)} | {checks_cell(s)} | {esc(s.get('claim', ''))} |"
+            f"| {BADGE.get(st, st)} | {checks_cell(s)} | {solved_by_cell(s)} "
+            f"| {esc(s.get('claim', ''))} |"
         )
 
     total = sum(counts.values())
@@ -71,8 +81,8 @@ def main() -> int:
         if not rows[d]:
             continue
         lines += [f"### {DOMAIN_TITLE[d]}", "",
-                  "| Problem | Claimed status | Machine checks | Claim |",
-                  "|---|---|---|---|", *rows[d], ""]
+                  "| Problem | Claimed status | Machine checks | Solved by | Claim |",
+                  "|---|---|---|---|---|", *rows[d], ""]
     lines.append(END)
     block = "\n".join(lines)
 

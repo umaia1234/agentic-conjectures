@@ -23,6 +23,10 @@ verify:
 - cmd: g++ -O3 -std=c++20 -o build_pg a076141_pair_geometry.cpp && ./build_pg 24 && rm -f build_pg
   expected_runtime: small-exponent smoke run
   ci_feasible: true
+attribution:
+- model: GPT-5.6 Sol
+  harness: unspecified
+  scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: Finite statement only (n < 2^40); independently written second enumerator checked 137,443,246,808
   candidates and a brute-force scan of all odd n < 2^32 agreed; source SHA256 hashes recorded; the full
   2^40 run is local-only; no novelty or priority claim without external review; upstream Lean universal

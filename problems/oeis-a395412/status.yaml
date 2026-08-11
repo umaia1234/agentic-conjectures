@@ -16,6 +16,10 @@ verify:
     result.json
   expected_runtime: unknown (rigorous APRCL/ECPP proofs dominate; /path/to/gp is a placeholder)
   ci_feasible: false
+attribution:
+- model: GPT-5.6 Sol
+  harness: unspecified
+  scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: README header says explicitly this is partial progress, not a solution of the infinite conjecture;
   the 201-400 range is a probable-prime screen only; a small structural lemma shows candidates have no
   prime factor <= p_n; refuting the conjecture would additionally require compositeness certificates for

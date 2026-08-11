@@ -26,6 +26,10 @@ verify:
 - cmd: python3 pell_quotient_scan.py --max-k 375 --max-n 1000000000000000000 --output /tmp/a000224_pell_result.json
   expected_runtime: ~8-27s; requires SymPy. Output goes to /tmp so reruns do not churn the committed result.json
   ci_feasible: true
+attribution:
+- model: GPT-5.6 Sol
+  harness: unspecified
+  scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: General p^e q^f and >=4 distinct-prime-factor cases remain unproved; Pell-seed completeness relies
   on SymPy's diop_DN, so that part is CAS-assisted rather than independent; OEIS records verification
   to 10^8; upstream Lean statement is sorry-backed.

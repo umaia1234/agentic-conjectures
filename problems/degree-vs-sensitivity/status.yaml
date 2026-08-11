@@ -17,6 +17,10 @@ verify:
 - cmd: python3 degree_sensitivity_pair_bound.py
   expected_runtime: unknown
   ci_feasible: true
+attribution:
+- model: GPT-5.6 Sol
+  harness: unspecified
+  scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: README stresses the full-search outcome is UNKNOWN (timeout only, no evidence either way), that
   no nonexistence proof was obtained, and that the necessary conditions are not claimed to be new to the
   literature; intermediate symmetry branches were not exhausted. Heavy CP-SAT/MILP searches (ortools)

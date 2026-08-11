@@ -22,6 +22,13 @@ lean:
   - AgenticConjectures.OeisA190363
   theorems:
   - AgenticConjectures.OeisA190363.oeis_190363_conjecture_0_false
+attribution:
+- model: GPT-5.6 Sol
+  harness: unspecified
+  scope: original research artifacts (proofs, certificates, searches, surveys)
+- model: Claude Fable 5
+  harness: Claude Code
+  scope: Lean 4 formalization
 notes: Certificate uses exact integer arithmetic (math.isqrt, no floating point) and checks minimality
   for n<=139, the D(140)=1 failure, and the first eight Pell-generated counterexamples; consistent with
   the official b-file values; unreviewed, not submitted to OEIS, novelty explicitly not asserted; upstream
