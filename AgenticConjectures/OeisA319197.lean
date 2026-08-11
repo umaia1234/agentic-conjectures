@@ -26,8 +26,9 @@ Faithfulness notes (there is no upstream Lean snapshot for this entry):
   assigned or assumed.
 - The source index `2^(n-2) * 3 * m` becomes `2^(7-2) * 3 * 1 = 96`.
 - Lean natural-number subtraction matches ordinary subtraction because `7 >= 2`.
-- `Nat.div` does not hide rounding here: the exact computation also verifies
-  that the denominator divides `F(96)`, with quotient `769`.
+- `Nat.div` does not hide rounding here: the Lean theorems prove the floor
+  quotient is `769`; that the denominator divides `F(96)` exactly is checked
+  by the Python certificate, not by this module.
 - The theorem is scoped only to the explicit `I(n; 1) = 1` subclaim; it makes
   no novelty claim and no assertion about the unresolved all-`m` conjecture.
 -/
