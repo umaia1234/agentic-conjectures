@@ -10,7 +10,7 @@
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-2da44e)](CONTRIBUTING.ko.md)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-42-8250df) ![proved](https://img.shields.io/badge/proved-13-2da44e) ![refuted](https://img.shields.io/badge/refuted-5-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-8-848d97)
+![problems](https://img.shields.io/badge/problems-43-8250df) ![proved](https://img.shields.io/badge/proved-14-2da44e) ![refuted](https://img.shields.io/badge/refuted-5-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-8-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -108,7 +108,7 @@ problem's status.yaml attribution block.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**42 problems** — ✅ proved: 13 · 🔴 refuted: 5 · 🟡 partial: 16 · ⚪ open: 8
+**43 problems** — ✅ proved: 14 · 🔴 refuted: 5 · 🟡 partial: 16 · ⚪ open: 8
 
 ### OEIS
 
@@ -123,6 +123,7 @@ problem's status.yaml attribution block.
 | [OEIS A076141 — n occurs at most once in binary of n^2, checked to 2^40](problems/oeis-a076141/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | An exact exhaustive occurrence-geometry search found no counterexample for 0 < n < 2^40, extending the OEIS-recorded 10^6 verification by a factor of about 1.1 million; explicitly a rigorous bounded verification, not a proof of the full conjecture. |
 | [OEIS A136433 — 9-lag linear recurrence proved for all n>=10](problems/oeis-a136433/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` · `Claude Fable 5` | Claims a complete proof that the OEIS-conjectured constant-coefficient recurrence a_n = 6*a_{n-3} + a_{n-6} - 6*a_{n-9} holds for all n>=10 for the periodic-coefficient nonautonomous sequence, via a_{t+3}=6*a_t+B_t with B_t of period 6. |
 | [OEIS A190363 — 21-term recurrence conjecture refuted](problems/oeis-a190363/README.md) | 🔴 refuted | lean + cert | `GPT-5.6 Sol` · `Claude Fable 5` | Refutes the OEIS-conjectured recurrence a(n+21)=a(n+17)+a(n+4)-a(n): first failure at base index n=140 (output term a(161), 541 != 542), with a Pell-equation-generated infinite family of failures showing the recurrence fails beyond every starting index. |
+| [OEIS A239293 — immediate-successor characterization proved](problems/oeis-a239293/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Proves for every n>=1 that the least composite c>n satisfying n^c == n (mod c) equals n+1 if and only if n+1 is odd and composite. |
 | [OEIS A242560 — closed form and even-index conjecture proved](problems/oeis-a242560/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` | Lean-verifies a(N)=N-N/minFac(N) for every N>1, hence the OEIS conjecture a(2n)=n; it also shows that the official b-file value a(25)=24 disagrees with the displayed definition, which gives 20. |
 | [OEIS A245211: a(n)=n only for n=21](problems/oeis-a245211/README.md) | 🟡 partial | cert(local) | `GPT-5.6 Sol` | Claims only partial progress: proved necessary conditions forcing any counterexample to the uniqueness of n=21 to be coprime to 2310 with a restricted factorization shape, plus exact verification for all n <= 10^9 and for two-prime-factor n with exponents <= 200. |
 | [OEIS A270361 — uniqueness of the smaller prime](problems/oeis-a270361/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Lean-proves the OEIS conjecture that for each odd prime p, at most one odd prime q<p can make p*q-1 a square, using the two square roots modulo p, their strict bounds, and a parity contradiction. |
