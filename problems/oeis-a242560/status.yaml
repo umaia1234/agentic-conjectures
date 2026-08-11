@@ -3,7 +3,8 @@ title: OEIS A242560 — closed form and even-index conjecture proved
 domain: oeis
 source_url: https://oeis.org/A242560
 claimed_status: proved
-claim: 'Lean-verifies a(N)=N-N/minFac(N) for every N>1, hence the OEIS conjecture a(2n)=n; it also shows that the official b-file value a(25)=24 disagrees with the displayed definition, which gives 20.'
+claim: Lean-verifies a(N)=N-N/minFac(N) for every N>1, hence the OEIS conjecture a(2n)=n; it also shows
+  that the official b-file value a(25)=24 disagrees with the displayed definition, which gives 20.
 artifacts:
 - path: README.md
   kind: informal-proof
@@ -25,4 +26,11 @@ attribution:
 - model: GPT-5
   harness: Codex Desktop
   scope: original proof, Lean 4 formalization, certificate, and documentation
-notes: The formal definition uses integer divisibility, makes the PARI program's k>=1 convention explicit, and excludes its zero denominator k=N. The formal minimum is unbounded as in the mathematical headline, unlike the PARI loop's experimental k<=N! bound; this does not affect the theorems. The closed form proves the equality with A060681 asked about in the OEIS entry. Exact checks find one b-file discrepancy through N=70, at N=25. Targeted public searches on 2026-08-12 found no earlier proof connecting the displayed definition to the closed form, but this is not a novelty claim; the result is unreviewed and has not been submitted externally.
+notes: The formal definition uses integer divisibility, makes the PARI program's k>=1 convention explicit,
+  and excludes its zero denominator k=N. The formal minimum is unbounded as in the mathematical headline,
+  unlike the PARI loop's experimental k<=N! bound; this does not affect the theorems. The closed form
+  proves the equality with A060681 asked about in the OEIS entry. Exact checks find one b-file discrepancy
+  through N=70, at N=25. Targeted public searches on 2026-08-12 found no earlier proof connecting the
+  displayed definition to the closed form, but this is not a novelty claim; the result is unreviewed and
+  has not been submitted externally. The conflicting b-file is auto-synthesized from the sequence entry,
+  so the inconsistency lives in the entry's main DATA line rather than an independently curated b-file.
