@@ -1,9 +1,10 @@
 id: oeis-a072780
-title: OEIS A072780 Goldbach-like equivalence refuted at (m,r)=(8,7)
+title: OEIS A072780 — Goldbach-like equivalence refuted at (m,r)=(8,7)
 domain: oeis
 source_url: https://oeis.org/A072780
 claimed_status: refuted
-claim: 'Refutes the claim that a(m^2-r^2)=2 iff m-r and m+r are prime: at (m,r)=(8,7), a(15)=2 while the selected factors 1 and 15 are nonprime.'
+claim: 'Refutes the claim that a(m^2-r^2)=2 iff m-r and m+r are prime: at (m,r)=(8,7), a(15)=2 while the
+  selected factors 1 and 15 are nonprime.'
 artifacts:
 - path: a072780_certificate.py
   kind: certificate-script
@@ -22,4 +23,10 @@ attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: counterexample, independent certificate, Lean 4 formal refutation, and documentation
-notes: 'The counterexample uses positive OEIS input 15 and m>r, so neither offset nor truncated subtraction causes it. It refutes only the Goldbach-like statement and its Formal Conjectures formalization, not the separate characterization of a(n)=2 by products of two distinct primes or the twin-prime specialization. The Python certificate independently uses divisor enumeration and multiplicative prime-factor formulas. Unreviewed; no novelty is claimed and nothing was submitted upstream.'
+notes: The counterexample uses positive OEIS input 15 and m>r, so neither offset nor truncated subtraction
+  causes it. It refutes only the Goldbach-like statement and its Formal Conjectures formalization, not
+  the separate characterization of a(n)=2 by products of two distinct primes or the twin-prime specialization.
+  The Python certificate independently uses divisor enumeration and multiplicative prime-factor formulas.
+  Unreviewed; no novelty is claimed and nothing was submitted upstream. The converse direction also fails
+  independently at (m,r)=(2,0), where 2 and 2 are primes summing to 2m=4 but a(4)=3; the chosen (8,7)
+  witness is the one that kills the direction the entry's Goldbach note relies on.
