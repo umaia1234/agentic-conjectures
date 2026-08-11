@@ -31,7 +31,7 @@ verify:
   ci_feasible: true
 attribution:
 - model: GPT-5.6 Sol
-  harness: unspecified
+  harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: README explicitly makes no claim that the small extremal values are new; exhaustive claim is limited
   to labelled, ordered-alphabet binary NFAs (no state-isomorphism quotient); the 5-state value 17 is a

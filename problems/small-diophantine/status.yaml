@@ -20,7 +20,7 @@ verify:
   ci_feasible: false
 attribution:
 - model: GPT-5.6 Sol
-  harness: unspecified
+  harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: README opens by saying no solution meeting Epoch's threshold (three integer solutions with |x|
   > 10^50) was found and no equation is claimed solved; obstructions are ansatz-specific and say nothing

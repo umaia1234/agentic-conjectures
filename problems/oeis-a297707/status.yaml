@@ -13,7 +13,7 @@ artifacts:
 verify: []
 attribution:
 - model: GPT-5.6 Sol
-  harness: unspecified
+  harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: The search command takes a user-chosen bound placeholder, not a fixed reproduction; README says
   endpoints need separate primality certification before use in any proof; the upstream Lean theorem (counterexample

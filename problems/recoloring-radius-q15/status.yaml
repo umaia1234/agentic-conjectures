@@ -17,7 +17,7 @@ verify:
   ci_feasible: true
 attribution:
 - model: GPT-5.6 Sol
-  harness: unspecified
+  harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: 'README is a five-line tool inventory: no findings, no negative-search bound, no source URL, no
   runtimes; the previously shipped prebuilt binary is now gitignored (rebuild from source); the only listed

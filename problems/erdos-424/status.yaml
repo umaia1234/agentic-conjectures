@@ -17,7 +17,7 @@ verify:
   ci_feasible: true
 attribution:
 - model: GPT-5.6 Sol
-  harness: unspecified
+  harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: Korean README with no stated experimental outcome, so no partial result is claimed; notes that
   Green's open problem 63 is an alias of the same statement; upstream Lean statement is sorry-backed.

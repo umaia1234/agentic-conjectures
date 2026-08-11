@@ -33,12 +33,13 @@ lean:
   - AgenticConjectures.OeisA000224.even_not_conjecture_rhs
 attribution:
 - model: GPT-5.6 Sol
-  harness: unspecified
+  harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: Lean 4 formalization of the even-n exclusion
-notes: The even-n exclusion is kernel-checked against the exact upstream residue-count definition and congruence;
-  the odd-prime-power argument remains an informal proof, and the semiprime and Pell results remain script-checked.
-  General p^e q^f and >=4 distinct-prime-factor cases are unproved; Pell-seed completeness relies on SymPy's
-  diop_DN; OEIS records verification to 10^8; the full upstream Lean conjecture remains sorry-backed.
+notes: The even-n exclusion is kernel-checked against the exact upstream residue-count definition and
+  congruence; the odd-prime-power argument remains an informal proof, and the semiprime and Pell results
+  remain script-checked. General p^e q^f and >=4 distinct-prime-factor cases are unproved; Pell-seed completeness
+  relies on SymPy's diop_DN; OEIS records verification to 10^8; the full upstream Lean conjecture remains
+  sorry-backed.

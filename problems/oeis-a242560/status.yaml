@@ -23,7 +23,7 @@ lean:
   - AgenticConjectures.OeisA242560.a_eq_sub_div_minFac
   - AgenticConjectures.OeisA242560.a_25
 attribution:
-- model: GPT-5
+- model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original proof, Lean 4 formalization, certificate, and documentation
 notes: The formal definition uses integer divisibility, makes the PARI program's k>=1 convention explicit,

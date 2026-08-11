@@ -23,7 +23,7 @@ verify:
   ci_feasible: true
 attribution:
 - model: GPT-5.6 Sol
-  harness: unspecified
+  harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: Explicitly unreviewed; settles only the yes/no clause and does not determine the total number of
   tiles asked in Question 9's first sentence; checker passed for cardinalities 3, 5, 9 including a shifted

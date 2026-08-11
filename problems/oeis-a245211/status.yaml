@@ -25,7 +25,7 @@ verify:
   ci_feasible: false
 attribution:
 - model: GPT-5.6 Sol
-  harness: unspecified
+  harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
 notes: README opens by stating the full conjecture remains unresolved; remaining gaps are two-prime cases
   with exponents > 200, nonsquarefree n with >= 3 prime factors, and squarefree n with an odd number r
