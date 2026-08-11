@@ -1,0 +1,20 @@
+id: oeis-a369378
+title: OEIS A369378 lower-bound conjecture proved by Fermat divisors
+domain: oeis
+source_url: https://oeis.org/A369378
+claimed_status: proved
+claim: Proves that for every n>0 and every k<2^n, the number 2^(2^n+1)-1+2^k is not prime, exactly resolving the displayed OEIS conjecture without addressing k>=2^n.
+artifacts:
+- path: README.md
+  kind: informal-proof
+verify: []
+lean:
+  modules:
+  - AgenticConjectures.OeisA369378
+  theorems:
+  - AgenticConjectures.OeisA369378.oeis_a369378
+attribution:
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: factorization proof, Lean 4 formalization, prior-art audit, and bilingual documentation
+notes: The Lean statement follows OEIS revision 40 literally over natural n and k; k=0 is handled separately and natural subtraction is exact. For k>0, a proper Fermat-number divisor is constructed from v2(k). The theorem does not assert that the sequence is defined or control k>=2^n. Unreviewed; no novelty is claimed and nothing was submitted externally.
