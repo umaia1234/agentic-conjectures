@@ -1,0 +1,23 @@
+id: oeis-a270361
+title: OEIS A270361 — uniqueness of the smaller prime
+domain: oeis
+source_url: https://oeis.org/A270361
+claimed_status: proved
+claim: 'Lean-proves the OEIS conjecture that for each odd prime p, at most one odd prime q<p can make
+  p*q-1 a square, using the two square roots modulo p, their strict bounds, and a parity contradiction.'
+artifacts:
+- path: README.md
+  kind: proof-notes
+lean:
+  modules:
+  - AgenticConjectures.OeisA270361
+  theorems:
+  - AgenticConjectures.OeisA270361.oeis_a270361_conjecture
+attribution:
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: problem selection, proof, Lean 4 formalization, source-faithfulness audit, and documentation
+notes: OEIS revision 38 still marked the statement as a conjecture when checked on 2026-08-12; the exported
+  Lean statement uses the literal equation p*q-1=m^2, while a proved conversion supplies the internal
+  subtraction-safe form p*q=m^2+1; OEIS A000089 records the standard two-root fact underlying the argument,
+  so no novelty or priority is claimed; unreviewed and not submitted externally.
