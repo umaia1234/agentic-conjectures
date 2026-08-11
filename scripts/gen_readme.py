@@ -13,6 +13,15 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 READMES = [ROOT / "README.md", ROOT / "README.ko.md"]
 BEGIN, END = "<!-- STATUS:BEGIN (scripts/gen_readme.py) -->", "<!-- STATUS:END -->"
+CBEGIN, CEND = "<!-- COUNTS:BEGIN (scripts/gen_readme.py) -->", "<!-- COUNTS:END -->"
+SHIELD = "https://img.shields.io/badge"
+COUNT_STYLE = [  # (grade, label, color)
+    (None, "problems", "8250df"),
+    ("proved", "proved", "2da44e"),
+    ("refuted", "refuted", "cf222e"),
+    ("partial", "partial", "bf8700"),
+    ("open", "open", "848d97"),
+]
 
 BADGE = {"proved": "✅ proved", "refuted": "🔴 refuted", "partial": "🟡 partial", "open": "⚪ open"}
 DOMAIN_ORDER = ["oeis", "erdos", "graph-combinatorics", "other"]
@@ -67,6 +76,12 @@ def main() -> int:
     lines.append(END)
     block = "\n".join(lines)
 
+    badges = " ".join(
+        f"![{label}]({SHIELD}/{label}-{counts.get(g, 0) if g else total}-{color})"
+        for g, label, color in COUNT_STYLE
+    )
+    counts_block = f"{CBEGIN}\n{badges}\n{CEND}"
+
     stale = []
     for readme in READMES:
         if not readme.exists():
@@ -78,6 +93,10 @@ def main() -> int:
             new = head + block + tail
         else:
             new = text.rstrip() + "\n\n## Dashboard\n\n" + block + "\n"
+        if CBEGIN in new and CEND in new:
+            head, rest = new.split(CBEGIN, 1)
+            _, tail = rest.split(CEND, 1)
+            new = head + counts_block + tail
         if check:
             if new != text:
                 stale.append(readme.name)

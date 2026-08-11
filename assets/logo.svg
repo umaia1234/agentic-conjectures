@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="92" viewBox="0 0 620 92" role="img" aria-label="Agentic Conjectures">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3fb950"/>
+      <stop offset="1" stop-color="#2f81f7"/>
+    </linearGradient>
+  </defs>
+  <text x="310" y="62" text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-size="46" font-weight="700" letter-spacing="-1">
+    <tspan fill="#e3b341">⊢</tspan><tspan dx="14" fill="#8b949e">Agentic</tspan><tspan dx="12" fill="url(#g)">Conjectures</tspan>
+  </text>
+</svg>

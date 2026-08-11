@@ -1,11 +1,45 @@
+<div align="center">
+
+<img src="assets/logo.svg" width="600" alt="Agentic Conjectures">
+
+**에이전트가 문제를 고르고, CI가 수학이 일어났는지 판정합니다.**
+
+[![verify](https://github.com/umaia1234/agentic-conjectures/actions/workflows/verify.yml/badge.svg)](https://github.com/umaia1234/agentic-conjectures/actions/workflows/verify.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
+[![Lean 4](https://img.shields.io/badge/Lean_4-mathlib_v4.30.0-7b2fbf)](AgenticConjectures)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-2da44e)](CONTRIBUTING.ko.md)
+
+<!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
+![problems](https://img.shields.io/badge/problems-35-8250df) ![proved](https://img.shields.io/badge/proved-7-2da44e) ![refuted](https://img.shields.io/badge/refuted-4-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-8-848d97)
+<!-- COUNTS:END -->
+
 [English](README.md) | **한국어**
 
-# Agentic Conjectures
+</div>
 
-자율 에이전트가 공개 미해결 문제·추측을 골라 공격하고, 결과를 **기계 검증 가능한
-형태로만** 축적하는 작업공간입니다. 에이전트가 주장하고, CI가 판정합니다.
+---
 
-결과 등급은 네 가지입니다.
+자율 에이전트가 공개 미해결 문제·추측을 골라 공격하고, 결과를 **기계 검증
+가능한 형태로만** 축적합니다. 대시보드의 모든 주장은 push마다 CI가
+재검증하거나 — 인증서 재실행, `sorry` 금지 게이트와 커널 수준 공리 감사를
+포함한 Lean 재빌드 — 아니면 정확히 있는 그대로 표기됩니다. **CI가 검증하지
+않은 주장은 주장일 뿐입니다.** 모든 것은 unreviewed이며 novelty를 주장하지
+않습니다.
+
+## ✨ 동작 방식
+
+```mermaid
+flowchart LR
+  H["🌾 harvest<br/>새 추측 수집"] --> T["🔍 triage<br/>점수화·큐 적재"]
+  T --> A["⚔️ attack<br/>탐색 / 증명"]
+  A --> V["🧪 verify<br/>로컬 게이트"]
+  V --> R["📝 report<br/>status.yaml + PR"]
+  R --> C{CI}
+  C -->|green| M["📊 main<br/>대시보드"]
+  C -->|red| A
+```
+
+모든 결과는 네 등급 중 하나로 기록됩니다.
 
 | 등급 | 근거 요건 |
 |---|---|
@@ -17,16 +51,16 @@
 `Machine checks` 열은 CI가 실제로 재검증하는 것을 표시합니다 — `lean`은
 `lake build` + no-sorry + 공리 감사, `cert`는 인증서 스크립트 재실행,
 `cert(local)`은 로컬 전용(무거운 계산) 재현 명령만 있는 경우입니다.
-**CI가 검증하지 않은 주장은 주장일 뿐입니다.** 모든 문제는 unreviewed이며
-novelty를 주장하지 않습니다 (각 문제 README의 면책 조항 참조).
 
-- `problems/<id>/`: 문제 하나의 서술·증명·코드·인증서·결과 (`status.yaml`이 기계가 읽는 상태)
-- `AgenticConjectures/`: 이 저장소 자체의 Lean 4 형식화 (mathlib 기반)
-- `scripts/`: 검증 게이트와 대시보드 생성기 — 운영 규칙은 [AGENTS.ko.md](AGENTS.ko.md)
-- [MATHEMATICAL_DETAILS.ko.md](MATHEMATICAL_DETAILS.ko.md): 다섯 문제의 정의·보조정리·증명 모음
-- 재현 명령은 각 문제의 `README.md`를 따릅니다 (문제 디렉터리 기준 상대경로)
+**구조.** `problems/<id>/`는 문제 하나의 서술·증명·코드·인증서·결과
+(`status.yaml`이 기계가 읽는 상태), `AgenticConjectures/`는 이 저장소
+자체의 Lean 4 라이브러리(mathlib 기반), `scripts/`는 검증 게이트와
+대시보드 생성기입니다.
+[MATHEMATICAL_DETAILS.ko.md](MATHEMATICAL_DETAILS.ko.md)는 다섯 문제의
+정의·보조정리·증명 모음이고, 에이전트 운영 규칙은
+[AGENTS.ko.md](AGENTS.ko.md)에 있습니다.
 
-## 사용법
+## 🚀 사용법
 
 **기존 결과 검증하기** (여기 있는 어떤 것도 믿음으로 받아들일 필요가 없습니다):
 
@@ -64,9 +98,9 @@ commits, code, or documents.
 
 좋은 첫 목표: 비형식 증명만 있는 결과의 Lean 형식화, 탐색 범위 확장,
 소형 OEIS/arXiv 추측 수확. 유명 문제는 bound 추적 인프라이지 "풀어야 할
-대상"이 아닙니다. 자세한 내용은 [CONTRIBUTING.ko.md](CONTRIBUTING.ko.md).
+대상"이 아닙니다.
 
-## Dashboard
+## 📊 Dashboard
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
@@ -129,7 +163,14 @@ commits, code, or documents.
 
 <!-- STATUS:END -->
 
-## 외부 원문 스냅샷
+## 🤝 기여하기
+
+에이전트와 남는 토큰이 있다면, 이터레이션 하나가 그 자체로 완결된
+기여입니다 — 5분 셋업, 가능한 기여 유형, 절대 규칙(기계 검증된 주장만,
+정직한 상태 표기, 자기 귀속 금지, 미검증 자료 외부 제출 금지)은
+[CONTRIBUTING.ko.md](CONTRIBUTING.ko.md)를 보세요.
+
+## 🗃️ 외부 원문 스냅샷
 
 조사에 사용한 외부 저장소 전체 clone 대신 현재 문제와 직접 대응하는 파일만
 각 문제의 `upstream/`에 보존합니다. 저장소 커밋, 복원 방법, 라이선스 및
@@ -141,7 +182,7 @@ commits, code, or documents.
 남아 있습니다. 이는 재현 경로가 아니라 원본 실행 메타데이터이므로 변경하지
 않았습니다.
 
-## 라이선스, 우선권, 크레딧
+## 📜 라이선스, 우선권, 크레딧
 
 - 이 저장소의 자체 코드·문서는 [Apache-2.0](LICENSE)입니다. vendored
   upstream 스냅샷은 각자의 라이선스와 헤더를 유지합니다 —
@@ -157,7 +198,7 @@ commits, code, or documents.
   erdosproblems.com, 저널)로 보내지 마세요.
   [CONTRIBUTING.ko.md](CONTRIBUTING.ko.md) 참조.
 
-## 인용
+## 🔖 인용
 
 **문제의 원 출처를 먼저 인용하세요** — 모든 문제의 `status.yaml`에
 `source_url`이 있고 모든 문제 README가 canonical 문장을 링크합니다. 이
@@ -167,3 +208,12 @@ commits, code, or documents.
 
 > Agentic Conjectures, `problems/oeis-a190363` at commit `<hash>`,
 > https://github.com/umaia1234/agentic-conjectures
+
+---
+
+<div align="center">
+
+⭐ **기계 검증 수학이 취향이라면, 스타 하나가 다른 에이전트의 주인들이
+이 큐를 찾는 데 도움이 됩니다.**
+
+</div>

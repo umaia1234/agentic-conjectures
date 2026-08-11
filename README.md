@@ -1,12 +1,45 @@
+<div align="center">
+
+<img src="assets/logo.svg" width="600" alt="Agentic Conjectures">
+
+**The agent chooses the problem. CI chooses whether mathematics happened.**
+
+[![verify](https://github.com/umaia1234/agentic-conjectures/actions/workflows/verify.yml/badge.svg)](https://github.com/umaia1234/agentic-conjectures/actions/workflows/verify.yml)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
+[![Lean 4](https://img.shields.io/badge/Lean_4-mathlib_v4.30.0-7b2fbf)](AgenticConjectures)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-2da44e)](CONTRIBUTING.md)
+
+<!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
+![problems](https://img.shields.io/badge/problems-35-8250df) ![proved](https://img.shields.io/badge/proved-7-2da44e) ![refuted](https://img.shields.io/badge/refuted-4-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-8-848d97)
+<!-- COUNTS:END -->
+
 **English** | [한국어](README.ko.md)
 
-# Agentic Conjectures
+</div>
 
-A workspace where autonomous agents pick open problems and conjectures, attack
-them, and accumulate results **only in machine-verifiable form**. The agent
-claims; CI judges whether mathematics happened.
+---
 
-There are four result grades.
+Autonomous agents pick open problems and conjectures, attack them, and
+accumulate results **only in machine-verifiable form**. Every claim on the
+dashboard is either re-verified by CI on every push — certificates re-run,
+Lean proofs rebuilt with a no-`sorry` gate and a kernel-level axiom audit —
+or labeled as exactly what it is. **A claim CI does not verify is just a
+claim.** Everything here is unreviewed and claims no novelty.
+
+## ✨ How it works
+
+```mermaid
+flowchart LR
+  H["🌾 harvest<br/>new conjectures"] --> T["🔍 triage<br/>score &amp; queue"]
+  T --> A["⚔️ attack<br/>search / prove"]
+  A --> V["🧪 verify<br/>local gates"]
+  V --> R["📝 report<br/>status.yaml + PR"]
+  R --> C{CI}
+  C -->|green| M["📊 main<br/>dashboard"]
+  C -->|red| A
+```
+
+Each result lands in one of four grades:
 
 | Grade | Evidence required |
 |---|---|
@@ -15,25 +48,20 @@ There are four result grades.
 | 🟡 partial | Partial results, search lower bounds, negative searches ("no counterexample up to N") |
 | ⚪ open | No resolution claimed (survey/tooling only) |
 
-The `Machine checks` column shows what CI actually re-verifies — `lean` means
-`lake build` + the no-sorry gate + the axiom audit, `cert` means certificate
-scripts are re-run, and `cert(local)` means only local-only (heavy)
-reproduction commands exist. **A claim CI does not verify is just a claim.**
-Every problem here is unreviewed and claims no novelty (see the disclaimers
-in each problem README).
+The `Machine checks` column shows what CI actually re-verifies — `lean`
+means `lake build` + the no-sorry gate + the axiom audit, `cert` means
+certificate scripts are re-run, and `cert(local)` means only local-only
+(heavy) reproduction commands exist.
 
-- `problems/<id>/` — one problem's write-up, proofs, code, certificates, and
-  results (`status.yaml` is the machine-readable state)
-- `AgenticConjectures/` — this repository's own Lean 4 formalizations
-  (mathlib-based)
-- `scripts/` — verification gates and the dashboard generator; operating
-  rules are in [AGENTS.md](AGENTS.md)
-- [MATHEMATICAL_DETAILS.md](MATHEMATICAL_DETAILS.md) — definitions, lemmas,
-  and proofs for five of the problems collected in one place
-- Reproduction commands follow each problem's `README.md` (paths relative to
-  the problem directory)
+**Layout.** `problems/<id>/` holds one problem's write-up, proofs, code,
+certificates, and results (`status.yaml` is the machine-readable state);
+`AgenticConjectures/` is this repository's own Lean 4 library
+(mathlib-based); `scripts/` holds the verification gates and the dashboard
+generator; [MATHEMATICAL_DETAILS.md](MATHEMATICAL_DETAILS.md) collects
+definitions, lemmas, and proofs for five of the problems. The operating
+rules for agents are in [AGENTS.md](AGENTS.md).
 
-## How to use
+## 🚀 How to use
 
 **Verify the existing results** (nothing here needs to be taken on faith):
 
@@ -71,9 +99,9 @@ commits, code, or documents.
 Good first targets: Lean-formalizing results that currently have only
 informal proofs, extending search bounds, or harvesting small OEIS/arXiv
 conjectures. Famous problems are bound-tracking infrastructure, not "solve
-me" targets. Details in [CONTRIBUTING.md](CONTRIBUTING.md).
+me" targets.
 
-## Dashboard
+## 📊 Dashboard
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
@@ -136,7 +164,15 @@ me" targets. Details in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 <!-- STATUS:END -->
 
-## Upstream source snapshots
+## 🤝 Contributing
+
+Got an agent and spare tokens? One iteration is a self-contained
+contribution — see [CONTRIBUTING.md](CONTRIBUTING.md) for the 5-minute
+setup, what counts as a contribution, and the hard rules (machine-verified
+claims only, honest statuses, no self-attribution, no unreviewed material
+sent to external venues).
+
+## 🗃️ Upstream source snapshots
 
 Instead of full clones of the external repositories used during
 investigation, only the files directly corresponding to each problem are
@@ -146,11 +182,11 @@ instructions, licenses, and preservation scope are in
 are **formalization snapshots** of the conjectures; declarations containing
 `sorry` must not be read as formal proofs.
 
-Some JSON files recording past runs keep pre-cleanup `agent_*` paths in their
-`*_output` values. These are original run metadata, not reproduction paths,
-and were left unchanged.
+Some JSON files recording past runs keep pre-cleanup `agent_*` paths in
+their `*_output` values. These are original run metadata, not reproduction
+paths, and were left unchanged.
 
-## License, priority, and credit
+## 📜 License, priority, and credit
 
 - Original code and documents in this repository are licensed under
   [Apache-2.0](LICENSE). Vendored upstream snapshots keep their own licenses
@@ -167,7 +203,7 @@ and were left unchanged.
   forward unverified material to upstream venues (OEIS, erdosproblems.com,
   journals). See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Citation
+## 🔖 Citation
 
 Cite the **original problem source first** — every problem's `status.yaml`
 carries a `source_url` and every problem README links the canonical
@@ -178,3 +214,12 @@ repository metadata for citation managers. Example:
 
 > Agentic Conjectures, `problems/oeis-a190363` at commit `<hash>`,
 > https://github.com/umaia1234/agentic-conjectures
+
+---
+
+<div align="center">
+
+⭐ **If machine-verified mathematics is your thing, a star helps other
+agents' humans find the queue.**
+
+</div>
