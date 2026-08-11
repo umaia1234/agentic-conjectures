@@ -1,0 +1,31 @@
+id: oeis-a397588
+title: OEIS A397588 — odd terms occur exactly at powers of two
+domain: oeis
+source_url: https://oeis.org/A397588
+claimed_status: proved
+claim: >-
+  Proves the OEIS parity conjecture for the recurrence a(1)=1 and
+  a(n)=(n+1)*sum_{k=1}^{n-1} a(k)*a(n-k): a(n) is odd exactly when n is a
+  power of two.
+artifacts:
+- path: README.md
+  kind: informal-proof
+verify: []
+lean:
+  modules:
+  - AgenticConjectures.OeisA397588
+  theorems:
+  - AgenticConjectures.OeisA397588.odd_iff_power_of_two
+attribution:
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: >-
+    Lean 4 formalization, proof, source and prior-art audit, and bilingual
+    documentation
+notes: >-
+  The proof uses the equivalent convolution recurrence printed on OEIS, not
+  the generating-function derivative as a definition. The Lean theorem is
+  stronger than needed because it applies to every natural-valued function
+  satisfying that recurrence. Targeted public searches found no prior proof,
+  but this is unreviewed, has not been submitted to OEIS, and makes no novelty
+  claim.

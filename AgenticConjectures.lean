@@ -5,6 +5,7 @@ import AgenticConjectures.OeisA190363
 import AgenticConjectures.OeisA242560
 import AgenticConjectures.OeisA270361
 import AgenticConjectures.OeisA384162
+import AgenticConjectures.OeisA397588
 import AgenticConjectures.OeisA398189
 
 /-!

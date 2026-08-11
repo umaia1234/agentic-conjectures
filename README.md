@@ -10,7 +10,7 @@
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-2da44e)](CONTRIBUTING.md)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-40-8250df) ![proved](https://img.shields.io/badge/proved-11-2da44e) ![refuted](https://img.shields.io/badge/refuted-5-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-8-848d97)
+![problems](https://img.shields.io/badge/problems-41-8250df) ![proved](https://img.shields.io/badge/proved-12-2da44e) ![refuted](https://img.shields.io/badge/refuted-5-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-8-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -109,7 +109,7 @@ me" targets.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**40 problems** — ✅ proved: 11 · 🔴 refuted: 5 · 🟡 partial: 16 · ⚪ open: 8
+**41 problems** — ✅ proved: 12 · 🔴 refuted: 5 · 🟡 partial: 16 · ⚪ open: 8
 
 ### OEIS
 
@@ -133,6 +133,7 @@ me" targets.
 | [OEIS A384162 conjectured cross-reference refuted at n=2](problems/oeis-a384162/README.md) | 🔴 refuted | lean + cert | `GPT-5.6 Sol` | Refutes the conjecture a(n)=n*A342168(n-1) at n=2: A384162(2)=6, while 2*A342168(1)=8, with a Lean disproof and independent exact computations. |
 | [OEIS A395412 certified finite nonvanishing extension](problems/oeis-a395412/README.md) | 🟡 partial | cert(local) | `GPT-5.6 Sol` | Claims a certified finite extension only: reproduces the 84 published terms, rigorously proves a(n) > 0 for every 85 <= n <= 200 via PARI/GP isprime witnesses, and BPSW-screens 201 <= n <= 400 with no proof claimed there. |
 | [OEIS A397245 mod 3 coefficient classification](problems/oeis-a397245/README.md) | ✅ proved | cert | `GPT-5.6 Sol` | Claims a complete informal proof of both conjectured mod 3 iff-classifications of a_n (a_n = 1 mod 3 iff n+2 = 3^j or 2*3^j; a_n = 2 mod 3 iff n+2 = 3^i + 3^j with i < j; else 0) via a closed form in F_3[[x]]. |
+| [OEIS A397588 — odd terms occur exactly at powers of two](problems/oeis-a397588/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Proves the OEIS parity conjecture for the recurrence a(1)=1 and a(n)=(n+1)*sum_{k=1}^{n-1} a(k)*a(n-k): a(n) is odd exactly when n is a power of two. |
 | [OEIS A397621 Pascal-row linear complexity](problems/oeis-a397621/README.md) | ✅ proved | cert | `GPT-5.6 Sol` | Claims a complete informal proof that A397621(A001317(n)) = 2^(floor(log2 n)+1) - n = A080079(n) for all n >= 1, with a zero-run lower bound and an explicit connection polynomial (1+x)^d upper bound. |
 | [OEIS A398189 — 2-adic valuation of generalized Schenker sums, all four conjectured cases proved](problems/oeis-a398189/README.md) | ✅ proved | lean + cert | `Claude Fable 5` | Proves all four cases of Luschny's conjectured valuation formula for A398189(n,k) = v2(A398187(n,k)), A398187(n,k) = Sum_{j<=n-k} ((n-k)!/j!)*n^j — v2((n-k)!) for even n; 1 for odd n, k=0; 0 for odd n, odd k; v2(k+2) for odd n, even k with k not == 14 (mod 16) — in Lean 4, plus v2 >= 4 in the excluded class k == 14 (mod 16). |
 
