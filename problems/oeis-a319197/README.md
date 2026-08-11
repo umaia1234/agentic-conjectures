@@ -58,7 +58,9 @@ open here.
 - The formula and the five values above are copied from the current approved
   [OEIS entry](https://oeis.org/A319197), accessed 2026-08-12. The current
   published version is [revision 7](https://oeis.org/history/view?seq=A319197&v=7),
-  approved 2018-10-25; the formula was introduced in revision 2 on 2018-10-09.
+  approved 2018-10-25; per the public history index, the formula was
+introduced in revision 2 (2018-10-09, by the author); the per-revision
+diff itself sits behind an OEIS login.
 - Targeted public-web searches for the sequence ID, the exact normalization
   phrase, and the value `769` found no prior correction or proof. That is only
   a negative search result. This repository does not claim novelty or priority.
@@ -97,6 +99,8 @@ Observed on the repository's CI-equivalent environment on 2026-08-12:
 - `Nat.fib` has `F(0)=0, F(1)=1`, matching OEIS A000045.
 - The source index evaluates without ambiguity as
   `2^(7-2)*3*1 = 96`. Natural subtraction cannot underflow at this literal.
-- Lean's natural division introduces no rounding ambiguity: both verifiers
-  establish that the denominator divides `F(96)` exactly, with quotient 769.
+- Lean's natural division introduces no rounding ambiguity for the refutation:
+  the Lean theorems prove the floor-quotient value 769 (any exact `I = 1` would
+  force the floor quotient to be 1), and the Python certificate independently
+  checks that the denominator divides `F(96)` exactly with remainder 0.
 - There is no upstream Lean snapshot for this entry.
