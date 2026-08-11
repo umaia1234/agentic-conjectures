@@ -1,0 +1,30 @@
+id: oeis-a368633
+title: OEIS A368633 — parity conjecture proved
+domain: oeis
+source_url: https://oeis.org/A368633
+claimed_status: proved
+claim: Lean-proves that the coefficients of A(x)=1+2*x*A(x)^2-x*A(-x)^2 are odd exactly when n+1 is a power of 2, by reduction modulo 2 to the Catalan recurrence.
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: a368633_certificate.py
+  kind: certificate-script
+verify:
+- cmd: python3 a368633_certificate.py
+  expected_runtime: under 1 second
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.OeisA368633
+  theorems:
+  - AgenticConjectures.OeisA368633.parity_conjecture
+attribution:
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: source audit, proof, Lean 4 formalization, certificate, and bilingual documentation
+notes: >-
+  OEIS revision 26 still presented the parity statement as a conjecture when checked on 2026-08-12.
+  The proof is a direct reduction to the classical Catalan parity classification, so no novelty or priority
+  is claimed; the finite standard-library certificate checks the defining recurrence, all 25 canonical JSON
+  terms, and parity through n=600 but does not replace the universal Lean proof. There is no upstream Lean
+  snapshot for this directly harvested OEIS problem; the result is unreviewed and has not been submitted externally.
