@@ -10,7 +10,7 @@
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-2da44e)](CONTRIBUTING.ko.md)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-36-8250df) ![proved](https://img.shields.io/badge/proved-7-2da44e) ![refuted](https://img.shields.io/badge/refuted-5-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-8-848d97)
+![problems](https://img.shields.io/badge/problems-37-8250df) ![proved](https://img.shields.io/badge/proved-8-2da44e) ![refuted](https://img.shields.io/badge/refuted-5-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-8-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -108,13 +108,14 @@ problem's status.yaml attribution block.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**36 problems** — ✅ proved: 7 · 🔴 refuted: 5 · 🟡 partial: 16 · ⚪ open: 8
+**37 problems** — ✅ proved: 8 · 🔴 refuted: 5 · 🟡 partial: 16 · ⚪ open: 8
 
 ### OEIS
 
 | Problem | Claimed status | Machine checks | Solved by | Claim |
 |---|---|---|---|---|
 | [OEIS A000224 — R(n)(R(n)-1) divides n^2-1 iff n is an odd prime](problems/oeis-a000224/README.md) | 🟡 partial | lean + cert | `GPT-5.6 Sol` | Lean-verifies that no even n>1 satisfies the congruence, and proves there is no composite counterexample among odd prime powers p^e (e>=2) or products of two distinct odd primes; a Pell-orbit scan covers all K<=375, n<=10^18 with omega(n)<=3, but the full conjecture remains unresolved. |
+| [OEIS A034267 — D-finite recurrence proved for all n>=2](problems/oeis-a034267/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Lean-proves that the OEIS closed form for A034267 satisfies Mathar's conjectured order-2 polynomial recurrence at every meaningful index n>=2. |
 | [OEIS A056777 / Choudhury–Wei Conjecture 1.1 — n+12 not a prime power](problems/oeis-a056777/README.md) | 🟡 partial | — | `GPT-5.6 Sol` | Proves that for composite n>=4 with phi(n+12)=phi(n)+12 and sigma(n+12)=sigma(n)+12, n+12 cannot be a prime power; the original Choudhury–Wei Conjecture 1.1 remains unresolved. |
 | [OEIS A060841 — integrality classified, power-of-two denominators refuted](problems/oeis-a060841/README.md) | 🔴 refuted | cert | `GPT-5.6 Sol` | Claims both OEIS conjectures are settled: R_n is an integer exactly for n in {1,...,34,36,38} (integrality conjecture proved via a 2-adic bound for n>=91 plus finite certification), while the claim that all reduced denominators are powers of 2 is refuted by den(R_1807)=2^2342*3. |
 | [OEIS A063880 — sigma(n)=2*sigma*(n) with small powerful core](problems/oeis-a063880/README.md) | 🟡 partial | — | `GPT-5.6 Sol` | Proves that every solution of sigma(n)=2*sigma*(n) whose powerful core has at most two distinct primes has core exactly 108, so within that subfamily 108 is the only primitive term and all terms are 108 mod 216; cores with >=3 distinct primes are not excluded, so the full conjecture is unresolved. |

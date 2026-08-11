@@ -1,0 +1,26 @@
+id: oeis-a034267
+title: OEIS A034267 — D-finite recurrence proved for all n>=2
+domain: oeis
+source_url: https://oeis.org/A034267
+claimed_status: proved
+claim: Lean-proves that the OEIS closed form for A034267 satisfies Mathar's conjectured order-2 polynomial
+  recurrence at every meaningful index n>=2.
+artifacts:
+- path: README.md
+  kind: informal-proof
+verify: []
+lean:
+  modules:
+  - AgenticConjectures.OeisA034267
+  theorems:
+  - AgenticConjectures.OeisA034267.a_eq_f_diag
+  - AgenticConjectures.OeisA034267.a034267_recurrence
+attribution:
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: candidate selection, prior-art audit, mathematical derivation, Lean 4 proof, and documentation
+notes: >-
+  OEIS revision #23 still labels the recurrence a conjecture; the proof derives it from the much older
+  public A034261 formula and claims no novelty; the source omits a range, so n>=2 is the minimal meaningful
+  backward-recurrence range; the formalization uses exact division in Q and does not separately prove
+  integrality; unreviewed, not confirmed by OEIS editors, and not submitted externally.
