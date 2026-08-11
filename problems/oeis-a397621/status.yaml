@@ -1,0 +1,23 @@
+id: oeis-a397621
+title: OEIS A397621 Pascal-row linear complexity
+domain: oeis
+source_url: https://oeis.org/A397621
+claimed_status: proved
+claim: Claims a complete informal proof that A397621(A001317(n)) = 2^(floor(log2 n)+1) - n = A080079(n)
+  for all n >= 1, with a zero-run lower bound and an explicit connection polynomial (1+x)^d upper bound.
+artifacts:
+- path: PROOF.md
+  kind: informal-proof
+- path: a397621_certificate.py
+  kind: certificate-script
+- path: VERIFICATION.md
+  kind: other
+- path: legacy/a397621_certificate.py
+  kind: certificate-script
+verify:
+- cmd: python3 -m py_compile a397621_certificate.py && python3 a397621_certificate.py
+  expected_runtime: unknown
+  ci_feasible: true
+notes: Not peer reviewed and not confirmed by OEIS editors; novelty search negative but explicitly inconclusive;
+  README distinguishes this fixed finite-row problem from adjacent literature on infinite Pascal diagonal
+  sequences; upstream OEIS Formula section still marked the identity as Conjecture on 2026-08-11.

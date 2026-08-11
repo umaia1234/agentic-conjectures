@@ -1,0 +1,20 @@
+id: recoloring-radius-q15
+title: Graph recoloring reconfiguration radius, Question 15
+domain: graph-combinatorics
+source_url: ''
+claimed_status: open
+claim: 'Claims no result: the directory only provides exact-BFS counterexample-search tooling (Python
+  atlas scan and a sharded C++ graph6 search) for Cambie-Cames van Batenburg-Cranston Question 15, with
+  no outcome reported.'
+artifacts:
+- path: recolor_radius_search.py
+  kind: search-code
+- path: recolor_radius_exact.cpp
+  kind: search-code
+verify:
+- cmd: g++ -O3 -std=c++17 recolor_radius_exact.cpp -o /tmp/recolor_radius_exact
+  expected_runtime: unknown
+  ci_feasible: true
+notes: 'README is a five-line tool inventory: no findings, no negative-search bound, no source URL, no
+  runtimes; the previously shipped prebuilt binary is now gitignored (rebuild from source); the only listed
+  commands are a --help invocation and a compile, not an actual reproduction of any result.'

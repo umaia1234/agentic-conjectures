@@ -41,3 +41,16 @@ a_n=6a_{n-3}+a_{n-6}-6a_{n-9}
 점화식으로부터 모든 \(n\ge10\)에 대해 성립함을 보이는 전칭 증명입니다.
 공개 검색에서 같은 증명을 찾지 못했다는 기록은 신규성의 확정이 아니며,
 아직 동료 심사나 OEIS 편집자의 확인을 거치지 않았습니다.
+
+## Lean 형식 증명
+
+[`AgenticConjectures/OeisA136433.lean`](../../AgenticConjectures/OeisA136433.lean)이
+이 전칭 명제를 mathlib 기반 Lean 4로 `sorry` 없이 증명합니다:
+
+```
+a136433_order9 : ∀ n, 10 ≤ n → (a n : ℤ) = 6 * a (n-3) + a (n-6) - 6 * a (n-9)
+```
+
+이 항목은 upstream Lean 스냅샷이 없으므로 수열 정의 자체의 충실성
+주의사항(오프셋, 점화 인덱스 기준, `a 0` 미사용)은 모듈 docstring에
+기록했습니다. CI가 `lake build`, no-sorry 게이트, 공리 감사를 재검증합니다.

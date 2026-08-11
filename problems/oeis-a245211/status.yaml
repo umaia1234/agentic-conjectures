@@ -1,0 +1,28 @@
+id: oeis-a245211
+title: 'OEIS A245211: a(n)=n only for n=21'
+domain: oeis
+source_url: https://oeis.org/A245211
+claimed_status: partial
+claim: 'Claims only partial progress: proved necessary conditions forcing any counterexample to the uniqueness
+  of n=21 to be coprime to 2310 with a restricted factorization shape, plus exact verification for all
+  n <= 10^9 and for two-prime-factor n with exponents <= 200.'
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: a245211_scan.cpp
+  kind: search-code
+- path: a245211_two_prime.py
+  kind: search-code
+- path: upstream/245211_cbf46b82.lean
+  kind: upstream-lean
+verify:
+- cmd: g++ -O3 -march=native -std=c++17 -Wall -Wextra a245211_scan.cpp -o /tmp/a245211_scan && /tmp/a245211_scan
+    1000000000 1000000
+  expected_runtime: unknown (scan of all n <= 10^9)
+  ci_feasible: false
+- cmd: python3 a245211_two_prime.py 200
+  expected_runtime: unknown (388,919 exact prime-candidate checks)
+  ci_feasible: false
+notes: README opens by stating the full conjecture remains unresolved; remaining gaps are two-prime cases
+  with exponents > 200, nonsquarefree n with >= 3 prime factors, and squarefree n with an odd number r
+  >= 5 of prime factors; upstream Lean uniqueness theorem is a sorry-marked conjecture statement.

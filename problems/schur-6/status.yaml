@@ -1,0 +1,35 @@
+id: schur-6
+title: Independent Schur-6 attempt
+domain: other
+source_url: ''
+claimed_status: partial
+claim: 'Claims only independent reverification of the published S(6) >= 536 partition and negative search
+  results toward [1,537]: the best saved 537-coloring has exactly two monochromatic Schur triples, a depth-5
+  repair exclusion around it found nothing, and the full SAT instance remained undecided.'
+artifacts:
+- path: verify.py
+  kind: certificate-script
+- path: reconstruct_published.py
+  kind: certificate-script
+- path: published_536.col
+  kind: data
+- path: near_537_two_violations.col
+  kind: data
+- path: local_search.cpp
+  kind: search-code
+- path: encode_cnf.py
+  kind: search-code
+verify:
+- cmd: python3 reconstruct_published.py published_536_half.txt > /tmp/reconstructed_536.col && cmp /tmp/reconstructed_536.col
+    published_536.col && python3 verify.py published_536.col --maximum 536
+  expected_runtime: unknown
+  ci_feasible: true
+- cmd: python3 repair_search.py near_537_two_violations.col --maximum 537 --colors 6 --depth 5 --seconds
+    60; test $? -eq 2
+  expected_runtime: <= 60 s (stated cap; 232,887 nodes exhausted). Exit 2 = search exhausted without
+    finding a repair, which is exactly the certified negative result, hence the wrapper.
+  ci_feasible: true
+notes: README states explicitly this is a near coloring, not a new lower bound, and that no run proves
+  [1,537] impossible; remaining violations are color 4 triples 12+12=24 and 12+24=36; repair exclusion
+  is only radius 5 around one coloring; CaDiCaL undecided after ~1.85M conflicts; encoder sanity-checked
+  on S(2)=4. Long local-search and SAT runs are local-only.

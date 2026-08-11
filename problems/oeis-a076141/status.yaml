@@ -1,0 +1,29 @@
+id: oeis-a076141
+title: OEIS A076141 — n occurs at most once in binary of n^2, checked to 2^40
+domain: oeis
+source_url: https://oeis.org/A076141
+claimed_status: partial
+claim: An exact exhaustive occurrence-geometry search found no counterexample for 0 < n < 2^40, extending
+  the OEIS-recorded 10^6 verification by a factor of about 1.1 million; explicitly a rigorous bounded
+  verification, not a proof of the full conjecture.
+artifacts:
+- path: a076141_pair_geometry.cpp
+  kind: search-code
+- path: a076141_independent_periodic.cpp
+  kind: search-code
+- path: a076141_independent_pair.cpp
+  kind: search-code
+- path: a076141_independent_audit.py
+  kind: search-code
+- path: A076141_RUN.txt
+  kind: data
+- path: upstream/76141_34382c19.lean
+  kind: upstream-lean
+verify:
+- cmd: g++ -O3 -std=c++20 -o build_pg a076141_pair_geometry.cpp && ./build_pg 24 && rm -f build_pg
+  expected_runtime: small-exponent smoke run
+  ci_feasible: true
+notes: Finite statement only (n < 2^40); independently written second enumerator checked 137,443,246,808
+  candidates and a brute-force scan of all odd n < 2^32 agreed; source SHA256 hashes recorded; the full
+  2^40 run is local-only; no novelty or priority claim without external review; upstream Lean universal
+  statement is sorry-backed.

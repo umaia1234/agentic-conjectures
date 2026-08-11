@@ -1,0 +1,31 @@
+id: oeis-a000224
+title: OEIS A000224 — R(n)(R(n)-1) divides n^2-1 iff n is an odd prime
+domain: oeis
+source_url: https://oeis.org/A000224
+claimed_status: partial
+claim: Proves there is no composite counterexample among even n, odd prime powers p^e (e>=2), and products
+  of two distinct odd primes, plus a Pell-orbit scan covering all K<=375, n<=10^18 with omega(n)<=3; explicitly
+  does not claim to resolve the OEIS conjecture.
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: semiprime_certificate.py
+  kind: certificate-script
+- path: pell_quotient_scan.py
+  kind: search-code
+- path: semiprime_result.json
+  kind: data
+- path: pell_result.json
+  kind: data
+- path: upstream/224_2322a58c.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 semiprime_certificate.py --output /tmp/a000224_semiprime_result.json
+  expected_runtime: unknown (finite set of 117 candidate pairs)
+  ci_feasible: true
+- cmd: python3 pell_quotient_scan.py --max-k 375 --max-n 1000000000000000000 --output /tmp/a000224_pell_result.json
+  expected_runtime: ~8-27s; requires SymPy. Output goes to /tmp so reruns do not churn the committed result.json
+  ci_feasible: true
+notes: General p^e q^f and >=4 distinct-prime-factor cases remain unproved; Pell-seed completeness relies
+  on SymPy's diop_DN, so that part is CAS-assisted rather than independent; OEIS records verification
+  to 10^8; upstream Lean statement is sorry-backed.

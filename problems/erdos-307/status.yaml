@@ -1,0 +1,37 @@
+id: erdos-307
+title: 'Erdős #307 — product of prime reciprocal sums equal to 1'
+domain: erdos
+source_url: https://www.erdosproblems.com/307
+claimed_status: partial
+claim: Re-proves forcing identities and local Legendre/mod-8/mod-24 necessary conditions and exhaustively
+  shows |P union Q| >= 60 and max(P union Q) >= 347; the problem itself remains open and no novelty is
+  claimed.
+artifacts:
+- path: PROOF.md
+  kind: informal-proof
+- path: test_identities.py
+  kind: certificate-script
+- path: enumerate_59.py
+  kind: search-code
+- path: enumerate_bounded_support_fast.py
+  kind: search-code
+- path: enumeration_59_result.json
+  kind: data
+- path: bounded_support_68_result.json
+  kind: data
+verify:
+- cmd: python3 test_identities.py
+  expected_runtime: unknown
+  ci_feasible: true
+- cmd: python3 exact_checker.py --P 2,5,11 --Q 3,7,13
+  expected_runtime: unknown
+  ci_feasible: true
+- cmd: python3 enumerate_59.py
+  expected_runtime: unknown
+  ci_feasible: false
+- cmd: python3 enumerate_bounded_support_fast.py --prime-count 68
+  expected_runtime: unknown (checks 9,926,250 unions)
+  ci_feasible: false
+notes: 'README: ''The problem remains open; nothing here is presented as a solution or as a proof of novelty.''
+  Forcing theorem already appears in Bado''s 2026 preprint; AlphaProof Nexus lists attempts but no result
+  for #307; the |U|>=60 bound matches the existing database statement; upstream Lean declaration is sorry-backed.'

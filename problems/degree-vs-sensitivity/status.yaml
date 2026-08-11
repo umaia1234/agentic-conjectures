@@ -1,0 +1,23 @@
+id: degree-vs-sensitivity
+title: Degree vs sensitivity — n=14 degree-5 aggregate constraints
+domain: other
+source_url: https://epoch.ai/frontiermath/open-problems/degree-sensitivity-boolean
+claimed_status: partial
+claim: Claims exact necessary layer constraints (B_2>=84, exactly 247 feasible (B_2,B_3,B_4,B_5) profiles)
+  for the n=14 degree<=5 fully sensitive case, while the truth-table existence search ended with status
+  UNKNOWN.
+artifacts:
+- path: degree_sensitivity_pair_bound.py
+  kind: certificate-script
+- path: degree_sensitivity_cpsat.py
+  kind: search-code
+- path: degree_sensitivity_milp.py
+  kind: search-code
+verify:
+- cmd: python3 degree_sensitivity_pair_bound.py
+  expected_runtime: unknown
+  ci_feasible: true
+notes: README stresses the full-search outcome is UNKNOWN (timeout only, no evidence either way), that
+  no nonexistence proof was obtained, and that the necessary conditions are not claimed to be new to the
+  literature; intermediate symmetry branches were not exhausted. Heavy CP-SAT/MILP searches (ortools)
+  are local-only.

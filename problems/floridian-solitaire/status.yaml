@@ -1,0 +1,27 @@
+id: floridian-solitaire
+title: Floridian solitaire — immediate losses for every n > 6
+domain: other
+source_url: https://arxiv.org/abs/2608.08313
+claimed_status: proved
+claim: Claims a complete (unreviewed) proof that every integer n > 6 has an immediate-loss position, resolving
+  the open residue classes n = 0,2 (mod 6) of Meyerowitz–Curran–Locke–Low's second research question via
+  a gap-two block construction plus explicit cases 18 and 20.
+artifacts:
+- path: PROOF.md
+  kind: informal-proof
+- path: INDEPENDENT_PROOF.md
+  kind: informal-proof
+- path: verify.py
+  kind: certificate-script
+- path: verify_independent.py
+  kind: certificate-script
+verify:
+- cmd: python3 verify.py
+  expected_runtime: unknown (recorded run checked n=7..500, 334,670 selection profiles)
+  ci_feasible: true
+- cmd: python3 verify_independent.py
+  expected_runtime: unknown
+  ci_feasible: true
+notes: Self-described as an unreviewed solution; no peer review and explicitly no priority claim (only
+  targeted public searches through 2026-08-11); the two independent checkers verify witnesses for n=7..500
+  (indexed subset audit to n=10000), which supports but does not replace the general informal proof.

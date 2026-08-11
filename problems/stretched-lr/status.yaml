@@ -1,0 +1,27 @@
+id: stretched-lr
+title: Stretched Littlewood-Richardson negative-coefficient search
+domain: other
+source_url: https://epoch.ai/frontiermath/open-problems/stretched-lr-coefficients
+claimed_status: partial
+claim: 'Claims only a negative search: across ~243k classic-lrcalc triples, 9M Rust random trials with
+  exact interpolation, and an exhausted 10,312-pair stretched-Kostka subfamily, no triple in the FrontierMath
+  box produced a negative ordinary power-basis coefficient.'
+artifacts:
+- path: search_stretched.py
+  kind: search-code
+- path: rust_random_search.rs
+  kind: search-code
+- path: rust_kostka_search.rs
+  kind: search-code
+- path: lr_tableau_dp.py
+  kind: other
+- path: search_summary.json
+  kind: data
+- path: closest_positive.json
+  kind: data
+verify: []
+notes: Header states Status UNKNOWN / negative result of the search, explicitly neither a proof of the
+  King-Tollu-Toumazet conjecture nor an exhaustion of the box; random trials contain duplicates and dimension
+  thresholds skip regimes; classic lrcalc has signed 64-bit overflow risk, motivating the exact Rust route;
+  problem page still listed unsolved on 2026-08-11. Self-tests require a locally extracted liblrcalc,
+  so no CI-runnable command.

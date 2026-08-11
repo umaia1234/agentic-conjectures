@@ -1,0 +1,24 @@
+id: small-diophantine
+title: Small Diophantine equations low-degree ansatz attempt
+domain: other
+source_url: https://epoch.ai/frontiermath/open-problems/small-diophantine
+claimed_status: partial
+claim: 'Claims only exact negative results: three low-degree rational-curve ansatz classes and a narrow
+  integer-Q Pell-factor spot-check admit no solutions for the six remaining equations z^2 + y^2*z + x^3
+  + a*x + b = 0, none of which is claimed solved.'
+artifacts:
+- path: analyze_ansatze.py
+  kind: search-code
+- path: search_pell_factor.py
+  kind: search-code
+verify:
+- cmd: python3 analyze_ansatze.py
+  expected_runtime: unknown
+  ci_feasible: true
+- cmd: python3 search_pell_factor.py
+  expected_runtime: roughly a minute (stated), substantial memory
+  ci_feasible: false
+notes: README opens by saying no solution meeting Epoch's threshold (three integer solutions with |x|
+  > 10^50) was found and no equation is claimed solved; obstructions are ansatz-specific and say nothing
+  about more complicated curves or non-parametric families; rational Q, other integer Q, and higher-degree
+  Pell factorizations remain untested.

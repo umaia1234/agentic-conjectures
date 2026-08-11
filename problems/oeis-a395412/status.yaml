@@ -1,0 +1,22 @@
+id: oeis-a395412
+title: OEIS A395412 certified finite nonvanishing extension
+domain: oeis
+source_url: https://oeis.org/A395412
+claimed_status: partial
+claim: 'Claims a certified finite extension only: reproduces the 84 published terms, rigorously proves
+  a(n) > 0 for every 85 <= n <= 200 via PARI/GP isprime witnesses, and BPSW-screens 201 <= n <= 400 with
+  no proof claimed there.'
+artifacts:
+- path: search_and_certify.py
+  kind: certificate-script
+- path: result.json
+  kind: data
+verify:
+- cmd: python3 search_and_certify.py --gp /path/to/gp --prove-through 200 --screen-through 400 --output
+    result.json
+  expected_runtime: unknown (rigorous APRCL/ECPP proofs dominate; /path/to/gp is a placeholder)
+  ci_feasible: false
+notes: README header says explicitly this is partial progress, not a solution of the infinite conjecture;
+  the 201-400 range is a probable-prime screen only; a small structural lemma shows candidates have no
+  prime factor <= p_n; refuting the conjecture would additionally require compositeness certificates for
+  every admissible d.

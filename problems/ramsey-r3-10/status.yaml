@@ -1,0 +1,35 @@
+id: ramsey-r3-10
+title: R(3,10) C20-bicirculant subcase exclusion
+domain: graph-combinatorics
+source_url: ''
+claimed_status: partial
+claim: 'Claims a SAT/DRUP-certified exclusion of one automorphism class only: no triangle-free 40-vertex
+  graph with independence number <= 9 is invariant under the C20 action with cycle structure 20^2, so
+  a hypothetical 40-vertex (3,10) Ramsey graph cannot be such a bicirculant; R(3,10) in {40,41} is not
+  determined.'
+artifacts:
+- path: c20_final_nopb.cnf
+  kind: sat-cnf
+- path: c20_nopb_unsat.drup
+  kind: sat-drup
+- path: c20_separators_nopb.txt
+  kind: data
+- path: audit_c20_certificate.py
+  kind: certificate-script
+- path: verify_c20_cnf.py
+  kind: certificate-script
+- path: search_c20_bicirculant_r310.py
+  kind: search-code
+verify:
+- cmd: python3 audit_c20_certificate.py c20_final_nopb.cnf c20_separators_nopb.txt
+  expected_runtime: unknown (stdlib-only semantic audit of 15,804 clauses)
+  ci_feasible: true
+- cmd: drat-trim c20_final_nopb.cnf c20_nopb_unsat.drup
+  expected_runtime: unknown (proof core 366,859 resolution steps)
+  ci_feasible: true
+  requires:
+  - drat-trim
+notes: Status line reads computationally certified but not peer reviewed; README explicitly makes no literature-novelty
+  claim and says the one-orbit circulant exclusion is already implied by published results; four SAT backends
+  agree UNSAT and official drat-trim reported s VERIFIED; regenerated certificates need not be byte-identical.
+  Full SAT+CEGAR regeneration and cross-solving are local-only.

@@ -1,0 +1,16 @@
+id: conway-99-graph
+title: Conway's 99-graph problem srg(99,14,1,2)
+domain: graph-combinatorics
+source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/Wikipedia/Conway99Graph.lean
+claimed_status: open
+claim: 'Status survey only: records that existence of srg(99,14,1,2) is open and cites 2025 automorphism-group
+  restrictions (Cesarz–Woldar); no new computation or resolution is claimed.'
+artifacts:
+- path: README.md
+  kind: other
+- path: upstream/README.md
+  kind: upstream-lean
+verify: []
+notes: Korean-language survey dated 2026-08-11; explicitly states it contains no new existence/nonexistence
+  result and that ruling out symmetric subcases cannot settle the problem; upstream Lean statement is
+  sorry-backed.

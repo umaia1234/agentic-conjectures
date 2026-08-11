@@ -22,6 +22,11 @@ DOMAIN_TITLE = {
 }
 
 
+def esc(s: str) -> str:
+    """Escape characters that would break a markdown table cell."""
+    return s.replace("|", "\\|").replace("\n", " ")
+
+
 def checks_cell(status: dict) -> str:
     tags = []
     if (status.get("lean") or {}).get("theorems"):
@@ -45,8 +50,8 @@ def main() -> int:
         counts[st] = counts.get(st, 0) + 1
         d = s.get("domain") if s.get("domain") in rows else "other"
         rows[d].append(
-            f"| [{s.get('title', s['id'])}](problems/{s['id']}/README.md) "
-            f"| {BADGE.get(st, st)} | {checks_cell(s)} | {s.get('claim', '')} |"
+            f"| [{esc(s.get('title', s['id']))}](problems/{s['id']}/README.md) "
+            f"| {BADGE.get(st, st)} | {checks_cell(s)} | {esc(s.get('claim', ''))} |"
         )
 
     total = sum(counts.values())

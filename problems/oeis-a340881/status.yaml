@@ -1,0 +1,24 @@
+id: oeis-a340881
+title: OEIS A340881 modular periodicity
+domain: oeis
+source_url: https://oeis.org/A340881
+claimed_status: proved
+claim: Claims a complete informal proof of both OEIS periodicity conjectures, giving explicit pure periods
+  mod odd m (period 2*ord_m(2) from n=1) and eventual periodicity of A340881(n) mod m for every m >= 2.
+artifacts:
+- path: PROOF.md
+  kind: informal-proof
+- path: a340881_certificate.py
+  kind: certificate-script
+- path: VERIFICATION.md
+  kind: other
+- path: upstream/340881_294a5574.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 -m py_compile a340881_certificate.py && python3 a340881_certificate.py
+  expected_runtime: unknown
+  ci_feasible: true
+notes: Not peer reviewed and not confirmed by OEIS editors; novelty rests only on a negative public search
+  as of 2026-08-11; PROOF.md warns that stated periods are a period, not necessarily minimal (prime minimal
+  period only claimed to divide 2(p-1)); upstream Lean snapshot covers only the prime-modulus statement
+  and is sorry-marked.

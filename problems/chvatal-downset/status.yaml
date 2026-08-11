@@ -1,0 +1,29 @@
+id: chvatal-downset
+title: Chvatal's downset conjecture — saturated SAT reduction
+domain: graph-combinatorics
+source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/Paper/Chvatal.lean
+claimed_status: partial
+claim: Proves an elementary saturation lemma and reports an uncertified n=6 UNSAT exclusion of counterexamples
+  under stated reductions; n=8 attempts timed out and the general conjecture remains open.
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: generate_cnf.py
+  kind: search-code
+- path: n6_solver_result.json
+  kind: data
+- path: n8_attempt_summary.md
+  kind: other
+- path: upstream/README.md
+  kind: upstream-lean
+verify:
+- cmd: python -m venv /tmp/chvatal-sat-venv && /tmp/chvatal-sat-venv/bin/pip install "python-sat[pblib]"
+    && /tmp/chvatal-sat-venv/bin/python generate_cnf.py --n 6 --reduced --encoding cardnet --solve
+  expected_runtime: unknown (result JSON records ~6.6s solve)
+  ci_feasible: true
+- cmd: /tmp/chvatal-sat-venv/bin/python generate_cnf.py --self-test
+  expected_runtime: unknown
+  ci_feasible: true
+notes: README explicitly claims no new case of the conjecture (n<=7 already settled in the literature);
+  n=6 CaDiCaL UNSAT has no DRAT/LRAT certificate ('uncertified solver reproduction'); n=8 MILP and feasibility
+  runs hit time limits without deciding; upstream Lean statement is sorry-backed.

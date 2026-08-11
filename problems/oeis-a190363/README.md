@@ -62,3 +62,18 @@ FormalConjectures의 [원문 스냅샷과 출처 기록](upstream/README.md)을
 [`190363_e4edee15.lean`](upstream/190363_e4edee15.lean)에 보존했다. 그
 `by sorry` 정리는 제안된 점화식을 적은 **추측 statement**이지 형식 증명이 아니다.
 이 폴더는 첫 실패와 무한 반례족으로 그 statement를 반증한다.
+
+## 이 저장소의 Lean 형식 반증
+
+upstream 정의를 그대로 복사한
+[`AgenticConjectures/OeisA190363.lean`](../../AgenticConjectures/OeisA190363.lean)에서
+정확히 그 statement의 부정
+
+```
+oeis_190363_conjecture_0_false : ¬ A190363_LR.IsSolution (fun n => (a (n + 1) : ℤ))
+```
+
+을 `sorry` 없이 증명했다. 해 인덱스 139(= OEIS 기준 인덱스 140)에서의 첫
+실패 `542 ≠ -471 + 484 + 528 = 541`을 네 개의 정확한 정수 제곱 샌드위치로
+평가한다. CI가 `lake build`, no-sorry 게이트, 공리 감사(표준 3공리만)를
+재검증한다.

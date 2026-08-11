@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install pyyaml
+      - run: pip install pyyaml sympy
       - name: Build drat-trim (DRUP/DRAT proof checker)
         run: |
           git clone --depth 1 https://github.com/marijnheule/drat-trim /tmp/drat-trim

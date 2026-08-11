@@ -1,0 +1,26 @@
+id: powers-of-two-tiles
+title: Powers-of-two translational tiles (BKT Question 9)
+domain: other
+source_url: https://arxiv.org/abs/2303.07956v2
+claimed_status: refuted
+claim: 'Claims explicit counterexamples refuting the suggested one-or-two-cardinality restriction in the
+  yes/no clause of Benjamini-Kozma-Tzalik Question 9: translational tiles of every positive odd cardinality
+  exist inside {1,2,4,...,2^n}, the smallest being A={1,4,16} with B={0,1,2}+9Z.'
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: power_two_tile_counterexample.py
+  kind: certificate-script
+verify:
+- cmd: python3 power_two_tile_counterexample.py 3
+  expected_runtime: unknown
+  ci_feasible: true
+- cmd: python3 power_two_tile_counterexample.py 5
+  expected_runtime: unknown
+  ci_feasible: true
+- cmd: python3 power_two_tile_counterexample.py 9 --shift 2
+  expected_runtime: unknown
+  ci_feasible: true
+notes: Explicitly unreviewed; settles only the yes/no clause and does not determine the total number of
+  tiles asked in Question 9's first sentence; checker passed for cardinalities 3, 5, 9 including a shifted
+  family on 2026-08-11; targeted searches found no earlier answer but no priority claim is made.

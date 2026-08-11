@@ -1,0 +1,18 @@
+id: wowii-graph-conjecture-61
+title: WOWII Graph Conjecture 61 partial results
+domain: graph-combinatorics
+source_url: http://cms.dt.uh.edu/faculty/delavinae/research/wowII/
+claimed_status: partial
+claim: 'Claims informal proofs of partial results only: f(G) >= alpha(G) + ceil(D(G)/4) in general, f(G)
+  >= alpha(G)+1 with diameter consequences, and the original conjecture f(G) >= r(G) + ceil(D(G)/3) for
+  all connected graphs of diameter in {0,1,2,3,5,6,9} and for all trees.'
+artifacts:
+- path: PROOF.md
+  kind: informal-proof
+- path: upstream/GraphConjecture61.lean
+  kind: upstream-lean
+verify: []
+notes: README states the results do not close the remaining diameters, so the original conjecture is not
+  resolved; there is no computational certificate and no completed Lean proof; arguments rely on the basic
+  inequality r(G) <= alpha(G); the upstream FormalConjectures declaration remains sorry-marked and research
+  open.

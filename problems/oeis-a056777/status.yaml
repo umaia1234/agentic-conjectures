@@ -1,0 +1,17 @@
+id: oeis-a056777
+title: OEIS A056777 / Choudhury–Wei Conjecture 1.1 — n+12 not a prime power
+domain: oeis
+source_url: https://arxiv.org/abs/2606.10331v3
+claimed_status: partial
+claim: Proves that for composite n>=4 with phi(n+12)=phi(n)+12 and sigma(n+12)=sigma(n)+12, n+12 cannot
+  be a prime power; the original Choudhury–Wei Conjecture 1.1 remains unresolved.
+artifacts:
+- path: PROOF.md
+  kind: informal-proof
+- path: upstream/56777.lean
+  kind: upstream-lean
+verify: []
+notes: README states the folder contains no computational certificate (purely elementary proof, no finite
+  search); the authors' reported 10^12 search was not independently rerun; negative public searches for
+  the same lemma are noted but novelty is explicitly not asserted before peer review; the partial theorem
+  is not formalized in the upstream Lean file.

@@ -1,0 +1,16 @@
+id: oeis-a297707
+title: OEIS A297707 prime-gap search code
+domain: oeis
+source_url: https://oeis.org/A297707
+claimed_status: open
+claim: 'Claims no result: the directory contains only experimental prime-gap search code whose reported
+  endpoints are Baillie-PSW probable primes, certifying nothing about the conjecture.'
+artifacts:
+- path: oeis_a297707_search.py
+  kind: search-code
+- path: upstream/297707_fd3973db.lean
+  kind: upstream-lean
+verify: []
+notes: The search command takes a user-chosen bound placeholder, not a fixed reproduction; README says
+  endpoints need separate primality certification before use in any proof; the upstream Lean theorem (counterexample
+  index > 250) is a sorry-marked conjecture statement that this folder's search does not certify.

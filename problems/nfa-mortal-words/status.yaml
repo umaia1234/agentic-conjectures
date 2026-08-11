@@ -1,0 +1,34 @@
+id: nfa-mortal-words
+title: Mortal words in small image-bounded NFAs (Kiefer–Ryzhikov)
+domain: other
+source_url: https://doi.org/10.4230/LIPIcs.MFCS.2025.62
+claimed_status: partial
+claim: Claims exact extremal shortest-mortal-word lengths 1,3,7,10 for labelled ordered binary 2-image-bounded
+  NFAs with up to 4 states, plus a 5-state lower-bound witness of length 17; the paper's general n^(k+1)
+  tightness question is not resolved.
+artifacts:
+- path: enumerate_binary.py
+  kind: search-code
+- path: enumerate_binary_n4.cpp
+  kind: search-code
+- path: verify_witnesses.py
+  kind: certificate-script
+- path: witnesses.json
+  kind: data
+- path: search_random_n4.py
+  kind: search-code
+- path: search_random_n5.cpp
+  kind: search-code
+verify:
+- cmd: python3 verify_witnesses.py
+  expected_runtime: unknown
+  ci_feasible: true
+- cmd: python3 enumerate_binary.py
+  expected_runtime: unknown (default limited to n <= 3)
+  ci_feasible: true
+- cmd: python3 search_random_n4.py
+  expected_runtime: normally a few seconds
+  ci_feasible: true
+notes: README explicitly makes no claim that the small extremal values are new; exhaustive claim is limited
+  to labelled, ordered-alphabet binary NFAs (no state-isomorphism quotient); the 5-state value 17 is a
+  lower bound only; the n=4 exhaustive enumeration (107M letter pairs, 16 threads) is local-only.

@@ -1,0 +1,29 @@
+id: oeis-a136433
+title: OEIS A136433 — 9-lag linear recurrence proved for all n>=10
+domain: oeis
+source_url: https://oeis.org/A136433
+claimed_status: proved
+claim: Claims a complete proof that the OEIS-conjectured constant-coefficient recurrence a_n = 6*a_{n-3}
+  + a_{n-6} - 6*a_{n-9} holds for all n>=10 for the periodic-coefficient nonautonomous sequence, via a_{t+3}=6*a_t+B_t
+  with B_t of period 6.
+artifacts:
+- path: PROOF.md
+  kind: informal-proof
+- path: VERIFICATION.md
+  kind: other
+- path: a136433_certificate.py
+  kind: certificate-script
+verify:
+- cmd: python3 a136433_certificate.py
+  expected_runtime: unknown
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.OeisA136433
+  theorems:
+  - AgenticConjectures.OeisA136433.a136433_add_form
+  - AgenticConjectures.OeisA136433.a136433_order9
+notes: OEIS still marked the recurrence as 'Conjecture' as of 2026-08-11; the recurrence formula itself
+  has appeared in OEIS LinearRecurrence code since 2013, so the claimed contribution is the universal
+  proof, not discovery; unreviewed and not confirmed by OEIS editors; certificate re-checks finitely many
+  identities and does not replace the proof; no upstream Lean snapshot in this directory.

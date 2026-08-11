@@ -1,0 +1,18 @@
+id: projective-plane-order-12
+title: Finite projective plane of order 12
+domain: erdos
+source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/ErdosProblems/723.lean
+claimed_status: open
+claim: 'Claims nothing new: records the open existence problem for a projective plane of order 12 (equivalently
+  a symmetric 2-(157,13,1) design), known collineation-group exclusions, and computational considerations
+  only.'
+artifacts:
+- path: upstream/723.lean
+  kind: upstream-lean
+- path: upstream/README.md
+  kind: other
+verify: []
+notes: README states explicitly that the directory claims no new existence or nonexistence result; cites
+  2023 exclusion of order-4 collineation groups (leaving possible group orders 1, 2, 3) and a 2026 source
+  listing 12 as the smallest unresolved order; upstream Erdos problem 723 Lean declaration is sorry-marked;
+  no code or reproduction commands.

@@ -1,0 +1,23 @@
+id: oeis-a060841
+title: OEIS A060841 — integrality classified, power-of-two denominators refuted
+domain: oeis
+source_url: https://oeis.org/A060841
+claimed_status: refuted
+claim: 'Claims both OEIS conjectures are settled: R_n is an integer exactly for n in {1,...,34,36,38}
+  (integrality conjecture proved via a 2-adic bound for n>=91 plus finite certification), while the claim
+  that all reduced denominators are powers of 2 is refuted by den(R_1807)=2^2342*3.'
+artifacts:
+- path: PROOF.md
+  kind: informal-proof
+- path: a060841_certificate.py
+  kind: certificate-script
+- path: upstream/60841_4cba886e.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 a060841_certificate.py
+  expected_runtime: about 0.46 seconds
+  ci_feasible: true
+notes: 'Mixed resolution: conjecture 1 (integrality) is claimed proved, conjecture 2 (power-of-2 denominators)
+  is claimed refuted at n=1807, which also refutes an OEIS A260897 claim; two independent computational
+  paths (Fraction accumulation and per-prime valuations) agree; unreviewed, not submitted to OEIS, novelty
+  explicitly not asserted; upstream Lean combined statement is sorry-backed.'

@@ -1,0 +1,25 @@
+id: oeis-a397245
+title: OEIS A397245 mod 3 coefficient classification
+domain: oeis
+source_url: https://oeis.org/A397245
+claimed_status: proved
+claim: Claims a complete informal proof of both conjectured mod 3 iff-classifications of a_n (a_n = 1
+  mod 3 iff n+2 = 3^j or 2*3^j; a_n = 2 mod 3 iff n+2 = 3^i + 3^j with i < j; else 0) via a closed form
+  in F_3[[x]].
+artifacts:
+- path: PROOF.md
+  kind: informal-proof
+- path: a397245_certificate.py
+  kind: certificate-script
+- path: VERIFICATION.md
+  kind: other
+- path: legacy/a397245_certificate.py
+  kind: certificate-script
+verify:
+- cmd: python3 -m py_compile a397245_certificate.py && python3 a397245_certificate.py
+  expected_runtime: unknown
+  ci_feasible: true
+notes: Not peer reviewed and not confirmed by OEIS editors; negative novelty search as of 2026-08-11 is
+  explicitly not conclusive; canonical certificate requires SymPy; a legacy v1 certificate is kept for
+  provenance; PROOF.md notes the finite certificate only rechecks identities and does not replace the
+  proof.

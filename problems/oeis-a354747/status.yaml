@@ -1,0 +1,33 @@
+id: oeis-a354747
+title: OEIS A354747 first unknown case a(100943)
+domain: oeis
+source_url: https://oeis.org/A354747
+claimed_status: refuted
+claim: Claims a(100943)=39101 via two independent deterministic primality certificates (GMP Lucas-rank
+  and OpenPFGW BLS) for 201886*3^39101-1 plus exhaustive compositeness checks of all exponents 1..39100,
+  refuting the upstream FormalConjectures statement a(100943)=0.
+artifacts:
+- path: a354747_lucas_certificate.cpp
+  kind: certificate-script
+- path: a354747_exponent_sieve.cpp
+  kind: search-code
+- path: a354747_minimality_audit.py
+  kind: search-code
+- path: A354747_LUCAS_TRANSCRIPT.txt
+  kind: data
+- path: a354747_survivors_1m.txt
+  kind: data
+- path: upstream/354747_c4bbc149.lean
+  kind: upstream-lean
+verify:
+- cmd: g++ -O3 -std=c++17 -pthread a354747_lucas_certificate.cpp -lgmpxx -lgmp -o /tmp/a354747_lucas &&
+    /tmp/a354747_lucas
+  expected_runtime: unknown (61,992-bit Lucas chain; needs libgmp-dev)
+  ci_feasible: false
+- cmd: pfgw64 -tc -q'201886*3^39101-1'
+  expected_runtime: unknown (requires external OpenPFGW 4.1.8 binary)
+  ci_feasible: false
+notes: Claims deterministic proof, not merely PRP, cross-checked by two independent methods and three
+  minimality audits with SHA256 fingerprints; OEIS still listed n=100943 as unknown at the 2026-08-11
+  check date; README explicitly disclaims publication priority; reproduction depends on GMP and the external
+  pfgw64 binary.

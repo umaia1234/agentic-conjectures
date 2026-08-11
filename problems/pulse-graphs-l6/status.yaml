@@ -1,0 +1,34 @@
+id: pulse-graphs-l6
+title: Exact computation of L(6) for Pulse Graphs
+domain: graph-combinatorics
+source_url: https://arxiv.org/abs/2607.10453v2
+claimed_status: proved
+claim: Claims the exact value L(6)=17 for the paper's open case n=6, via exhaustive isomorph-free enumeration
+  of all 1,540,944 loopless 6-vertex digraphs with two independent cycle analyzers, plus an independently
+  verified explicit 17-cycle witness.
+artifacts:
+- path: pulse_analyze.cpp
+  kind: search-code
+- path: pulse_analyze_kahn.cpp
+  kind: search-code
+- path: witness.json
+  kind: data
+- path: verify_witness.py
+  kind: certificate-script
+- path: reproduce.sh
+  kind: other
+- path: SHA256SUMS
+  kind: other
+verify:
+- cmd: python3 verify_witness.py
+  expected_runtime: unknown (single 64-state witness check)
+  ci_feasible: true
+- cmd: sha256sum -c SHA256SUMS
+  expected_runtime: unknown
+  ci_feasible: true
+- cmd: bash reproduce.sh
+  expected_runtime: unknown (regression over n=1..6; needs nauty geng/directg)
+  ci_feasible: false
+notes: Explicitly an unreviewed computer-assisted result; the upper bound is conditional on nauty's (2.8.8)
+  standard isomorph-free generation guarantee; the lower bound is nauty-independent via the Python-checked
+  witness; regression reproduces the paper's L(1)..L(5); no priority claim.

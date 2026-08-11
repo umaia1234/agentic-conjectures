@@ -1,0 +1,16 @@
+id: hadamard-668
+title: Hadamard matrix of order 668
+domain: graph-combinatorics
+source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/Wikipedia/Hadamard.lean
+claimed_status: open
+claim: 'Status survey only: 668 is recorded as the smallest unresolved Hadamard order, summarizing a 2026
+  Legendre-pair (length 333) search status report; no new existence or nonexistence result is claimed.'
+artifacts:
+- path: README.md
+  kind: other
+- path: upstream/README.md
+  kind: upstream-lean
+verify: []
+notes: Korean-language survey dated 2026-08-11; explicitly warns that a length-333 Legendre pair is sufficient
+  but not necessary, so UNSAT within one construction class would not disprove existence; upstream Lean
+  statement is sorry-backed.

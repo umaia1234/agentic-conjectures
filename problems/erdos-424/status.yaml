@@ -1,0 +1,19 @@
+id: erdos-424
+title: 'Erdős #424 — positive density of the generated set (finite probe)'
+domain: erdos
+source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/ErdosProblems/424.lean
+claimed_status: open
+claim: Describes an exact finite experiment generating the set via n+1=xy with distinct members and scanning
+  residue classes for omissions; the README explicitly says the finite search does not prove positive
+  density.
+artifacts:
+- path: erdos424_probe.cpp
+  kind: search-code
+- path: upstream/README.md
+  kind: upstream-lean
+verify:
+- cmd: g++ -O3 -std=c++17 erdos424_probe.cpp -o build_probe && ./build_probe 1000000 500 && rm -f build_probe
+  expected_runtime: unknown
+  ci_feasible: true
+notes: Korean README with no stated experimental outcome, so no partial result is claimed; notes that
+  Green's open problem 63 is an alias of the same statement; upstream Lean statement is sorry-backed.

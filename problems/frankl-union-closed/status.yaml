@@ -1,0 +1,17 @@
+id: frankl-union-closed
+title: Frankl's union-closed sets conjecture
+domain: graph-combinatorics
+source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/Wikipedia/UnionClosed.lean
+claimed_status: open
+claim: 'Status survey only: records that the conjecture is known for ground sets of size <= 12 and the
+  general 0.38234|F| frequency lower bound, and explicitly resolves nothing (including the 13-element
+  case).'
+artifacts:
+- path: README.md
+  kind: other
+- path: upstream/README.md
+  kind: upstream-lean
+verify: []
+notes: Korean-language survey dated 2026-08-11; the cited partial results (Vuckovic–Zivkovic 12-element
+  computation, Yu's 0.38234 bound, Bouchard 2026) are literature, not work done here; upstream Lean statements
+  are sorry-backed.

@@ -1,0 +1,15 @@
+id: transcendental-composite-powers
+title: Computable transcendental with all floored powers composite
+domain: other
+source_url: https://arxiv.org/abs/2608.05309
+claimed_status: proved
+claim: Claims a complete informal proof that there is a computable transcendental alpha in (10,11) with
+  floor(alpha^n) composite (an even integer >= 10) for every n >= 1, answering the transcendental part
+  of the open question in Section 7 of Hahn-Ismailescu-Kim-Kim.
+artifacts:
+- path: README.md
+  kind: informal-proof
+verify: []
+notes: Explicitly unreviewed with no priority claim; the source's word explicit is not formally defined,
+  and this answers only in the computable-analysis sense with no elementary closed-form constant; no numerical
+  implementation or code is included, so there are no reproduction commands.

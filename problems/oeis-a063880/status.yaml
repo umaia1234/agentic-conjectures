@@ -1,0 +1,17 @@
+id: oeis-a063880
+title: OEIS A063880 — sigma(n)=2*sigma*(n) with small powerful core
+domain: oeis
+source_url: https://oeis.org/A063880
+claimed_status: partial
+claim: Proves that every solution of sigma(n)=2*sigma*(n) whose powerful core has at most two distinct
+  primes has core exactly 108, so within that subfamily 108 is the only primitive term and all terms are
+  108 mod 216; cores with >=3 distinct primes are not excluded, so the full conjecture is unresolved.
+artifacts:
+- path: PROOF.md
+  kind: informal-proof
+- path: upstream/63880.lean
+  kind: upstream-lean
+verify: []
+notes: No computational certificate in the folder (multiplicative local-ratio argument only); OEIS's reported
+  primitive-term search to 10^18 was not independently rerun; upstream Lean marks both global statements
+  research-open; novelty explicitly not asserted before peer review.

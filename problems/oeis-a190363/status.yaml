@@ -1,0 +1,28 @@
+id: oeis-a190363
+title: OEIS A190363 — 21-term recurrence conjecture refuted
+domain: oeis
+source_url: https://oeis.org/A190363
+claimed_status: refuted
+claim: 'Refutes the OEIS-conjectured recurrence a(n+21)=a(n+17)+a(n+4)-a(n): first failure at base index
+  n=140 (output term a(161), 541 != 542), with a Pell-equation-generated infinite family of failures showing
+  the recurrence fails beyond every starting index.'
+artifacts:
+- path: PROOF.md
+  kind: informal-proof
+- path: a190363_certificate.py
+  kind: certificate-script
+- path: upstream/190363_e4edee15.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 a190363_certificate.py
+  expected_runtime: about 0.00 seconds
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.OeisA190363
+  theorems:
+  - AgenticConjectures.OeisA190363.oeis_190363_conjecture_0_false
+notes: Certificate uses exact integer arithmetic (math.isqrt, no floating point) and checks minimality
+  for n<=139, the D(140)=1 failure, and the first eight Pell-generated counterexamples; consistent with
+  the official b-file values; unreviewed, not submitted to OEIS, novelty explicitly not asserted; upstream
+  sorry-backed Lean statement is the statement being refuted.

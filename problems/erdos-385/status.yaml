@@ -1,0 +1,21 @@
+id: erdos-385
+title: 'Erdős #385 / #430(i) — finite-range experiments on F(n)-n'
+domain: erdos
+source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/ErdosProblems/385.lean
+claimed_status: open
+claim: Provides two C++ finite-range experiments probing the quantity F(n)-n for parts (i)/(ii) and explicitly
+  states they prove none of the three conjecture statements; no bound or result is asserted in the README.
+artifacts:
+- path: ep430_experiment.cpp
+  kind: search-code
+- path: ep430_segmented.cpp
+  kind: search-code
+- path: upstream/README.md
+  kind: upstream-lean
+verify:
+- cmd: g++ -O3 -std=c++17 ep430_experiment.cpp -o build_ep385 && rm -f build_ep385
+  expected_runtime: unknown
+  ci_feasible: true
+notes: Korean README; only compile commands are given (no run invocation or recorded outcome), so nothing
+  beyond 'experiments exist' is claimed; ep430_* filenames kept for reproduction history; AlphaProof Nexus
+  attempt provenance only, no success recorded; upstream Lean statements are sorry-backed.
