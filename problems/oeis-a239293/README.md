@@ -96,7 +96,7 @@ On the development machine, direct module elaboration took 16.88 seconds. A
 recorded warm-cache run of the six repository gates took approximately 277
 seconds in total: 0.24 seconds for import reachability, 0.24 seconds for the
 no-sorry scan, 26.45 seconds for `lake build`, 38.45 seconds for the axiom
-audit, 211.36 seconds for the 34 existing CI-feasible certificate checks, and
+audit, 211.36 seconds for the 35 existing CI-feasible certificate checks, and
 0.19 seconds for dashboard freshness. The certificate sweep used `drat-trim`
 from upstream commit `2e3b2dc0ecf938addbd779d42877b6ed69d9a985`, built under `/tmp` and not
 committed to the repository.
