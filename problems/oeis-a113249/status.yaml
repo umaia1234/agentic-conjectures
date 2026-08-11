@@ -1,0 +1,32 @@
+id: oeis-a113249
+title: OEIS A113249 — full parameter-family square conjecture proved
+domain: oeis
+source_url: https://oeis.org/A113249
+claimed_status: proved
+claim: >-
+  Lean-proves that every odd-indexed term in the OEIS A113249 fourth-order family is a square:
+  a(m,2*n+1)=Y(m,n)^2 for every integer parameter m and every n>=0.
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: a113249_certificate.py
+  kind: certificate-script
+verify:
+- cmd: python3 a113249_certificate.py
+  expected_runtime: about 0.1 seconds
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.OeisA113249
+  theorems:
+  - AgenticConjectures.OeisA113249.odd_term_eq_aux_square
+  - AgenticConjectures.OeisA113249.oeis_a113249_conjecture
+attribution:
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: candidate selection, prior-art audit, general-parameter derivation, Lean 4 proof, certificate, and documentation
+notes: >-
+  The proof symbolically generalizes the public AlphaProof Nexus auxiliary-recurrence proof for the fixed
+  case m=8 linked from OEIS A113254; A113249 itself also records Robert Israel's fixed-m=3 square formula;
+  revision #29 still labels the all-parameter statement a conjecture; no general Formal Conjectures snapshot
+  or public proof was found, but novelty is not asserted; unreviewed and not submitted externally.
