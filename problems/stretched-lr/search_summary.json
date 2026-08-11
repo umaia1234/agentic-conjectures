@@ -1,0 +1,179 @@
+{
+  "status": "UNKNOWN",
+  "counterexample_found": false,
+  "problem": "Find lambda, mu, nu of length at most 7 and size at most 30 such that the ordinary power-basis expansion of c^(t lambda)_(t mu,t nu) has a negative coefficient.",
+  "date": "2026-08-11",
+  "classic_lrcalc": {
+    "implementation": "Anders Buch lrcalc 1.2, Debian package liblrcalc1t64",
+    "integer_type": "signed 64-bit",
+    "runs": [
+      {
+        "rows": 5,
+        "seed": 1234567,
+        "generated_trials": 500000,
+        "unique_triples": 395436,
+        "positive_and_interpolated": 132877,
+        "suspected_overflow": 0,
+        "negative": 0
+      },
+      {
+        "rows": 6,
+        "seed": 2222222,
+        "max_total": 20,
+        "generated_trials": 500000,
+        "unique_triples": 214776,
+        "positive_and_interpolated": 75163,
+        "suspected_overflow": 0,
+        "negative": 0
+      },
+      {
+        "rows": 7,
+        "seed": 3333333,
+        "max_total": 16,
+        "generated_trials": 300000,
+        "unique_triples": 100404,
+        "positive_and_interpolated": 34850,
+        "suspected_overflow": 0,
+        "negative": 0
+      }
+    ],
+    "total_positive_and_interpolated": 242890,
+    "method": "Values at every integer t from 0 through the ambient hive-dimension bound, followed by two additional exact-value checks; Fraction interpolation in the ordinary power basis.",
+    "trust_boundary": "A positive signed-64 wrap is not intrinsically detectable. No returned value was negative or nonmonotone, but these runs are not arbitrary-precision certificates."
+  },
+  "lrcalc_rs": {
+    "repository": "https://github.com/PerAlexandersson/lrcalc-rs",
+    "commit": "17efa93108512abb4cbb8db721060e8819639f77",
+    "integer_types": "u128 full/interior counts and BigRational polynomial coefficients",
+    "self_tests": "6 lr_ehrhart tests passed",
+    "runs": [
+      {
+        "generator": "outer grown from inner",
+        "rows": 5,
+        "seed": 5005005,
+        "generated_trials": 2000000,
+        "positive_dimension_screened": 903694,
+        "minimum_dimension_interpolated": 3,
+        "interpolated": 43572,
+        "errors": 0,
+        "negative": 0
+      },
+      {
+        "generator": "outer grown from inner",
+        "rows": 6,
+        "seed": 6006006,
+        "generated_trials": 2000000,
+        "positive_dimension_screened": 863349,
+        "minimum_dimension_interpolated": 5,
+        "interpolated": 13776,
+        "errors": 0,
+        "negative": 0
+      },
+      {
+        "generator": "outer grown from inner",
+        "rows": 7,
+        "seed": 7007007,
+        "generated_trials": 2000000,
+        "positive_dimension_screened": 826946,
+        "minimum_dimension_interpolated": 7,
+        "interpolated": 4886,
+        "errors": 0,
+        "negative": 0
+      },
+      {
+        "generator": "50 percent grown outer, 50 percent independently sampled outer",
+        "rows": 5,
+        "seed": 51515151,
+        "generated_trials": 1000000,
+        "positive_dimension_screened": 306894,
+        "minimum_dimension_interpolated": 3,
+        "interpolated": 16028,
+        "errors": 0,
+        "negative": 0
+      },
+      {
+        "generator": "50 percent grown outer, 50 percent independently sampled outer",
+        "rows": 6,
+        "seed": 61616161,
+        "generated_trials": 1000000,
+        "positive_dimension_screened": 288053,
+        "minimum_dimension_interpolated": 5,
+        "interpolated": 5393,
+        "errors": 0,
+        "negative": 0
+      },
+      {
+        "generator": "50 percent grown outer, 50 percent independently sampled outer",
+        "rows": 7,
+        "seed": 71717171,
+        "generated_trials": 1000000,
+        "positive_dimension_screened": 274394,
+        "minimum_dimension_interpolated": 7,
+        "interpolated": 2056,
+        "errors": 0,
+        "negative": 0
+      }
+    ],
+    "total_generated_trials": 9000000,
+    "total_positive_dimension_screened": 3463330,
+    "total_high_dimension_interpolated": 85711,
+    "negative": 0
+  },
+  "exhaustive_stretched_kostka_slice": {
+    "parameterization": "For beta, outer_i=sum(beta_i...), inner=outer without its first part, and content=alpha; this realizes K_(alpha,beta) as an LR coefficient.",
+    "beta_length_minimum": 5,
+    "beta_length_maximum": 7,
+    "weighted_outer_size_maximum": 30,
+    "content_length_maximum": 7,
+    "beta_count": 118,
+    "tested_pairs": 10312,
+    "nonzero_polynomials": 3129,
+    "arithmetic_errors": 0,
+    "negative": 0,
+    "dimension_histogram": {
+      "0": 590,
+      "1": 231,
+      "2": 274,
+      "3": 612,
+      "4": 436,
+      "5": 599,
+      "6": 145,
+      "7": 129,
+      "8": 82,
+      "9": 21,
+      "10": 2,
+      "11": 8
+    }
+  },
+  "tracked_smallest_positive_coefficient": {
+    "scope": "The second 3,000,000-trial mixed-generator batch plus the exhaustive stretched-Kostka slice; earlier batches did not retain this statistic.",
+    "lambda": [7, 6, 5, 4, 4, 3, 1],
+    "mu": [6, 3, 2, 1, 1, 1],
+    "nu": [5, 4, 3, 2, 1, 1],
+    "degree": 10,
+    "coefficient": "1/907200",
+    "base_value": 13,
+    "coefficient_divided_by_base_value": "1/11793600",
+    "polynomial_coefficients_ascending": [
+      "1",
+      "873/280",
+      "3249/800",
+      "29851/10080",
+      "491513/362880",
+      "131/320",
+      "1799/21600",
+      "19/1680",
+      "17/17280",
+      "1/20160",
+      "1/907200"
+    ],
+    "note": "This is positive, not a counterexample."
+  },
+  "independent_tableau_dp": {
+    "self_test_cases": 5,
+    "random_base_cross_checks_against_classic_lrcalc": 3000,
+    "random_stretched_cross_checks_against_classic_lrcalc": 1500,
+    "mismatches": 0
+  },
+  "conclusion": "UNKNOWN: the requested negative coefficient was not found. These finite searches do not prove coefficientwise positivity in the stated box."
+}

@@ -1,0 +1,34 @@
+Independent deterministic Lucas-rank certificate.
+
+Candidate:
+  N = 201886*3^39101 - 1
+  A = N+1 = 2*100943*3^39101
+
+Lucas parameters:
+  (P,Q) = (8,5)
+  D = P^2-4Q = 44
+
+Build on this host (GMP development archive extracted without root):
+  g++ -O3 -std=c++17 -pthread \
+    -I/tmp/gmpdev/extracted/usr/include \
+    -I/tmp/gmpdev/extracted/usr/include/x86_64-linux-gnu \
+    a354747_lucas_certificate.cpp \
+    /tmp/gmpdev/extracted/usr/lib/x86_64-linux-gnu/libgmpxx.a \
+    /tmp/gmpdev/extracted/usr/lib/x86_64-linux-gnu/libgmp.a \
+    -o /tmp/a354747_lucas_certificate_root
+
+Output of /tmp/a354747_lucas_certificate_root:
+  N_bits=61992
+  N_digits=18662
+  N_plus_1_factorization=2*100943*3^39101
+  100943_trial_prime=1
+  gcd(2*Q*D,N)=1
+  jacobi(D,N)=-1
+  U_A_mod_N=0
+  gcd(U_(A/2),N)=1
+  gcd(U_(A/3),N)=1
+  gcd(U_(A/100943),N)=1
+  LUCAS_RANK_CERTIFICATE_OK
+
+Source SHA256:
+  26be3ebebe59f2b8c52840e514dbd74e8c4f599a09b67b8afd031c6b50a9c549

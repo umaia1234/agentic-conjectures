@@ -1,0 +1,17 @@
+Command:
+  ./a076141_pair_geometry 40
+
+Output:
+  completed L=5 q_candidates=19 quadratic_candidates=14
+  completed L=10 q_candidates=722 quadratic_candidates=477
+  completed L=15 q_candidates=8467 quadratic_candidates=5364
+  completed L=20 q_candidates=74498 quadratic_candidates=44798
+  completed L=25 q_candidates=560703 quadratic_candidates=324649
+  completed L=30 q_candidates=4029770 quadratic_candidates=2272696
+  completed L=35 q_candidates=27130915 quadratic_candidates=15016794
+  completed L=40 q_candidates=181402314 quadratic_candidates=99006717
+  max_L=40 geometries=19019 q_candidates=181402314 quadratic_candidates=99006717 counterexamples=0
+
+Exit status: 0
+Source SHA256:
+  b56136ab951c075e8542a3d32d32572b67d5089e2ab428964c3bc517fe3e3240

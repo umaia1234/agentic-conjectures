@@ -1,0 +1,23 @@
+{
+  "prime_count": 68,
+  "largest_supported_prime": 337,
+  "next_possible_largest_prime": 347,
+  "result": "no candidate union passes every necessary condition",
+  "totals": {
+    "reciprocal_sum_at_least_2_and_size_at_least_60": 9926250,
+    "union_mod8": 2482194,
+    "aggregate_reciprocity_after_mod8": 1140196,
+    "all_local_legendre_after_cheap_filters": 0
+  },
+  "by_removed": [
+    {"removed": 0, "reciprocal_sum_at_least_2_and_size_at_least_60": 1, "union_mod8": 1, "aggregate_reciprocity_after_mod8": 0, "all_local_legendre_after_cheap_filters": 0},
+    {"removed": 1, "reciprocal_sum_at_least_2_and_size_at_least_60": 57, "union_mod8": 14, "aggregate_reciprocity_after_mod8": 0, "all_local_legendre_after_cheap_filters": 0},
+    {"removed": 2, "reciprocal_sum_at_least_2_and_size_at_least_60": 1509, "union_mod8": 386, "aggregate_reciprocity_after_mod8": 183, "all_local_legendre_after_cheap_filters": 0},
+    {"removed": 3, "reciprocal_sum_at_least_2_and_size_at_least_60": 22402, "union_mod8": 5584, "aggregate_reciprocity_after_mod8": 4145, "all_local_legendre_after_cheap_filters": 0},
+    {"removed": 4, "reciprocal_sum_at_least_2_and_size_at_least_60": 205747, "union_mod8": 51594, "aggregate_reciprocity_after_mod8": 40108, "all_local_legendre_after_cheap_filters": 0},
+    {"removed": 5, "reciprocal_sum_at_least_2_and_size_at_least_60": 1115721, "union_mod8": 278947, "aggregate_reciprocity_after_mod8": 184162, "all_local_legendre_after_cheap_filters": 0},
+    {"removed": 6, "reciprocal_sum_at_least_2_and_size_at_least_60": 3251029, "union_mod8": 812771, "aggregate_reciprocity_after_mod8": 409088, "all_local_legendre_after_cheap_filters": 0},
+    {"removed": 7, "reciprocal_sum_at_least_2_and_size_at_least_60": 4071336, "union_mod8": 1017958, "aggregate_reciprocity_after_mod8": 393227, "all_local_legendre_after_cheap_filters": 0},
+    {"removed": 8, "reciprocal_sum_at_least_2_and_size_at_least_60": 1258448, "union_mod8": 314939, "aggregate_reciprocity_after_mod8": 109283, "all_local_legendre_after_cheap_filters": 0}
+  ]
+}

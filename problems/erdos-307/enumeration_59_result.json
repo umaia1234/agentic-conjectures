@@ -1,0 +1,23 @@
+{
+  "by_replacements": [
+    {"replacements": 0, "reciprocal_sum_at_least_2": 1, "union_mod8": 0, "aggregate_reciprocity": 0, "all_local_legendre": 0},
+    {"replacements": 1, "eligible_added_primes": 79, "eligible_removal_sets": 20, "reciprocal_sum_at_least_2": 701, "union_mod8": 176, "aggregate_reciprocity": 89, "all_local_legendre": 0},
+    {"replacements": 2, "eligible_added_primes": 68, "eligible_removal_sets": 124, "reciprocal_sum_at_least_2": 11902, "union_mod8": 2967, "aggregate_reciprocity": 1462, "all_local_legendre": 0},
+    {"replacements": 3, "eligible_added_primes": 56, "eligible_removal_sets": 293, "reciprocal_sum_at_least_2": 27071, "union_mod8": 6783, "aggregate_reciprocity": 3356, "all_local_legendre": 0},
+    {"replacements": 4, "eligible_added_primes": 38, "eligible_removal_sets": 229, "reciprocal_sum_at_least_2": 9915, "union_mod8": 2485, "aggregate_reciprocity": 1205, "all_local_legendre": 0},
+    {"replacements": 5, "eligible_added_primes": 17, "eligible_removal_sets": 33, "reciprocal_sum_at_least_2": 371, "union_mod8": 82, "aggregate_reciprocity": 37, "all_local_legendre": 0}
+  ],
+  "counts": {
+    "reciprocal_sum_at_least_2": 49961,
+    "union_mod8": 12493,
+    "aggregate_reciprocity": 6149,
+    "all_local_legendre": 0
+  },
+  "first_local_failure_histogram": {
+    "3": 25002, "5": 12494, "7": 6224, "11": 3135,
+    "13": 1573, "17": 764, "19": 380, "23": 200, "29": 93,
+    "31": 45, "37": 27, "41": 11, "43": 6, "47": 3,
+    "53": 1, "59": 3
+  },
+  "result": "no 59-prime union passes the necessary local Legendre conditions"
+}

@@ -1,0 +1,20 @@
+{
+  "by_removed": [
+    {"removed": 0, "reciprocal_sum_at_least_2_and_size_at_least_60": 1, "union_mod8": 0, "aggregate_reciprocity_after_mod8": 0, "all_local_legendre_after_cheap_filters": 0},
+    {"removed": 1, "reciprocal_sum_at_least_2_and_size_at_least_60": 54, "union_mod8": 12, "aggregate_reciprocity_after_mod8": 12, "all_local_legendre_after_cheap_filters": 0},
+    {"removed": 2, "reciprocal_sum_at_least_2_and_size_at_least_60": 1241, "union_mod8": 316, "aggregate_reciprocity_after_mod8": 316, "all_local_legendre_after_cheap_filters": 0},
+    {"removed": 3, "reciprocal_sum_at_least_2_and_size_at_least_60": 15438, "union_mod8": 3847, "aggregate_reciprocity_after_mod8": 3009, "all_local_legendre_after_cheap_filters": 0},
+    {"removed": 4, "reciprocal_sum_at_least_2_and_size_at_least_60": 99642, "union_mod8": 24896, "aggregate_reciprocity_after_mod8": 12655, "all_local_legendre_after_cheap_filters": 0},
+    {"removed": 5, "reciprocal_sum_at_least_2_and_size_at_least_60": 289931, "union_mod8": 72376, "aggregate_reciprocity_after_mod8": 24699, "all_local_legendre_after_cheap_filters": 0},
+    {"removed": 6, "reciprocal_sum_at_least_2_and_size_at_least_60": 238359, "union_mod8": 59659, "aggregate_reciprocity_after_mod8": 17698, "all_local_legendre_after_cheap_filters": 0}
+  ],
+  "next_possible_largest_prime": 331,
+  "result": "no candidate union supported on primes at most 317",
+  "support": "all primes at most 317 (the first 66 primes)",
+  "totals": {
+    "reciprocal_sum_at_least_2_and_size_at_least_60": 644666,
+    "union_mod8": 161106,
+    "aggregate_reciprocity_after_mod8": 58389,
+    "all_local_legendre_after_cheap_filters": 0
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "status": "positive_not_a_counterexample",
+  "lambda": [8, 6, 5, 4, 3, 2, 1],
+  "mu": [6, 5, 4, 3, 2, 1],
+  "nu": [3, 2, 1, 1, 1],
+  "sizes": {
+    "lambda": 29,
+    "mu": 21,
+    "nu": 8
+  },
+  "dimension": 11,
+  "h_star_vector": [1, 12, 78, 164, 165, 60, 10, 0, 0, 0, 0, 0],
+  "values_t_0_through_12": [
+    1,
+    24,
+    300,
+    2400,
+    13950,
+    63972,
+    244558,
+    809760,
+    2386995,
+    6393140,
+    15800538,
+    36471552,
+    79378780
+  ],
+  "polynomial_coefficients_ascending": [
+    "1",
+    "50317/13860",
+    "2159/360",
+    "15769/2592",
+    "6073/1440",
+    "108157/51840",
+    "719/960",
+    "23587/120960",
+    "13/360",
+    "47/10368",
+    "1/2880",
+    "7/570240"
+  ],
+  "factorization": "(t+1)(t+2)(t+3)(t+4)(t+5)(49t^6+651t^5+4165t^4+15309t^3+34810t^2+44808t+33264)/3991680",
+  "verification": {
+    "lrcalc_rs": "exact u128 counts and BigRational interpolation",
+    "classic_lrcalc": "matched t=1,...,6",
+    "independent_python_lr_tableau_dp": "matched every value t=1,...,12",
+    "extra_point": "t=12 is beyond the 12 points t=0,...,11 needed for degree 11 interpolation"
+  },
+  "why_recorded": "This was the smallest normalized positive coefficient in the exhaustive stretched-Kostka slice. It is a well-cross-checked near-boundary positive example, not a solution."
+}

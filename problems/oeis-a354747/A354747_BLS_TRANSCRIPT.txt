@@ -1,0 +1,27 @@
+OpenPFGW deterministic primality-proof transcript (abridged only by removing
+progress counters; all test selection and final-result lines are preserved).
+
+Command:
+  pfgw64 -tc -q'201886*3^39101-1'
+
+PFGW Version 4.1.8.64BIT.20260508.x86_Dev [GWNUM 31.5]
+
+Primality testing 201886*3^39101-1 [N-1/N+1, Brillhart-Lehmer-Selfridge]
+Running N-1 test using base 3
+Running N+1 test using discriminant 11, base 1+sqrt(11)
+Running N+1 test using discriminant 11, base 4+sqrt(11)
+Calling N+1 BLS with factored part 100.00% and helper 0.03% (300.03% proof)
+201886*3^39101-1 is prime! (16.0749s+0.0005s)
+
+Structural factorization used by the N+1 proof:
+  (201886*3^39101-1)+1 = 2*100943*3^39101
+  100943 is prime.
+
+Candidate metadata:
+  bit length: 61992
+  decimal digits: 18662
+  SHA256(decimal expansion):
+  12c2474a1742cfc52f03c033af9e8835f3186bf8772d8f58fa165e29c7279209
+
+OpenPFGW binary SHA256:
+  ebd9357b769c73b62e1e7b35620d6a1ea84e068c6284b23b463378cadf771b5b

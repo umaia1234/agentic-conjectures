@@ -1,0 +1,16 @@
+{
+  "K_values_with_candidates": 357,
+  "analytic_exception": "K=4 is not enumerated: it forces R=(n+1)/2 and hence n odd prime",
+  "candidate_stream_sha256": "7d3f6e2aa2c3c3ee29a08198716b10e0cd0a9faed381d9ae6c0bc87a6eefb776",
+  "distinct_Pell_candidates": 4678,
+  "elapsed_seconds": 27.070627377019264,
+  "hits": [],
+  "interpretation": "all generalized-Pell candidates in the stated rectangle were generated and tested against the multiplicative formula for R",
+  "largest_candidate_n": 993775123346014799,
+  "max_K_inclusive": 375,
+  "max_n_inclusive": 1000000000000000000,
+  "platform": "Linux-6.18.33.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+  "status": "NO HITS",
+  "sympy": "1.14.0"
+}

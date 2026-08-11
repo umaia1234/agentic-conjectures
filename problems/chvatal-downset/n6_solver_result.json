@@ -1,0 +1,21 @@
+{
+  "build_seconds": 0.018524050014093518,
+  "clauses": 25356,
+  "encoding": "cardnet",
+  "external_proof_certificate": false,
+  "n": 6,
+  "note": "Solver reproduction only; no DRAT/LRAT proof was generated or independently checked.",
+  "reduced": true,
+  "solve_wall_seconds": 6.000689028005581,
+  "solver": "CaDiCaL 1.9.5 via PySAT cadical195",
+  "solver_seconds": 6.647820685,
+  "stats": {
+    "conflicts": 156925,
+    "decisions": 267656,
+    "propagations": 37288918,
+    "restarts": 6050
+  },
+  "status": "UNSAT",
+  "trust_level": "uncertified_solver_reproduction",
+  "variables": 16238
+}

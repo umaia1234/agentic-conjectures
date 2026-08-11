@@ -1,0 +1,18 @@
+**/__pycache__/
+**/*.py[cod]
+**/.venv/
+**/.pytest_cache/
+**/build/
+
+# Lean
+.lake/
+
+# Compiled binaries — rebuild with the commands in each problem README.
+# Convention for new work: put compiled outputs in a build/ subdirectory.
+problems/oeis-a076141/a076141_scan
+problems/oeis-a076141/a076141_pair_geometry
+problems/recoloring-radius-q15/recolor_radius_exact
+problems/oeis-a354747/a354747_cover_search
+problems/oeis-a354747/a354747_exponent_sieve
+problems/pulse-graphs-l6/pulse_analyze
+problems/pulse-graphs-l6/pulse_analyze_kahn

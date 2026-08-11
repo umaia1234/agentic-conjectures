@@ -1,0 +1,319 @@
+{
+  "candidate_connection_sets_degree_at_most_9": 10072,
+  "certified_with_independent_10_set": 2921,
+  "degree_reduction": "only degree <= 9 enumerated; degree >= 10 has an independent 10-set in every neighbourhood when triangle-free",
+  "elapsed_seconds": 0.28017159400042146,
+  "first_example_by_degree": {
+    "0": {
+      "antipodal": false,
+      "distances": [],
+      "independent_10_set": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "1": {
+      "antipodal": true,
+      "distances": [],
+      "independent_10_set": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    "2": {
+      "antipodal": false,
+      "distances": [
+        1
+      ],
+      "independent_10_set": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ]
+    },
+    "3": {
+      "antipodal": true,
+      "distances": [
+        1
+      ],
+      "independent_10_set": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ]
+    },
+    "4": {
+      "antipodal": false,
+      "distances": [
+        1,
+        3
+      ],
+      "independent_10_set": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ]
+    },
+    "5": {
+      "antipodal": true,
+      "distances": [
+        1,
+        3
+      ],
+      "independent_10_set": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ]
+    },
+    "6": {
+      "antipodal": false,
+      "distances": [
+        1,
+        3,
+        5
+      ],
+      "independent_10_set": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ]
+    },
+    "7": {
+      "antipodal": true,
+      "distances": [
+        1,
+        3,
+        5
+      ],
+      "independent_10_set": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ]
+    },
+    "8": {
+      "antipodal": false,
+      "distances": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "independent_10_set": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ]
+    },
+    "9": {
+      "antipodal": true,
+      "distances": [
+        1,
+        3,
+        5,
+        7
+      ],
+      "independent_10_set": [
+        0,
+        2,
+        4,
+        6,
+        8,
+        10,
+        12,
+        14,
+        16,
+        18
+      ]
+    }
+  },
+  "n": 40,
+  "parameterization": "inverse-closed connection sets in Z_40; distances 1..19 plus 20",
+  "platform": "Linux-6.18.33.1-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "problem": "circulant (3,10)-Ramsey graphs on 40 vertices",
+  "python": "3.13.12 | packaged by Anaconda, Inc. | (main, Feb 24 2026, 16:13:31) [GCC 14.3.0]",
+  "survivors": [],
+  "target_independence": 10,
+  "tight_multiplier_class_representatives": [
+    {
+      "antipodal": true,
+      "degree": 9,
+      "distances": [
+        9,
+        14,
+        16,
+        19
+      ],
+      "independent_10_set": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        7,
+        8,
+        13,
+        35
+      ]
+    },
+    {
+      "antipodal": true,
+      "degree": 9,
+      "distances": [
+        8,
+        15,
+        18,
+        19
+      ],
+      "independent_10_set": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        14,
+        31,
+        38
+      ]
+    },
+    {
+      "antipodal": true,
+      "degree": 9,
+      "distances": [
+        8,
+        14,
+        17,
+        19
+      ],
+      "independent_10_set": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        13,
+        31,
+        37
+      ]
+    },
+    {
+      "antipodal": true,
+      "degree": 9,
+      "distances": [
+        7,
+        12,
+        17,
+        18
+      ],
+      "independent_10_set": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        11,
+        16,
+        32,
+        37
+      ]
+    },
+    {
+      "antipodal": true,
+      "degree": 9,
+      "distances": [
+        5,
+        12,
+        18,
+        19
+      ],
+      "independent_10_set": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        10,
+        11,
+        17,
+        27,
+        34
+      ]
+    }
+  ],
+  "tight_multiplier_classes": 5,
+  "triangle_free_candidates_degree_at_most_9": 2921,
+  "triangle_free_candidates_with_independence_exactly_10": 40,
+  "witness_stream_sha256": "b2d7239ea3841baf55fe41513a6e1067ae9e3202ec6a881797e6f330b049824a"
+}

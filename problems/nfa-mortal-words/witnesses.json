@@ -1,0 +1,44 @@
+{
+  "format_version": 1,
+  "automata": [
+    {
+      "id": "binary-k2-n3-exhaustive-maximum",
+      "n": 3,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[0, 2], [0], []],
+        "b": [[1], [2], [0]]
+      },
+      "claimed_shortest_mortal_word": "abbabba",
+      "claimed_shortest_mortal_length": 7,
+      "claim_scope": "Maximum among ordered binary NFAs on three labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximum",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[1], [0], [], [0, 2]],
+        "b": [[3], [0, 2], [1], [2]]
+      },
+      "claimed_shortest_mortal_word": "aabbaaabba",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Maximum among ordered binary NFAs on four labelled states, by exhaustive enumeration with a necessary one-letter row filter and letter-swap reduction."
+    },
+    {
+      "id": "binary-k2-n5-random-lower-bound",
+      "n": 5,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[1], [4], [], [0, 4], [1, 3]],
+        "b": [[0, 4], [3], [1], [2], [0]]
+      },
+      "claimed_shortest_mortal_word": "abbababbabbababba",
+      "claimed_shortest_mortal_length": 17,
+      "claim_scope": "Lower-bound witness found at index 746229884 in a seeded one-billion-candidate random search; no five-state optimality claim."
+    }
+  ]
+}
