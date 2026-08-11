@@ -1,0 +1,60 @@
+id: oeis-a286185-a286183
+title: OEIS A286185 & A286183 — connected induced subgraphs of Möbius ladders and antiprisms
+domain: oeis
+source_url: "https://oeis.org/A286185"
+claimed_status: proved
+claim: Claims a complete informal proof of the OEIS-conjectured closed forms for the number of connected
+  induced non-null subgraphs of the 2n-vertex Möbius ladder (A286185, a(n)=A002203(n)+3n*A000129(n)-n-1)
+  and antiprism (A286183, a(n)=A005248(n)-2n+2n*A001906(n)), and hence of the order-6 recurrences and
+  generating functions conjectured on those entries, via a column transfer-matrix argument that also
+  re-derives the prism case A286182 (already published as Vince 2021, Lemma 7.2); no novelty is claimed.
+artifacts:
+- path: PROOF.md
+  kind: informal-proof
+- path: certificate.py
+  kind: certificate-script
+- path: lean_graph_check.lean
+  kind: other
+- path: upstream/A286185.txt
+  kind: upstream-snapshot
+- path: upstream/A286183.txt
+  kind: upstream-snapshot
+- path: upstream/A286182.txt
+  kind: upstream-snapshot
+verify:
+- cmd: python3 certificate.py
+  expected_runtime: "~38s"
+  ci_feasible: true
+- cmd: python3 certificate.py --full
+  expected_runtime: "~5min"
+  ci_feasible: false
+lean:
+  modules:
+  - AgenticConjectures.OeisA286185A286183
+  theorems:
+  - AgenticConjectures.OeisA286185A286183.aMoebius_linear_recurrence
+  - AgenticConjectures.OeisA286185A286183.aAntiprism_linear_recurrence
+  - AgenticConjectures.OeisA286185A286183.aPrism_linear_recurrence
+  - AgenticConjectures.OeisA286185A286183.statementMoebius_imp_linear_recurrence
+  - AgenticConjectures.OeisA286185A286183.statementAntiprism_imp_linear_recurrence
+  - AgenticConjectures.OeisA286185A286183.statementPrism_imp_linear_recurrence
+  - AgenticConjectures.OeisA286185A286183.aMoebius_initial_values
+  - AgenticConjectures.OeisA286185A286183.aAntiprism_initial_values
+  - AgenticConjectures.OeisA286185A286183.aPrism_initial_values
+attribution:
+- model: "Claude Opus 5"
+  harness: "Claude Code"
+  scope: "problem harvest, proof, certificate, Lean formalization, write-up"
+notes: >-
+  The proof is ordinary mathematics, not Lean: CI re-verifies the certificate and the Lean statements
+  plus the closed-form => recurrence implications, but the graph-theoretic core (that the counts equal
+  the closed forms) is not machine-checked. Unreviewed, not submitted to OEIS, and no novelty claimed.
+  Prior-art check: the third family member A286182 (prism) is NOT open — its closed form is Lemma 7.2 of
+  A. Vince, J. Graph Theory 97 (2021) 82-103, quoted as such in arXiv:2105.13332 §2; the OEIS entry has
+  merely never been updated, and A286182 is included here only as a validation of the method. For
+  A286185 and A286183 no proof was found in OEIS (including full revision history), the arXiv full-text
+  API, Google Scholar or MathWorld as of 2026-08-12, but a negative search proves nothing. The Step 3
+  argument requires n >= 3; n = 1, 2 are degenerate (K_2 and K_4) and are checked directly. The
+  recurrences hold for n >= 7 and fail at n = 6. The certificate cross-checks against the graphs built by
+  the OEIS entries' own Mathematica programs; for the antiprism the two constructions are mirror images
+  (isomorphic), which the certificate verifies rather than assumes.
