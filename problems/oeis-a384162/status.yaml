@@ -3,7 +3,8 @@ title: OEIS A384162 conjectured cross-reference refuted at n=2
 domain: oeis
 source_url: https://oeis.org/A384162
 claimed_status: refuted
-claim: 'Refutes the conjecture a(n)=n*A342168(n-1) at n=2: A384162(2)=6, while 2*A342168(1)=8, with a Lean disproof and independent exact computations.'
+claim: 'Refutes the conjecture a(n)=n*A342168(n-1) at n=2: A384162(2)=6, while 2*A342168(1)=8, with a
+  Lean disproof and independent exact computations.'
 artifacts:
 - path: a384162_certificate.py
   kind: certificate-script
@@ -20,4 +21,9 @@ attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: counterexample, independent certificate, Lean 4 formalization, and documentation
-notes: 'The canonical A384162 rational generating function and example both give a(2)=6; canonical A342168 gives A342168(1)=4. The Lean model uses the equivalent generating-function coefficient recurrence and published binomial sum, while the standard-library certificate independently enumerates marked words and evaluates Chebyshev U. Unreviewed; no novelty is claimed and nothing was submitted to OEIS.'
+notes: 'The canonical A384162 rational generating function and example both give a(2)=6; canonical A342168
+  gives A342168(1)=4. The Lean model uses the equivalent generating-function coefficient recurrence and
+  published binomial sum, while the standard-library certificate independently enumerates marked words
+  and evaluates Chebyshev U. Unreviewed; no novelty is claimed and nothing was submitted to OEIS. The
+  published cross-reference is likely a one-digit typo: n*A342167(n-1) matches all published terms; the
+  refutation targets the literal published statement and does not depend on that diagnosis.'
