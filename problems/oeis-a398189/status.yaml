@@ -1,0 +1,44 @@
+id: oeis-a398189
+title: OEIS A398189 — 2-adic valuation of generalized Schenker sums, all four
+  conjectured cases proved
+domain: oeis
+source_url: https://oeis.org/A398189
+claimed_status: proved
+claim: Proves all four cases of Luschny's conjectured valuation formula for
+  A398189(n,k) = v2(A398187(n,k)), A398187(n,k) = Sum_{j<=n-k} ((n-k)!/j!)*n^j
+  — v2((n-k)!) for even n; 1 for odd n, k=0; 0 for odd n, odd k; v2(k+2) for
+  odd n, even k with k not == 14 (mod 16) — in Lean 4, plus v2 >= 4 in the
+  excluded class k == 14 (mod 16).
+artifacts:
+- path: PROOF.md
+  kind: informal-proof
+- path: a398189_certificate.py
+  kind: certificate-script
+verify:
+- cmd: python3 a398189_certificate.py
+  expected_runtime: ~1s
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.OeisA398189
+  theorems:
+  - AgenticConjectures.OeisA398189.valuation_even
+  - AgenticConjectures.OeisA398189.valuation_odd_k0
+  - AgenticConjectures.OeisA398189.valuation_odd_odd
+  - AgenticConjectures.OeisA398189.valuation_odd_even
+  - AgenticConjectures.OeisA398189.sixteen_dvd_excluded
+  - AgenticConjectures.OeisA398189.T_eq_oeis_form
+attribution:
+- model: Claude Fable 5
+  harness: Claude Code
+  scope: problem harvest, informal proof, Lean 4 formalization, certificate
+    script, documentation
+notes: The k=0 column is classical — McGarvey's conjecture on Schenker sums
+  A063170, proved by Amdeberhan-Callan-Moll (Integers 13 (2013), A21), with
+  later p-adic work by Miska — so the contribution is the uniform-in-k proof
+  of the Jul 2026 triangle conjecture, whose OEIS entry recorded no proof as
+  of 2026-08-12; unreviewed, no novelty claimed, nothing submitted upstream;
+  the Python certificate re-checks finitely many instances (n <= 220) and the
+  published 91 DATA terms, and does not replace the Lean proof; the excluded
+  class k == 14 (mod 16) carries only the proved lower bound v2 >= 4, matching
+  the OEIS "no simple formula" remark.
