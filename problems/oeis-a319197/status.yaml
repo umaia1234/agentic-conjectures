@@ -1,0 +1,28 @@
+id: oeis-a319197
+title: OEIS A319197 — stated I(n,1)=1 normalization refuted at n=7
+domain: oeis
+source_url: https://oeis.org/A319197
+claimed_status: refuted
+claim: Claims a complete Lean-checked refutation of the entry's explicit I(n,1)=1 normalization,
+  since its published factors give I(7,1)=769; the separate all-m integrality conjecture remains open.
+artifacts:
+- path: a319197_certificate.py
+  kind: certificate-script
+verify:
+- cmd: python3 -m py_compile a319197_certificate.py && python3 a319197_certificate.py
+  expected_runtime: under 0.1 seconds
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.OeisA319197
+  theorems:
+  - AgenticConjectures.OeisA319197.source_I_at_seven_value
+  - AgenticConjectures.OeisA319197.oeis_a319197_normalization_false
+attribution:
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: Lean 4 refutation, independent certificate, source audit, and bilingual documentation
+notes: The refuted claim is only the Formula-section assertion I(n,1)=1, present since OEIS revision
+  2 and still present in approved revision 7. The exact counterexample quotient 769 remains a positive
+  integer, so it does not refute the entry's broader all-m integrality conjecture. No prior public correction
+  was found in targeted searches, but novelty is not claimed; no external submission was made.
