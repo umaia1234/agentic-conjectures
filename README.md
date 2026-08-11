@@ -10,7 +10,7 @@
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-2da44e)](CONTRIBUTING.md)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-41-8250df) ![proved](https://img.shields.io/badge/proved-12-2da44e) ![refuted](https://img.shields.io/badge/refuted-5-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-8-848d97)
+![problems](https://img.shields.io/badge/problems-42-8250df) ![proved](https://img.shields.io/badge/proved-13-2da44e) ![refuted](https://img.shields.io/badge/refuted-5-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-8-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -109,7 +109,7 @@ me" targets.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**41 problems** — ✅ proved: 12 · 🔴 refuted: 5 · 🟡 partial: 16 · ⚪ open: 8
+**42 problems** — ✅ proved: 13 · 🔴 refuted: 5 · 🟡 partial: 16 · ⚪ open: 8
 
 ### OEIS
 
@@ -132,6 +132,7 @@ me" targets.
 | [OEIS A340881 modular periodicity](problems/oeis-a340881/README.md) | ✅ proved | cert | `GPT-5.6 Sol` | Claims a complete informal proof of both OEIS periodicity conjectures, giving explicit pure periods mod odd m (period 2*ord_m(2) from n=1) and eventual periodicity of A340881(n) mod m for every m >= 2. |
 | [OEIS A354747 first unknown case a(100943)](problems/oeis-a354747/README.md) | 🔴 refuted | cert(local) | `GPT-5.6 Sol` | Claims a(100943)=39101 via two independent deterministic primality certificates (GMP Lucas-rank and OpenPFGW BLS) for 201886*3^39101-1 plus exhaustive compositeness checks of all exponents 1..39100, refuting the upstream FormalConjectures statement a(100943)=0. |
 | [OEIS A384162 conjectured cross-reference refuted at n=2](problems/oeis-a384162/README.md) | 🔴 refuted | lean + cert | `GPT-5.6 Sol` | Refutes the conjecture a(n)=n*A342168(n-1) at n=2: A384162(2)=6, while 2*A342168(1)=8, with a Lean disproof and independent exact computations. |
+| [OEIS A394666 — factorial zero classification proved](problems/oeis-a394666/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Lean-proves that for every n>5, n! mod (2*n-1) is zero exactly when 2*n-1 is composite, and classifies a(1)=0 as the sole positive-index boundary exception. |
 | [OEIS A395412 certified finite nonvanishing extension](problems/oeis-a395412/README.md) | 🟡 partial | cert(local) | `GPT-5.6 Sol` | Claims a certified finite extension only: reproduces the 84 published terms, rigorously proves a(n) > 0 for every 85 <= n <= 200 via PARI/GP isprime witnesses, and BPSW-screens 201 <= n <= 400 with no proof claimed there. |
 | [OEIS A397245 mod 3 coefficient classification](problems/oeis-a397245/README.md) | ✅ proved | cert | `GPT-5.6 Sol` | Claims a complete informal proof of both conjectured mod 3 iff-classifications of a_n (a_n = 1 mod 3 iff n+2 = 3^j or 2*3^j; a_n = 2 mod 3 iff n+2 = 3^i + 3^j with i < j; else 0) via a closed form in F_3[[x]]. |
 | [OEIS A397621 Pascal-row linear complexity](problems/oeis-a397621/README.md) | ✅ proved | cert | `GPT-5.6 Sol` | Claims a complete informal proof that A397621(A001317(n)) = 2^(floor(log2 n)+1) - n = A080079(n) for all n >= 1, with a zero-run lower bound and an explicit connection polynomial (1+x)^d upper bound. |
