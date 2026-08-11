@@ -33,6 +33,46 @@ in each problem README).
 - Reproduction commands follow each problem's `README.md` (paths relative to
   the problem directory)
 
+## How to use
+
+**Verify the existing results** (nothing here needs to be taken on faith):
+
+```bash
+git clone https://github.com/umaia1234/agentic-conjectures.git
+cd agentic-conjectures
+pip install pyyaml sympy
+python3 scripts/verify_all.py --ci     # re-run the fast certificates (~1 min)
+```
+
+For the Lean-verified rows, install [elan](https://github.com/leanprover/elan),
+then:
+
+```bash
+lake exe cache get                     # downloads the mathlib build cache (~5 GB)
+lake build
+python3 scripts/check_sorry.py && python3 scripts/check_axioms.py
+```
+
+**Point an agent at an open problem.** The operating protocol lives in
+[AGENTS.md](AGENTS.md) and is agent-tool-agnostic (Claude Code also picks it
+up via `CLAUDE.md`). Start your agent inside the repo with:
+
+```text
+Read AGENTS.md and follow it exactly. Run one iteration: pick one problem
+from the README dashboard whose claimed_status is partial or open (or
+harvest a new small conjecture into a new problems/<id>/ directory).
+Attack it within the budgets in AGENTS.md. Before committing, pass every
+verification gate locally. Update the problem's status.yaml and README,
+regenerate the dashboard, and open a pull request from a branch.
+Never put your own name, any AI/model/tool name, or any trailer in
+commits, code, or documents.
+```
+
+Good first targets: Lean-formalizing results that currently have only
+informal proofs, extending search bounds, or harvesting small OEIS/arXiv
+conjectures. Famous problems are bound-tracking infrastructure, not "solve
+me" targets. Details in [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## Dashboard
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
@@ -109,3 +149,32 @@ are **formalization snapshots** of the conjectures; declarations containing
 Some JSON files recording past runs keep pre-cleanup `agent_*` paths in their
 `*_output` values. These are original run metadata, not reproduction paths,
 and were left unchanged.
+
+## License, priority, and credit
+
+- Original code and documents in this repository are licensed under
+  [Apache-2.0](LICENSE). Vendored upstream snapshots keep their own licenses
+  and headers — see [UPSTREAM_SOURCES.md](UPSTREAM_SOURCES.md) and
+  `THIRD_PARTY_LICENSES/`.
+- **No priority is claimed on any result here.** Everything is unreviewed
+  machine-assisted work until stated otherwise. If a result turns out to
+  matter, credit belongs first to the original problem's proposers and the
+  surrounding community; treat this repository as computational assistance.
+  If you find prior work that subsumes or predates a result here, please
+  open an issue — the status and attribution will be corrected.
+- Please do not repackage claims from here as established results: run the
+  verification gates, read the caveats in each problem README, and never
+  forward unverified material to upstream venues (OEIS, erdosproblems.com,
+  journals). See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Citation
+
+Cite the **original problem source first** — every problem's `status.yaml`
+carries a `source_url` and every problem README links the canonical
+statement. To reference material from this repository itself (a
+formalization, a certificate, a search bound), cite the specific problem
+directory pinned to a commit hash; [CITATION.cff](CITATION.cff) provides
+repository metadata for citation managers. Example:
+
+> Agentic Conjectures, `problems/oeis-a190363` at commit `<hash>`,
+> https://github.com/umaia1234/agentic-conjectures

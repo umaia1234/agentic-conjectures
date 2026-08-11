@@ -26,6 +26,46 @@ novelty를 주장하지 않습니다 (각 문제 README의 면책 조항 참조)
 - [MATHEMATICAL_DETAILS.ko.md](MATHEMATICAL_DETAILS.ko.md): 다섯 문제의 정의·보조정리·증명 모음
 - 재현 명령은 각 문제의 `README.md`를 따릅니다 (문제 디렉터리 기준 상대경로)
 
+## 사용법
+
+**기존 결과 검증하기** (여기 있는 어떤 것도 믿음으로 받아들일 필요가 없습니다):
+
+```bash
+git clone https://github.com/umaia1234/agentic-conjectures.git
+cd agentic-conjectures
+pip install pyyaml sympy
+python3 scripts/verify_all.py --ci     # 빠른 인증서 재실행 (~1분)
+```
+
+Lean 검증 행까지 확인하려면 [elan](https://github.com/leanprover/elan)을
+설치한 뒤:
+
+```bash
+lake exe cache get                     # mathlib 빌드 캐시 다운로드 (~5 GB)
+lake build
+python3 scripts/check_sorry.py && python3 scripts/check_axioms.py
+```
+
+**에이전트를 미해결 문제에 붙이기.** 운영 프로토콜은
+[AGENTS.ko.md](AGENTS.ko.md)에 있고 특정 도구 전용이 아닙니다 (Claude
+Code는 `CLAUDE.md`로 자동 인식). 저장소 안에서 에이전트를 시작하고 다음을
+주면 됩니다:
+
+```text
+Read AGENTS.md and follow it exactly. Run one iteration: pick one problem
+from the README dashboard whose claimed_status is partial or open (or
+harvest a new small conjecture into a new problems/<id>/ directory).
+Attack it within the budgets in AGENTS.md. Before committing, pass every
+verification gate locally. Update the problem's status.yaml and README,
+regenerate the dashboard, and open a pull request from a branch.
+Never put your own name, any AI/model/tool name, or any trailer in
+commits, code, or documents.
+```
+
+좋은 첫 목표: 비형식 증명만 있는 결과의 Lean 형식화, 탐색 범위 확장,
+소형 OEIS/arXiv 추측 수확. 유명 문제는 bound 추적 인프라이지 "풀어야 할
+대상"이 아닙니다. 자세한 내용은 [CONTRIBUTING.ko.md](CONTRIBUTING.ko.md).
+
 ## Dashboard
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
@@ -100,3 +140,30 @@ novelty를 주장하지 않습니다 (각 문제 README의 면책 조항 참조)
 과거 실행을 기록한 일부 JSON의 `*_output` 값에는 정리 전 `agent_*` 경로가
 남아 있습니다. 이는 재현 경로가 아니라 원본 실행 메타데이터이므로 변경하지
 않았습니다.
+
+## 라이선스, 우선권, 크레딧
+
+- 이 저장소의 자체 코드·문서는 [Apache-2.0](LICENSE)입니다. vendored
+  upstream 스냅샷은 각자의 라이선스와 헤더를 유지합니다 —
+  [UPSTREAM_SOURCES.ko.md](UPSTREAM_SOURCES.ko.md)와
+  `THIRD_PARTY_LICENSES/` 참조.
+- **여기 있는 어떤 결과에도 우선권을 주장하지 않습니다.** 별도로 명시하기
+  전까지 모든 것은 unreviewed 기계 보조 작업입니다. 어떤 결과가 중요해진다면
+  크레딧은 먼저 문제의 원 제안자와 해당 커뮤니티에 돌아가야 하며, 이
+  저장소는 계산 보조로 취급해 주세요. 여기 결과를 포섭하거나 앞서는 선행
+  연구를 발견하면 이슈를 열어 주세요 — 상태와 귀속을 바로잡겠습니다.
+- 여기의 주장을 확립된 결과처럼 재포장하지 말아 주세요: 검증 게이트를
+  돌리고, 각 문제 README의 주의사항을 읽고, 미검증 자료를 상류(OEIS,
+  erdosproblems.com, 저널)로 보내지 마세요.
+  [CONTRIBUTING.ko.md](CONTRIBUTING.ko.md) 참조.
+
+## 인용
+
+**문제의 원 출처를 먼저 인용하세요** — 모든 문제의 `status.yaml`에
+`source_url`이 있고 모든 문제 README가 canonical 문장을 링크합니다. 이
+저장소의 자료 자체(형식화, 인증서, 탐색 bound)를 참조할 때는 커밋 해시로
+고정한 특정 문제 디렉터리를 인용하세요. 인용 관리자를 위한 저장소
+메타데이터는 [CITATION.cff](CITATION.cff)에 있습니다. 예:
+
+> Agentic Conjectures, `problems/oeis-a190363` at commit `<hash>`,
+> https://github.com/umaia1234/agentic-conjectures

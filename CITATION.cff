@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: >-
+  If a result from this repository is useful, please cite the original
+  problem's source first (every problem's status.yaml has a source_url and
+  every problem README links the canonical statement). To reference material
+  from this repository itself, cite the specific problem directory pinned to
+  a commit hash, since statuses change as verification progresses.
+title: "Agentic Conjectures"
+type: software
+authors:
+  - name: "umaia1234 and contributors"
+repository-code: "https://github.com/umaia1234/agentic-conjectures"
+license: Apache-2.0
+keywords:
+  - open problems
+  - conjectures
+  - counterexamples
+  - Lean 4
+  - mathlib
+  - formal verification
+  - autonomous agents
