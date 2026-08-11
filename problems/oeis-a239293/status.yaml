@@ -1,0 +1,21 @@
+id: oeis-a239293
+title: OEIS A239293 — immediate-successor characterization proved
+domain: oeis
+source_url: https://oeis.org/A239293
+claimed_status: proved
+claim: Proves for every n>=1 that the least composite c>n satisfying n^c == n (mod c) equals n+1 if and only if n+1 is odd and composite.
+artifacts:
+- path: README.md
+  kind: informal-proof
+verify: []
+lean:
+  modules:
+  - AgenticConjectures.OeisA239293
+  theorems:
+  - AgenticConjectures.OeisA239293.weakPseudoprimeAbove_nonempty
+  - AgenticConjectures.OeisA239293.a_eq_succ_iff_odd_composite
+attribution:
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: prior-art review, mathematical proof, Lean 4 formalization, and documentation
+notes: The live OEIS entry still marked the characterization as a conjecture on 2026-08-12; OEIS and its linked Numericana page already record the sufficient odd-composite direction, so no discovery is claimed; exact-phrase, A-number, and public GitHub code searches found no proof of the full equivalence, which does not establish novelty; the Lean definition proves the candidate set nonempty for every official index and exactly matches the least-composite condition; unreviewed and not submitted externally.
