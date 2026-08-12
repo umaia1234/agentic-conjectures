@@ -1,28 +1,59 @@
 id: recoloring-radius-q15
-title: Graph recoloring reconfiguration radius, Question 15
-title_ko: 그래프 재색칠 재구성 반지름, 질문 15
+title: Graph recoloring radius — subdivided-claw counterexample
+title_ko: 그래프 재색칠 반지름 — 세분된 클로 반례
 domain: graph-combinatorics
-source_url: ''
-claimed_status: open
-claim: 'Claims no result: the directory only provides exact-BFS counterexample-search tooling (Python
-  atlas scan and a sharded C++ graph6 search) for Cambie-Cames van Batenburg-Cranston Question 15, with
-  no outcome reported.'
+source_url: https://doi.org/10.37236/13788
+claimed_status: refuted
+claim: >-
+  The 7-vertex subdivided claw refutes Question 15 at k=4: C_4(G) and C_5(G)
+  are connected, but exact exhaustive computations give radii 9 and 10.
 claim_ko: >-
-  아무 결과도 주장하지 않는다. 이 디렉터리는 Cambie-Cames van Batenburg-Cranston 질문 15를 위한 정확한
-  BFS 반례 탐색 도구(Python atlas 탐색과 분할된 C++ graph6 탐색)만 제공하며, 탐색 결과는 보고하지 않는다.
+  꼭짓점 7개의 세분된 클로는 k=4에서 질문 15를 반박한다. C_4(G)와 C_5(G)는
+  모두 연결이지만, 정확한 완전 탐색으로 얻은 두 반지름은 각각 9와 10이다.
 artifacts:
-- path: recolor_radius_search.py
-  kind: search-code
+- path: DETAILS.md
+  kind: mathematical-details
+- path: counterexample.json
+  kind: data
+- path: verify_counterexample.py
+  kind: certificate-script
+- path: atlas_1_7.g6
+  kind: data
+- path: atlas_result.json
+  kind: data
+- path: generate_atlas_data.py
+  kind: data-generator
 - path: recolor_radius_exact.cpp
   kind: search-code
+- path: verify_atlas.py
+  kind: certificate-script
+- path: recolor_radius_search.py
+  kind: search-code
 verify:
-- cmd: g++ -O3 -std=c++17 recolor_radius_exact.cpp -o /tmp/recolor_radius_exact
-  expected_runtime: unknown
+- cmd: >-
+    g++ -O3 -std=c++17 recolor_radius_exact.cpp -o /tmp/recolor_radius_exact
+    && python3 verify_counterexample.py --cpp /tmp/recolor_radius_exact
+  expected_runtime: about 3 seconds
+  ci_feasible: true
+- cmd: >-
+    g++ -O3 -std=c++17 recolor_radius_exact.cpp -o /tmp/recolor_radius_exact
+    && python3 verify_atlas.py --cpp /tmp/recolor_radius_exact
+  expected_runtime: about 70 seconds
   ci_feasible: true
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: 'README is a five-line tool inventory: no findings, no negative-search bound, no source URL, no
-  runtimes; the previously shipped prebuilt binary is now gitignored (rebuild from source); the only listed
-  commands are a --help invocation and a compile, not an actual reproduction of any result.'
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: exhaustive order-7 graph-atlas result and independent certificate audit
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: subdivided-claw counterexample and two independent exact-radius certificates
+notes: >-
+  This is a complete counterexample, not a bounded-search inference. The fixed
+  witness is graph6 FCOf?, the tree obtained by subdividing every edge of K_1,3
+  once. Independent C++ and standard-library Python implementations enumerate
+  every labelled proper colouring and verify connectedness and exact radii.
+  The earlier k=3 atlas audit is retained as a separately verified search result.
+  No publication-priority or novelty claim is made before external review.

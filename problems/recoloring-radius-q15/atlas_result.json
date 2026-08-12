@@ -1,0 +1,32 @@
+{
+  "format_version": 1,
+  "recorded_date": "2026-08-12",
+  "claim_boundary": "Finite verification only: k=3 and simple graphs on 1–7 vertices.",
+  "dataset": {
+    "file": "atlas_1_7.g6",
+    "provenance": "NetworkX 3.6.1 graph_atlas_g(), excluding the zero-vertex graph",
+    "records": 1252,
+    "records_by_order": [0, 1, 2, 4, 11, 34, 156, 1044],
+    "sha256": "ad68465d32eb7679a1ed8b0aa7a7f1da366da9b1ef8566b04664c504e8876255"
+  },
+  "exhaustive_cpp": {
+    "command": "g++ -O3 -std=c++17 recolor_radius_exact.cpp -o /tmp/recolor_radius_exact && /tmp/recolor_radius_exact verify-atlas atlas_1_7.g6",
+    "result": {
+      "records_by_order": [0, 1, 2, 4, 11, 34, 156, 1044],
+      "c3_connected_by_order": [0, 1, 2, 3, 7, 13, 34, 85],
+      "eligible_by_order": [0, 1, 2, 3, 7, 13, 34, 85],
+      "counterexamples": 0
+    },
+    "observed_wall_seconds": 1.12,
+    "observed_max_rss_kb": 6776
+  },
+  "independent_python_audit": {
+    "implementation": "verify_atlas.py tuple-state BFS, independent graph6 parser, and Cartesian-product decomposition over graph components; direct product BFS cross-check through order 6",
+    "maximum_order": 7,
+    "records": 1252,
+    "c3_connected_by_order": [0, 1, 2, 3, 7, 13, 34, 85],
+    "eligible_by_order": [0, 1, 2, 3, 7, 13, 34, 85],
+    "counterexamples": 0,
+    "observed_wall_seconds": 53.53
+  }
+}

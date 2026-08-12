@@ -11,10 +11,12 @@
 #include <array>
 #include <cstdint>
 #include <cstdlib>
+#include <fstream>
 #include <iostream>
 #include <limits>
 #include <numeric>
 #include <queue>
+#include <set>
 #include <string>
 #include <utility>
 #include <vector>
@@ -49,6 +51,7 @@ struct Result {
   int radius = -1;
   uint32_t centre_code = 0;
   int states = 0;
+  long long recolouring_edges = 0;
   int orbit_representatives = 0;
 };
 
@@ -65,7 +68,13 @@ static bool restricted_growth(const uint8_t* colour, int n) {
 
 static Result exact_radius(const Graph& g, int k) {
   vector<uint32_t> power(g.n + 1, 1);
-  for (int i = 1; i <= g.n; ++i) power[i] = power[i - 1] * k;
+  for (int i = 1; i <= g.n; ++i) {
+    if (power[i - 1] > std::numeric_limits<uint32_t>::max() / uint32_t(k)) {
+      cerr << "colouring code space exceeds 32 bits\n";
+      std::exit(2);
+    }
+    power[i] = power[i - 1] * k;
+  }
   const uint32_t universe = power[g.n];
 
   vector<int> id(universe, -1);
@@ -123,6 +132,22 @@ static Result exact_radius(const Graph& g, int k) {
       }
     }
   }
+  long long directed_arcs = 0;
+  for (int here = 0; here < int(adjacency.size()); ++here) {
+    directed_arcs += adjacency[here].size();
+    for (int other : adjacency[here]) {
+      if (std::find(adjacency[other].begin(), adjacency[other].end(), here) ==
+          adjacency[other].end()) {
+        cerr << "internal error: recolouring adjacency is not symmetric\n";
+        std::exit(2);
+      }
+    }
+  }
+  if (directed_arcs % 2 != 0) {
+    cerr << "internal error: odd directed recolouring-arc count\n";
+    std::exit(2);
+  }
+  answer.recolouring_edges = directed_arcs / 2;
 
   vector<int> distance(code.size(), -1);
   vector<int> touched;
@@ -240,11 +265,36 @@ static Graph toggle_edge(const Graph& g, int a, int b) {
 static Graph parse_graph6(string line) {
   if (!line.empty() && line.back() == '\r') line.pop_back();
   if (line.rfind(">>graph6<<", 0) == 0) line.erase(0, 10);
-  if (line.empty() || line[0] == '~') {
+  if (line.empty() || static_cast<unsigned char>(line[0]) == 126) {
     cerr << "only short graph6 records (n <= 62) are supported\n";
     std::exit(2);
   }
+  for (unsigned char byte : line) {
+    if (byte < 63 || byte > 126) {
+      cerr << "invalid byte in graph6 record\n";
+      std::exit(2);
+    }
+  }
   int n = int(static_cast<unsigned char>(line[0])) - 63;
+  if (n < 1 || n > 20) {
+    cerr << "exact engine supports graph orders from 1 through 20\n";
+    std::exit(2);
+  }
+  int edge_bits = n * (n - 1) / 2;
+  size_t expected_length = 1 + size_t((edge_bits + 5) / 6);
+  if (line.size() != expected_length) {
+    cerr << "noncanonical graph6 record length\n";
+    std::exit(2);
+  }
+  int remainder = edge_bits % 6;
+  if (remainder != 0) {
+    int padding_bits = 6 - remainder;
+    int last_word = int(static_cast<unsigned char>(line.back())) - 63;
+    if ((last_word & ((1 << padding_bits) - 1)) != 0) {
+      cerr << "nonzero graph6 padding\n";
+      std::exit(2);
+    }
+  }
   vector<pair<int, int>> edges;
   size_t position = 1;
   int bits_left = 0;
@@ -273,12 +323,105 @@ static Graph parse_graph6(string line) {
 
 static void print_result(const string& label, const Result& r) {
   cout << label << " connected=" << r.connected << " radius=" << r.radius
-       << " states=" << r.states << " colour_orbits=" << r.orbit_representatives
+       << " states=" << r.states
+       << " recolouring_edges=" << r.recolouring_edges
+       << " colour_orbits=" << r.orbit_representatives
        << " centre_code=" << r.centre_code << '\n';
+}
+
+static void print_json_array(const std::array<long long, 8>& values) {
+  cout << '[';
+  for (size_t index = 0; index < values.size(); ++index) {
+    if (index != 0) cout << ',';
+    cout << values[index];
+  }
+  cout << ']';
+}
+
+static int verify_atlas(const string& path) {
+  std::ifstream input(path);
+  if (!input) {
+    cerr << "could not open graph6 atlas: " << path << '\n';
+    return 2;
+  }
+
+  std::array<long long, 8> records{};
+  std::array<long long, 8> c3_connected{};
+  std::array<long long, 8> eligible{};
+  long long counterexamples = 0;
+  std::set<string> seen;
+  string line;
+  while (std::getline(input, line)) {
+    if (!line.empty() && line.back() == '\r') line.pop_back();
+    if (line.empty()) {
+      cerr << "blank graph6 record in fixed atlas\n";
+      return 2;
+    }
+    if (!seen.insert(line).second) {
+      cerr << "duplicate graph6 record in fixed atlas: " << line << '\n';
+      return 2;
+    }
+    Graph graph = parse_graph6(line);
+    if (graph.n < 1 || graph.n > 7) {
+      cerr << "fixed atlas contains graph of unsupported order " << graph.n << '\n';
+      return 2;
+    }
+    ++records[graph.n];
+
+    Result r3 = exact_radius(graph, 3);
+    if (!r3.connected) continue;
+    ++c3_connected[graph.n];
+    Result r4 = exact_radius(graph, 4);
+    if (!r4.connected) continue;
+    ++eligible[graph.n];
+    if (r3.radius < r4.radius) {
+      ++counterexamples;
+      cerr << "COUNTEREXAMPLE graph6=" << line << " n=" << graph.n
+           << " m=" << graph.edges.size() << " radii=" << r3.radius << ','
+           << r4.radius << '\n';
+    }
+  }
+  if (!input.eof()) {
+    cerr << "failed while reading graph6 atlas\n";
+    return 2;
+  }
+
+  cout << "{\"records_by_order\":";
+  print_json_array(records);
+  cout << ",\"c3_connected_by_order\":";
+  print_json_array(c3_connected);
+  cout << ",\"eligible_by_order\":";
+  print_json_array(eligible);
+  cout << ",\"counterexamples\":" << counterexamples << "}\n";
+  return counterexamples == 0 ? 0 : 1;
 }
 
 int main(int argc, char** argv) {
   string mode = argc >= 2 ? argv[1] : "base";
+  if (mode == "verify-atlas") {
+    if (argc != 3) {
+      cerr << "usage: recolor_radius_exact verify-atlas ATLAS.g6\n";
+      return 2;
+    }
+    return verify_atlas(argv[2]);
+  }
+  if (mode == "exact") {
+    if (argc != 4) {
+      cerr << "usage: recolor_radius_exact exact GRAPH6 K\n";
+      return 2;
+    }
+    int k = std::stoi(argv[3]);
+    if (k < 1 || k > 16) {
+      cerr << "K must be between 1 and 16\n";
+      return 2;
+    }
+    Graph graph = parse_graph6(argv[2]);
+    Result result = exact_radius(graph, k);
+    cout << "graph6=" << argv[2] << " n=" << graph.n << " m="
+         << graph.edges.size() << " k=" << k << ' ';
+    print_result("exact", result);
+    return 0;
+  }
   Graph base = base_example();
   if (mode == "base") {
     Result r3 = exact_radius(base, 3);
@@ -324,7 +467,9 @@ int main(int argc, char** argv) {
     return 0;
   }
   if (mode != "toggle") {
-    cerr << "usage: recolor_radius_exact [base|toggle|stream [shard shards]]\n";
+    cerr << "usage: recolor_radius_exact "
+            "[base|exact GRAPH6 K|toggle|stream [shard shards]|"
+            "verify-atlas ATLAS.g6]\n";
     return 2;
   }
   int shard = argc >= 3 ? std::stoi(argv[2]) : 0;
