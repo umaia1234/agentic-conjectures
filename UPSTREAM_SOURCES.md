@@ -37,9 +37,9 @@ independent clones.
   re-vendored in full, so a local Lean file alone usually does not compile.
   If a build is needed, restore the original repository at the corresponding
   commit as shown below.
-- The thousands of formalizations unrelated to the current 35 problems, the
-  `.git` objects, `.lake` caches, site sources, and CI configuration were not
-  copied into the problem directories.
+- The thousands of formalizations unrelated to the problem snapshots
+  preserved here, the `.git` objects, `.lake` caches, site sources, and CI
+  configuration were not copied into the problem directories.
 
 ## Restoring the original repositories
 
