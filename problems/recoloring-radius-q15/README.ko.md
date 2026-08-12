@@ -1,18 +1,44 @@
 [English](README.md) | **한국어**
 
-# 그래프 색칠 재구성 반지름, 질문 15
+# 그래프 색칠 재구성 반지름: 질문 15의 반례
 
-이 디렉터리는 Cambie–Cames van Batenburg–Cranston 질문 15에 대한 정확한
-유한 범위 검증을 기록한다. \(k=3\)일 때 꼭짓점이 1개에서 7개인 모든 단순
-그래프에서 반례가 없다. 이는 유한 범위의 부분 결과이며 일반적인
-질문은 여전히 미해결이다.
+Cambie–Cames van Batenburg–Cranston 질문 15는 거짓이다. 꼭짓점 7개의
+세분된 클로가 \(k=4\)에서 \(k+1=5\)로 넘어갈 때의 반례를 준다.
+
+## 결과
+
+\(K_{1,3}\)의 모든 변을 한 번씩 세분하여 얻은 나무를 \(T\)라 하자.
+꼭짓점을 \(0,\ldots,6\)으로 두고 다음 변을 사용한다.
+
+```text
+E(T) = {03, 06, 14, 16, 25, 26}.
+```
+
+따라서 꼭짓점 6은 중심이고, 0, 1, 2는 차수 2인 세분 꼭짓점이며,
+3, 4, 5는 잎이다. 이 그래프의 graph6 인코딩은 `FCOf?`이다. 정확한
+계산 결과는 다음과 같다.
+
+| 재색칠 그래프 | 올바른 색칠 수 | 재색칠 변 수 | 연결 | 반지름 | 지름 |
+|---|---:|---:|:---:|---:|---:|
+| \(\mathcal C_4(T)\) | 2,916 | 15,876 | 예 | 9 | 10 |
+| \(\mathcal C_5(T)\) | 20,480 | 178,560 | 예 | 10 | 10 |
+
+특히 다음이 성립한다.
+
+\[
+  \operatorname{rad}\mathcal C_4(T)=9
+  <10=\operatorname{rad}\mathcal C_5(T).
+\]
+
+\(4\ge3\)이고 두 재색칠 그래프가 모두 연결성 가정을 만족한다. 따라서 이
+그래프 하나로 보편 명제가 반박된다.
 
 ## 출처와 명제
 
 그래프 \(G\)의 \(k\)-재색칠 그래프 \(\mathcal C_k(G)\)는 \(G\)의 올바른
 \(k\)-색칠을 꼭짓점으로 삼는다. 두 색칠은 정확히 한 꼭짓점의 색만 다를 때
-인접한다. 출판된 질문은 \(k\ge3\)이고 연속한 두 재색칠 그래프가 모두
-연결되어 있을 때 다음 부등식이 항상 성립하는지를 묻는다.
+인접한다. 출판된 질문은 \(k\ge3\)이고 연속한 두 재색칠 그래프가 모두 연결일
+때 다음 부등식이 항상 성립하는지를 묻는다.
 
 > “\(\operatorname{rad}\mathcal C_k(G)\ge
 > \operatorname{rad}\mathcal C_{k+1}(G)\)가 반드시 성립하는가?”
@@ -22,57 +48,32 @@
 *Electronic Journal of Combinatorics* 33(1) (2026), #P1.18,
 [doi:10.37236/13788](https://doi.org/10.37236/13788), 질문 15.
 
-## 정확한 유한 범위 결과
+## 기계 검증 인증서
 
-고정된 graph6 데이터셋은 꼭짓점이 1개에서 7개인 모든 단순 그래프의 비동형류
-대표를 하나씩 포함한다. 이 가운데 정확히 145개에서
-\(\mathcal C_3(G)\)와 \(\mathcal C_4(G)\)가 모두 연결되어 있다. 정확한 반지름
-계산 결과
-\(\operatorname{rad}\mathcal C_3(G)<\operatorname{rad}\mathcal C_4(G)\)인
-그래프는 없었다.
+[`counterexample.json`](counterexample.json)은 그래프와 주장하는 모든 정수를
+고정한다. 서로 독립적인 두 구현이 저장된 탐색 로그를 신뢰하지 않고 완전한
+재색칠 그래프를 매번 다시 구성한다.
 
-| 꼭짓점 수 \(n\) | Atlas 그래프 수 | 두 재색칠 그래프가 모두 연결 | 반례 수 |
-|---:|---:|---:|---:|
-| 1 | 1 | 1 | 0 |
-| 2 | 2 | 2 | 0 |
-| 3 | 4 | 3 | 0 |
-| 4 | 11 | 7 | 0 |
-| 5 | 34 | 13 | 0 |
-| 6 | 156 | 34 | 0 |
-| 7 | 1,044 | 85 | 0 |
-| **합계** | **1,252** | **145** | **0** |
+1. [`recolor_radius_exact.cpp`](recolor_radius_exact.cpp)는 색칠을 \(k\)진법
+   정수로 인코딩하고, 가능한 모든 한 꼭짓점 재색칠 이동을 구성하여 연결성을
+   확인한 뒤 정수 BFS로 정확한 반지름을 계산한다.
+2. [`verify_counterexample.py`](verify_counterexample.py)는 별도의 graph6
+   해독기, 튜플 색칠, 표준 라이브러리의 deque BFS를 사용한다. 자체 계산을
+   모두 마친 뒤에만 C++ 프로그램을 실행하여 두 결과를 비교한다.
 
-이 결과는 꼭짓점이 8개 이상인 그래프나 \(k>3\)인 \(k\to k+1\) 비교에
-대해 질문 15를 해결하지 않는다. 새로움도 주장하지 않는다.
+색 이름의 전역 치환은 각 재색칠 그래프의 자기동형을 이룬다. 따라서 두 구현은
+색 이름 치환 궤도마다 제한 성장 대표 하나를 BFS 시작점으로 사용한다. Python
+인증서는 이 궤도 분해가 레이블된 모든 상태를 정확히 덮는지 검사하고,
+\(k=4\)의 대표 122개와 \(k=5\)의 대표 187개 모두에서 가지치기 없는 완전한
+BFS를 실행한다.
 
-## 검증 구조
+내부 검사로 상태 수는 나무의 공식 \(k(k-1)^6\)과도 일치한다. \(k=4\)에서는
+레이블된 상태 192개의 이심률이 9이고 나머지 2,724개의 이심률이 10이다.
+\(k=5\)에서는 20,480개 상태의 이심률이 모두 10이다. 이 분포가 두 반지름을
+각각 확정한다.
 
-`atlas_1_7.g6`은 NetworkX 3.6.1의 `graph_atlas_g()`에서 꼭짓점이 0개인
-그래프만 제외하여 생성했다. 서로 다른 레코드 1,252개의 SHA-256은
-`ad68465d32eb7679a1ed8b0aa7a7f1da366da9b1ef8566b04664c504e8876255`이다.
-두 반지름 계산을 시작하기 전에 위 차수별 개수를 검사한다.
-
-두 구현이 결과를 검증한다.
-
-1. `recolor_radius_exact.cpp`는 graph6을 해독하고 레이블된 모든 올바른
-   색칠을 열거하여 각 재색칠 그래프를 구성한 뒤 정수 BFS로 정확한 반지름을
-   구한다. 색 이름을 전역적으로 치환해도 이심률이 보존되므로 색 치환 궤도마다
-   제한 성장 형태의 시작점 하나만 조사하면 충분하다.
-2. `verify_atlas.py`는 별도의 graph6 해독기와 튜플 상태 BFS를 사용한다.
-   비연결 그래프 \(G\)에 대해서는 정확한 항등식
-   \(\mathcal C_k(G_1\mathbin{\dot\cup}G_2)=
-   \mathcal C_k(G_1)\mathbin{\square}\mathcal C_k(G_2)\)를 사용하므로,
-   연결성은 성분별로 결정되고 반지름은 더해진다. 꼭짓점이 6개 이하인 모든
-   그래프의 \(\mathcal C_3(G)\)에 대해, 그리고 \(\mathcal C_3(G)\)가 연결된
-   그래프의 \(\mathcal C_4(G)\)에 대해 이 환원을 사용하지 않은 직접 곱
-   BFS와도 교차 검증한다.
-
-두 구현에서 사용하는 환원의 정당화는 [DETAILS.ko.md](DETAILS.ko.md)에
-정리되어 있다.
-
-신뢰 경계는 표준 Graph Atlas 열거와 일반 컴파일러 및 Python 실행 환경이다.
-`generate_atlas_data.py`는 NetworkX 버전, 차수별 개수, 레코드 유일성,
-예상 데이터셋 해시를 고정한다. CI 검증기 자체는 NetworkX에 의존하지 않는다.
+자세한 전개와 인증서 불변식은 [`DETAILS.ko.md`](DETAILS.ko.md)에 기록되어
+있다.
 
 ## 재현
 
@@ -82,41 +83,46 @@
 g++ -O3 -std=c++17 \
   problems/recoloring-radius-q15/recolor_radius_exact.cpp \
   -o /tmp/recolor_radius_exact
+python3 problems/recoloring-radius-q15/verify_counterexample.py \
+  --cpp /tmp/recolor_radius_exact
+```
+
+예상 출력은 다음과 같다.
+
+```text
+PASS graph6 FCOf? decodes as the 7-vertex subdivided claw
+PASS independent Python exhaustive BFS: C_4 connected, 2916 states, 15876 edges, radius 9, diameter 10
+PASS independent Python exhaustive BFS: C_5 connected, 20480 states, 178560 edges, radius 10, diameter 10
+PASS independent C++ exact-radius results agree
+PASS counterexample: 9 < 10 (...s)
+```
+
+기록된 로컬 실행은 1.87초가 걸렸고 최대 상주 메모리는 약 23 MB였다.
+검증기에는 C++17 컴파일러와 Python 표준 라이브러리만 필요하다.
+
+## 보존한 이전 탐색 결과
+
+고정된 [`atlas_1_7.g6`](atlas_1_7.g6) 데이터셋과 두 검증기는 별도의 유한
+범위 결과로 남아 있다. 꼭짓점이 1개에서 7개인 단순 그래프의 비동형류
+1,252개를 모두 \(k=3\)에서 \(k=4\)로 넘어가는 비교에 대해 검사한다. 정확히
+145개에서 두 재색칠 그래프가 모두 연결이고 반례는 없다. 데이터셋의 SHA-256은
+`ad68465d32eb7679a1ed8b0aa7a7f1da366da9b1ef8566b04664c504e8876255`이다.
+이번 반례는 \(k=4\)를 사용하므로 이 결과와 모순되지 않는다.
+
+같은 컴파일된 바이너리로 이 검증을 다시 실행하려면 다음 명령을 사용한다.
+
+```bash
 python3 problems/recoloring-radius-q15/verify_atlas.py \
   --cpp /tmp/recolor_radius_exact
 ```
 
-예상 출력의 마지막 부분은 다음과 같다.
+## 원문 충실성과 범위
 
-```text
-PASS dataset: 1252 unique records, SHA-256 ad68465d32eb7679a1ed8b0aa7a7f1da366da9b1ef8566b04664c504e8876255
-PASS C++ exhaustive audit: 1252 graphs, 145 eligible pairs, 0 counterexamples
-PASS independent Python audit: 1252 graphs through order 7, 145 eligible pairs, 0 counterexamples (...s)
-```
+인증서는 유한 무향 단순 그래프, 팔레트 \(\{0,\ldots,k-1\}\)를 쓰는 레이블된
+올바른 색칠, 한 꼭짓점 재색칠 이동, 보통의 그래프 거리, 최소 이심률로 정의한
+반지름을 사용한다. 이는 출판된 정의와 일치한다. 색 이름을 0부터 쓰는지
+1부터 쓰는지는 수학적 차이가 없다. 최종 출판본에서는 이 명제가 질문 15이며,
+이전 원고의 번호는 달랐다.
 
-기록된 로컬 실행에서 C++ 검증은 1.12초, 독립 Python 검증은 53.53초가
-걸렸다. 전체 검증 시간은 56.76초였고 최대 상주 메모리는 약 22 MB였다.
-
-고정 입력을 독립적으로 다시 생성하려면 다음을 실행한다.
-
-```bash
-python3 -m venv /tmp/recolor-atlas-venv
-/tmp/recolor-atlas-venv/bin/pip install 'networkx==3.6.1'
-/tmp/recolor-atlas-venv/bin/python \
-  problems/recoloring-radius-q15/generate_atlas_data.py \
-  /tmp/atlas_1_7.g6
-cmp /tmp/atlas_1_7.g6 problems/recoloring-radius-q15/atlas_1_7.g6
-```
-
-## 원문 충실성과 규약
-
-계산은 유한 무향 단순 그래프, 팔레트 \(\{0,\ldots,k-1\}\)를 쓰는 레이블된
-올바른 색칠, 한 꼭짓점씩 바꾸는 재색칠 이동, 보통의 그래프 거리, 최소
-이심률로 정의한 반지름을 사용한다. 이는 출판된 정의와 일치하며 색 이름을
-0부터 쓰는 것과 1부터 쓰는 것에는 의미상 차이가 없다. 재색칠 그래프의
-연결성과 반지름은 그래프 동형 아래 불변이므로 각 비동형 그래프의 대표 하나만
-검사해도 된다. 꼭짓점이 0개인 그래프는 주장한 탐색 범위에 포함하지 않는다.
-
-`recolor_radius_search.py`는 탐색용 NetworkX 구현으로 남겨 둔다. 위 인증서
-명령은 고정 데이터, C++ 탐색기, 표준 라이브러리만 사용하는 독립 Python
-검증기만 이용한다.
+이 저장소는 기계로 검증한 반례를 기록한다. 외부 검토 전에는 출판 우선권이나
+새로움을 주장하지 않는다.

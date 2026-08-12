@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "question": "Cambie--Cames van Batenburg--Cranston, published Question 15",
+  "graph6": "FCOf?",
+  "description": "The 7-vertex tree obtained by subdividing every edge of K_1,3 once",
+  "order": 7,
+  "edges": [
+    [0, 3],
+    [0, 6],
+    [1, 4],
+    [1, 6],
+    [2, 5],
+    [2, 6]
+  ],
+  "comparison": {
+    "k": 4,
+    "next_k": 5,
+    "strict_increase": true
+  },
+  "results": [
+    {
+      "k": 4,
+      "states": 2916,
+      "undirected_recolouring_edges": 15876,
+      "connected": true,
+      "colour_orbits": 122,
+      "radius": 9,
+      "diameter": 10,
+      "centre_colour_orbits": 8,
+      "labelled_centres": 192,
+      "labelled_eccentricity_distribution": {
+        "9": 192,
+        "10": 2724
+      },
+      "example_centre": [0, 0, 1, 1, 2, 0, 3],
+      "example_centre_distance_layers": [1, 10, 50, 160, 365, 621, 774, 630, 268, 37],
+      "sources_fully_explored": 122
+    },
+    {
+      "k": 5,
+      "states": 20480,
+      "undirected_recolouring_edges": 178560,
+      "connected": true,
+      "colour_orbits": 187,
+      "radius": 10,
+      "diameter": 10,
+      "centre_colour_orbits": 187,
+      "labelled_centres": 20480,
+      "labelled_eccentricity_distribution": {
+        "10": 20480
+      },
+      "example_centre": [0, 0, 0, 1, 1, 1, 1],
+      "example_centre_distance_layers": [1, 21, 180, 846, 2436, 4545, 5598, 4464, 2079, 297, 13],
+      "sources_fully_explored": 187
+    }
+  ]
+}

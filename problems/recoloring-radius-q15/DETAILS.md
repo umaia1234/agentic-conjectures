@@ -1,91 +1,130 @@
 **English** | [한국어](DETAILS.ko.md)
 
-# Mathematical details of the bounded radius audit
+# Mathematical details of the recolouring-radius counterexample
 
-## Finite proposition checked
+## Refuted statement
 
-For every finite simple graph \(G\) with \(1\le|V(G)|\le7\), if both
-\(\mathcal C_3(G)\) and \(\mathcal C_4(G)\) are connected, then
+The final published Question 15 asks whether every finite simple graph \(G\)
+and integer \(k\ge3\) for which both \(\mathcal C_k(G)\) and
+\(\mathcal C_{k+1}(G)\) are connected must satisfy
 
 \[
-  \operatorname{rad}\mathcal C_3(G)
+  \operatorname{rad}\mathcal C_k(G)
   \ge
-  \operatorname{rad}\mathcal C_4(G).
+  \operatorname{rad}\mathcal C_{k+1}(G).
 \]
 
-The program checks one representative of every graph-isomorphism class in
-this range. Graph isomorphisms induce isomorphisms of recolouring graphs, so
-connectedness and radius do not depend on the representative.
+The certificate refutes this universal statement with \(k=4\).
 
-## Colour-permutation reduction
+## Fixed witness
 
-The symmetric group on the \(k\) colour names acts on proper \(k\)-colourings.
+Let \(T\) have vertex set \(\{0,1,2,3,4,5,6\}\) and edge set
+
+\[
+  \{03,06,14,16,25,26\}.
+\]
+
+It is the subdivided claw: vertex 6 has degree 3, vertices 0, 1, 2 have
+degree 2, and vertices 3, 4, 5 have degree 1. The independent graph6 decoder
+checks that `FCOf?` is exactly this graph.
+
+Both required recolouring graphs are connected. For each palette, the
+certificate runs BFS from one state and checks that it reaches every
+enumerated proper colouring: all 2,916 states for \(q=4\) and all 20,480 for
+\(q=5\).
+
+## Complete state spaces
+
+A proper \(q\)-colouring of a seven-vertex tree can be chosen by assigning
+the first vertex any of \(q\) colours and each subsequent vertex in a rooted
+tree any colour except its parent's. Hence
+
+\[
+  |V(\mathcal C_q(T))|=q(q-1)^6.
+\]
+
+This gives \(4\cdot3^6=2{,}916\) and
+\(5\cdot4^6=20{,}480\), matching both implementations. The verifiers do not
+rely on this formula: they enumerate all \(q^7\) maps and retain exactly
+those that give different colours to both endpoints of every edge.
+
+From each retained state they generate every state obtained by changing one
+coordinate to a colour absent from its graph neighbours. Consequently the
+materialised adjacency relation is exactly the definition of
+\(\mathcal C_q(T)\). The resulting undirected edge counts are 15,876 for
+\(q=4\) and 178,560 for \(q=5\); adjacency symmetry is checked explicitly.
+
+## Exact radii
+
+The symmetric group on the \(q\) colour names acts on proper colourings.
 Applying one global permutation to every state of a recolouring path is an
-automorphism of \(\mathcal C_k(G)\). In particular, colourings in the same
-orbit have equal eccentricity.
+automorphism of \(\mathcal C_q(T)\), so states in the same orbit have equal
+eccentricity.
 
-Every orbit has exactly one restricted-growth representative: scan the vertex
-colours in vertex-label order, rename the first colour to 0, and thereafter
-rename each newly encountered colour to the next unused integer. Therefore,
-after connectedness has been checked using an unrestricted BFS, it is enough
-to run eccentricity BFS from the restricted-growth states when taking the
-minimum that defines the radius. Both implementations use this reduction but
-encode states differently.
+Every orbit has one restricted-growth representative: scan the vertex
+colours in label order, rename the first colour to 0, and rename each new
+colour by the next unused integer. The Python verifier independently
+canonicalises every labelled state and confirms that the resulting set is
+exactly the set of restricted-growth representatives. It then runs a full,
+unpruned BFS from every representative. The complete result is:
 
-## Disconnected input graphs
+| \(q\) | colour-name orbits | labelled eccentricity distribution | radius | diameter |
+|---:|---:|---:|---:|---:|
+| 4 | 122 | \(192\) at 9; \(2{,}724\) at 10 | 9 | 10 |
+| 5 | 187 | \(20{,}480\) at 10 | 10 | 10 |
 
-If \(G=G_1\mathbin{\dot\cup}G_2\), restriction to the two components gives a
-canonical graph isomorphism
+For the \(q=4\) centre `(0,0,1,1,2,0,3)`, the numbers of states at distances
+0 through 9 are
+
+```text
+1, 10, 50, 160, 365, 621, 774, 630, 268, 37.
+```
+
+They sum to 2,916, so this one BFS gives eccentricity 9 and proves the upper
+bound on the radius. The full orbit-source computation proves that no state
+has smaller eccentricity. For \(q=5\), every state has eccentricity 10; for
+the centre `(0,0,0,1,1,1,1)`, the distance layers are
+
+```text
+1, 21, 180, 846, 2436, 4545, 5598, 4464, 2079, 297, 13.
+```
+
+These sum to 20,480. Therefore
 
 \[
-  \mathcal C_k(G)
-  \cong
-  \mathcal C_k(G_1)\mathbin{\square}\mathcal C_k(G_2),
+  \operatorname{rad}\mathcal C_4(T)=9<10
+  =\operatorname{rad}\mathcal C_5(T),
 \]
 
-where \(\square\) is the Cartesian graph product. A recolouring step changes
-one vertex, hence exactly one component colouring, which proves the adjacency
-correspondence. A Cartesian product is connected exactly when both factors
-are connected. In a connected Cartesian product, distances add:
+which is the required strict reversal.
 
-\[
-  d((x_1,x_2),(y_1,y_2))=d(x_1,y_1)+d(x_2,y_2).
-\]
+## Independent implementation audit
 
-Consequently eccentricities add, and minimizing independently in the two
-coordinates gives
+The Python implementation represents a colouring as a tuple and its
+recolouring graph as adjacency lists indexed by a tuple-to-integer dictionary.
+It fully explores all 122 and 187 orbit representatives without a radius
+cutoff. It also reconstructs labelled eccentricity counts from orbit sizes
+\(q!/(q-r)!\), where \(r\) is the number of colours used by a representative,
+and checks that the weights sum to the full state count.
 
-\[
-  \operatorname{rad}(H_1\mathbin{\square}H_2)
-  =\operatorname{rad}(H_1)+\operatorname{rad}(H_2).
-\]
+The C++ implementation instead represents a colouring by its base-\(q\)
+integer code and maps the entire code space through a dense integer array.
+Its BFS storage, neighbour generation, graph6 parser, and radius search are
+separate from the Python code. It agrees on connectedness, state and edge
+counts, orbit counts, and both exact radii. The certificate fails on any
+disagreement or on any mismatch with `counterexample.json`.
 
-Induction gives the same facts for any finite number of components. The C++
-implementation enumerates the full product directly. The Python verifier
-uses the component formula through order seven and checks its output against
-direct full-product BFS through order six: the \(k=3\) output is checked for
-every input graph, and the \(k=4\) output is checked whenever the \(k=3\)
-recolouring graph is connected.
+## Preserved bounded audit and trust boundary
 
-## Exhaustiveness and failure conditions
+The earlier atlas certificate remains valid: for \(k=3\) to \(4\), no
+counterexample occurs among all unlabelled simple graphs through order seven.
+That finite statement is independent of the \(k=4\) witness and remains
+registered as a second verification command.
 
-Whenever a program tests \(k=3\) or \(k=4\) for an input graph, it enumerates
-every map from the labelled vertex set to the \(k\)-colour palette and retains
-exactly the proper ones. From a colouring it generates every proper state
-obtained by changing one vertex. Thus the constructed adjacency relation is
-exactly that of \(\mathcal C_k(G)\), and ordinary BFS gives exact distances.
-Both programs test \(k=3\) first and need not test \(k=4\) when
-\(\mathcal C_3(G)\) is disconnected, because such a graph is outside the
-hypothesis of the finite proposition.
-
-The certificate fails if the graph6 data have the wrong SHA-256, contain a
-duplicate or malformed record, have nonstandard per-order counts, disagree
-with the recorded connected-pair totals, make the two implementations
-disagree in their shared direct-BFS range, or contain a counterexample. The
-fixed data contain the standard \(1,2,4,11,34,156,1044\) unlabelled simple
-graphs of orders 1 through 7.
-
-The remaining external trust point is that NetworkX 3.6.1 faithfully packages
-the standard Graph Atlas. `generate_atlas_data.py` makes that provenance
-reproducible and pins the resulting bytes; the verifier does not treat a
-successful finite search as evidence for graphs outside the recorded range.
+The counterexample certificate's trust boundary is the ordinary C++ compiler,
+Python runtime, and the correctness of exhaustive integer BFS. No saved path,
+radius transcript, third-party graph library, random choice, or unverified
+search result is needed. The computation uses the published conventions for
+finite simple graphs, proper labelled colourings, one-vertex moves, ordinary
+graph distance, and radius. Using colour names starting at 0 is only a
+renaming.

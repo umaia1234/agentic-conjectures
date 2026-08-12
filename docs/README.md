@@ -34,5 +34,5 @@ problem rather than assembling another global copy.
 | [OEIS A245211: a(n)=n only for n=21](../problems/oeis-a245211/README.md) | 🟡 partial | [Detailed derivation](../problems/oeis-a245211/DETAILS.md) |
 | [OEIS A354747 first unknown case a(100943)](../problems/oeis-a354747/README.md) | 🔴 refuted | [Detailed derivation](../problems/oeis-a354747/DETAILS.md) |
 | [OEIS A395412 certified finite nonvanishing extension](../problems/oeis-a395412/README.md) | 🟡 partial | [Detailed derivation](../problems/oeis-a395412/DETAILS.md) |
-| [Graph recoloring radius — exhaustive atlas check through order 7](../problems/recoloring-radius-q15/README.md) | 🟡 partial | [Detailed derivation](../problems/recoloring-radius-q15/DETAILS.md) |
+| [Graph recoloring radius — subdivided-claw counterexample](../problems/recoloring-radius-q15/README.md) | 🔴 refuted | [Detailed derivation](../problems/recoloring-radius-q15/DETAILS.md) |
 <!-- DETAILS:END -->

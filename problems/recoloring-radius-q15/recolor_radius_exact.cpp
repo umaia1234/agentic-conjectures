@@ -51,6 +51,7 @@ struct Result {
   int radius = -1;
   uint32_t centre_code = 0;
   int states = 0;
+  long long recolouring_edges = 0;
   int orbit_representatives = 0;
 };
 
@@ -67,7 +68,13 @@ static bool restricted_growth(const uint8_t* colour, int n) {
 
 static Result exact_radius(const Graph& g, int k) {
   vector<uint32_t> power(g.n + 1, 1);
-  for (int i = 1; i <= g.n; ++i) power[i] = power[i - 1] * k;
+  for (int i = 1; i <= g.n; ++i) {
+    if (power[i - 1] > std::numeric_limits<uint32_t>::max() / uint32_t(k)) {
+      cerr << "colouring code space exceeds 32 bits\n";
+      std::exit(2);
+    }
+    power[i] = power[i - 1] * k;
+  }
   const uint32_t universe = power[g.n];
 
   vector<int> id(universe, -1);
@@ -125,6 +132,22 @@ static Result exact_radius(const Graph& g, int k) {
       }
     }
   }
+  long long directed_arcs = 0;
+  for (int here = 0; here < int(adjacency.size()); ++here) {
+    directed_arcs += adjacency[here].size();
+    for (int other : adjacency[here]) {
+      if (std::find(adjacency[other].begin(), adjacency[other].end(), here) ==
+          adjacency[other].end()) {
+        cerr << "internal error: recolouring adjacency is not symmetric\n";
+        std::exit(2);
+      }
+    }
+  }
+  if (directed_arcs % 2 != 0) {
+    cerr << "internal error: odd directed recolouring-arc count\n";
+    std::exit(2);
+  }
+  answer.recolouring_edges = directed_arcs / 2;
 
   vector<int> distance(code.size(), -1);
   vector<int> touched;
@@ -253,6 +276,10 @@ static Graph parse_graph6(string line) {
     }
   }
   int n = int(static_cast<unsigned char>(line[0])) - 63;
+  if (n < 1 || n > 20) {
+    cerr << "exact engine supports graph orders from 1 through 20\n";
+    std::exit(2);
+  }
   int edge_bits = n * (n - 1) / 2;
   size_t expected_length = 1 + size_t((edge_bits + 5) / 6);
   if (line.size() != expected_length) {
@@ -296,7 +323,9 @@ static Graph parse_graph6(string line) {
 
 static void print_result(const string& label, const Result& r) {
   cout << label << " connected=" << r.connected << " radius=" << r.radius
-       << " states=" << r.states << " colour_orbits=" << r.orbit_representatives
+       << " states=" << r.states
+       << " recolouring_edges=" << r.recolouring_edges
+       << " colour_orbits=" << r.orbit_representatives
        << " centre_code=" << r.centre_code << '\n';
 }
 
@@ -376,6 +405,23 @@ int main(int argc, char** argv) {
     }
     return verify_atlas(argv[2]);
   }
+  if (mode == "exact") {
+    if (argc != 4) {
+      cerr << "usage: recolor_radius_exact exact GRAPH6 K\n";
+      return 2;
+    }
+    int k = std::stoi(argv[3]);
+    if (k < 1 || k > 16) {
+      cerr << "K must be between 1 and 16\n";
+      return 2;
+    }
+    Graph graph = parse_graph6(argv[2]);
+    Result result = exact_radius(graph, k);
+    cout << "graph6=" << argv[2] << " n=" << graph.n << " m="
+         << graph.edges.size() << " k=" << k << ' ';
+    print_result("exact", result);
+    return 0;
+  }
   Graph base = base_example();
   if (mode == "base") {
     Result r3 = exact_radius(base, 3);
@@ -422,7 +468,8 @@ int main(int argc, char** argv) {
   }
   if (mode != "toggle") {
     cerr << "usage: recolor_radius_exact "
-            "[base|toggle|stream [shard shards]|verify-atlas ATLAS.g6]\n";
+            "[base|exact GRAPH6 K|toggle|stream [shard shards]|"
+            "verify-atlas ATLAS.g6]\n";
     return 2;
   }
   int shard = argc >= 3 ? std::stoi(argv[2]) : 0;
