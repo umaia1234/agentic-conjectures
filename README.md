@@ -8,6 +8,7 @@
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 [![Lean 4](https://img.shields.io/badge/Lean_4-mathlib_v4.30.0-7b2fbf)](AgenticConjectures)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-2da44e)](CONTRIBUTING.md)
+[![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
 ![problems](https://img.shields.io/badge/problems-51-8250df) ![proved](https://img.shields.io/badge/proved-20-2da44e) ![refuted](https://img.shields.io/badge/refuted-7-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-8-848d97)
@@ -124,6 +125,11 @@ conjectures. Famous problems are bound-tracking infrastructure, not "solve
 me" targets.
 
 ## 📊 Dashboard
+
+The same data is published as a searchable
+[live dashboard](https://umaia1234.github.io/agentic-conjectures/),
+redeployed by CI on every green push to main; each curated week also lands
+in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases).
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 

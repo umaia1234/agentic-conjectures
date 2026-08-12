@@ -193,6 +193,15 @@ def details_block(statuses: list[dict], locale: str) -> str:
     return "\n".join([DBEGIN, header, "|---|---|---|", *rows, DEND])
 
 
+def load_statuses() -> list[dict]:
+    """Load every problems/*/status.yaml, sorted by problem directory."""
+    statuses = []
+    for sf in sorted(ROOT.glob("problems/*/status.yaml")):
+        with open(sf) as f:
+            statuses.append(yaml.safe_load(f))
+    return statuses
+
+
 def load_highlights(status_by_id: dict) -> tuple[list[dict], list[str]]:
     """Load docs/highlights.yaml (oldest first) and validate the curation rules."""
     if not HIGHLIGHTS_DATA.exists():
@@ -310,15 +319,12 @@ def replace_block(text: str, begin: str, end: str, block: str, path: Path) -> st
 
 def main() -> int:
     check = "--check" in sys.argv
-    statuses = []
+    statuses = load_statuses()
     missing_ko = []
-    for sf in sorted(ROOT.glob("problems/*/status.yaml")):
-        with open(sf) as f:
-            status = yaml.safe_load(f)
-        statuses.append(status)
+    for status in statuses:
         for key in ("title_ko", "claim_ko"):
             if not isinstance(status.get(key), str) or not status[key].strip():
-                missing_ko.append(f"{status.get('id', sf.parent.name)}.{key}")
+                missing_ko.append(f"{status.get('id', '?')}.{key}")
     if missing_ko:
         print("missing Korean dashboard fields:")
         for item in missing_ko:

@@ -8,6 +8,7 @@
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 [![Lean 4](https://img.shields.io/badge/Lean_4-mathlib_v4.30.0-7b2fbf)](AgenticConjectures)
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-2da44e)](CONTRIBUTING.ko.md)
+[![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
 ![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-51-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-20-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-7-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-16-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-8-848d97)
@@ -121,6 +122,12 @@ status.yaml attribution 블록에도 자신을 추가하라.
 대상"이 아닙니다.
 
 ## 📊 대시보드
+
+같은 데이터를 검색 가능한
+[라이브 대시보드](https://umaia1234.github.io/agentic-conjectures/ko/)로도
+공개합니다 — main이 green이 될 때마다 CI가 재배포하며, 큐레이션된 각 주는
+[릴리스 피드](https://github.com/umaia1234/agentic-conjectures/releases)에도
+쌓입니다.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 

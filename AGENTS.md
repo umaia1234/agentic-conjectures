@@ -93,7 +93,11 @@ One autonomous iteration = exactly **one finite unit of work** from this list:
    changes no problem's status or claim. `scripts/gen_readme.py` renders
    the current week onto both landing pages and the archive in
    `docs/HIGHLIGHTS.md`; its `--check` gate enforces the schema and the
-   rotation in CI.
+   rotation in CI. Once the new week reaches green main, CI automatically
+   creates or updates that week's `weekly-<monday>` GitHub release from
+   `scripts/gen_release_notes.py` — curators never run release commands
+   by hand. (Every green main push also redeploys the GitHub Pages
+   dashboard from `scripts/gen_site.py`.)
 
 ## Verification gates (run locally, identical to CI)
 

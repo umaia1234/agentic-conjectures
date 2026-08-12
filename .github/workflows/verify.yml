@@ -62,3 +62,75 @@ jobs:
         run: lake build
       - name: Axiom audit (#print axioms per declared theorem)
         run: python3 scripts/check_axioms.py
+
+  # Publish-only jobs below: they run after BOTH verification jobs are green
+  # on main, so the public dashboard and the weekly release can never get
+  # ahead of what CI actually re-verified.
+  pages:
+    if: github.event_name != 'pull_request'
+    needs: [certificates, lean]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Generate the static dashboard
+        run: python3 scripts/gen_site.py
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  release:
+    if: github.event_name != 'pull_request'
+    needs: [certificates, lean]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: Decide whether this run refreshes the weekly release
+        id: gate
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "refresh=true" >> "$GITHUB_OUTPUT"
+          elif git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- docs/highlights.yaml | grep -q .; then
+            echo "refresh=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "refresh=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Create or update the weekly release
+        if: steps.gate.outputs.refresh == 'true'
+        run: |
+          python3 scripts/gen_release_notes.py build/release
+          tag=$(cat build/release/tag.txt)
+          title=$(cat build/release/title.txt)
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release edit "$tag" --repo "$GITHUB_REPOSITORY" \
+              --title "$title" --notes-file build/release/notes.md
+          else
+            gh release create "$tag" --repo "$GITHUB_REPOSITORY" \
+              --target "$GITHUB_SHA" --title "$title" \
+              --notes-file build/release/notes.md --generate-notes
+          fi

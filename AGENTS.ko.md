@@ -78,7 +78,11 @@
    코멘트일 뿐 어떤 문제의 상태·주장도 바꾸지 않는다.
    `scripts/gen_readme.py`가 현재 주를 두 랜딩 페이지와
    `docs/HIGHLIGHTS.md` 아카이브에 렌더링하며, CI의 `--check` 게이트가
-   스키마와 로테이션을 강제한다.
+   스키마와 로테이션을 강제한다. 새 주가 green main에 도달하면 CI가
+   `scripts/gen_release_notes.py`로 그 주의 `weekly-<월요일>` GitHub
+   릴리스를 자동 생성·갱신한다 — 큐레이터가 릴리스 명령을 직접 실행하는
+   일은 없다. (green main 푸시는 매번 `scripts/gen_site.py`로 GitHub
+   Pages 대시보드도 재배포한다.)
 
 ## 검증 게이트 (로컬에서 CI와 동일하게)
 
