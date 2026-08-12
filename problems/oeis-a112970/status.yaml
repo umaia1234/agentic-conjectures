@@ -1,0 +1,38 @@
+id: oeis-a112970
+title: OEIS A112970 — power-of-two identities and quarter-square formula proved
+domain: oeis
+source_url: https://oeis.org/A112970
+claimed_status: proved
+claim: Lean-verifies both conjectured chains for all n >= 0, including the omitted closed form
+  a(2^n) = floor(n^2/4) + 1 from A033638.
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: verify_identities.py
+  kind: certificate-script
+- path: upstream/112970_93dc5e41.lean
+  kind: upstream-formalization
+verify:
+- cmd: python3 verify_identities.py --max-exponent 64
+  expected_runtime: under 1 second
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.OeisA112970
+  theorems:
+  - AgenticConjectures.OeisA112970.conjecture1
+  - AgenticConjectures.OeisA112970.conjecture2
+  - AgenticConjectures.OeisA112970.conjecture3
+  - AgenticConjectures.OeisA112970.power_of_two_eq_a033638
+attribution:
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: candidate selection, prior-art audit, proof, Lean 4 formalization, certificate, and documentation
+notes: >-
+  Northshield's 2010 Theorem 4.1 supplies the generalized recurrence, and three of the displayed
+  identities are immediate consequences of its odd branch; it does not state the A033638
+  quarter-square formula, whose additional recurrence proof is formalized here. The pending
+  Formal Conjectures PR #4450 omits that formula and leaves its three subclaims open. Targeted
+  searches found no earlier proof of the closed form, but this is not a novelty claim. The result
+  is unreviewed and has not been submitted externally. The Python check is finite transcription
+  evidence only; Lean proves the universal result.

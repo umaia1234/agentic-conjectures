@@ -1,0 +1,27 @@
+id: oeis-a394666
+title: OEIS A394666 — factorial zero classification proved
+domain: oeis
+source_url: https://oeis.org/A394666
+claimed_status: proved
+claim: Lean-proves that for every n>5, n! mod (2*n-1) is zero exactly when 2*n-1 is composite,
+  and classifies a(1)=0 as the sole positive-index boundary exception.
+artifacts:
+- path: README.md
+  kind: informal-proof
+verify: []
+lean:
+  modules:
+  - AgenticConjectures.OeisA394666
+  theorems:
+  - AgenticConjectures.OeisA394666.a_eq_zero_iff_not_prime
+  - AgenticConjectures.OeisA394666.zero_classification
+attribution:
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: candidate selection, prior-art audit, mathematical proof, Lean 4 formalization, and bilingual documentation
+notes: >-
+  OEIS revision #38 still labels the tail classification conjectural. Its sentence, read as an
+  unrestricted biconditional, omits the displayed initial zero a(1)=0; the formalization proves the
+  intended n>5 tail statement and a corrected complete positive-index classification. Exact-formula
+  searches found implementations but no proof; that negative search is not evidence of novelty.
+  Unreviewed, not confirmed by OEIS editors, and not submitted externally.

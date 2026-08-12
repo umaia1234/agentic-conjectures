@@ -1,0 +1,37 @@
+id: oeis-a396093
+title: OEIS A396093 — both parity conjectures proved
+domain: oeis
+source_url: https://oeis.org/A396093
+claimed_status: proved
+claim: >-
+  Proves both OEIS parity conjectures: every a(2n) is even for n>=1, and
+  a(2n-1) is even exactly when n=5k-2 for k>=1, via a Lean-verified complete
+  period-10 parity classification.
+artifacts:
+- path: a396093_certificate.py
+  kind: certificate-script
+- path: ../../AgenticConjectures/OeisA396093.lean
+  kind: lean-proof
+verify:
+- cmd: python3 a396093_certificate.py
+  expected_runtime: about 0.04 seconds
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.OeisA396093
+  theorems:
+  - AgenticConjectures.OeisA396093.even_a_iff
+  - AgenticConjectures.OeisA396093.even_index_even
+  - AgenticConjectures.OeisA396093.odd_index_even_iff
+attribution:
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: candidate selection, parity proof, Lean 4 formalization, independent certificate, and documentation
+notes: >-
+  The Lean module copies the OEIS offset-0 initial values and integer
+  order-eight recurrence and proves the stronger classification Even(a(n)) iff
+  n is even or n=5 mod 10. The independent standard-library certificate derives
+  the rational generating function by triple composition and verifies the
+  infinite F_2 identity by exact polynomial arithmetic. Source history and
+  prior art were checked on 2026-08-12; the result is unreviewed, no novelty is
+  claimed, and nothing was submitted externally.

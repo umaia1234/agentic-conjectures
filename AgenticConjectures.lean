@@ -1,6 +1,8 @@
 import AgenticConjectures.OeisA000224
 import AgenticConjectures.OeisA034267
 import AgenticConjectures.OeisA072780
+import AgenticConjectures.OeisA112970
+import AgenticConjectures.OeisA113249
 import AgenticConjectures.OeisA136433
 import AgenticConjectures.OeisA190363
 import AgenticConjectures.OeisA239293
@@ -8,8 +10,12 @@ import AgenticConjectures.OeisA242560
 import AgenticConjectures.OeisA270361
 import AgenticConjectures.OeisA286185A286183
 import AgenticConjectures.OeisA319197
+import AgenticConjectures.OeisA368633
 import AgenticConjectures.OeisA369378
 import AgenticConjectures.OeisA384162
+import AgenticConjectures.OeisA394666
+import AgenticConjectures.OeisA396093
+import AgenticConjectures.OeisA397588
 import AgenticConjectures.OeisA398189
 
 /-!
