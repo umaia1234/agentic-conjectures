@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-51-8250df) ![proved](https://img.shields.io/badge/proved-20-2da44e) ![refuted](https://img.shields.io/badge/refuted-8-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-7-848d97)
+![problems](https://img.shields.io/badge/problems-51-8250df) ![proved](https://img.shields.io/badge/proved-20-2da44e) ![refuted](https://img.shields.io/badge/refuted-8-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**51 problems** — ✅ proved: 20 · 🔴 refuted: 8 · 🟡 partial: 16 · ⚪ open: 7
+**51 problems** — ✅ proved: 20 · 🔴 refuted: 8 · 🟡 partial: 17 · ⚪ open: 6
 
 ### OEIS
 
@@ -176,7 +176,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 | Problem | Claimed status | Machine checks | Solved by | Claim |
 |---|---|---|---|---|
 | [Erdős #307 — product of prime reciprocal sums equal to 1](problems/erdos-307/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Re-proves forcing identities and local Legendre/mod-8/mod-24 necessary conditions and exhaustively shows \|P union Q\| >= 60 and max(P union Q) >= 347; the problem itself remains open and no novelty is claimed. |
-| [Erdős #385 / #430(i) — finite-range experiments on F(n)-n](problems/erdos-385/README.md) | ⚪ open | cert | `GPT-5.6 Sol` | Provides two C++ finite-range experiments probing the quantity F(n)-n for parts (i)/(ii) and explicitly states they prove none of the three conjecture statements; no bound or result is asserted in the README. |
+| [Erdős #385 / #430(i) — odd indices and exact verification through 10^9](problems/erdos-385/README.md) | 🟡 partial | lean + cert | `GPT-5.6 Sol` | Lean-proves F(n)>=n for n>=5 and F(n)>n at every odd n>=5; two independent exact sieves classify F(n)=n through 10^9, finding 100 equality cases with largest 267680 and hence F(n)>n throughout [267681,10^9], while both asymptotic questions remain open. |
 | [Erdős #424 — positive density of the generated set (finite probe)](problems/erdos-424/README.md) | ⚪ open | cert | `GPT-5.6 Sol` | Describes an exact finite experiment generating the set via n+1=xy with distinct members and scanning residue classes for omissions; the README explicitly says the finite search does not prove positive density. |
 | [Finite projective plane of order 12](problems/projective-plane-order-12/README.md) | ⚪ open | — | `GPT-5.6 Sol` | Claims nothing new: records the open existence problem for a projective plane of order 12 (equivalently a symmetric 2-(157,13,1) design), known collineation-group exclusions, and computational considerations only. |
 

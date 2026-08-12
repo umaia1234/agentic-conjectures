@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-51-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-20-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-8-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-16-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-7-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-51-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-20-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-8-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 51개** — ✅ 증명: 20 · 🔴 반례: 8 · 🟡 부분 결과: 16 · ⚪ 미해결: 7
+**문제 51개** — ✅ 증명: 20 · 🔴 반례: 8 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
 
 ### OEIS
 
@@ -174,7 +174,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 | 문제 | 주장 상태 | 기계 검증 | 작업 모델 | 주장 |
 |---|---|---|---|---|
 | [Erdős #307 — 소수 역수합들의 곱이 1이 되는 문제](problems/erdos-307/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | 강제 항등식과 국소 Legendre/mod-8/mod-24 필요조건을 다시 증명하고, 완전탐색으로 \|P union Q\| >= 60 및 max(P union Q) >= 347을 보인다. 문제 자체는 여전히 미해결이며 새로움을 주장하지 않는다. |
-| [Erdős #385 / #430(i) — F(n)-n에 대한 유한 범위 실험](problems/erdos-385/README.ko.md) | ⚪ 미해결 | 인증서 | `GPT-5.6 Sol` | 부분 (i), (ii)에서 F(n)-n을 조사하는 두 개의 C++ 유한 범위 실험을 제공하며, 이 실험들이 세 추측 명제 가운데 어느 것도 증명하지 못한다고 명시한다. README에서는 어떠한 상한·하한이나 결과도 주장하지 않는다. |
+| [에르되시 #385 / #430(i) — 홀수 지표 정리와 10^9까지의 정확한 검증](problems/erdos-385/README.ko.md) | 🟡 부분 결과 | Lean + 인증서 | `GPT-5.6 Sol` | Lean으로 n>=5이면 F(n)>=n이고 홀수 n>=5이면 F(n)>n임을 증명했다. 서로 독립적인 두 정확한 체가 10^9까지 F(n)=n인 경우를 분류하여 등호 사례가 정확히 100개이고 최댓값이 267680임을 확인하므로 [267681,10^9] 전체에서 F(n)>n이다. 두 점근적 질문은 여전히 미해결이다. |
 | [Erdős #424 — 생성 집합의 양의 밀도(유한 탐색)](problems/erdos-424/README.ko.md) | ⚪ 미해결 | 인증서 | `GPT-5.6 Sol` | 서로 다른 원소를 사용한 n+1=xy를 통해 집합을 생성하고 누락 여부를 확인하기 위해 잉여류를 탐색하는 정확한 유한 실험을 설명한다. README는 이 유한 탐색이 양의 밀도를 증명하지 않는다고 명시한다. |
 | [12차 유한 사영평면](problems/projective-plane-order-12/README.ko.md) | ⚪ 미해결 | — | `GPT-5.6 Sol` | 새로운 결과를 주장하지 않는다. 12차 사영평면, 즉 대칭 2-(157,13,1) 설계의 미해결 존재 문제와 알려진 공선변환군 배제 결과, 계산상 고려사항만 기록한다. |
 
