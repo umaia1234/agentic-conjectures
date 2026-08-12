@@ -1,5 +1,6 @@
 id: oeis-a396093
 title: OEIS A396093 — both parity conjectures proved
+title_ko: OEIS A396093 — 홀짝성 추측 두 가지 모두 증명
 domain: oeis
 source_url: https://oeis.org/A396093
 claimed_status: proved
@@ -7,6 +8,10 @@ claim: >-
   Proves both OEIS parity conjectures: every a(2n) is even for n>=1, and
   a(2n-1) is even exactly when n=5k-2 for k>=1, via a Lean-verified complete
   period-10 parity classification.
+claim_ko: >-
+  주기 10의 완전한 홀짝성 분류를 Lean으로 검증하여 OEIS의 두 홀짝성 추측을 모두
+  증명한다. 즉, n>=1이면 모든 a(2n)이 짝수이고, a(2n-1)이 짝수일 필요충분조건은
+  어떤 k>=1에 대해 n=5k-2인 것이다.
 artifacts:
 - path: a396093_certificate.py
   kind: certificate-script

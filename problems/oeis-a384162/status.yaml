@@ -1,10 +1,14 @@
 id: oeis-a384162
 title: OEIS A384162 conjectured cross-reference refuted at n=2
+title_ko: OEIS A384162 — 추측으로 제시된 교차참조를 n=2에서 반박
 domain: oeis
 source_url: https://oeis.org/A384162
 claimed_status: refuted
 claim: 'Refutes the conjecture a(n)=n*A342168(n-1) at n=2: A384162(2)=6, while 2*A342168(1)=8, with a
   Lean disproof and independent exact computations.'
+claim_ko: >-
+  A384162(2)=6인 반면 2*A342168(1)=8임을 Lean 반증과 독립적인 정확한 계산으로
+  확인하여, 추측 a(n)=n*A342168(n-1)을 n=2에서 반박한다.
 artifacts:
 - path: a384162_certificate.py
   kind: certificate-script

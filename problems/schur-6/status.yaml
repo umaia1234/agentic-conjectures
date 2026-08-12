@@ -1,11 +1,17 @@
 id: schur-6
 title: Independent Schur-6 attempt
+title_ko: 독립적인 Schur-6 시도
 domain: other
 source_url: ''
 claimed_status: partial
 claim: 'Claims only independent reverification of the published S(6) >= 536 partition and negative search
   results toward [1,537]: the best saved 537-coloring has exactly two monochromatic Schur triples, a depth-5
   repair exclusion around it found nothing, and the full SAT instance remained undecided.'
+claim_ko: >-
+  출판된 S(6) >= 536 하한을 증명하는 분할의 독립적 재검증과 [1,537]에 대한 부정적 탐색 결과만
+  주장한다. 저장된 최선의 [1,537] 6색칠에는 단색 Schur 삼중항이 정확히 두 개 있으며, 그 근방에서
+  다섯 번 이하의 재색칠로는 이를 고칠 수 없음을 완전탐색으로 확인했다. 전체 SAT 인스턴스는 미결정
+  상태로 남았다.
 artifacts:
 - path: verify.py
   kind: certificate-script

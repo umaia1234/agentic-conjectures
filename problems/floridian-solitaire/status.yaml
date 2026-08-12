@@ -1,11 +1,16 @@
 id: floridian-solitaire
 title: Floridian solitaire — immediate losses for every n > 6
+title_ko: Floridian solitaire — 모든 n > 6에서의 즉시 패배
 domain: other
 source_url: https://arxiv.org/abs/2608.08313
 claimed_status: proved
 claim: Claims a complete (unreviewed) proof that every integer n > 6 has an immediate-loss position, resolving
   the open residue classes n = 0,2 (mod 6) of Meyerowitz–Curran–Locke–Low's second research question via
   a gap-two block construction plus explicit cases 18 and 20.
+claim_ko: >-
+  모든 정수 n > 6에 즉시 패배 국면이 존재한다는, 아직 동료 검토를 받지 않은 완전한 증명을 주장한다.
+  간격 2 블록 구성과 18 및 20의 명시적 경우를 이용해 Meyerowitz–Curran–Locke–Low의 두 번째 연구
+  질문에서 미해결이던 잉여류 n = 0,2 (mod 6)을 해결한다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof

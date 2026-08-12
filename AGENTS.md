@@ -104,13 +104,19 @@ python3 scripts/gen_readme.py --check
 
 ## status.yaml schema
 
+Every problem must provide both `title_ko` and `claim_ko`. Preserve formulas,
+proper names, and established mathematical terminology, but write the
+surrounding explanation in natural Korean.
+
 ```yaml
 id: <dirname>
-title: "..."
+title: "..."                  # English dashboard title
+title_ko: "..."               # Korean dashboard title
 domain: oeis | erdos | graph-combinatorics | other
 source_url: "..."
 claimed_status: proved | refuted | partial | open
 claim: "one-sentence summary (English)"
+claim_ko: "one-sentence summary (Korean)"
 artifacts: [{path, kind}]
 verify:                     # relative to the problem dir; CI runs only ci_feasible
   - cmd: "..."

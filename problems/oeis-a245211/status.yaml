@@ -1,11 +1,16 @@
 id: oeis-a245211
 title: 'OEIS A245211: a(n)=n only for n=21'
+title_ko: 'OEIS A245211: a(n)=n인 것은 n=21뿐'
 domain: oeis
 source_url: https://oeis.org/A245211
 claimed_status: partial
 claim: 'Claims only partial progress: proved necessary conditions forcing any counterexample to the uniqueness
   of n=21 to be coprime to 2310 with a restricted factorization shape, plus exact verification for all
   n <= 10^9 and for two-prime-factor n with exponents <= 200.'
+claim_ko: >-
+  부분적 진전만을 주장한다. n=21의 유일성에 대한 모든 반례가 2310과 서로소이고 제한된 인수분해
+  형태를 가져야 한다는 필요조건을 증명했으며, 모든 n <= 10^9와 서로 다른 소인수가 두 개이고 각
+  지수가 <= 200인 모든 n을 정확히 검증했다.
 artifacts:
 - path: README.md
   kind: informal-proof

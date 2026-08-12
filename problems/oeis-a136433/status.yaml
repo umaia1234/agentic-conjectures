@@ -1,11 +1,16 @@
 id: oeis-a136433
 title: OEIS A136433 — 9-lag linear recurrence proved for all n>=10
+title_ko: OEIS A136433 — 모든 n>=10에 대해 시차 9 선형 점화식 증명
 domain: oeis
 source_url: https://oeis.org/A136433
 claimed_status: proved
 claim: Claims a complete proof that the OEIS-conjectured constant-coefficient recurrence a_n = 6*a_{n-3}
   + a_{n-6} - 6*a_{n-9} holds for all n>=10 for the periodic-coefficient nonautonomous sequence, via a_{t+3}=6*a_t+B_t
   with B_t of period 6.
+claim_ko: >-
+  OEIS에서 추측한 상수계수 점화식 a_n = 6*a_{n-3} + a_{n-6} - 6*a_{n-9}가 주기적 계수를 갖는
+  비자율 수열에 대해 모든 n>=10에서 성립함을 완전히 증명했다고 주장한다. 이 증명은 주기가 6인
+  B_t를 사용한 a_{t+3}=6*a_t+B_t 관계를 이용한다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof

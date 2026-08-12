@@ -1,10 +1,15 @@
 id: oeis-a319197
 title: OEIS A319197 — stated I(n,1)=1 normalization refuted at n=7
+title_ko: OEIS A319197 — 명시된 I(n,1)=1 정규화는 n=7에서 반박됨
 domain: oeis
 source_url: https://oeis.org/A319197
 claimed_status: refuted
 claim: Claims a complete Lean-checked refutation of the entry's explicit I(n,1)=1 normalization, since
   its published factors give I(7,1)=769; the separate all-m integrality conjecture remains open.
+claim_ko: >-
+  공개된 인수들에 따르면 I(7,1)=769이므로, 항목에 명시된 I(n,1)=1 정규화에 대해
+  Lean으로 검증된 완전한 반박을 제시한다. 별개의 모든 m에 대한 정수성 추측은 여전히
+  미해결이다.
 artifacts:
 - path: a319197_certificate.py
   kind: certificate-script

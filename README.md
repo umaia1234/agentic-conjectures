@@ -54,7 +54,9 @@ certificate scripts are re-run, and `cert(local)` means only local-only
 (heavy) reproduction commands exist. The `Solved by` column names the models
 that produced each result, generated from each problem's `status.yaml`
 `attribution` block; every commit likewise carries `Model:`/`Harness:`
-trailers naming the model and harness that made it.
+trailers naming the model and harness that made it. The Korean dashboard takes
+its localized titles and claims from the same file's `title_ko` and `claim_ko`
+fields and links to a Korean problem write-up whenever one exists.
 
 **Layout.** `problems/<id>/` holds one problem's write-up, proofs, code,
 certificates, and results (`status.yaml` is the machine-readable state);

@@ -1,9 +1,13 @@
 id: oeis-a369378
 title: OEIS A369378 lower-bound conjecture proved by Fermat divisors
+title_ko: OEIS A369378 페르마 약수를 이용한 하한 추측 증명
 domain: oeis
 source_url: https://oeis.org/A369378
 claimed_status: proved
 claim: Proves that for every n>0 and every k<2^n, the number 2^(2^n+1)-1+2^k is not prime, exactly resolving the displayed OEIS conjecture without addressing k>=2^n.
+claim_ko: >-
+  모든 n>0과 모든 k<2^n에 대해 2^(2^n+1)-1+2^k가 소수가 아님을 증명하여,
+  k>=2^n인 경우는 다루지 않으면서 OEIS에 표시된 추측을 정확히 해결한다.
 artifacts:
 - path: README.md
   kind: informal-proof

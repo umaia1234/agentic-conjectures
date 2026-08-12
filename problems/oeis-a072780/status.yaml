@@ -1,10 +1,14 @@
 id: oeis-a072780
 title: OEIS A072780 — Goldbach-like equivalence refuted at (m,r)=(8,7)
+title_ko: OEIS A072780 — Goldbach형 동치를 (m,r)=(8,7)에서 반박
 domain: oeis
 source_url: https://oeis.org/A072780
 claimed_status: refuted
 claim: 'Refutes the claim that a(m^2-r^2)=2 iff m-r and m+r are prime: at (m,r)=(8,7), a(15)=2 while the
   selected factors 1 and 15 are nonprime.'
+claim_ko: >-
+  a(m^2-r^2)=2인 것과 m-r 및 m+r가 소수인 것이 동치라는 주장을 반박했다. (m,r)=(8,7)에서는
+  a(15)=2이지만 m-r=1과 m+r=15가 모두 소수가 아니다.
 artifacts:
 - path: a072780_certificate.py
   kind: certificate-script

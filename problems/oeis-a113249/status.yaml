@@ -1,11 +1,15 @@
 id: oeis-a113249
 title: OEIS A113249 — full parameter-family square conjecture proved
+title_ko: OEIS A113249 — 전체 매개변수족 제곱수 추측 증명
 domain: oeis
 source_url: https://oeis.org/A113249
 claimed_status: proved
 claim: >-
   Lean-proves that every odd-indexed term in the OEIS A113249 fourth-order family is a square:
   a(m,2*n+1)=Y(m,n)^2 for every integer parameter m and every n>=0.
+claim_ko: >-
+  OEIS A113249의 4계 수열족에서 홀수 첨자의 모든 항이 제곱수임을 Lean으로 증명했다. 즉, 모든 정수
+  매개변수 m과 모든 n>=0에 대해 a(m,2*n+1)=Y(m,n)^2이다.
 artifacts:
 - path: README.md
   kind: informal-proof

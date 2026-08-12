@@ -1,11 +1,15 @@
 id: recoloring-radius-q15
 title: Graph recoloring reconfiguration radius, Question 15
+title_ko: 그래프 재색칠 재구성 반지름, 질문 15
 domain: graph-combinatorics
 source_url: ''
 claimed_status: open
 claim: 'Claims no result: the directory only provides exact-BFS counterexample-search tooling (Python
   atlas scan and a sharded C++ graph6 search) for Cambie-Cames van Batenburg-Cranston Question 15, with
   no outcome reported.'
+claim_ko: >-
+  아무 결과도 주장하지 않는다. 이 디렉터리는 Cambie-Cames van Batenburg-Cranston 질문 15를 위한 정확한
+  BFS 반례 탐색 도구(Python atlas 탐색과 분할된 C++ graph6 탐색)만 제공하며, 탐색 결과는 보고하지 않는다.
 artifacts:
 - path: recolor_radius_search.py
   kind: search-code

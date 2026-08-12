@@ -1,11 +1,17 @@
 id: oeis-a190363
 title: OEIS A190363 — 21-term recurrence conjecture refuted
+title_ko: OEIS A190363 — 시차 21 점화식 추측 반박
 domain: oeis
 source_url: https://oeis.org/A190363
 claimed_status: refuted
 claim: 'Refutes the OEIS-conjectured recurrence a(n+21)=a(n+17)+a(n+4)-a(n): first failure at base index
   n=140 (output term a(161), 541 != 542), with a Pell-equation-generated infinite family of failures showing
   the recurrence fails beyond every starting index.'
+claim_ko: >-
+  OEIS에서 추측한 점화식 a(n+21)=a(n+17)+a(n+4)-a(n)을 반박했다. 첫 실패는 기준 첨자 n=140
+  (출력 항 a(161), 541 != 542)에서 발생한다. Pell 방정식으로 생성한 무한 실패 사례족은 임의의
+  시작 첨자보다 뒤에도 실패 사례가 존재함을 보여, 어느 첨자부터 줄곧 이 점화식이 성립하는 일은
+  없음을 증명한다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof

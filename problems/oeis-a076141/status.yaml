@@ -1,11 +1,16 @@
 id: oeis-a076141
 title: OEIS A076141 — n occurs at most once in binary of n^2, checked to 2^40
+title_ko: OEIS A076141 — n의 이진 표현은 n^2의 이진 표현에서 최대 한 번 등장, 2^40까지 확인
 domain: oeis
 source_url: https://oeis.org/A076141
 claimed_status: partial
 claim: An exact exhaustive occurrence-geometry search found no counterexample for 0 < n < 2^40, extending
   the OEIS-recorded 10^6 verification by a factor of about 1.1 million; explicitly a rigorous bounded
   verification, not a proof of the full conjecture.
+claim_ko: >-
+  출현 배치를 정확히 완전탐색하여 0 < n < 2^40에서 반례가 없음을 확인하고, OEIS에 기록된
+  10^6까지의 검증 범위를 약 110만 배 확장했다. 이는 엄밀한 유한 범위 검증이며 전체 추측의 증명은
+  아니다.
 artifacts:
 - path: a076141_pair_geometry.cpp
   kind: search-code

@@ -1,11 +1,16 @@
 id: pulse-graphs-l6
 title: Exact computation of L(6) for Pulse Graphs
+title_ko: Pulse Graph에서 L(6)의 정확한 계산
 domain: graph-combinatorics
 source_url: https://arxiv.org/abs/2607.10453v2
 claimed_status: proved
 claim: Claims the exact value L(6)=17 for the paper's open case n=6, via exhaustive isomorph-free enumeration
   of all 1,540,944 loopless 6-vertex digraphs with two independent cycle analyzers, plus an independently
   verified explicit 17-cycle witness.
+claim_ko: >-
+  논문의 미해결 경우 n=6에 대해 L(6)=17이라는 정확한 값을 주장한다. 서로 독립적인 두 주기 분석기로
+  고리가 없는 6정점 유향 그래프 1,540,944개를 동형 중복 없이 완전열거하고, 주기 17을 실현하는 명시적
+  증거도 독립적으로 검증했다.
 artifacts:
 - path: pulse_analyze.cpp
   kind: search-code

@@ -1,11 +1,16 @@
 id: oeis-a067720
 title: OEIS A067720 — phi(k^2+1)=k*phi(k+1) prime-power subfamily
+title_ko: OEIS A067720 — phi(k^2+1)=k*phi(k+1)의 소수 거듭제곱 부분족
 domain: oeis
 source_url: https://oeis.org/A067720
 claimed_status: partial
 claim: Proves that if k+1=p^a with a>=2 then there is no solution for p=2, and for odd p with V=v2(p^a-1)+v2(p-1)<=5
   the only solution is (p,a,k)=(3,2,8); general composite k+1 and the V>=6 prime-power cases remain open,
   so the original question is unresolved.
+claim_ko: >-
+  k+1=p^a이고 a>=2이면 p=2일 때 해가 없으며, V=v2(p^a-1)+v2(p-1)<=5인 홀수 p에 대해서는
+  (p,a,k)=(3,2,8)이 유일한 해임을 증명했다. 일반적인 합성수 k+1과 V>=6인 소수 거듭제곱 경우는
+  여전히 열려 있으므로 원래 문제는 미해결이다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof

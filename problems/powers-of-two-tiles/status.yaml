@@ -1,11 +1,16 @@
 id: powers-of-two-tiles
 title: Powers-of-two translational tiles (BKT Question 9)
+title_ko: 2의 거듭제곱 평행이동 타일(BKT 질문 9)
 domain: other
 source_url: https://arxiv.org/abs/2303.07956v2
 claimed_status: refuted
 claim: 'Claims explicit counterexamples refuting the suggested one-or-two-cardinality restriction in the
   yes/no clause of Benjamini-Kozma-Tzalik Question 9: translational tiles of every positive odd cardinality
   exist inside {1,2,4,...,2^n}, the smallest being A={1,4,16} with B={0,1,2}+9Z.'
+claim_ko: >-
+  Benjamini–Kozma–Tzalik 질문 9의 예/아니요 절에서 제안한 “타일의 원소 수는 1 또는 2뿐이다”라는
+  제한을 반박하는 명시적 반례를 제시한다. 모든 양의 홀수 t에 대해 원소 수가 t인 평행이동 타일이
+  {1,2,4,...,2^n} 안에 존재하며, 원소 수가 가장 작은 반례는 A={1,4,16}, B={0,1,2}+9Z이다.
 artifacts:
 - path: README.md
   kind: informal-proof

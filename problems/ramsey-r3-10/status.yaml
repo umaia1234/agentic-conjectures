@@ -1,5 +1,6 @@
 id: ramsey-r3-10
 title: R(3,10) C20-bicirculant subcase exclusion
+title_ko: R(3,10)의 C20-bicirculant 부분 경우 배제
 domain: graph-combinatorics
 source_url: ''
 claimed_status: partial
@@ -7,6 +8,10 @@ claim: 'Claims a SAT/DRUP-certified exclusion of one automorphism class only: no
   graph with independence number <= 9 is invariant under the C20 action with cycle structure 20^2, so
   a hypothetical 40-vertex (3,10) Ramsey graph cannot be such a bicirculant; R(3,10) in {40,41} is not
   determined.'
+claim_ko: >-
+  자기동형 작용의 한 부류만을 SAT/DRUP 인증으로 배제한다. 독립수가 <= 9인 삼각형 없는 40정점
+  그래프는 순환 구조가 20^2인 C20 작용 아래 불변일 수 없으므로, 가상의 40정점 (3,10) Ramsey
+  그래프는 그러한 C20-bicirculant일 수 없다. R(3,10)이 {40,41} 중 어느 값인지는 결정하지 못한다.
 artifacts:
 - path: c20_final_nopb.cnf
   kind: sat-cnf

@@ -15,7 +15,7 @@
    - PR 본문에도 같은 모델/하네스를 적는다.
    - 문제의 결과를 만들거나 바꾸면 해당 문제 `status.yaml`의
      `attribution:`(model, harness, scope)에 기록한다. 대시보드의
-     "Solved by" 열이 여기서 생성된다.
+     "작업 모델" 열이 여기서 생성된다.
    - **하지 않은 작업에 태그를 달거나 다른 모델을 사칭하지 않는다.**
      귀속도 수학과 같은 정직성 기준을 따른다.
    - 커밋 author/committer는 계속 **저장소 로컬 git 설정(umaia1234
@@ -90,13 +90,18 @@ python3 scripts/gen_readme.py --check
 
 ## status.yaml 스키마
 
+모든 문제에 `title_ko`와 `claim_ko`를 반드시 작성한다. 수식·고유명사·정착된
+수학 용어는 유지하되, 그 밖의 설명은 자연스러운 한국어로 쓴다.
+
 ```yaml
 id: <dirname>
-title: "..."
+title: "..."                  # 영어 대시보드 제목
+title_ko: "..."               # 한국어 대시보드 제목
 domain: oeis | erdos | graph-combinatorics | other
 source_url: "..."
 claimed_status: proved | refuted | partial | open
 claim: "한 문장 요약 (영어)"
+claim_ko: "한 문장 요약 (한국어)"
 artifacts: [{path, kind}]
 verify:                     # 문제 디렉터리 기준, CI는 --ci로 ci_feasible만
   - cmd: "..."

@@ -1,10 +1,15 @@
 id: erdos-385
 title: 'Erdős #385 / #430(i) — finite-range experiments on F(n)-n'
+title_ko: 'Erdős #385 / #430(i) — F(n)-n에 대한 유한 범위 실험'
 domain: erdos
 source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/ErdosProblems/385.lean
 claimed_status: open
 claim: Provides two C++ finite-range experiments probing the quantity F(n)-n for parts (i)/(ii) and explicitly
   states they prove none of the three conjecture statements; no bound or result is asserted in the README.
+claim_ko: >-
+  부분 (i), (ii)에서 F(n)-n을 조사하는 두 개의 C++ 유한 범위 실험을 제공하며, 이 실험들이 세 추측
+  명제 가운데 어느 것도 증명하지 못한다고 명시한다. README에서는 어떠한 상한·하한이나 결과도
+  주장하지 않는다.
 artifacts:
 - path: ep430_experiment.cpp
   kind: search-code

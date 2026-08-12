@@ -1,11 +1,15 @@
 id: projective-plane-order-12
 title: Finite projective plane of order 12
+title_ko: 12차 유한 사영평면
 domain: erdos
 source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/ErdosProblems/723.lean
 claimed_status: open
 claim: 'Claims nothing new: records the open existence problem for a projective plane of order 12 (equivalently
   a symmetric 2-(157,13,1) design), known collineation-group exclusions, and computational considerations
   only.'
+claim_ko: >-
+  새로운 결과를 주장하지 않는다. 12차 사영평면, 즉 대칭 2-(157,13,1) 설계의 미해결 존재 문제와
+  알려진 공선변환군 배제 결과, 계산상 고려사항만 기록한다.
 artifacts:
 - path: upstream/723.lean
   kind: upstream-lean

@@ -1,11 +1,16 @@
 id: stretched-lr
 title: Stretched Littlewood-Richardson negative-coefficient search
+title_ko: 신장된 Littlewood–Richardson 음수 계수 탐색
 domain: other
 source_url: https://epoch.ai/frontiermath/open-problems/stretched-lr-coefficients
 claimed_status: partial
 claim: 'Claims only a negative search: across ~243k classic-lrcalc triples, 9M Rust random trials with
   exact interpolation, and an exhausted 10,312-pair stretched-Kostka subfamily, no triple in the FrontierMath
   box produced a negative ordinary power-basis coefficient.'
+claim_ko: >-
+  음수 계수를 찾지 못했다는 탐색 결과만 주장한다. 약 243k개의 classic-lrcalc 삼중항, 정확한 보간을
+  사용한 9M회의 Rust 무작위 시행과 완전히 탐색한 10,312쌍의 stretched-Kostka 부분족 전반에서
+  FrontierMath 범위 안의 어떤 삼중항도 음의 보통 멱기저 계수를 만들지 않았다.
 artifacts:
 - path: search_stretched.py
   kind: search-code

@@ -1,10 +1,14 @@
 id: conway-99-graph
 title: Conway's 99-graph problem srg(99,14,1,2)
+title_ko: Conway의 99-그래프 문제 srg(99,14,1,2)
 domain: graph-combinatorics
 source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/Wikipedia/Conway99Graph.lean
 claimed_status: open
 claim: 'Status survey only: records that existence of srg(99,14,1,2) is open and cites 2025 automorphism-group
   restrictions (Cesarz–Woldar); no new computation or resolution is claimed.'
+claim_ko: >-
+  상태 조사만 제공한다. srg(99,14,1,2)의 존재 여부가 미해결임을 기록하고 2025년 자기동형군 제약
+  (Cesarz–Woldar)을 인용하며, 새로운 계산이나 해결 결과를 주장하지 않는다.
 artifacts:
 - path: README.md
   kind: other

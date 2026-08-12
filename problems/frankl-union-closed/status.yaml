@@ -1,11 +1,15 @@
 id: frankl-union-closed
 title: Frankl's union-closed sets conjecture
+title_ko: Frankl의 합집합 닫힌 집합족 추측
 domain: graph-combinatorics
 source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/Wikipedia/UnionClosed.lean
 claimed_status: open
 claim: 'Status survey only: records that the conjecture is known for ground sets of size <= 12 and the
   general 0.38234|F| frequency lower bound, and explicitly resolves nothing (including the 13-element
   case).'
+claim_ko: >-
+  상태 조사만 제공한다. 바탕 집합의 크기가 <= 12인 경우에 추측이 성립한다는 알려진 결과와 일반적인
+  0.38234|F| 빈도 하한을 기록하며, 원소가 13개인 경우를 포함해 아무것도 해결하지 않았다고 명시한다.
 artifacts:
 - path: README.md
   kind: other

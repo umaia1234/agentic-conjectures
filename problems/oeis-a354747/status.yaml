@@ -1,11 +1,16 @@
 id: oeis-a354747
 title: OEIS A354747 first unknown case a(100943)
+title_ko: OEIS A354747 최초 미해결 항 a(100943)
 domain: oeis
 source_url: https://oeis.org/A354747
 claimed_status: refuted
 claim: Claims a(100943)=39101 via two independent deterministic primality certificates (GMP Lucas-rank
   and OpenPFGW BLS) for 201886*3^39101-1 plus exhaustive compositeness checks of all exponents 1..39100,
   refuting the upstream FormalConjectures statement a(100943)=0.
+claim_ko: >-
+  201886*3^39101-1에 대한 서로 독립적인 두 결정론적 소수 인증서(GMP Lucas-rank와
+  OpenPFGW BLS)와 지수 1..39100 전체에 대한 빠짐없는 합성수 검사를 통해
+  a(100943)=39101임을 밝히고, 업스트림 FormalConjectures의 명제 a(100943)=0을 반박한다.
 artifacts:
 - path: a354747_lucas_certificate.cpp
   kind: certificate-script

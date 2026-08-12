@@ -1,10 +1,14 @@
 id: oeis-a112970
 title: OEIS A112970 — power-of-two identities and quarter-square formula proved
+title_ko: OEIS A112970 — 2의 거듭제곱 항등식과 사분제곱 공식 증명
 domain: oeis
 source_url: https://oeis.org/A112970
 claimed_status: proved
 claim: Lean-verifies both conjectured chains for all n >= 0, including the omitted closed form
   a(2^n) = floor(n^2/4) + 1 from A033638.
+claim_ko: >-
+  기존 형식화에서 누락되어 있던 A033638의 닫힌형 a(2^n) = floor(n^2/4) + 1도 포함하여, 모든
+  n >= 0에 대해 추측된 두 연쇄 항등식을 Lean으로 검증했다.
 artifacts:
 - path: README.md
   kind: informal-proof

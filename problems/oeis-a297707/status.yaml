@@ -1,10 +1,15 @@
 id: oeis-a297707
 title: OEIS A297707 prime-gap search code
+title_ko: OEIS A297707 소수 간격 탐색 코드
 domain: oeis
 source_url: https://oeis.org/A297707
 claimed_status: open
 claim: 'Claims no result: the directory contains only experimental prime-gap search code whose reported
   endpoints are Baillie-PSW probable primes, certifying nothing about the conjecture.'
+claim_ko: >-
+  아무 결과도 주장하지 않는다. 이 디렉터리에는 보고된 양 끝점이 Baillie–PSW 추정 소수
+  판정만 통과한 실험적 소수 간격 탐색 코드가 있을 뿐이며, 이로써 추측에 관해 인증되는
+  것은 없다.
 artifacts:
 - path: oeis_a297707_search.py
   kind: search-code

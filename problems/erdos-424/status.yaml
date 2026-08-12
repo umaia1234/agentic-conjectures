@@ -1,11 +1,15 @@
 id: erdos-424
 title: 'Erdős #424 — positive density of the generated set (finite probe)'
+title_ko: 'Erdős #424 — 생성 집합의 양의 밀도(유한 탐색)'
 domain: erdos
 source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/ErdosProblems/424.lean
 claimed_status: open
 claim: Describes an exact finite experiment generating the set via n+1=xy with distinct members and scanning
   residue classes for omissions; the README explicitly says the finite search does not prove positive
   density.
+claim_ko: >-
+  서로 다른 원소를 사용한 n+1=xy를 통해 집합을 생성하고 누락 여부를 확인하기 위해 잉여류를 탐색하는 정확한
+  유한 실험을 설명한다. README는 이 유한 탐색이 양의 밀도를 증명하지 않는다고 명시한다.
 artifacts:
 - path: erdos424_probe.cpp
   kind: search-code

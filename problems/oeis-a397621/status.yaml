@@ -1,10 +1,15 @@
 id: oeis-a397621
 title: OEIS A397621 Pascal-row linear complexity
+title_ko: OEIS A397621 파스칼 행의 선형 복잡도
 domain: oeis
 source_url: https://oeis.org/A397621
 claimed_status: proved
 claim: Claims a complete informal proof that A397621(A001317(n)) = 2^(floor(log2 n)+1) - n = A080079(n)
   for all n >= 1, with a zero-run lower bound and an explicit connection polynomial (1+x)^d upper bound.
+claim_ko: >-
+  모든 n >= 1에 대해 A397621(A001317(n)) = 2^(floor(log2 n)+1) - n = A080079(n)임을,
+  0의 연속 구간을 이용한 하한과 명시적 연결 다항식 (1+x)^d를 이용한 상한으로 보이는
+  완전한 비형식적 증명을 제시한다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof

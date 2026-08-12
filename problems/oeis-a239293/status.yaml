@@ -1,9 +1,13 @@
 id: oeis-a239293
 title: OEIS A239293 — immediate-successor characterization proved
+title_ko: OEIS A239293 — 최소 합성수가 n+1이 되는 경우의 특성화 증명
 domain: oeis
 source_url: https://oeis.org/A239293
 claimed_status: proved
 claim: Proves for every n>=1 that the least composite c>n satisfying n^c == n (mod c) equals n+1 if and only if n+1 is odd and composite.
+claim_ko: >-
+  모든 n>=1에 대해 n^c == n (mod c)를 만족하는 최소 합성수 c>n이 n+1인 것과 n+1이 홀수 합성수인
+  것은 동치임을 증명했다.
 artifacts:
 - path: README.md
   kind: informal-proof

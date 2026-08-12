@@ -1,10 +1,14 @@
 id: oeis-a034267
 title: OEIS A034267 — D-finite recurrence proved for all n>=2
+title_ko: OEIS A034267 — 모든 n>=2에 대해 D-finite 점화식 증명
 domain: oeis
 source_url: https://oeis.org/A034267
 claimed_status: proved
 claim: Lean-proves that the OEIS closed form for A034267 satisfies Mathar's conjectured order-2 polynomial
   recurrence at every meaningful index n>=2.
+claim_ko: >-
+  Lean으로 OEIS에 제시된 A034267의 닫힌형이 정의상 의미가 있는 모든 첨자 n>=2에서 Mathar가
+  추측한 2계 다항식 점화식을 만족함을 증명했다.
 artifacts:
 - path: README.md
   kind: informal-proof

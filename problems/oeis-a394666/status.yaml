@@ -1,10 +1,14 @@
 id: oeis-a394666
 title: OEIS A394666 — factorial zero classification proved
+title_ko: OEIS A394666 — 계승 나머지가 0이 되는 경우의 분류 증명
 domain: oeis
 source_url: https://oeis.org/A394666
 claimed_status: proved
 claim: Lean-proves that for every n>5, n! mod (2*n-1) is zero exactly when 2*n-1 is composite,
   and classifies a(1)=0 as the sole positive-index boundary exception.
+claim_ko: >-
+  모든 n>5에 대해 n! mod (2*n-1)이 0일 필요충분조건이 2*n-1이 합성수인 것임을
+  Lean으로 증명하고, a(1)=0을 양의 첨자에서 유일한 경계 예외로 분류한다.
 artifacts:
 - path: README.md
   kind: informal-proof

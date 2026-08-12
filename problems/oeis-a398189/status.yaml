@@ -1,6 +1,7 @@
 id: oeis-a398189
 title: OEIS A398189 — 2-adic valuation of generalized Schenker sums, all four
   conjectured cases proved
+title_ko: OEIS A398189 — 일반화된 Schenker 합의 2진 값매김, 추측된 네 경우 모두 증명
 domain: oeis
 source_url: https://oeis.org/A398189
 claimed_status: proved
@@ -9,6 +10,13 @@ claim: Proves all four cases of Luschny's conjectured valuation formula for
   — v2((n-k)!) for even n; 1 for odd n, k=0; 0 for odd n, odd k; v2(k+2) for
   odd n, even k with k not == 14 (mod 16) — in Lean 4, plus v2 >= 4 in the
   excluded class k == 14 (mod 16).
+claim_ko: >-
+  A398189(n,k) = v2(A398187(n,k)),
+  A398187(n,k) = Sum_{j<=n-k} ((n-k)!/j!)*n^j에 대해 Luschny가 추측한
+  값매김 공식의 네 경우, 즉 n이 짝수이면 v2((n-k)!), n이 홀수이고 k=0이면 1,
+  n과 k가 모두 홀수이면 0, n이 홀수이고 k가 짝수이며 k == 14 (mod 16)이 아니면
+  v2(k+2)임을 Lean 4로 증명한다. 또한 제외된 합동류 k == 14 (mod 16)에서는
+  v2 >= 4임을 증명한다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof

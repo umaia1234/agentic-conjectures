@@ -1,5 +1,6 @@
 id: oeis-a286185-a286183
 title: OEIS A286185 & A286183 — connected induced subgraphs of Möbius ladders and antiprisms
+title_ko: OEIS A286185 & A286183 — 뫼비우스 사다리와 엇각기둥의 연결 유도 부분그래프
 domain: oeis
 source_url: "https://oeis.org/A286185"
 claimed_status: proved
@@ -8,6 +9,13 @@ claim: Claims a complete informal proof of the OEIS-conjectured closed forms for
   and antiprism (A286183, a(n)=A005248(n)-2n+2n*A001906(n)), and hence of the order-6 recurrences and
   generating functions conjectured on those entries, via a column transfer-matrix argument that also
   re-derives the prism case A286182 (already published as Vince 2021, Lemma 7.2); no novelty is claimed.
+claim_ko: >-
+  꼭짓점이 2n개인 뫼비우스 사다리(A286185,
+  a(n)=A002203(n)+3n*A000129(n)-n-1)와 엇각기둥(A286183,
+  a(n)=A005248(n)-2n+2n*A001906(n))의 공집합이 아닌 연결 유도 부분그래프 수에 대해
+  OEIS가 추측한 닫힌 형식의 완전한 비형식적 증명을 제시한다. 열 전이행렬 논증을 통해
+  해당 항목들에서 추측된 6계 점화식과 생성함수도 증명하며, 이미 Vince 2021의 보조정리
+  7.2로 출판된 각기둥 경우 A286182도 다시 유도한다. 새로운 결과라고 주장하지 않는다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof

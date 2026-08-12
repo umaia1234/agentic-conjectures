@@ -1,9 +1,13 @@
 id: oeis-a368633
 title: OEIS A368633 — parity conjecture proved
+title_ko: OEIS A368633 — 홀짝성 추측 증명
 domain: oeis
 source_url: https://oeis.org/A368633
 claimed_status: proved
 claim: Lean-proves that the coefficients of A(x)=1+2*x*A(x)^2-x*A(-x)^2 are odd exactly when n+1 is a power of 2, by reduction modulo 2 to the Catalan recurrence.
+claim_ko: >-
+  A(x)=1+2*x*A(x)^2-x*A(-x)^2의 n번째 계수가 홀수일 필요충분조건이 n+1이 2의
+  거듭제곱인 것임을, 법 2에서 카탈란 점화식으로 환원하여 Lean으로 증명한다.
 artifacts:
 - path: README.md
   kind: informal-proof

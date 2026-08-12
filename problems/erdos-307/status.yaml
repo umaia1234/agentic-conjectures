@@ -1,11 +1,15 @@
 id: erdos-307
 title: 'Erdős #307 — product of prime reciprocal sums equal to 1'
+title_ko: 'Erdős #307 — 소수 역수합들의 곱이 1이 되는 문제'
 domain: erdos
 source_url: https://www.erdosproblems.com/307
 claimed_status: partial
 claim: Re-proves forcing identities and local Legendre/mod-8/mod-24 necessary conditions and exhaustively
   shows |P union Q| >= 60 and max(P union Q) >= 347; the problem itself remains open and no novelty is
   claimed.
+claim_ko: >-
+  강제 항등식과 국소 Legendre/mod-8/mod-24 필요조건을 다시 증명하고, 완전탐색으로 |P union Q| >= 60 및
+  max(P union Q) >= 347을 보인다. 문제 자체는 여전히 미해결이며 새로움을 주장하지 않는다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof

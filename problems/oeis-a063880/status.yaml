@@ -1,11 +1,16 @@
 id: oeis-a063880
 title: OEIS A063880 — sigma(n)=2*sigma*(n) with small powerful core
+title_ko: OEIS A063880 — 작은 강력수 핵을 갖는 sigma(n)=2*sigma*(n)
 domain: oeis
 source_url: https://oeis.org/A063880
 claimed_status: partial
 claim: Proves that every solution of sigma(n)=2*sigma*(n) whose powerful core has at most two distinct
   primes has core exactly 108, so within that subfamily 108 is the only primitive term and all terms are
   108 mod 216; cores with >=3 distinct primes are not excluded, so the full conjecture is unresolved.
+claim_ko: >-
+  강력수 핵의 서로 다른 소인수가 2개 이하인 sigma(n)=2*sigma*(n)의 모든 해에서 그 핵은 정확히
+  108임을 증명했다. 따라서 이 부분족에서는 108이 유일한 원시 항이고 모든 항은 216을 법으로 108과
+  합동이다. 서로 다른 소인수가 3개 이상인 핵은 배제하지 못했으므로 전체 추측은 미해결이다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof

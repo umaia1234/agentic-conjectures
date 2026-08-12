@@ -1,11 +1,16 @@
 id: oeis-a000224
 title: OEIS A000224 — R(n)(R(n)-1) divides n^2-1 iff n is an odd prime
+title_ko: OEIS A000224 — R(n)(R(n)-1)이 n^2-1을 나눌 필요충분조건은 n이 홀수 소수인 것이다
 domain: oeis
 source_url: https://oeis.org/A000224
 claimed_status: partial
 claim: Lean-verifies that no even n>1 satisfies the congruence, and proves there is no composite counterexample
   among odd prime powers p^e (e>=2) or products of two distinct odd primes; a Pell-orbit scan covers all
   K<=375, n<=10^18 with omega(n)<=3, but the full conjecture remains unresolved.
+claim_ko: >-
+  Lean으로 짝수 n>1은 해당 합동식을 만족하지 않음을 검증하고, 홀수 소수 거듭제곱 p^e (e>=2) 또는
+  서로 다른 두 홀수 소수의 곱 중에는 합성수 반례가 없음을 증명했다. Pell 궤도 탐색은 K<=375,
+  n<=10^18, omega(n)<=3을 모두 만족하는 모든 경우를 다루었지만, 전체 추측은 여전히 미해결이다.
 artifacts:
 - path: README.md
   kind: informal-proof

@@ -1,11 +1,16 @@
 id: oeis-a060841
 title: OEIS A060841 — integrality classified, power-of-two denominators refuted
+title_ko: OEIS A060841 — 정수성 완전 분류, 2의 거듭제곱 분모 추측 반박
 domain: oeis
 source_url: https://oeis.org/A060841
 claimed_status: refuted
 claim: 'Claims both OEIS conjectures are settled: R_n is an integer exactly for n in {1,...,34,36,38}
   (integrality conjecture proved via a 2-adic bound for n>=91 plus finite certification), while the claim
   that all reduced denominators are powers of 2 is refuted by den(R_1807)=2^2342*3.'
+claim_ko: >-
+  OEIS의 두 추측을 모두 해결했다고 주장한다. R_n이 정수일 필요충분조건은 n이
+  {1,...,34,36,38}에 속하는 것이며, 이를 n>=91에 대한 2-adic 상계와 유한 인증으로 증명했다.
+  한편 모든 기약분모가 2의 거듭제곱이라는 주장은 den(R_1807)=2^2342*3으로 반박했다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof

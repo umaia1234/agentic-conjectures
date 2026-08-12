@@ -1,10 +1,14 @@
 id: hadamard-668
 title: Hadamard matrix of order 668
+title_ko: 668차 Hadamard 행렬
 domain: graph-combinatorics
 source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/Wikipedia/Hadamard.lean
 claimed_status: open
 claim: 'Status survey only: 668 is recorded as the smallest unresolved Hadamard order, summarizing a 2026
   Legendre-pair (length 333) search status report; no new existence or nonexistence result is claimed.'
+claim_ko: >-
+  상태 조사만 제공한다. 668이 해결되지 않은 최소 Hadamard 차수임을 기록하고 2026년 Legendre 쌍(길이 333)
+  탐색 상태 보고서를 요약하며, 새로운 존재 또는 비존재 결과를 주장하지 않는다.
 artifacts:
 - path: README.md
   kind: other

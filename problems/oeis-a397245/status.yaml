@@ -1,11 +1,17 @@
 id: oeis-a397245
 title: OEIS A397245 mod 3 coefficient classification
+title_ko: OEIS A397245 법 3에서의 계수 분류
 domain: oeis
 source_url: https://oeis.org/A397245
 claimed_status: proved
 claim: Claims a complete informal proof of both conjectured mod 3 iff-classifications of a_n (a_n = 1
   mod 3 iff n+2 = 3^j or 2*3^j; a_n = 2 mod 3 iff n+2 = 3^i + 3^j with i < j; else 0) via a closed form
   in F_3[[x]].
+claim_ko: >-
+  F_3[[x]]에서의 닫힌 형식을 통해 a_n에 관해 추측된 법 3의 두 분류, 즉
+  a_n = 1 mod 3일 필요충분조건은 어떤 j에 대해 n+2 = 3^j 또는 n+2 = 2*3^j인
+  것이고, a_n = 2 mod 3일 필요충분조건은 어떤 i<j에 대해 n+2 = 3^i + 3^j인
+  것이며, 그 밖에는 0이라는 분류에 대한 완전한 비형식적 증명을 제시한다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof

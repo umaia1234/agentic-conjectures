@@ -1,5 +1,6 @@
 id: oeis-a397588
 title: OEIS A397588 — odd terms occur exactly at powers of two
+title_ko: OEIS A397588 — 홀수인 항은 정확히 2의 거듭제곱 위치에서 나타남
 domain: oeis
 source_url: https://oeis.org/A397588
 claimed_status: proved
@@ -7,6 +8,9 @@ claim: >-
   Proves the OEIS parity conjecture for the recurrence a(1)=1 and
   a(n)=(n+1)*sum_{k=1}^{n-1} a(k)*a(n-k): a(n) is odd exactly when n is a
   power of two.
+claim_ko: >-
+  점화식 a(1)=1 및 a(n)=(n+1)*sum_{k=1}^{n-1} a(k)*a(n-k)에 대한 OEIS
+  홀짝성 추측, 즉 a(n)이 홀수일 필요충분조건이 n이 2의 거듭제곱인 것임을 증명한다.
 artifacts:
 - path: README.md
   kind: informal-proof

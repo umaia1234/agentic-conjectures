@@ -1,11 +1,16 @@
 id: small-diophantine
 title: Small Diophantine equations low-degree ansatz attempt
+title_ko: 작은 Diophantine 방정식에 대한 저차 ansatz 시도
 domain: other
 source_url: https://epoch.ai/frontiermath/open-problems/small-diophantine
 claimed_status: partial
 claim: 'Claims only exact negative results: three low-degree rational-curve ansatz classes and a narrow
   integer-Q Pell-factor spot-check admit no solutions for the six remaining equations z^2 + y^2*z + x^3
   + a*x + b = 0, none of which is claimed solved.'
+claim_ko: >-
+  여섯 잔여 방정식에 대해 세 가지 저차 유리곡선 ansatz 부류에는 해가 없다는 정확한 결과와, 제한된
+  정수 Q 범위에서의 Pell 인자 ansatz 표본 검사 결과만 주장한다. 이는 제한된 ansatz에 대한 배제일
+  뿐이며, 여섯 방정식 가운데 어느 것도 해결했다고 주장하지 않는다.
 artifacts:
 - path: analyze_ansatze.py
   kind: search-code

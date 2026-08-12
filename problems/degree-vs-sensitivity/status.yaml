@@ -1,11 +1,16 @@
 id: degree-vs-sensitivity
 title: Degree vs sensitivity — n=14 degree-5 aggregate constraints
+title_ko: 차수와 민감도 — n=14, 차수 5의 층별 총계 제약
 domain: other
 source_url: https://epoch.ai/frontiermath/open-problems/degree-sensitivity-boolean
 claimed_status: partial
 claim: Claims exact necessary layer constraints (B_2>=84, exactly 247 feasible (B_2,B_3,B_4,B_5) profiles)
   for the n=14 degree<=5 fully sensitive case, while the truth-table existence search ended with status
   UNKNOWN.
+claim_ko: >-
+  n=14이고 차수가 5 이하인 모든 변수에 민감한 함수의 경우, 정확한 층별 필요조건(B_2>=84)과 가능한
+  (B_2,B_3,B_4,B_5) 프로파일이 정확히 247개뿐임을 보인다. 다만 진리표의 존재 여부를 찾는 탐색은
+  UNKNOWN 상태로 종료되었다.
 artifacts:
 - path: degree_sensitivity_pair_bound.py
   kind: certificate-script

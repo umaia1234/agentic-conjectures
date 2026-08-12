@@ -1,11 +1,16 @@
 id: transcendental-composite-powers
 title: Computable transcendental with all floored powers composite
+title_ko: 모든 거듭제곱의 바닥값이 합성수인 계산 가능한 초월수
 domain: other
 source_url: https://arxiv.org/abs/2608.05309
 claimed_status: proved
 claim: Claims a complete informal proof that there is a computable transcendental alpha in (10,11) with
   floor(alpha^n) composite (an even integer >= 10) for every n >= 1, answering the transcendental part
   of the open question in Section 7 of Hahn-Ismailescu-Kim-Kim.
+claim_ko: >-
+  모든 n >= 1에 대해 floor(alpha^n)가 합성수(>= 10인 짝수)인 계산 가능한 초월수 alpha가 (10,11)에
+  존재한다는 완전한 비형식적 증명을 주장하며, Hahn-Ismailescu-Kim-Kim의 7절에 제시된 미해결 질문 중 초월수
+  부분에 답한다.
 artifacts:
 - path: README.md
   kind: informal-proof

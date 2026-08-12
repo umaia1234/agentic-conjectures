@@ -1,10 +1,14 @@
 id: oeis-a056777
 title: OEIS A056777 / Choudhury–Wei Conjecture 1.1 — n+12 not a prime power
+title_ko: OEIS A056777 / Choudhury–Wei 추측 1.1 — n+12는 소수 거듭제곱이 아님
 domain: oeis
 source_url: https://arxiv.org/abs/2606.10331v3
 claimed_status: partial
 claim: Proves that for composite n>=4 with phi(n+12)=phi(n)+12 and sigma(n+12)=sigma(n)+12, n+12 cannot
   be a prime power; the original Choudhury–Wei Conjecture 1.1 remains unresolved.
+claim_ko: >-
+  phi(n+12)=phi(n)+12이고 sigma(n+12)=sigma(n)+12인 합성수 n>=4에 대해 n+12는 소수 거듭제곱일 수
+  없음을 증명했다. 원래의 Choudhury–Wei 추측 1.1은 여전히 미해결이다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof

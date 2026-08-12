@@ -1,10 +1,14 @@
 id: oeis-a242560
 title: OEIS A242560 — closed form and even-index conjecture proved
+title_ko: OEIS A242560 — 닫힌형과 짝수 첨자 추측 증명
 domain: oeis
 source_url: https://oeis.org/A242560
 claimed_status: proved
 claim: Lean-verifies a(N)=N-N/minFac(N) for every N>1, hence the OEIS conjecture a(2n)=n; it also shows
   that the official b-file value a(25)=24 disagrees with the displayed definition, which gives 20.
+claim_ko: >-
+  모든 N>1에 대해 a(N)=N-N/minFac(N)을 Lean으로 검증하여 OEIS 추측 a(2n)=n을 증명했다. 또한
+  본문에 제시된 정의로는 a(25)=20이므로 공식 b-file의 값 a(25)=24와 불일치함을 보였다.
 artifacts:
 - path: README.md
   kind: informal-proof

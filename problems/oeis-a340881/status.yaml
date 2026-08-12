@@ -1,10 +1,15 @@
 id: oeis-a340881
 title: OEIS A340881 modular periodicity
+title_ko: OEIS A340881 모듈러 주기성
 domain: oeis
 source_url: https://oeis.org/A340881
 claimed_status: proved
 claim: Claims a complete informal proof of both OEIS periodicity conjectures, giving explicit pure periods
   mod odd m (period 2*ord_m(2) from n=1) and eventual periodicity of A340881(n) mod m for every m >= 2.
+claim_ko: >-
+  홀수 m을 법으로 하는 명시적 순수 주기(n=1부터 주기 2*ord_m(2))와 모든
+  m >= 2에 대한 A340881(n) mod m의 궁극적 주기성을 제시하여, OEIS의 두 주기성
+  추측에 대한 완전한 비형식적 증명을 제시한다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof

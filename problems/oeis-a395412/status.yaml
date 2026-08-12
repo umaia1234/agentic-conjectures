@@ -1,11 +1,16 @@
 id: oeis-a395412
 title: OEIS A395412 certified finite nonvanishing extension
+title_ko: OEIS A395412 — 비영성이 인증된 유한 범위 확장
 domain: oeis
 source_url: https://oeis.org/A395412
 claimed_status: partial
 claim: 'Claims a certified finite extension only: reproduces the 84 published terms, rigorously proves
   a(n) > 0 for every 85 <= n <= 200 via PARI/GP isprime witnesses, and BPSW-screens 201 <= n <= 400 with
   no proof claimed there.'
+claim_ko: >-
+  인증된 유한 범위 확장만을 주장한다. 공개된 84개 항을 재현하고, PARI/GP isprime
+  증거를 통해 모든 85 <= n <= 200에 대해 a(n) > 0임을 엄밀히 증명하며,
+  201 <= n <= 400에서는 BPSW 검사만 수행하며 그 구간에 대해서는 증명을 주장하지 않는다.
 artifacts:
 - path: search_and_certify.py
   kind: certificate-script

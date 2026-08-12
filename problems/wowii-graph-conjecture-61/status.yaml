@@ -1,11 +1,16 @@
 id: wowii-graph-conjecture-61
 title: WOWII Graph Conjecture 61 partial results
+title_ko: WOWII 그래프 추측 61의 부분 결과
 domain: graph-combinatorics
 source_url: http://cms.dt.uh.edu/faculty/delavinae/research/wowII/
 claimed_status: partial
 claim: 'Claims informal proofs of partial results only: f(G) >= alpha(G) + ceil(D(G)/4) in general, f(G)
   >= alpha(G)+1 with diameter consequences, and the original conjecture f(G) >= r(G) + ceil(D(G)/3) for
   all connected graphs of diameter in {0,1,2,3,5,6,9} and for all trees.'
+claim_ko: >-
+  부분 결과의 비형식적 증명만 주장한다. 일반적으로 f(G) >= alpha(G) + ceil(D(G)/4)가 성립하고, 지름에 관한
+  귀결과 함께 f(G) >= alpha(G)+1이 성립하며, 지름이 {0,1,2,3,5,6,9} 중 하나인 모든 연결 그래프와 모든
+  트리에 대해 원래 추측 f(G) >= r(G) + ceil(D(G)/3)이 성립한다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof

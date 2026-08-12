@@ -1,10 +1,14 @@
 id: oeis-a270361
 title: OEIS A270361 — uniqueness of the smaller prime
+title_ko: OEIS A270361 — 더 작은 소수의 유일성
 domain: oeis
 source_url: https://oeis.org/A270361
 claimed_status: proved
 claim: 'Lean-proves the OEIS conjecture that for each odd prime p, at most one odd prime q<p can make
   p*q-1 a square, using the two square roots modulo p, their strict bounds, and a parity contradiction.'
+claim_ko: >-
+  각 홀수 소수 p에 대해 p*q-1을 제곱수로 만드는 홀수 소수 q<p가 최대 하나라는 OEIS 추측을
+  Lean으로 증명했다. p를 법으로 한 두 제곱근과 이들의 엄격한 범위, 홀짝성 모순을 이용한다.
 artifacts:
 - path: README.md
   kind: proof-notes

@@ -1,10 +1,14 @@
 id: chvatal-downset
 title: Chvatal's downset conjecture — saturated SAT reduction
+title_ko: Chvatal의 하향 닫힌 집합 추측 — 포화 SAT 환원
 domain: graph-combinatorics
 source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/Paper/Chvatal.lean
 claimed_status: partial
 claim: Proves an elementary saturation lemma and reports an uncertified n=6 UNSAT exclusion of counterexamples
   under stated reductions; n=8 attempts timed out and the general conjecture remains open.
+claim_ko: >-
+  기초적인 포화 보조정리를 증명하고, 명시된 환원 아래 n=6에서 반례가 없다는 인증되지 않은 UNSAT 결과를
+  보고한다. n=8 시도는 시간 초과로 끝났으며 일반 추측은 여전히 미해결이다.
 artifacts:
 - path: README.md
   kind: informal-proof
