@@ -14,11 +14,13 @@
 | [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) | [`9118d083ffca1536f521f9a7d103201f537ea670`](https://github.com/google-deepmind/formal-conjectures/tree/9118d083ffca1536f521f9a7d103201f537ea670) | 2026-08-11 `main`; 수동 OEIS·Erdős·WOWII·기타 형식화의 canonical 원문 |
 | [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) | [`67338a157bbb8d87e9a349d662f82a868bda6327`](https://github.com/google-deepmind/formal-conjectures/tree/67338a157bbb8d87e9a349d662f82a868bda6327) | `auto_oeis` 작업 스냅샷; 자동 형식화 OEIS 원문 |
 | [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) | [`7a41db3d761324599812d6ca6cb6a9f311046dc7`](https://github.com/google-deepmind/formal-conjectures/tree/7a41db3d761324599812d6ca6cb6a9f311046dc7) | FormalBench 후보 집합을 확인한 스냅샷 |
+| [Formal Conjectures PR #4450](https://github.com/google-deepmind/formal-conjectures/pull/4450) | [`93dc5e41789aadbd85380183779a94e7a59cb80e`](https://github.com/google-deepmind/formal-conjectures/tree/93dc5e41789aadbd85380183779a94e7a59cb80e) | 정확한 명제 비교에 사용한 진행 중인 A112970 형식화 |
 | [AlphaProof Nexus Results](https://github.com/google-deepmind/alphaproof-nexus-results) | [`0647711a71183c1ea492ad60860776617ce1ea88`](https://github.com/google-deepmind/alphaproof-nexus-results/tree/0647711a71183c1ea492ad60860776617ce1ea88) | 공개 성공 결과와 시도 목록의 교집합 감사 |
 
-네 작업트리는 모두 삭제 직전 `git status --short`가 비어 있었습니다.
-`formal-auto-oeis`와 `formal-bench`는 첫 번째 저장소의 detached linked
-worktree였고, 나머지 둘은 독립 clone이었습니다.
+모든 원문 작업트리는 삭제 직전 `git status --short`가 비어 있었습니다.
+`formal-auto-oeis`, `formal-bench`, 진행 중 PR checkout은 Formal
+Conjectures clone의 detached linked worktree였고, 나머지 둘은 독립
+clone이었습니다.
 
 ## 보존 범위
 
@@ -40,12 +42,16 @@ git clone https://github.com/google-deepmind/formal-conjectures.git /tmp/formal-
 git -C /tmp/formal-conjectures fetch origin 9118d083ffca1536f521f9a7d103201f537ea670
 git -C /tmp/formal-conjectures checkout 9118d083ffca1536f521f9a7d103201f537ea670
 
+git -C /tmp/formal-conjectures fetch origin 93dc5e41789aadbd85380183779a94e7a59cb80e
+git -C /tmp/formal-conjectures checkout 93dc5e41789aadbd85380183779a94e7a59cb80e
+
 git clone https://github.com/google-deepmind/alphaproof-nexus-results.git /tmp/alphaproof-nexus-results
 git -C /tmp/alphaproof-nexus-results checkout 0647711a71183c1ea492ad60860776617ce1ea88
 ```
 
 다른 두 Formal Conjectures 스냅샷도 같은 clone에서 해당 커밋을 fetch하고
-checkout하면 복원할 수 있습니다.
+checkout하면 복원할 수 있습니다. 위의 두 번째 checkout은 진행 중인 PR
+#4450의 보존된 head를 선택합니다.
 
 ## 라이선스와 제3자 출처
 

@@ -10,7 +10,7 @@
 [![PRs welcome](https://img.shields.io/badge/PRs-welcome-2da44e)](CONTRIBUTING.md)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-45-8250df) ![proved](https://img.shields.io/badge/proved-14-2da44e) ![refuted](https://img.shields.io/badge/refuted-7-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-8-848d97)
+![problems](https://img.shields.io/badge/problems-51-8250df) ![proved](https://img.shields.io/badge/proved-20-2da44e) ![refuted](https://img.shields.io/badge/refuted-7-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-8-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -109,7 +109,7 @@ me" targets.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**45 problems** — ✅ proved: 14 · 🔴 refuted: 7 · 🟡 partial: 16 · ⚪ open: 8
+**51 problems** — ✅ proved: 20 · 🔴 refuted: 7 · 🟡 partial: 16 · ⚪ open: 8
 
 ### OEIS
 
@@ -123,6 +123,8 @@ me" targets.
 | [OEIS A067720 — phi(k^2+1)=k*phi(k+1) prime-power subfamily](problems/oeis-a067720/README.md) | 🟡 partial | — | `GPT-5.6 Sol` | Proves that if k+1=p^a with a>=2 then there is no solution for p=2, and for odd p with V=v2(p^a-1)+v2(p-1)<=5 the only solution is (p,a,k)=(3,2,8); general composite k+1 and the V>=6 prime-power cases remain open, so the original question is unresolved. |
 | [OEIS A072780 — Goldbach-like equivalence refuted at (m,r)=(8,7)](problems/oeis-a072780/README.md) | 🔴 refuted | lean + cert | `GPT-5.6 Sol` | Refutes the claim that a(m^2-r^2)=2 iff m-r and m+r are prime: at (m,r)=(8,7), a(15)=2 while the selected factors 1 and 15 are nonprime. |
 | [OEIS A076141 — n occurs at most once in binary of n^2, checked to 2^40](problems/oeis-a076141/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | An exact exhaustive occurrence-geometry search found no counterexample for 0 < n < 2^40, extending the OEIS-recorded 10^6 verification by a factor of about 1.1 million; explicitly a rigorous bounded verification, not a proof of the full conjecture. |
+| [OEIS A112970 — power-of-two identities and quarter-square formula proved](problems/oeis-a112970/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` | Lean-verifies both conjectured chains for all n >= 0, including the omitted closed form a(2^n) = floor(n^2/4) + 1 from A033638. |
+| [OEIS A113249 — full parameter-family square conjecture proved](problems/oeis-a113249/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` | Lean-proves that every odd-indexed term in the OEIS A113249 fourth-order family is a square: a(m,2*n+1)=Y(m,n)^2 for every integer parameter m and every n>=0. |
 | [OEIS A136433 — 9-lag linear recurrence proved for all n>=10](problems/oeis-a136433/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` · `Claude Fable 5` | Claims a complete proof that the OEIS-conjectured constant-coefficient recurrence a_n = 6*a_{n-3} + a_{n-6} - 6*a_{n-9} holds for all n>=10 for the periodic-coefficient nonautonomous sequence, via a_{t+3}=6*a_t+B_t with B_t of period 6. |
 | [OEIS A190363 — 21-term recurrence conjecture refuted](problems/oeis-a190363/README.md) | 🔴 refuted | lean + cert | `GPT-5.6 Sol` · `Claude Fable 5` | Refutes the OEIS-conjectured recurrence a(n+21)=a(n+17)+a(n+4)-a(n): first failure at base index n=140 (output term a(161), 541 != 542), with a Pell-equation-generated infinite family of failures showing the recurrence fails beyond every starting index. |
 | [OEIS A239293 — immediate-successor characterization proved](problems/oeis-a239293/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Proves for every n>=1 that the least composite c>n satisfying n^c == n (mod c) equals n+1 if and only if n+1 is odd and composite. |
@@ -134,10 +136,14 @@ me" targets.
 | [OEIS A319197 — stated I(n,1)=1 normalization refuted at n=7](problems/oeis-a319197/README.md) | 🔴 refuted | lean + cert | `GPT-5.6 Sol` | Claims a complete Lean-checked refutation of the entry's explicit I(n,1)=1 normalization, since its published factors give I(7,1)=769; the separate all-m integrality conjecture remains open. |
 | [OEIS A340881 modular periodicity](problems/oeis-a340881/README.md) | ✅ proved | cert | `GPT-5.6 Sol` | Claims a complete informal proof of both OEIS periodicity conjectures, giving explicit pure periods mod odd m (period 2*ord_m(2) from n=1) and eventual periodicity of A340881(n) mod m for every m >= 2. |
 | [OEIS A354747 first unknown case a(100943)](problems/oeis-a354747/README.md) | 🔴 refuted | cert(local) | `GPT-5.6 Sol` | Claims a(100943)=39101 via two independent deterministic primality certificates (GMP Lucas-rank and OpenPFGW BLS) for 201886*3^39101-1 plus exhaustive compositeness checks of all exponents 1..39100, refuting the upstream FormalConjectures statement a(100943)=0. |
+| [OEIS A368633 — parity conjecture proved](problems/oeis-a368633/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` | Lean-proves that the coefficients of A(x)=1+2*x*A(x)^2-x*A(-x)^2 are odd exactly when n+1 is a power of 2, by reduction modulo 2 to the Catalan recurrence. |
 | [OEIS A369378 lower-bound conjecture proved by Fermat divisors](problems/oeis-a369378/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Proves that for every n>0 and every k<2^n, the number 2^(2^n+1)-1+2^k is not prime, exactly resolving the displayed OEIS conjecture without addressing k>=2^n. |
 | [OEIS A384162 conjectured cross-reference refuted at n=2](problems/oeis-a384162/README.md) | 🔴 refuted | lean + cert | `GPT-5.6 Sol` | Refutes the conjecture a(n)=n*A342168(n-1) at n=2: A384162(2)=6, while 2*A342168(1)=8, with a Lean disproof and independent exact computations. |
+| [OEIS A394666 — factorial zero classification proved](problems/oeis-a394666/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Lean-proves that for every n>5, n! mod (2*n-1) is zero exactly when 2*n-1 is composite, and classifies a(1)=0 as the sole positive-index boundary exception. |
 | [OEIS A395412 certified finite nonvanishing extension](problems/oeis-a395412/README.md) | 🟡 partial | cert(local) | `GPT-5.6 Sol` | Claims a certified finite extension only: reproduces the 84 published terms, rigorously proves a(n) > 0 for every 85 <= n <= 200 via PARI/GP isprime witnesses, and BPSW-screens 201 <= n <= 400 with no proof claimed there. |
+| [OEIS A396093 — both parity conjectures proved](problems/oeis-a396093/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` | Proves both OEIS parity conjectures: every a(2n) is even for n>=1, and a(2n-1) is even exactly when n=5k-2 for k>=1, via a Lean-verified complete period-10 parity classification. |
 | [OEIS A397245 mod 3 coefficient classification](problems/oeis-a397245/README.md) | ✅ proved | cert | `GPT-5.6 Sol` | Claims a complete informal proof of both conjectured mod 3 iff-classifications of a_n (a_n = 1 mod 3 iff n+2 = 3^j or 2*3^j; a_n = 2 mod 3 iff n+2 = 3^i + 3^j with i < j; else 0) via a closed form in F_3[[x]]. |
+| [OEIS A397588 — odd terms occur exactly at powers of two](problems/oeis-a397588/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Proves the OEIS parity conjecture for the recurrence a(1)=1 and a(n)=(n+1)*sum_{k=1}^{n-1} a(k)*a(n-k): a(n) is odd exactly when n is a power of two. |
 | [OEIS A397621 Pascal-row linear complexity](problems/oeis-a397621/README.md) | ✅ proved | cert | `GPT-5.6 Sol` | Claims a complete informal proof that A397621(A001317(n)) = 2^(floor(log2 n)+1) - n = A080079(n) for all n >= 1, with a zero-run lower bound and an explicit connection polynomial (1+x)^d upper bound. |
 | [OEIS A398189 — 2-adic valuation of generalized Schenker sums, all four conjectured cases proved](problems/oeis-a398189/README.md) | ✅ proved | lean + cert | `Claude Fable 5` | Proves all four cases of Luschny's conjectured valuation formula for A398189(n,k) = v2(A398187(n,k)), A398187(n,k) = Sum_{j<=n-k} ((n-k)!/j!)*n^j — v2((n-k)!) for even n; 1 for odd n, k=0; 0 for odd n, odd k; v2(k+2) for odd n, even k with k not == 14 (mod 16) — in Lean 4, plus v2 >= 4 in the excluded class k == 14 (mod 16). |
 
