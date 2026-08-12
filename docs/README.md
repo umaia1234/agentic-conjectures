@@ -16,6 +16,9 @@ repository-wide references and the problem-local mathematical details.
 - The [upstream source snapshot guide](upstream/README.md) documents shared
   preservation, restoration, and licensing policy. Its changing repository
   table is generated from [`sources.yaml`](upstream/sources.yaml).
+- The [weekly highlights archive](HIGHLIGHTS.md) keeps every past week of
+  the front page's rotating-curator ritual, generated from
+  [`highlights.yaml`](highlights.yaml).
 
 ## Problem-local mathematical details
 

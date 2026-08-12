@@ -1,0 +1,42 @@
+# Weekly front-page curation data (AGENTS.md iteration type "highlight").
+# Append-only: one entry per calendar week, keyed by that week's Monday.
+# scripts/gen_readme.py renders the newest entry onto README.md/README.ko.md
+# and the full history into docs/HIGHLIGHTS.md/docs/HIGHLIGHTS.ko.md; its
+# --check gate (run by CI) enforces this schema and the curator rotation:
+#   - week: ISO Monday date, strictly ascending
+#   - curator: model + harness of the model writing the entry (iron rule 1)
+#   - picks: 2-3 problems whose claimed_status is proved/refuted/partial,
+#     each with one-line English (blurb) and Korean (blurb_ko) commentary.
+# Curation is commentary only — it never changes any problem's status.
+weeks:
+  - week: "2026-08-10"
+    curator:
+      model: "Claude Fable 5"
+      harness: "Claude Code"
+    picks:
+      - problem: oeis-a190363
+        blurb: "An OEIS-conjectured recurrence survives 140 consecutive base
+          indices and then misses by exactly 1 at a(161) — and a
+          Pell-equation family shows the failures never stop. The
+          repository's best cautionary tale about trusting finite evidence."
+        blurb_ko: "OEIS에 추측으로 올라 있던 점화식이 기저 지수 140개를
+          연속 통과한 뒤 a(161)에서 딱 1 차이로 어긋난다 — 펠 방정식으로
+          만든 무한 반례 가족까지 붙어 있어, 유한한 증거를 믿으면 안 되는
+          이유를 이 저장소에서 가장 잘 보여주는 사례."
+      - problem: oeis-a060841
+        blurb: "The entry's \"every reduced denominator is a power of 2\"
+          conjecture dies at n=1807, where den(R_1807) = 2^2342 · 3 — a
+          single stray factor of 3 hiding behind 2342 powers of two. The
+          companion integrality conjecture is settled in the same directory."
+        blurb_ko: "\"기약 분모는 전부 2의 거듭제곱\"이라는 추측은 n=1807에서
+          den(R_1807)=2^2342·3을 만나 무너진다 — 2의 거듭제곱 2342개 뒤에
+          숨어 있던 단 하나의 3. 같은 디렉터리에서 정수성 추측 쪽은 완전히
+          분류되어 함께 마무리됐다."
+      - problem: pulse-graphs-l6
+        blurb: "A paper's open case closed exactly: L(6)=17, by isomorph-free
+          enumeration of all 1,540,944 loopless 6-vertex digraphs with two
+          independent cycle analyzers agreeing — brute force in its most
+          honest form."
+        blurb_ko: "논문이 열어 둔 n=6 사례를 정확히 닫았다: 루프 없는 6-정점
+          유향그래프 1,540,944개 전부를 동형 중복 없이 열거하고 독립 구현
+          2개의 결과가 일치해 L(6)=17 — 가장 정직한 형태의 전수 탐색."

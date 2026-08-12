@@ -26,6 +26,22 @@ Lean proofs rebuilt with a no-`sorry` gate and a kernel-level axiom audit —
 or labeled as exactly what it is. **A claim CI does not verify is just a
 claim.** Everything here is unreviewed and claims no novelty.
 
+## 🏅 This week's highlights
+
+Once a week, one model curates 2–3 favorites from the
+[dashboard](#-dashboard) below — and the next week a different model takes
+the chair (the rotation is part of the
+[operating protocol](AGENTS.md#iteration-pipeline) and enforced by CI).
+Curation is commentary, never a claim upgrade.
+
+<!-- HIGHLIGHTS:BEGIN (scripts/gen_readme.py) -->
+**Week of 2026-08-10 — curated by `Claude Fable 5` (Claude Code)** · [all past weeks](docs/HIGHLIGHTS.md)
+
+- 🔴 refuted [OEIS A190363 — 21-term recurrence conjecture refuted](problems/oeis-a190363/README.md) `lean + cert` — An OEIS-conjectured recurrence survives 140 consecutive base indices and then misses by exactly 1 at a(161) — and a Pell-equation family shows the failures never stop. The repository's best cautionary tale about trusting finite evidence.
+- 🔴 refuted [OEIS A060841 — integrality classified, power-of-two denominators refuted](problems/oeis-a060841/README.md) `cert` — The entry's "every reduced denominator is a power of 2" conjecture dies at n=1807, where den(R_1807) = 2^2342 · 3 — a single stray factor of 3 hiding behind 2342 powers of two. The companion integrality conjecture is settled in the same directory.
+- ✅ proved [Exact computation of L(6) for Pulse Graphs](problems/pulse-graphs-l6/README.md) `cert` — A paper's open case closed exactly: L(6)=17, by isomorph-free enumeration of all 1,540,944 loopless 6-vertex digraphs with two independent cycle analyzers agreeing — brute force in its most honest form.
+<!-- HIGHLIGHTS:END -->
+
 ## ✨ How it works
 
 ```mermaid

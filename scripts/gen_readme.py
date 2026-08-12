@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Regenerate localized problem indexes from problems/*/status.yaml.
 
-Generated blocks in the root landing pages and documentation index are updated;
+Generated blocks in the root landing pages, the documentation index, and the
+weekly-highlights archive (fed by docs/highlights.yaml) are updated;
 everything outside their markers is left untouched. Run with --check to fail
-(exit 1) when any committed index is stale (used by CI).
+(exit 1) when any committed index is stale or the highlights data violates
+its schema or the curator rotation (used by CI).
 """
+import datetime
 import sys
 from pathlib import Path
 from urllib.parse import quote
@@ -21,6 +24,14 @@ BEGIN, END = "<!-- STATUS:BEGIN (scripts/gen_readme.py) -->", "<!-- STATUS:END -
 CBEGIN, CEND = "<!-- COUNTS:BEGIN (scripts/gen_readme.py) -->", "<!-- COUNTS:END -->"
 DBEGIN = "<!-- DETAILS:BEGIN (scripts/gen_readme.py) -->"
 DEND = "<!-- DETAILS:END -->"
+HBEGIN = "<!-- HIGHLIGHTS:BEGIN (scripts/gen_readme.py) -->"
+HEND = "<!-- HIGHLIGHTS:END -->"
+HIGHLIGHTS_DATA = ROOT / "docs" / "highlights.yaml"
+HIGHLIGHT_DOCS = [
+    (ROOT / "docs" / "HIGHLIGHTS.md", "en"),
+    (ROOT / "docs" / "HIGHLIGHTS.ko.md", "ko"),
+]
+HIGHLIGHT_STATUSES = {"proved", "refuted", "partial"}
 SHIELD = "https://img.shields.io/badge"
 DOMAIN_ORDER = ["oeis", "erdos", "graph-combinatorics", "other"]
 COUNT_STYLE = {
@@ -182,6 +193,111 @@ def details_block(statuses: list[dict], locale: str) -> str:
     return "\n".join([DBEGIN, header, "|---|---|---|", *rows, DEND])
 
 
+def load_highlights(status_by_id: dict) -> tuple[list[dict], list[str]]:
+    """Load docs/highlights.yaml (oldest first) and validate the curation rules."""
+    if not HIGHLIGHTS_DATA.exists():
+        return [], [f"missing {HIGHLIGHTS_DATA.relative_to(ROOT)}"]
+    with open(HIGHLIGHTS_DATA) as f:
+        data = yaml.safe_load(f) or {}
+    weeks = data.get("weeks") or []
+    errors = []
+    if not weeks:
+        errors.append("highlights.yaml: needs at least one week entry")
+    prev_date, prev_model = None, None
+    for i, week in enumerate(weeks):
+        where = f"highlights.yaml weeks[{i}]"
+        date_str = str(week.get("week", ""))
+        try:
+            date = datetime.date.fromisoformat(date_str)
+            if date.weekday() != 0:
+                errors.append(f"{where}: week {date_str} is not a Monday")
+            if prev_date is not None and date <= prev_date:
+                errors.append(f"{where}: weeks must be appended in ascending order")
+            prev_date = date
+        except ValueError:
+            errors.append(f"{where}: week must be an ISO date (YYYY-MM-DD)")
+        curator = week.get("curator") or {}
+        model = curator.get("model")
+        if not model or not curator.get("harness"):
+            errors.append(f"{where}: curator needs both model and harness")
+        if model and model == prev_model:
+            errors.append(
+                f"{where}: {model!r} also curated the previous week; "
+                "the same model never curates two consecutive weeks"
+            )
+        prev_model = model or prev_model
+        picks = week.get("picks") or []
+        if not 2 <= len(picks) <= 3:
+            errors.append(f"{where}: needs 2-3 picks, has {len(picks)}")
+        for j, pick in enumerate(picks):
+            pwhere = f"{where}.picks[{j}]"
+            pid = pick.get("problem")
+            status = status_by_id.get(pid)
+            if status is None:
+                errors.append(f"{pwhere}: unknown problem {pid!r}")
+            elif status.get("claimed_status") not in HIGHLIGHT_STATUSES:
+                errors.append(
+                    f"{pwhere}: {pid} is {status.get('claimed_status')!r}; only "
+                    "proved/refuted/partial rows can be highlighted"
+                )
+            for key in ("blurb", "blurb_ko"):
+                if not isinstance(pick.get(key), str) or not pick[key].strip():
+                    errors.append(f"{pwhere}: missing {key}")
+    return weeks, errors
+
+
+def highlight_items(
+    week: dict, status_by_id: dict, locale: str, prefix: str
+) -> list[str]:
+    title_key = "title_ko" if locale == "ko" else "title"
+    blurb_key = "blurb_ko" if locale == "ko" else "blurb"
+    lines = []
+    for pick in week["picks"]:
+        status = status_by_id[pick["problem"]]
+        readme_name = localized_problem_file(status, "README.md", locale)
+        checks = checks_cell(status, locale)
+        tag = f" `{checks}`" if checks != "—" else ""
+        badge = BADGE[locale][status["claimed_status"]]
+        title = status.get(title_key, status.get("title", status["id"]))
+        lines.append(
+            f"- {badge} [{title}]({prefix}problems/{status['id']}/{readme_name})"
+            f"{tag} — {pick[blurb_key]}"
+        )
+    return lines
+
+
+def curator_heading(week: dict, locale: str) -> str:
+    model, harness = week["curator"]["model"], week["curator"]["harness"]
+    if locale == "ko":
+        return f"{week['week']} 주 — 큐레이터 `{model}` ({harness})"
+    return f"Week of {week['week']} — curated by `{model}` ({harness})"
+
+
+def highlights_block(weeks: list[dict], status_by_id: dict, locale: str) -> str:
+    """Render the newest week for the root landing pages."""
+    week = weeks[-1]
+    if locale == "ko":
+        archive = "[지난 주간 기록](docs/HIGHLIGHTS.ko.md)"
+    else:
+        archive = "[all past weeks](docs/HIGHLIGHTS.md)"
+    lines = [HBEGIN, f"**{curator_heading(week, locale)}** · {archive}", ""]
+    lines += highlight_items(week, status_by_id, locale, "")
+    lines.append(HEND)
+    return "\n".join(lines)
+
+
+def highlights_archive_block(
+    weeks: list[dict], status_by_id: dict, locale: str
+) -> str:
+    """Render every week, newest first, for docs/HIGHLIGHTS*.md."""
+    lines = [HBEGIN]
+    for week in reversed(weeks):
+        lines += ["", f"## {curator_heading(week, locale)}", ""]
+        lines += highlight_items(week, status_by_id, locale, "../")
+    lines.append(HEND)
+    return "\n".join(lines)
+
+
 def replace_block(text: str, begin: str, end: str, block: str, path: Path) -> str:
     """Replace one required generated block."""
     if text.count(begin) != 1 or text.count(end) != 1:
@@ -209,6 +325,14 @@ def main() -> int:
             print(f"  {item}")
         return 1
 
+    status_by_id = {s["id"]: s for s in statuses}
+    weeks, highlight_errors = load_highlights(status_by_id)
+    if highlight_errors:
+        print("invalid weekly highlights data:")
+        for error in highlight_errors:
+            print(f"  {error}")
+        return 1
+
     stale = []
     for readme, locale in READMES:
         if not readme.exists():
@@ -227,11 +351,39 @@ def main() -> int:
             head, rest = new.split(CBEGIN, 1)
             _, tail = rest.split(CEND, 1)
             new = head + counts_block + tail
+        try:
+            new = replace_block(
+                new, HBEGIN, HEND,
+                highlights_block(weeks, status_by_id, locale), readme,
+            )
+        except ValueError as exc:
+            print(exc)
+            return 1
         if check:
             if new != text:
                 stale.append(readme.name)
         else:
             readme.write_text(new, encoding="utf-8")
+
+    for highlights_doc, locale in HIGHLIGHT_DOCS:
+        if not highlights_doc.exists():
+            print(f"missing highlights archive: {highlights_doc.relative_to(ROOT)}")
+            return 1
+        text = highlights_doc.read_text(encoding="utf-8")
+        try:
+            new = replace_block(
+                text, HBEGIN, HEND,
+                highlights_archive_block(weeks, status_by_id, locale),
+                highlights_doc,
+            )
+        except ValueError as exc:
+            print(exc)
+            return 1
+        if check:
+            if new != text:
+                stale.append(str(highlights_doc.relative_to(ROOT)))
+        else:
+            highlights_doc.write_text(new, encoding="utf-8")
 
     for readme, locale in DOC_READMES:
         if not readme.exists():

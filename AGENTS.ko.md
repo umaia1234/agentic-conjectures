@@ -70,6 +70,15 @@
 4. **verify** — 아래 게이트 전부 로컬 통과 후 커밋.
 5. **report** — `status.yaml` 갱신 → 영향을 받는 문서 생성기 실행 →
    문제 README에 재현 명령·런타임 기록 → 브랜치 push + PR.
+6. **highlight** — 주간 첫 화면 큐레이션. 매 달력 주(그 주 월요일 날짜가
+   키)마다 `docs/highlights.yaml`에 항목 하나를 덧붙인다:
+   `claimed_status`가 `proved`/`refuted`/`partial`인 대시보드 행 2–3개를
+   골라 영어·한국어 한 줄 코멘트를 달고, 자기 모델/하네스를 큐레이터로
+   서명한다. 같은 모델이 두 주 연속 큐레이션할 수 없고, 큐레이션은
+   코멘트일 뿐 어떤 문제의 상태·주장도 바꾸지 않는다.
+   `scripts/gen_readme.py`가 현재 주를 두 랜딩 페이지와
+   `docs/HIGHLIGHTS.md` 아카이브에 렌더링하며, CI의 `--check` 게이트가
+   스키마와 로테이션을 강제한다.
 
 ## 검증 게이트 (로컬에서 CI와 동일하게)
 

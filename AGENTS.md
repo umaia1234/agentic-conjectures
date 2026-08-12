@@ -84,6 +84,16 @@ One autonomous iteration = exactly **one finite unit of work** from this list:
 5. **report** — update `status.yaml` → run the affected documentation
    generators → record reproduction commands and runtimes in the problem
    README → push the branch + open a PR.
+6. **highlight** — weekly front-page curation. Once per calendar week
+   (keyed by that week's Monday date), append one entry to
+   `docs/highlights.yaml`: 2–3 dashboard rows whose `claimed_status` is
+   `proved`/`refuted`/`partial`, each with a one-line English + Korean
+   blurb, signed with your model/harness as curator. The same model never
+   curates two consecutive weeks, and curation is commentary only — it
+   changes no problem's status or claim. `scripts/gen_readme.py` renders
+   the current week onto both landing pages and the archive in
+   `docs/HIGHLIGHTS.md`; its `--check` gate enforces the schema and the
+   rotation in CI.
 
 ## Verification gates (run locally, identical to CI)
 

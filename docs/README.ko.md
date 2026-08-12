@@ -16,6 +16,9 @@
 - [업스트림 출처 스냅샷](upstream/README.ko.md)은 공통 보존·복원·라이선스
   정책을 설명합니다. 계속 바뀌는 저장소 표는
   [`sources.yaml`](upstream/sources.yaml)에서 생성합니다.
+- [주간 하이라이트 아카이브](HIGHLIGHTS.ko.md)는 첫 화면 순환 큐레이션의
+  지난 주 기록을 보관하며, [`highlights.yaml`](highlights.yaml)에서
+  생성합니다.
 
 ## 문제별 수학 상세
 
