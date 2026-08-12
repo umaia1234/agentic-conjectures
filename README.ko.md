@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-51-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-20-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-7-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-16-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-8-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-52-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-21-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-7-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-16-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-8-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 51개** — ✅ 증명: 20 · 🔴 반례: 7 · 🟡 부분 결과: 16 · ⚪ 미해결: 8
+**문제 52개** — ✅ 증명: 21 · 🔴 반례: 7 · 🟡 부분 결과: 16 · ⚪ 미해결: 8
 
 ### OEIS
 
@@ -176,6 +176,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 | [Erdős #307 — 소수 역수합들의 곱이 1이 되는 문제](problems/erdos-307/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | 강제 항등식과 국소 Legendre/mod-8/mod-24 필요조건을 다시 증명하고, 완전탐색으로 \|P union Q\| >= 60 및 max(P union Q) >= 347을 보인다. 문제 자체는 여전히 미해결이며 새로움을 주장하지 않는다. |
 | [Erdős #385 / #430(i) — F(n)-n에 대한 유한 범위 실험](problems/erdos-385/README.ko.md) | ⚪ 미해결 | 인증서 | `GPT-5.6 Sol` | 부분 (i), (ii)에서 F(n)-n을 조사하는 두 개의 C++ 유한 범위 실험을 제공하며, 이 실험들이 세 추측 명제 가운데 어느 것도 증명하지 못한다고 명시한다. README에서는 어떠한 상한·하한이나 결과도 주장하지 않는다. |
 | [Erdős #424 — 생성 집합의 양의 밀도(유한 탐색)](problems/erdos-424/README.ko.md) | ⚪ 미해결 | 인증서 | `GPT-5.6 Sol` | 서로 다른 원소를 사용한 n+1=xy를 통해 집합을 생성하고 누락 여부를 확인하기 위해 잉여류를 탐색하는 정확한 유한 실험을 설명한다. README는 이 유한 탐색이 양의 밀도를 증명하지 않는다고 명시한다. |
+| [에르되시 #671 — 모든 점에서 비유계인 라그랑주 배열 증명](problems/erdos-671/README.ko.md) | ✅ 증명 | Lean + 인증서 | `GPT Pro` · `Codex` · `GPT-5.6 Sol` | 에르되시 #671의 두 질문을 모두 Lean으로 증명한다. 정확한 개수의 절점을 갖는 하나의 삼각 보간 배열이 존재하여 그 르베그 함수들은 [-1,1]의 모든 점에서 공종적으로 비유계이지만, 모든 연속함수에는 라그랑주 보간 다항식의 전체 열이 그 함수로 수렴하는 점이 있다. |
 | [12차 유한 사영평면](problems/projective-plane-order-12/README.ko.md) | ⚪ 미해결 | — | `GPT-5.6 Sol` | 새로운 결과를 주장하지 않는다. 12차 사영평면, 즉 대칭 2-(157,13,1) 설계의 미해결 존재 문제와 알려진 공선변환군 배제 결과, 계산상 고려사항만 기록한다. |
 
 ### 그래프·조합론

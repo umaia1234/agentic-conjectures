@@ -29,6 +29,7 @@ problem rather than assembling another global copy.
 <!-- DETAILS:BEGIN (scripts/gen_readme.py) -->
 | Problem | Claimed status | Mathematical details |
 |---|---|---|
+| [Erdős #671 — everywhere-unbounded Lagrange arrays proved](../problems/erdos-671/README.md) | ✅ proved | [Detailed derivation](../problems/erdos-671/DETAILS.md) |
 | [OEIS A000224 — R(n)(R(n)-1) divides n^2-1 iff n is an odd prime](../problems/oeis-a000224/README.md) | 🟡 partial | [Detailed derivation](../problems/oeis-a000224/DETAILS.md) |
 | [OEIS A076141 — n occurs at most once in binary of n^2, checked to 2^40](../problems/oeis-a076141/README.md) | 🟡 partial | [Detailed derivation](../problems/oeis-a076141/DETAILS.md) |
 | [OEIS A245211: a(n)=n only for n=21](../problems/oeis-a245211/README.md) | 🟡 partial | [Detailed derivation](../problems/oeis-a245211/DETAILS.md) |
