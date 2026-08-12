@@ -3,6 +3,9 @@
 Checked on 2026-08-11.  This is a rigorous bounded verification, not a proof of
 the full conjecture.
 
+For the complete occurrence-geometry argument, see
+[the problem-local details](DETAILS.md).
+
 ## Problem and result
 
 OEIS A076141 counts the occurrences of the base-2 word for `n` inside the

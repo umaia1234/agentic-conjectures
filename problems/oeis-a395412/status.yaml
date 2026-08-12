@@ -12,6 +12,8 @@ claim_ko: >-
   증거를 통해 모든 85 <= n <= 200에 대해 a(n) > 0임을 엄밀히 증명하며,
   201 <= n <= 400에서는 BPSW 검사만 수행하며 그 구간에 대해서는 증명을 주장하지 않는다.
 artifacts:
+- path: DETAILS.md
+  kind: mathematical-details
 - path: search_and_certify.py
   kind: certificate-script
 - path: result.json
@@ -25,6 +27,9 @@ attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: documentation restructuring of existing mathematical details
 notes: README header says explicitly this is partial progress, not a solution of the infinite conjecture;
   the 201-400 range is a probable-prime screen only; a small structural lemma shows candidates have no
   prime factor <= p_n; refuting the conjecture would additionally require compositeness certificates for

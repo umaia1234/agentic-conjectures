@@ -1,5 +1,8 @@
 # OEIS A395412: certified finite nonvanishing extension
 
+For the full definitions, lemma, and finite-witness interpretation, see
+[the problem-local details](DETAILS.md).
+
 ## Status
 
 This is **partial progress, not a solution of the infinite conjecture**.

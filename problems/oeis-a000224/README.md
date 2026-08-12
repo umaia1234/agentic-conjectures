@@ -4,6 +4,9 @@
 
 Date of verification: 2026-08-12.
 
+The expanded definitions and proofs are in the
+[problem-local mathematical details](DETAILS.md).
+
 Let `R(n)` denote the number of distinct quadratic residues modulo `n`
 (including 0). [OEIS A000224](https://oeis.org/A000224) conjectures the
 following.

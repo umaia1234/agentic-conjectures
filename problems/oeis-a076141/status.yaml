@@ -12,6 +12,8 @@ claim_ko: >-
   10^6까지의 검증 범위를 약 110만 배 확장했다. 이는 엄밀한 유한 범위 검증이며 전체 추측의 증명은
   아니다.
 artifacts:
+- path: DETAILS.md
+  kind: mathematical-details
 - path: a076141_pair_geometry.cpp
   kind: search-code
 - path: a076141_independent_periodic.cpp
@@ -32,6 +34,9 @@ attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: documentation restructuring of existing mathematical details
 notes: Finite statement only (n < 2^40); independently written second enumerator checked 137,443,246,808
   candidates and a brute-force scan of all odd n < 2^32 agreed; source SHA256 hashes recorded; the full
   2^40 run is local-only; no novelty or priority claim without external review; upstream Lean universal

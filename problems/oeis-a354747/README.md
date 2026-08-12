@@ -2,6 +2,9 @@
 
 Checked on 2026-08-11.
 
+For the full derivation of the mathematical claims, see
+[the problem-local details](DETAILS.md).
+
 ## Result
 
 Let

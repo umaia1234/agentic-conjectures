@@ -25,8 +25,12 @@ jobs:
           git clone --depth 1 https://github.com/marijnheule/drat-trim /tmp/drat-trim
           make -C /tmp/drat-trim drat-trim
           echo /tmp/drat-trim >> "$GITHUB_PATH"
-      - name: Dashboard freshness
-        run: python3 scripts/gen_readme.py --check
+      - name: Generated documentation freshness
+        run: |
+          python3 scripts/gen_readme.py --check
+          python3 scripts/gen_upstream_docs.py --check
+      - name: Documentation links and companions
+        run: python3 scripts/check_docs.py
       - name: Re-run CI-feasible certificates
         run: python3 scripts/verify_all.py --ci
 

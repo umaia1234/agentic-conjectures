@@ -1,4 +1,4 @@
-**English** | [한국어](UPSTREAM_SOURCES.ko.md)
+**English** | [한국어](README.ko.md)
 
 # Upstream source snapshots
 
@@ -11,6 +11,7 @@ problem's `README.md`.
 
 ## Pinned repository states
 
+<!-- UPSTREAM-SOURCES:BEGIN (scripts/gen_upstream_docs.py) -->
 | Repository | Commit | Purpose at the time |
 |---|---|---|
 | [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) | [`9118d083ffca1536f521f9a7d103201f537ea670`](https://github.com/google-deepmind/formal-conjectures/tree/9118d083ffca1536f521f9a7d103201f537ea670) | `main` as of 2026-08-11; canonical sources of the manually formalized OEIS/Erdős/WOWII/other statements |
@@ -18,6 +19,7 @@ problem's `README.md`.
 | [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) | [`7a41db3d761324599812d6ca6cb6a9f311046dc7`](https://github.com/google-deepmind/formal-conjectures/tree/7a41db3d761324599812d6ca6cb6a9f311046dc7) | Snapshot at which the FormalBench candidate set was checked |
 | [Formal Conjectures PR #4450](https://github.com/google-deepmind/formal-conjectures/pull/4450) | [`93dc5e41789aadbd85380183779a94e7a59cb80e`](https://github.com/google-deepmind/formal-conjectures/tree/93dc5e41789aadbd85380183779a94e7a59cb80e) | Pending A112970 formalization used for exact statement comparison |
 | [AlphaProof Nexus Results](https://github.com/google-deepmind/alphaproof-nexus-results) | [`0647711a71183c1ea492ad60860776617ce1ea88`](https://github.com/google-deepmind/alphaproof-nexus-results/tree/0647711a71183c1ea492ad60860776617ce1ea88) | Audit of the intersection between public success results and attempt lists |
+<!-- UPSTREAM-SOURCES:END -->
 
 Every source worktree had an empty `git status --short` immediately before
 deletion. `formal-auto-oeis`, `formal-bench`, and the pending-PR checkout were
@@ -62,9 +64,9 @@ checkout shown above selects the preserved head of pending PR #4450.
 ## Licenses and third-party sources
 
 The copied Formal Conjectures Lean sources keep the original Apache-2.0
-copyright headers. The [full Apache-2.0 text](THIRD_PARTY_LICENSES/Apache-2.0.txt)
+copyright headers. The [full Apache-2.0 text](../../THIRD_PARTY_LICENSES/Apache-2.0.txt)
 is preserved alongside, and the
-[upstream AUTHORS](THIRD_PARTY_LICENSES/Formal-Conjectures-AUTHORS.txt) file
+[upstream AUTHORS](../../THIRD_PARTY_LICENSES/Formal-Conjectures-AUTHORS.txt) file
 was copied from the same snapshot. The original repository distributes other
 material under CC BY 4.0 and notes that material originating from OEIS,
 Wikipedia, or MathOverflow may carry the original sources' terms, such as

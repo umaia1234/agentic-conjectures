@@ -12,6 +12,8 @@ claim_ko: >-
   형태를 가져야 한다는 필요조건을 증명했으며, 모든 n <= 10^9와 서로 다른 소인수가 두 개이고 각
   지수가 <= 200인 모든 n을 정확히 검증했다.
 artifacts:
+- path: DETAILS.md
+  kind: mathematical-details
 - path: README.md
   kind: informal-proof
 - path: a245211_scan.cpp
@@ -32,6 +34,9 @@ attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: documentation restructuring of existing mathematical details
 notes: README opens by stating the full conjecture remains unresolved; remaining gaps are two-prime cases
   with exponents > 200, nonsquarefree n with >= 3 prime factors, and squarefree n with an odd number r
   >= 5 of prime factors; upstream Lean uniqueness theorem is a sorry-marked conjecture statement.

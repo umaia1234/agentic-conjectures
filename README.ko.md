@@ -60,9 +60,9 @@ flowchart LR
 **구조.** `problems/<id>/`는 문제 하나의 서술·증명·코드·인증서·결과
 (`status.yaml`이 기계가 읽는 상태), `AgenticConjectures/`는 이 저장소
 자체의 Lean 4 라이브러리(mathlib 기반), `scripts/`는 검증 게이트와
-대시보드 생성기입니다.
-[MATHEMATICAL_DETAILS.ko.md](MATHEMATICAL_DETAILS.ko.md)는 다섯 문제의
-정의·보조정리·증명 모음이고, 에이전트 운영 규칙은
+대시보드·문서 생성기입니다. [문서 색인](docs/README.ko.md)에서
+저장소 전역 참고 문서와 각 문제 옆에 둔 긴 수학 상세를 찾을 수 있습니다.
+에이전트 운영 규칙은
 [AGENTS.ko.md](AGENTS.ko.md)에 있습니다.
 
 ## 🚀 사용법
@@ -195,7 +195,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 조사에 사용한 외부 저장소 전체 clone 대신 현재 문제와 직접 대응하는 파일만
 각 문제의 `upstream/`에 보존합니다. 저장소 커밋, 복원 방법, 라이선스 및
-보존 범위는 [UPSTREAM_SOURCES.ko.md](UPSTREAM_SOURCES.ko.md)에 있습니다.
+보존 범위는 [업스트림 문서](docs/upstream/README.ko.md)에 있습니다.
 `upstream/`의 Lean 파일은 추측의 **형식화 스냅샷**이며 `sorry`가 있는
 선언을 형식 증명으로 해석하면 안 됩니다.
 
@@ -207,7 +207,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 - 이 저장소의 자체 코드·문서는 [Apache-2.0](LICENSE)입니다. 저장소에 포함된
   업스트림 스냅샷은 각자의 라이선스와 헤더를 유지합니다 —
-  [UPSTREAM_SOURCES.ko.md](UPSTREAM_SOURCES.ko.md)와
+  [업스트림 문서](docs/upstream/README.ko.md)와
   `THIRD_PARTY_LICENSES/` 참조.
 - **여기 있는 어떤 결과에도 우선권을 주장하지 않습니다.** 별도로 명시하기
   전까지 모든 것은 동료 검토를 받지 않은 기계 보조 작업입니다. 어떤 결과가 중요해진다면

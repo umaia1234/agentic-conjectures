@@ -47,6 +47,12 @@
    (영어 파일: `**English** | [한국어](<이름>.ko.md)`,
    한국어 파일: `[English](<이름>.md) | **한국어**`).
    문서를 고치면 같은 커밋에서 번역본도 함께 갱신한다.
+   저장소 진입 문서(`README`, `AGENTS`, `CONTRIBUTING`)는 루트에,
+   저장소 전역 참고 문서는 `docs/`에, 문제별 설명은 그 산출물이 있는
+   `problems/<id>/`에 둔다. 계속 바뀌는 색인·표는 `status.yaml`
+   또는 전용 YAML 데이터에서 생성하며, 생성 마커 사이를 수동 편집하지 않는다.
+   문제별 `DETAILS.md`는 중앙 문서 색인이 찾을 수 있도록 `status.yaml`에
+   `mathematical-details` 종류의 산출물로 등록한다.
 
 ## 이터레이션 파이프라인
 
@@ -62,7 +68,7 @@
    Lean 형식화. 탐색은 실행 전 예상 시간을 추정하고 로컬 2시간을 넘기지
    않는다(더 길면 체크포인트 + 분할).
 4. **verify** — 아래 게이트 전부 로컬 통과 후 커밋.
-5. **report** — `status.yaml` 갱신 → `python3 scripts/gen_readme.py` →
+5. **report** — `status.yaml` 갱신 → 영향을 받는 문서 생성기 실행 →
    문제 README에 재현 명령·런타임 기록 → 브랜치 push + PR.
 
 ## 검증 게이트 (로컬에서 CI와 동일하게)
@@ -74,6 +80,8 @@ lake build                          # 전체 컴파일
 python3 scripts/check_axioms.py     # #print axioms: 표준 3공리만 허용
 python3 scripts/verify_all.py --ci  # ci_feasible 인증서 재실행
 python3 scripts/gen_readme.py --check
+python3 scripts/gen_upstream_docs.py --check
+python3 scripts/check_docs.py       # 로컬 링크 + 영·한 동반 문서 탐색
 ```
 
 ## Lean 규약

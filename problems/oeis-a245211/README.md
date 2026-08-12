@@ -4,6 +4,9 @@
 
 Date checked: 2026-08-11
 
+The expanded arguments are in the
+[problem-local mathematical details](DETAILS.md).
+
 ## Conclusion and limitations
 
 **The full conjecture is not yet resolved.** What this document proves is

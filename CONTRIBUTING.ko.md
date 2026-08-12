@@ -61,7 +61,9 @@ bound 추적 인프라입니다 — "해결" 주장 금지, 인증된 점진적 
   금지. 커밋 author는 저장소 로컬 신원 유지, `Co-Authored-By` 트레일러
   금지(contributor 그래프를 바꿉니다).
 - 문서는 영어 기본. 한국어 `.ko.md` 병행은 환영하지만 문제 문서에서는
-  선택 (원문을 고치면 기존 병행본도 갱신).
+  선택 (원문을 고치면 기존 병행본도 갱신). 문제별 자료는
+  `problems/<id>/`에 두고, `docs/`는 저장소 전역 참고 문서에만
+  사용하며, 계속 바뀌는 색인은 수동 복사 대신 구조화된 정보에서 생성.
 - 이 저장소에서 파생된 것을 외부(OEIS, erdosproblems.com, 저널, upstream
   저장소)에 제출하려면 먼저 여기에 이슈를 여세요. 미검증 기계 산출물을
   상류로 보내는 것은 스팸이고 모두에게 해가 됩니다 — 우리가 적극적으로
@@ -77,6 +79,8 @@ python3 scripts/check_imports.py
 python3 scripts/check_sorry.py
 python3 scripts/check_axioms.py
 python3 scripts/gen_readme.py --check
+python3 scripts/gen_upstream_docs.py --check
+python3 scripts/check_docs.py
 ```
 
 ## 리뷰 기준

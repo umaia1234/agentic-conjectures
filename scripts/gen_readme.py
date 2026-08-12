@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Regenerate the localized problem dashboards from problems/*/status.yaml.
+"""Regenerate localized problem indexes from problems/*/status.yaml.
 
-The table is written between the STATUS:BEGIN / STATUS:END markers; everything
-else in each README is left untouched. Run with --check to fail (exit 1) when
-the committed README is stale (used by CI).
+Generated blocks in the root landing pages and documentation index are updated;
+everything outside their markers is left untouched. Run with --check to fail
+(exit 1) when any committed index is stale (used by CI).
 """
 import sys
 from pathlib import Path
@@ -13,8 +13,14 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 READMES = [(ROOT / "README.md", "en"), (ROOT / "README.ko.md", "ko")]
+DOC_READMES = [
+    (ROOT / "docs" / "README.md", "en"),
+    (ROOT / "docs" / "README.ko.md", "ko"),
+]
 BEGIN, END = "<!-- STATUS:BEGIN (scripts/gen_readme.py) -->", "<!-- STATUS:END -->"
 CBEGIN, CEND = "<!-- COUNTS:BEGIN (scripts/gen_readme.py) -->", "<!-- COUNTS:END -->"
+DBEGIN = "<!-- DETAILS:BEGIN (scripts/gen_readme.py) -->"
+DEND = "<!-- DETAILS:END -->"
 SHIELD = "https://img.shields.io/badge"
 DOMAIN_ORDER = ["oeis", "erdos", "graph-combinatorics", "other"]
 COUNT_STYLE = {
@@ -89,6 +95,16 @@ def solved_by_cell(status: dict) -> str:
     return " · ".join(f"`{m}`" for m in models) if models else "—"
 
 
+def localized_problem_file(status: dict, filename: str, locale: str) -> str:
+    """Return a Korean companion when it exists, otherwise the English file."""
+    if locale == "ko":
+        path = Path(filename)
+        korean = path.with_name(f"{path.stem}.ko{path.suffix}")
+        if (ROOT / "problems" / status["id"] / korean).exists():
+            return korean.as_posix()
+    return filename
+
+
 def dashboard_blocks(statuses: list[dict], locale: str) -> tuple[str, str]:
     rows = {d: [] for d in DOMAIN_ORDER}
     counts = dict.fromkeys(BADGE["en"], 0)
@@ -98,9 +114,7 @@ def dashboard_blocks(statuses: list[dict], locale: str) -> tuple[str, str]:
         st = s.get("claimed_status", "open")
         counts[st] = counts.get(st, 0) + 1
         d = s.get("domain") if s.get("domain") in rows else "other"
-        readme_name = "README.md"
-        if locale == "ko" and (ROOT / "problems" / s["id"] / "README.ko.md").exists():
-            readme_name = "README.ko.md"
+        readme_name = localized_problem_file(s, "README.md", locale)
         rows[d].append(
             f"| [{esc(s.get(title_key, s.get('title', s['id'])))}]"
             f"(problems/{s['id']}/{readme_name}) "
@@ -134,6 +148,50 @@ def dashboard_blocks(statuses: list[dict], locale: str) -> tuple[str, str]:
     return block, counts_block
 
 
+def details_block(statuses: list[dict], locale: str) -> str:
+    """Render the index of problem-local mathematical-details artifacts."""
+    rows = []
+    title_key = "title_ko" if locale == "ko" else "title"
+    for status in statuses:
+        artifacts = status.get("artifacts") or []
+        details = next(
+            (
+                artifact.get("path")
+                for artifact in artifacts
+                if artifact.get("kind") == "mathematical-details"
+            ),
+            None,
+        )
+        if not details:
+            continue
+        readme_name = localized_problem_file(status, "README.md", locale)
+        details_name = localized_problem_file(status, details, locale)
+        label = "Detailed derivation" if locale == "en" else "상세 전개"
+        rows.append(
+            f"| [{esc(status.get(title_key, status.get('title', status['id'])))}]"
+            f"(../problems/{status['id']}/{readme_name}) "
+            f"| {BADGE[locale].get(status.get('claimed_status', 'open'), 'open')} "
+            f"| [{label}](../problems/{status['id']}/{details_name}) |"
+        )
+
+    header = (
+        "| Problem | Claimed status | Mathematical details |"
+        if locale == "en"
+        else "| 문제 | 주장 상태 | 수학 상세 |"
+    )
+    return "\n".join([DBEGIN, header, "|---|---|---|", *rows, DEND])
+
+
+def replace_block(text: str, begin: str, end: str, block: str, path: Path) -> str:
+    """Replace one required generated block."""
+    if text.count(begin) != 1 or text.count(end) != 1:
+        relative = path.relative_to(ROOT)
+        raise ValueError(f"{relative} must contain one {begin}/{end} pair")
+    head, rest = text.split(begin, 1)
+    _, tail = rest.split(end, 1)
+    return head + block + tail
+
+
 def main() -> int:
     check = "--check" in sys.argv
     statuses = []
@@ -154,7 +212,8 @@ def main() -> int:
     stale = []
     for readme, locale in READMES:
         if not readme.exists():
-            continue
+            print(f"missing root landing page: {readme.relative_to(ROOT)}")
+            return 1
         block, counts_block = dashboard_blocks(statuses, locale)
         text = readme.read_text(encoding="utf-8")
         if BEGIN in text and END in text:
@@ -174,13 +233,31 @@ def main() -> int:
         else:
             readme.write_text(new, encoding="utf-8")
 
+    for readme, locale in DOC_READMES:
+        if not readme.exists():
+            print(f"missing documentation index: {readme.relative_to(ROOT)}")
+            return 1
+        text = readme.read_text(encoding="utf-8")
+        try:
+            new = replace_block(
+                text, DBEGIN, DEND, details_block(statuses, locale), readme
+            )
+        except ValueError as exc:
+            print(exc)
+            return 1
+        if check:
+            if new != text:
+                stale.append(str(readme.relative_to(ROOT)))
+        else:
+            readme.write_text(new, encoding="utf-8")
+
     if check:
         if stale:
             print(f"stale dashboard in {stale}; run scripts/gen_readme.py")
             return 1
-        print("README dashboards up to date")
+        print("README indexes up to date")
         return 0
-    print(f"README dashboards regenerated: {len(statuses)} problems")
+    print(f"README indexes regenerated: {len(statuses)} problems")
     return 0
 
 

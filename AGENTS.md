@@ -57,6 +57,13 @@ machine-verifiable results**.
    (English file: `**English** | [한국어](<name>.ko.md)`,
    Korean file: `[English](<name>.md) | **한국어**`).
    When you change a document, update its companion in the same commit.
+   Keep repository entry points (`README`, `AGENTS`, `CONTRIBUTING`) at the
+   root, repository-wide references under `docs/`, and problem-specific
+   explanations beside their artifacts in `problems/<id>/`. Mutable indexes
+   and tables come from `status.yaml` or dedicated YAML data; do not hand-edit
+   text between generated-block markers. Register a problem-local `DETAILS.md`
+   in `status.yaml` with artifact kind `mathematical-details` so the central
+   documentation index can discover it.
 
 ## Iteration pipeline
 
@@ -74,9 +81,9 @@ One autonomous iteration = exactly **one finite unit of work** from this list:
    search before launching it and stay under 2 hours locally (checkpoint and
    split anything longer).
 4. **verify** — pass every gate below locally before committing.
-5. **report** — update `status.yaml` → `python3 scripts/gen_readme.py` →
-   record reproduction commands and runtimes in the problem README → push the
-   branch + open a PR.
+5. **report** — update `status.yaml` → run the affected documentation
+   generators → record reproduction commands and runtimes in the problem
+   README → push the branch + open a PR.
 
 ## Verification gates (run locally, identical to CI)
 
@@ -87,6 +94,8 @@ lake build                          # full compilation
 python3 scripts/check_axioms.py     # #print axioms: only the 3 standard axioms
 python3 scripts/verify_all.py --ci  # re-run ci_feasible certificates
 python3 scripts/gen_readme.py --check
+python3 scripts/gen_upstream_docs.py --check
+python3 scripts/check_docs.py       # local links + bilingual companion navigation
 ```
 
 ## Lean conventions

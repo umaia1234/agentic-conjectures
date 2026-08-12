@@ -66,7 +66,9 @@ order 12, R(3,10), …) are bound-tracking infrastructure — do not claim to
   `Co-Authored-By` trailers (they alter the contributor graph).
 - English documents by default; a Korean `.ko.md` companion is welcome but
   optional for problem docs (update existing companions if you change their
-  originals).
+  originals). Keep problem-specific material in `problems/<id>/`; reserve
+  `docs/` for repository-wide references, and generate mutable indexes from
+  their structured source rather than duplicating them by hand.
 - Do not submit anything derived from this repository to external venues
   (OEIS, erdosproblems.com, journals, upstream repos) without opening an
   issue here first. Unreviewed machine output sent upstream is spam and
@@ -82,6 +84,8 @@ python3 scripts/check_imports.py
 python3 scripts/check_sorry.py
 python3 scripts/check_axioms.py
 python3 scripts/gen_readme.py --check
+python3 scripts/gen_upstream_docs.py --check
+python3 scripts/check_docs.py
 ```
 
 ## Review

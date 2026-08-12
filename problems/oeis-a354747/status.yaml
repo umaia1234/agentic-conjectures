@@ -12,6 +12,8 @@ claim_ko: >-
   OpenPFGW BLS)와 지수 1..39100 전체에 대한 빠짐없는 합성수 검사를 통해
   a(100943)=39101임을 밝히고, 업스트림 FormalConjectures의 명제 a(100943)=0을 반박한다.
 artifacts:
+- path: DETAILS.md
+  kind: mathematical-details
 - path: a354747_lucas_certificate.cpp
   kind: certificate-script
 - path: a354747_exponent_sieve.cpp
@@ -36,6 +38,9 @@ attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: documentation restructuring of existing mathematical details
 notes: Claims deterministic proof, not merely PRP, cross-checked by two independent methods and three
   minimality audits with SHA256 fingerprints; OEIS still listed n=100943 as unknown at the 2026-08-11
   check date; README explicitly disclaims publication priority; reproduction depends on GMP and the external

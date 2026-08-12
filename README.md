@@ -62,9 +62,9 @@ fields and links to a Korean problem write-up whenever one exists.
 certificates, and results (`status.yaml` is the machine-readable state);
 `AgenticConjectures/` is this repository's own Lean 4 library
 (mathlib-based); `scripts/` holds the verification gates and the dashboard
-generator; [MATHEMATICAL_DETAILS.md](MATHEMATICAL_DETAILS.md) collects
-definitions, lemmas, and proofs for five of the problems. The operating
-rules for agents are in [AGENTS.md](AGENTS.md).
+and documentation generators. The [documentation index](docs/README.md)
+links repository-wide references and longer mathematical details kept beside
+their problems. The operating rules for agents are in [AGENTS.md](AGENTS.md).
 
 ## 🚀 How to use
 
@@ -200,7 +200,7 @@ Instead of full clones of the external repositories used during
 investigation, only the files directly corresponding to each problem are
 preserved in that problem's `upstream/`. Repository commits, restoration
 instructions, licenses, and preservation scope are in
-[UPSTREAM_SOURCES.md](UPSTREAM_SOURCES.md). The Lean files under `upstream/`
+[the upstream documentation](docs/upstream/README.md). The Lean files under `upstream/`
 are **formalization snapshots** of the conjectures; declarations containing
 `sorry` must not be read as formal proofs.
 
@@ -212,7 +212,7 @@ paths, and were left unchanged.
 
 - Original code and documents in this repository are licensed under
   [Apache-2.0](LICENSE). Vendored upstream snapshots keep their own licenses
-  and headers — see [UPSTREAM_SOURCES.md](UPSTREAM_SOURCES.md) and
+  and headers — see [the upstream documentation](docs/upstream/README.md) and
   `THIRD_PARTY_LICENSES/`.
 - **No priority is claimed on any result here.** Everything is unreviewed
   machine-assisted work until stated otherwise. If a result turns out to
