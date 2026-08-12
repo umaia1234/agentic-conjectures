@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-52-8250df) ![proved](https://img.shields.io/badge/proved-21-2da44e) ![refuted](https://img.shields.io/badge/refuted-8-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
+![problems](https://img.shields.io/badge/problems-54-8250df) ![proved](https://img.shields.io/badge/proved-22-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**52 problems** — ✅ proved: 21 · 🔴 refuted: 8 · 🟡 partial: 17 · ⚪ open: 6
+**54 problems** — ✅ proved: 22 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
 
 ### OEIS
 
@@ -200,6 +200,8 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 |---|---|---|---|---|
 | [Degree vs sensitivity — n=14 degree-5 aggregate constraints](problems/degree-vs-sensitivity/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims exact necessary layer constraints (B_2>=84, exactly 247 feasible (B_2,B_3,B_4,B_5) profiles) for the n=14 degree<=5 fully sensitive case, while the truth-table existence search ended with status UNKNOWN. |
 | [Floridian solitaire — immediate losses for every n > 6](problems/floridian-solitaire/README.md) | ✅ proved | cert | `GPT-5.6 Sol` | Claims a complete (unreviewed) proof that every integer n > 6 has an immediate-loss position, resolving the open residue classes n = 0,2 (mod 6) of Meyerowitz–Curran–Locke–Low's second research question via a gap-two block construction plus explicit cases 18 and 20. |
+| [Let's Prove Goldbach prize problem 3 — literal finite-set representation proved](problems/goldbach-prize-3/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Proves the advertised finite-sumset representation literally by folding positive indices modulo M=n2*...*nk, storing the admissible residues in the permitted finite set I2, and taking I3=...=Ik={1}. |
+| [Let's Prove Goldbach prize problem 4 — universal assertion refuted](problems/goldbach-prize-4/README.md) | 🔴 refuted | lean | `GPT-5.6 Sol` | Refutes the advertised universal assertion with the exact counterexample (n1,n2,n3,n)=(2,3,5,5): every positive split h+k=5 violates at least one required nondivisibility condition. |
 | [Mortal words in small image-bounded NFAs (Kiefer–Ryzhikov)](problems/nfa-mortal-words/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims exact extremal shortest-mortal-word lengths 1,3,7,10 for labelled ordered binary 2-image-bounded NFAs with up to 4 states, plus a 5-state lower-bound witness of length 17; the paper's general n^(k+1) tightness question is not resolved. |
 | [Powers-of-two translational tiles (BKT Question 9)](problems/powers-of-two-tiles/README.md) | 🔴 refuted | cert | `GPT-5.6 Sol` | Claims explicit counterexamples refuting the suggested one-or-two-cardinality restriction in the yes/no clause of Benjamini-Kozma-Tzalik Question 9: translational tiles of every positive odd cardinality exist inside {1,2,4,...,2^n}, the smallest being A={1,4,16} with B={0,1,2}+9Z. |
 | [Independent Schur-6 attempt](problems/schur-6/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims only independent reverification of the published S(6) >= 536 partition and negative search results toward [1,537]: the best saved 537-coloring has exactly two monochromatic Schur triples, a depth-5 repair exclusion around it found nothing, and the full SAT instance remained undecided. |

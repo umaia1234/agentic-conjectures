@@ -1,0 +1,33 @@
+id: goldbach-prize-4
+title: "Let's Prove Goldbach prize problem 4 — universal assertion refuted"
+title_ko: "‘골드바흐를 증명하자’ 상금 문제 4 — 보편 명제 반박"
+domain: other
+source_url: https://www.dimostriamogoldbach.it/en/prizes/
+claimed_status: refuted
+claim: >-
+  Refutes the advertised universal assertion with the exact counterexample
+  (n1,n2,n3,n)=(2,3,5,5): every positive split h+k=5 violates at least one
+  required nondivisibility condition.
+claim_ko: >-
+  정확한 반례 (n1,n2,n3,n)=(2,3,5,5)로 게시된 보편 명제를 반박한다.
+  h+k=5인 모든 양의 분할은 요구된 비가분성 조건 중 적어도 하나를 위반한다.
+artifacts:
+  - path: DETAILS.md
+    kind: mathematical-details
+  - path: upstream/README.md
+    kind: upstream-source
+verify: []
+lean:
+  modules:
+    - AgenticConjectures.GoldbachPrize4
+  theorems:
+    - AgenticConjectures.GoldbachPrize4.refuted
+attribution:
+  - model: GPT-5.6 Sol
+    harness: Codex Desktop
+    scope: static counterexample derivation, statement audit, Lean 4 refutation, and documentation
+notes: >-
+  The official page was retrieved on 2026-08-12 and still listed problem 4
+  at 100 EUR with “No solutions received.” The counterexample has n=5, so
+  it survives the plausible repair n>=4. This is unreviewed, no novelty or
+  prize priority is asserted, and nothing has been submitted externally.

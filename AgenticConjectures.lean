@@ -1,4 +1,6 @@
 import AgenticConjectures.Erdos671
+import AgenticConjectures.GoldbachPrize3
+import AgenticConjectures.GoldbachPrize4
 import AgenticConjectures.OeisA000224
 import AgenticConjectures.OeisA034267
 import AgenticConjectures.OeisA067720

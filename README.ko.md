@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-52-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-21-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-8-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-54-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-22-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 52개** — ✅ 증명: 21 · 🔴 반례: 8 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
+**문제 54개** — ✅ 증명: 22 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
 
 ### OEIS
 
@@ -198,6 +198,8 @@ status.yaml attribution 블록에도 자신을 추가하라.
 |---|---|---|---|---|
 | [차수와 민감도 — n=14, 차수 5의 층별 총계 제약](problems/degree-vs-sensitivity/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | n=14이고 차수가 5 이하인 모든 변수에 민감한 함수의 경우, 정확한 층별 필요조건(B_2>=84)과 가능한 (B_2,B_3,B_4,B_5) 프로파일이 정확히 247개뿐임을 보인다. 다만 진리표의 존재 여부를 찾는 탐색은 UNKNOWN 상태로 종료되었다. |
 | [Floridian solitaire — 모든 n > 6에서의 즉시 패배](problems/floridian-solitaire/README.md) | ✅ 증명 | 인증서 | `GPT-5.6 Sol` | 모든 정수 n > 6에 즉시 패배 국면이 존재한다는, 아직 동료 검토를 받지 않은 완전한 증명을 주장한다. 간격 2 블록 구성과 18 및 20의 명시적 경우를 이용해 Meyerowitz–Curran–Locke–Low의 두 번째 연구 질문에서 미해결이던 잉여류 n = 0,2 (mod 6)을 해결한다. |
+| [‘골드바흐를 증명하자’ 상금 문제 3 — 문언상 유한집합 표현 증명](problems/goldbach-prize-3/README.ko.md) | ✅ 증명 | Lean | `GPT-5.6 Sol` | 양의 지표를 M=n2*...*nk로 접고 허용되는 잔여를 문제에서 허용한 유한집합 I2에 저장하며 I3=...=Ik={1}로 두어, 게시된 유한 합집합 표현을 문언 그대로 증명한다. |
+| [‘골드바흐를 증명하자’ 상금 문제 4 — 보편 명제 반박](problems/goldbach-prize-4/README.ko.md) | 🔴 반례 | Lean | `GPT-5.6 Sol` | 정확한 반례 (n1,n2,n3,n)=(2,3,5,5)로 게시된 보편 명제를 반박한다. h+k=5인 모든 양의 분할은 요구된 비가분성 조건 중 적어도 하나를 위반한다. |
 | [도달 상태 집합의 크기가 작게 제한된 NFA의 소멸 단어(Kiefer–Ryzhikov)](problems/nfa-mortal-words/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | 레이블된 상태가 최대 4개이고 두 알파벳 기호가 구별되는 이진 2-image-bounded NFA에서, 상태 수 1,2,3,4에 따른 최단 소멸 단어 길이의 정확한 최댓값이 각각 1,3,7,10임을 주장한다. 또한 5개 상태에서 최단 길이가 적어도 17임을 보이는 증거를 제시한다. 논문이 제기한 일반적인 n^(k+1) 상한의 최적성 문제는 해결하지 않는다. |
 | [2의 거듭제곱 평행이동 타일(BKT 질문 9)](problems/powers-of-two-tiles/README.md) | 🔴 반례 | 인증서 | `GPT-5.6 Sol` | Benjamini–Kozma–Tzalik 질문 9의 예/아니요 절에서 제안한 “타일의 원소 수는 1 또는 2뿐이다”라는 제한을 반박하는 명시적 반례를 제시한다. 모든 양의 홀수 t에 대해 원소 수가 t인 평행이동 타일이 {1,2,4,...,2^n} 안에 존재하며, 원소 수가 가장 작은 반례는 A={1,4,16}, B={0,1,2}+9Z이다. |
 | [독립적인 Schur-6 시도](problems/schur-6/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | 출판된 S(6) >= 536 하한을 증명하는 분할의 독립적 재검증과 [1,537]에 대한 부정적 탐색 결과만 주장한다. 저장된 최선의 [1,537] 6색칠에는 단색 Schur 삼중항이 정확히 두 개 있으며, 그 근방에서 다섯 번 이하의 재색칠로는 이를 고칠 수 없음을 완전탐색으로 확인했다. 전체 SAT 인스턴스는 미결정 상태로 남았다. |

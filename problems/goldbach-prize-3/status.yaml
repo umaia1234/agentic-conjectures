@@ -1,0 +1,38 @@
+id: goldbach-prize-3
+title: "Let's Prove Goldbach prize problem 3 — literal finite-set representation proved"
+title_ko: "‘골드바흐를 증명하자’ 상금 문제 3 — 문언상 유한집합 표현 증명"
+domain: other
+source_url: https://www.dimostriamogoldbach.it/en/prizes/
+claimed_status: proved
+claim: >-
+  Proves the advertised finite-sumset representation literally by folding
+  positive indices modulo M=n2*...*nk, storing the admissible residues in
+  the permitted finite set I2, and taking I3=...=Ik={1}.
+claim_ko: >-
+  양의 지표를 M=n2*...*nk로 접고 허용되는 잔여를 문제에서 허용한 유한집합
+  I2에 저장하며 I3=...=Ik={1}로 두어, 게시된 유한 합집합 표현을 문언 그대로
+  증명한다.
+artifacts:
+  - path: DETAILS.md
+    kind: mathematical-details
+  - path: upstream/README.md
+    kind: upstream-source
+verify: []
+lean:
+  modules:
+    - AgenticConjectures.GoldbachPrize3
+  theorems:
+    - AgenticConjectures.GoldbachPrize3.residueSet_finite
+    - AgenticConjectures.GoldbachPrize3.proved
+attribution:
+  - model: GPT-5.6 Sol
+    harness: Codex Desktop
+    scope: static construction and proof, statement audit, Lean 4 formalization, and documentation
+notes: >-
+  The official page was retrieved on 2026-08-12 and still listed problem 3
+  at 200 EUR with “No solutions received.” The proof resolves the literal
+  specification, whose only condition on each Ii is finite positivity and
+  which places no parameter-independent size or uniformity bound on those
+  sets. A stronger intended restriction would be a different statement.
+  This is unreviewed, no novelty or prize priority is asserted, and nothing
+  has been submitted externally.
