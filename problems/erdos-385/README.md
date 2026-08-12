@@ -71,8 +71,7 @@ python3 problems/erdos-385/verify_billion.py
 On 2026-08-12 the dense and segmented runs took 8.87 s and 6.67 s,
 respectively; the wrapper took 16.31 s and peaked at 4,108,120 KiB because of
 the deliberately memory-heavy dense cross-check. The segmented implementation
-alone used about 20 MiB. Both are below the local two-hour budget, and the
-combined verifier is registered as CI-feasible.
+alone used about 20 MiB. The combined verifier is registered as CI-feasible.
 
 The proof and the exact reduction implemented by both programs are given in
 the bilingual [mathematical details](DETAILS.md).
