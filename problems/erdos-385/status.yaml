@@ -1,30 +1,53 @@
 id: erdos-385
-title: 'Erdős #385 / #430(i) — finite-range experiments on F(n)-n'
-title_ko: 'Erdős #385 / #430(i) — F(n)-n에 대한 유한 범위 실험'
+title: 'Erdős #385 / #430(i) — odd indices and exact verification through 10^9'
+title_ko: '에르되시 #385 / #430(i) — 홀수 지표 정리와 10^9까지의 정확한 검증'
 domain: erdos
-source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/ErdosProblems/385.lean
-claimed_status: open
-claim: Provides two C++ finite-range experiments probing the quantity F(n)-n for parts (i)/(ii) and explicitly
-  states they prove none of the three conjecture statements; no bound or result is asserted in the README.
+source_url: https://www.erdosproblems.com/385
+claimed_status: partial
+claim: >-
+  Lean-proves F(n)>=n for n>=5 and F(n)>n at every odd n>=5; two independent exact sieves classify
+  F(n)=n through 10^9, finding 100 equality cases with largest 267680 and hence F(n)>n throughout
+  [267681,10^9], while both asymptotic questions remain open.
 claim_ko: >-
-  부분 (i), (ii)에서 F(n)-n을 조사하는 두 개의 C++ 유한 범위 실험을 제공하며, 이 실험들이 세 추측
-  명제 가운데 어느 것도 증명하지 못한다고 명시한다. README에서는 어떠한 상한·하한이나 결과도
-  주장하지 않는다.
+  Lean으로 n>=5이면 F(n)>=n이고 홀수 n>=5이면 F(n)>n임을 증명했다. 서로 독립적인 두 정확한
+  체가 10^9까지 F(n)=n인 경우를 분류하여 등호 사례가 정확히 100개이고 최댓값이 267680임을
+  확인하므로 [267681,10^9] 전체에서 F(n)>n이다. 두 점근적 질문은 여전히 미해결이다.
 artifacts:
+- path: DETAILS.md
+  kind: mathematical-details
+- path: ../../AgenticConjectures/Erdos385.lean
+  kind: lean-proof
+- path: verify_billion.py
+  kind: certificate-script
 - path: ep430_experiment.cpp
   kind: search-code
 - path: ep430_segmented.cpp
   kind: search-code
-- path: upstream/README.md
+- path: billion_result.json
+  kind: data
+- path: upstream/385.lean
   kind: upstream-lean
 verify:
-- cmd: g++ -O3 -std=c++17 ep430_experiment.cpp -o build_ep385 && rm -f build_ep385
-  expected_runtime: unknown
+- cmd: python3 verify_billion.py
+  expected_runtime: ~17-90s depending on hardware and load; peak memory ~4.1 GiB because both independent implementations run through 10^9
   ci_feasible: true
+  requires: [g++]
+lean:
+  modules:
+  - AgenticConjectures.Erdos385
+  theorems:
+  - AgenticConjectures.Erdos385.odd_index_lt_F
+  - AgenticConjectures.Erdos385.index_le_F
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: Korean README; only compile commands are given (no run invocation or recorded outcome), so nothing
-  beyond 'experiments exist' is claimed; ep430_* filenames kept for reproduction history; AlphaProof Nexus
-  attempt provenance only, no success recorded; upstream Lean statements are sorry-backed.
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: Lean 4 odd-index and baseline theorems; independent billion-range certificate and documentation
+notes: >-
+  Partial result only: neither eventual strict inequality nor divergence of F(n)-n is proved. The dense
+  linear sieve and odd-only segmented sieve independently agree on all 100 equality cases and twelve slack
+  thresholds through 10^9; the Lean definition differs from the upstream sSup presentation only at the empty
+  small-index boundary. No novelty or priority is claimed without external review; upstream research
+  declarations remain sorry-backed.
