@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-51-8250df) ![proved](https://img.shields.io/badge/proved-20-2da44e) ![refuted](https://img.shields.io/badge/refuted-7-cf222e) ![partial](https://img.shields.io/badge/partial-16-bf8700) ![open](https://img.shields.io/badge/open-8-848d97)
+![problems](https://img.shields.io/badge/problems-51-8250df) ![proved](https://img.shields.io/badge/proved-20-2da44e) ![refuted](https://img.shields.io/badge/refuted-7-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-7-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**51 problems** — ✅ proved: 20 · 🔴 refuted: 7 · 🟡 partial: 16 · ⚪ open: 8
+**51 problems** — ✅ proved: 20 · 🔴 refuted: 7 · 🟡 partial: 17 · ⚪ open: 7
 
 ### OEIS
 
@@ -190,7 +190,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 | [Hadamard matrix of order 668](problems/hadamard-668/README.md) | ⚪ open | — | `GPT-5.6 Sol` | Status survey only: 668 is recorded as the smallest unresolved Hadamard order, summarizing a 2026 Legendre-pair (length 333) search status report; no new existence or nonexistence result is claimed. |
 | [Exact computation of L(6) for Pulse Graphs](problems/pulse-graphs-l6/README.md) | ✅ proved | cert | `GPT-5.6 Sol` | Claims the exact value L(6)=17 for the paper's open case n=6, via exhaustive isomorph-free enumeration of all 1,540,944 loopless 6-vertex digraphs with two independent cycle analyzers, plus an independently verified explicit 17-cycle witness. |
 | [R(3,10) C20-bicirculant subcase exclusion](problems/ramsey-r3-10/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims a SAT/DRUP-certified exclusion of one automorphism class only: no triangle-free 40-vertex graph with independence number <= 9 is invariant under the C20 action with cycle structure 20^2, so a hypothetical 40-vertex (3,10) Ramsey graph cannot be such a bicirculant; R(3,10) in {40,41} is not determined. |
-| [Graph recoloring reconfiguration radius, Question 15](problems/recoloring-radius-q15/README.md) | ⚪ open | cert | `GPT-5.6 Sol` | Claims no result: the directory only provides exact-BFS counterexample-search tooling (Python atlas scan and a sharded C++ graph6 search) for Cambie-Cames van Batenburg-Cranston Question 15, with no outcome reported. |
+| [Graph recoloring radius — exhaustive atlas check through order 7](problems/recoloring-radius-q15/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Exact C++ and independent Python audits find no counterexample to rad(C_3(G)) >= rad(C_4(G)) across all 1,252 isomorphism classes of simple graphs on 1–7 vertices; 145 have both recolouring graphs connected, while the general Question 15 remains open. |
 | [WOWII Graph Conjecture 61 partial results](problems/wowii-graph-conjecture-61/README.md) | 🟡 partial | — | `GPT-5.6 Sol` | Claims informal proofs of partial results only: f(G) >= alpha(G) + ceil(D(G)/4) in general, f(G) >= alpha(G)+1 with diameter consequences, and the original conjecture f(G) >= r(G) + ceil(D(G)/3) for all connected graphs of diameter in {0,1,2,3,5,6,9} and for all trees. |
 
 ### Other

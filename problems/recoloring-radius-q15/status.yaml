@@ -1,28 +1,52 @@
 id: recoloring-radius-q15
-title: Graph recoloring reconfiguration radius, Question 15
-title_ko: 그래프 재색칠 재구성 반지름, 질문 15
+title: Graph recoloring radius — exhaustive atlas check through order 7
+title_ko: 그래프 재색칠 반지름 — 꼭짓점 7개까지의 완전한 Atlas 검증
 domain: graph-combinatorics
-source_url: ''
-claimed_status: open
-claim: 'Claims no result: the directory only provides exact-BFS counterexample-search tooling (Python
-  atlas scan and a sharded C++ graph6 search) for Cambie-Cames van Batenburg-Cranston Question 15, with
-  no outcome reported.'
+source_url: https://doi.org/10.37236/13788
+claimed_status: partial
+claim: >-
+  Exact C++ and independent Python audits find no counterexample to
+  rad(C_3(G)) >= rad(C_4(G)) across all 1,252 isomorphism classes of simple
+  graphs on 1–7 vertices; 145 have both recolouring graphs connected, while
+  the general Question 15 remains open.
 claim_ko: >-
-  아무 결과도 주장하지 않는다. 이 디렉터리는 Cambie-Cames van Batenburg-Cranston 질문 15를 위한 정확한
-  BFS 반례 탐색 도구(Python atlas 탐색과 분할된 C++ graph6 탐색)만 제공하며, 탐색 결과는 보고하지 않는다.
+  정확한 C++ 검증과 독립적인 Python 검증으로 꼭짓점이 1개에서 7개인 단순
+  그래프의 비동형류 1,252개 모두에서 rad(C_3(G)) >= rad(C_4(G))의 반례가
+  없음을 확인했다. 이 중 145개에서 두 재색칠 그래프가 모두 연결되어 있으며,
+  일반적인 질문 15는 여전히 미해결이다.
 artifacts:
-- path: recolor_radius_search.py
-  kind: search-code
+- path: DETAILS.md
+  kind: mathematical-details
+- path: atlas_1_7.g6
+  kind: data
+- path: atlas_result.json
+  kind: data
+- path: generate_atlas_data.py
+  kind: data-generator
 - path: recolor_radius_exact.cpp
   kind: search-code
+- path: verify_atlas.py
+  kind: certificate-script
+- path: recolor_radius_search.py
+  kind: search-code
 verify:
-- cmd: g++ -O3 -std=c++17 recolor_radius_exact.cpp -o /tmp/recolor_radius_exact
-  expected_runtime: unknown
+- cmd: >-
+    g++ -O3 -std=c++17 recolor_radius_exact.cpp -o /tmp/recolor_radius_exact
+    && python3 verify_atlas.py --cpp /tmp/recolor_radius_exact
+  expected_runtime: about 60 seconds
   ci_feasible: true
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: 'README is a five-line tool inventory: no findings, no negative-search bound, no source URL, no
-  runtimes; the previously shipped prebuilt binary is now gitignored (rebuild from source); the only listed
-  commands are a --help invocation and a compile, not an actual reproduction of any result.'
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: exhaustive order-7 graph-atlas result and independent certificate audit
+notes: >-
+  This is only a finite k=3 result, not a proof of Question 15. Completeness of
+  the graph list relies on the standard NetworkX 3.6.1 Graph Atlas dataset;
+  the committed input is pinned by SHA-256, uniqueness, and standard per-order
+  counts. Both implementations test C_3 on every atlas representative through
+  order 7 and test C_4 whenever C_3 is connected. Through order 6, the Python
+  verifier cross-checks its component-product reduction by unreduced BFS in
+  precisely those same cases.
