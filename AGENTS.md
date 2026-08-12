@@ -74,12 +74,10 @@ One autonomous iteration = exactly **one finite unit of work** from this list:
    conjectures). Prior-art check is mandatory: record already-solved problems
    as such and drop them.
 2. **triage** — score candidates: refutable by finite search? formalizable
-   with mathlib alone? expected compute budget? famous-problem status (famous
-   hard problems are bound-tracking infrastructure, never "targets to solve").
-3. **attack** — write a counterexample search program and run it within
-   budget, or write a proof → formalize in Lean. Estimate the runtime of any
-   search before launching it and stay under 2 hours locally (checkpoint and
-   split anything longer).
+   with mathlib alone? famous-problem status (famous hard problems are
+   bound-tracking infrastructure, never "targets to solve").
+3. **attack** — write a counterexample search program and run it, or write a
+   proof → formalize in Lean.
 4. **verify** — pass every gate below locally before committing.
 5. **report** — update `status.yaml` → run the affected documentation
    generators → record reproduction commands and runtimes in the problem
