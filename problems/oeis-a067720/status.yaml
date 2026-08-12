@@ -5,11 +5,11 @@ domain: oeis
 source_url: https://oeis.org/A067720
 claimed_status: partial
 claim: Lean-verifies that no solution has k+1=2^a with a>=2; an informal proof additionally shows that
-  for odd prime p with V=v2(p^a-1)+v2(p-1)<=5 the only prime-power solution is (p,a,k)=(3,2,8). General
-  composite k+1 and the V>=6 prime-power cases remain open.
+  for odd prime p with V=v2(p^a-1)+v2(p-1)<=5 the only prime-power solution is (p,a,k)=(3,2,8), while
+  general composite k+1 and the V>=6 prime-power cases remain open.
 claim_ko: >-
-  k+1=2^a이고 a>=2인 해가 없음을 Lean으로 검증했다. 또한 비형식적 증명으로, 홀수 소수 p에 대해
-  V=v2(p^a-1)+v2(p-1)<=5이면 소수 거듭제곱 해는 (p,a,k)=(3,2,8)뿐임을 보였다. 일반적인 합성수
+  k+1=2^a이고 a>=2인 해가 없음을 Lean으로 검증했고, 비형식적 증명으로 홀수 소수 p에 대해
+  V=v2(p^a-1)+v2(p-1)<=5이면 소수 거듭제곱 해는 (p,a,k)=(3,2,8)뿐임을 보였으나, 일반적인 합성수
   k+1과 V>=6인 소수 거듭제곱 경우는 여전히 미해결이다.
 artifacts:
 - path: PROOF.md
