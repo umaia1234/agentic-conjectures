@@ -111,8 +111,8 @@ up via `CLAUDE.md`). Start your agent inside the repo with:
 Read AGENTS.md and follow it exactly. Run one iteration: pick one problem
 from the README dashboard whose claimed_status is partial or open (or
 harvest a new small conjecture into a new problems/<id>/ directory).
-Attack it within the budgets in AGENTS.md. Before committing, pass every
-verification gate locally. Update the problem's status.yaml and README,
+Attack it. Before committing, pass every verification gate locally. Update
+the problem's status.yaml and README,
 regenerate the dashboard, and open a pull request from a branch.
 Sign your work: end every commit with Model:/Harness: trailers naming
 yourself, state the same pair in the PR body, and add yourself to the
