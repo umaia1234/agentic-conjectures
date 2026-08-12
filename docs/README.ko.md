@@ -30,6 +30,7 @@
 | 문제 | 주장 상태 | 수학 상세 |
 |---|---|---|
 | [에르되시 #385 / #430(i) — 홀수 지표 정리와 10^9까지의 정확한 검증](../problems/erdos-385/README.ko.md) | 🟡 부분 결과 | [상세 전개](../problems/erdos-385/DETAILS.ko.md) |
+| [에르되시 #671 — 모든 점에서 비유계인 라그랑주 배열 증명](../problems/erdos-671/README.ko.md) | ✅ 증명 | [상세 전개](../problems/erdos-671/DETAILS.ko.md) |
 | [OEIS A000224 — R(n)(R(n)-1)이 n^2-1을 나눌 필요충분조건은 n이 홀수 소수인 것이다](../problems/oeis-a000224/README.ko.md) | 🟡 부분 결과 | [상세 전개](../problems/oeis-a000224/DETAILS.ko.md) |
 | [OEIS A076141 — n의 이진 표현은 n^2의 이진 표현에서 최대 한 번 등장, 2^40까지 확인](../problems/oeis-a076141/README.md) | 🟡 부분 결과 | [상세 전개](../problems/oeis-a076141/DETAILS.ko.md) |
 | [OEIS A245211: a(n)=n인 것은 n=21뿐](../problems/oeis-a245211/README.ko.md) | 🟡 부분 결과 | [상세 전개](../problems/oeis-a245211/DETAILS.ko.md) |
