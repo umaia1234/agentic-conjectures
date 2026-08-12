@@ -4,23 +4,32 @@ title_ko: OEIS A067720 — phi(k^2+1)=k*phi(k+1)의 소수 거듭제곱 부분�
 domain: oeis
 source_url: https://oeis.org/A067720
 claimed_status: partial
-claim: Proves that if k+1=p^a with a>=2 then there is no solution for p=2, and for odd p with V=v2(p^a-1)+v2(p-1)<=5
-  the only solution is (p,a,k)=(3,2,8); general composite k+1 and the V>=6 prime-power cases remain open,
-  so the original question is unresolved.
+claim: Lean-verifies that no solution has k+1=2^a with a>=2; an informal proof additionally shows that
+  for odd prime p with V=v2(p^a-1)+v2(p-1)<=5 the only prime-power solution is (p,a,k)=(3,2,8), while
+  general composite k+1 and the V>=6 prime-power cases remain open.
 claim_ko: >-
-  k+1=p^a이고 a>=2이면 p=2일 때 해가 없으며, V=v2(p^a-1)+v2(p-1)<=5인 홀수 p에 대해서는
-  (p,a,k)=(3,2,8)이 유일한 해임을 증명했다. 일반적인 합성수 k+1과 V>=6인 소수 거듭제곱 경우는
-  여전히 열려 있으므로 원래 문제는 미해결이다.
+  k+1=2^a이고 a>=2인 해가 없음을 Lean으로 검증했고, 비형식적 증명으로 홀수 소수 p에 대해
+  V=v2(p^a-1)+v2(p-1)<=5이면 소수 거듭제곱 해는 (p,a,k)=(3,2,8)뿐임을 보였으나, 일반적인 합성수
+  k+1과 V>=6인 소수 거듭제곱 경우는 여전히 미해결이다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof
 - path: upstream/67720.lean
   kind: upstream-lean
 verify: []
+lean:
+  modules:
+  - AgenticConjectures.OeisA067720
+  theorems:
+  - AgenticConjectures.OeisA067720.power_two_add_one_not_solution
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: No computational certificate; conclusion rests on elementary inequalities and prime-factor structure
-  applying only to the stated subfamily; b-file length explicitly not treated as a verified range; novelty
-  not asserted before peer review; upstream Lean statement is sorry-backed.
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: Lean 4 formalization of the power-of-two exclusion and bilingual documentation
+notes: The power-of-two exclusion is kernel-checked against the exact upstream equation; the odd-prime
+  V<=5 result remains an informal proof. Neither result covers general composite k+1 or odd-prime cases
+  with V>=6; b-file length is not treated as a verified range; novelty is not asserted before peer review;
+  the upstream universal Lean statement remains sorry-backed.
