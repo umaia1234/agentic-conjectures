@@ -1,0 +1,41 @@
+id: oeis-a197702
+title: OEIS A197702 — exact least length for signed odd sums
+title_ko: OEIS A197702 — 홀수 부호합의 정확한 최소 길이
+domain: oeis
+source_url: https://oeis.org/A197702
+claimed_status: proved
+claim: >-
+  Lean-proves the complete conjectured formula for the least k such that n is
+  a signed sum of 1,3,...,2k-1: in the square interval (k-1)^2<n<=k^2, the
+  answer is k+2 when k^2-n=4, k+1 when that gap is odd, and k otherwise.
+claim_ko: >-
+  n이 1,3,...,2k-1의 부호합이 되는 최소 k의 추측 공식을 Lean으로 완전히
+  증명했다. (k-1)^2<n<=k^2에서 k^2-n=4이면 답은 k+2, 그 차이가
+  홀수이면 k+1, 그 밖에는 k이다.
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: DETAILS.md
+  kind: mathematical-details
+- path: upstream/A197702.txt
+  kind: upstream-source
+verify: []
+lean:
+  modules:
+  - AgenticConjectures.OeisA197702
+  theorems:
+  - AgenticConjectures.OeisA197702.signedSum_iff_representable
+  - AgenticConjectures.OeisA197702.predictedLength_isLeast
+  - AgenticConjectures.OeisA197702.a_eq_predictedLength
+  - AgenticConjectures.OeisA197702.oeis_a197702
+attribution:
+- model: GPT-5.6 Sol
+  harness: Codex Desktop
+  scope: prior-art audit, mathematical proof, Lean 4 formalization, and bilingual documentation
+notes: >-
+  The canonical approved OEIS entry still labeled the formula a conjecture and
+  reported only verification through n=200 when audited on 2026-08-12; exact
+  A-number and statement searches found no proof, but that negative search does
+  not establish novelty; the proof is unreviewed and has not been submitted
+  externally; no computational search or finite verification supports the
+  universal result.

@@ -7,6 +7,7 @@ import AgenticConjectures.OeisA112970
 import AgenticConjectures.OeisA113249
 import AgenticConjectures.OeisA136433
 import AgenticConjectures.OeisA190363
+import AgenticConjectures.OeisA197702
 import AgenticConjectures.OeisA239293
 import AgenticConjectures.OeisA242560
 import AgenticConjectures.OeisA270361
