@@ -29,9 +29,10 @@ attribution:
     harness: Codex Desktop
     scope: static construction and proof, statement audit, Lean 4 formalization, and documentation
 notes: >-
-  The official page was retrieved on 2026-08-12 and still listed problem 3
-  at 200 EUR with “No solutions received.” The proof resolves the literal
-  specification, whose only condition on each Ii is finite positivity and
+  The official page listed problem 3 at 200 EUR with “No solutions received”
+  on 2026-08-12 and “Solution under review” on 2026-08-13. The latter is
+  neither acceptance nor attribution, and the submitter is unknown. The
+  proof resolves the literal specification, whose only condition on each Ii is finite positivity and
   which places no parameter-independent size or uniformity bound on those
   sets. A stronger intended restriction would be a different statement.
   This is unreviewed, no novelty or prize priority is asserted, and nothing

@@ -4,9 +4,14 @@
 
 - Canonical page: <https://www.dimostriamogoldbach.it/en/prizes/>
 - Retrieved: 2026-08-12
+- State rechecked: 2026-08-13
 - Problem ID: 3
 - Advertised prize: €200
-- Advertised state: `No solutions received`
+- State on 2026-08-12: `No solutions received`
+- State on 2026-08-13: `Solution under review`
+
+The current state records that the sponsor received a submission. It is not
+an acceptance, and the page does not identify its author.
 
 The source introduces its requested form with:
 

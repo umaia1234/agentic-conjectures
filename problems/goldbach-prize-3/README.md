@@ -4,7 +4,9 @@
 
 The official [prize page](https://www.dimostriamogoldbach.it/en/prizes/)
 listed problem 3 at **€200** with status **“No solutions received”** when
-retrieved on 2026-08-12. For fixed integers
+retrieved on 2026-08-12. On 2026-08-13 the same page instead showed
+**“Solution under review.”** That state confirms receipt of a submission, not
+its validity, and the page does not identify the submitter. For fixed integers
 (1<n_1<n_2<\cdots<n_k), it defines
 
 \[
@@ -104,6 +106,11 @@ See [DETAILS.md](DETAILS.md) for the proof map and trust boundary.
 Targeted searches for the exact displayed representation and its defining
 phrases found no public solution beyond the canonical prize page on
 2026-08-12.
+
+The official page changed all three listed prize problems to “Solution under
+review” by 2026-08-13. The page neither publishes the submissions nor names
+their authors, so no relationship between that change and this repository is
+asserted.
 
 The construction has not been reviewed or accepted by the prize sponsor.
 This repository therefore claims neither the prize nor novelty or priority.

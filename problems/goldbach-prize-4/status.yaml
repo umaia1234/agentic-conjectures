@@ -27,7 +27,8 @@ attribution:
     harness: Codex Desktop
     scope: static counterexample derivation, statement audit, Lean 4 refutation, and documentation
 notes: >-
-  The official page was retrieved on 2026-08-12 and still listed problem 4
-  at 100 EUR with “No solutions received.” The counterexample has n=5, so
-  it survives the plausible repair n>=4. This is unreviewed, no novelty or
+  The official page listed problem 4 at 100 EUR with “No solutions received”
+  on 2026-08-12 and “Solution under review” on 2026-08-13. The latter is
+  neither acceptance nor attribution, and the submitter is unknown. The
+  counterexample has n=5, so it survives the plausible repair n>=4. This is unreviewed, no novelty or
   prize priority is asserted, and nothing has been submitted externally.

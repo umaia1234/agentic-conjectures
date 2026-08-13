@@ -31,6 +31,7 @@ problem rather than assembling another global copy.
 |---|---|---|
 | [Erdős #385 / #430(i) — odd indices and exact verification through 10^9](../problems/erdos-385/README.md) | 🟡 partial | [Detailed derivation](../problems/erdos-385/DETAILS.md) |
 | [Erdős #671 — everywhere-unbounded Lagrange arrays proved](../problems/erdos-671/README.md) | ✅ proved | [Detailed derivation](../problems/erdos-671/DETAILS.md) |
+| [Let's Prove Goldbach prize problem 2 — exact periodic formula](../problems/goldbach-prize-2/README.md) | ✅ proved | [Detailed derivation](../problems/goldbach-prize-2/DETAILS.md) |
 | [Let's Prove Goldbach prize problem 3 — literal finite-set representation proved](../problems/goldbach-prize-3/README.md) | ✅ proved | [Detailed derivation](../problems/goldbach-prize-3/DETAILS.md) |
 | [Let's Prove Goldbach prize problem 4 — universal assertion refuted](../problems/goldbach-prize-4/README.md) | 🔴 refuted | [Detailed derivation](../problems/goldbach-prize-4/DETAILS.md) |
 | [OEIS A000224 — R(n)(R(n)-1) divides n^2-1 iff n is an odd prime](../problems/oeis-a000224/README.md) | 🟡 partial | [Detailed derivation](../problems/oeis-a000224/DETAILS.md) |

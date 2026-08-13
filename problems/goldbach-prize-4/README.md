@@ -4,7 +4,10 @@
 
 The official [prize page](https://www.dimostriamogoldbach.it/en/prizes/)
 listed problem 4 at **€100** with status **“No solutions received”** when
-retrieved on 2026-08-12. Its opening sentence is:
+retrieved on 2026-08-12. On 2026-08-13 the same page instead showed
+**“Solution under review.”** That state confirms receipt of a submission, not
+its validity, and the page does not identify the submitter. Its opening
+sentence is:
 
 > “Let n_1, n_2 and n_3 be prime numbers such that n_1 < n_2 < n_3.”
 
@@ -66,6 +69,11 @@ Targeted searches for the exact divisibility statement and the tuple
 ((2,3,5,5)) found no published solution or counterexample on 2026-08-12.
 They did recover the sponsor's earlier two-modulus proposition; that result
 omits (n_3) and therefore does not address this counterexample.
+
+The official page changed all three listed prize problems to “Solution under
+review” by 2026-08-13. The page neither publishes the submissions nor names
+their authors, so no relationship between that change and this repository is
+asserted.
 
 This result has not been reviewed or accepted by the prize sponsor, so the
 repository does not claim the prize, novelty, or priority. No email or other

@@ -4,9 +4,14 @@
 
 - 공식 페이지: <https://www.dimostriamogoldbach.it/en/prizes/>
 - 조회일: 2026-08-12
+- 상태 재확인일: 2026-08-13
 - 문제 ID: 3
 - 게시 상금: €200
-- 게시 상태: `No solutions received`
+- 2026-08-12 상태: `No solutions received`
+- 2026-08-13 상태: `Solution under review`
+
+현재 상태는 상금 제공자가 제출물을 접수했음을 나타낼 뿐 승인을 뜻하지
+않으며, 페이지는 제출자를 밝히지 않는다.
 
 원문은 요구하는 표현을 다음 문구로 도입한다.
 
