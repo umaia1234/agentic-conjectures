@@ -36,6 +36,7 @@
 | [‘골드바흐를 증명하자’ 상금 문제 4 — 보편 명제 반박](../problems/goldbach-prize-4/README.ko.md) | 🔴 반례 | [상세 전개](../problems/goldbach-prize-4/DETAILS.ko.md) |
 | [OEIS A000224 — R(n)(R(n)-1)이 n^2-1을 나눌 필요충분조건은 n이 홀수 소수인 것이다](../problems/oeis-a000224/README.ko.md) | 🟡 부분 결과 | [상세 전개](../problems/oeis-a000224/DETAILS.ko.md) |
 | [OEIS A076141 — n의 이진 표현은 n^2의 이진 표현에서 최대 한 번 등장, 2^40까지 확인](../problems/oeis-a076141/README.md) | 🟡 부분 결과 | [상세 전개](../problems/oeis-a076141/DETAILS.ko.md) |
+| [OEIS A197702 — 홀수 부호합의 정확한 최소 길이](../problems/oeis-a197702/README.ko.md) | ✅ 증명 | [상세 전개](../problems/oeis-a197702/DETAILS.ko.md) |
 | [OEIS A245211: a(n)=n인 것은 n=21뿐](../problems/oeis-a245211/README.ko.md) | 🟡 부분 결과 | [상세 전개](../problems/oeis-a245211/DETAILS.ko.md) |
 | [OEIS A354747 최초 미해결 항 a(100943)](../problems/oeis-a354747/README.md) | 🔴 반례 | [상세 전개](../problems/oeis-a354747/DETAILS.ko.md) |
 | [OEIS A395412 — 비영성이 인증된 유한 범위 확장](../problems/oeis-a395412/README.md) | 🟡 부분 결과 | [상세 전개](../problems/oeis-a395412/DETAILS.ko.md) |

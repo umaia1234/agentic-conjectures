@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-55-8250df) ![proved](https://img.shields.io/badge/proved-23-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
+![problems](https://img.shields.io/badge/problems-56-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**55 problems** — ✅ proved: 23 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
+**56 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
 
 ### OEIS
 
@@ -151,6 +151,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 | [OEIS A113249 — full parameter-family square conjecture proved](problems/oeis-a113249/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` | Lean-proves that every odd-indexed term in the OEIS A113249 fourth-order family is a square: a(m,2*n+1)=Y(m,n)^2 for every integer parameter m and every n>=0. |
 | [OEIS A136433 — 9-lag linear recurrence proved for all n>=10](problems/oeis-a136433/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` · `Claude Fable 5` | Claims a complete proof that the OEIS-conjectured constant-coefficient recurrence a_n = 6*a_{n-3} + a_{n-6} - 6*a_{n-9} holds for all n>=10 for the periodic-coefficient nonautonomous sequence, via a_{t+3}=6*a_t+B_t with B_t of period 6. |
 | [OEIS A190363 — 21-term recurrence conjecture refuted](problems/oeis-a190363/README.md) | 🔴 refuted | lean + cert | `GPT-5.6 Sol` · `Claude Fable 5` | Refutes the OEIS-conjectured recurrence a(n+21)=a(n+17)+a(n+4)-a(n): first failure at base index n=140 (output term a(161), 541 != 542), with a Pell-equation-generated infinite family of failures showing the recurrence fails beyond every starting index. |
+| [OEIS A197702 — exact least length for signed odd sums](problems/oeis-a197702/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Lean-proves the complete conjectured formula for the least k such that n is a signed sum of 1,3,...,2k-1: in the square interval (k-1)^2<n<=k^2, the answer is k+2 when k^2-n=4, k+1 when that gap is odd, and k otherwise. |
 | [OEIS A239293 — immediate-successor characterization proved](problems/oeis-a239293/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Proves for every n>=1 that the least composite c>n satisfying n^c == n (mod c) equals n+1 if and only if n+1 is odd and composite. |
 | [OEIS A242560 — closed form and even-index conjecture proved](problems/oeis-a242560/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` | Lean-verifies a(N)=N-N/minFac(N) for every N>1, hence the OEIS conjecture a(2n)=n; it also shows that the official b-file value a(25)=24 disagrees with the displayed definition, which gives 20. |
 | [OEIS A245211: a(n)=n only for n=21](problems/oeis-a245211/README.md) | 🟡 partial | cert(local) | `GPT-5.6 Sol` | Claims only partial progress: proved necessary conditions forcing any counterexample to the uniqueness of n=21 to be coprime to 2310 with a restricted factorization shape, plus exact verification for all n <= 10^9 and for two-prime-factor n with exponents <= 200. |

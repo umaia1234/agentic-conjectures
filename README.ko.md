@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-55-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-23-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 55개** — ✅ 증명: 23 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
+**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
 
 ### OEIS
 
@@ -149,6 +149,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 | [OEIS A113249 — 전체 매개변수족 제곱수 추측 증명](problems/oeis-a113249/README.ko.md) | ✅ 증명 | Lean + 인증서 | `GPT-5.6 Sol` | OEIS A113249의 4계 수열족에서 홀수 첨자의 모든 항이 제곱수임을 Lean으로 증명했다. 즉, 모든 정수 매개변수 m과 모든 n>=0에 대해 a(m,2*n+1)=Y(m,n)^2이다. |
 | [OEIS A136433 — 모든 n>=10에 대해 시차 9 선형 점화식 증명](problems/oeis-a136433/README.ko.md) | ✅ 증명 | Lean + 인증서 | `GPT-5.6 Sol` · `Claude Fable 5` | OEIS에서 추측한 상수계수 점화식 a_n = 6*a_{n-3} + a_{n-6} - 6*a_{n-9}가 주기적 계수를 갖는 비자율 수열에 대해 모든 n>=10에서 성립함을 완전히 증명했다고 주장한다. 이 증명은 주기가 6인 B_t를 사용한 a_{t+3}=6*a_t+B_t 관계를 이용한다. |
 | [OEIS A190363 — 시차 21 점화식 추측 반박](problems/oeis-a190363/README.ko.md) | 🔴 반례 | Lean + 인증서 | `GPT-5.6 Sol` · `Claude Fable 5` | OEIS에서 추측한 점화식 a(n+21)=a(n+17)+a(n+4)-a(n)을 반박했다. 첫 실패는 기준 첨자 n=140 (출력 항 a(161), 541 != 542)에서 발생한다. Pell 방정식으로 생성한 무한 실패 사례족은 임의의 시작 첨자보다 뒤에도 실패 사례가 존재함을 보여, 어느 첨자부터 줄곧 이 점화식이 성립하는 일은 없음을 증명한다. |
+| [OEIS A197702 — 홀수 부호합의 정확한 최소 길이](problems/oeis-a197702/README.ko.md) | ✅ 증명 | Lean | `GPT-5.6 Sol` | n이 1,3,...,2k-1의 부호합이 되는 최소 k의 추측 공식을 Lean으로 완전히 증명했다. (k-1)^2<n<=k^2에서 k^2-n=4이면 답은 k+2, 그 차이가 홀수이면 k+1, 그 밖에는 k이다. |
 | [OEIS A239293 — 최소 합성수가 n+1이 되는 경우의 특성화 증명](problems/oeis-a239293/README.ko.md) | ✅ 증명 | Lean | `GPT-5.6 Sol` | 모든 n>=1에 대해 n^c == n (mod c)를 만족하는 최소 합성수 c>n이 n+1인 것과 n+1이 홀수 합성수인 것은 동치임을 증명했다. |
 | [OEIS A242560 — 닫힌형과 짝수 첨자 추측 증명](problems/oeis-a242560/README.ko.md) | ✅ 증명 | Lean + 인증서 | `GPT-5.6 Sol` | 모든 N>1에 대해 a(N)=N-N/minFac(N)을 Lean으로 검증하여 OEIS 추측 a(2n)=n을 증명했다. 또한 본문에 제시된 정의로는 a(25)=20이므로 공식 b-file의 값 a(25)=24와 불일치함을 보였다. |
 | [OEIS A245211: a(n)=n인 것은 n=21뿐](problems/oeis-a245211/README.ko.md) | 🟡 부분 결과 | 인증서(로컬) | `GPT-5.6 Sol` | 부분적 진전만을 주장한다. n=21의 유일성에 대한 모든 반례가 2310과 서로소이고 제한된 인수분해 형태를 가져야 한다는 필요조건을 증명했으며, 모든 n <= 10^9와 서로 다른 소인수가 두 개이고 각 지수가 <= 200인 모든 n을 정확히 검증했다. |
