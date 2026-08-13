@@ -31,6 +31,9 @@
 |---|---|---|
 | [에르되시 #385 / #430(i) — 홀수 지표 정리와 10^9까지의 정확한 검증](../problems/erdos-385/README.ko.md) | 🟡 부분 결과 | [상세 전개](../problems/erdos-385/DETAILS.ko.md) |
 | [에르되시 #671 — 모든 점에서 비유계인 라그랑주 배열 증명](../problems/erdos-671/README.ko.md) | ✅ 증명 | [상세 전개](../problems/erdos-671/DETAILS.ko.md) |
+| [‘골드바흐를 증명하자’ 상금 문제 2 — 정확한 주기 공식](../problems/goldbach-prize-2/README.ko.md) | ✅ 증명 | [상세 전개](../problems/goldbach-prize-2/DETAILS.ko.md) |
+| [‘골드바흐를 증명하자’ 상금 문제 3 — 문언상 유한집합 표현 증명](../problems/goldbach-prize-3/README.ko.md) | ✅ 증명 | [상세 전개](../problems/goldbach-prize-3/DETAILS.ko.md) |
+| [‘골드바흐를 증명하자’ 상금 문제 4 — 보편 명제 반박](../problems/goldbach-prize-4/README.ko.md) | 🔴 반례 | [상세 전개](../problems/goldbach-prize-4/DETAILS.ko.md) |
 | [OEIS A000224 — R(n)(R(n)-1)이 n^2-1을 나눌 필요충분조건은 n이 홀수 소수인 것이다](../problems/oeis-a000224/README.ko.md) | 🟡 부분 결과 | [상세 전개](../problems/oeis-a000224/DETAILS.ko.md) |
 | [OEIS A076141 — n의 이진 표현은 n^2의 이진 표현에서 최대 한 번 등장, 2^40까지 확인](../problems/oeis-a076141/README.md) | 🟡 부분 결과 | [상세 전개](../problems/oeis-a076141/DETAILS.ko.md) |
 | [OEIS A197702 — 홀수 부호합의 정확한 최소 길이](../problems/oeis-a197702/README.ko.md) | ✅ 증명 | [상세 전개](../problems/oeis-a197702/DETAILS.ko.md) |

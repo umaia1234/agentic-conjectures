@@ -1,0 +1,43 @@
+id: goldbach-prize-2
+title: "Let's Prove Goldbach prize problem 2 — exact periodic formula"
+title_ko: "‘골드바흐를 증명하자’ 상금 문제 2 — 정확한 주기 공식"
+domain: other
+source_url: https://www.dimostriamogoldbach.it/en/prizes/
+claimed_status: proved
+claim: >-
+  Under the per-fixed-triple finite-case interpretation, proves an exact
+  periodic residue-list formula for the x-th positive integer divisible by
+  none of n1,n2,n3, so the advertised n3^2/2 error bound holds with zero
+  error.
+claim_ko: >-
+  각 고정 삼중항별 유한 경우라는 해석 아래에서 n1,n2,n3 어느 것으로도
+  나누어지지 않는 x번째 양의 정수의 정확한 주기 잔여 리스트 공식을
+  증명하므로, 게시된 n3^2/2 오차 한계가 오차 0으로 성립한다.
+artifacts:
+  - path: README.md
+    kind: informal-proof
+  - path: DETAILS.md
+    kind: mathematical-details
+  - path: upstream/README.md
+    kind: upstream-source
+verify: []
+lean:
+  modules:
+    - AgenticConjectures.GoldbachPrize2
+  theorems:
+    - AgenticConjectures.GoldbachPrize2.exact_formula0
+    - AgenticConjectures.GoldbachPrize2.exact_formula
+    - AgenticConjectures.GoldbachPrize2.proved
+attribution:
+  - model: GPT-5.6 Sol
+    harness: Codex Desktop
+    scope: periodic construction, statement audit, Lean 4 formalization, and bilingual documentation
+notes: >-
+  The official €100 page displayed “No solutions received” on 2026-08-12
+  and “Solution under review” on 2026-08-13; it identifies neither the
+  submitter nor the submitted solution, and review is not acceptance. The
+  Lean theorem verifies exact enumeration and zero error. Compliance with
+  the informal formula-language condition uses a finite residue table whose
+  size depends on the fixed moduli; a stricter parameter-independent syntax
+  condition is not formalized. This work is unreviewed, claims no novelty or
+  priority, and was not submitted externally.
