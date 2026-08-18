@@ -4,22 +4,41 @@ title_ko: OEIS A056777 / Choudhury–Wei 추측 1.1 — n+12는 소수 거듭제
 domain: oeis
 source_url: https://arxiv.org/abs/2606.10331v3
 claimed_status: partial
-claim: Proves that for composite n>=4 with phi(n+12)=phi(n)+12 and sigma(n+12)=sigma(n)+12, n+12 cannot
-  be a prime power; the original Choudhury–Wei Conjecture 1.1 remains unresolved.
+claim: Lean-verifies that for composite n>=4 with phi(n+12)=phi(n)+12 and sigma(n+12)=sigma(n)+12,
+  n+12 cannot be a prime power (kernel-checked against the upstream predicate); the original
+  Choudhury–Wei Conjecture 1.1 remains unresolved.
 claim_ko: >-
   phi(n+12)=phi(n)+12이고 sigma(n+12)=sigma(n)+12인 합성수 n>=4에 대해 n+12는 소수 거듭제곱일 수
-  없음을 증명했다. 원래의 Choudhury–Wei 추측 1.1은 여전히 미해결이다.
+  없음을 Lean으로 검증했다(상류 술어 그대로 커널 검사). 원래의 Choudhury–Wei 추측 1.1은 여전히
+  미해결이다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof
 - path: upstream/56777.lean
   kind: upstream-lean
 verify: []
+lean:
+  modules:
+  - AgenticConjectures.OeisA056777
+  theorems:
+  - AgenticConjectures.OeisA056777.add_twelve_ne_prime_pow
+  - AgenticConjectures.OeisA056777.not_isPrimePow_add_twelve
+  - AgenticConjectures.OeisA056777.totient_mul_sigma_add_lt_of_not_isPrimePow
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: README states the folder contains no computational certificate (purely elementary proof, no finite
-  search); the authors' reported 10^12 search was not independently rerun; negative public searches for
-  the same lemma are noted but novelty is explicitly not asserted before peer review; the partial theorem
-  is not formalized in the upstream Lean file.
+- model: Claude Fable 5
+  harness: Claude Code
+  scope: Lean 4 formalization of the prime-power exclusion for n+12 (AgenticConjectures.OeisA056777)
+    and the accompanying documentation
+notes: The n+12 prime-power exclusion is now kernel-checked in AgenticConjectures/OeisA056777.lean
+  against a term-for-term copy of the upstream predicate OeisA56777.A (composite n, both equations
+  additive in Nat; the only spelling difference is mathlib's phi notation for Nat.totient); the Lean
+  proof follows PROOF.md except that the q=2 case reuses the key inequality phi(m)*sigma(m)+m<m^2
+  for non-prime-powers (plus the equations phi(w)=w-3, 7*sigma(w)=8w+11 for n=4w) instead of the
+  sigma-parity argument, and the q=3 case closes with the parity of phi.
+  The authors' reported 10^12 search was not independently rerun; negative public searches for
+  the same lemma are noted but novelty is explicitly not asserted before peer review; the upstream
+  universal Lean statement (Conjecture 1.1) remains sorry-backed and is recorded here only as a
+  Prop (`statement`).
