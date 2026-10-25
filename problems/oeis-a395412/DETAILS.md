@@ -131,5 +131,73 @@ Therefore, as a finite statement,
 \]
 
 is proved. This is a finite proof giving a separate witness for each \(n\); it
-is not a single construction of \(d_n\) that works for all \(n\). The infinite
-statement for \(n\ge201\) and the full A395412 conjecture remain open.
+is not a single construction of \(d_n\) that works for all \(n\). Section 5
+re-proves this range with ECPP certificates and extends it to
+\(n\le 478\); the full A395412 conjecture remains open.
+
+## 5. ECPP certificates for \(85\le n\le 478\)
+
+For every \(85\le n\le 478\), the data file `ecpp_witnesses.json` records one
+\(d_n\): the least squarefree \(d<p_n\) for which \(C_n=P_n/d_n+d_n\) passes
+the BPSW probable-prime test. BPSW only selects \(d_n\); it is not part of the
+proof. The witnesses agree with the original run for \(85\le n\le400\) (proved
+there for \(n\le200\), only BPSW-screened for \(201\le n\le400\)).
+
+The primality of \(C_n\) is proved by an Atkin–Morain ECPP certificate, a list
+of steps \((N_i,t_i,s_i,a_i,x_i,y_i)\), \(1\le i\le\ell\), with \(N_1=C_n\).
+Put
+
+\[
+m_i=N_i+1-t_i,\qquad q_i=\frac{m_i}{s_i},\qquad
+b_i\equiv y_i^2-x_i^3-a_ix_i\pmod{N_i},
+\]
+
+\(E_i:\ y^2=x^3+a_ix+b_i\) and \(P_i=(x_i,y_i)\in E_i(\mathbb Z/N_i\mathbb Z)\).
+The certificate requires \(q_i=N_{i+1}\) for \(i<\ell\) and \(q_\ell<2^{64}\).
+
+**Theorem (Goldwasser–Kilian, Atkin–Morain).** Let \(N>1\) with
+\(\gcd(N,6)=1\), let \(E:\ y^2=x^3+ax+b\) with \(\gcd(4a^3+27b^2,N)=1\), let
+\(P\) be a point of \(E\) modulo \(N\), let \(s\ge1\), and let \(q\) be a
+prime with \(q>(N^{1/4}+1)^2\). If for every prime \(p\mid N\) the reduction
+\(Q_p\) of \(Q=[s]P\) satisfies \(Q_p\ne O\) and \([q]Q_p=O\), then \(N\) is
+prime.
+
+**Proof.** Let \(p\mid N\) be prime. Since \(q\) is prime, \(Q_p\) has order
+exactly \(q\) in \(E(\mathbb F_p)\), so Hasse's bound gives
+\(q\le\#E(\mathbb F_p)\le(\sqrt p+1)^2\). Hence \(\sqrt p>N^{1/4}\), that is,
+\(p>\sqrt N\). A composite \(N\) has a prime factor at most \(\sqrt N\), so
+\(N\) is prime. \(\square\)
+
+Applying the theorem to the steps from \(i=\ell\) down to \(i=1\) proves every
+\(N_i\), in particular \(C_n\), prime, once \(q_\ell<2^{64}\) is known to be
+prime. The latter is a Miller–Rabin test to the prime bases \(2,\dots,37\),
+which is deterministic below \(3.18\cdot10^{23}\) (Sorenson–Webster, 2017).
+
+Each certificate was produced by PARI/GP `primecert` and accepted by PARI's
+`primecertisvalid` after being written to disk and read back. It was then
+re-checked by `verify_witnesses.py`, a checker written independently of PARI.
+That checker works in Jacobian coordinates \((X:Y:Z)\) modulo \(N\). The
+doubling and the mixed-addition formulas give the correct group law modulo a
+prime \(p\mid N\) whenever their inputs are affine modulo \(p\) and the
+operation is not exceptional (an addition of points with equal
+\(x\)-coordinates, or the doubling of a point with \(y=0\)). An exceptional
+operation outputs \(Z\equiv0\pmod p\), and each later \(Z\) is a multiple of
+the previous one, so it stays \(0\) modulo \(p\). The checker computes
+\(Q=[s]P\) and \(R=[q-1]Q\) by double-and-add and requires
+\(\gcd(Z_Q,N)=\gcd(Z_R,N)=1\) and \(R=-Q\). As these final \(Z\) are units
+modulo \(N\), no intermediate \(Z\) vanished modulo any prime \(p\mid N\), so no
+operation was exceptional and each one computed the group law of
+\(E(\mathbb F_p)\). Hence \(Q_p\ne O\) and \([q]Q_p=R_p+Q_p=O\), as the theorem
+requires. The checker also verifies
+\(\gcd(N,6)=1\), the discriminant condition, \(s_iq_i=m_i\), and the sufficient
+integer inequality \(q>(\lfloor N^{1/4}\rfloor+2)^2\). Therefore
+
+\[
+\boxed{85\le n\le 478\Longrightarrow a(n)>0}.
+\]
+
+For \(85\le n\le200\) this is a second proof of Section 4 with the same
+witnesses; for \(201\le n\le400\) it turns the earlier BPSW screen into a
+proof; \(401\le n\le 478\) extends the range previously recorded in this
+repository (no novelty is claimed). Nothing is claimed for \(n>478\), and the
+full A395412 conjecture remains open.
