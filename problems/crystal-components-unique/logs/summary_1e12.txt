@@ -1,0 +1,5 @@
+X=1000000000000
+F3 (k=3): 1  F4 (k=4): 705  F1 (k>=5, j=1): 6296  S (k>=5, j>=2): 264  max j: 12
+total crystals <= X: 7266
+S fingerprint (sum of n mod 2^64): 41424112602754
+collisions: 0

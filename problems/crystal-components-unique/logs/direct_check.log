@@ -1,0 +1,23 @@
+# Direct enumeration without the classification (direct_check.py), python3 = CPython 3.15.0.
+# Measured on 2026-10-25 on an Apple M5 Max (18 cores, shared with other jobs),
+# from problems/crystal-components-unique.
+
+$ python3 direct_check.py 1e12
+X=1000000000000
+F3 (k=3): 1  F4 (k=4): 705  F1 (k>=5, j=1): 6296  S (k>=5, j>=2): 264  max j: 12
+total crystals <= X: 7266
+S fingerprint (sum of n mod 2^64): 41424112602754
+collisions: 0
+seconds: 2.43
+exit 0
+/usr/bin/time -l: 2.45 s real, 2.44 s user, 0.01 s sys, 38 MB maximum resident set size
+
+$ python3 direct_check.py 1e14
+X=100000000000000
+F3 (k=3): 1  F4 (k=4): 2234  F1 (k>=5, j=1): 29237  S (k>=5, j>=2): 622  max j: 14
+total crystals <= X: 32094
+S fingerprint (sum of n mod 2^64): 9831032251649948
+collisions: 0
+seconds: 32.39
+exit 0
+/usr/bin/time -l: 32.42 s real, 32.24 s user, 0.08 s sys, 222 MB maximum resident set size

@@ -1,0 +1,58 @@
+# Implementation A (crystal_search.c), built with `cc -O2 -o crystal_search crystal_search.c -lm -lpthread` (Apple clang).
+# Measured on 2026-10-25 on an Apple M5 Max (18 cores, shared with other jobs),
+# from problems/crystal-components-unique.
+
+$ ./crystal_search 1e12 2
+X=1000000000000
+F3 (k=3): 1  F4 (k=4): 705  F1 (k>=5, j=1): 6296  S (k>=5, j>=2): 264  max j: 12
+total crystals <= X: 7266
+S fingerprint (sum of n mod 2^64): 41424112602754
+F4 members checked against F1: 705
+collisions: 0
+seconds: 0.00 (threads 2)
+exit 0
+/usr/bin/time -l: 0.10 s real, 0.00 s user, 0.00 s sys, 2 MB maximum resident set size
+
+$ ./crystal_search 1e14 2
+X=100000000000000
+F3 (k=3): 1  F4 (k=4): 2234  F1 (k>=5, j=1): 29237  S (k>=5, j>=2): 622  max j: 14
+total crystals <= X: 32094
+S fingerprint (sum of n mod 2^64): 9831032251649948
+F4 members checked against F1: 2234
+collisions: 0
+seconds: 0.00 (threads 2)
+exit 0
+/usr/bin/time -l: 0.00 s real, 0.00 s user, 0.00 s sys, 2 MB maximum resident set size
+
+$ ./crystal_search 1e34 2
+X=10000000000000000000000000000000000
+F3 (k=3): 1  F4 (k=4): 223606796  F1 (k>=5, j=1): 135720880826  S (k>=5, j>=2): 4847868  max j: 38
+total crystals <= X: 135949335491
+S fingerprint (sum of n mod 2^64): 10223163575082928094
+F4 members checked against F1: 223606796
+collisions: 0
+seconds: 3.64 (threads 2)
+exit 0
+/usr/bin/time -l: 3.64 s real, 6.75 s user, 0.02 s sys, 157 MB maximum resident set size
+
+$ ./crystal_search 1e34 4
+X=10000000000000000000000000000000000
+F3 (k=3): 1  F4 (k=4): 223606796  F1 (k>=5, j=1): 135720880826  S (k>=5, j>=2): 4847868  max j: 38
+total crystals <= X: 135949335491
+S fingerprint (sum of n mod 2^64): 10223163575082928094
+F4 members checked against F1: 223606796
+collisions: 0
+seconds: 2.37 (threads 4)
+exit 0
+/usr/bin/time -l: 2.37 s real, 7.78 s user, 0.01 s sys, 157 MB maximum resident set size
+
+$ ./crystal_search max 4
+X=170141183460469231731687303715884105727
+F3 (k=3): 1  F4 (k=4): 2553802832  F1 (k>=5, j=1): 3490731829162  S (k>=5, j>=2): 33811278  max j: 43
+total crystals <= X: 3493319443273
+S fingerprint (sum of n mod 2^64): 5743454572195557948
+F4 members checked against F1: 2553802832
+collisions: 0
+seconds: 25.75 (threads 4)
+exit 0
+/usr/bin/time -l: 25.76 s real, 88.95 s user, 0.20 s sys, 1084 MB maximum resident set size

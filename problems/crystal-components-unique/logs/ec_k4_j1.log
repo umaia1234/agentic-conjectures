@@ -1,0 +1,19 @@
+# k = 4 against j = 1 (ec_k4_j1.py), run with a Python that has passagemath 10.8.13 (schemes, pari, symbolics; PARI 2.17.4 through cypari2 2.2.4).
+# Measured on 2026-10-25 on an Apple M5 Max (18 cores, shared with other jobs),
+# from problems/crystal-components-unique.
+
+$ python ec_k4_j1.py
+Elliptic Curve defined by y^2 = x^3 - 10*x^2 + 24*x + 16 over Rational Field | conductor 2432 | torsion order 1
+PARI ellrank [r, R, s, L]: [2, 2, 0, [[0, 4], [4, 4]]]
+lower bound for canonical heights of non-torsion points: 0.09534181695235121
+regulator of the ellrank points: 0.241877265385742 => index bound: 5.95639470844350
+PARI ellsaturation at all primes <= 100 : [[4, 4], [0, -4]] | regulator: 0.241877265385742
+integral points (one of each pair +-P): [(0 : -4 : 1), (3 : -5 : 1), (4 : -4 : 1), (6 : -4 : 1), (10 : -16 : 1), (16 : -44 : 1), (19 : -61 : 1), (84 : -724 : 1), (1200 : -41396 : 1)]
+(K, X): [(0, 0), (0, 1), (1, 0), (1, 1), (4, -5), (4, 6), (21, -90), (21, 91), (300, -5174), (300, 5175)]
+  t = 0 K = 0 n(k=4, t) = -1 n(j=1, K) = -1
+  t = 0 K = 1 n(k=4, t) = -1 n(j=1, K) = -1
+  t = 2 K = 4 n(k=4, t) = 119 n(j=1, K) = 119
+only solution with t >= 2, K >= 3: t = 2, K = 4 (n = 119, the crystal 7 * 17 itself)
+direct search, K <= 10^6: [0, 1, 4, 21, 300]
+exit 0
+/usr/bin/time -l: 1.76 s real, 3.29 s user, 1.14 s sys, 230 MB maximum resident set size

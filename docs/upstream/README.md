@@ -19,6 +19,7 @@ problem's `README.md`.
 | [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) | [`7a41db3d761324599812d6ca6cb6a9f311046dc7`](https://github.com/google-deepmind/formal-conjectures/tree/7a41db3d761324599812d6ca6cb6a9f311046dc7) | Snapshot at which the FormalBench candidate set was checked |
 | [Formal Conjectures PR #4450](https://github.com/google-deepmind/formal-conjectures/pull/4450) | [`93dc5e41789aadbd85380183779a94e7a59cb80e`](https://github.com/google-deepmind/formal-conjectures/tree/93dc5e41789aadbd85380183779a94e7a59cb80e) | Pending A112970 formalization used for exact statement comparison |
 | [AlphaProof Nexus Results](https://github.com/google-deepmind/alphaproof-nexus-results) | [`0647711a71183c1ea492ad60860776617ce1ea88`](https://github.com/google-deepmind/alphaproof-nexus-results/tree/0647711a71183c1ea492ad60860776617ce1ea88) | Audit of the intersection between public success results and attempt lists |
+| [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) | [`c094b979118b89adb77cf5f8d923ac9dd2e51b1d`](https://github.com/google-deepmind/formal-conjectures/tree/c094b979118b89adb77cf5f8d923ac9dd2e51b1d) | `main` as of 2026-10-23; sources of OEIS statements harvested on 2026-10-24 |
 <!-- UPSTREAM-SOURCES:END -->
 
 Every source worktree had an empty `git status --short` immediately before

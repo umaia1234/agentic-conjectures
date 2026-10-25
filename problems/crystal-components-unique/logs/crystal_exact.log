@@ -1,0 +1,58 @@
+# Implementation B (crystal_exact.py), python3 = CPython 3.15.0.
+# Measured on 2026-10-25 on an Apple M5 Max (18 cores, shared with other jobs),
+# from problems/crystal-components-unique.
+
+$ python3 crystal_exact.py 1e12
+X=1000000000000
+F3 (k=3): 1  F4 (k=4): 705  F1 (k>=5, j=1): 6296  S (k>=5, j>=2): 264  max j: 12
+total crystals <= X: 7266
+S fingerprint (sum of n mod 2^64): 41424112602754
+F4 members checked against F1: 705 (bound 1000000000000)
+collisions: 0
+seconds: 0.00
+exit 0
+/usr/bin/time -l: 0.02 s real, 0.01 s user, 0.00 s sys, 17 MB maximum resident set size
+
+$ python3 crystal_exact.py 1e14
+X=100000000000000
+F3 (k=3): 1  F4 (k=4): 2234  F1 (k>=5, j=1): 29237  S (k>=5, j>=2): 622  max j: 14
+total crystals <= X: 32094
+S fingerprint (sum of n mod 2^64): 9831032251649948
+F4 members checked against F1: 2234 (bound 100000000000000)
+collisions: 0
+seconds: 0.00
+exit 0
+/usr/bin/time -l: 0.02 s real, 0.01 s user, 0.00 s sys, 18 MB maximum resident set size
+
+$ python3 crystal_exact.py 1e34 --f4-limit 1e24
+X=10000000000000000000000000000000000
+F3 (k=3): 1  F4 (k=4): 223606796  F1 (k>=5, j=1): 135720880826  S (k>=5, j>=2): 4847868  max j: 38
+total crystals <= X: 135949335491
+S fingerprint (sum of n mod 2^64): 10223163575082928094
+F4 members checked against F1: 707105 (bound 1000000000000000000000000)
+collisions: 0
+seconds: 17.82
+exit 0
+/usr/bin/time -l: 17.86 s real, 17.77 s user, 0.05 s sys, 292 MB maximum resident set size
+
+$ python3 crystal_exact.py 2^127-1 --f4-limit 1e30
+X=170141183460469231731687303715884105727
+F3 (k=3): 1  F4 (k=4): 2553802832  F1 (k>=5, j=1): 3490731829162  S (k>=5, j>=2): 33811278  max j: 43
+total crystals <= X: 3493319443273
+S fingerprint (sum of n mod 2^64): 5743454572195557948
+F4 members checked against F1: 22360678 (bound 1000000000000000000000000000000)
+collisions: 0
+seconds: 168.27
+exit 0
+/usr/bin/time -l: 168.42 s real, 167.66 s user, 0.41 s sys, 1919 MB maximum resident set size
+
+$ python3 crystal_exact.py 1e40 --f4-limit 1e30
+X=10000000000000000000000000000000000000000
+F3 (k=3): 1  F4 (k=4): 7071067810  F1 (k>=5, j=1): 13572088082971  S (k>=5, j>=2): 76240507  max j: 45
+total crystals <= X: 13579235391289
+S fingerprint (sum of n mod 2^64): 403350557526191411
+F4 members checked against F1: 22360678 (bound 1000000000000000000000000000000)
+collisions: 0
+seconds: 353.08
+exit 0
+/usr/bin/time -l: 353.42 s real, 350.99 s user, 1.16 s sys, 4309 MB maximum resident set size

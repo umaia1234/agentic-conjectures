@@ -1,0 +1,139 @@
+id: crystal-components-unique
+title: Unique crystal components (arXiv:1601.03081) — Lean classification, cases, search to 2^127
+title_ko: 크리스털 성분의 유일성(arXiv:1601.03081) — Lean 분류, 부분 경우, 2^127까지의 탐색
+domain: other
+source_url: https://arxiv.org/abs/1601.03081
+claimed_status: partial
+claim: >-
+  Lean-proves the paper's classification of crystals (isCrystal_iff_seqU, isCrystal_iff_kpr), that
+  the conjecture is equivalent to "n determines k = (a+b)^2/((a+1)(b+1))"
+  (statement_iff_crystalK_eq), and the cases k = 3, equal k and two j = 1 crystals
+  (eq_of_crystalK_eq_three, eq_of_crystalK_eq, eq_of_j1); with the integral points of an elliptic
+  curve, computed in Sage/PARI, as an explicit hypothesis it also proves k = 4 against j = 1
+  (eq_of_crystalK_eq_four_of_j1). Two independent searches find no collision among the
+  3,493,319,443,273 crystals n <= 2^127 - 1; the case k >= 5, j >= 2 against a different k stays
+  open.
+claim_ko: >-
+  논문의 크리스털 분류(isCrystal_iff_seqU, isCrystal_iff_kpr), 추측이 "n이
+  k = (a+b)^2/((a+1)(b+1))를 결정한다"와 동치라는 사실(statement_iff_crystalK_eq), 그리고 k = 3인
+  경우, k가 같은 경우, j = 1인 두 크리스털의 경우(eq_of_crystalK_eq_three, eq_of_crystalK_eq,
+  eq_of_j1)를 Lean으로 증명했습니다. 또한 Sage/PARI로 계산한 타원곡선의 정수점 목록을 명시적인 가정으로
+  두고 k = 4와 j = 1의 경우를 Lean으로 증명했습니다(eq_of_crystalK_eq_four_of_j1). 서로 독립적인 두
+  탐색은 n <= 2^127 - 1인 크리스털 3,493,319,443,273개에서 충돌을 찾지 못했습니다. k >= 5, j >= 2인
+  크리스털과 k가 다른 크리스털의 경우는 열려 있습니다.
+artifacts:
+- path: ../../AgenticConjectures/CrystalComponentsUnique.lean
+  kind: lean-proof
+- path: DETAILS.md
+  kind: mathematical-details
+- path: crystal_search.c
+  kind: search-code
+- path: crystal_exact.py
+  kind: search-code
+- path: direct_check.py
+  kind: search-code
+- path: ec_k4_j1.py
+  kind: certificate-script
+- path: logs/crystal_search.log
+  kind: data
+- path: logs/crystal_exact.log
+  kind: data
+- path: logs/direct_check.log
+  kind: data
+- path: logs/ec_k4_j1.log
+  kind: data
+- path: logs/summary_1e12.txt
+  kind: data
+- path: logs/summary_1e34.txt
+  kind: data
+- path: upstream/UniqueCrystalComponents.lean
+  kind: upstream-lean
+- path: upstream/README.md
+  kind: upstream-source
+verify:
+- cmd: python3 direct_check.py 1e12 | grep -v '^seconds' | diff - logs/summary_1e12.txt
+  expected_runtime: about 3 seconds
+  ci_feasible: true
+- cmd: python3 crystal_exact.py 1e12 | grep -v -e '^seconds' -e '^F4 members' | diff - logs/summary_1e12.txt
+  expected_runtime: under 1 second
+  ci_feasible: true
+- cmd: python3 crystal_exact.py 1e34 --f4-limit 1e24 | grep -v -e '^seconds' -e '^F4 members' | diff - logs/summary_1e34.txt
+  expected_runtime: about 20 seconds
+  ci_feasible: true
+- cmd: cc -O2 -o /tmp/crystal_search crystal_search.c -lm -lpthread && /tmp/crystal_search 1e34 2 | grep -v -e '^seconds' -e '^F4 members' | diff - logs/summary_1e34.txt
+  expected_runtime: about 4 seconds
+  ci_feasible: true
+  requires: [cc]
+- cmd: python3 direct_check.py 1e14
+  expected_runtime: about 35 seconds (output in logs/direct_check.log)
+  ci_feasible: false
+- cmd: cc -O2 -o /tmp/crystal_search crystal_search.c -lm -lpthread && /tmp/crystal_search max 4
+  expected_runtime: about 26 seconds on 4 threads, 1.1 GB (output in logs/crystal_search.log)
+  ci_feasible: false
+  requires: [cc]
+- cmd: python3 crystal_exact.py 2^127-1 --f4-limit 1e30
+  expected_runtime: about 3 minutes, 1.9 GB (output in logs/crystal_exact.log)
+  ci_feasible: false
+- cmd: python3 crystal_exact.py 1e40 --f4-limit 1e30
+  expected_runtime: about 6 minutes, 4.3 GB (output in logs/crystal_exact.log)
+  ci_feasible: false
+- cmd: sage -python ec_k4_j1.py
+  expected_runtime: about 2 seconds (or run it with a Python that has passagemath; output in logs/ec_k4_j1.log)
+  ci_feasible: false
+  requires: [sage]
+lean:
+  modules:
+  - AgenticConjectures.CrystalComponentsUnique
+  theorems:
+  - AgenticConjectures.CrystalComponentsUnique.isCrystalWithComponents_35_5_7
+  - AgenticConjectures.CrystalComponentsUnique.dvd_biharmonic_iff
+  - AgenticConjectures.CrystalComponentsUnique.dvd_sq_add_iff_dvd_mul_add_one_sq
+  - AgenticConjectures.CrystalComponentsUnique.isCrystal_iff_dvd_sq_add
+  - AgenticConjectures.CrystalComponentsUnique.isCrystal_iff_dvd_succ_sq
+  - AgenticConjectures.CrystalComponentsUnique.isCrystal_iff_uv_dvd
+  - AgenticConjectures.CrystalComponentsUnique.isCrystal_iff_uv
+  - AgenticConjectures.CrystalComponentsUnique.IsCrystalWithComponents.sq_add_eq_mul
+  - AgenticConjectures.CrystalComponentsUnique.IsCrystalWithComponents.three_le_crystalK
+  - AgenticConjectures.CrystalComponentsUnique.eq_of_crystalK_eq
+  - AgenticConjectures.CrystalComponentsUnique.statement_iff_crystalK_eq
+  - AgenticConjectures.CrystalComponentsUnique.IsCrystalWithComponents.eq_five_seven_of_crystalK_eq_three
+  - AgenticConjectures.CrystalComponentsUnique.IsCrystalWithComponents.eq_five_seven_of_eq_35
+  - AgenticConjectures.CrystalComponentsUnique.eq_of_crystalK_eq_three
+  - AgenticConjectures.CrystalComponentsUnique.seqU_invariant
+  - AgenticConjectures.CrystalComponentsUnique.sq_eq_mul_iff_seqU
+  - AgenticConjectures.CrystalComponentsUnique.IsCrystalWithComponents.exists_seqU
+  - AgenticConjectures.CrystalComponentsUnique.isCrystal_iff_seqU
+  - AgenticConjectures.CrystalComponentsUnique.lucas_cassini
+  - AgenticConjectures.CrystalComponentsUnique.lucas_nonneg_lt
+  - AgenticConjectures.CrystalComponentsUnique.seqU_lucas
+  - AgenticConjectures.CrystalComponentsUnique.isCrystal_iff_kpr
+  - AgenticConjectures.CrystalComponentsUnique.crystalK_eq_of_kpr
+  - AgenticConjectures.CrystalComponentsUnique.isCrystal_iff_pronic
+  - AgenticConjectures.CrystalComponentsUnique.IsCrystalWithComponents.crystalK_eq_four_iff
+  - AgenticConjectures.CrystalComponentsUnique.IsCrystalWithComponents.j1
+  - AgenticConjectures.CrystalComponentsUnique.eq_of_j1
+  - AgenticConjectures.CrystalComponentsUnique.eq_of_crystalK_eq_four_of_j1
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: Lean 4 formalization of the classification and the partial cases, elliptic-curve exclusion,
+    two independent collision searches, a direct cross-check, and documentation
+notes: >-
+  The open statement is Formal Conjectures Arxiv.«1601.03081».crystals_components_unique at
+  c094b97, still tagged research open; the Lean file copies IsCrystalWithComponents term for term
+  and records the theorem as `statement` without proving it. The Lean results are the paper's
+  Proposition 1 (also in the open Formal Conjectures PR #7051) and Theorems 4-5 (the paper takes
+  Theorem 4 from Abrate-Barbero-Cerruti-Murru, Integers 2015), proved here by Vieta descent, plus the
+  reduction to "n determines k" and the cases k = 3, equal k and two j = 1 crystals. The k = 4
+  against j = 1 exclusion is computer-assisted: eq_of_crystalK_eq_four_of_j1 proves it in Lean
+  from the hypothesis EllipticCurveIntegralPoints (every integral point of y^2 = x^3 - 10x^2 + 24x
+  + 16 has x in {0, 3, 4, 6, 10, 16, 19, 84, 1200}), which is not proved in Lean; it relies on PARI
+  ellrank (rank 2 by 2-descent), a lower bound for canonical heights from Sage, PARI
+  ellsaturation, and Sage's integral_points (passagemath 10.8.13, PARI 2.17.4). The collision searches use the Lean
+  classification for completeness; crystal_search.c (C, saturating 128-bit arithmetic, Lucas
+  pairs) and crystal_exact.py (exact Python integers, the (u, v) recurrence) share no code and agree
+  on every class count and on a checksum of the j >= 2 members up to 2^127 - 1, and
+  direct_check.py, which does not use the classification, reproduces them up to 10^14. Beyond
+  2^127 - 1 only crystal_exact.py ran (j >= 2 against all classes up to 10^40). No human has
+  reviewed this work, no novelty is claimed, and nothing has been submitted externally. The Lean
+  file is compiled against mathlib v4.30.0, while Formal Conjectures c094b97 pins v4.33.1.

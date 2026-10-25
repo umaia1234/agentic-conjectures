@@ -29,6 +29,7 @@ problem rather than assembling another global copy.
 <!-- DETAILS:BEGIN (scripts/gen_readme.py) -->
 | Problem | Claimed status | Mathematical details |
 |---|---|---|
+| [Unique crystal components (arXiv:1601.03081) — Lean classification, cases, search to 2^127](../problems/crystal-components-unique/README.md) | 🟡 partial | [Detailed derivation](../problems/crystal-components-unique/DETAILS.md) |
 | [Erdős #385 / #430(i) — odd indices and exact verification through 10^9](../problems/erdos-385/README.md) | 🟡 partial | [Detailed derivation](../problems/erdos-385/DETAILS.md) |
 | [Erdős #671 — everywhere-unbounded Lagrange arrays proved](../problems/erdos-671/README.md) | ✅ proved | [Detailed derivation](../problems/erdos-671/DETAILS.md) |
 | [Let's Prove Goldbach prize problem 2 — exact periodic formula](../problems/goldbach-prize-2/README.md) | ✅ proved | [Detailed derivation](../problems/goldbach-prize-2/DETAILS.md) |
