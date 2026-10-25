@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-57-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-25-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
+**문제 57개** — ✅ 증명: 25 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
 
 ### OEIS
 
@@ -145,6 +145,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 | [OEIS A067720 — phi(k^2+1)=k*phi(k+1)의 소수 거듭제곱 부분족](problems/oeis-a067720/README.ko.md) | 🟡 부분 결과 | Lean | `GPT-5.6 Sol` | k+1=2^a이고 a>=2인 해가 없음을 Lean으로 검증했고, 비형식적 증명으로 홀수 소수 p에 대해 V=v2(p^a-1)+v2(p-1)<=5이면 소수 거듭제곱 해는 (p,a,k)=(3,2,8)뿐임을 보였으나, 일반적인 합성수 k+1과 V>=6인 소수 거듭제곱 경우는 여전히 미해결이다. |
 | [OEIS A072780 — Goldbach형 동치를 (m,r)=(8,7)에서 반박](problems/oeis-a072780/README.ko.md) | 🔴 반례 | Lean + 인증서 | `GPT-5.6 Sol` | a(m^2-r^2)=2인 것과 m-r 및 m+r가 소수인 것이 동치라는 주장을 반박했다. (m,r)=(8,7)에서는 a(15)=2이지만 m-r=1과 m+r=15가 모두 소수가 아니다. |
 | [OEIS A076141 — n의 이진 표현은 n^2의 이진 표현에서 최대 한 번 등장, 2^40까지 확인](problems/oeis-a076141/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | 출현 배치를 정확히 완전탐색하여 0 < n < 2^40에서 반례가 없음을 확인하고, OEIS에 기록된 10^6까지의 검증 범위를 약 110만 배 확장했다. 이는 엄밀한 유한 범위 검증이며 전체 추측의 증명은 아니다. |
+| [OEIS A111291 — 콜턴 추측 pi(n) <= 2T(n)의 컴퓨터 보조 증명](problems/oeis-a111291/README.ko.md) | ✅ 증명 | Lean + 인증서 | `Claude Opus 5.5 (max effort)` | T(n)을 n 이하의 refactorable 수의 개수라 할 때, 모든 n에 대해 콜턴 추측 pi(n) <= 2T(n)이 성립하고 등호는 n = 0, 7에서만 성립함을 컴퓨터 보조 증명으로 주장한다. 10^6까지는 전수 검사, [10^6, 1.13*10^13]에서는 정확한 값으로 만든 격자 인증서, n >= 10^12에서는 Zelinsky의 p-생성수, 정확히 계산한 상수, Dusart의 명시적 pi 상계·하계에 기반한 해석적 꼬리 논증을 쓴다. Lean은 명제와 기초 보조정리만 검증한다. |
 | [OEIS A112970 — 2의 거듭제곱 항등식과 사분제곱 공식 증명](problems/oeis-a112970/README.ko.md) | ✅ 증명 | Lean + 인증서 | `GPT-5.6 Sol` | 기존 형식화에서 누락되어 있던 A033638의 닫힌형 a(2^n) = floor(n^2/4) + 1도 포함하여, 모든 n >= 0에 대해 추측된 두 연쇄 항등식을 Lean으로 검증했다. |
 | [OEIS A113249 — 전체 매개변수족 제곱수 추측 증명](problems/oeis-a113249/README.ko.md) | ✅ 증명 | Lean + 인증서 | `GPT-5.6 Sol` | OEIS A113249의 4계 수열족에서 홀수 첨자의 모든 항이 제곱수임을 Lean으로 증명했다. 즉, 모든 정수 매개변수 m과 모든 n>=0에 대해 a(m,2*n+1)=Y(m,n)^2이다. |
 | [OEIS A136433 — 모든 n>=10에 대해 시차 9 선형 점화식 증명](problems/oeis-a136433/README.ko.md) | ✅ 증명 | Lean + 인증서 | `GPT-5.6 Sol` · `Claude Fable 5` | OEIS에서 추측한 상수계수 점화식 a_n = 6*a_{n-3} + a_{n-6} - 6*a_{n-9}가 주기적 계수를 갖는 비자율 수열에 대해 모든 n>=10에서 성립함을 완전히 증명했다고 주장한다. 이 증명은 주기가 6인 B_t를 사용한 a_{t+3}=6*a_t+B_t 관계를 이용한다. |

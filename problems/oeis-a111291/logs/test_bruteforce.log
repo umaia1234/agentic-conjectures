@@ -1,0 +1,7 @@
+colton_sieve 20000000 with 1 thread(s): 454 checkpoints, 2 TAIL lines, 0 mismatches
+colton_sieve 20000000 with 3 thread(s): 454 checkpoints, 2 TAIL lines, 0 mismatches
+tau_count: 8099 values of x in [1, 20000000], 0 mismatches
+ALL TESTS PASSED
+real 12.94
+user 12.49
+sys 0.12

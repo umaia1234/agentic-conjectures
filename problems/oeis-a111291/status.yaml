@@ -1,0 +1,150 @@
+id: oeis-a111291
+title: "OEIS A111291 — Colton's conjecture pi(n) <= 2T(n), computer-assisted proof"
+title_ko: "OEIS A111291 — 콜턴 추측 pi(n) <= 2T(n)의 컴퓨터 보조 증명"
+domain: oeis
+source_url: https://oeis.org/A111291
+claimed_status: proved
+claim: >-
+  Claims a computer-assisted proof of Colton's conjecture pi(n) <= 2T(n) for every n, where T(n)
+  counts refactorable numbers <= n, with equality only at n = 0 and 7: brute force to 10^6, an
+  exact grid certificate on [10^6, 1.13*10^13], and an analytic tail for n >= 10^12 built on
+  Zelinsky's p-generators, exactly computed constants and Dusart's explicit bounds for pi. Lean
+  checks the statement and elementary lemmas only.
+claim_ko: >-
+  T(n)을 n 이하의 refactorable 수의 개수라 할 때, 모든 n에 대해 콜턴 추측 pi(n) <= 2T(n)이
+  성립하고 등호는 n = 0, 7에서만 성립함을 컴퓨터 보조 증명으로 주장한다. 10^6까지는 전수 검사,
+  [10^6, 1.13*10^13]에서는 정확한 값으로 만든 격자 인증서, n >= 10^12에서는 Zelinsky의
+  p-생성수, 정확히 계산한 상수, Dusart의 명시적 pi 상계·하계에 기반한 해석적 꼬리 논증을 쓴다.
+  Lean은 명제와 기초 보조정리만 검증한다.
+artifacts:
+- path: DETAILS.md
+  kind: mathematical-details
+- path: README.md
+  kind: informal-proof
+- path: ../../AgenticConjectures/OeisA111291.lean
+  kind: lean-proof
+- path: verify_small.py
+  kind: certificate-script
+- path: verify_grid.py
+  kind: certificate-script
+- path: verify_tail.py
+  kind: certificate-script
+- path: grid.txt
+  kind: data
+- path: tau_count.cpp
+  kind: search-code
+- path: generators.cpp
+  kind: search-code
+- path: colton_sieve.cpp
+  kind: search-code
+- path: crosscheck_sieve_log.py
+  kind: certificate-script
+- path: crosscheck_primecount.py
+  kind: certificate-script
+- path: spot_check.py
+  kind: certificate-script
+- path: test_bruteforce.py
+  kind: certificate-script
+- path: logs/sieve_1e12.log
+  kind: data
+- path: logs/sieve_1e12_checkpoints.txt
+  kind: data
+- path: logs/verify_grid_full.log
+  kind: data
+- path: logs/crosscheck_sieve_log.log
+  kind: data
+- path: logs/spot_check.log
+  kind: data
+- path: logs/crosscheck_primecount.log
+  kind: data
+- path: logs/test_bruteforce.log
+  kind: data
+- path: logs/tau_count_powers_of_ten.log
+  kind: data
+- path: upstream/111291.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 verify_small.py
+  expected_runtime: about 1 s (n <= 10^6)
+  ci_feasible: true
+- cmd: >-
+    g++ -O3 -std=c++17 tau_count.cpp -o /tmp/oeis_a111291_tau_count &&
+    python3 verify_grid.py /tmp/oeis_a111291_tau_count 10000000000000
+  expected_runtime: about 6 s (66 grid points up to 1.13*10^13)
+  ci_feasible: true
+  requires: [g++]
+- cmd: >-
+    g++ -O3 -std=c++17 generators.cpp -o /tmp/oeis_a111291_generators &&
+    python3 verify_tail.py /tmp/oeis_a111291_generators
+  expected_runtime: about 2 s (413,980 generators re-checked; exact arithmetic)
+  ci_feasible: true
+  requires: [g++]
+- cmd: >-
+    g++ -O3 -std=c++17 tau_count.cpp -o /tmp/oeis_a111291_tau_count &&
+    python3 verify_grid.py /tmp/oeis_a111291_tau_count
+  expected_runtime: about 2.5 min and 0.7 GB (full grid to 10^15)
+  ci_feasible: false
+  requires: [g++]
+- cmd: >-
+    g++ -O3 -std=c++17 -pthread colton_sieve.cpp -o /tmp/oeis_a111291_sieve &&
+    /tmp/oeis_a111291_sieve 1000000000000 3 logs/sieve_1e12_checkpoints.txt
+  expected_runtime: about 16 min with 3 threads (every n <= 10^12)
+  ci_feasible: false
+  requires: [g++]
+- cmd: >-
+    g++ -O3 -std=c++17 tau_count.cpp -o /tmp/oeis_a111291_tau_count &&
+    python3 crosscheck_sieve_log.py /tmp/oeis_a111291_tau_count
+  expected_runtime: about 65 s (1433 checkpoints up to 10^12)
+  ci_feasible: false
+  requires: [g++]
+- cmd: >-
+    g++ -O3 -std=c++17 -pthread colton_sieve.cpp -o /tmp/oeis_a111291_sieve &&
+    g++ -O3 -std=c++17 tau_count.cpp -o /tmp/oeis_a111291_tau_count &&
+    python3 spot_check.py /tmp/oeis_a111291_sieve /tmp/oeis_a111291_tau_count
+  expected_runtime: about 4.5 min with 3 threads (four intervals of length about 2*10^9)
+  ci_feasible: false
+  requires: [g++]
+- cmd: python3 crosscheck_primecount.py
+  expected_runtime: about 1 s with primecount 8.8
+  ci_feasible: false
+  requires: [primecount]
+- cmd: >-
+    g++ -O3 -std=c++17 -pthread colton_sieve.cpp -o /tmp/oeis_a111291_sieve &&
+    g++ -O3 -std=c++17 tau_count.cpp -o /tmp/oeis_a111291_tau_count &&
+    python3 test_bruteforce.py /tmp/oeis_a111291_sieve /tmp/oeis_a111291_tau_count
+  expected_runtime: about 13 s; needs numpy
+  ci_feasible: false
+  requires: [g++]
+lean:
+  modules:
+  - AgenticConjectures.OeisA111291
+  theorems:
+  - AgenticConjectures.OeisA111291.a_0
+  - AgenticConjectures.OeisA111291.a_1
+  - AgenticConjectures.OeisA111291.a_2
+  - AgenticConjectures.OeisA111291.primeCounting_seven
+  - AgenticConjectures.OeisA111291.countRefactorableNat_mono
+  - AgenticConjectures.OeisA111291.grid_step
+  - AgenticConjectures.OeisA111291.isSquare_of_odd_refactorable
+  - AgenticConjectures.OeisA111291.two_mul_refactorable_iff
+  - AgenticConjectures.OeisA111291.refactorable_mul_prime
+  - AgenticConjectures.OeisA111291.card_filter_prime_Ioc
+  - AgenticConjectures.OeisA111291.sum_card_primes_le_count
+  - AgenticConjectures.OeisA111291.sum_primeCounting_sub_le
+attribution:
+- model: "Claude Opus 5.5 (max effort)"
+  harness: "Claude Code"
+  scope: >-
+    computer-assisted proof (analytic tail, grid certificate, structured counter and pointwise
+    sieve), Lean 4 statement and lemmas, and documentation
+notes: >-
+  Computer-assisted and unreviewed. The Lean `statement` is a faithful copy of upstream
+  `colton_conjecture` but stays an unproved `def ... : Prop`; Lean checks only the elementary
+  lemmas (odd refactorable numbers are squares, 2u versus u, the generator lemma, the
+  disjoint-family lower bound, the grid step, pi(7) = 2T(7)). The proof also trusts the C++ and
+  Python programs and Dusart's explicit bounds for pi (checked against arXiv:1002.0442v1 only;
+  Rosser-Schoenfeld 1962 and Dusart 1999 were not re-read). For n <= 10^12 two independent
+  programs prove the statement (grid via tau_count, pointwise sieve); the tail for n >= 10^12 uses
+  neither. Zelinsky's Theorem 8 plus the grid to 10^15 is an independent second route; his
+  Lemma 9 has an inadequate justification that Theorem 8 does not need. A111291 terms a(12..15)
+  computed here are not submitted to OEIS. No novelty is claimed; nothing was reported externally.
