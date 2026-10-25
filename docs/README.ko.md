@@ -41,4 +41,5 @@
 | [OEIS A354747 최초 미해결 항 a(100943)](../problems/oeis-a354747/README.md) | 🔴 반례 | [상세 전개](../problems/oeis-a354747/DETAILS.ko.md) |
 | [OEIS A395412 — 비영성이 인증된 유한 범위 확장](../problems/oeis-a395412/README.md) | 🟡 부분 결과 | [상세 전개](../problems/oeis-a395412/DETAILS.ko.md) |
 | [그래프 재색칠 반지름 — 세분된 클로 반례](../problems/recoloring-radius-q15/README.ko.md) | 🔴 반례 | [상세 전개](../problems/recoloring-radius-q15/DETAILS.ko.md) |
+| [WOWII 그래프 추측 72 — Formal Conjectures 읽기를 꼭짓점 28개 그래프로 반박](../problems/wowii-graph-conjecture-72/README.ko.md) | 🔴 반례 | [상세 전개](../problems/wowii-graph-conjecture-72/DETAILS.ko.md) |
 <!-- DETAILS:END -->

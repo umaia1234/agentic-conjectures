@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-56-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
+![problems](https://img.shields.io/badge/problems-57-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-10-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**56 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
+**57 problems** — ✅ proved: 24 · 🔴 refuted: 10 · 🟡 partial: 17 · ⚪ open: 6
 
 ### OEIS
 
@@ -194,6 +194,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 | [R(3,10) C20-bicirculant subcase exclusion](problems/ramsey-r3-10/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims a SAT/DRUP-certified exclusion of one automorphism class only: no triangle-free 40-vertex graph with independence number <= 9 is invariant under the C20 action with cycle structure 20^2, so a hypothetical 40-vertex (3,10) Ramsey graph cannot be such a bicirculant; R(3,10) in {40,41} is not determined. |
 | [Graph recoloring radius — subdivided-claw counterexample](problems/recoloring-radius-q15/README.md) | 🔴 refuted | cert | `GPT-5.6 Sol` | The 7-vertex subdivided claw refutes Question 15 at k=4: C_4(G) and C_5(G) are connected, but exact exhaustive computations give radii 9 and 10. |
 | [WOWII Graph Conjecture 61 partial results](problems/wowii-graph-conjecture-61/README.md) | 🟡 partial | — | `GPT-5.6 Sol` | Claims informal proofs of partial results only: f(G) >= alpha(G) + ceil(D(G)/4) in general, f(G) >= alpha(G)+1 with diameter consequences, and the original conjecture f(G) >= r(G) + ceil(D(G)/3) for all connected graphs of diameter in {0,1,2,3,5,6,9} and for all trees. |
+| [WOWII Graph Conjecture 72 — Formal Conjectures reading refuted by a 28-vertex graph](problems/wowii-graph-conjecture-72/README.md) | 🔴 refuted | lean + cert | `Claude Opus 5.5 (max effort)` | Lean-refutes the Formal Conjectures statement of WOWII Conjecture 72, that every finite connected simple graph on at least two vertices satisfies ceil(avg_v ecc(v) + max_v lambda(v)/3) <= tree(G), with a connected graph on 28 vertices where avg_v ecc(v) = 75/14, max_v lambda(v) = 5 and tree(G) = 7 < 8; the evenly divided reading ceil((avg_v ecc(v) + max_v lambda(v))/3) <= tree(G) holds on this graph and is not refuted. The falsity of the statement was already claimed publicly on 2026-07-23 (X post by @4thRT, made with GPT 5.6 Sol). |
 
 ### Other
 

@@ -1,0 +1,76 @@
+id: wowii-graph-conjecture-72
+title: WOWII Graph Conjecture 72 — Formal Conjectures reading refuted by a 28-vertex graph
+title_ko: WOWII 그래프 추측 72 — Formal Conjectures 읽기를 꼭짓점 28개 그래프로 반박
+domain: graph-combinatorics
+source_url: http://cms.dt.uh.edu/faculty/delavinae/research/wowII/
+claimed_status: refuted
+claim: >-
+  Lean-refutes the Formal Conjectures statement of WOWII Conjecture 72, that every finite connected
+  simple graph on at least two vertices satisfies ceil(avg_v ecc(v) + max_v lambda(v)/3) <= tree(G),
+  with a connected graph on 28 vertices where avg_v ecc(v) = 75/14, max_v lambda(v) = 5 and
+  tree(G) = 7 < 8; the evenly divided reading ceil((avg_v ecc(v) + max_v lambda(v))/3) <= tree(G)
+  holds on this graph and is not refuted. The falsity of the statement was already claimed
+  publicly on 2026-07-23 (X post by @4thRT, made with GPT 5.6 Sol).
+claim_ko: >-
+  WOWII 추측 72의 Formal Conjectures 명제, 즉 꼭짓점이 두 개 이상인 모든 유한 단순 연결 그래프가
+  ceil(avg_v ecc(v) + max_v lambda(v)/3) <= tree(G)를 만족한다는 것을 꼭짓점 28개의 연결 그래프로
+  Lean에서 반박했다. 이 그래프에서 avg_v ecc(v) = 75/14, max_v lambda(v) = 5이고
+  tree(G) = 7 < 8이다. 고르게 나누는 읽기 ceil((avg_v ecc(v) + max_v lambda(v))/3) <= tree(G)는
+  이 그래프에서 성립하며 반박되지 않는다. 이 명제가 거짓이라는 주장은 2026-07-23에 이미
+  공개되었다(@4thRT의 X 게시물, GPT 5.6 Sol로 작성).
+artifacts:
+- path: ../../AgenticConjectures/WowiiGraphConjecture72.lean
+  kind: lean-proof
+- path: DETAILS.md
+  kind: mathematical-details
+- path: verify_wowii72.py
+  kind: certificate-script
+- path: g28.txt
+  kind: data
+- path: upstream_statement_check.lean
+  kind: other
+- path: upstream/GraphConjecture72.lean
+  kind: upstream-lean
+- path: upstream/README.md
+  kind: upstream-source
+verify:
+- cmd: python3 verify_wowii72.py
+  expected_runtime: about 6 seconds
+  ci_feasible: true
+- cmd: for n in 2 3 4 5 6 7 8 9; do geng -cq $n; done | python3 verify_wowii72.py --graph6
+  expected_runtime: about 50 seconds
+  ci_feasible: false
+  requires: [geng]
+- cmd: for k in 0 1 2; do geng -cq 10 $k/3 | python3 verify_wowii72.py --graph6; done
+  expected_runtime: about 75 minutes on one thread (the three parts can run in parallel)
+  ci_feasible: false
+  requires: [geng]
+- cmd: cd ../.. && lake env lean problems/wowii-graph-conjecture-72/upstream_statement_check.lean
+  expected_runtime: about 5 seconds after lake build
+  ci_feasible: false
+  requires: [lake]
+lean:
+  modules:
+  - AgenticConjectures.WowiiGraphConjecture72
+  theorems:
+  - AgenticConjectures.WowiiGraphConjecture72.refuted
+  - AgenticConjectures.WowiiGraphConjecture72.tree_lt_ceil
+  - AgenticConjectures.WowiiGraphConjecture72.card_le_seven
+  - AgenticConjectures.WowiiGraphConjecture72.averageEccentricity_ge
+  - AgenticConjectures.WowiiGraphConjecture72.five_le_indepNeighborsCard
+  - AgenticConjectures.WowiiGraphConjecture72.graph_connected
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: counterexample construction, Lean 4 formal refutation, numerical check, and documentation
+notes: >-
+  Not novel: an X post by @4thRT (2026-07-23, produced with GPT 5.6 Sol) and recorded by the
+  VibeMathed tracker proves the evenly divided reading and states that the reading dividing only
+  max_v lambda(v) by 3 is false; we did not compare our graph with the family in that post. Only
+  the Formal Conjectures theorem conjecture72 at c094b97 (unchanged at main 37f0808) is refuted, not
+  the WOWII row under its other reading. The three helper definitions are copied term for term and
+  the theorem's hypotheses and conclusion are verbatim; upstream_statement_check.lean derives the
+  negation of the upstream statement over the upstream-namespaced definitions, but it is not
+  imported by the library, so CI does not run it. The Python script is an independent cross-check:
+  two induced-tree computations agree, and no connected graph on at most 10 vertices violates
+  either reading. No human has reviewed the refutation, and nothing has been submitted externally.
