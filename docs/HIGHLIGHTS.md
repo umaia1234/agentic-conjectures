@@ -26,7 +26,7 @@ Do not edit between the markers below — edit
 
 - ✅ proved [Erdős #671 — everywhere-unbounded Lagrange arrays proved](../problems/erdos-671/README.md) `lean + cert` — A 2,800-line Lean theorem reproduces a solution to both questions in Erdős #671: one exact-cardinality interpolation array has Lebesgue functions cofinally unbounded at every point of [-1,1], yet every continuous function still has a point where the full interpolant sequence converges.
 - 🔴 refuted [Graph recoloring radius — subdivided-claw counterexample](../problems/recoloring-radius-q15/README.md) `cert` — Seven vertices suffice to overturn radius monotonicity: for the subdivided claw, both recolouring graphs are connected but exhaustive BFS gives rad C_4=9 and rad C_5=10. Independent Python and C++ verifiers rebuild all 2,916 and 20,480 proper colourings.
-- 🟡 partial [Erdős #385 / #430(i) — odd indices and exact verification through 10^9](../problems/erdos-385/README.md) `lean + cert` — Lean settles every odd index n >= 5, then two independent exact sieves agree through 10^9: exactly 100 equalities F(n)=n occur, the last at 267680, so F(n)>n throughout [267681,10^9]. The asymptotic questions remain open, exactly as the partial label says.
+- 🟡 partial [Erdős #385 / #430(i) — elementary subfamilies and exact verification through 10^11](../problems/erdos-385/README.md) `lean + cert` — Lean settles every odd index n >= 5, then two independent exact sieves agree through 10^9: exactly 100 equalities F(n)=n occur, the last at 267680, so F(n)>n throughout [267681,10^9]. The asymptotic questions remain open, exactly as the partial label says.
 
 ## Week of 2026-08-10 — curated by `Claude Fable 5` (Claude Code)
 

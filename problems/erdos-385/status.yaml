@@ -1,17 +1,19 @@
 id: erdos-385
-title: 'Erdős #385 / #430(i) — odd indices and exact verification through 10^9'
-title_ko: '에르되시 #385 / #430(i) — 홀수 지표 정리와 10^9까지의 정확한 검증'
+title: 'Erdős #385 / #430(i) — elementary subfamilies and exact verification through 10^11'
+title_ko: '에르되시 #385 / #430(i) — 초등적 부분족과 10^11까지의 정확한 검증'
 domain: erdos
 source_url: https://www.erdosproblems.com/385
 claimed_status: partial
 claim: >-
-  Lean-proves F(n)>=n for n>=5 and F(n)>n at every odd n>=5; two independent exact sieves classify
-  F(n)=n through 10^9, finding 100 equality cases with largest 267680 and hence F(n)>n throughout
-  [267681,10^9], while both asymptotic questions remain open.
+  Lean-proves F(n)>=n for n>=5, F(n)>n whenever n>=5 and n-1 is not prime (all odd n and all
+  n≡4 mod 6), so every equality case is even with n-1 prime; two independent exact sieves classify
+  F(n)=n through 10^11, finding the same 100 equality cases (largest 267680) and hence F(n)>n on
+  [267681,10^11], while both asymptotic questions remain open.
 claim_ko: >-
-  Lean으로 n>=5이면 F(n)>=n이고 홀수 n>=5이면 F(n)>n임을 증명했다. 서로 독립적인 두 정확한
-  체가 10^9까지 F(n)=n인 경우를 분류하여 등호 사례가 정확히 100개이고 최댓값이 267680임을
-  확인하므로 [267681,10^9] 전체에서 F(n)>n이다. 두 점근적 질문은 여전히 미해결이다.
+  Lean으로 n>=5이면 F(n)>=n이고, n>=5이며 n-1이 소수가 아니면(모든 홀수 n과 n≡4 mod 6인
+  모든 n) F(n)>n임을 증명하여 모든 등호 사례는 n-1이 소수인 짝수임을 보였다. 서로 독립적인
+  두 정확한 체가 10^11까지 F(n)=n인 경우를 분류하여 같은 100개 등호 사례(최댓값 267680)만
+  있음을 확인하므로 [267681,10^11] 전체에서 F(n)>n이다. 두 점근적 질문은 여전히 미해결이다.
 artifacts:
 - path: DETAILS.md
   kind: mathematical-details
@@ -25,6 +27,18 @@ artifacts:
   kind: search-code
 - path: billion_result.json
   kind: data
+- path: verify_extended.py
+  kind: certificate-script
+- path: allint_segments.cpp
+  kind: search-code
+- path: odd_carry.cpp
+  kind: search-code
+- path: extended_result.json
+  kind: data
+- path: logs/allint_segments_6_1e11.jsonl
+  kind: data
+- path: logs/odd_carry_6_1e11.jsonl
+  kind: data
 - path: upstream/385.lean
   kind: upstream-lean
 verify:
@@ -32,12 +46,24 @@ verify:
   expected_runtime: ~17-90s depending on hardware and load; peak memory ~4.1 GiB because both independent implementations run through 10^9
   ci_feasible: true
   requires: [g++]
+- cmd: python3 verify_extended.py
+  expected_runtime: ~10-60s depending on hardware and load; peak memory ~120 MB; recomputes the first and last 10^9 segments with both programs
+  ci_feasible: true
+  requires: [g++]
+- cmd: python3 verify_extended.py --full
+  expected_runtime: ~10 min wall with 4 threads here (12 CPU-minutes); under 10 MB per program; recomputes all 100 segments with both programs
+  ci_feasible: false
+  requires: [g++]
 lean:
   modules:
   - AgenticConjectures.Erdos385
   theorems:
   - AgenticConjectures.Erdos385.odd_index_lt_F
   - AgenticConjectures.Erdos385.index_le_F
+  - AgenticConjectures.Erdos385.lt_F_iff
+  - AgenticConjectures.Erdos385.lt_F_of_not_prime_pred
+  - AgenticConjectures.Erdos385.lt_F_of_mod_six_eq_four
+  - AgenticConjectures.Erdos385.even_and_prime_pred_of_F_eq
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
@@ -45,9 +71,20 @@ attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: Lean 4 odd-index and baseline theorems; independent billion-range certificate and documentation
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: >-
+    two independent multithreaded sieves extending the exact classification to 10^11 with
+    per-segment logs, fingerprints and verifier; Lean coverage criterion, n-1-composite family,
+    n≡4 mod 6 class and equality-case necessary condition
 notes: >-
-  Partial result only: neither eventual strict inequality nor divergence of F(n)-n is proved. The dense
-  linear sieve and odd-only segmented sieve independently agree on all 100 equality cases and twelve slack
-  thresholds through 10^9; the Lean definition differs from the upstream sSup presentation only at the empty
-  small-index boundary. No novelty or priority is claimed without external review; upstream research
-  declarations remain sorry-backed.
+  Partial result only: neither eventual strict inequality nor divergence of F(n)-n is proved. Through 10^9
+  the dense linear sieve and odd-only segmented sieve agree on all 100 equality cases and twelve slack
+  thresholds. Through 10^11 a second, multithreaded pair (all-integer sieve with independent warm-up
+  segments versus odd-only sieve with one exact carried scan) agrees on all 100 per-segment records,
+  including equality cases, 18 slack thresholds, minima, exact slack sums and a 64-bit fingerprint of
+  F(n)-n at every index; CI recomputes the first and last 10^9 segments with both programs, while the full
+  recomputation is local only. The fingerprint is a probabilistic cross-check, not a certificate. The Lean
+  definition differs from the upstream sSup presentation only at the empty small-index boundary. No
+  novelty or priority is claimed without external review; upstream research declarations remain
+  sorry-backed.

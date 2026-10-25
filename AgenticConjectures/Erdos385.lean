@@ -25,7 +25,12 @@ difference is irrelevant.  All indices and least prime factors are natural
 numbers; the only subtraction is `n - 1`, protected by `5 ≤ n`.
 
 This module does not assert either open asymptotic statement.  It proves the
-elementary but infinite subfamily `F(n) > n` for every odd `n ≥ 5`.
+elementary but infinite subfamily `F(n) > n` for every odd `n ≥ 5`, and more
+generally whenever `n - 1` is not prime (for example `n % 6 = 4`).  It also
+proves the coverage criterion `n < F n ↔ ∃ m < n, Composite m ∧ n < m + p(m)`
+used by the finite certificate programs, and the resulting necessary condition
+for an equality case: if `n ≥ 5` and `F n = n`, then `n` is even and `n - 1` is
+prime.
 -/
 
 namespace AgenticConjectures.Erdos385
@@ -86,6 +91,50 @@ theorem index_le_F (n : ℕ) (hn : 5 ≤ n) : n ≤ F n := by
     have hle := candidate_le_F (m := n - 2) (n := n) (by omega) hcomposite
     have hminfac : (n - 2).minFac = 2 := (Nat.minFac_eq_two_iff _).mpr htwo
     rw [hminfac] at hle
+    omega
+
+/-- The coverage criterion behind the finite certificate: `F(n) > n` exactly
+when some composite `m < n` satisfies `n < m + p(m)`, i.e. `n - m < p(m)`. -/
+theorem lt_F_iff (n : ℕ) : n < F n ↔ ∃ m < n, Composite m ∧ n < m + m.minFac := by
+  classical
+  unfold F
+  rw [Finset.lt_sup_iff]
+  constructor
+  · rintro ⟨m, hm, hlt⟩
+    by_cases hc : Composite m
+    · exact ⟨m, Finset.mem_range.mp hm, hc, by simpa [hc] using hlt⟩
+    · simp [hc] at hlt
+  · rintro ⟨m, hm, hc, hlt⟩
+    exact ⟨m, Finset.mem_range.mpr hm, by simpa [hc] using hlt⟩
+
+/-- Generalization of `odd_index_lt_F`: if `n ≥ 5` and `n - 1` is not prime,
+then the composite witness `m = n - 1` gives `F(n) ≥ n - 1 + p(n - 1) > n`. -/
+theorem lt_F_of_not_prime_pred (n : ℕ) (hn : 5 ≤ n) (hprime : ¬ (n - 1).Prime) :
+    n < F n := by
+  have hcomposite : Composite (n - 1) := ⟨by omega, hprime⟩
+  have hle := candidate_le_F (m := n - 1) (n := n) (by omega) hcomposite
+  have htwo : 2 ≤ (n - 1).minFac := (Nat.minFac_prime (by omega)).two_le
+  omega
+
+/-- An even residue class beyond the odd indices: if `n ≥ 5` and `n ≡ 4 (mod 6)`,
+then `n - 1 ≥ 9` is an odd multiple of `3`, hence composite, and `F(n) > n`. -/
+theorem lt_F_of_mod_six_eq_four (n : ℕ) (hn : 5 ≤ n) (hmod : n % 6 = 4) : n < F n := by
+  apply lt_F_of_not_prime_pred n hn
+  intro hprime
+  have hthree : 3 ∣ n - 1 := by omega
+  have := hprime.eq_one_or_self_of_dvd 3 hthree
+  omega
+
+/-- Necessary condition for an equality case: if `n ≥ 5` and `F(n) = n`, then
+`n` is even and `n - 1` is prime. -/
+theorem even_and_prime_pred_of_F_eq (n : ℕ) (hn : 5 ≤ n) (heq : F n = n) :
+    Even n ∧ (n - 1).Prime := by
+  constructor
+  · by_contra hnot
+    have := odd_index_lt_F n hn (Nat.not_even_iff_odd.mp hnot)
+    omega
+  · by_contra hnot
+    have := lt_F_of_not_prime_pred n hn hnot
     omega
 
 end AgenticConjectures.Erdos385
