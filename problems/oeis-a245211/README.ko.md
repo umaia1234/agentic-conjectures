@@ -25,6 +25,11 @@
 
 또한 그런 반례는 `2*3*5*7*11=2310`과 서로소여야 한다.
 
+2310과의 서로소성과 2번 항목의 squarefree 분류는, 그 바탕이 되는 곱
+형태·하계·소수거듭제곱 배제와 함께 Lean 커널로 검사했다
+([Lean 4 형식화](#lean-4-형식화) 참고). 2진 valuation 항등식 (3)과
+exact 계산은 형식화하지 않았다.
+
 ## 곱 형태
 
 소인수분해를
@@ -350,6 +355,62 @@ python3 problems/oeis-a245211/a245211_two_prime.py 200
 
 따라서 본 결과는 A245211 추측의 증명이 아니라, 이후 증명이 다뤄야 할
 형태를 크게 줄인 부분 진전이다.
+
+## Lean 4 형식화
+
+위의 보조정리 1, 2, 4, 5, 6(2진 valuation을 다루는 보조정리 3을 제외한
+전부)은 mathlib만을 사용해 `sorry` 없이
+[`AgenticConjectures/OeisA245211.lean`](../../AgenticConjectures/OeisA245211.lean)
+(네임스페이스 `AgenticConjectures.OeisA245211`)에 형식화되어 있다.
+
+| 선언 | 내용 |
+|---|---|
+| `a n` | 상류 정의를 항 단위로 그대로 옮긴 것: `ℕ`에서의 `∑_{d ∣ n} d τ(d) - n τ(n)` |
+| `statement` | 미해결 추측 `∀ n, 0 < n → (a n = n ↔ n = 21)` (`Prop`일 뿐 **증명되지 않음**) |
+| `a_21` | `a 21 = 21` |
+| `a_eq_self_iff` | 곱 형태 (1): `a n = n ↔ W n = n (τ(n) + 1)`. 여기서 `W n = ∑_{d ∣ n} d τ(d)`는 곱셈적이고 `W (p^k) = H_k(p)`이다 |
+| `card_divisors_div_lt`, `lower_bound` | 하계 (2): 해 `n ≠ p`의 모든 소인수 `p`에 대해 `τ(n / p) < p`; `p ∤ m`인 `n = p^(k+1) m`이면 `(k + 1) τ(m) < p` |
+| `a_prime_pow_ne` | 보조정리 2: `a (p^k) ≠ p^k` |
+| `odd_of_a_eq_self` | 보조정리 4, 소수 2: 모든 해는 홀수이다 |
+| `eq_21_of_three_dvd`, `eq_21_of_seven_dvd` | 보조정리 4, 소수 3과 7: 3 또는 7로 나누어지는 해는 21이다 |
+| `not_five_dvd`, `not_eleven_dvd` | 보조정리 4, 소수 5와 11: 5나 11로 나누어지는 해는 없다 |
+| `coprime_2310`, `thirteen_le_minFac` | 해 `n ≠ 21`은 2310과 서로소이므로 가장 작은 소인수가 13 이상이다 |
+| `a_mul_eq_self_iff` | squarefree semiprime: `a (p q) = p q ↔ p q = 21` |
+| `a_mul_mul_ne` | 보조정리 5: 서로 다른 소수 `x, y, z`에 대해 `a (x y z) ≠ x y z` |
+| `squarefree_even` | 보조정리 6: 서로 다른 소인수가 4개 이상의 짝수 개인 squarefree 해는 없다 |
+| `squarefree_card` | squarefree 해 `n ≠ 21`의 서로 다른 소인수 개수는 5 이상의 홀수이다 |
+
+진술의 충실성. `a`와 `statement`는 상류 스냅샷의 `a`와
+`oeis_245211_conjecture_0`을 항 단위로 그대로 복사했다. \(n\tau(n)\)이
+합의 한 항이므로 `a`의 `ℕ` 뺄셈은 절단되지 않고, 따라서 `a n`은 OEIS
+이름의 proper-divisor 합과 같다(`a_eq_sum_properDivisors`). 모든 정리는
+이 `a`에 대해 가정 `a n = n`(필요한 곳에서는 `0 < n`도)으로부터
+진술된다.
+
+Lean 증명은 위의 논증과 세 군데에서 다르며, 진술은 같다.
+
+- 보조정리 2는 \(H_k(p)\equiv1\pmod p\)를 쓴다. \(k\ge1\)인
+  \(n=p^k\)에 대해 (1)은 \(p\mid H_k(p)\)를 강제한다.
+- 보조정리 4는 2진 조건 (4)를 쓰지 않는다. 보조정리 `reduce` 하나가
+  해의 소인수를 차례로 떼어 내며 (2)로 지수를 제한한다. 그런 다음 (2)가
+  허용하는 모든 지수형을 \(q\)에 대한 일차방정식, \(q^b\mid H_a(p)\),
+  또는 (1)의 mod 2 비교로 직접 배제한다. 항등식 (3)은 형식화하지
+  않았다.
+- 보조정리 6은 \(3\nmid n\)을 \(p_i>2^{r-1}\)이 아니라 보조정리 4에서
+  얻는다(3으로 나누어지는 해는 21이고, 21의 소인수는 두 개뿐이다).
+
+위의 exact 계산 결과는 형식화하지 않았고, CI에서도 재실행하지 않는다
+(`ci_feasible: false`).
+
+재현(저장소 루트에서; `lake build`와 `check_axioms.py`는 mathlib 캐시
+`lake exe cache get`이 필요하다):
+
+```bash
+lake build AgenticConjectures.OeisA245211   # 이 모듈만, mathlib 캐시가 있으면 약 30초
+lake build                                  # 라이브러리 전체 (check_axioms.py에 필요)
+python3 scripts/check_sorry.py
+python3 scripts/check_axioms.py             # propext / Classical.choice / Quot.sound만 허용
+```
 
 ## 상류 Lean 형식화
 

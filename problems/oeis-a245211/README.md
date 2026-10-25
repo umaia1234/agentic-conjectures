@@ -29,6 +29,12 @@ the following two families.
 
 Moreover, such a counterexample must be coprime to `2*3*5*7*11=2310`.
 
+The coprimality to 2310 and the squarefree classification of item 2 are
+kernel-checked in Lean, along with the product form, the lower bound and
+the prime-power exclusion they rest on (see
+[Lean 4 formalization](#lean-4-formalization)). The 2-adic identity (3)
+and the exact computations are not.
+
 ## Product form
 
 Write the prime factorization as
@@ -362,6 +368,63 @@ The core cases not fully handled by proof are the following.
 Therefore the present result is not a proof of the A245211 conjecture, but
 partial progress that greatly reduces the forms a future proof must
 address.
+
+## Lean 4 formalization
+
+Lemmas 1, 2, 4, 5 and 6 above (all but the 2-adic lemma 3) are
+formalized, `sorry`-free and against mathlib only, in
+[`AgenticConjectures/OeisA245211.lean`](../../AgenticConjectures/OeisA245211.lean)
+(namespace `AgenticConjectures.OeisA245211`):
+
+| Declaration | Content |
+|---|---|
+| `a n` | the upstream definition, term for term: `∑_{d ∣ n} d τ(d) - n τ(n)` in `ℕ` |
+| `statement` | the open conjecture `∀ n, 0 < n → (a n = n ↔ n = 21)` (a `Prop`, **not** proved) |
+| `a_21` | `a 21 = 21` |
+| `a_eq_self_iff` | product form (1): `a n = n ↔ W n = n (τ(n) + 1)`, where `W n = ∑_{d ∣ n} d τ(d)` is multiplicative and `W (p^k) = H_k(p)` |
+| `card_divisors_div_lt`, `lower_bound` | lower bound (2): `τ(n / p) < p` for every prime `p ∣ n` of a solution `n ≠ p`; for `n = p^(k+1) m` with `p ∤ m`, `(k + 1) τ(m) < p` |
+| `a_prime_pow_ne` | lemma 2: `a (p^k) ≠ p^k` |
+| `odd_of_a_eq_self` | lemma 4, prime 2: every solution is odd |
+| `eq_21_of_three_dvd`, `eq_21_of_seven_dvd` | lemma 4, primes 3 and 7: a solution divisible by 3 or by 7 is 21 |
+| `not_five_dvd`, `not_eleven_dvd` | lemma 4, primes 5 and 11: no solution is divisible by 5 or by 11 |
+| `coprime_2310`, `thirteen_le_minFac` | a solution `n ≠ 21` is coprime to 2310, so its least prime factor is at least 13 |
+| `a_mul_eq_self_iff` | squarefree semiprimes: `a (p q) = p q ↔ p q = 21` |
+| `a_mul_mul_ne` | lemma 5: `a (x y z) ≠ x y z` for distinct primes `x, y, z` |
+| `squarefree_even` | lemma 6: no squarefree solution has an even number `≥ 4` of prime factors |
+| `squarefree_card` | a squarefree solution `n ≠ 21` has an odd number `≥ 5` of distinct prime factors |
+
+Statement faithfulness. `a` and `statement` are copied term for term
+from the upstream snapshot (`a` and `oeis_245211_conjecture_0`). The
+`ℕ` subtraction in `a` never truncates, because \(n\tau(n)\) is one of
+the summands, so `a n` is the proper-divisor sum of the OEIS name
+(`a_eq_sum_properDivisors`). Every theorem is stated for this `a`,
+from the hypothesis `a n = n` (and `0 < n` where it matters).
+
+The Lean proofs differ from the arguments above in three places; the
+statements are the same.
+
+- Lemma 2 uses \(H_k(p)\equiv1\pmod p\): for \(n=p^k\) with
+  \(k\ge1\), (1) forces \(p\mid H_k(p)\).
+- Lemma 4 does not use the 2-adic condition (4). One lemma, `reduce`,
+  peels the prime factors off a solution and bounds the exponents with
+  (2). Every exponent pattern that (2) allows is then refuted directly:
+  by the linear equation for \(q\), by \(q^b\mid H_a(p)\), or by (1)
+  modulo 2. The identity (3) is not formalized.
+- Lemma 6 gets \(3\nmid n\) from lemma 4 (a solution divisible by 3 is
+  21, which has two prime factors) instead of from \(p_i>2^{r-1}\).
+
+The exact computation results above are not formalized, and CI does not
+rerun them (`ci_feasible: false`).
+
+Reproduce (from the repository root; `lake build` and `check_axioms.py`
+need the mathlib cache, `lake exe cache get`):
+
+```bash
+lake build AgenticConjectures.OeisA245211   # this module alone, ~30 s once mathlib is cached
+lake build                                  # whole library (needed by check_axioms.py)
+python3 scripts/check_sorry.py
+python3 scripts/check_axioms.py             # only propext / Classical.choice / Quot.sound
+```
 
 ## Upstream Lean formalization
 

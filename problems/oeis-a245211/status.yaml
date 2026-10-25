@@ -4,13 +4,15 @@ title_ko: 'OEIS A245211: a(n)=n인 것은 n=21뿐'
 domain: oeis
 source_url: https://oeis.org/A245211
 claimed_status: partial
-claim: 'Claims only partial progress: proved necessary conditions forcing any counterexample to the uniqueness
-  of n=21 to be coprime to 2310 with a restricted factorization shape, plus exact verification for all
-  n <= 10^9 and for two-prime-factor n with exponents <= 200.'
+claim: 'Claims only partial progress: Lean-verifies that any counterexample to the uniqueness of n=21
+  is coprime to 2310 and, if squarefree, has an odd number >= 5 of distinct prime factors; exact
+  computation (not rerun in CI) covers all n <= 10^9 and two-prime-factor n with exponents <= 200;
+  the conjecture itself remains unresolved.'
 claim_ko: >-
-  부분적 진전만을 주장한다. n=21의 유일성에 대한 모든 반례가 2310과 서로소이고 제한된 인수분해
-  형태를 가져야 한다는 필요조건을 증명했으며, 모든 n <= 10^9와 서로 다른 소인수가 두 개이고 각
-  지수가 <= 200인 모든 n을 정확히 검증했다.
+  부분적 진전만을 주장한다. n=21의 유일성에 대한 모든 반례가 2310과 서로소이고, squarefree라면
+  서로 다른 소인수가 5개 이상의 홀수 개여야 함을 Lean으로 검증했다. 모든 n <= 10^9와 서로 다른
+  소인수가 두 개이고 각 지수가 <= 200인 모든 n은 정확한 계산으로 확인했지만(CI에서 재실행하지
+  않음), 추측 자체는 여전히 미해결이다.
 artifacts:
 - path: DETAILS.md
   kind: mathematical-details
@@ -30,6 +32,26 @@ verify:
 - cmd: python3 a245211_two_prime.py 200
   expected_runtime: unknown (388,919 exact prime-candidate checks)
   ci_feasible: false
+lean:
+  modules:
+  - AgenticConjectures.OeisA245211
+  theorems:
+  - AgenticConjectures.OeisA245211.a_21
+  - AgenticConjectures.OeisA245211.a_eq_self_iff
+  - AgenticConjectures.OeisA245211.card_divisors_div_lt
+  - AgenticConjectures.OeisA245211.lower_bound
+  - AgenticConjectures.OeisA245211.a_prime_pow_ne
+  - AgenticConjectures.OeisA245211.a_mul_eq_self_iff
+  - AgenticConjectures.OeisA245211.a_mul_mul_ne
+  - AgenticConjectures.OeisA245211.squarefree_even
+  - AgenticConjectures.OeisA245211.squarefree_card
+  - AgenticConjectures.OeisA245211.odd_of_a_eq_self
+  - AgenticConjectures.OeisA245211.eq_21_of_three_dvd
+  - AgenticConjectures.OeisA245211.not_five_dvd
+  - AgenticConjectures.OeisA245211.eq_21_of_seven_dvd
+  - AgenticConjectures.OeisA245211.not_eleven_dvd
+  - AgenticConjectures.OeisA245211.coprime_2310
+  - AgenticConjectures.OeisA245211.thirteen_le_minFac
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
@@ -37,6 +59,17 @@ attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: documentation restructuring of existing mathematical details
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: Lean 4 formalization of the product form, lower bound, prime-power exclusion, squarefree
+    classification and small-prime-factor exclusions (AgenticConjectures.OeisA245211) and the
+    accompanying documentation
 notes: README opens by stating the full conjecture remains unresolved; remaining gaps are two-prime cases
   with exponents > 200, nonsquarefree n with >= 3 prime factors, and squarefree n with an odd number r
   >= 5 of prime factors; upstream Lean uniqueness theorem is a sorry-marked conjecture statement.
+  DETAILS.md Sections 1-3, 5 and 6 (product form, lower bound, prime powers, squarefree classification,
+  gcd(n,2310)=1) are kernel-checked in AgenticConjectures/OeisA245211.lean against a term-for-term copy
+  of the upstream definition of a (Nat subtraction that never truncates). The Lean Section 6 proof
+  refutes every exponent pattern allowed by the lower bound directly (linear equations, q^b | H_a(p),
+  parity of the product form) instead of filtering with the 2-adic condition (A245-7), which, like the
+  10^9 scan and the two-prime exponent search, is not formalized.
