@@ -1,0 +1,51 @@
+id: oeis-a110566
+title: OEIS A110566 — "every odd number occurs" refuted (81 never occurs)
+title_ko: OEIS A110566 — "모든 홀수가 나타난다" 추측 반박 (81은 나타나지 않음)
+domain: oeis
+source_url: https://oeis.org/A110566
+claimed_status: refuted
+claim: 'Refutes the conjecture that every odd number occurs in a(n) = lcm(1..n)/den(H_n): Lean 4 proves
+  v3(a(n)) <= 3 for every n, so 81, like every odd multiple of 81, is never a term.'
+claim_ko: >-
+  a(n) = lcm(1..n)/den(H_n)에 모든 홀수가 나타난다는 추측을 반박했다. 모든 n에 대해
+  v3(a(n)) <= 3임을 Lean 4로 증명했으므로, 81은 81의 다른 홀수 배수와 마찬가지로 이 수열의 항이
+  되지 않는다.
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: a110566_certificate.py
+  kind: certificate-script
+- path: upstream/110566.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 a110566_certificate.py
+  expected_runtime: about 4 seconds
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.OeisA110566
+  theorems:
+  - AgenticConjectures.OeisA110566.not_statement
+  - AgenticConjectures.OeisA110566.not_eightyone_dvd_a
+  - AgenticConjectures.OeisA110566.padicValNat_a_le
+  - AgenticConjectures.OeisA110566.padicValRat_harmonic_add_log_le
+  - AgenticConjectures.OeisA110566.padicValRat_harmonic_pos_iff
+  - AgenticConjectures.OeisA110566.padicValRat_harmonic_step
+  - AgenticConjectures.OeisA110566.den_dvd_lcm
+  - AgenticConjectures.OeisA110566.a_6
+  - AgenticConjectures.OeisA110566.a_66
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: harvest triage, refutation proof, Lean 4 formalization, certificate script, and documentation
+notes: >-
+  The Lean statement copies the upstream definition of a and the conjecture term for term (same
+  open Nat Finset Rat; only the module scaffolding and metadata attributes differ), and harmonic is the
+  same mathlib definition at upstream's pinned revision. The proof is self-contained in Lean. Ten exact
+  harmonic numbers (n up to 68) are evaluated by norm_num, the sanity values a(6)=3 and a(66)=27 use
+  decide +kernel, and v3(lcm(1..n)) comes from mathlib's Nat.factorization_lcmUpto. The key lemma
+  {n : v3(H_n) > 0} = {2, 7, 22} reproduces Eswarathasan-Levine (1991). The Python certificate is only
+  a numerical cross-check (n <= 30000 by default, 300000 optionally). It agrees with the 90 OEIS DATA
+  terms, and a development run matched all 10000 b-file terms. Prior art was checked only on OEIS. The
+  result is unreviewed, no novelty is claimed, and nothing was submitted to OEIS. The refutation leaves
+  open which odd numbers do occur (for example, whether 35 does).
