@@ -1,0 +1,98 @@
+id: theta-arithmetic-sum
+title: 'Theta arithmetic sum S(k) (arXiv:2501.03234) — exact formula, upper bound and check to 2·10^6'
+title_ko: '세타 산술합 S(k) (arXiv:2501.03234) — 정확한 공식, 상계, 2·10^6까지의 검증'
+domain: other
+source_url: https://arxiv.org/abs/2501.03234
+claimed_status: partial
+claim: >-
+  Pen-and-paper proof, not machine-checked (reviewed independently by a separate AI session; CI
+  re-checks only the numerics): |S(k)|<6k(1+ln k)^2+8k for every odd prime k, which settles the
+  upper inequality of Conjecture 3.3 (arXiv v2/v3). Lean-checked: the exact formula
+  S(k)=kH(k)-(k-1)/2+2V(k) for odd primes k (V a sum of Hardy sums), hence that Conjecture 1.1 is
+  equivalent to 2V(k)>(k-1)/2-kH(k), and Conjectures 1.1, 4.1 and 4.2 for every odd prime k<300.
+  Two independent O(k log k) programs find no violation of Conjectures 1.1 and 4.1-4.3 for odd
+  primes k<=2·10^6; Conjectures 1.1 and 4.1-4.4 remain open.
+claim_ko: >-
+  기계 검증되지 않은 손 증명(별도의 AI 세션이 독립적으로 검토했고, CI는 수치만 다시 검사함):
+  모든 홀수 소수 k에 대해 |S(k)|<6k(1+ln k)^2+8k이며, 이로써 추측 3.3(arXiv v2/v3)의 위쪽
+  부등식이 해결된다. Lean 검증: 홀수 소수 k에 대한 정확한 공식 S(k)=kH(k)-(k-1)/2+2V(k)(V는
+  Hardy 합의 합), 이로부터 따르는 추측 1.1과 2V(k)>(k-1)/2-kH(k)의 동치, 그리고 k<300인 모든
+  홀수 소수에 대한 추측 1.1, 4.1, 4.2. 서로 독립적인 두 O(k log k) 프로그램은 k<=2·10^6인 홀수
+  소수에서 추측 1.1, 4.1-4.3의 위반을 찾지 못했으며, 추측 1.1과 4.1-4.4는 여전히 미해결이다.
+artifacts:
+- path: DETAILS.md
+  kind: mathematical-details
+- path: ../../AgenticConjectures/ThetaArithmeticSum.lean
+  kind: lean-proof
+- path: verify.py
+  kind: certificate-script
+- path: s_dedekind.cpp
+  kind: search-code
+- path: s_hardy.cpp
+  kind: search-code
+- path: s_literal.cpp
+  kind: search-code
+- path: data/S_odd_primes.txt
+  kind: data
+- path: data/S_all_k_le_10000.txt
+  kind: data
+- path: logs
+  kind: other
+- path: upstream/ArithmeticSumS.lean
+  kind: upstream-lean
+- path: upstream/README.md
+  kind: upstream-source
+verify:
+- cmd: python3 verify.py
+  expected_runtime: ~15s (exact identity checks and each step of Theorem 7.1 for primes <=400; compiles the three C++ programs; methods A and B for every odd prime <=50000; method C on small ranges; audit of both tables; needs Python mpmath, which comes with sympy)
+  ci_feasible: true
+  requires: [g++]
+- cmd: python3 verify.py --full
+  expected_runtime: several hours on one thread (methods A and B over the whole table to 2·10^6; method C for every prime <=30000 and every k<=10000)
+  ci_feasible: false
+  requires: [g++]
+lean:
+  modules:
+  - AgenticConjectures.ThetaArithmeticSum
+  theorems:
+  - AgenticConjectures.ThetaArithmeticSum.floor_eq
+  - AgenticConjectures.ThetaArithmeticSum.S'_eq
+  - AgenticConjectures.ThetaArithmeticSum.S'_eq_zero_of_odd
+  - AgenticConjectures.ThetaArithmeticSum.S'_sub_eq_s4
+  - AgenticConjectures.ThetaArithmeticSum.s4_eq_zero_of_even
+  - AgenticConjectures.ThetaArithmeticSum.S_eq_sum_s4
+  - AgenticConjectures.ThetaArithmeticSum.S_eq_sum_sq
+  - AgenticConjectures.ThetaArithmeticSum.S_eq_sum_odd
+  - AgenticConjectures.ThetaArithmeticSum.s4_eq_two_mul
+  - AgenticConjectures.ThetaArithmeticSum.S_eq_fastS
+  - AgenticConjectures.ThetaArithmeticSum.small_primes
+  - AgenticConjectures.ThetaArithmeticSum.S_fst_10
+  - AgenticConjectures.ThetaArithmeticSum.s4_eq_reciprocity
+  - AgenticConjectures.ThetaArithmeticSum.S_eq_exact
+  - AgenticConjectures.ThetaArithmeticSum.statement_1_1_iff
+  - AgenticConjectures.ThetaArithmeticSum.statement_3_3_iff
+  - AgenticConjectures.ThetaArithmeticSum.statement_3_3_lower_iff
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: identities and the upper bound (pen and paper), Lean 4 reductions, exact formula and small cases, exact computation to 2·10^6, verification script and documentation
+notes: >-
+  Partial result only: Conjectures 1.1 and 4.1-4.4 of the paper and the lower inequality of Conjecture 3.3
+  are not proved. The bound |S(k)|<6k(1+ln k)^2+8k (Theorem 7.1 of DETAILS.md), which settles the upper
+  inequality of Conjecture 3.3, is a pen-and-paper proof and is not machine-checked: one independent review
+  by a separate AI session re-derived every step and found no gap, and CI re-checks only the numerics
+  (verify.py checks each claim of the proof for every prime k<=400, and the bound, which holds there with at
+  least 40-fold slack, on every table row). Lean states Conjecture 3.3 and its two inequalities
+  (statement_3_3, statement_3_3_lower, statement_3_3_upper; not upstream, formalized from the text of v3)
+  and proves only that the conjecture is their conjunction and that the lower one is equivalent to
+  Conjecture 4.4. Lean also covers the exact reductions of the upstream definition, the reciprocity law
+  (Proposition 4.1), the exact formula (Theorem 4.3) with the resulting reformulation of Conjecture 1.1,
+  and a kernel check of Conjectures 1.1, 4.1 and 4.2 for odd primes k<300; the Dedekind-sum forms, the
+  error-term and divisor identities and the character form are pen-and-paper proofs, checked by verify.py
+  on small ranges but not formalized. Several ingredients are classical: the Dedekind form follows from
+  Sitaramachandrarao's formula, the reciprocity law is of Berndt-Goldberg type and the character form
+  follows from Zhang (2003, Lemma 5); see DETAILS.md. verify.py needs g++ and Python with mpmath (which
+  comes with sympy, as in CI). The table to 2·10^6 comes from two
+  programs using different decompositions and different Dedekind-sum evaluations, plus the literal definition
+  to 30000. No novelty is claimed; nothing has been reported upstream or to the authors. The upstream research
+  declarations remain sorry-backed.

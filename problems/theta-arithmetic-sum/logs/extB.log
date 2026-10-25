@@ -1,0 +1,16 @@
+start B-recheck [3,200000] 2026-10-25T00:21:23Z
+real 72.04
+user 70.72
+sys 0.20
+end B-recheck 2026-10-25T00:22:35Z exit=0
+B-recheck matches old B output
+start B-ext1 [1000001,1500000] 2026-10-25T00:22:35Z
+real 2119.22
+user 2210.57
+sys 6.96
+end B-ext1 2026-10-25T00:59:56Z exit=0
+start B-ext2 [1500001,2000000] 2026-10-25T00:59:56Z
+real 946.66
+user 3054.95
+sys 7.63
+end B-ext2 2026-10-25T01:53:02Z exit=0

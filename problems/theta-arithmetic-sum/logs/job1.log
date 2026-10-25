@@ -1,0 +1,17 @@
+start A 2026-10-24T23:45:44Z
+real 2105.45
+user 2055.12
+sys 6.67
+end A 2026-10-25T00:20:49Z exit=0
+start C primes<=30000 2026-10-25T00:20:49Z
+real 452.85
+user 446.43
+sys 1.57
+end C 2026-10-25T00:28:22Z
+start C all k<=10000 2026-10-25T00:28:22Z
+real 163.03
+user 161.98
+sys 0.34
+end C all 2026-10-25T00:31:05Z
+start C specials 2026-10-25T00:31:05Z
+end C specials 2026-10-25T00:31:05Z

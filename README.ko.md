@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-57-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-18-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
+**문제 57개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 18 · ⚪ 미해결: 6
 
 ### OEIS
 
@@ -207,6 +207,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 | [독립적인 Schur-6 시도](problems/schur-6/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | 출판된 S(6) >= 536 하한을 증명하는 분할의 독립적 재검증과 [1,537]에 대한 부정적 탐색 결과만 주장한다. 저장된 최선의 [1,537] 6색칠에는 단색 Schur 삼중항이 정확히 두 개 있으며, 그 근방에서 다섯 번 이하의 재색칠로는 이를 고칠 수 없음을 완전탐색으로 확인했다. 전체 SAT 인스턴스는 미결정 상태로 남았다. |
 | [작은 Diophantine 방정식에 대한 저차 ansatz 시도](problems/small-diophantine/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | 여섯 잔여 방정식에 대해 세 가지 저차 유리곡선 ansatz 부류에는 해가 없다는 정확한 결과와, 제한된 정수 Q 범위에서의 Pell 인자 ansatz 표본 검사 결과만 주장한다. 이는 제한된 ansatz에 대한 배제일 뿐이며, 여섯 방정식 가운데 어느 것도 해결했다고 주장하지 않는다. |
 | [신장된 Littlewood–Richardson 음수 계수 탐색](problems/stretched-lr/README.md) | 🟡 부분 결과 | — | `GPT-5.6 Sol` | 음수 계수를 찾지 못했다는 탐색 결과만 주장한다. 약 243k개의 classic-lrcalc 삼중항, 정확한 보간을 사용한 9M회의 Rust 무작위 시행과 완전히 탐색한 10,312쌍의 stretched-Kostka 부분족 전반에서 FrontierMath 범위 안의 어떤 삼중항도 음의 보통 멱기저 계수를 만들지 않았다. |
+| [세타 산술합 S(k) (arXiv:2501.03234) — 정확한 공식, 상계, 2·10^6까지의 검증](problems/theta-arithmetic-sum/README.ko.md) | 🟡 부분 결과 | Lean + 인증서 | `Claude Opus 5.5 (max effort)` | 기계 검증되지 않은 손 증명(별도의 AI 세션이 독립적으로 검토했고, CI는 수치만 다시 검사함): 모든 홀수 소수 k에 대해 \|S(k)\|<6k(1+ln k)^2+8k이며, 이로써 추측 3.3(arXiv v2/v3)의 위쪽 부등식이 해결된다. Lean 검증: 홀수 소수 k에 대한 정확한 공식 S(k)=kH(k)-(k-1)/2+2V(k)(V는 Hardy 합의 합), 이로부터 따르는 추측 1.1과 2V(k)>(k-1)/2-kH(k)의 동치, 그리고 k<300인 모든 홀수 소수에 대한 추측 1.1, 4.1, 4.2. 서로 독립적인 두 O(k log k) 프로그램은 k<=2·10^6인 홀수 소수에서 추측 1.1, 4.1-4.3의 위반을 찾지 못했으며, 추측 1.1과 4.1-4.4는 여전히 미해결이다. |
 | [모든 거듭제곱의 바닥값이 합성수인 계산 가능한 초월수](problems/transcendental-composite-powers/README.md) | ✅ 증명 | — | `GPT-5.6 Sol` | 모든 n >= 1에 대해 floor(alpha^n)가 합성수(>= 10인 짝수)인 계산 가능한 초월수 alpha가 (10,11)에 존재한다는 완전한 비형식적 증명을 주장하며, Hahn-Ismailescu-Kim-Kim의 7절에 제시된 미해결 질문 중 초월수 부분에 답한다. |
 
 <!-- STATUS:END -->

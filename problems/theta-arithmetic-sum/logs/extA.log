@@ -1,0 +1,16 @@
+start A-recheck [3,200000] 2026-10-25T00:31:09Z
+real 78.76
+user 77.55
+sys 0.23
+end A-recheck 2026-10-25T00:32:28Z exit=0
+A-recheck matches old A output
+start A-ext1 [1000001,1500000] 2026-10-25T00:32:28Z
+real 242.14
+user 2405.50
+sys 6.79
+end A-ext1 2026-10-25T01:13:13Z exit=0
+start A-ext2 [1500001,2000000] 2026-10-25T01:13:13Z
+real 3376.13
+user 3347.47
+sys 10.21
+end A-ext2 2026-10-25T02:09:30Z exit=0
