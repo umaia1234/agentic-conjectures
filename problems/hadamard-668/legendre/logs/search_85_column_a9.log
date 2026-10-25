@@ -1,0 +1,9 @@
+L=333 gens=85 |H|=6 n=59 rows=5 cols=7 F=32 mode=a9 key_targets=630 c_targets=2
+c#0 [ 1 -3 3 -3 3 3 -3 ] X=592704 Y=3556224 examined=28416832992 survivors=34282008
+c#1 [ 1 3 -3 3 -3 -3 3 ] X=592704 Y=3556224 examined=28416832992 survivors=34282008
+total examined=56833665984 survivors=68564016
+distinct PAF keys=11427336
+RESULT L=333 gens=85 n=59 mode=a9 c_targets=2 examined=56833665984 survivors=68564016 distinct_keys=11427336 pairs=0
+real 1262.42
+user 1622.27
+sys 18.38

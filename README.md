@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-56-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
+![problems](https://img.shields.io/badge/problems-56-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-18-bf8700) ![open](https://img.shields.io/badge/open-5-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**56 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
+**56 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 18 · ⚪ open: 5
 
 ### OEIS
 
@@ -189,7 +189,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 | [Chvatal's downset conjecture — saturated SAT reduction](problems/chvatal-downset/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Proves an elementary saturation lemma and reports an uncertified n=6 UNSAT exclusion of counterexamples under stated reductions; n=8 attempts timed out and the general conjecture remains open. |
 | [Conway's 99-graph problem srg(99,14,1,2)](problems/conway-99-graph/README.md) | ⚪ open | — | `GPT-5.6 Sol` | Status survey only: records that existence of srg(99,14,1,2) is open and cites 2025 automorphism-group restrictions (Cesarz–Woldar); no new computation or resolution is claimed. |
 | [Frankl's union-closed sets conjecture](problems/frankl-union-closed/README.md) | ⚪ open | — | `GPT-5.6 Sol` | Status survey only: records that the conjecture is known for ground sets of size <= 12 and the general 0.38234\|F\| frequency lower bound, and explicitly resolves nothing (including the 13-element case). |
-| [Hadamard matrix of order 668](problems/hadamard-668/README.md) | ⚪ open | — | `GPT-5.6 Sol` | Status survey only: 668 is recorded as the smallest unresolved Hadamard order, summarizing a 2026 Legendre-pair (length 333) search status report; no new existence or nonexistence result is claimed. |
+| [Hadamard matrix of order 668](problems/hadamard-668/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` · `Claude Opus 5.5 (max effort)` | Computer search, two implementations per class: for 72 of the 80 multiplier subgroups H of (Z/333)^* there is no Legendre pair of length 333 (sums 1) with both sequences H-invariant; 8 classes, including the unrestricted one, stay open, so nothing is claimed about Hadamard order 668 itself. |
 | [Exact computation of L(6) for Pulse Graphs](problems/pulse-graphs-l6/README.md) | ✅ proved | cert | `GPT-5.6 Sol` | Claims the exact value L(6)=17 for the paper's open case n=6, via exhaustive isomorph-free enumeration of all 1,540,944 loopless 6-vertex digraphs with two independent cycle analyzers, plus an independently verified explicit 17-cycle witness. |
 | [R(3,10) C20-bicirculant subcase exclusion](problems/ramsey-r3-10/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims a SAT/DRUP-certified exclusion of one automorphism class only: no triangle-free 40-vertex graph with independence number <= 9 is invariant under the C20 action with cycle structure 20^2, so a hypothetical 40-vertex (3,10) Ramsey graph cannot be such a bicirculant; R(3,10) in {40,41} is not determined. |
 | [Graph recoloring radius — subdivided-claw counterexample](problems/recoloring-radius-q15/README.md) | 🔴 refuted | cert | `GPT-5.6 Sol` | The 7-vertex subdivided claw refutes Question 15 at k=4: C_4(G) and C_5(G) are connected, but exact exhaustive computations give radii 9 and 10. |

@@ -1,0 +1,72 @@
+$ comp_pairs 37 9 4 1 data/adm37_m4.txt
+P=37 Q=9 m=4 cosets k=9 freq_reps F=9 c0 options: -3 5
+examined (Parseval-feasible) c vectors: 5146020, PSD survivors: 69318
+distinct PAF keys: 69318
+ordered compressed pairs (c,d): 0, admissible c vectors: 0
+coset order: {1..} {2..} {3..} {4..} {5..} {8..} {9..} {10..} {15..}
+RESULT P=37 Q=9 m=4 survivors=69318 pairs=0 admissible=0
+real 0.38
+$ comp_pairs 37 9 6 1 data/adm37_m6.txt
+P=37 Q=9 m=6 cosets k=6 freq_reps F=6 c0 options: 1
+examined (Parseval-feasible) c vectors: 7732, PSD survivors: 760
+distinct PAF keys: 760
+ordered compressed pairs (c,d): 2, admissible c vectors: 2
+coset order: {1..} {2..} {3..} {5..} {6..} {9..}
+RESULT P=37 Q=9 m=6 survivors=760 pairs=2 admissible=2
+real 0.00
+$ comp_pairs 37 9 9 1 data/adm37_m9.txt
+P=37 Q=9 m=9 cosets k=4 freq_reps F=2 c0 options: 1
+examined (Parseval-feasible) c vectors: 164, PSD survivors: 100
+distinct PAF keys: 39
+ordered compressed pairs (c,d): 114, admissible c vectors: 40
+coset order: {1..} {2..} {3..} {5..}
+RESULT P=37 Q=9 m=9 survivors=100 pairs=114 admissible=40
+real 0.00
+$ comp_pairs 37 9 12 1 data/adm37_m12.txt
+P=37 Q=9 m=12 cosets k=3 freq_reps F=3 c0 options:
+examined (Parseval-feasible) c vectors: 0, PSD survivors: 0
+distinct PAF keys: 0
+ordered compressed pairs (c,d): 0, admissible c vectors: 0
+coset order: {1..} {2..} {3..}
+RESULT P=37 Q=9 m=12 survivors=0 pairs=0 admissible=0
+real 0.00
+$ comp_pairs 37 9 18 1 data/adm37_m18.txt
+P=37 Q=9 m=18 cosets k=2 freq_reps F=2 c0 options: 1
+examined (Parseval-feasible) c vectors: 4, PSD survivors: 4
+distinct PAF keys: 4
+ordered compressed pairs (c,d): 2, admissible c vectors: 2
+coset order: {1..} {2..}
+RESULT P=37 Q=9 m=18 survivors=4 pairs=2 admissible=2
+real 0.00
+$ comp_pairs 37 9 36 1 data/adm37_m36.txt
+P=37 Q=9 m=36 cosets k=1 freq_reps F=1 c0 options:
+examined (Parseval-feasible) c vectors: 0, PSD survivors: 0
+distinct PAF keys: 0
+ordered compressed pairs (c,d): 0, admissible c vectors: 0
+coset order: {1..}
+RESULT P=37 Q=9 m=36 survivors=0 pairs=0 admissible=0
+real 0.00
+$ python3 comp37_exact.py 4
+m=4 cosets=9 parseval_feasible_vectors=5146020 ordered_pairs=0 admissible=0
+real 65.26
+admissible list identical to comp_pairs output
+$ python3 comp37_exact.py 6
+m=6 cosets=6 parseval_feasible_vectors=7732 ordered_pairs=2 admissible=2
+real 0.14
+admissible list identical to comp_pairs output
+$ python3 comp37_exact.py 9
+m=9 cosets=4 parseval_feasible_vectors=164 ordered_pairs=114 admissible=40
+real 0.06
+admissible list identical to comp_pairs output
+$ python3 comp37_exact.py 12
+m=12 cosets=3 parseval_feasible_vectors=0 ordered_pairs=0 admissible=0
+real 0.07
+admissible list identical to comp_pairs output
+$ python3 comp37_exact.py 18
+m=18 cosets=2 parseval_feasible_vectors=4 ordered_pairs=2 admissible=2
+real 0.07
+admissible list identical to comp_pairs output
+$ python3 comp37_exact.py 36
+m=36 cosets=1 parseval_feasible_vectors=0 ordered_pairs=0 admissible=0
+real 0.07
+admissible list identical to comp_pairs output

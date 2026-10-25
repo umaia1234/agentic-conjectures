@@ -1,0 +1,12 @@
+L=333 gens=28 |H|=18 orbits n=27 freq_reps F=14 key=3-compression targets=90
+admissible PSD(L/3) values: 16 64 76 112 172 256 268 304 364 400 412 496 556 592 604 652
+DP count of sign vectors with key in targets: 216000
+split n1=5 n2=22 stored_freqs=14
+examined sign vectors (key in targets): 216000  [DP: 216000]  MATCH
+PSD survivors: 1620
+distinct PAF keys among survivors: 90
+ordered Legendre pairs (A,B) found in this class: 0
+RESULT L=333 gens=28 n=27 examined=216000 survivors=1620 distinct_keys=90 pairs=0 complete
+real 0.76
+user 0.55
+sys 0.08

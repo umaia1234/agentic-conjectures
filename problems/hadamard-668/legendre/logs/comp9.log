@@ -1,0 +1,4 @@
+$ python3 comp9_pairs.py 37 data/adm9_h4.txt
+L=333: admissible <4 mod 9>-invariant 9-compressions: method1=630 method2=630
+OK
+real 5.95

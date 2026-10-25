@@ -1,0 +1,9 @@
+L=333 gens=64 |H|=6 orbits n=63 M-orbits=21 freq_reps(3 not dividing k)=21 shift_reps=34 admissible_A'=648
+examined lifts: 45112963608  [product of choice counts: 45112963608]  MATCH
+PSD survivors: 5159376
+distinct PAF keys among survivors: 286632
+ordered Legendre pairs found and verified: 0
+RESULT L=333 gens=64 admissible=648 examined=45112963608 survivors=5159376 distinct_keys=286632 pairs=0 complete
+real 58.83
+user 139.72
+sys 0.52

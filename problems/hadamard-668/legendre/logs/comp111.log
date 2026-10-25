@@ -1,0 +1,30 @@
+$ lp_comp111 333 85 data/adm37_m6.txt
+L=333 gens=85 |H|=6 M=111 orbits(H mod M)=21 columns=7 freq_reps=13 c_targets=2
+allowed value sets: {-3,-1,1,3}x19 {-3,3}x2
+candidates (column sums in c_file)=4000000  after Parseval+3-compression filters=58464  PSD survivors=4296
+distinct PAF vectors=2136  ordered compressed pairs=0  admissible A'=0
+RESULT L=333 gens=85 candidates=4000000 psd_survivors=4296 ordered_pairs=0 admissible=0
+real 0.30
+$ lp_comp111 333 175 data/adm37_m6.txt
+L=333 gens=175 |H|=6 M=111 orbits(H mod M)=21 columns=7 freq_reps=13 c_targets=2
+allowed value sets: {-3,-1,1,3}x19 {-3,3}x2
+candidates (column sums in c_file)=4000000  after Parseval+3-compression filters=58464  PSD survivors=4296
+distinct PAF vectors=2136  ordered compressed pairs=0  admissible A'=0
+RESULT L=333 gens=175 candidates=4000000 psd_survivors=4296 ordered_pairs=0 admissible=0
+real 0.06
+$ lp_comp111 333 64 data/adm37_m6.txt
+L=333 gens=64 |H|=6 M=111 orbits(H mod M)=21 columns=7 freq_reps=13 c_targets=2
+allowed value sets: {-3,-1,1,3}x21
+candidates (column sums in c_file)=24000000  after Parseval+3-compression filters=936024  PSD survivors=64518
+distinct PAF vectors=10718  ordered compressed pairs=3888  admissible A'=648
+RESULT L=333 gens=64 candidates=24000000 psd_survivors=64518 ordered_pairs=3888 admissible=648
+real 0.73
+$ python3 lp_comp111_check.py 333 85 data/adm37_m6.txt
+L=333 gens=85 orbits=21 candidates=4000000 after_exact_filters=58464 psd_survivors=4296 distinct_paf=2136 ordered_pairs=0 admissible=0
+real 2.81
+$ python3 lp_comp111_check.py 333 175 data/adm37_m6.txt
+L=333 gens=175 orbits=21 candidates=4000000 after_exact_filters=58464 psd_survivors=4296 distinct_paf=2136 ordered_pairs=0 admissible=0
+real 2.91
+$ python3 lp_comp111_check.py 333 64 data/adm37_m6.txt
+L=333 gens=64 orbits=21 candidates=24000000 after_exact_filters=936024 psd_survivors=64518 distinct_paf=10718 ordered_pairs=3888 admissible=648
+real 15.82

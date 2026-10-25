@@ -1,0 +1,4 @@
+gens=28 orbit-search survivors=1620 of which admissible 37-compression=1620 column-search survivors=1620 equal sets: True
+gens=46 orbit-search survivors=1039392 of which admissible 37-compression=444096 column-search survivors=444096 equal sets: True
+$ sort -n survivors_lift > a; sort -n survivors_column_a111 > b; cmp a b
+lp_lift111 survivors:  5159376, lp_column_search a111 survivors:  5159376, sorted files identical: yes

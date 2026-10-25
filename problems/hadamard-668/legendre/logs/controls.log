@@ -1,0 +1,23 @@
+$ python3 controls.py lp_orbit_search lp_column_search lp_comp111 lp_lift111
+RESULT L=9 gens=1 n=9 examined=108 survivors=81 distinct_keys=6 pairs=972 complete
+brute force: ordered Legendre pairs of length 9 invariant under <1> = 972
+RESULT L=13 gens=1 n=13 examined=1716 survivors=234 distinct_keys=8 pairs=7098 complete
+brute force: ordered Legendre pairs of length 13 invariant under <1> = 7098
+RESULT L=63 gens=2 n=13 examined=210 survivors=54 distinct_keys=19 pairs=144 complete
+brute force: ordered Legendre pairs of length 63 invariant under <2> = 144
+RESULT L=63 gens=11 n=13 examined=210 survivors=51 distinct_keys=22 pairs=24 complete
+brute force: ordered Legendre pairs of length 63 invariant under <11> = 24
+RESULT L=63 gens=2 n=13 mode=u3 c_targets=8 examined=138 survivors=54 distinct_keys=19 pairs=144
+RESULT L=63 gens=2 n=13 mode=a111 c_targets=8 examined=36 survivors=18 distinct_keys=4 pairs=144
+RESULT L=63 gens=2 admissible=4 examined=36 survivors=18 distinct_keys=4 pairs=144 complete
+RESULT L=63 gens=2 candidates=24 psd_survivors=14 ordered_pairs=16 admissible=4
+brute force: <2>-invariant Legendre pairs of length 63 (ordered) = 144, distinct 3-compressions = 4, reported admissible = 4
+RESULT L=63 gens=11 n=13 mode=u3 c_targets=8 examined=138 survivors=51 distinct_keys=22 pairs=24
+RESULT L=63 gens=11 n=13 mode=a111 c_targets=8 examined=36 survivors=24 distinct_keys=9 pairs=24
+RESULT L=63 gens=11 admissible=4 examined=36 survivors=24 distinct_keys=9 pairs=24 complete
+RESULT L=63 gens=11 candidates=24 psd_survivors=14 ordered_pairs=16 admissible=4
+brute force: <11>-invariant Legendre pairs of length 63 (ordered) = 24, distinct 3-compressions = 4, reported admissible = 4
+OK: all positive controls passed
+real 0.68
+user 0.25
+sys 0.04

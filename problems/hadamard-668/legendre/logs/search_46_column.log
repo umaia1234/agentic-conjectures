@@ -1,0 +1,47 @@
+L=333 gens=46 |H|=9 n=45 rows=9 cols=5 F=22 mode=u3 key_targets=90 c_targets=40
+c#0 [ 1 -7 3 1 3 ] X=10584 Y=95256 examined=21450825 survivors=9909
+c#1 [ 1 -5 1 1 3 ] X=15876 Y=381024 examined=115044948 survivors=12339
+c#2 [ 1 -5 1 3 1 ] X=15876 Y=381024 examined=115044948 survivors=13068
+c#3 [ 1 -5 3 1 1 ] X=15876 Y=381024 examined=115044948 survivors=10827
+c#4 [ 1 -5 5 -3 3 ] X=7056 Y=163296 examined=24415668 survivors=21708
+c#5 [ 1 -3 -3 3 3 ] X=10584 Y=592704 examined=119312190 survivors=10152
+c#6 [ 1 -3 -1 -1 5 ] X=15876 Y=381024 examined=115044948 survivors=9801
+c#7 [ 1 -3 -1 5 -1 ] X=15876 Y=381024 examined=115044948 survivors=11718
+c#8 [ 1 -3 3 -5 5 ] X=7056 Y=163296 examined=24415668 survivors=21708
+c#9 [ 1 -3 3 -3 3 ] X=10584 Y=592704 examined=119312190 survivors=4482
+c#10 [ 1 -3 3 3 -3 ] X=10584 Y=592704 examined=119312190 survivors=10152
+c#11 [ 1 -3 5 -1 -1 ] X=15876 Y=381024 examined=115044948 survivors=8505
+c#12 [ 1 -1 -3 -1 5 ] X=15876 Y=381024 examined=115044948 survivors=11718
+c#13 [ 1 -1 -3 5 -1 ] X=15876 Y=381024 examined=115044948 survivors=8505
+c#14 [ 1 -1 -1 -3 5 ] X=15876 Y=381024 examined=115044948 survivors=8505
+c#15 [ 1 -1 -1 5 -3 ] X=15876 Y=381024 examined=115044948 survivors=9801
+c#16 [ 1 -1 1 -1 1 ] X=15876 Y=2000376 examined=547371108 survivors=1512
+c#17 [ 1 -1 5 -3 -1 ] X=15876 Y=381024 examined=115044948 survivors=9801
+c#18 [ 1 -1 5 -1 -3 ] X=15876 Y=381024 examined=115044948 survivors=11718
+c#19 [ 1 1 -5 1 3 ] X=15876 Y=381024 examined=115044948 survivors=13068
+c#20 [ 1 1 -5 3 1 ] X=15876 Y=381024 examined=115044948 survivors=10827
+c#21 [ 1 1 -1 1 -1 ] X=15876 Y=2000376 examined=547371108 survivors=1512
+c#22 [ 1 1 1 -5 3 ] X=15876 Y=381024 examined=115044948 survivors=10827
+c#23 [ 1 1 1 3 -5 ] X=15876 Y=381024 examined=115044948 survivors=12339
+c#24 [ 1 1 3 -7 3 ] X=10584 Y=95256 examined=21450825 survivors=9909
+c#25 [ 1 1 3 -5 1 ] X=15876 Y=381024 examined=115044948 survivors=12339
+c#26 [ 1 1 3 1 -5 ] X=15876 Y=381024 examined=115044948 survivors=13068
+c#27 [ 1 3 -7 3 1 ] X=10584 Y=95256 examined=21450825 survivors=9909
+c#28 [ 1 3 -5 1 1 ] X=15876 Y=381024 examined=115044948 survivors=12339
+c#29 [ 1 3 -5 5 -3 ] X=7056 Y=163296 examined=24415668 survivors=21708
+c#30 [ 1 3 -3 -3 3 ] X=10584 Y=592704 examined=119312190 survivors=10152
+c#31 [ 1 3 -3 3 -3 ] X=10584 Y=592704 examined=119312190 survivors=4482
+c#32 [ 1 3 1 -5 1 ] X=15876 Y=381024 examined=115044948 survivors=13068
+c#33 [ 1 3 1 1 -5 ] X=15876 Y=381024 examined=115044948 survivors=10827
+c#34 [ 1 3 1 3 -7 ] X=10584 Y=95256 examined=21450825 survivors=9909
+c#35 [ 1 3 3 -3 -3 ] X=10584 Y=592704 examined=119312190 survivors=10152
+c#36 [ 1 5 -3 -1 -1 ] X=15876 Y=381024 examined=115044948 survivors=9801
+c#37 [ 1 5 -3 3 -5 ] X=7056 Y=163296 examined=24415668 survivors=21708
+c#38 [ 1 5 -1 -3 -1 ] X=15876 Y=381024 examined=115044948 survivors=11718
+c#39 [ 1 5 -1 -1 -3 ] X=15876 Y=381024 examined=115044948 survivors=8505
+total examined=4755160080 survivors=444096
+distinct PAF keys=24600
+RESULT L=333 gens=46 n=45 mode=u3 c_targets=40 examined=4755160080 survivors=444096 distinct_keys=24600 pairs=0
+real 18.42
+user 31.33
+sys 0.34

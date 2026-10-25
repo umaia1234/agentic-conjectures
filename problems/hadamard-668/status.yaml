@@ -3,22 +3,163 @@ title: Hadamard matrix of order 668
 title_ko: 668차 Hadamard 행렬
 domain: graph-combinatorics
 source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/Wikipedia/Hadamard.lean
-claimed_status: open
-claim: 'Status survey only: 668 is recorded as the smallest unresolved Hadamard order, summarizing a 2026
-  Legendre-pair (length 333) search status report; no new existence or nonexistence result is claimed.'
+claimed_status: partial
+claim: 'Computer search, two implementations per class: for 72 of the 80 multiplier subgroups H of (Z/333)^*
+  there is no Legendre pair of length 333 (sums 1) with both sequences H-invariant; 8 classes, including
+  the unrestricted one, stay open, so nothing is claimed about Hadamard order 668 itself.'
 claim_ko: >-
-  상태 조사만 제공한다. 668이 해결되지 않은 최소 Hadamard 차수임을 기록하고 2026년 Legendre 쌍(길이 333)
-  탐색 상태 보고서를 요약하며, 새로운 존재 또는 비존재 결과를 주장하지 않는다.
+  클래스마다 두 구현으로 수행한 컴퓨터 탐색 결과, (Z/333)^*의 multiplier 부분군 H 80개 중 72개에 대해서는
+  두 수열이 모두 H-불변인 길이 333 Legendre pair(합 1)가 존재하지 않는다. 제약 없는 경우를 포함한 8개 부류는
+  열려 있으므로 668차 Hadamard 문제 자체에 대해서는 아무것도 주장하지 않는다.
 artifacts:
 - path: README.md
   kind: other
 - path: upstream/README.md
   kind: upstream-lean
-verify: []
+- path: legendre/subgroup_table.py
+  kind: certificate-script
+- path: legendre/comp9_pairs.py
+  kind: certificate-script
+- path: legendre/comp37_exact.py
+  kind: certificate-script
+- path: legendre/comp_pairs.cpp
+  kind: search-code
+- path: legendre/lp_orbit_search.cpp
+  kind: search-code
+- path: legendre/lp_column_search.cpp
+  kind: search-code
+- path: legendre/lp_comp111.cpp
+  kind: search-code
+- path: legendre/lp_comp111_check.py
+  kind: certificate-script
+- path: legendre/lp_lift111.cpp
+  kind: search-code
+- path: legendre/crosscheck_survivors.py
+  kind: certificate-script
+- path: legendre/controls.py
+  kind: certificate-script
+- path: legendre/data/adm9_h4.txt
+  kind: data
+- path: legendre/data/adm37_m6.txt
+  kind: data
+- path: legendre/data/adm37_m9.txt
+  kind: data
+- path: legendre/data/adm37_m18.txt
+  kind: data
+- path: legendre/data/adm111_h64.txt
+  kind: data
+- path: legendre/logs/subgroup_table.log
+  kind: data
+- path: legendre/logs/comp9.log
+  kind: data
+- path: legendre/logs/comp37.log
+  kind: data
+- path: legendre/logs/comp111.log
+  kind: data
+- path: legendre/logs/controls.log
+  kind: data
+- path: legendre/logs/search_28_orbit.log
+  kind: data
+- path: legendre/logs/search_28_column.log
+  kind: data
+- path: legendre/logs/search_46_orbit.log
+  kind: data
+- path: legendre/logs/search_46_column.log
+  kind: data
+- path: legendre/logs/crosscheck_survivors.log
+  kind: data
+- path: legendre/logs/search_85_column_a9.log
+  kind: data
+- path: legendre/logs/search_175_column_a9.log
+  kind: data
+- path: legendre/logs/search_64_lift.log
+  kind: data
+- path: legendre/logs/search_64_column_a111.log
+  kind: data
+verify:
+- cmd: 'python3 legendre/subgroup_table.py | grep -q "excluded classes: 72 of 80; open: 8"'
+  expected_runtime: 15s
+  ci_feasible: true
+- cmd: python3 legendre/comp9_pairs.py 37 | grep -q "method1=630 method2=630"
+  expected_runtime: 10s
+  ci_feasible: true
+- cmd: g++ -O2 -std=c++17 -pthread -o /tmp/h668_cp legendre/comp_pairs.cpp &&
+    /tmp/h668_cp 37 9 4 1 | grep -q "m=4 survivors=69318 pairs=0 admissible=0" &&
+    /tmp/h668_cp 37 9 6 1 | grep -q "pairs=2 admissible=2" &&
+    /tmp/h668_cp 37 9 9 1 | grep -q "pairs=114 admissible=40" &&
+    /tmp/h668_cp 37 9 12 1 | grep -q "pairs=0 admissible=0" &&
+    /tmp/h668_cp 37 9 18 1 | grep -q "pairs=2 admissible=2" &&
+    /tmp/h668_cp 37 9 36 1 | grep -q "pairs=0 admissible=0"
+  expected_runtime: 15s
+  ci_feasible: true
+- cmd: python3 legendre/comp37_exact.py 6 | grep -q "ordered_pairs=2 admissible=2" &&
+    python3 legendre/comp37_exact.py 9 | grep -q "ordered_pairs=114 admissible=40" &&
+    python3 legendre/comp37_exact.py 12 | grep -q "ordered_pairs=0 admissible=0" &&
+    python3 legendre/comp37_exact.py 18 | grep -q "ordered_pairs=2 admissible=2" &&
+    python3 legendre/comp37_exact.py 36 | grep -q "ordered_pairs=0 admissible=0"
+  expected_runtime: 15s
+  ci_feasible: true
+- cmd: python3 legendre/comp37_exact.py 4 | grep -q "parseval_feasible_vectors=5146020 ordered_pairs=0 admissible=0"
+  expected_runtime: 1min with numpy (much slower without numpy)
+  ci_feasible: false
+- cmd: g++ -O2 -std=c++17 -o /tmp/h668_c111 legendre/lp_comp111.cpp &&
+    /tmp/h668_c111 333 85 legendre/data/adm37_m6.txt | grep -q "candidates=4000000 psd_survivors=4296 ordered_pairs=0 admissible=0" &&
+    /tmp/h668_c111 333 175 legendre/data/adm37_m6.txt | grep -q "candidates=4000000 psd_survivors=4296 ordered_pairs=0 admissible=0" &&
+    /tmp/h668_c111 333 64 legendre/data/adm37_m6.txt /tmp/h668_a64.txt | grep -q "ordered_pairs=3888 admissible=648" &&
+    cmp /tmp/h668_a64.txt legendre/data/adm111_h64.txt
+  expected_runtime: 15s
+  ci_feasible: true
+- cmd: for g in 85 175 64; do python3 legendre/lp_comp111_check.py 333 $g legendre/data/adm37_m6.txt; done
+  expected_runtime: 25s (requires numpy)
+  ci_feasible: false
+- cmd: g++ -O2 -std=c++17 -pthread -o /tmp/h668_A legendre/lp_orbit_search.cpp &&
+    g++ -O3 -std=c++17 -pthread -o /tmp/h668_B legendre/lp_column_search.cpp &&
+    g++ -O2 -std=c++17 -o /tmp/h668_C legendre/lp_comp111.cpp &&
+    g++ -O2 -std=c++17 -pthread -o /tmp/h668_D legendre/lp_lift111.cpp &&
+    python3 legendre/controls.py /tmp/h668_A /tmp/h668_B /tmp/h668_C /tmp/h668_D
+  expected_runtime: 40s
+  ci_feasible: true
+- cmd: g++ -O2 -std=c++17 -pthread -o /tmp/h668_A28 legendre/lp_orbit_search.cpp &&
+    g++ -O3 -std=c++17 -pthread -o /tmp/h668_B28 legendre/lp_column_search.cpp &&
+    /tmp/h668_A28 333 28 2 16 - /tmp/h668_s28A | grep -q "examined=216000 survivors=1620 distinct_keys=90 pairs=0 complete" &&
+    /tmp/h668_B28 37 28 legendre/data/adm37_m18.txt u3 - 2 /tmp/h668_s28B | grep -q "survivors=1620 distinct_keys=90 pairs=0" &&
+    python3 legendre/crosscheck_survivors.py 28 legendre/data/adm37_m18.txt /tmp/h668_s28A /tmp/h668_s28B
+  expected_runtime: 30s
+  ci_feasible: true
+- cmd: g++ -O2 -std=c++17 -pthread -o /tmp/h668_A46 legendre/lp_orbit_search.cpp &&
+    g++ -O3 -std=c++17 -pthread -o /tmp/h668_B46 legendre/lp_column_search.cpp &&
+    /tmp/h668_A46 333 46 3 22 - /tmp/h668_s46A | grep -q "examined=21300003648 survivors=1039392 distinct_keys=57672 pairs=0 complete" &&
+    /tmp/h668_B46 37 46 legendre/data/adm37_m9.txt u3 - 3 /tmp/h668_s46B | grep -q "survivors=444096 distinct_keys=24600 pairs=0" &&
+    python3 legendre/crosscheck_survivors.py 46 legendre/data/adm37_m9.txt /tmp/h668_s46A /tmp/h668_s46B
+  expected_runtime: 2min, 3 threads, about 3 GB RAM
+  ci_feasible: false
+- cmd: g++ -O3 -std=c++17 -pthread -o /tmp/h668_B85 legendre/lp_column_search.cpp &&
+    /tmp/h668_B85 37 85 legendre/data/adm37_m6.txt a9 legendre/data/adm9_h4.txt 3 - | grep -q "examined=56833665984 survivors=68564016 distinct_keys=11427336 pairs=0" &&
+    /tmp/h668_B85 37 175 legendre/data/adm37_m6.txt a9 legendre/data/adm9_h4.txt 3 - | grep -q "examined=56833665984 survivors=68638104 distinct_keys=11439684 pairs=0"
+  expected_runtime: 40min, 3 threads, about 20 GB RAM
+  ci_feasible: false
+- cmd: g++ -O2 -std=c++17 -pthread -o /tmp/h668_L64 legendre/lp_lift111.cpp &&
+    g++ -O3 -std=c++17 -pthread -o /tmp/h668_B64 legendre/lp_column_search.cpp &&
+    /tmp/h668_L64 333 64 legendre/data/adm111_h64.txt 3 - /tmp/h668_s64L | grep -q "examined=45112963608 survivors=5159376 distinct_keys=286632 pairs=0 complete" &&
+    /tmp/h668_B64 37 64 legendre/data/adm37_m6.txt a111 legendre/data/adm111_h64.txt 3 /tmp/h668_s64B | grep -q "examined=45112963608 survivors=5159376 distinct_keys=286632 pairs=0" &&
+    sort -n /tmp/h668_s64L > /tmp/h668_s64L.s && sort -n /tmp/h668_s64B > /tmp/h668_s64B.s &&
+    cmp /tmp/h668_s64L.s /tmp/h668_s64B.s
+  expected_runtime: 15min, 3 threads, about 36 GB RAM
+  ci_feasible: false
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: Korean-language survey dated 2026-08-11; explicitly warns that a length-333 Legendre pair is sufficient
-  but not necessary, so UNSAT within one construction class would not disprove existence; upstream Lean
-  statement is sorry-backed.
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: exhaustive multiplier-subgroup searches for length-333 Legendre pairs (subgroup table, compression
+    lists, two independent search implementations per excluded class, positive controls, documentation)
+notes: Legendre pairs of length 333 are sufficient, not necessary, for order 668, so every exclusion here concerns
+  one construction class only. The 72 excluded classes C(H) require BOTH sequences to be H-invariant (mixed
+  pairs reduce to C(H1 ∩ H2)); the trivial group and 7 small subgroups remain open. Exclusions are computer
+  results with two independent implementations each and positive controls at lengths 9, 13 and 63; floating-point
+  PSD values are used only as a sound pruning filter (tolerance 1e-6, rounding error below 1e-9) and all pair
+  conditions are exact. The heavy runs (subgroups <46>, <85>, <175>, <64>) are not CI-feasible; their logs are
+  committed and survivor files can be regenerated. No novelty is claimed; the 2026 status report proposes the
+  multiplier-orbit route but reports no per-subgroup results, and its kernel order 72 should read 108. The upstream
+  Lean statement is sorry-backed.
