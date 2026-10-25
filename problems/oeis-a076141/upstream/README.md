@@ -15,7 +15,7 @@ This directory preserves the exact Lean source used to connect the A076141 work 
 
 ## Relation to this problem
 
-The upstream theorem is universal over all natural numbers. The parent directory gives an exact finite verification through `n < 2^40`; this is evidence for, not a proof of, that universal statement.
+The upstream theorem is universal over all natural numbers. The parent directory gives exact finite verifications through `n < 2^40` (pair geometry) and through `n < 2^100` (single-occurrence searches, 2026-10); this is evidence for, not a proof of, that universal statement. The module `AgenticConjectures/OeisA076141.lean` copies `list_count_infix`, `binary_pattern_nat` and `a` term for term and proves reduction lemmas about them and the weaker bound `a n ≤ 2` for every `n`, not the conjecture.
 
 The conjectural declaration still closes with `by sorry`. It is a machine-readable statement of the conjecture, not a formal proof. The copied file retains its original copyright and license header.
 

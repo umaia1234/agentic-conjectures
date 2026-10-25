@@ -1,16 +1,21 @@
 id: oeis-a076141
-title: OEIS A076141 — n occurs at most once in binary of n^2, checked to 2^40
-title_ko: OEIS A076141 — n의 이진 표현은 n^2의 이진 표현에서 최대 한 번 등장, 2^40까지 확인
+title: OEIS A076141 — n occurs at most once in binary of n^2, checked to 2^100; a(n) ≤ 2 proved
+title_ko: OEIS A076141 — n의 이진 표현은 n^2의 이진 표현에서 최대 한 번 등장, 2^100까지 확인; a(n) ≤ 2 증명
 domain: oeis
 source_url: https://oeis.org/A076141
 claimed_status: partial
-claim: An exact exhaustive occurrence-geometry search found no counterexample for 0 < n < 2^40, extending
-  the OEIS-recorded 10^6 verification by a factor of about 1.1 million; explicitly a rigorous bounded
-  verification, not a proof of the full conjecture.
+claim: >-
+  Exact exhaustive searches found no counterexample for 0 < n < 2^100 (earlier pair-geometry search
+  n < 2^40), with two independent single-occurrence enumerators agreeing on every occurrence at every
+  bit position for n < 2^64 and at the positions left open by Lean-checked pair lemmas up to 2^100, and
+  the same Lean lemmas prove the unconditional bound a(n) ≤ 2 for every n; a rigorous bounded
+  verification plus a weaker bound, not a proof of the full conjecture.
 claim_ko: >-
-  출현 배치를 정확히 완전탐색하여 0 < n < 2^40에서 반례가 없음을 확인하고, OEIS에 기록된
-  10^6까지의 검증 범위를 약 110만 배 확장했다. 이는 엄밀한 유한 범위 검증이며 전체 추측의 증명은
-  아니다.
+  정확한 완전탐색으로 0 < n < 2^100에서 반례가 없음을 확인했고(이전 쌍 기하 탐색은 n < 2^40), 독립적인
+  두 단일 출현 열거기가 n < 2^64에서는 모든 비트 위치의 출현에 대해, 2^100까지는 Lean으로 검증한 쌍
+  보조정리가 남겨 둔 위치의 출현에 대해 완전히 일치했으며, 같은 Lean 보조정리로 모든 n에 대해
+  무조건적인 상계 a(n) ≤ 2를 증명했으나, 이는 엄밀한 유한 범위 검증과 더 약한 상계일 뿐 전체 추측의
+  증명은 아니다.
 artifacts:
 - path: DETAILS.md
   kind: mathematical-details
@@ -26,10 +31,68 @@ artifacts:
   kind: data
 - path: upstream/76141_34382c19.lean
   kind: upstream-lean
+- path: a076141_occ_closed.cpp
+  kind: search-code
+- path: a076141_occ_hensel.cpp
+  kind: search-code
+- path: a076141_bruteforce_odd.cpp
+  kind: search-code
+- path: a076141_crosscheck.py
+  kind: certificate-script
+- path: logs/p_full_L3-64.log
+  kind: data
+- path: logs/q_full_L3-64.log
+  kind: data
+- path: logs/p_red_L3-96.log
+  kind: data
+- path: logs/q_red_L3-96.log
+  kind: data
+- path: logs/p_red_L97-100.log
+  kind: data
+- path: logs/q_red_L97-100.log
+  kind: data
+- path: logs/bf_L3-34.log
+  kind: data
 verify:
 - cmd: g++ -O3 -std=c++20 -o build_pg a076141_pair_geometry.cpp && ./build_pg 24 && rm -f build_pg
   expected_runtime: small-exponent smoke run
   ci_feasible: true
+- cmd: python3 a076141_crosscheck.py --smoke 28
+  expected_runtime: about 12 s (compiles three programs; brute force = P = Q for 3 <= L <= 28)
+  ci_feasible: true
+- cmd: python3 a076141_crosscheck.py --logs logs/*.log
+  expected_runtime: under 1 second (re-checks the committed run logs)
+  ci_feasible: true
+- cmd: g++ -O3 -std=c++20 -o build_p a076141_occ_closed.cpp && ./build_p 3 64 full 3 && ./build_p 3 100 reduced 3
+    && rm -f build_p
+  expected_runtime: about 7 minutes (full) plus about 17 minutes (reduced), 3 threads
+  ci_feasible: false
+- cmd: g++ -O3 -std=c++20 -o build_q a076141_occ_hensel.cpp && ./build_q 3 64 full 3 && ./build_q 3 100 reduced 3
+    && rm -f build_q
+  expected_runtime: about 6 minutes (full) plus about 35 minutes (reduced), 3 threads
+  ci_feasible: false
+- cmd: g++ -O3 -std=c++20 -o build_bf a076141_bruteforce_odd.cpp && ./build_bf 3 34 1 && rm -f build_bf
+  expected_runtime: about 18 minutes, 1 thread
+  ci_feasible: false
+lean:
+  modules:
+  - AgenticConjectures.OeisA076141
+  theorems:
+  - AgenticConjectures.OeisA076141.a_eq_countP
+  - AgenticConjectures.OeisA076141.a_zero
+  - AgenticConjectures.OeisA076141.occ_lt
+  - AgenticConjectures.OeisA076141.three_le_of_occ
+  - AgenticConjectures.OeisA076141.occ_of_occ_two_mul
+  - AgenticConjectures.OeisA076141.occ_descent
+  - AgenticConjectures.OeisA076141.exists_odd_of_two_occ
+  - AgenticConjectures.OeisA076141.not_occ_pair_of_close
+  - AgenticConjectures.OeisA076141.not_occ_pair_of_far
+  - AgenticConjectures.OeisA076141.pair_geometry
+  - AgenticConjectures.OeisA076141.pair_covered
+  - AgenticConjectures.OeisA076141.exists_two_occ_of_two_le_a
+  - AgenticConjectures.OeisA076141.reduction
+  - AgenticConjectures.OeisA076141.a_le_two
+  - AgenticConjectures.OeisA076141.a_le_one_of_search
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
@@ -37,7 +100,20 @@ attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: documentation restructuring of existing mathematical details
-notes: Finite statement only (n < 2^40); independently written second enumerator checked 137,443,246,808
-  candidates and a brute-force scan of all odd n < 2^32 agreed; source SHA256 hashes recorded; the full
-  2^40 run is local-only; no novelty or priority claim without external review; upstream Lean universal
-  statement is sorry-backed.
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: single-occurrence enumerators and brute-force cross-check, searches extending the bound to 2^64
+    (all positions) and 2^100 (reduced positions), Lean 4 reduction lemmas and the unconditional bound
+    a(n) ≤ 2, documentation
+notes: The searches give finite statements only. n < 2^64 follows from exhaustive enumeration at every bit position and uses no
+  pair lemma; 2^64 <= n < 2^100 additionally relies on the Lean-checked reduction
+  (AgenticConjectures.OeisA076141.a_le_one_of_search), which leaves only the positions searched in reduced
+  mode. Lean also proves the unconditional bound a(n) ≤ 2 for every n
+  (AgenticConjectures.OeisA076141.a_le_two) from the pair lemmas alone, using no search output. The
+  completeness of the two single-occurrence methods and the programs themselves are not formalized;
+  the two independently written enumerators print identical per-L lines (including candidate counts) and
+  identical occurrence lists, and a brute-force scan of all odd n < 2^34 agrees with both. The large runs
+  are local-only; their logs with SHA-256 hashes of the occurrence lists are committed. The 2^40 pair-geometry
+  run and its audit are unchanged; its periodic audit program uses x86 BMI2 intrinsics and was not rerun on
+  arm64. No novelty or priority claim without external review; the upstream Lean universal statement is
+  sorry-backed.
