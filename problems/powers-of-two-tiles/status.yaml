@@ -4,12 +4,12 @@ title_ko: 2의 거듭제곱 평행이동 타일(BKT 질문 9)
 domain: other
 source_url: https://arxiv.org/abs/2303.07956v2
 claimed_status: refuted
-claim: 'Claims explicit counterexamples refuting the suggested one-or-two-cardinality restriction in the
+claim: 'Lean-verifies explicit counterexamples refuting the suggested one-or-two-cardinality restriction in the
   yes/no clause of Benjamini-Kozma-Tzalik Question 9: translational tiles of every positive odd cardinality
   exist inside {1,2,4,...,2^n}, the smallest being A={1,4,16} with B={0,1,2}+9Z.'
 claim_ko: >-
   Benjamini–Kozma–Tzalik 질문 9의 예/아니요 절에서 제안한 “타일의 원소 수는 1 또는 2뿐이다”라는
-  제한을 반박하는 명시적 반례를 제시한다. 모든 양의 홀수 t에 대해 원소 수가 t인 평행이동 타일이
+  제한을 반박하는 명시적 반례를 Lean으로 검증한다. 모든 양의 홀수 t에 대해 원소 수가 t인 평행이동 타일이
   {1,2,4,...,2^n} 안에 존재하며, 원소 수가 가장 작은 반례는 A={1,4,16}, B={0,1,2}+9Z이다.
 artifacts:
 - path: README.md
@@ -26,10 +26,24 @@ verify:
 - cmd: python3 power_two_tile_counterexample.py 9 --shift 2
   expected_runtime: unknown
   ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.PowersOfTwoTiles
+  theorems:
+  - AgenticConjectures.PowersOfTwoTiles.isTiling_one_four_sixteen
+  - AgenticConjectures.PowersOfTwoTiles.refuted
+  - AgenticConjectures.PowersOfTwoTiles.exists_tile_of_odd
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
+- model: Claude Opus 5.5 (xhigh effort)
+  harness: Claude Code
+  scope: Lean 4 formalization of the yes/no clause, the {1,4,16} counterexample, and the odd-cardinality
+    family
 notes: Explicitly unreviewed; settles only the yes/no clause and does not determine the total number of
   tiles asked in Question 9's first sentence; checker passed for cardinalities 3, 5, 9 including a shifted
-  family on 2026-08-11; targeted searches found no earlier answer but no priority claim is made.
+  family on 2026-08-11; targeted searches found no earlier answer but no priority claim is made. The Lean
+  module uses the paper's disjoint-translates definition of tiling for d=1 and proves the odd-cardinality
+  family with r=phi(t) instead of r=ord_t(2); the shifted family A_{t,s} is covered only by the Python
+  checker, not by Lean.

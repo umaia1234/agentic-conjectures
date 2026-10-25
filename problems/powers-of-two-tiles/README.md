@@ -128,6 +128,50 @@ satisfy \(A_{t,s}\mathbin{\dot+}B_{t,s}=\mathbb Z\). The largest exponent is
 \(s+r(t-1)\); consequently, this tile lies inside
 \(\{1,2,4,\ldots,2^n\}\) whenever \(n\geq s+r(t-1)\).
 
+## Lean formal proof
+
+[`AgenticConjectures/PowersOfTwoTiles.lean`](../../AgenticConjectures/PowersOfTwoTiles.lean)
+proves, without `sorry`, extra axioms, or `native_decide`:
+
+```text
+refuted : ¬ statement
+isTiling_one_four_sixteen : IsTiling {1, 4, 16} {b | b % 9 < 3}
+exists_tile_of_odd :
+  ∀ t, Odd t → ∃ n A, ↑A ⊆ powersUpTo n ∧ A.card = t ∧ Tiles ↑A
+```
+
+Here `statement` is the yes/no clause: every finite \(A\subseteq\{2^i:i\le n\}\)
+that tiles \(\mathbb Z\) has one or two elements. The general family is
+`isTiling_tileA`: whenever \(r\ge1\) and \(t\mid 2^r-1\), the set
+\(\{2^{ri}:0\le i<t\}\) tiles with complement
+\(\{b : b \bmod tq < q\}\), \(q=2^r-1\). Its proof follows (1)–(4) above.
+
+## Statement faithfulness
+
+- Question 9 first asks how many tiles lie in \(\{1,2,4,\ldots,2^n\}\), then:
+  > Are the only such tiles the sets of size 1 and 2?
+
+  Only this second sentence is formalized; the count is not addressed.
+- `Tiles A` is the paper's Section 1 definition for \(d=1\): there is
+  \(B\subseteq\mathbb Z\) whose translates \(A+b\), \(b\in B\), cover
+  \(\mathbb Z\) and are pairwise disjoint. The proofs build \(B\) through
+  unique representation (`IsTiling`), and `IsTiling.tiles` converts that into
+  the paper's form.
+- `powersUpTo n` is \(\{2^i:0\le i\le n\}\) as a set of integers. Tiles are
+  quantified as `Finset ℤ`; every subset of this finite set is finite, so
+  nothing is lost. "Sets of size 1 and 2" is read as
+  `A.card = 1 ∨ A.card = 2`.
+- `exists_tile_of_odd` takes \(r=\varphi(t)\) (Euler's theorem gives
+  \(t\mid 2^{\varphi(t)}-1\)) instead of \(r=\operatorname{ord}_t(2)\); any
+  \(r\ge1\) with \(t\mid 2^r-1\) works in (2)–(4). The shifted family
+  \(A_{t,s}\) from (5) onward is not formalized and is covered only by the
+  Python checker.
+
+```bash
+lake build AgenticConjectures.PowersOfTwoTiles
+python3 scripts/check_axioms.py
+```
+
 ## Exact checker and reproduction
 
 [`power_two_tile_counterexample.py`](power_two_tile_counterexample.py)
