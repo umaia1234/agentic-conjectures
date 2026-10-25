@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-57-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-25-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
+**문제 57개** — ✅ 증명: 25 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
 
 ### OEIS
 
@@ -139,6 +139,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 |---|---|---|---|---|
 | [OEIS A000224 — R(n)(R(n)-1)이 n^2-1을 나눌 필요충분조건은 n이 홀수 소수인 것이다](problems/oeis-a000224/README.ko.md) | 🟡 부분 결과 | Lean + 인증서 | `GPT-5.6 Sol` | Lean으로 짝수 n>1은 해당 합동식을 만족하지 않음을 검증하고, 홀수 소수 거듭제곱 p^e (e>=2) 또는 서로 다른 두 홀수 소수의 곱 중에는 합성수 반례가 없음을 증명했다. Pell 궤도 탐색은 K<=375, n<=10^18, omega(n)<=3을 모두 만족하는 모든 경우를 다루었지만, 전체 추측은 여전히 미해결이다. |
 | [OEIS A034267 — 모든 n>=2에 대해 D-finite 점화식 증명](problems/oeis-a034267/README.ko.md) | ✅ 증명 | Lean | `GPT-5.6 Sol` | Lean으로 OEIS에 제시된 A034267의 닫힌형이 정의상 의미가 있는 모든 첨자 n>=2에서 Mathar가 추측한 2계 다항식 점화식을 만족함을 증명했다. |
+| [OEIS A046969 — a(p) = 12(2p-1)로 추측 I 증명](problems/oeis-a046969/README.ko.md) | ✅ 증명 | Lean + 인증서 | `Claude Opus 5.5 (max effort)` | 2p-1도 소수인 모든 소수 p>3에 대해 a(p)=12(2p-1)임을 Lean으로 검증했다. 여기서 a(n)은 B_{2n}/(2n(2n-1))의 분모이므로 a(p)/12=2p-1은 소수이고, OEIS A046969의 추측 I이 성립한다. |
 | [OEIS A056777 / Choudhury–Wei 추측 1.1 — n+12는 소수 거듭제곱이 아님](problems/oeis-a056777/README.ko.md) | 🟡 부분 결과 | Lean | `GPT-5.6 Sol` · `Claude Fable 5` | phi(n+12)=phi(n)+12이고 sigma(n+12)=sigma(n)+12인 합성수 n>=4에 대해 n+12는 소수 거듭제곱일 수 없음을 Lean으로 검증했다(상류 술어 그대로 커널 검사). 원래의 Choudhury–Wei 추측 1.1은 여전히 미해결이다. |
 | [OEIS A060841 — 정수성 완전 분류, 2의 거듭제곱 분모 추측 반박](problems/oeis-a060841/README.ko.md) | 🔴 반례 | 인증서 | `GPT-5.6 Sol` | OEIS의 두 추측을 모두 해결했다고 주장한다. R_n이 정수일 필요충분조건은 n이 {1,...,34,36,38}에 속하는 것이며, 이를 n>=91에 대한 2-adic 상계와 유한 인증으로 증명했다. 한편 모든 기약분모가 2의 거듭제곱이라는 주장은 den(R_1807)=2^2342*3으로 반박했다. |
 | [OEIS A063880 — 작은 강력수 핵을 갖는 sigma(n)=2*sigma*(n)](problems/oeis-a063880/README.ko.md) | 🟡 부분 결과 | Lean | `GPT-5.6 Sol` · `Claude Fable 5` | 강력수 핵의 서로 다른 소인수가 2개 이하인 sigma(n)=2*sigma*(n)의 모든 해에서 그 핵은 정확히 108임을 Lean으로 검증했다(상류 술어 그대로 커널 검사). 따라서 이 부분족에서는 108이 유일한 원시 항이고 모든 항은 216을 법으로 108과 합동이다. 서로 다른 소인수가 3개 이상인 핵은 배제하지 못했으므로 전체 추측은 미해결이다. |

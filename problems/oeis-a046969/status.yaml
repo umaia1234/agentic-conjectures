@@ -1,0 +1,44 @@
+id: oeis-a046969
+title: OEIS A046969 — Conjecture I proved via a(p) = 12(2p-1)
+title_ko: OEIS A046969 — a(p) = 12(2p-1)로 추측 I 증명
+domain: oeis
+source_url: https://oeis.org/A046969
+claimed_status: proved
+claim: Lean-verifies that a(p)=12(2p-1) for every prime p>3 with 2p-1 prime, where a(n) is the denominator
+  of B_{2n}/(2n(2n-1)), so a(p)/12=2p-1 is prime and OEIS A046969 Conjecture I holds.
+claim_ko: >-
+  2p-1도 소수인 모든 소수 p>3에 대해 a(p)=12(2p-1)임을 Lean으로 검증했다. 여기서 a(n)은
+  B_{2n}/(2n(2n-1))의 분모이므로 a(p)/12=2p-1은 소수이고, OEIS A046969의 추측 I이 성립한다.
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: a046969_certificate.py
+  kind: certificate-script
+- path: upstream/46969.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 a046969_certificate.py --limit 400
+  expected_runtime: about 1 second
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.OeisA046969
+  theorems:
+  - AgenticConjectures.OeisA046969.conjecture1_holds
+  - AgenticConjectures.OeisA046969.conjecture1
+  - AgenticConjectures.OeisA046969.a_eq
+  - AgenticConjectures.OeisA046969.padicNorm_sum_pow_sub_le
+  - AgenticConjectures.OeisA046969.voronoi_two
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: proof, Lean 4 formalization, sanity-check script, and documentation
+notes: The Lean module copies the upstream definition of a verbatim; statement is the universal closure
+  of the upstream theorem conjecture1, which is also restated with its exact signature. The natural-number
+  subtractions 2*p-1 and m-1 never truncate here, the n=0 branch of a is unused, and a p / 12 is exact
+  because a p = 12(2p-1). The proof uses mathlib's von Staudt-Clausen theorem and Faulhaber formula plus
+  a doubling (Voronoi, multiplier 2) congruence for power sums modulo l^2; it reproves only the special
+  cases of Adams' theorem and Kummer's congruence that it needs, both classical, so no novelty is claimed.
+  The Python script is a sanity check only (OEIS DATA terms 1..35 and the 17 qualifying primes below 400).
+  Conjecture II of the same entry, refuted upstream at n=236791, is out of scope. Unreviewed; not reported
+  to OEIS.
