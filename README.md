@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-56-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
+![problems](https://img.shields.io/badge/problems-57-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-18-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**56 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
+**57 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 18 · ⚪ open: 6
 
 ### OEIS
 
@@ -199,6 +199,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 | Problem | Claimed status | Machine checks | Solved by | Claim |
 |---|---|---|---|---|
+| [Catch-Up on {1..N} — draw conjecture checked to N = 28](problems/catch-up-game/README.md) | 🟡 partial | lean + cert | `Claude Opus 5.5 (max effort)` | Lean-proves the Catch-Up draw conjecture for N ≤ 10 and that an odd T_N never gives a draw; two independent C++ solvers (computer-assisted, not Lean-checked) compute the exact value for every N ≤ 28, and every even-T_N case among them is a draw; the general statement is reduced to a stronger complete-multiset conjecture that was tested but remains open. |
 | [Degree vs sensitivity — n=14 degree-5 aggregate constraints](problems/degree-vs-sensitivity/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims exact necessary layer constraints (B_2>=84, exactly 247 feasible (B_2,B_3,B_4,B_5) profiles) for the n=14 degree<=5 fully sensitive case, while the truth-table existence search ended with status UNKNOWN. |
 | [Floridian solitaire — immediate losses for every n > 6](problems/floridian-solitaire/README.md) | ✅ proved | cert | `GPT-5.6 Sol` | Claims a complete (unreviewed) proof that every integer n > 6 has an immediate-loss position, resolving the open residue classes n = 0,2 (mod 6) of Meyerowitz–Curran–Locke–Low's second research question via a gap-two block construction plus explicit cases 18 and 20. |
 | [Let's Prove Goldbach prize problem 2 — exact periodic formula](problems/goldbach-prize-2/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Under the per-fixed-triple finite-case interpretation, proves an exact periodic residue-list formula for the x-th positive integer divisible by none of n1,n2,n3, so the advertised n3^2/2 error bound holds with zero error. |

@@ -1,0 +1,19 @@
+Python 3.12.13
+      497.19 real       486.34 user         1.63 sys
+           369967104  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+               22940  page reclaims
+                   0  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                   0  voluntary context switches
+              334378  involuntary context switches
+       9569198941071  instructions retired
+       1963455926680  cycles elapsed
+           361333504  peak memory footprint

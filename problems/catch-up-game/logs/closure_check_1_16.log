@@ -1,0 +1,16 @@
+n=1 X=1 loss=0 draw=1 win=0 immediate=1 closed=0 open=0 no_tie=0/0 max_bad=0/0 min_bad=0/0 time=0.00s
+n=2 X=3 loss=0 draw=3 win=0 immediate=3 closed=0 open=0 no_tie=0/0 max_bad=0/0 min_bad=0/0 time=0.00s
+n=3 X=9 loss=0 draw=7 win=2 immediate=9 closed=0 open=0 no_tie=0/0 max_bad=0/0 min_bad=0/0 time=0.00s
+n=4 X=21 loss=0 draw=15 win=6 immediate=18 closed=0 open=3 no_tie=2/2 max_bad=1/1 min_bad=0/1 time=0.00s
+n=5 X=48 loss=0 draw=29 win=19 immediate=37 closed=2 open=9 no_tie=7/9 max_bad=2/2 min_bad=0/2 time=0.00s
+n=6 X=112 loss=0 draw=57 win=55 immediate=78 closed=8 open=26 no_tie=22/30 max_bad=4/4 min_bad=1/4 time=0.00s
+n=7 X=264 loss=0 draw=117 win=147 immediate=168 closed=26 open=70 no_tie=61/87 max_bad=7/9 min_bad=2/9 time=0.00s
+n=8 X=614 loss=0 draw=248 win=366 immediate=360 closed=75 open=179 no_tie=159/234 max_bad=15/20 min_bad=3/20 time=0.00s
+n=9 X=1429 loss=0 draw=512 win=917 immediate=781 closed=235 open=413 no_tie=370/605 max_bad=37/43 min_bad=6/43 time=0.00s
+n=10 X=3300 loss=0 draw=1082 win=2218 immediate=1699 closed=674 open=927 no_tie=840/1514 max_bad=79/87 min_bad=10/87 time=0.01s
+n=11 X=7582 loss=0 draw=2284 win=5298 immediate=3701 closed=1833 open=2048 no_tie=1872/3705 max_bad=159/176 min_bad=17/176 time=0.02s
+n=12 X=17303 loss=0 draw=4792 win=12511 immediate=8038 closed=4775 open=4490 no_tie=4137/8912 max_bad=313/353 min_bad=26/353 time=0.06s
+n=13 X=39258 loss=0 draw=10025 win=29233 immediate=17402 closed=12234 open=9622 no_tie=8912/21146 max_bad=625/710 min_bad=44/710 time=0.18s
+n=14 X=88513 loss=0 draw=21215 win=67298 immediate=37507 closed=30544 open=20462 no_tie=19038/49582 max_bad=1241/1424 min_bad=75/1424 time=0.52s
+n=15 X=198477 loss=0 draw=44708 win=153769 immediate=80527 closed=75591 open=42359 no_tie=39505/115096 max_bad=2486/2854 min_bad=133/2854 time=1.51s
+n=16 X=442699 loss=0 draw=95430 win=347269 immediate=172196 closed=183326 open=87177 no_tie=81463/264789 max_bad=4964/5714 min_bad=221/5714 time=4.26s

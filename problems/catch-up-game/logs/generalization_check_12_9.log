@@ -1,0 +1,6 @@
+sanity Catch-Up({1..N}), N = 1..10: [1, 1, 0, 0, 1, 1, 0, 0, -1, -1] ok
+fresh games on complete even-sum multisets (value: count): {0: 26767}
+non-draws: []
+Conjecture L positions ((d > 0, value): count): {(True, 0): 314659, (False, 0): 26767, (True, 1): 931327}
+total positions: 1272753  losses: []
+PASS

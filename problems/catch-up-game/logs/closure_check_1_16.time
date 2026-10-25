@@ -1,0 +1,19 @@
+Apple clang version 21.0.0 (clang-2100.3.34.2)
+        6.90 real         6.50 user         0.02 sys
+            18268160  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+                1313  page reclaims
+                   1  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                   0  voluntary context switches
+                2985  involuntary context switches
+        145215318105  instructions retired
+         27137641820  cycles elapsed
+            17842632  peak memory footprint

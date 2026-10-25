@@ -1,0 +1,105 @@
+id: catch-up-game
+title: "Catch-Up on {1..N} — draw conjecture checked to N = 28"
+title_ko: "{1..N} 위의 Catch-Up — 무승부 추측을 N = 28까지 확인"
+domain: other
+source_url: "https://mpra.ub.uni-muenchen.de/108784/"
+claimed_status: partial
+claim: >-
+  Lean-proves the Catch-Up draw conjecture for N ≤ 10 and that an odd T_N never gives a draw;
+  two independent C++ solvers (computer-assisted, not Lean-checked) compute the exact value for
+  every N ≤ 28, and every even-T_N case among them is a draw; the general statement is reduced
+  to a stronger complete-multiset conjecture that was tested but remains open.
+claim_ko: >-
+  Catch-Up 무승부 추측을 N ≤ 10에서 Lean으로 증명하고, T_N이 홀수이면 무승부가 나올 수
+  없음도 Lean으로 증명한다. 서로 독립적인 두 C++ 탐색기로 모든 N ≤ 28의 정확한 값을
+  계산했으며(컴퓨터 보조, Lean 미검사), 그중 T_N이 짝수인 경우는 모두 무승부다. 일반적인
+  명제는 더 강한 완비 중복집합 추측으로 환원했지만, 그 추측은 검사만 했을 뿐 미해결이다.
+artifacts:
+  - path: DETAILS.md
+    kind: mathematical-details
+  - path: catchup_turn.cpp
+    kind: search-code
+  - path: catchup_pick.cpp
+    kind: search-code
+  - path: valueaux_transliteration.py
+    kind: search-code
+  - path: verify_values.py
+    kind: certificate-script
+  - path: check_upstream_copy.py
+    kind: certificate-script
+  - path: generalization_check.py
+    kind: search-code
+  - path: closure_check.cpp
+    kind: search-code
+  - path: logs/catchup_turn_1_28.log
+    kind: data
+  - path: logs/catchup_pick_1_28.log
+    kind: data
+  - path: logs/generalization_check_12_9.log
+    kind: data
+  - path: logs/closure_check_1_16.log
+    kind: data
+  - path: upstream/README.md
+    kind: upstream-source
+  - path: upstream/CatchUpConjecture.lean
+    kind: upstream-lean
+verify:
+  - cmd: python3 verify_values.py
+    expected_runtime: "about 25 s (both C++ solvers for N <= 22, Python for N <= 12, 11,264 positions)"
+    ci_feasible: true
+  - cmd: python3 verify_values.py --nmax 12 --positions 12
+    expected_runtime: "about 7 s (three-way comparison on all 53,248 positions with R ⊆ {1..12}, 0.8 GB)"
+    ci_feasible: true
+  - cmd: python3 check_upstream_copy.py
+    expected_runtime: "<1 s"
+    ci_feasible: true
+  - cmd: g++ -O3 -std=c++17 closure_check.cpp -o build_closure && ./build_closure 1 16 && rm -f build_closure
+    expected_runtime: "about 10 s"
+    ci_feasible: true
+  - cmd: python3 generalization_check.py 9 7
+    expected_runtime: "about 3 s"
+    ci_feasible: true
+  - cmd: python3 verify_values.py --nmax 28
+    expected_runtime: "about 30 min single-threaded; about 15 GB of memory at N = 28"
+    ci_feasible: false
+  - cmd: python3 generalization_check.py 12 9
+    expected_runtime: "about 8 min (497 s, 0.37 GB)"
+    ci_feasible: false
+lean:
+  modules:
+    - AgenticConjectures.CatchUpGame
+  theorems:
+    - AgenticConjectures.CatchUpGame.statement_of_le_ten
+    - AgenticConjectures.CatchUpGame.value_Icc_three
+    - AgenticConjectures.CatchUpGame.value_Icc_four
+    - AgenticConjectures.CatchUpGame.value_Icc_seven
+    - AgenticConjectures.CatchUpGame.value_Icc_eight
+    - AgenticConjectures.CatchUpGame.value_Icc_ne_draw
+    - AgenticConjectures.CatchUpGame.statement_iff
+    - AgenticConjectures.CatchUpGame.valueAux_ne_draw
+    - AgenticConjectures.CatchUpGame.valueAux_toFinset
+    - AgenticConjectures.CatchUpGame.valueAux_add
+    - AgenticConjectures.CatchUpGame.valueAux_eq_gapValue
+    - AgenticConjectures.CatchUpGame.gapValue_eq
+    - AgenticConjectures.CatchUpGame.value_eq_gapValue
+    - AgenticConjectures.CatchUpGame.value_eq_gapValue_zero
+    - AgenticConjectures.CatchUpGame.best_eq
+attribution:
+  - model: "Claude Opus 5.5 (max effort)"
+    harness: "Claude Code"
+    scope: "exact solvers and cross-checks, Lean formalization, informal proofs, and documentation"
+notes: >-
+  The values for 11 ≤ N ≤ 28 are computer-assisted, not Lean-checked. They come from two
+  independent C++ programs: a turn-level search whose pruning rules are proved informally in
+  DETAILS.md, and a pick-level recursion without pruning that follows the gap recursion derived
+  in Lean (gapValue_eq). The two programs agree for every N ≤ 28. Both also agree with a literal
+  Python transliteration of valueAux on all positions with R ⊆ {1..12} and D ≤ 12 (CI).
+  Lean covers only N ≤ 10, because `decide` evaluates the unmemoized
+  recursion in the kernel. The upstream definitions are copied byte for byte (CI-checked); only
+  the module header and the namespace differ. The paper reports optimal-play results for N ≤ 20
+  and MCTS experiments for N = 23, 24, 27, 28, and A278587 lists N = 3..20. The values for
+  N = 21..28 were not found in these sources. The search also covered arXiv, and the seven works
+  that cite the paper on OpenAlex were screened by title only. There is no novelty claim, and
+  nothing has been submitted to the OEIS or upstream. Conjecture L in
+  DETAILS.md is open: it has been tested only in the stated ranges, and its natural two-ply
+  inductive invariant fails.
