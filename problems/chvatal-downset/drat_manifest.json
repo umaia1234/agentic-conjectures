@@ -1,0 +1,399 @@
+{
+  "repo_n6": {
+    "command": "generate_cnf.py --n 6 --reduced --encoding cardnet",
+    "pysat": "python-sat[pblib]==1.9.dev17",
+    "variables": 16238,
+    "clauses": 25356,
+    "cnf_sha256": "f8d119eac17820ae405c590c13aa4fae93b8cf787faa21092f90a1384858f2eb",
+    "measured": [
+      {
+        "solver": "PySAT cadical195 (CaDiCaL 1.9.5)",
+        "result": "UNSAT",
+        "conflicts": 156925,
+        "solver_wall_seconds": 14.42,
+        "proof_bytes": 41334334,
+        "proof_format": "text DRAT",
+        "drat_trim": "s VERIFIED",
+        "drat_trim_wall_seconds": 12.5
+      },
+      {
+        "solver": "cadical 3.0.1",
+        "result": "UNSAT",
+        "conflicts": 161702,
+        "solver_cpu_seconds": 3.33,
+        "proof_bytes": 13610275,
+        "proof_format": "binary DRAT",
+        "drat_trim": "s VERIFIED",
+        "drat_trim_wall_seconds": 3.34
+      }
+    ]
+  },
+  "rank_split": {
+    "command": "generate_rank_cnf.py --n N --rank R",
+    "certificate_kinds": {
+      "committed": "text DRAT in drat/: a CaDiCaL 3.0.1 proof reduced to its core lemmas by drat-trim -l",
+      "regenerate": "proof too large to commit; certify_drat.py rank --solve reproduces it with cadical",
+      "none": "no certificate: the bounded solver runs in 'measured' did not decide the instance"
+    },
+    "cases": {
+      "n3_r3": {
+        "n": 3,
+        "rank": 3,
+        "variables": 57,
+        "clauses": 179,
+        "cnf_sha256": "dcd8dfe65ba65206f0e75b9e0bade6a102538536de72c519fd602ab870cad326",
+        "certificate": "committed",
+        "proof": "drat/n3_r3.drat",
+        "proof_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "proof_bytes": 2,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 0,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      },
+      "n4_r3": {
+        "n": 4,
+        "rank": 3,
+        "variables": 170,
+        "clauses": 698,
+        "cnf_sha256": "06fefbb0cbef35c2320a37c6fc2997f6187f4e0fdbb1ff6b1426982fd448d43f",
+        "certificate": "committed",
+        "proof": "drat/n4_r3.drat",
+        "proof_sha256": "ddc1bb411683cae29c1396951755bc808c723cae62580e27151448623f6f0c54",
+        "proof_bytes": 74,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 0,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      },
+      "n4_r4": {
+        "n": 4,
+        "rank": 4,
+        "variables": 183,
+        "clauses": 733,
+        "cnf_sha256": "5aff048fc4c9626c8c2bee396245773574857c146663486cee17cb93ed6d79bd",
+        "certificate": "committed",
+        "proof": "drat/n4_r4.drat",
+        "proof_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "proof_bytes": 2,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 0,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      },
+      "n5_r3": {
+        "n": 5,
+        "rank": 3,
+        "variables": 528,
+        "clauses": 2900,
+        "cnf_sha256": "ec186462db8e48f2e19c2fe79a218fd97047344b2d86d16de4bc477f0216a2e1",
+        "certificate": "committed",
+        "proof": "drat/n5_r3.drat",
+        "proof_sha256": "af3b11704248ef417b8a7293dd73903ccd65da743623851f5f78c640026bae25",
+        "proof_bytes": 639,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 0,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      },
+      "n5_r4": {
+        "n": 5,
+        "rank": 4,
+        "variables": 528,
+        "clauses": 2896,
+        "cnf_sha256": "ad79fee7a1b1607f3430e63bb5e8c275a6d440256111a5e4f0c84e278b3e286a",
+        "certificate": "committed",
+        "proof": "drat/n5_r4.drat",
+        "proof_sha256": "205ca3210acea93f1985b977d75f022d76f827995fbc52604a2805b818ec7ba2",
+        "proof_bytes": 2642,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 7,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      },
+      "n5_r5": {
+        "n": 5,
+        "rank": 5,
+        "variables": 553,
+        "clauses": 2967,
+        "cnf_sha256": "e4871b83560a3efd04727ddde57f9b0d154d7f266aef38c5afc9a46c66e241c5",
+        "certificate": "committed",
+        "proof": "drat/n5_r5.drat",
+        "proof_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "proof_bytes": 2,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 0,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      },
+      "n6_r3": {
+        "n": 6,
+        "rank": 3,
+        "variables": 1520,
+        "clauses": 11977,
+        "cnf_sha256": "6ac1d4f5b1c3a783ae755648ce385cc61e3fcf26da1e8446d7c29b3ea2a0f0aa",
+        "certificate": "committed",
+        "proof": "drat/n6_r3.drat",
+        "proof_sha256": "10bd3dde9e3fc297419da638e509c4a0972a7cc3c662bbb1939db7cd6b01c887",
+        "proof_bytes": 41619,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 334,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      },
+      "n6_r4": {
+        "n": 6,
+        "rank": 4,
+        "variables": 1520,
+        "clauses": 11968,
+        "cnf_sha256": "3bd1b8641305df4820a4edbb558d12ecaba9cf84d8480d5462058719b7e86a5f",
+        "certificate": "committed",
+        "proof": "drat/n6_r4.drat",
+        "proof_sha256": "00be80152f4def39a37badc32cd2007fafc5cf1ef830d2da8744fdd01a9b5e54",
+        "proof_bytes": 402884,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 4474,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      },
+      "n6_r5": {
+        "n": 6,
+        "rank": 5,
+        "variables": 1520,
+        "clauses": 11963,
+        "cnf_sha256": "561ef5daea6a83695c202fc36891b2d282e99fac098bc90b3d41d17b348dee64",
+        "certificate": "committed",
+        "proof": "drat/n6_r5.drat",
+        "proof_sha256": "000c16999e768d685dc79cd26248bc64e34d9793493f0024a85e8e82f0ea5277",
+        "proof_bytes": 50105,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 381,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      },
+      "n6_r6": {
+        "n": 6,
+        "rank": 6,
+        "variables": 1569,
+        "clauses": 12106,
+        "cnf_sha256": "b2dd7b511cac4e23a1553b1ff53f96468dd4432ae3e1b05ee8979cc2fa2fa803",
+        "certificate": "committed",
+        "proof": "drat/n6_r6.drat",
+        "proof_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "proof_bytes": 2,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 0,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      },
+      "n7_r3": {
+        "n": 7,
+        "rank": 3,
+        "variables": 4100,
+        "clauses": 49861,
+        "cnf_sha256": "62cebadee400ea9cc3012bb7a453f3bc9669c2bc99bdd3e35aa78926bfdc9e5a",
+        "certificate": "committed",
+        "proof": "drat/n7_r3.drat",
+        "proof_sha256": "d040224dcf6be38f1f0deddb3c58704759f6d1ba6d41a3bbfd76d95de4997149",
+        "proof_bytes": 66514,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 297,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      },
+      "n7_r4": {
+        "n": 7,
+        "rank": 4,
+        "variables": 4100,
+        "clauses": 49847,
+        "cnf_sha256": "0d2cfe18225bcc572348572751eb71760b3cf32f2b9403a469f686bdf8ffdf4d",
+        "certificate": "regenerate",
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 2125950,
+          "solver_wall_seconds": 184.15,
+          "proof_bytes": 144945768,
+          "drat_trim": "s VERIFIED",
+          "drat_trim_wall_seconds": 207.88
+        }
+      },
+      "n7_r5": {
+        "n": 7,
+        "rank": 5,
+        "variables": 4100,
+        "clauses": 49833,
+        "cnf_sha256": "d1e9448ab3724971eabd0f580d77e2a4ecde14726ff740a442406b53dab02f99",
+        "certificate": "regenerate",
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 841502,
+          "solver_wall_seconds": 58.83,
+          "proof_bytes": 63808479,
+          "drat_trim": "s VERIFIED",
+          "drat_trim_wall_seconds": 79.99
+        }
+      },
+      "n7_r6": {
+        "n": 7,
+        "rank": 6,
+        "variables": 4100,
+        "clauses": 49827,
+        "cnf_sha256": "f965e1b0cca81755e5f6d7aaddea80d42b74b63a2e6b73e2838a298542bf6ad9",
+        "certificate": "committed",
+        "proof": "drat/n7_r6.drat",
+        "proof_sha256": "a946ad82426ae452302f0a72752ce7f19c7e22d84e622cfe7f8661ef411d921d",
+        "proof_bytes": 799329,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 9849,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      },
+      "n7_r7": {
+        "n": 7,
+        "rank": 7,
+        "variables": 4197,
+        "clauses": 50114,
+        "cnf_sha256": "49b00b0ea32881a6675f6d09e350ae0987199b7980e75201a31c615799d55ec0",
+        "certificate": "committed",
+        "proof": "drat/n7_r7.drat",
+        "proof_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "proof_bytes": 2,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 0,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      },
+      "n8_r3": {
+        "n": 8,
+        "rank": 3,
+        "variables": 10561,
+        "clauses": 209756,
+        "cnf_sha256": "3ec6f5533eef42568e6f6e84a476c14241c4629ec6e392951493dc75a512e2d3",
+        "certificate": "committed",
+        "proof": "drat/n8_r3.drat",
+        "proof_sha256": "f574bbde29a1b29b4a2b6b4143cf56e97f670b6c8671ee28109afbafdbfec269",
+        "proof_bytes": 162259,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 550,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      },
+      "n8_r4": {
+        "n": 8,
+        "rank": 4,
+        "variables": 10561,
+        "clauses": 209742,
+        "cnf_sha256": "42f895207e14445696b5e21978f7e5de16039bf68a95cd856ae2414daf0c5083",
+        "certificate": "none",
+        "measured": {
+          "solver": "cadical 3.0.1 -t 5400",
+          "result": "unknown: stopped by the 5400 s wall-clock limit",
+          "solver_cpu_seconds": 3690.82,
+          "conflicts": 35463210
+        }
+      },
+      "n8_r5": {
+        "n": 8,
+        "rank": 5,
+        "variables": 10561,
+        "clauses": 209714,
+        "cnf_sha256": "2c9ce88409ec725e5f9ccfc2d0a85931c7dff6caa96bba57e369366e5d21f652",
+        "certificate": "none",
+        "measured": {
+          "solver": "cadical 3.0.1 -t 5400",
+          "result": "unknown: stopped by the 5400 s wall-clock limit",
+          "solver_cpu_seconds": 3691.01,
+          "conflicts": 31695931
+        }
+      },
+      "n8_r6": {
+        "n": 8,
+        "rank": 6,
+        "variables": 10561,
+        "clauses": 209694,
+        "cnf_sha256": "399382aaa3e505b8a0d9bdf28803e5e613cc4830f5f3e39195e0079b33c1c56e",
+        "certificate": "none",
+        "measured": {
+          "solver": "cadical 3.0.1 -t 5400",
+          "result": "unknown: stopped by the 5400 s wall-clock limit",
+          "solver_cpu_seconds": 4068.9,
+          "conflicts": 44748818
+        }
+      },
+      "n8_r7": {
+        "n": 8,
+        "rank": 7,
+        "variables": 10561,
+        "clauses": 209687,
+        "cnf_sha256": "aa49d99e4f1ccb11034117a654a2cc15bc689a66437c026798a934cda451521a",
+        "certificate": "regenerate",
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 308332,
+          "solver_wall_seconds": 14.01,
+          "proof_bytes": 22038837,
+          "drat_trim": "s VERIFIED",
+          "drat_trim_wall_seconds": 18.98
+        }
+      },
+      "n8_r8": {
+        "n": 8,
+        "rank": 8,
+        "variables": 10754,
+        "clauses": 210262,
+        "cnf_sha256": "0992e496505ca13f8f966284df45d7c8a27d4fbde73127b3cad11323b4ea95f4",
+        "certificate": "committed",
+        "proof": "drat/n8_r8.drat",
+        "proof_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+        "proof_bytes": 2,
+        "measured": {
+          "solver": "cadical 3.0.1",
+          "result": "UNSAT",
+          "conflicts": 0,
+          "solver_cpu_seconds": "< 0.2"
+        }
+      }
+    }
+  },
+  "repo_n7_attempt": {
+    "command": "generate_cnf.py --n 7 --reduced --encoding cardnet",
+    "measured": {
+      "solver": "cadical 3.0.1",
+      "result": "unknown (stopped)",
+      "solver_cpu_seconds": 1015.63,
+      "conflicts": 11613975
+    }
+  },
+  "about": "DRAT certificates for problems/chvatal-downset (see README.md). Times were measured on a shared, heavily loaded 18-core machine."
+}

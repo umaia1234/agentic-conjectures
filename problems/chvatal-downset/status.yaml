@@ -4,16 +4,28 @@ title_ko: Chvatal의 하향 닫힌 집합 추측 — 포화 SAT 환원
 domain: graph-combinatorics
 source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/Paper/Chvatal.lean
 claimed_status: partial
-claim: Proves an elementary saturation lemma and reports an uncertified n=6 UNSAT exclusion of counterexamples
-  under stated reductions; n=8 attempts timed out and the general conjecture remains open.
+claim: >-
+  DRAT-certified SAT reproduction of the known case n<=7: assuming the Kleitman-Magnanti theorem,
+  drat-trim-checked rank-split CNFs exclude counterexamples on at most 7 elements (the original
+  reduced n=6 CNF is certified as well), while for n=8 only minimal counterexamples of rank 3, 7
+  or 8 are excluded and the general conjecture remains open.
 claim_ko: >-
-  기초적인 포화 보조정리를 증명하고, 명시된 환원 아래 n=6에서 반례가 없다는 인증되지 않은 UNSAT 결과를
-  보고한다. n=8 시도는 시간 초과로 끝났으며 일반 추측은 여전히 미해결이다.
+  알려진 n<=7 경우를 DRAT 인증 SAT로 재현한 결과로, Kleitman-Magnanti 정리를 가정하면 drat-trim으로
+  검사한 계수 분할 CNF가 원소 7개 이하의 반례를 배제하고(원래의 환원된 n=6 CNF도 인증됨), n=8에서는
+  계수 3, 7, 8인 최소 반례만 배제되며 일반 추측은 여전히 미해결이다.
 artifacts:
 - path: README.md
   kind: informal-proof
 - path: generate_cnf.py
   kind: search-code
+- path: generate_rank_cnf.py
+  kind: search-code
+- path: certify_drat.py
+  kind: certificate-script
+- path: drat_manifest.json
+  kind: checksum
+- path: drat/
+  kind: sat-drat
 - path: n6_solver_result.json
   kind: data
 - path: n8_attempt_summary.md
@@ -28,10 +40,39 @@ verify:
 - cmd: /tmp/chvatal-sat-venv/bin/python generate_cnf.py --self-test
   expected_runtime: unknown
   ci_feasible: true
+- cmd: python3 generate_rank_cnf.py --self-test
+  expected_runtime: '~40 s (standard library only)'
+  ci_feasible: true
+- cmd: python3 certify_drat.py rank
+  expected_runtime: '~2 s (15 committed DRAT proofs, n=3..8)'
+  ci_feasible: true
+  requires:
+  - drat-trim
+- cmd: python3 -m venv /tmp/chvatal-drat-venv && /tmp/chvatal-drat-venv/bin/pip install "python-sat[pblib]==1.9.dev17"
+    && /tmp/chvatal-drat-venv/bin/python certify_drat.py repo-n6
+  expected_runtime: '~30 s plus pip install (41 MB PySAT DRAT proof, drat-trim ~13 s)'
+  ci_feasible: true
+  requires:
+  - drat-trim
+- cmd: python3 certify_drat.py rank --solve
+  expected_runtime: '~10 min (564 s wall, 287 s CPU locally; proofs up to 145 MB in a temp dir)'
+  ci_feasible: false
+  requires:
+  - cadical
+  - drat-trim
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: README explicitly claims no new case of the conjecture (n<=7 already settled in the literature);
-  n=6 CaDiCaL UNSAT has no DRAT/LRAT certificate ('uncertified solver reproduction'); n=8 MILP and feasibility
-  runs hit time limits without deciding; upstream Lean statement is sorry-backed.
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: DRAT certification of the n=6 reduced CNF, rank-split minimal-counterexample encoding with
+    soundness proofs and self-test, certified n<=7 reproduction, n=8 rank runs
+notes: >-
+  No novelty: n<=7 is the Eifler-Gleixner-Pulaj theorem (exact SCIP with VIPR certificates), reproduced
+  here by SAT and DRAT. The Kleitman-Magnanti theorem is cited, not re-proved; the reduction proofs and
+  the encoding's faithfulness are informal arguments in README.md plus a brute-force self-test, not Lean.
+  Proofs for n7_r4, n7_r5 and n8_r7 (up to ~145 MB) are not committed; 'certify_drat.py rank --solve'
+  regenerates them and needs cadical. The repo-n6 certificate also trusts Sterboul's theorem, the n=5
+  case and PySAT's cardinality network. n=8 ranks 4-6 stayed undecided in bounded CaDiCaL runs, and
+  the earlier n=8 MILP runs also timed out. The upstream Lean statement is sorry-backed.

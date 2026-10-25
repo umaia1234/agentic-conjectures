@@ -209,9 +209,15 @@ def solve_cnf(
     variables: VariableMap,
     *,
     solver_name: str,
+    proof: Path | None = None,
 ) -> dict[str, object]:
     started = time.perf_counter()
-    with Solver(name=solver_name, bootstrap_with=cnf.clauses, use_timer=True) as solver:
+    with Solver(
+        name=solver_name,
+        bootstrap_with=cnf.clauses,
+        use_timer=True,
+        with_proof=proof is not None,
+    ) as solver:
         satisfiable = solver.solve()
         elapsed = time.perf_counter() - started
         result: dict[str, object] = {
@@ -226,6 +232,14 @@ def solve_cnf(
             result["candidate"] = validate_candidate(
                 variables.n, variables, solver.get_model()
             )
+        elif proof is not None:
+            # A DRAT trace is only a certificate once drat-trim accepts it
+            # against the DIMACS file written by --output.
+            proof.parent.mkdir(parents=True, exist_ok=True)
+            with proof.open("w") as handle:
+                for line in solver.get_proof():
+                    handle.write(line + "\n")
+            result["drat_proof_output"] = str(proof.resolve())
         return result
 
 
@@ -264,6 +278,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output", type=Path, help="write DIMACS CNF here")
     parser.add_argument("--solve", action="store_true")
     parser.add_argument("--solver", default="cadical195")
+    parser.add_argument(
+        "--proof",
+        type=Path,
+        help="with --solve: write the solver's DRAT trace here (check it "
+        "with drat-trim against the --output CNF)",
+    )
     parser.add_argument("--self-test", action="store_true")
     return parser.parse_args()
 
@@ -293,7 +313,9 @@ def main() -> None:
         summary["dimacs_output"] = str(args.output.resolve())
     if args.solve:
         summary.update(
-            solve_cnf(cnf, variables, solver_name=args.solver)
+            solve_cnf(
+                cnf, variables, solver_name=args.solver, proof=args.proof
+            )
         )
     if not args.output and not args.solve:
         summary["note"] = "use --output and/or --solve"

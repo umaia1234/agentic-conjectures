@@ -184,7 +184,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 | 문제 | 주장 상태 | 기계 검증 | 작업 모델 | 주장 |
 |---|---|---|---|---|
-| [Chvatal의 하향 닫힌 집합 추측 — 포화 SAT 환원](problems/chvatal-downset/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | 기초적인 포화 보조정리를 증명하고, 명시된 환원 아래 n=6에서 반례가 없다는 인증되지 않은 UNSAT 결과를 보고한다. n=8 시도는 시간 초과로 끝났으며 일반 추측은 여전히 미해결이다. |
+| [Chvatal의 하향 닫힌 집합 추측 — 포화 SAT 환원](problems/chvatal-downset/README.ko.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` · `Claude Opus 5.5 (max effort)` | 알려진 n<=7 경우를 DRAT 인증 SAT로 재현한 결과로, Kleitman-Magnanti 정리를 가정하면 drat-trim으로 검사한 계수 분할 CNF가 원소 7개 이하의 반례를 배제하고(원래의 환원된 n=6 CNF도 인증됨), n=8에서는 계수 3, 7, 8인 최소 반례만 배제되며 일반 추측은 여전히 미해결이다. |
 | [Conway의 99-그래프 문제 srg(99,14,1,2)](problems/conway-99-graph/README.ko.md) | ⚪ 미해결 | — | `GPT-5.6 Sol` | 상태 조사만 제공한다. srg(99,14,1,2)의 존재 여부가 미해결임을 기록하고 2025년 자기동형군 제약 (Cesarz–Woldar)을 인용하며, 새로운 계산이나 해결 결과를 주장하지 않는다. |
 | [Frankl의 합집합 닫힌 집합족 추측](problems/frankl-union-closed/README.ko.md) | ⚪ 미해결 | — | `GPT-5.6 Sol` | 상태 조사만 제공한다. 바탕 집합의 크기가 <= 12인 경우에 추측이 성립한다는 알려진 결과와 일반적인 0.38234\|F\| 빈도 하한을 기록하며, 원소가 13개인 경우를 포함해 아무것도 해결하지 않았다고 명시한다. |
 | [668차 Hadamard 행렬](problems/hadamard-668/README.ko.md) | ⚪ 미해결 | — | `GPT-5.6 Sol` | 상태 조사만 제공한다. 668이 해결되지 않은 최소 Hadamard 차수임을 기록하고 2026년 Legendre 쌍(길이 333) 탐색 상태 보고서를 요약하며, 새로운 존재 또는 비존재 결과를 주장하지 않는다. |
