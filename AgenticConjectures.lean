@@ -26,6 +26,7 @@ import AgenticConjectures.OeisA396093
 import AgenticConjectures.OeisA397588
 import AgenticConjectures.OeisA398189
 import AgenticConjectures.Erdos385
+import AgenticConjectures.CrimHookStacks
 
 /-!
 # Agentic Conjectures — root module

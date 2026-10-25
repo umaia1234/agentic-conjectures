@@ -1,0 +1,85 @@
+$ nice -n 10 python3 programs/strategy_check.py --max-n 60
+n=0 stacks=0
+n=1 stacks=0
+n=2 stacks=0
+n=3 stacks=0
+n=4 stacks=0
+n=5 stacks=0
+n=6 stacks=0
+n=7 stacks=0
+n=8 stacks=1
+n=9 stacks=1
+n=10 stacks=3
+n=11 stacks=3
+n=12 stacks=8
+n=13 stacks=7
+n=14 stacks=18
+n=15 stacks=16
+n=16 stacks=36
+n=17 stacks=31
+n=18 stacks=62
+n=19 stacks=56
+n=20 stacks=104
+n=21 stacks=97
+n=22 stacks=165
+n=23 stacks=162
+n=24 stacks=254
+n=25 stacks=263
+n=26 stacks=382
+n=27 stacks=417
+n=28 stacks=570
+n=29 stacks=649
+n=30 stacks=838
+n=31 stacks=994
+n=32 stacks=1227
+n=33 stacks=1495
+n=34 stacks=1783
+n=35 stacks=2217
+n=36 stacks=2576
+n=37 stacks=3244
+n=38 stacks=3701
+n=39 stacks=4692
+n=40 stacks=5294
+n=41 stacks=6712
+n=42 stacks=7527
+n=43 stacks=9511
+n=44 stacks=10646
+n=45 stacks=13363
+n=46 stacks=14972
+n=47 stacks=18633
+n=48 stacks=20941
+n=49 stacks=25802
+n=50 stacks=29126
+n=51 stacks=35509
+n=52 stacks=40287
+n=53 stacks=48594
+n=54 stacks=55420
+n=55 stacks=66158
+n=56 stacks=75834
+n=57 stacks=89640
+n=58 stacks=103231
+n=59 stacks=120922
+n=60 stacks=139820
+case counts (moves from X; Rin/Cin sub-cases count (move, P-child move) pairs):
+  R1  delete row 1; reply column 1                     964014
+  C1  delete column 1; reply row 1                     964014
+  Rin  delete row i+1 (moves)                          7619756
+    P-child by row i', r >= 4; reply row i'+1          40729416
+    P-child by row i', r = 3; reply column 1           2700
+    P-child by column j'; reply column j'+1            28374387
+  Rleg  delete a leg row (moves)                       5343498
+    r >= k+3; reply another leg row                    5232518
+    r = k+2, c >= m_1+2; reply column c                110980
+    r = k+2, c = m_1+1 (impossible)                    0
+  Cin  delete column j+1 (moves)                       7619756
+    P-child by column j', c >= 4; reply column j'+1    40729416
+    P-child by column j', c = 3; reply row 1           2700
+    P-child by row i'; reply row i'+1                  28374387
+  Carm  delete an arm column (moves)                   5343498
+    c >= m_1+3; reply column c-1                       5232518
+    c = m_1+2, r >= k+2; reply a leg row               110980
+    c = m_1+2, r = k+1 (impossible)                    0
+base case: 1830 hooks G(r,c) with r + c - 1 <= 60 checked
+summary: OK N=60 stacks=964014 replies=150828030 hooks=1830 failures=0
+exit status: 0
+wall time: 290.67 s
