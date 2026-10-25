@@ -1,0 +1,141 @@
+OEIS A007406: the large runs behind README.md (not re-run in CI)
+================================================================
+
+Environment
+  Machine:  Apple M5 Max, macOS 27.0.1, shared with other jobs (load
+            average about 15-50 during the runs); sections 1-7 ran niced (+5).
+  C:        Apple clang 21.0.0, cc -O3 -std=c11 -Wall -Wextra -pthread
+  Python:   3.12.13 (standard library only)
+  PARI/GP:  2.19.0
+  Date:     2026-10-24
+  Commands run from problems/oeis-a007406/ (binaries built outside the
+  repository); times from /usr/bin/time -p, in seconds.
+
+Sources (SHA-256 at the time of the runs)
+  e18f11357b04d3f6e8ba92408264a2651838aa2ab54998b2d5ff79916728e6f0  a007406_roots_mont.c
+  cdc12c79524598c0a6b8e397ea5fa1004e27761a1294513c3d420cb239003977  a007406_roots_lin.c
+  fdf9fb7c6db58a08c823a6104e545f9b5bbf899c20d387d831590a1f45d84791  a007406_certificate.py
+  6a5872fbe2bd9b78a4cb9f7af94d31ec0a520a2ce456fb5072000c93dccb0842  a007406_children.gp
+  11d330d1cdda5ffcd8d7bf31745aae3c6c4e50e131f7247090aee5a556797587  a007406_direct.gp
+
+1. Root scan R1 (a007406_roots_mont.c, Montgomery mod q^3), 2 threads
+  $ ./roots_mont 5 2642245 2      (stdout: logs/roots_R1_2642245.txt)
+    hit 7 3 2
+    hit 16843 8421 2
+    hit 16843 16842 2
+    hit 2124679 1062339 2
+    hit 2124679 2124678 2
+    summary impl=R1-montgomery-batch qmin=5 qmax=2642245 primes=192723 sum_q=244516283263 roots_v>=1(m<q-1)=385031 roots_v>=2=5 roots_v>=3=0 wolstenholme_congruence_failures=0
+    real 1359.65
+    user 2282.83
+    sys 9.79
+    exit=0
+
+2. Root scan R2 (a007406_roots_lin.c, inverse table mod q^2), 2 threads
+  $ ./roots_lin 5 2642245 2       (stdout: logs/roots_R2_2642245.txt)
+    hit 7 3 2
+    hit 16843 8421 2
+    hit 16843 16842 2
+    hit 2124679 1062339 2
+    hit 2124679 2124678 2
+    summary impl=R2-linear-inverse-table qmin=5 qmax=2642245 primes=192723 sum_q=244516283263 roots_v>=1(m<q-1)=385031 roots_v>=2=5 wolstenholme_congruence_failures=0
+    real 4880.11
+    user 9190.24
+    sys 39.78
+    exit=0
+
+3. Hit verification of both scanner logs (Python)
+  $ python3 a007406_certificate.py --hits logs/roots_R1_2642245.txt logs/roots_R2_2642245.txt
+      hits q=7: roots [3], 7 child nodes, depth 1, v=2 nodes [3] (0.0s)
+        children of 3: v=0: 6, v=1: 1, v=2: 0
+      hits q=16843: roots [8421, 16842], 33686 child nodes, depth 1, v=2 nodes [8421, 16842] (0.1s)
+        children of 8421: v=0: 16841, v=1: 2, v=2: 0
+        children of 16842: v=0: 16842, v=1: 1, v=2: 0
+      hits q=2124679: roots [1062339, 2124678], 4249358 child nodes, depth 1, v=2 nodes [1062339, 2124678] (25.4s)
+        children of 1062339: v=0: 2124678, v=1: 1, v=2: 0
+        children of 2124678: v=0: 2124679, v=1: 0, v=2: 0
+    hits: 5 root hits for 192723 primes 5..2642245 (from 2 scanner run(s)) verified
+      (26.9s)
+    OK
+    real 26.92
+    user 26.08
+    sys 0.52
+    exit=0
+
+4. Independent child expansion of the five hits (PARI/GP)
+  $ printf 'children(7, 3, 13)\nchildren(16843, 8421, 13)\nchildren(16843, 16842, 13)\nchildren(2124679, 1062339, 13)\nchildren(2124679, 2124678, 13)\n' |
+      gp -q -D parisizemax=4G a007406_children.gp
+    children-gp q=7 s=3 P=13: v=0: 6, v=1: 1, v>=2: [] (0 ms)
+    children-gp q=16843 s=8421 P=13: v=0: 16841, v=1: 2, v>=2: [] (92 ms)
+    children-gp q=16843 s=16842 P=13: v=0: 16842, v=1: 1, v>=2: [] (94 ms)
+    children-gp q=2124679 s=1062339 P=13: v=0: 2124678, v=1: 1, v>=2: [] (13120 ms)
+    children-gp q=2124679 s=2124678 P=13: v=0: 2124679, v=1: 0, v>=2: [] (13741 ms)
+    real 27.89
+    user 27.05
+    sys 0.12
+    exit=0
+
+5. Direct check from the definition, Python scaled integers, 3 < n <= 10^6
+  $ python3 a007406_certificate.py --direct-max 1000000 --progress 100000
+      direct: n=100000 ok
+      direct: n=200000 ok
+      direct: n=300000 ok
+      direct: n=400000 ok
+      direct: n=500000 ok
+      direct: n=600000 ok
+      direct: n=700000 ok
+      direct: n=800000 ok
+      direct: n=900000 ok
+      direct: n=1000000 ok
+    direct: gcd(n, a(n-1)) = A089026(n) for 3 < n <= 1000000 (999997 values, 701.3s)
+    OK
+    real 701.37
+    user 677.77
+    sys 2.92
+    exit=0
+
+6. Direct check from the definition, PARI/GP exact rationals, 3 < n <= 10^6
+  $ echo 'check(10^6)' | gp -q -D parisizemax=2G a007406_direct.gp
+    direct-gp: 3 < n <= 1000000, mismatches=0, time=182953 ms
+    0
+    real 189.36
+    user 182.96
+    sys 0.95
+    exit=0
+
+7. The CI command, for reference
+  $ python3 a007406_certificate.py --self-test --fraction-max 3000 --direct-max 30000 --tree-max 20000
+    self-test: q-adic expansion, root values and trees (q=5,7,11,13) agree with exact fractions
+      (0.0s)
+    fraction: gcd(n, a(n-1)) = A089026(n) for 3 < n <= 3000 (2997 values, 0.0s)
+    direct: gcd(n, a(n-1)) = A089026(n) for 3 < n <= 30000 (29997 values, 0.6s)
+      tree q=7: root hits [3], 7 child nodes, depth 1, v=2 nodes [3]
+      tree q=16843: root hits [8421, 16842], 33686 child nodes, depth 1, v=2 nodes [8421, 16842]
+    tree: v_q(H2(m)) <= 2 for all m >= 1 and all 2260 primes 5 <= q <= 20000 (21202619 tree nodes, 6.1s)
+    OK
+    real 6.78
+    user 6.71
+    sys 0.02
+    exit=0
+
+8. Scanner cross-check on 5 <= q <= 20000 (1 thread each)
+  $ ./roots_mont 5 20000 1; ./roots_lin 5 20000 1
+    hit 7 3 2
+    hit 16843 8421 2
+    hit 16843 16842 2
+    summary impl=R1-montgomery-batch qmin=5 qmax=20000 primes=2260 sum_q=21171186 roots_v>=1(m<q-1)=4396 roots_v>=2=3 roots_v>=3=0 wolstenholme_congruence_failures=0
+    hit 7 3 2
+    hit 16843 8421 2
+    hit 16843 16842 2
+    summary impl=R2-linear-inverse-table qmin=5 qmax=20000 primes=2260 sum_q=21171186 roots_v>=1(m<q-1)=4396 roots_v>=2=3 wolstenholme_congruence_failures=0
+
+Notes
+  - Sections 1 and 2 are the files logs/roots_R1_2642245.txt and
+    logs/roots_R2_2642245.txt; a "time" block follows each one here.
+  - In R2 output, "v" is always printed as 2 and means ">= 2" (R2 works
+    mod q^2); R1 works mod q^3 and reports roots_v>=3 = 0.
+  - "roots_v>=1(m<q-1)" counts the roots 1 <= m <= q-2 with q | H2(m);
+    "wolstenholme_congruence_failures" counts primes with q not dividing
+    H2(q-1) (expected 0 for q >= 5).
+  - The trailing "0" in section 6 is the return value of check() (the
+    number of mismatches), echoed by gp.

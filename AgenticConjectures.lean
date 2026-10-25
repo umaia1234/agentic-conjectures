@@ -3,6 +3,7 @@ import AgenticConjectures.GoldbachPrize2
 import AgenticConjectures.GoldbachPrize3
 import AgenticConjectures.GoldbachPrize4
 import AgenticConjectures.OeisA000224
+import AgenticConjectures.OeisA007406
 import AgenticConjectures.OeisA034267
 import AgenticConjectures.OeisA056777
 import AgenticConjectures.OeisA063880

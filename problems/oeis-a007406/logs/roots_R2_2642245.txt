@@ -1,0 +1,6 @@
+hit 7 3 2
+hit 16843 8421 2
+hit 16843 16842 2
+hit 2124679 1062339 2
+hit 2124679 2124678 2
+summary impl=R2-linear-inverse-table qmin=5 qmax=2642245 primes=192723 sum_q=244516283263 roots_v>=1(m<q-1)=385031 roots_v>=2=5 wolstenholme_congruence_failures=0

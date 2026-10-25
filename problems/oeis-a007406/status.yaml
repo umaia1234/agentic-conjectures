@@ -1,0 +1,106 @@
+id: oeis-a007406
+title: OEIS A007406 — gcd conjecture reduced and checked to n ≤ 5,284,491
+title_ko: OEIS A007406 — gcd 추측의 환원과 n ≤ 5,284,491까지의 검증
+domain: oeis
+source_url: https://oeis.org/A007406
+claimed_status: partial
+claim: Lean-proves the prime half, the 2-, 3- and 5-parts, the equivalence of the conjecture with
+  v_q(H2(m)) <= 2 for all primes q >= 5, and the cases n = tq (2 <= t <= 6) and 5-smooth n; a Boyd-tree
+  certificate checks that bound for all primes q <= 2,642,245, which by the Lean reduction gives the
+  conjecture for every 3 < n <= 5,284,491.
+claim_ko: >-
+  소수 경우, 2·3·5 부분, 추측과 '모든 소수 q >= 5에 대해 v_q(H2(m)) <= 2'의 동치, 그리고
+  n = tq (2 <= t <= 6)와 5-매끄러운 n의 경우를 Lean으로 증명했다. 또한 Boyd 트리 인증서로 모든
+  소수 q <= 2,642,245에 대해 그 상계를 확인했고, Lean 환원에 의해 이는 모든 3 < n <= 5,284,491에서
+  추측이 성립함을 뜻한다.
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: a007406_certificate.py
+  kind: certificate-script
+- path: a007406_roots_mont.c
+  kind: search-code
+- path: a007406_roots_lin.c
+  kind: search-code
+- path: a007406_children.gp
+  kind: certificate-script
+- path: a007406_direct.gp
+  kind: certificate-script
+- path: logs/roots_R1_2642245.txt
+  kind: data
+- path: logs/roots_R2_2642245.txt
+  kind: data
+- path: logs/RUNS.txt
+  kind: data
+- path: upstream/7406.lean
+  kind: upstream-lean
+- path: upstream/89026.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 a007406_certificate.py --self-test --fraction-max 3000 --direct-max 30000 --tree-max 20000
+  expected_runtime: about 7 seconds (Python 3.12, Apple M5 Max)
+  ci_feasible: true
+- cmd: python3 a007406_certificate.py --hits logs/roots_R1_2642245.txt logs/roots_R2_2642245.txt
+  expected_runtime: about 30 seconds (Python 3.12, Apple M5 Max)
+  ci_feasible: true
+- cmd: cc -O3 -std=c11 -pthread a007406_roots_mont.c -o /tmp/a007406_roots_mont && cc -O3 -std=c11 -pthread
+    a007406_roots_lin.c -o /tmp/a007406_roots_lin && /tmp/a007406_roots_mont 5 2642245 4 > /tmp/a007406_R1.txt
+    && /tmp/a007406_roots_lin 5 2642245 4 > /tmp/a007406_R2.txt && python3 a007406_certificate.py --hits
+    /tmp/a007406_R1.txt /tmp/a007406_R2.txt
+  expected_runtime: R1 23 min wall / 38 CPU-min and R2 81 min wall / 153 CPU-min with 2 threads
+    each on a shared Apple M5 Max, plus about 30 seconds for the hit check
+  ci_feasible: false
+  requires: [cc]
+- cmd: printf 'children(7, 3, 13)\nchildren(16843, 8421, 13)\nchildren(16843, 16842, 13)\nchildren(2124679,
+    1062339, 13)\nchildren(2124679, 2124678, 13)\n' | gp -q -D parisizemax=4G a007406_children.gp | grep -c '\[\] ('
+    | grep -qx 5
+  expected_runtime: about 30 seconds (PARI/GP 2.19.0)
+  ci_feasible: false
+  requires: [gp]
+- cmd: python3 a007406_certificate.py --direct-max 1000000
+  expected_runtime: about 12 minutes (Python 3.12, Apple M5 Max)
+  ci_feasible: false
+- cmd: echo 'check(10^6)' | gp -q -D parisizemax=2G a007406_direct.gp | grep -q 'mismatches=0,'
+  expected_runtime: about 3 minutes (PARI/GP 2.19.0)
+  ci_feasible: false
+  requires: [gp]
+lean:
+  modules:
+  - AgenticConjectures.OeisA007406
+  theorems:
+  - AgenticConjectures.OeisA007406.prime_dvd_a_pred
+  - AgenticConjectures.OeisA007406.statement_at_prime
+  - AgenticConjectures.OeisA007406.two_not_dvd_a
+  - AgenticConjectures.OeisA007406.three_not_dvd_a
+  - AgenticConjectures.OeisA007406.padicValRat_five_H2_le_two
+  - AgenticConjectures.OeisA007406.five_not_dvd_a
+  - AgenticConjectures.OeisA007406.dvd_a_iff
+  - AgenticConjectures.OeisA007406.statement_iff
+  - AgenticConjectures.OeisA007406.padicValRat_H2_mul_add
+  - AgenticConjectures.OeisA007406.padicValRat_H2_le_two_of_tree
+  - AgenticConjectures.OeisA007406.statement_le_of_padicValRat_le_two
+  - AgenticConjectures.OeisA007406.statement_at_of_padicValRat_le_two
+  - AgenticConjectures.OeisA007406.statement_at_of_five_smooth
+  - AgenticConjectures.OeisA007406.statement_at_two_pow
+  - AgenticConjectures.OeisA007406.statement_at_two_mul
+  - AgenticConjectures.OeisA007406.statement_at_three_mul
+  - AgenticConjectures.OeisA007406.statement_at_four_mul
+  - AgenticConjectures.OeisA007406.statement_at_five_mul
+  - AgenticConjectures.OeisA007406.statement_at_six_mul
+  - AgenticConjectures.OeisA007406.statement_at_mul
+  - AgenticConjectures.OeisA007406.statement_at_sq
+  - AgenticConjectures.OeisA007406.statement_at_prime_pow
+  - AgenticConjectures.OeisA007406.a_four
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: Lean 4 formalization (prime half, 2/3/5-parts, reduction, equivalence, tree interface,
+    families), Boyd-tree certificate and root scanners, direct checks, and documentation
+notes: The conjecture is not proved. Lean proves the prime half (classical), the 2-, 3- and 5-parts,
+  the reduction to v_q(H2(m)) <= 2 for primes q >= 5, and the families listed in the README; the
+  bounds for 5 <= q <= 2,642,245, and hence the range 3 < n <= 5,284,491, are computational, not
+  Lean. CI re-runs the complete trees for q <= 20,000 and re-verifies the committed hit logs (each
+  hit recomputed mod q^15, its children expanded mod q^13), but not the root scan for 20,000 < q <=
+  2,642,245, which rests on two independent C scanners with identical hit lists and counts. The five
+  hits are explained by classical congruences (Wolstenholme primes 16843 and 2124679, and q = 7).
+  Nothing here is claimed to be new; the result has not been reported to OEIS.
