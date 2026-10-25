@@ -3,22 +3,92 @@ title: Conway's 99-graph problem srg(99,14,1,2)
 title_ko: Conway의 99-그래프 문제 srg(99,14,1,2)
 domain: graph-combinatorics
 source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/Wikipedia/Conway99Graph.lean
-claimed_status: open
-claim: 'Status survey only: records that existence of srg(99,14,1,2) is open and cites 2025 automorphism-group
-  restrictions (Cesarz–Woldar); no new computation or resolution is claimed.'
+claimed_status: partial
+claim: 'Symmetric subcases only, SAT/DRAT-certified: a putative srg(99,14,1,2) has no involution fixing
+  11 or more vertices (ten local types, drat-trim re-checked in CI), so every involution fixes 1, 3, 5,
+  7 or 9 vertices; local type (0,2) with 9 fixed vertices is also UNSAT, but its proof was verified only
+  locally and is too large to commit. Existence remains open.'
 claim_ko: >-
-  상태 조사만 제공한다. srg(99,14,1,2)의 존재 여부가 미해결임을 기록하고 2025년 자기동형군 제약
-  (Cesarz–Woldar)을 인용하며, 새로운 계산이나 해결 결과를 주장하지 않는다.
+  대칭 부분 경우만 SAT/DRAT으로 인증한다. 가상의 srg(99,14,1,2)에는 정점을 11개 이상 고정하는
+  involution이 없으므로(열 가지 국소 유형, CI에서 drat-trim으로 재검사) 모든 involution은 정점을
+  1, 3, 5, 7, 9개 고정한다. 고정점이 9개인 국소 유형 (0,2)도 UNSAT이지만, 그 증명은 로컬에서만
+  검증했고 너무 커서 커밋하지 않았다. 존재 여부는 여전히 미해결이다.
 artifacts:
 - path: README.md
   kind: other
 - path: upstream/README.md
   kind: upstream-lean
-verify: []
+- path: symmetric/srg_sym_encode.py
+  kind: search-code
+- path: symmetric/certify_case.py
+  kind: search-code
+- path: symmetric/srg_sym_audit.py
+  kind: certificate-script
+- path: symmetric/verify_certificates.py
+  kind: certificate-script
+- path: symmetric/validate_encoder.py
+  kind: certificate-script
+- path: symmetric/cases.json
+  kind: data
+- path: symmetric/certs
+  kind: sat-drat
+- path: symmetric/results
+  kind: data
+- path: symmetric/logs
+  kind: data
+verify:
+- cmd: python3 symmetric/srg_sym_audit.py
+  expected_runtime: about 25 seconds (group data and CNF hashes of all 25 cases)
+  ci_feasible: true
+- cmd: python3 symmetric/verify_certificates.py
+  expected_runtime: about 15 seconds (11 core proofs on their clause cores)
+  ci_feasible: true
+  requires:
+  - drat-trim
+- cmd: python3 symmetric/validate_encoder.py --semantic-only
+  expected_runtime: about 1 second
+  ci_feasible: true
+- cmd: python3 symmetric/verify_certificates.py --full
+  expected_runtime: about 95 seconds (the same proofs against the full CNFs)
+  ci_feasible: false
+  requires:
+  - drat-trim
+- cmd: python3 symmetric/validate_encoder.py
+  expected_runtime: about 15 minutes (14 of them for the srg(243,22,1,2) solve)
+  ci_feasible: false
+  requires:
+  - cadical
+- cmd: python3 symmetric/certify_case.py p2-d0-e2 --build /tmp/conway99-build --out /tmp/conway99-build
+    --limit 5400
+  expected_runtime: about 65 minutes (CaDiCaL 18 min, then drat-trim 24 min and 21 min)
+  ci_feasible: false
+  requires:
+  - cadical
+  - drat-trim
+  - xz
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: Korean-language survey dated 2026-08-11; explicitly states it contains no new existence/nonexistence
-  result and that ruling out symmetric subcases cannot settle the problem; upstream Lean statement is
-  sorry-backed.
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: symmetric-subcase SAT encoding, independent CNF audit, encoder validation, DRAT-certified exclusion
+    of involutions with 11 or more fixed points (and a locally verified type with 9), and reproduction
+    runs of known prime-order exclusions
+notes: >-
+  Symmetric subcases only; existence stays open. CI re-derives every CNF from the group data with
+  srg_sym_audit.py, which does not import the encoder, compares SHA-256 hashes, and re-checks the
+  eleven committed core proofs (ten involution types and p3-root-a) with drat-trim on their recorded
+  clause cores, which are subsets of the CNFs. The soundness of the encoding rests on the
+  specification in README.md and on validate_encoder.py (assignments read off Paley(9), Petersen,
+  Clebsch, Shrikhande and the Berlekamp-van Lint-Seidel srg(243,22,1,2) satisfy the CNFs; SAT/UNSAT
+  matches the known automorphisms for every cycle type of five small srgs); it is not formalized in
+  Lean. Eight of the ten CI-checked involution types (F >= 19) also follow from the interlacing bound
+  F <= 18 derived in README.md. Type (0,2) with F = 9 is UNSAT by a 549 MB DRAT proof that drat-trim
+  verified locally; the proof and its 105 MB core are not committed, cases.json records their hashes,
+  and certify_case.py regenerates them. Reproductions of known prime-order exclusions: p3-root-a is
+  certified; p11-free, p7-root, p5-root and p3-root-b were UNKNOWN after 1800 s. The other eight
+  involution types and fixed-point-free order 3 were UNKNOWN after 600-1800 s. The full texts of
+  Behbahani-Lam 2011, Makhnev-Minakova 2004 and Wilbrink 1984 were not consulted, so the excluded types
+  may already be known; no novelty is claimed. The 2026-08-11 status survey is kept, and the upstream
+  Lean statement is sorry-backed.

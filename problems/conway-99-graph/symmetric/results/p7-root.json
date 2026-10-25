@@ -1,0 +1,14 @@
+{
+ "case": "p7-root",
+ "date": "2026-10-24",
+ "machine": "arm64 Darwin",
+ "limit_s": 1800,
+ "encode": "p7-root orbits=693 and=60690 vars=283521 clauses=1000545 sha256=676c2e208b1f4515c444a45649cc2fa27a660d5d9500109482476162b3a0a9ed",
+ "cnf_sha256": "676c2e208b1f4515c444a45649cc2fa27a660d5d9500109482476162b3a0a9ed",
+ "audit_file_identical": true,
+ "solver": "cadical 3.0.1",
+ "solver_wall_s": 1800.0,
+ "solver_cpu_line": "total process time since initialization: 1564.60 seconds",
+ "solver_exit": 0,
+ "answer": "UNKNOWN"
+}

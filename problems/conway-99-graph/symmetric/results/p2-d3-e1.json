@@ -1,0 +1,14 @@
+{
+ "case": "p2-d3-e1",
+ "date": "2026-10-24",
+ "machine": "arm64 Darwin",
+ "limit_s": 1800,
+ "encode": "p2-d3-e1 orbits=2466 and=225297 vars=1019079 clauses=3591723 sha256=fedf7f1c13fce616468a4301c47bfdb108734a60b07b471a48aec27d1ec069b0",
+ "cnf_sha256": "fedf7f1c13fce616468a4301c47bfdb108734a60b07b471a48aec27d1ec069b0",
+ "audit_file_identical": true,
+ "solver": "cadical 3.0.1",
+ "solver_wall_s": 1800.1,
+ "solver_cpu_line": "total process time since initialization: 1761.13 seconds",
+ "solver_exit": 0,
+ "answer": "UNKNOWN"
+}

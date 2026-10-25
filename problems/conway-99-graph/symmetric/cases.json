@@ -1,0 +1,1695 @@
+{
+ "format": 1,
+ "cases": [
+  {
+   "name": "p11-free",
+   "title": "order 11, no fixed vertex (cycle type 11^9)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": false,
+   "generators": [
+    {
+     "cycle_type": [
+      [
+       11,
+       9
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "orders": [
+     11
+    ],
+    "fixed": [
+     0
+    ]
+   },
+   "literature": "excluded by Behbahani-Lam 2011 (prime orders of automorphisms are 2 or 3; order-3 automorphisms are fixed-point-free), as summarised by Crnkovic-Maksimovic 2020 and Cesarz-Woldar 2025",
+   "status": "reproduction",
+   "cnf_sha256": "9d694da48c8b6e891a7b349f4a78bae320952d29a6361e168694468ea025ce01",
+   "cnf_stats": {
+    "pair_orbits": 441,
+    "and_gates": 36522,
+    "vars": 177579,
+    "clauses": 627372
+   },
+   "action": "cycle type `11^9`",
+   "result": "UNKNOWN",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 1800,
+    "answer": "UNKNOWN",
+    "wall_s": 1800.0,
+    "date": "2026-10-24"
+   }
+  },
+  {
+   "name": "p7-root",
+   "title": "order 7 fixing the root; 7-cycle on the matching of Gamma_1",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3,
+      5,
+      7,
+      9,
+      11,
+      13
+     ],
+     [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     7
+    ],
+    "fixed": [
+     1
+    ],
+    "pair_actions": [
+     "7+"
+    ]
+   },
+   "literature": "excluded by Behbahani-Lam 2011 (prime orders of automorphisms are 2 or 3; order-3 automorphisms are fixed-point-free), as summarised by Crnkovic-Maksimovic 2020 and Cesarz-Woldar 2025",
+   "status": "reproduction",
+   "cnf_sha256": "676c2e208b1f4515c444a45649cc2fa27a660d5d9500109482476162b3a0a9ed",
+   "cnf_stats": {
+    "pair_orbits": 693,
+    "and_gates": 60690,
+    "vars": 283521,
+    "clauses": 1000545
+   },
+   "action": "positive 7-cycle on the 7 matching edges",
+   "result": "UNKNOWN",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 1800,
+    "answer": "UNKNOWN",
+    "wall_s": 1800.0,
+    "date": "2026-10-24"
+   }
+  },
+  {
+   "name": "p5-root",
+   "title": "order 5 fixing the root; 5-cycle and 2 fixed edges on Gamma_1",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3,
+      5,
+      7,
+      9
+     ],
+     [
+      2,
+      4,
+      6,
+      8,
+      10
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     5
+    ],
+    "fixed": [
+     9
+    ],
+    "pair_actions": [
+     "5+,1+,1+"
+    ]
+   },
+   "literature": "excluded by Makhnev-Minakova 2004 (|Aut| divides 2*3^3*7*11) and by Behbahani-Lam 2011",
+   "status": "reproduction",
+   "cnf_sha256": "1dc0406736a06a39f6097475bbb316a324efbcaade37b92c763edaf22197d7c6",
+   "cnf_stats": {
+    "pair_orbits": 999,
+    "and_gates": 83475,
+    "vars": 412038,
+    "clauses": 1459080
+   },
+   "action": "positive 5-cycle, 2 edges fixed pointwise",
+   "result": "UNKNOWN",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 1800,
+    "answer": "UNKNOWN",
+    "wall_s": 1800.0,
+    "date": "2026-10-24"
+   }
+  },
+  {
+   "name": "p3-root-a",
+   "title": "order 3 fixing the root; one 3-cycle and 4 fixed edges on Gamma_1",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3,
+      5
+     ],
+     [
+      2,
+      4,
+      6
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     3
+    ],
+    "fixed": [
+     33
+    ],
+    "pair_actions": [
+     "3+,1+,1+,1+,1+"
+    ]
+   },
+   "literature": "excluded by Behbahani-Lam 2011 (prime orders of automorphisms are 2 or 3; order-3 automorphisms are fixed-point-free), as summarised by Crnkovic-Maksimovic 2020 and Cesarz-Woldar 2025",
+   "status": "reproduction",
+   "cnf_sha256": "b2e3ded6371c67dc45514c60617a35bb5037cc66f3c0a625456843d7220a698e",
+   "cnf_stats": {
+    "pair_orbits": 1969,
+    "and_gates": 148962,
+    "vars": 798985,
+    "clauses": 2838689
+   },
+   "action": "one positive 3-cycle, 4 edges fixed pointwise",
+   "certificate": {
+    "path": "certs/p3-root-a.core.drat.xz",
+    "sha256": "4f550555814a2f638250b90a5387b2f763f1343ba7a8fba93f29ca8ef86903b9",
+    "clause_core": "certs/p3-root-a.clause-core.txt.xz",
+    "clause_core_sha256": "26ae0251341d3a70ef2963c5ead946b3ba8e55c944827358713a4734dca33134"
+   },
+   "result": "UNSAT (DRAT verified)",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 3600,
+    "answer": "UNSAT",
+    "wall_s": 2.1,
+    "date": "2026-10-24",
+    "proof_bytes": 22042968,
+    "drat_trim_full_s": 3.9,
+    "core_recheck_s": 2.9,
+    "core_bytes": 90388,
+    "core_xz_bytes": 28584
+   }
+  },
+  {
+   "name": "p3-root-b",
+   "title": "order 3 fixing the root; two 3-cycles and 1 fixed edge on Gamma_1",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3,
+      5
+     ],
+     [
+      2,
+      4,
+      6
+     ],
+     [
+      7,
+      9,
+      11
+     ],
+     [
+      8,
+      10,
+      12
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     3
+    ],
+    "fixed": [
+     3
+    ],
+    "pair_actions": [
+     "3+,3+,1+"
+    ]
+   },
+   "literature": "excluded by Behbahani-Lam 2011 (prime orders of automorphisms are 2 or 3; order-3 automorphisms are fixed-point-free), as summarised by Crnkovic-Maksimovic 2020 and Cesarz-Woldar 2025",
+   "status": "reproduction",
+   "cnf_sha256": "9d65e436f4e6cfdad9ff88f6a02d591591c47fa46b718f1bb8dcddf3182f9bc9",
+   "cnf_stats": {
+    "pair_orbits": 1619,
+    "and_gates": 149187,
+    "vars": 669710,
+    "clauses": 2359468
+   },
+   "action": "two positive 3-cycles, 1 edge fixed pointwise",
+   "result": "UNKNOWN",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 1800,
+    "answer": "UNKNOWN",
+    "wall_s": 1800.0,
+    "date": "2026-10-24"
+   }
+  },
+  {
+   "name": "p3-free",
+   "title": "order 3, no fixed vertex (cycle type 3^33)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": false,
+   "generators": [
+    {
+     "cycle_type": [
+      [
+       3,
+       33
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "orders": [
+     3
+    ],
+    "fixed": [
+     0
+    ]
+   },
+   "literature": "open: not excluded in the literature we found (Behbahani-Lam 2011 leave fixed-point-free order 3 open)",
+   "status": "open",
+   "cnf_sha256": "ab2f756b55d81324aaa7186ea860141af3f473eedc4780902cb43fe1a64bd297",
+   "cnf_stats": {
+    "pair_orbits": 1617,
+    "and_gates": 152064,
+    "vars": 669273,
+    "clauses": 2354814
+   },
+   "action": "cycle type `3^33`",
+   "result": "UNKNOWN",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 1800,
+    "answer": "UNKNOWN",
+    "wall_s": 1800.1,
+    "date": "2026-10-24"
+   }
+  },
+  {
+   "name": "p2-d0-e0",
+   "title": "involution fixing the root; on Gamma_1: 0 swapped edge pairs, 0 fixed edges, 7 flipped edges (F=1)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      2
+     ],
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      7,
+      8
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      11,
+      12
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     1
+    ],
+    "pair_actions": [
+     "1-,1-,1-,1-,1-,1-,1-"
+    ]
+   },
+   "literature": "open: involutions are not excluded in the sources we checked",
+   "status": "open",
+   "cnf_sha256": "eda574486b91fb1f804d32602dda90cde4e24a5a8747bd0f19bb924161a9db19",
+   "cnf_stats": {
+    "pair_orbits": 2450,
+    "and_gates": 232897,
+    "vars": 1016547,
+    "clauses": 3576077
+   },
+   "involution": {
+    "d": 0,
+    "e": 0,
+    "flipped": 7
+   },
+   "result": "UNKNOWN",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 600,
+    "answer": "UNKNOWN",
+    "wall_s": 600.0,
+    "date": "2026-10-24"
+   }
+  },
+  {
+   "name": "p2-d0-e1",
+   "title": "involution fixing the root; on Gamma_1: 0 swapped edge pairs, 1 fixed edges, 6 flipped edges (F=3)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      3,
+      4
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      7,
+      8
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      11,
+      12
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     3
+    ],
+    "pair_actions": [
+     "1+,1-,1-,1-,1-,1-,1-"
+    ]
+   },
+   "literature": "open: involutions are not excluded in the sources we checked",
+   "status": "open",
+   "cnf_sha256": "996388a29c768f20f2313679768c1f2a14c2d8dcac95c10a4232ecce72e9f475",
+   "cnf_stats": {
+    "pair_orbits": 2451,
+    "and_gates": 230691,
+    "vars": 1015998,
+    "clauses": 3575874
+   },
+   "involution": {
+    "d": 0,
+    "e": 1,
+    "flipped": 6
+   },
+   "result": "UNKNOWN",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 600,
+    "answer": "UNKNOWN",
+    "wall_s": 600.0,
+    "date": "2026-10-24"
+   }
+  },
+  {
+   "name": "p2-d0-e2",
+   "title": "involution fixing the root; on Gamma_1: 0 swapped edge pairs, 2 fixed edges, 5 flipped edges (F=9)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      5,
+      6
+     ],
+     [
+      7,
+      8
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      11,
+      12
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     9
+    ],
+    "pair_actions": [
+     "1+,1+,1-,1-,1-,1-,1-"
+    ]
+   },
+   "literature": "open: involutions are not excluded in the sources we checked",
+   "status": "open",
+   "cnf_sha256": "a12f980f336013d242f48598dc9e3bf6e0cd46e23f93d32c99e1fe132bcd0796",
+   "cnf_stats": {
+    "pair_orbits": 2466,
+    "and_gates": 225297,
+    "vars": 1019079,
+    "clauses": 3591727
+   },
+   "involution": {
+    "d": 0,
+    "e": 2,
+    "flipped": 5
+   },
+   "result": "UNSAT (DRAT verified locally; proof not committed)",
+   "certificate_not_committed": {
+    "reason": "the core proof is larger than the repository's 5 MB file limit",
+    "full_proof_sha256": "cb6d8860b33c8fab7465d890a92d5840e18298ca3c156cc02d82d5704c8460ab",
+    "core_sha256": "1ed128c4ea2920e2fdae484e76ebfd82d0e5b765a640bbadd67218f5ec771620",
+    "core_bytes": 104537394,
+    "core_xz_bytes": 28444836,
+    "clause_core_size": 637894,
+    "clause_core_sha256": "2de7e9eb875573f433f63eb298c5bd95a0ed2302aba2567dbcb676d985355266",
+    "regenerate": "python3 certify_case.py p2-d0-e2 --build DIR --out DIR --limit 5400"
+   },
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 1800,
+    "answer": "UNSAT",
+    "wall_s": 1061.3,
+    "date": "2026-10-24",
+    "proof_bytes": 548573404,
+    "drat_trim_full_s": 1465.1,
+    "core_recheck_s": 1263.0,
+    "core_bytes": 104537394,
+    "core_xz_bytes": 28444836
+   }
+  },
+  {
+   "name": "p2-d0-e3",
+   "title": "involution fixing the root; on Gamma_1: 0 swapped edge pairs, 3 fixed edges, 4 flipped edges (F=19)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      7,
+      8
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      11,
+      12
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     19
+    ],
+    "pair_actions": [
+     "1+,1+,1+,1-,1-,1-,1-"
+    ]
+   },
+   "literature": "not found excluded in the sources we checked; also implied by the interlacing bound F <= 18 derived in README.md",
+   "status": "open",
+   "cnf_sha256": "a22faf662d2bc1fa7b9e7d7f940693c86b97a4a021813b54d196240609539c97",
+   "cnf_stats": {
+    "pair_orbits": 2531,
+    "and_gates": 220747,
+    "vars": 1040334,
+    "clauses": 3674084
+   },
+   "involution": {
+    "d": 0,
+    "e": 3,
+    "flipped": 4
+   },
+   "certificate": {
+    "path": "certs/p2-d0-e3.core.drat.xz",
+    "sha256": "5faa129659af41e605cbf3309fa5974fb7644a1224211698bc2ef76881a7705d",
+    "clause_core": "certs/p2-d0-e3.clause-core.txt.xz",
+    "clause_core_sha256": "3148eb2902ff58aed4dc98a6caf9945686bd77fbc7d5ab632b5f295d6119fe43"
+   },
+   "result": "UNSAT (DRAT verified)",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 3600,
+    "answer": "UNSAT",
+    "wall_s": 3.5,
+    "date": "2026-10-24",
+    "proof_bytes": 26842977,
+    "drat_trim_full_s": 5.4,
+    "core_recheck_s": 4.2,
+    "core_bytes": 121502,
+    "core_xz_bytes": 41048
+   }
+  },
+  {
+   "name": "p2-d0-e4",
+   "title": "involution fixing the root; on Gamma_1: 0 swapped edge pairs, 4 fixed edges, 3 flipped edges (F=33)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      9,
+      10
+     ],
+     [
+      11,
+      12
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     33
+    ],
+    "pair_actions": [
+     "1+,1+,1+,1+,1-,1-,1-"
+    ]
+   },
+   "literature": "not found excluded in the sources we checked; also implied by the interlacing bound F <= 18 derived in README.md",
+   "status": "open",
+   "cnf_sha256": "e1f1df44e8258d57bfcd6685294fe479d105b6d15c8be26ad642be1669da3ef2",
+   "cnf_stats": {
+    "pair_orbits": 2706,
+    "and_gates": 224961,
+    "vars": 1105203,
+    "clauses": 3910617
+   },
+   "involution": {
+    "d": 0,
+    "e": 4,
+    "flipped": 3
+   },
+   "certificate": {
+    "path": "certs/p2-d0-e4.core.drat.xz",
+    "sha256": "4c632846d70fad1e7a435cf8f16fcb532b3d0fb4db0b7c7c9e3842d3e59bcdcf",
+    "clause_core": "certs/p2-d0-e4.clause-core.txt.xz",
+    "clause_core_sha256": "ca3c5bc77e197c6606e57a7321247ef272ecb11174c49a2c8e16c3f302588c19"
+   },
+   "result": "UNSAT (DRAT verified)",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 3600,
+    "answer": "UNSAT",
+    "wall_s": 4.8,
+    "date": "2026-10-24",
+    "proof_bytes": 29562156,
+    "drat_trim_full_s": 7.6,
+    "core_recheck_s": 5.7,
+    "core_bytes": 213930,
+    "core_xz_bytes": 69916
+   }
+  },
+  {
+   "name": "p2-d0-e5",
+   "title": "involution fixing the root; on Gamma_1: 0 swapped edge pairs, 5 fixed edges, 2 flipped edges (F=51)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      11,
+      12
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     51
+    ],
+    "pair_actions": [
+     "1+,1+,1+,1+,1+,1-,1-"
+    ]
+   },
+   "literature": "not found excluded in the sources we checked; also implied by the interlacing bound F <= 18 derived in README.md",
+   "status": "open",
+   "cnf_sha256": "392cc8f48efe9107780568eecaf4078ee8ad1b0481b1e979fb775256570373b2",
+   "cnf_stats": {
+    "pair_orbits": 3075,
+    "and_gates": 251547,
+    "vars": 1251822,
+    "clauses": 4431622
+   },
+   "involution": {
+    "d": 0,
+    "e": 5,
+    "flipped": 2
+   },
+   "certificate": {
+    "path": "certs/p2-d0-e5.core.drat.xz",
+    "sha256": "672dbd21c9872790341ddf13e7e507f8fa918a4118b8c385261fda2843f906ca",
+    "clause_core": "certs/p2-d0-e5.clause-core.txt.xz",
+    "clause_core_sha256": "6f7011b4ed0b2da078d093a403ecab211af0517128fb4d72b6002be514860a5c"
+   },
+   "result": "UNSAT (DRAT verified)",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 3600,
+    "answer": "UNSAT",
+    "wall_s": 1.5,
+    "date": "2026-10-24",
+    "proof_bytes": 33265441,
+    "drat_trim_full_s": 5.9,
+    "core_recheck_s": 4.3,
+    "core_bytes": 89375,
+    "core_xz_bytes": 27368
+   }
+  },
+  {
+   "name": "p2-d0-e6",
+   "title": "involution fixing the root; on Gamma_1: 0 swapped edge pairs, 6 fixed edges, 1 flipped edges (F=73)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     73
+    ],
+    "pair_actions": [
+     "1+,1+,1+,1+,1+,1+,1-"
+    ]
+   },
+   "literature": "not found excluded in the sources we checked; also implied by the interlacing bound F <= 18 derived in README.md",
+   "status": "open",
+   "cnf_sha256": "b6c314fb14f06574d80e4bb2d418abd4abf3c9cb7a2de133c7d790fdf8b66ab4",
+   "cnf_stats": {
+    "pair_orbits": 3746,
+    "and_gates": 322321,
+    "vars": 1533543,
+    "clauses": 5417579
+   },
+   "involution": {
+    "d": 0,
+    "e": 6,
+    "flipped": 1
+   },
+   "certificate": {
+    "path": "certs/p2-d0-e6.core.drat.xz",
+    "sha256": "c43b85230df6ee0107b0ece103c7daba832c9b2c066eb456a7e24c7552cf7636",
+    "clause_core": "certs/p2-d0-e6.clause-core.txt.xz",
+    "clause_core_sha256": "aeeb53fc6844a3f635733cfd6eb66ff500ea53bff0300776f16c3df3c130a015"
+   },
+   "result": "UNSAT (DRAT verified)",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 3600,
+    "answer": "UNSAT",
+    "wall_s": 1.3,
+    "date": "2026-10-24",
+    "proof_bytes": 26956579,
+    "drat_trim_full_s": 4.6,
+    "core_recheck_s": 3.3,
+    "core_bytes": 6240,
+    "core_xz_bytes": 2648
+   }
+  },
+  {
+   "name": "p2-d1-e0",
+   "title": "involution fixing the root; on Gamma_1: 1 swapped edge pairs, 0 fixed edges, 5 flipped edges (F=3)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5,
+      6
+     ],
+     [
+      7,
+      8
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      11,
+      12
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     3
+    ],
+    "pair_actions": [
+     "2+,1-,1-,1-,1-,1-"
+    ]
+   },
+   "literature": "open: involutions are not excluded in the sources we checked",
+   "status": "open",
+   "cnf_sha256": "7cd8288216cdc7fb35e2ade10b0dd84b13448c4e39d2edf7685e9cb538206096",
+   "cnf_stats": {
+    "pair_orbits": 2451,
+    "and_gates": 230691,
+    "vars": 1015998,
+    "clauses": 3575874
+   },
+   "involution": {
+    "d": 1,
+    "e": 0,
+    "flipped": 5
+   },
+   "result": "UNKNOWN",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 600,
+    "answer": "UNKNOWN",
+    "wall_s": 600.0,
+    "date": "2026-10-24"
+   }
+  },
+  {
+   "name": "p2-d1-e1",
+   "title": "involution fixing the root; on Gamma_1: 1 swapped edge pairs, 1 fixed edges, 4 flipped edges (F=5)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      7,
+      8
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      11,
+      12
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     5
+    ],
+    "pair_actions": [
+     "2+,1+,1-,1-,1-,1-"
+    ]
+   },
+   "literature": "open: involutions are not excluded in the sources we checked",
+   "status": "open",
+   "cnf_sha256": "8c1639af584a61d874951cee4f7588123c963eb42db2aa1862ad08dea309dd03",
+   "cnf_stats": {
+    "pair_orbits": 2454,
+    "and_gates": 228685,
+    "vars": 1016233,
+    "clauses": 3578403
+   },
+   "involution": {
+    "d": 1,
+    "e": 1,
+    "flipped": 4
+   },
+   "result": "UNKNOWN",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 600,
+    "answer": "UNKNOWN",
+    "wall_s": 600.1,
+    "date": "2026-10-24"
+   }
+  },
+  {
+   "name": "p2-d1-e2",
+   "title": "involution fixing the root; on Gamma_1: 1 swapped edge pairs, 2 fixed edges, 3 flipped edges (F=11)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      11,
+      12
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     11
+    ],
+    "pair_actions": [
+     "2+,1+,1+,1-,1-,1-"
+    ]
+   },
+   "literature": "not found excluded in the sources we checked (the full texts of Behbahani-Lam 2011 and Makhnev-Minakova 2004 were not consulted)",
+   "status": "open",
+   "cnf_sha256": "0e57a17857bbef62252680144bb61b46a4da24904df049f09c60da317faad5da",
+   "cnf_stats": {
+    "pair_orbits": 2475,
+    "and_gates": 223927,
+    "vars": 1021702,
+    "clauses": 3602556
+   },
+   "involution": {
+    "d": 1,
+    "e": 2,
+    "flipped": 3
+   },
+   "certificate": {
+    "path": "certs/p2-d1-e2.core.drat.xz",
+    "sha256": "017f7eb8163bbee13e5f882fb53c01ca1679d1bf161aac514b791682eee137f9",
+    "clause_core": "certs/p2-d1-e2.clause-core.txt.xz",
+    "clause_core_sha256": "91e55c001f2802a7efa3145623b3cad2809a05ad6cef8fd52ca9879a93bd008c"
+   },
+   "result": "UNSAT (DRAT verified)",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 3600,
+    "answer": "UNSAT",
+    "wall_s": 2.5,
+    "date": "2026-10-24",
+    "proof_bytes": 26694958,
+    "drat_trim_full_s": 6.1,
+    "core_recheck_s": 4.7,
+    "core_bytes": 156975,
+    "core_xz_bytes": 50608
+   }
+  },
+  {
+   "name": "p2-d1-e3",
+   "title": "involution fixing the root; on Gamma_1: 1 swapped edge pairs, 3 fixed edges, 2 flipped edges (F=21)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      11,
+      12
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     21
+    ],
+    "pair_actions": [
+     "2+,1+,1+,1+,1-,1-"
+    ]
+   },
+   "literature": "not found excluded in the sources we checked; also implied by the interlacing bound F <= 18 derived in README.md",
+   "status": "open",
+   "cnf_sha256": "41558daa981be2bf708e641bf681daf34827c5fdc7afc87cce952d731be64989",
+   "cnf_stats": {
+    "pair_orbits": 2550,
+    "and_gates": 220557,
+    "vars": 1047057,
+    "clauses": 3699105
+   },
+   "involution": {
+    "d": 1,
+    "e": 3,
+    "flipped": 2
+   },
+   "certificate": {
+    "path": "certs/p2-d1-e3.core.drat.xz",
+    "sha256": "7ed350470603e768991d5fcafa877a393974b41da0c0d524f20b8f05da7b87b6",
+    "clause_core": "certs/p2-d1-e3.clause-core.txt.xz",
+    "clause_core_sha256": "248f07b540741ada4ec2bf08908b5d330f3a2f93f1f90da347f61cc6ba8cfac4"
+   },
+   "result": "UNSAT (DRAT verified)",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 3600,
+    "answer": "UNSAT",
+    "wall_s": 10.5,
+    "date": "2026-10-24",
+    "proof_bytes": 65455259,
+    "drat_trim_full_s": 33.3,
+    "core_recheck_s": 29.1,
+    "core_bytes": 848195,
+    "core_xz_bytes": 255460
+   }
+  },
+  {
+   "name": "p2-d1-e4",
+   "title": "involution fixing the root; on Gamma_1: 1 swapped edge pairs, 4 fixed edges, 1 flipped edges (F=35)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     35
+    ],
+    "pair_actions": [
+     "2+,1+,1+,1+,1+,1-"
+    ]
+   },
+   "literature": "not found excluded in the sources we checked; also implied by the interlacing bound F <= 18 derived in README.md",
+   "status": "open",
+   "cnf_sha256": "6b6f316dccd56752bba90aaad4ef1bfce1f92028e57de71a40140b509bab91fb",
+   "cnf_stats": {
+    "pair_orbits": 2739,
+    "and_gates": 226675,
+    "vars": 1117918,
+    "clauses": 3956262
+   },
+   "involution": {
+    "d": 1,
+    "e": 4,
+    "flipped": 1
+   },
+   "certificate": {
+    "path": "certs/p2-d1-e4.core.drat.xz",
+    "sha256": "9dcf6668fafe0e87f2eda97425b4797dbc3e3a01de6700fcfce6bf857ac5d91d",
+    "clause_core": "certs/p2-d1-e4.clause-core.txt.xz",
+    "clause_core_sha256": "645ea3088d6317202e12132c428b21a1c1b820a4a168fb3ac1c9ab917a5eef40"
+   },
+   "result": "UNSAT (DRAT verified)",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 3600,
+    "answer": "UNSAT",
+    "wall_s": 10.0,
+    "date": "2026-10-24",
+    "proof_bytes": 71143314,
+    "drat_trim_full_s": 17.8,
+    "core_recheck_s": 13.7,
+    "core_bytes": 406207,
+    "core_xz_bytes": 107660
+   }
+  },
+  {
+   "name": "p2-d1-e5",
+   "title": "involution fixing the root; on Gamma_1: 1 swapped edge pairs, 5 fixed edges, 0 flipped edges (F=53)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     53
+    ],
+    "pair_actions": [
+     "2+,1+,1+,1+,1+,1+"
+    ]
+   },
+   "literature": "not found excluded in the sources we checked; also implied by the interlacing bound F <= 18 derived in README.md",
+   "status": "open",
+   "cnf_sha256": "a63b03f2423ff21f1bed78db5d06865bddd338e1ecd348c1c18616c52c7e3748",
+   "cnf_stats": {
+    "pair_orbits": 3126,
+    "and_gates": 256141,
+    "vars": 1272673,
+    "clauses": 4505079
+   },
+   "involution": {
+    "d": 1,
+    "e": 5,
+    "flipped": 0
+   },
+   "certificate": {
+    "path": "certs/p2-d1-e5.core.drat.xz",
+    "sha256": "9c90b1904ee8c6348c6c6839172272c123cdfb4f3ce92c4d3da9d8ed726520aa",
+    "clause_core": "certs/p2-d1-e5.clause-core.txt.xz",
+    "clause_core_sha256": "e1f9fbb5e1c3e2b2fce74ef4beb2cbb3af9c7806c862bac1c9c600c009f8d1e0"
+   },
+   "result": "UNSAT (DRAT verified)",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 3600,
+    "answer": "UNSAT",
+    "wall_s": 1.6,
+    "date": "2026-10-24",
+    "proof_bytes": 33745571,
+    "drat_trim_full_s": 5.9,
+    "core_recheck_s": 3.9,
+    "core_bytes": 35968,
+    "core_xz_bytes": 12924
+   }
+  },
+  {
+   "name": "p2-d2-e0",
+   "title": "involution fixing the root; on Gamma_1: 2 swapped edge pairs, 0 fixed edges, 3 flipped edges (F=5)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      6,
+      8
+     ],
+     [
+      9,
+      10
+     ],
+     [
+      11,
+      12
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     5
+    ],
+    "pair_actions": [
+     "2+,2+,1-,1-,1-"
+    ]
+   },
+   "literature": "open: involutions are not excluded in the sources we checked",
+   "status": "open",
+   "cnf_sha256": "a738754de7c90239c26522b71b3cd195cf09f8016e1543fd1ab3b1a83797c51e",
+   "cnf_stats": {
+    "pair_orbits": 2454,
+    "and_gates": 228685,
+    "vars": 1016233,
+    "clauses": 3578401
+   },
+   "involution": {
+    "d": 2,
+    "e": 0,
+    "flipped": 3
+   },
+   "result": "UNKNOWN",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 600,
+    "answer": "UNKNOWN",
+    "wall_s": 600.0,
+    "date": "2026-10-24"
+   }
+  },
+  {
+   "name": "p2-d2-e1",
+   "title": "involution fixing the root; on Gamma_1: 2 swapped edge pairs, 1 fixed edges, 2 flipped edges (F=7)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      6,
+      8
+     ],
+     [
+      11,
+      12
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     7
+    ],
+    "pair_actions": [
+     "2+,2+,1+,1-,1-"
+    ]
+   },
+   "literature": "open: involutions are not excluded in the sources we checked",
+   "status": "open",
+   "cnf_sha256": "12fd469f26a6f9b5799dc7fc1527e4fe4b93d5341f315b09bd6f749527bd381f",
+   "cnf_stats": {
+    "pair_orbits": 2459,
+    "and_gates": 226885,
+    "vars": 1017258,
+    "clauses": 3583680
+   },
+   "involution": {
+    "d": 2,
+    "e": 1,
+    "flipped": 2
+   },
+   "result": "UNKNOWN",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 600,
+    "answer": "UNKNOWN",
+    "wall_s": 600.1,
+    "date": "2026-10-24"
+   }
+  },
+  {
+   "name": "p2-d2-e2",
+   "title": "involution fixing the root; on Gamma_1: 2 swapped edge pairs, 2 fixed edges, 1 flipped edges (F=13)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      6,
+      8
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     13
+    ],
+    "pair_actions": [
+     "2+,2+,1+,1+,1-"
+    ]
+   },
+   "literature": "not found excluded in the sources we checked (the full texts of Behbahani-Lam 2011 and Makhnev-Minakova 2004 were not consulted)",
+   "status": "open",
+   "cnf_sha256": "e68d5b88dc199cf68b892a1cc99363f65bbf9e8986c267a5bfc8a28b1ce2d6d0",
+   "cnf_stats": {
+    "pair_orbits": 2486,
+    "and_gates": 222781,
+    "vars": 1025133,
+    "clauses": 3616187
+   },
+   "involution": {
+    "d": 2,
+    "e": 2,
+    "flipped": 1
+   },
+   "certificate": {
+    "path": "certs/p2-d2-e2.core.drat.xz",
+    "sha256": "9fd8c97fb327f143ffe0f69fb61fcc7dc3fbd42d6b09f7288ac61d4d0ea62bdb",
+    "clause_core": "certs/p2-d2-e2.clause-core.txt.xz",
+    "clause_core_sha256": "43a13b389714db2ef5a47c6a747abb9b24a5625c64cb887e7c91258a2a030efc"
+   },
+   "result": "UNSAT (DRAT verified)",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 3600,
+    "answer": "UNSAT",
+    "wall_s": 3.0,
+    "date": "2026-10-24",
+    "proof_bytes": 26977571,
+    "drat_trim_full_s": 6.3,
+    "core_recheck_s": 5.0,
+    "core_bytes": 238292,
+    "core_xz_bytes": 71712
+   }
+  },
+  {
+   "name": "p2-d2-e3",
+   "title": "involution fixing the root; on Gamma_1: 2 swapped edge pairs, 3 fixed edges, 0 flipped edges (F=23)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      6,
+      8
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     23
+    ],
+    "pair_actions": [
+     "2+,2+,1+,1+,1+"
+    ]
+   },
+   "literature": "not found excluded in the sources we checked; also implied by the interlacing bound F <= 18 derived in README.md",
+   "status": "open",
+   "cnf_sha256": "c5d4d2586f8be0bc8210685769016ff15ddd8b0dad7d48610f522db02f6ba1cd",
+   "cnf_stats": {
+    "pair_orbits": 2571,
+    "and_gates": 220621,
+    "vars": 1054618,
+    "clauses": 3727018
+   },
+   "involution": {
+    "d": 2,
+    "e": 3,
+    "flipped": 0
+   },
+   "certificate": {
+    "path": "certs/p2-d2-e3.core.drat.xz",
+    "sha256": "2d654a8c28248242282d0cd88ed313124ed3610e95231d4a68abd375d9fbfae8",
+    "clause_core": "certs/p2-d2-e3.clause-core.txt.xz",
+    "clause_core_sha256": "2c35e8546579715a262ea6ce880d551a49c3e1b41335d15af324c98cee298f91"
+   },
+   "result": "UNSAT (DRAT verified)",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 3600,
+    "answer": "UNSAT",
+    "wall_s": 10.8,
+    "date": "2026-10-24",
+    "proof_bytes": 65530082,
+    "drat_trim_full_s": 38.1,
+    "core_recheck_s": 35.9,
+    "core_bytes": 1016267,
+    "core_xz_bytes": 319200
+   }
+  },
+  {
+   "name": "p2-d3-e0",
+   "title": "involution fixing the root; on Gamma_1: 3 swapped edge pairs, 0 fixed edges, 1 flipped edges (F=7)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      6,
+      8
+     ],
+     [
+      9,
+      11
+     ],
+     [
+      10,
+      12
+     ],
+     [
+      13,
+      14
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     7
+    ],
+    "pair_actions": [
+     "2+,2+,2+,1-"
+    ]
+   },
+   "literature": "open: involutions are not excluded in the sources we checked",
+   "status": "open",
+   "cnf_sha256": "3f49fc5f35824a616fcabfa5ff434988dd777303c109b1036f932fd34d05cdcb",
+   "cnf_stats": {
+    "pair_orbits": 2459,
+    "and_gates": 226885,
+    "vars": 1017258,
+    "clauses": 3583676
+   },
+   "involution": {
+    "d": 3,
+    "e": 0,
+    "flipped": 1
+   },
+   "result": "UNKNOWN",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 600,
+    "answer": "UNKNOWN",
+    "wall_s": 600.1,
+    "date": "2026-10-24"
+   }
+  },
+  {
+   "name": "p2-d3-e1",
+   "title": "involution fixing the root; on Gamma_1: 3 swapped edge pairs, 1 fixed edges, 0 flipped edges (F=9)",
+   "v": 99,
+   "k": 14,
+   "lambda": 1,
+   "mu": 2,
+   "rooted": true,
+   "generators": [
+    [
+     [
+      1,
+      3
+     ],
+     [
+      2,
+      4
+     ],
+     [
+      5,
+      7
+     ],
+     [
+      6,
+      8
+     ],
+     [
+      9,
+      11
+     ],
+     [
+      10,
+      12
+     ]
+    ]
+   ],
+   "expect": {
+    "orders": [
+     2
+    ],
+    "fixed": [
+     9
+    ],
+    "pair_actions": [
+     "2+,2+,2+,1+"
+    ]
+   },
+   "literature": "open: involutions are not excluded in the sources we checked",
+   "status": "open",
+   "cnf_sha256": "fedf7f1c13fce616468a4301c47bfdb108734a60b07b471a48aec27d1ec069b0",
+   "cnf_stats": {
+    "pair_orbits": 2466,
+    "and_gates": 225297,
+    "vars": 1019079,
+    "clauses": 3591723
+   },
+   "involution": {
+    "d": 3,
+    "e": 1,
+    "flipped": 0
+   },
+   "result": "UNKNOWN",
+   "run": {
+    "solver": "cadical 3.0.1",
+    "limit_s": 1800,
+    "answer": "UNKNOWN",
+    "wall_s": 1800.1,
+    "date": "2026-10-24"
+   }
+  }
+ ]
+}

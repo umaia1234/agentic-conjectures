@@ -1,0 +1,14 @@
+{
+ "case": "p11-free",
+ "date": "2026-10-24",
+ "machine": "arm64 Darwin",
+ "limit_s": 1800,
+ "encode": "p11-free orbits=441 and=36522 vars=177579 clauses=627372 sha256=9d694da48c8b6e891a7b349f4a78bae320952d29a6361e168694468ea025ce01",
+ "cnf_sha256": "9d694da48c8b6e891a7b349f4a78bae320952d29a6361e168694468ea025ce01",
+ "audit_file_identical": true,
+ "solver": "cadical 3.0.1",
+ "solver_wall_s": 1800.0,
+ "solver_cpu_line": "total process time since initialization: 1760.73 seconds",
+ "solver_exit": 0,
+ "answer": "UNKNOWN"
+}

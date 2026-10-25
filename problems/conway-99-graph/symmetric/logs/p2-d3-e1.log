@@ -1,0 +1,76 @@
+$ /opt/homebrew/opt/python@3.15/bin/python3.15 srg_sym_encode.py cnf p2-d3-e1 -o BUILD/p2-d3-e1.cnf
+p2-d3-e1 orbits=2466 and=225297 vars=1019079 clauses=3591723 sha256=fedf7f1c13fce616468a4301c47bfdb108734a60b07b471a48aec27d1ec069b0
+# exit 0, wall 1.7s
+
+$ /opt/homebrew/opt/python@3.15/bin/python3.15 srg_sym_audit.py p2-d3-e1 BUILD/p2-d3-e1.cnf
+FAIL p2-d3-e1
+     gen0 order=2 fixed=9 type=2^45.1^9 pairs=2+,2+,2+,1+
+     group_order=2 pair_orbits=2466 sha256=fedf7f1c13fce616468a4301c47bfdb108734a60b07b471a48aec27d1ec069b0 DIFFERS from cases.json
+     file BUILD/p2-d3-e1.cnf: identical
+AUDIT FAILED (1 cases)
+# exit 1, wall 1.1s
+
+$ cadical -t 1800 BUILD/p2-d3-e1.cnf BUILD/p2-d3-e1.drat
+c --- [ banner ] -------------------------------------------------------------
+c 
+c CaDiCaL SAT Solver
+c Copyright (c) 2016-2026
+c A. Biere, M. Fleury, N. Froleyks, K. Fazekas, F. Pollitt, T. Faller
+c JKU Linz, University of Freiburg, TU Wien
+c 
+c Version 3.0.1
+c Apple clang version 21.0.0 (clang-2100.3.34.2) -Wall -Wextra -O3 -DNDEBUG -DNCLOSEFROM
+c Sun Jul 19 15:40:55 UTC 2026 Darwin Golden-Gate-arm64.local 27.0.0 arm64
+c 
+c --- [ limit ] --------------------------------------------------------------
+c 
+c setting time limit to 1800 seconds real time (due to '-t 1800')
+c 
+c --- [ proof tracing ] ------------------------------------------------------
+c 
+c opening file to write 'BUILD/p2-d3-e1.drat'
+c writing binary proof trace to 'BUILD/p2-d3-e1.drat'
+c 
+[... 1638 lines omitted ...]
+c shrunken:               68284140        27.91 %  learned literals
+c minishrunken:           48026131        19.63 %  learned literals
+c otfs:                       6340         0.20 %  of conflict
+c propagations:        17295198245         9.82 M  per second
+c reduced:                 2522675        79.82 %  per conflict
+c rephased:                     79     40006.94    interval
+c restarts:                 136694        23.12    interval
+c stabilizing:                  13        45.08 %  of conflicts
+c substituted:               50780         4.98 %  of all variables
+c sweep equivs:                618         0.15 %  of swept variables
+c subsumed:                 328196         3.89 %  of all clauses
+c strengthened:             136061         1.61 %  of all clauses
+c ticks:               80396860198         4.85    propagation
+c vivified:                  29178         0.35 %  of all clauses
+c walked:                       25    126421.92    interval
+c weakened:                 879855         2.37    average size
+c congruence:                   43     73501.12    interval
+c 
+c seconds are measured in process time for solving
+c 
+c --- [ glue usage ] ---------------------------------------------------------
+c 
+c focused glue 2 used 3977562 clauses 28.07% accumulated 73.95% tier1
+c focused glue 3 used 1361279 clauses 9.609% accumulated 83.56% tier2
+c 
+c stable glue 2 used 2913942 clauses 21.25% accumulated 51.72% tier1
+c stable glue 3 used 1364427 clauses 9.954% accumulated 61.67%
+c stable glue 4 used 718170 clauses 5.239% accumulated 66.91%
+c stable glue 5 used 591870 clauses 4.318% accumulated 71.23% tier2
+c 
+c 
+c --- [ resources ] ----------------------------------------------------------
+c 
+c total process time since initialization:      1761.13    seconds
+c total real time since initialization:         1800.02    seconds
+c maximum resident set size of process:          921.81    MB
+c 
+c --- [ shutting down ] ------------------------------------------------------
+c 
+c exit 0
+# exit 0, wall 1800.1s
+

@@ -1,0 +1,161 @@
+$ /opt/homebrew/opt/python@3.15/bin/python3.15 srg_sym_encode.py cnf p2-d1-e2 -o BUILD/p2-d1-e2.cnf
+p2-d1-e2 orbits=2475 and=223927 vars=1021702 clauses=3602556 sha256=0e57a17857bbef62252680144bb61b46a4da24904df049f09c60da317faad5da
+# exit 0, wall 2.0s
+
+$ /opt/homebrew/opt/python@3.15/bin/python3.15 srg_sym_audit.py p2-d1-e2 BUILD/p2-d1-e2.cnf
+FAIL p2-d1-e2
+     gen0 order=2 fixed=11 type=2^44.1^11 pairs=2+,1+,1+,1-,1-,1-
+     group_order=2 pair_orbits=2475 sha256=0e57a17857bbef62252680144bb61b46a4da24904df049f09c60da317faad5da DIFFERS from cases.json
+     file BUILD/p2-d1-e2.cnf: identical
+AUDIT FAILED (1 cases)
+# exit 1, wall 1.3s
+
+$ cadical -t 3600 BUILD/p2-d1-e2.cnf BUILD/p2-d1-e2.drat
+c --- [ banner ] -------------------------------------------------------------
+c 
+c CaDiCaL SAT Solver
+c Copyright (c) 2016-2026
+c A. Biere, M. Fleury, N. Froleyks, K. Fazekas, F. Pollitt, T. Faller
+c JKU Linz, University of Freiburg, TU Wien
+c 
+c Version 3.0.1
+c Apple clang version 21.0.0 (clang-2100.3.34.2) -Wall -Wextra -O3 -DNDEBUG -DNCLOSEFROM
+c Sun Jul 19 15:40:55 UTC 2026 Darwin Golden-Gate-arm64.local 27.0.0 arm64
+c 
+c --- [ limit ] --------------------------------------------------------------
+c 
+c setting time limit to 3600 seconds real time (due to '-t 3600')
+c 
+c --- [ proof tracing ] ------------------------------------------------------
+c 
+c opening file to write 'BUILD/p2-d1-e2.drat'
+c writing binary proof trace to 'BUILD/p2-d1-e2.drat'
+c 
+[... 191 lines omitted ...]
+c decisions:                  8693      6440.28    per second
+c fixed:                    564401        55.24 %  of all variables
+c learned:                    1774        94.71 %  per conflict
+c learned_lits:              31721       100.00 %  learned literals
+c minimized:                     0         0.00 %  learned literals
+c shrunken:                  12224        38.54 %  learned literals
+c minishrunken:               2030         6.40 %  learned literals
+c otfs:                         27         1.44 %  of conflict
+c propagations:           15748102        11.67 M  per second
+c reduced:                     211        11.27 %  per conflict
+c rephased:                      1      1873.00    interval
+c restarts:                    102        18.36    interval
+c stabilizing:                   1        46.18 %  of conflicts
+c subsumed:                    278         0.01 %  of all clauses
+c strengthened:                 27         0.00 %  of all clauses
+c ticks:                  52727502         3.35    propagation
+c 
+c seconds are measured in process time for solving
+c 
+c --- [ glue usage ] ---------------------------------------------------------
+c 
+c focused glue 2 used 349 clauses 18.13% accumulated 64.24% tier1
+c focused glue 3 used 167 clauses 8.679% accumulated 72.92%
+c focused glue 4 used 136 clauses 7.068% accumulated 79.98%
+c focused glue 5 used 136 clauses 7.068% accumulated 87.05%
+c focused glue 6 used 69 clauses 3.586% accumulated 90.64% tier2
+c 
+c stable glue 1 used 3352 clauses 61.57% accumulated 61.57% tier1
+c stable glue 2 used 857 clauses 15.74% accumulated 77.31% tier2
+c 
+c 
+c --- [ resources ] ----------------------------------------------------------
+c 
+c total process time since initialization:         1.98    seconds
+c total real time since initialization:            2.43    seconds
+c maximum resident set size of process:          486.14    MB
+c 
+c --- [ shutting down ] ------------------------------------------------------
+c 
+c exit 20
+# exit 20, wall 2.5s
+
+$ drat-trim BUILD/p2-d1-e2.cnf BUILD/p2-d1-e2.drat -i -l BUILD/p2-d1-e2.core.drat -C
+
+c turning on binary mode checking
+
+c parsing input formula with 1021702 variables and 3602556 clauses
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] 227766 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] -227767 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] 229131 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] -229132 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] 230496 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] -230497 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] 231861 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] -231862 0
+[... 418 lines omitted ...]
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] -431554 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] 431844 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] -431845 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] 432135 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] -432136 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] 456870 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] -456871 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] 457161 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] -457162 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] 457452 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] -457453 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] 482187 0
+
+c WARNING: backward mode ignores deletion of (pseudo) unit clause [0] -482188 0
+
+c finished parsing, read 26694958 bytes from proof file
+
+c detected empty clause; start verification via backward checking
+
+c 9733 of 3602556 clauses in core                            
+
+c 2654 of 905305 lemmas in core using 234904 resolution steps
+
+c 0 RAT lemmas in core; 214 redundant literals in core lemmas
+
+s VERIFIED
+
+c verification time: 6.048 seconds
+# exit 0, wall 6.1s
+
+$ drat-trim BUILD/p2-d1-e2.cnf BUILD/p2-d1-e2.core.drat -i -c BUILD/p2-d1-e2.clause-core.cnf
+
+c turning on binary mode checking
+
+c parsing input formula with 1021702 variables and 3602556 clauses
+
+c finished parsing, read 156975 bytes from proof file
+
+c detected empty clause; start verification via backward checking
+
+c 9408 of 3602556 clauses in core                            
+
+c 2628 of 2655 lemmas in core using 233866 resolution steps
+
+c 0 RAT lemmas in core; 89 redundant literals in core lemmas
+
+s VERIFIED
+
+c verification time: 4.646 seconds
+# exit 0, wall 4.7s
+
