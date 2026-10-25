@@ -4,14 +4,15 @@ title_ko: 독립적인 Schur-6 시도
 domain: other
 source_url: ''
 claimed_status: partial
-claim: 'Claims only independent reverification of the published S(6) >= 536 partition and negative search
-  results toward [1,537]: the best saved 537-coloring has exactly two monochromatic Schur triples, a depth-5
-  repair exclusion around it found nothing, and the full SAT instance remained undecided.'
+claim: 'Re-verifies with two independent checkers the published S(6) >= 537 partition of Chen, Zhu and
+  Long (arXiv:2610.31362) and the earlier 536 partition; no 6-partition of [1,538] was found, and DRAT
+  certificates exclude only specific classes at 538: 22 palindromic frame classes (our N = 539 version of
+  their frame) and the colorings that agree with their partition on [1,120].'
 claim_ko: >-
-  출판된 S(6) >= 536 하한을 증명하는 분할의 독립적 재검증과 [1,537]에 대한 부정적 탐색 결과만
-  주장한다. 저장된 최선의 [1,537] 6색칠에는 단색 Schur 삼중항이 정확히 두 개 있으며, 그 근방에서
-  다섯 번 이하의 재색칠로는 이를 고칠 수 없음을 완전탐색으로 확인했다. 전체 SAT 인스턴스는 미결정
-  상태로 남았다.
+  Chen, Zhu, Long(arXiv:2610.31362)이 출판한 S(6) >= 537 분할과 이전의 536 분할을 서로 독립적인 두
+  검사기로 재검증한다. [1,538]의 합-자유 6-분할은 찾지 못했으며, 538에서는 특정한 부류만을 DRAT
+  인증으로 배제한다. 배제한 부류는 22개의 회문(palindromic) 프레임 부류(그들의 프레임을 N = 539에 맞게
+  옮긴 우리의 버전)와, [1,120]에서 그들의 분할과 일치하는 색칠들이다.
 artifacts:
 - path: verify.py
   kind: certificate-script
@@ -25,6 +26,26 @@ artifacts:
   kind: search-code
 - path: encode_cnf.py
   kind: search-code
+- path: published_537.col
+  kind: data
+- path: frame_537_kissat.col
+  kind: data
+- path: check_partition.cpp
+  kind: certificate-script
+- path: template_sat.py
+  kind: search-code
+- path: audit_template_cnf.py
+  kind: certificate-script
+- path: certify_templates.sh
+  kind: certificate-script
+- path: prefix150_538_unsat.drat
+  kind: sat-drat
+- path: compare_published_537.py
+  kind: other
+- path: tabu_search.cpp
+  kind: search-code
+- path: near_538_two_violations.col
+  kind: data
 verify:
 - cmd: python3 reconstruct_published.py published_536_half.txt > /tmp/reconstructed_536.col && cmp /tmp/reconstructed_536.col
     published_536.col && python3 verify.py published_536.col --maximum 536
@@ -35,11 +56,50 @@ verify:
   expected_runtime: <= 60 s (stated cap; 232,887 nodes exhausted). Exit 2 = search exhausted without finding
     a repair, which is exactly the certified negative result, hence the wrapper.
   ci_feasible: true
+- cmd: python3 verify.py published_537.col --maximum 537 && python3 verify.py frame_537_kissat.col --maximum
+    537 && g++ -O2 -std=c++17 check_partition.cpp -o /tmp/schur6_check && /tmp/schur6_check published_537.col
+    537 && /tmp/schur6_check frame_537_kissat.col 537 && /tmp/schur6_check published_536.col 536 && /tmp/schur6_check
+    near_538_two_violations.col 538 | grep -q "monochromatic_triples=2 structural_problems=0"
+  expected_runtime: about 3 s (two independent checkers on both 537 partitions and the 536 partition; the
+    near-538 data file has exactly two monochromatic triples)
+  ci_feasible: true
+  requires:
+  - g++
+- cmd: python3 template_sat.py cnf --maximum 538 --fix published_537.col 150 > /tmp/schur6_prefix150.cnf
+    && python3 audit_template_cnf.py /tmp/schur6_prefix150.cnf --maximum 538 --fix published_537.col 150
+    --sha256 11747b52a391cacffa8235ccdec8d8e61574ec4b22e39b05887f44d686e1bca5 && drat-trim /tmp/schur6_prefix150.cnf
+    prefix150_538_unsat.drat
+  expected_runtime: about 1 min (CNF 2 s, audit 1 s, drat-trim 53 s CPU on a loaded machine)
+  ci_feasible: true
+  requires:
+  - drat-trim
+- cmd: bash certify_templates.sh --audit-only
+  expected_runtime: about 20 s (CNF regeneration, SHA-256 and clause audit of the 23 listed classes)
+  ci_feasible: true
+- cmd: bash certify_templates.sh
+  expected_runtime: about 5 h in sequence for the 23 listed classes (per class kissat 1-17 min CPU, drat-trim
+    1-24 min, temporary DRAT proof of 0.07-2.3 GB)
+  ci_feasible: false
+  requires:
+  - kissat
+  - drat-trim
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: README states explicitly this is a near coloring, not a new lower bound, and that no run proves
-  [1,537] impossible; remaining violations are color 4 triples 12+12=24 and 12+24=36; repair exclusion
-  is only radius 5 around one coloring; CaDiCaL undecided after ~1.85M conflicts; encoder sanity-checked
-  on S(2)=4. Long local-search and SAT runs are local-only.
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: literature check, two-checker reverification of the published 537 partition, template SAT
+    encoder and audit, DRAT-certified 538 template exclusions, tabu/breakout local search
+notes: S(6) >= 537 is the published result of Chen, Zhu and Long (arXiv:2610.31362, 2026-10-22), not
+  ours; published_537.col equals their ancillary certificate.col and is accepted by verify.py and by the
+  independently written check_partition.cpp. frame_537_kissat.col reproduces their frame method and is not
+  among their 131 partitions, but it is not a new bound. The n = 538 frame (N = 539) and the other (Q, D)
+  values are our extrapolation of their n = 537 Definition 3. DRAT certificates (drat-trim s VERIFIED,
+  CNFs audited clause by clause and pinned by SHA-256) cover the 21 frame cells 148 <= Q <= 154, 37 <= D
+  <= 39, the --no-middle relaxation of g(151, 38), and the [1,120] and [1,150] prefix classes. Only the
+  [1,150] proof is stored and checked in CI; the other proofs (66 MB to 2.3 GB) are regenerated locally by
+  certify_templates.sh, whose CNF audit and SHA-256 part runs in CI. Calibrated local search (it fails even
+  on the satisfiable 537 frame class) found no 538 partition; every run stalled at two violated cells of
+  the shape a+a = 2a, a+2a = 3a. The 2026-08-11 results
+  (536 reverification, two-violation near-537 coloring, depth-5 repair exclusion) are kept unchanged.
