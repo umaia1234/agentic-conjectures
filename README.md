@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-56-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
+![problems](https://img.shields.io/badge/problems-56-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-18-bf8700) ![open](https://img.shields.io/badge/open-5-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**56 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
+**56 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 18 · ⚪ open: 5
 
 ### OEIS
 
@@ -180,7 +180,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 | [Erdős #385 / #430(i) — odd indices and exact verification through 10^9](problems/erdos-385/README.md) | 🟡 partial | lean + cert | `GPT-5.6 Sol` | Lean-proves F(n)>=n for n>=5 and F(n)>n at every odd n>=5; two independent exact sieves classify F(n)=n through 10^9, finding 100 equality cases with largest 267680 and hence F(n)>n throughout [267681,10^9], while both asymptotic questions remain open. |
 | [Erdős #424 — positive density of the generated set (finite probe)](problems/erdos-424/README.md) | ⚪ open | cert | `GPT-5.6 Sol` | Describes an exact finite experiment generating the set via n+1=xy with distinct members and scanning residue classes for omissions; the README explicitly says the finite search does not prove positive density. |
 | [Erdős #671 — everywhere-unbounded Lagrange arrays proved](problems/erdos-671/README.md) | ✅ proved | lean + cert | `GPT Pro` · `Codex` · `GPT-5.6 Sol` | Lean-proves both questions in Erdős #671: there is one exact-cardinality triangular interpolation array whose Lebesgue functions are cofinally unbounded at every point of [-1,1], while every continuous function has a point where the full sequence of Lagrange interpolants converges to it. |
-| [Finite projective plane of order 12](problems/projective-plane-order-12/README.md) | ⚪ open | — | `GPT-5.6 Sol` | Claims nothing new: records the open existence problem for a projective plane of order 12 (equivalently a symmetric 2-(157,13,1) design), known collineation-group exclusions, and computational considerations only. |
+| [Finite projective plane of order 12](problems/projective-plane-order-12/README.md) | 🟡 partial | lean + cert | `GPT-5.6 Sol` · `Claude Opus 5.5 (max effort)` | Claims only certified reproductions of classical exclusions, not the existence question: there is no (157,13,1) difference set in Z_157 (no cyclic plane of order 12) and no (13,11,12,1) relative difference set in Z_143 (no cyclic affine plane of order 12), each by two independent exhaustive searches and a DRAT-checked SAT refutation, and Lean proves that a collineation of prime order p >= 13 has p = 13 with a unique fixed antiflag or p = 157 with no fixed point or line. |
 
 ### Graphs & combinatorics
 

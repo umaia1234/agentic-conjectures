@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-18-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-5-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
+**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 18 · ⚪ 미해결: 5
 
 ### OEIS
 
@@ -178,7 +178,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 | [에르되시 #385 / #430(i) — 홀수 지표 정리와 10^9까지의 정확한 검증](problems/erdos-385/README.ko.md) | 🟡 부분 결과 | Lean + 인증서 | `GPT-5.6 Sol` | Lean으로 n>=5이면 F(n)>=n이고 홀수 n>=5이면 F(n)>n임을 증명했다. 서로 독립적인 두 정확한 체가 10^9까지 F(n)=n인 경우를 분류하여 등호 사례가 정확히 100개이고 최댓값이 267680임을 확인하므로 [267681,10^9] 전체에서 F(n)>n이다. 두 점근적 질문은 여전히 미해결이다. |
 | [Erdős #424 — 생성 집합의 양의 밀도(유한 탐색)](problems/erdos-424/README.ko.md) | ⚪ 미해결 | 인증서 | `GPT-5.6 Sol` | 서로 다른 원소를 사용한 n+1=xy를 통해 집합을 생성하고 누락 여부를 확인하기 위해 잉여류를 탐색하는 정확한 유한 실험을 설명한다. README는 이 유한 탐색이 양의 밀도를 증명하지 않는다고 명시한다. |
 | [에르되시 #671 — 모든 점에서 비유계인 라그랑주 배열 증명](problems/erdos-671/README.ko.md) | ✅ 증명 | Lean + 인증서 | `GPT Pro` · `Codex` · `GPT-5.6 Sol` | 에르되시 #671의 두 질문을 모두 Lean으로 증명한다. 정확한 개수의 절점을 갖는 하나의 삼각 보간 배열이 존재하여 그 르베그 함수들은 [-1,1]의 모든 점에서 공종적으로 비유계이지만, 모든 연속함수에는 라그랑주 보간 다항식의 전체 열이 그 함수로 수렴하는 점이 있다. |
-| [12차 유한 사영평면](problems/projective-plane-order-12/README.ko.md) | ⚪ 미해결 | — | `GPT-5.6 Sol` | 새로운 결과를 주장하지 않는다. 12차 사영평면, 즉 대칭 2-(157,13,1) 설계의 미해결 존재 문제와 알려진 공선변환군 배제 결과, 계산상 고려사항만 기록한다. |
+| [12차 유한 사영평면](problems/projective-plane-order-12/README.ko.md) | 🟡 부분 결과 | Lean + 인증서 | `GPT-5.6 Sol` · `Claude Opus 5.5 (max effort)` | 존재 문제가 아니라 고전적 배제 결과의 인증된 재현만 주장한다. Z_157에는 (157,13,1) difference set이 없고(order 12인 순환 plane 없음) Z_143에는 (13,11,12,1) relative difference set이 없음(order 12인 순환 affine plane 없음)을 각각 서로 독립인 두 전수 탐색과 DRAT로 검사한 SAT 반박으로 확인했으며, 위수가 소수 p >= 13인 collineation은 p = 13이고 고정 antiflag가 유일하거나 p = 157이고 고정점과 고정 직선이 없음을 Lean으로 증명했다. |
 
 ### 그래프·조합론
 

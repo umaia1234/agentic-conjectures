@@ -3,24 +3,99 @@ title: Finite projective plane of order 12
 title_ko: 12차 유한 사영평면
 domain: erdos
 source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/ErdosProblems/723.lean
-claimed_status: open
-claim: 'Claims nothing new: records the open existence problem for a projective plane of order 12 (equivalently
-  a symmetric 2-(157,13,1) design), known collineation-group exclusions, and computational considerations
-  only.'
+claimed_status: partial
+claim: 'Claims only certified reproductions of classical exclusions, not the existence question: there is
+  no (157,13,1) difference set in Z_157 (no cyclic plane of order 12) and no (13,11,12,1) relative difference
+  set in Z_143 (no cyclic affine plane of order 12), each by two independent exhaustive searches and a DRAT-checked
+  SAT refutation, and Lean proves that a collineation of prime order p >= 13 has p = 13 with a unique fixed
+  antiflag or p = 157 with no fixed point or line.'
 claim_ko: >-
-  새로운 결과를 주장하지 않는다. 12차 사영평면, 즉 대칭 2-(157,13,1) 설계의 미해결 존재 문제와
-  알려진 공선변환군 배제 결과, 계산상 고려사항만 기록한다.
+  존재 문제가 아니라 고전적 배제 결과의 인증된 재현만 주장한다. Z_157에는 (157,13,1) difference set이
+  없고(order 12인 순환 plane 없음) Z_143에는 (13,11,12,1) relative difference set이 없음(order 12인
+  순환 affine plane 없음)을 각각 서로 독립인 두 전수 탐색과 DRAT로 검사한 SAT 반박으로 확인했으며,
+  위수가 소수 p >= 13인 collineation은 p = 13이고 고정 antiflag가 유일하거나 p = 157이고 고정점과
+  고정 직선이 없음을 Lean으로 증명했다.
 artifacts:
 - path: upstream/723.lean
   kind: upstream-lean
 - path: upstream/README.md
   kind: other
-verify: []
+- path: ds_enumerate.cpp
+  kind: search-code
+- path: ds_search_normalized.cpp
+  kind: search-code
+- path: crosscheck_ab.py
+  kind: certificate-script
+- path: verify_difference_sets.py
+  kind: certificate-script
+- path: ds_cnf.py
+  kind: search-code
+- path: audit_ds_cnf.py
+  kind: certificate-script
+- path: rds143_core.cnf
+  kind: sat-cnf
+- path: rds143_core.drat
+  kind: sat-drat
+- path: make_rds143_certificate.sh
+  kind: certificate-script
+- path: antiflag_cnf.py
+  kind: search-code
+- path: antiflag_decode.py
+  kind: certificate-script
+- path: ../../AgenticConjectures/ProjectivePlaneOrder12.lean
+  kind: lean-proof
+verify:
+- cmd: python3 verify_difference_sets.py controls
+  expected_runtime: about 11 s (prime-power and order 6, 10 controls, methods A and B; includes g++ build)
+  ci_feasible: true
+- cmd: python3 verify_difference_sets.py affine
+  expected_runtime: about 10 s (Z_143, methods A and B)
+  ci_feasible: true
+- cmd: python3 verify_difference_sets.py planar
+  expected_runtime: about 25 s (Z_157, method B)
+  ci_feasible: true
+- cmd: python3 audit_ds_cnf.py 143 12 13 6 rds143_core.cnf
+  expected_runtime: under 1 s (stdlib-only semantic audit of 36,827 clauses)
+  ci_feasible: true
+- cmd: drat-trim rds143_core.cnf rds143_core.drat
+  expected_runtime: about 2 s (20,213 lemmas)
+  ci_feasible: true
+  requires:
+  - drat-trim
+- cmd: python3 verify_difference_sets.py planar-full
+  expected_runtime: 15-25 min (Z_157, method A count profile)
+  ci_feasible: false
+- cmd: mkdir -p build && python3 ds_cnf.py 157 13 157 build/pds157.cnf 5 && python3 audit_ds_cnf.py 157 13 157
+    5 build/pds157.cnf && { cadical -q build/pds157.cnf build/pds157.drat; test $? -eq 20; } && drat-trim
+    build/pds157.cnf build/pds157.drat
+  expected_runtime: about 16 min (CaDiCaL 5 min, drat-trim 11 min; writes a 320 MB proof to build/)
+  ci_feasible: false
+  requires:
+  - cadical
+  - drat-trim
+lean:
+  modules:
+  - AgenticConjectures.ProjectivePlaneOrder12
+  theorems:
+  - AgenticConjectures.ProjectivePlaneOrder12.order13_fixed_antiflag
+  - AgenticConjectures.ProjectivePlaneOrder12.prime_gt_13
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: README states explicitly that the directory claims no new existence or nonexistence result; cites
-  2023 exclusion of order-4 collineation groups (leaving possible group orders 1, 2, 3) and a 2026 source
-  listing 12 as the smallest unresolved order; upstream Erdos problem 723 Lean declaration is sorry-marked;
-  no code or reproduction commands.
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: certified reproductions of the cyclic and cyclic-affine exclusions (two exhaustive searches each, SAT
+    with DRAT), Lean fixed-point lemmas for collineations of prime order >= 13, and an order-13 SAT reduction
+    left unresolved
+notes: Nothing about the existence of a plane of order 12 is claimed; status partial refers only to certified
+  reproductions of classical results (Singer, Hall, Evans-Mann, Bose, Hoffman; Gordon 1994), obtained without
+  the multiplier theorem. The normalisations (translation and dilation to 0, 1 in D and the least-ratio normal
+  form) are justified in the README, and the clause audit re-derives every SAT clause independently of the
+  generator. CI re-runs method B for Z_157, methods A and B for Z_143, the controls, and the Z_143 DRAT certificate
+  (a drat-trim core of the full formula plus a trimmed proof); the Z_157 SAT proof (320 MB) and method A's full
+  Z_157 profile are local-only. The Lean theorems are conditional statements about a hypothetical plane, and
+  Singer's correspondence between regular cyclic groups and difference sets is not formalized. The order-13
+  SAT instance was stopped after 3.8 h without an answer and nothing is claimed for it. The survey part still
+  cites the 2023 exclusion of collineation groups of order 4 (possible group orders 1, 2, 3) and a 2026 source
+  listing 12 as the smallest unresolved order; the upstream Erdos problem 723 declaration remains sorry-marked.
