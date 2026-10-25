@@ -2,7 +2,8 @@
 
 # OEIS A000224 추측 공격 기록
 
-확인 기준일: 2026-08-12.
+확인 기준일: 2026-08-12. 소수거듭제곱과 두 소수의 곱으로 Lean 형식화를
+확장한 날: 2026-10-24.
 
 확장된 정의와 증명은 [문제별 수학 상세](DETAILS.ko.md)에 있습니다.
 
@@ -27,6 +28,11 @@ OEIS에는 `10^8`까지 확인되었다고 기록되어 있습니다. 아래 결
 따라서 반례가 있다면 홀수이고, 서로 다른 소인수를 적어도 둘 가지며,
 소인수의 중복도를 센 `Omega(n)`은 적어도 3입니다. 세 번째 항목은 작은
 유한 계산을 마지막 단계로 사용하는 computer-assisted proof입니다.
+
+세 항목과 반례의 형태에 관한 이 결론은 모두 상류의 정의 그대로 Lean 4
+커널로 검사됩니다([Lean 4 형식화](#lean-4-형식화) 참고). Lean 모듈은
+또한 모든 소수거듭제곱과 `Omega(n)<=2`인 모든 `n>1`에서 상류 동치가
+성립함을 증명합니다.
 
 ## 준비식
 
@@ -66,18 +72,11 @@ R(p)(R(p)-1) = (p^2-1)/4.
 [`even_not_conjecture_rhs`](../../AgenticConjectures/OeisA000224.lean) 정리는
 고정된 상류 스냅샷의 `A000224` 정의와 `Nat.ModEq` 합동식을 정확히
 사용합니다. 상류의 `n=0` 규약과 자연수 뺄셈을 그대로 두되,
-`1<n` 가정으로 경계값을 제외합니다. 이 형식증명은 짝수 부분경우만
+`1<n` 가정으로 경계값을 제외합니다. 이 정리는 짝수 부분경우만
 다루며, 주어진 합동식을 modulo 2로 줄여 짝수의 제곱이 가지는
-짝홀성과 모순을 얻습니다. 공리 감사 결과는 `propext`, `Classical.choice`,
-`Quot.sound`만 보고합니다.
-
-```bash
-lake build
-python3 scripts/check_axioms.py
-```
-
-mathlib cache가 이미 채워진 확인 머신에서 전체 build는 7.3초,
-공리 감사는 3.6초가 걸렸습니다(2026-08-12).
+짝홀성과 모순을 얻습니다. 아래의 소수거듭제곱과 두 소수 경우도 같은
+모듈에서 형식화했으며, 재현 명령과 실행 시간은
+[Lean 4 형식화](#lean-4-형식화)에 있습니다.
 
 이제 `n=p^e`, `p` 홀수, `e>=2`라 하겠습니다.
 
@@ -110,6 +109,11 @@ mathlib cache가 이미 채워진 확인 머신에서 전체 build는 7.3초,
 
 이고, 5배의 최고차항 계수는 `-p^2+8p+4<0` (`p>=11`)입니다. `p=3,5,7`은
 위에 적은 경계값을 대입하면 됩니다.
+
+홀수 지수 경우의 Lean 증명은 이 구간 비교를 쓰지 않고
+[DETAILS.ko.md](DETAILS.ko.md) §4의 gcd 논증을 따릅니다. 즉 `r-1`은
+`p^(e+1)-1`과 `p^(2e)-1`을 모두 나누므로 `p^2-1`을 나누지만,
+`r-1>p^2-1`입니다.
 
 ## 서로 다른 두 소수의 곱
 
@@ -163,6 +167,12 @@ b | p^2-1 = 4a(a-1).                               (2)
 python problems/oeis-a000224/semiprime_certificate.py \
   --output problems/oeis-a000224/semiprime_result.json
 ```
+
+Lean 증명은 이 열거를 소수 판정이 필요 없는 `decide` 검사로 대체합니다.
+`4a(a-1)=bc`라 쓰면 `b>a`에서 `c<4a`가 나오므로, `2<=a<=31`,
+`1<=c<4a`인 1950개의 쌍 `(a,c)`를 훑습니다. 그중 `c | 4a(a-1)`이고
+`b=4a(a-1)/c>a`인 392쌍에 대해 `((2a-1)(2b-1))^2`가 modulo `ab-1`로
+`1`이 아님을 확인합니다. 스크립트는 독립적인 검사로 남겨 둡니다.
 
 ## 모든 잠재 반례가 만족해야 하는 추가 local 조건
 
@@ -230,10 +240,90 @@ R(uv)=R(u)R(v) <= (u+1)(v+1)/4 < (uv+1)/2,
 
 이므로 홀수 `n>1`에 대해 `R(n)=(n+1)/2`인 경우는 정확히 홀수 소수뿐입니다.
 
+## Lean 4 형식화
+
+짝수, 소수거듭제곱, 서로 다른 두 소수의 곱에 대한 결과는 mathlib만
+사용하여 `sorry` 없이
+[`AgenticConjectures/OeisA000224.lean`](../../AgenticConjectures/OeisA000224.lean)
+(namespace `AgenticConjectures.OeisA000224`)에 형식화했습니다. 아래에서
+`RHS(n)`은 상류의 우변 `n * n ≡ 1 [MOD A000224 n * (A000224 n - 1)]`을
+뜻합니다. 핵심 명제는 다음 두 가지입니다.
+
+- `Omega(n)<=2`인 모든 `n>1`과 `e>=1`인 모든 소수거듭제곱 `p^e`에서
+  상류 동치 `(n.Prime ∧ n ≠ 2) ↔ RHS(n)`이 성립합니다.
+- 상류 동치를 깨는 `n>1`은 홀수이고, 소수거듭제곱이 아니며,
+  `Omega(n)>=3`을 만족합니다.
+
+| 선언 | 내용 |
+|---|---|
+| `A000224` | 상류 정의를 항 그대로 옮긴 것(`n=0`에서 `1`, 그 밖에는 `k<n`에 대한 서로 다른 `k^2 % n`의 개수) |
+| `even_not_conjecture_rhs` | 짝수 `n>1`은 `RHS(n)`을 만족하지 않음(첫 형식화에서 바뀌지 않음) |
+| `two_mul_A000224_prime` | 홀수 소수 `p`에 대해 `2R(p)=p+1` |
+| `two_mul_A000224_prime_pow_add_two` | 홀수 소수 `p`에 대해 `2R(p^(e+2)) = p^(e+1)(p-1) + 2R(p^e)`, 즉 `R(p^(e+2)) = R(p^e) + φ(p^(e+2))/2` |
+| `A000224_prime_pow_even`, `A000224_prime_pow_odd` | 닫힌 식 (A224-3): `2(p+1)R(p^(2k)) = p^(2k+1)+p+2`, `2(p+1)R(p^(2k+1)) = p^(2k+2)+2p+1` |
+| `odd_prime_conjecture_rhs` | 모든 홀수 소수 `p`는 `RHS(p)`를 만족함(몫 4) |
+| `odd_prime_pow_not_conjecture_rhs` | `p`가 홀수 소수이고 `e>=2`인 `p^e`는 `RHS(p^e)`를 만족하지 않음 |
+| `conjecture_prime_pow` | `e>=1`인 모든 소수거듭제곱 `p^e`에서 상류 동치가 성립함(`p=2` 포함) |
+| `A000224_mul` | 서로소인 `m,n>0`에 대해 `R(mn)=R(m)R(n)` (중국인의 나머지 정리) |
+| `odd_primes_mul_not_conjecture_rhs` | 서로 다른 두 홀수 소수의 곱 `pq`는 `RHS(pq)`를 만족하지 않음 |
+| `conjecture_mul_primes` | 서로 다른 두 소수의 곱 `pq`에서 상류 동치가 성립함 |
+| `conjecture_of_primeFactorsList_length_le_two` | `Omega(n)<=2`인 모든 `n>1`에서 상류 동치가 성립함 |
+| `counterexample_shape` | 반례 `n>1`은 `Odd n`, `¬ IsPrimePow n`, `Omega(n)>=3`을 만족함 |
+
+방법. modulo `p^e` (`p` 홀수, `e>=1`)의 제곱수는 `p`와 서로소인 것과
+`p`로 나누어떨어지는 것으로 나뉩니다. `p`와 서로소인 잉여에서 제곱
+사상은 정확히 2대1입니다. `k^2 == l^2`이면 `p`는 `l-k`와 `l+k`를 동시에
+나눌 수 없으므로 `p^e`가 둘 중 하나를 나누기 때문입니다. 따라서 단원
+제곱수는 `φ(p^e)/2`개입니다. `p`로 나누어떨어지는 제곱수는 `e>=2`이면
+`t`가 modulo `p^(e-2)`의 제곱수일 때 `p^2 t` 꼴이고, `e=1`이면 `0`뿐입니다.
+이로부터 점화식을 얻고, 두 칸씩 올라가는 귀납법으로 (A224-3)을 얻습니다.
+소수거듭제곱 배제는 [DETAILS.ko.md](DETAILS.ko.md) §4의 논증을 따릅니다.
+`e`가 짝수이면 `p | r-1`이고, `e`가 홀수이면 `r-1 | p^2-1`인데
+`r-1>p^2-1`입니다. 두 소수 경우에는 곱셈성에 의해 `a=R(p)<b=R(q)`라 할 때
+`R=ab`입니다. `q == -1 (mod b)`이므로 `b | 4a(a-1)`입니다. `a>=32`이면
+명시적인 다항식 항등식이 `15R(R-1) < n^2-1 < 16R(R-1)`을 줍니다. 남은
+`a<=31` 경우는 위에서 설명한 `decide` 검사로 처리합니다.
+
+명제 충실성. `A000224`는 `n=0` 규약과 `ℕ` 위의 `%`까지 포함해 상류
+스냅샷에서 그대로 옮겼습니다. `RHS(n)`은 상류의 우변이며 자연수 뺄셈
+`A000224 n - 1`도 같습니다. `n>=1`이면 `A000224 n>=1`이므로 절삭은
+일어나지 않습니다. 좌변 `n.Prime ∧ n ≠ 2`도 그대로 옮겼고, 제곱은
+상류처럼 `n * n` 꼴(`p ^ e * p ^ e`, `p * q * (p * q)`)로 적습니다. 상류의
+가정 `1<n`은 `even_not_conjecture_rhs`,
+`conjecture_of_primeFactorsList_length_le_two`, `counterexample_shape`에서는
+명시적 가정이고, 나머지 정리에서는 가정(`p`가 소수이고 `e>=1`인 `p^e`,
+또는 `p,q`가 소수인 `pq`)으로부터 따라 나옵니다. 여기서 `Omega(n)`은
+`n.primeFactorsList.length`(중복도를 센 소인수 개수)이고, "소수거듭제곱이
+아님"은 mathlib의 `¬ IsPrimePow n`입니다.
+
+재현 명령(저장소 루트에서 실행하며, `lake build`와 `check_axioms.py`에는
+mathlib cache가 필요합니다):
+
+```bash
+lake build AgenticConjectures.OeisA000224   # 이 모듈만
+lake build                                  # 전체 라이브러리 (check_axioms.py에 필요)
+python3 scripts/check_sorry.py
+python3 scripts/check_axioms.py             # propext / Classical.choice / Quot.sound만 허용
+```
+
+확인 머신(2026-10-24, 공유 Apple M5 Max, mathlib cache 채워짐)에서 모듈
+build는 12초가 걸렸습니다. `decide` 단계는 elaboration에 약 0.4초, 커널
+검사에 약 0.3초가 걸렸습니다. 그 뒤 전체 `lake build`는 9.5초, 공리 감사는
+8.2초가 걸렸습니다. 짝수 경우만 다루던 첫 버전에서는 전체 build가 7.3초,
+공리 감사가 3.6초였습니다(2026-08-12).
+`status.yaml`에 등록한 13개 정리 모두에 대해 공리 감사는 `propext`,
+`Classical.choice`, `Quot.sound`만 보고합니다.
+
+주장하지 않는 것: 전체 추측, `Omega(n)>=3`인 일반 `p^e q^f` 경우, 서로
+다른 소인수가 셋 이상인 경우에 관해서는 아무것도 주장하지 않습니다. Pell
+탐색은 스크립트로 검사한 계산으로 남으며 형식화하지 않았습니다.
+
 ## 한계
 
-- 일반적인 `p^e q^f` 및 서로 다른 소인수가 네 개 이상인 경우는 아직
-  증명하지 못했습니다.
+- 소수거듭제곱이 아니면서 `Omega(n)>=3`인 합성수 경우는 증명하지
+  못했습니다. 일반적인 `p^e q^f` 경우와 서로 다른 소인수가 셋 이상인 모든
+  경우가 여기에 해당합니다. Pell 탐색은 `omega(n)<=3`을 `n<=10^18`까지만
+  탐색합니다.
 - Pell 탐색의 `K,n` 경계 밖도 남아 있습니다.
 - 따라서 OEIS 추측 자체를 해결했다고 주장하지 않습니다.
 
@@ -242,4 +332,6 @@ R(uv)=R(u)R(v) <= (u+1)(v+1)/4 < (uv+1)/2,
 FormalConjectures의 [원문 스냅샷과 출처 기록](upstream/README.md)을
 [`224_2322a58c.lean`](upstream/224_2322a58c.lean)에 보존했다. 그 파일은 전체
 동치를 `by sorry`로 적은 **추측 statement**이며 형식 증명이 아니다. 이 폴더의
-결과는 위에서 명시한 부분족만 증명한다.
+결과는 위에서 명시한 부분족만 증명한다. Lean 모듈은 정확히 그 부분족(모든
+소수거듭제곱과 `Omega(n)<=2`인 모든 `n>1`)에서 상류 동치를 증명하며, 전체
+명제를 증명하지는 않는다.
