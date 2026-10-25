@@ -1,0 +1,88 @@
+id: wowii-graph-conjecture-189
+title: "WOWII Graph Conjecture 189: diameter two, sigma <= 4 and n <= 11"
+title_ko: "WOWII 그래프 추측 189: 지름 2, sigma <= 4, n <= 11인 경우"
+domain: graph-combinatorics
+source_url: "http://cms.dt.uh.edu/faculty/delavinae/research/wowII/"
+claimed_status: partial
+claim: >-
+  Lean-proves the diameter-at-most-two case and, under the hypothesis, |N2(v)| <= sigma(G) and
+  n <= 2 sigma(G) + 1 + floor((sigma(G)+1)^2/4); unformalized exhaustive searches find no
+  counterexample among connected graphs on at most 11 vertices or among graphs with
+  sigma(G) <= 4, so the conjecture holds (computer-assisted) in both classes.
+claim_ko: >-
+  지름이 2 이하인 경우를 Lean으로 증명했고, 가설 아래에서 |N2(v)| <= sigma(G)와
+  n <= 2 sigma(G) + 1 + floor((sigma(G)+1)^2/4)도 Lean으로 증명했다. 형식화되지 않은 전수
+  탐색에서 정점이 11개 이하인 연결 그래프와 sigma(G) <= 4인 그래프 가운데 반례가 나오지
+  않았으므로, 두 부류에서는 추측이 성립한다(컴퓨터 보조).
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: DETAILS.md
+  kind: mathematical-details
+- path: certify.py
+  kind: certificate-script
+- path: sigma3_certificates.txt
+  kind: data
+- path: sigma4_certificates.txt
+  kind: data
+- path: search_summary.txt
+  kind: data
+- path: hyp189.c
+  kind: search-code
+- path: ind189.c
+  kind: search-code
+- path: prune189.c
+  kind: search-code
+- path: reproduce.sh
+  kind: search-code
+- path: upstream/GraphConjecture189.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 certify.py sigma3_certificates.txt
+  expected_runtime: under 1 second
+  ci_feasible: true
+- cmd: python3 certify.py --sigma4 sigma4_certificates.txt
+  expected_runtime: about 2 seconds
+  ci_feasible: true
+- cmd: bash reproduce.sh "$NAUTY_DIR"
+  expected_runtime: "about 12.5 CPU-hours, mostly n = 16; about 3.5 hours wall-clock with JOBS=4"
+  ci_feasible: false
+  requires: [cc, make]
+lean:
+  modules:
+  - AgenticConjectures.WowiiGraphConjecture189
+  theorems:
+  - AgenticConjectures.WowiiGraphConjecture189.exists_walk_support_eq
+  - AgenticConjectures.WowiiGraphConjecture189.exists_isHamiltonian_of_list
+  - AgenticConjectures.WowiiGraphConjecture189.exists_isHamiltonian_of_ore
+  - AgenticConjectures.WowiiGraphConjecture189.secondSmallestDegree_le_max
+  - AgenticConjectures.WowiiGraphConjecture189.exists_degree_eq_secondSmallestDegree
+  - AgenticConjectures.WowiiGraphConjecture189.two_le_card_degree_le
+  - AgenticConjectures.WowiiGraphConjecture189.distEven_eq_card_sub_degree
+  - AgenticConjectures.WowiiGraphConjecture189.conjecture189_of_diam_le_two
+  - AgenticConjectures.WowiiGraphConjecture189.card_dist_eq_two_le
+  - AgenticConjectures.WowiiGraphConjecture189.card_le_distEven_add_degree
+  - AgenticConjectures.WowiiGraphConjecture189.card_le_degree_add
+  - AgenticConjectures.WowiiGraphConjecture189.card_le_sq
+  - AgenticConjectures.WowiiGraphConjecture189.search_reduction
+  - AgenticConjectures.WowiiGraphConjecture189.exists_card_add_mul_self_le
+  - AgenticConjectures.WowiiGraphConjecture189.four_mul_card_le
+  - AgenticConjectures.WowiiGraphConjecture189.four_mul_card_le_sq
+  - AgenticConjectures.WowiiGraphConjecture189.search_reduction_four
+attribution:
+- model: "Claude Opus 5.5 (max effort)"
+  harness: "Claude Code"
+  scope: "Lean 4 formalization (diameter-two case, order, degree and transversal bounds, search
+    reductions for sigma <= 3 and sigma <= 4), exhaustive searches, independent checkers,
+    certificates and documentation"
+notes: >-
+  The n <= 11 and sigma <= 4 results are computer-assisted and not formalized. They rely on
+  nauty 2.9.3 geng's isomorph-free generation and on the soundness of the PRUNE hook, which the
+  README argues from Lean-proved bounds (search_reduction and search_reduction_four). Two
+  independently written C checkers agree on every count. CI re-checks only the 654 (sigma <= 3)
+  and 61,054 (sigma = 4) Hamiltonian-path certificates, not the completeness of these lists. The
+  diameter-two case reproduces Theorem B(1) of Easwar and Johari (arXiv:2609.11719). We did not
+  find the order bounds or the searches in the sources we checked; this is not a novelty claim. The upstream declaration remains sorry-marked and research open.
+  The module is built with Lean and mathlib v4.30.0, while Formal Conjectures pins v4.33.1; the
+  mathlib declarations the statement uses are textually identical in both, but the module has not
+  been compiled against v4.33.1. No human has reviewed these results.
