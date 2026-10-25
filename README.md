@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-56-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
+![problems](https://img.shields.io/badge/problems-57-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-10-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**56 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
+**57 problems** — ✅ proved: 24 · 🔴 refuted: 10 · 🟡 partial: 17 · ⚪ open: 6
 
 ### OEIS
 
@@ -205,6 +205,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 | [Let's Prove Goldbach prize problem 3 — literal finite-set representation proved](problems/goldbach-prize-3/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Proves the advertised finite-sumset representation literally by folding positive indices modulo M=n2*...*nk, storing the admissible residues in the permitted finite set I2, and taking I3=...=Ik={1}. |
 | [Let's Prove Goldbach prize problem 4 — universal assertion refuted](problems/goldbach-prize-4/README.md) | 🔴 refuted | lean | `GPT-5.6 Sol` | Refutes the advertised universal assertion with the exact counterexample (n1,n2,n3,n)=(2,3,5,5): every positive split h+k=5 violates at least one required nondivisibility condition. |
 | [Mortal words in small image-bounded NFAs (Kiefer–Ryzhikov)](problems/nfa-mortal-words/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims exact extremal shortest-mortal-word lengths 1,3,7,10 for labelled ordered binary 2-image-bounded NFAs with up to 4 states, plus a 5-state lower-bound witness of length 17; the paper's general n^(k+1) tightness question is not resolved. |
+| [OOOOOOB Version C — the subtract-three conjecture refuted by (2,2,2,2,2,2,3)](problems/oooooob-version-c/README.md) | 🔴 refuted | lean + cert | `Claude Opus 5.5 (max effort)` | Lean-refutes Conjecture 3.1 of arXiv:2605.23213v1 (Version C of generalized OOOOOOB), read with n >= 3: X = (2,2,2,2,2,2,3) has 63 tokens but is an N-position (AgenticConjectures.OooooobVersionC.not_statement), and Y = (2,2,2,2,2,2,4) has 70 tokens but is a P-position (AgenticConjectures.OooooobVersionC.not_statement_of_Y). Not novel: both counterexamples were posted on MathDB (post 374893, reply by user shivampatel, 2026-08-20). |
 | [Powers-of-two translational tiles (BKT Question 9)](problems/powers-of-two-tiles/README.md) | 🔴 refuted | cert | `GPT-5.6 Sol` | Claims explicit counterexamples refuting the suggested one-or-two-cardinality restriction in the yes/no clause of Benjamini-Kozma-Tzalik Question 9: translational tiles of every positive odd cardinality exist inside {1,2,4,...,2^n}, the smallest being A={1,4,16} with B={0,1,2}+9Z. |
 | [Independent Schur-6 attempt](problems/schur-6/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims only independent reverification of the published S(6) >= 536 partition and negative search results toward [1,537]: the best saved 537-coloring has exactly two monochromatic Schur triples, a depth-5 repair exclusion around it found nothing, and the full SAT instance remained undecided. |
 | [Small Diophantine equations low-degree ansatz attempt](problems/small-diophantine/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims only exact negative results: three low-degree rational-curve ansatz classes and a narrow integer-Q Pell-factor spot-check admit no solutions for the six remaining equations z^2 + y^2*z + x^3 + a*x + b = 0, none of which is claimed solved. |

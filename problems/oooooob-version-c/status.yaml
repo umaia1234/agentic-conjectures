@@ -1,0 +1,114 @@
+id: oooooob-version-c
+title: OOOOOOB Version C — the subtract-three conjecture refuted by (2,2,2,2,2,2,3)
+title_ko: OOOOOOB 버전 C — 3의 배수 추측을 (2,2,2,2,2,2,3)으로 반박
+domain: other
+source_url: https://arxiv.org/abs/2605.23213v1
+claimed_status: refuted
+claim: >-
+  Lean-refutes Conjecture 3.1 of arXiv:2605.23213v1 (Version C of generalized OOOOOOB), read with
+  n >= 3: X = (2,2,2,2,2,2,3) has 63 tokens but is an N-position
+  (AgenticConjectures.OooooobVersionC.not_statement), and Y = (2,2,2,2,2,2,4) has 70 tokens but is
+  a P-position (AgenticConjectures.OooooobVersionC.not_statement_of_Y). Not novel: both
+  counterexamples were posted on MathDB (post 374893, reply by user shivampatel, 2026-08-20).
+claim_ko: >-
+  arXiv:2605.23213v1의 추측 3.1(일반화된 OOOOOOB의 버전 C)을 n >= 3으로 읽어 Lean에서 반박했다.
+  X = (2,2,2,2,2,2,3)은 토큰이 63개이지만 N-위치이고(AgenticConjectures.OooooobVersionC.not_statement),
+  Y = (2,2,2,2,2,2,4)는 토큰이 70개이지만
+  P-위치이다(AgenticConjectures.OooooobVersionC.not_statement_of_Y). 새 결과가 아니다. 두 반례는
+  MathDB(게시물 374893, 사용자 shivampatel의 답글, 2026-08-20)에 이미 공개되었다.
+artifacts:
+- path: ../../AgenticConjectures/OooooobVersionC.lean
+  kind: lean-proof
+- path: ../../AgenticConjectures/OooooobVersionC/Checker.lean
+  kind: lean-proof
+- path: ../../AgenticConjectures/OooooobVersionC/CertX.lean
+  kind: lean-proof
+- path: ../../AgenticConjectures/OooooobVersionC/CertY.lean
+  kind: lean-proof
+- path: DETAILS.md
+  kind: mathematical-details
+- path: gen_certificate.py
+  kind: certificate-script
+- path: oooc_counts.cpp
+  kind: search-code
+- path: oooc_tuples.py
+  kind: search-code
+verify:
+- cmd: g++ -O3 -std=c++17 oooc_counts.cpp -o /tmp/oooc_counts && /tmp/oooc_counts --ci
+  expected_runtime: about 1 second after compilation
+  ci_feasible: true
+  requires: [g++]
+- cmd: python3 oooc_tuples.py
+  expected_runtime: about 22 seconds
+  ci_feasible: true
+- cmd: python3 gen_certificate.py --check
+  expected_runtime: about 8 seconds
+  ci_feasible: true
+- cmd: g++ -O3 -std=c++17 oooc_counts.cpp -o /tmp/oooc_counts && /tmp/oooc_counts --version-b
+  expected_runtime: under 1 second after compilation (Version B note in DETAILS.md)
+  ci_feasible: true
+  requires: [g++]
+- cmd: python3 oooc_tuples.py --version-b
+  expected_runtime: under 1 second (Version B note in DETAILS.md)
+  ci_feasible: true
+- cmd: python3 oooc_tuples.py --full
+  expected_runtime: about 2.5 minutes
+  ci_feasible: false
+- cmd: g++ -O3 -std=c++17 oooc_counts.cpp -o /tmp/oooc_counts && /tmp/oooc_counts box 9 3 4
+  expected_runtime: about 18 seconds; prints 20 failures among 512 positions (robustness table)
+  ci_feasible: false
+  requires: [g++]
+- cmd: g++ -O3 -std=c++17 oooc_counts.cpp -o /tmp/oooc_counts && /tmp/oooc_counts box 10 3 4
+  expected_runtime: about 6.5 minutes and 35 GB of memory; prints 593 failures among 1,024 positions
+  ci_feasible: false
+  requires: [g++]
+- cmd: python3 oooc_tuples.py box 9 3 3
+  expected_runtime: about 6.5 minutes; prints 1 failure (every a_i = 3 gives an N-position)
+  ci_feasible: false
+lean:
+  modules:
+  - AgenticConjectures.OooooobVersionC
+  - AgenticConjectures.OooooobVersionC.Checker
+  - AgenticConjectures.OooooobVersionC.CertX
+  - AgenticConjectures.OooooobVersionC.CertY
+  theorems:
+  - AgenticConjectures.OooooobVersionC.not_statement
+  - AgenticConjectures.OooooobVersionC.not_statement_of_Y
+  - AgenticConjectures.OooooobVersionC.X_counterexample
+  - AgenticConjectures.OooooobVersionC.Y_counterexample
+  - AgenticConjectures.OooooobVersionC.two_counterexample
+  - AgenticConjectures.OooooobVersionC.not_isP_X
+  - AgenticConjectures.OooooobVersionC.isP_X0
+  - AgenticConjectures.OooooobVersionC.isP_Y
+  - AgenticConjectures.OooooobVersionC.isP_of_cert
+  - AgenticConjectures.OooooobVersionC.isP_of_even
+  - AgenticConjectures.OooooobVersionC.isP_zero_cons
+  - AgenticConjectures.OooooobVersionC.Move.code
+  - AgenticConjectures.OooooobVersionC.move_of_legal
+  - AgenticConjectures.OooooobVersionC.cnt_enc
+  - AgenticConjectures.OooooobVersionC.allOk_node
+  - AgenticConjectures.OooooobVersionC.certX_ok
+  - AgenticConjectures.OooooobVersionC.certX_mem
+  - AgenticConjectures.OooooobVersionC.certY_ok
+  - AgenticConjectures.OooooobVersionC.certY_mem
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: >-
+    Lean 4 formal refutation (faithful game, packed-encoding bridge, kernel certificates), two
+    independent solvers, certificate generator, robustness counts, Version B re-check, and
+    documentation
+notes: >-
+  The conjecture is due to Alon Danai, Paul Ellis and Thotsaporn "Aek" Thanatipanonda
+  (arXiv:2605.23213v1). Not novel: the refutation confirms the counterexamples X and Y of the
+  reply by MathDB user shivampatel (2026-08-20) to post 374893
+  (https://mathdb.com/p/374893/version-c-s-subtract-three-conjecture), which MathDB lists as
+  claimed solved but unverified;
+  this entry adds a kernel-checked Lean proof. The statement is ours (Formal Conjectures has none);
+  its choices are listed in the module docstring and DETAILS.md. It assumes n >= 3, which only
+  weakens it: read literally, the conjecture also fails at n = 2 for every (2, 3k+2)
+  (two_counterexample proves (2,2)), positions the paper's small-piles lemma lists as exceptions.
+  The certificates are checked with decide +kernel (no native_decide); CertX and CertY take about
+  20 s and 45 s to compile. The robustness counts (failures for n = 9 and 10 even when every
+  a_i >= 3) and the Version B check of MathDB post 374892 are computer-assisted only and not
+  formalized. No human has reviewed the refutation, and nothing has been submitted externally.

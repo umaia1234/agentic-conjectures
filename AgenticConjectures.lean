@@ -25,6 +25,7 @@ import AgenticConjectures.OeisA394666
 import AgenticConjectures.OeisA396093
 import AgenticConjectures.OeisA397588
 import AgenticConjectures.OeisA398189
+import AgenticConjectures.OooooobVersionC
 import AgenticConjectures.Erdos385
 
 /-!
