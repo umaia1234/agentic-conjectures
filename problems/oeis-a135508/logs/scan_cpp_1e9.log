@@ -1,0 +1,12 @@
+# /tmp/a135508_scan 1000000000   (g++ -O3 -std=c++17; Apple M5 Max, 2026-10-24)
+note: p=7 has p-2 prime and a(p-1)=p
+N=1000000000
+fingerprint: count_a1=843268629 count_a2=15 sum_a=35999661488869551 hash=d10d4d138b066d11
+primes p<=N+1: 50847534; with p-2 not prime: 47423028; p-2 composite (p>=5): 47423026
+primes p<=N+1 with p-2 prime and a(p-1)=p: 1
+C5 range: 3401 primes r<=31622; max F(r)/r^2 = 0.9592 at r=7 (F=47)
+C1 fails=0 C2 fails=0 C3 fails=0 C4 fails=0 C5 fails=0
+RESULT PASS
+# exit status 0; /usr/bin/time -l:
+# 64.55 real        43.33 user         0.46 sys
+# 1502183424  maximum resident set size

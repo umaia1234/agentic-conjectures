@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-56-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
+![problems](https://img.shields.io/badge/problems-57-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-18-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**56 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
+**57 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 18 · ⚪ open: 6
 
 ### OEIS
 
@@ -149,6 +149,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 | [OEIS A076141 — n occurs at most once in binary of n^2, checked to 2^40](problems/oeis-a076141/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | An exact exhaustive occurrence-geometry search found no counterexample for 0 < n < 2^40, extending the OEIS-recorded 10^6 verification by a factor of about 1.1 million; explicitly a rigorous bounded verification, not a proof of the full conjecture. |
 | [OEIS A112970 — power-of-two identities and quarter-square formula proved](problems/oeis-a112970/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` | Lean-verifies both conjectured chains for all n >= 0, including the omitted closed form a(2^n) = floor(n^2/4) + 1 from A033638. |
 | [OEIS A113249 — full parameter-family square conjecture proved](problems/oeis-a113249/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` | Lean-proves that every odd-indexed term in the OEIS A113249 fourth-order family is a square: a(m,2*n+1)=Y(m,n)^2 for every integer parameter m and every n>=0. |
+| [OEIS A135508 — McEachen's conjecture a(p-1) = p (criterion and partial results)](problems/oeis-a135508/README.md) | 🟡 partial | lean + cert | `Claude Opus 5.5 (max effort)` | Lean-verifies, against the upstream definitions, that for primes p >= 5 a(p-1) = p iff gcd(x(p-3), p-2) > 1, and that a(p-1) = p for every prime p >= 7 with p = 2 mod 3 or mod 5 and for every prime p with p-2 composite with least prime factor below 1009 (all primes p < 1018083 included); two independent scans check the conjecture for all primes p <= 10^9+1, but the full conjecture remains open. |
 | [OEIS A136433 — 9-lag linear recurrence proved for all n>=10](problems/oeis-a136433/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` · `Claude Fable 5` | Claims a complete proof that the OEIS-conjectured constant-coefficient recurrence a_n = 6*a_{n-3} + a_{n-6} - 6*a_{n-9} holds for all n>=10 for the periodic-coefficient nonautonomous sequence, via a_{t+3}=6*a_t+B_t with B_t of period 6. |
 | [OEIS A190363 — 21-term recurrence conjecture refuted](problems/oeis-a190363/README.md) | 🔴 refuted | lean + cert | `GPT-5.6 Sol` · `Claude Fable 5` | Refutes the OEIS-conjectured recurrence a(n+21)=a(n+17)+a(n+4)-a(n): first failure at base index n=140 (output term a(161), 541 != 542), with a Pell-equation-generated infinite family of failures showing the recurrence fails beyond every starting index. |
 | [OEIS A197702 — exact least length for signed odd sums](problems/oeis-a197702/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Lean-proves the complete conjectured formula for the least k such that n is a signed sum of 1,3,...,2k-1: in the square interval (k-1)^2<n<=k^2, the answer is k+2 when k^2-n=4, k+1 when that gap is odd, and k otherwise. |

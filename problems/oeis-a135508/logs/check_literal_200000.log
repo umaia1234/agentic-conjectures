@@ -1,0 +1,14 @@
+# python3 a135508_check.py --literal 200000   (Python 3.12 stdlib; Apple M5 Max, 2026-10-24)
+literal definition: a(0..200000) computed; upstream tests True; OEIS DATA a(1..92) True
+bookkeeping scan to N=1000000: agrees with the literal definition on 1..200000: True
+primes p<=N+1 with p-2 not prime: 70329
+C1 fails=0 C2 fails=0 C3 fails=0 C4 fails=0 C5 fails=0
+a(n) = 2 exactly at n = 2*4^k - 1 (n <= N): True
+fingerprint: count_a1=792392 count_a2=10 sum_a=51850660742 hash=040a897747dcb8c2
+fingerprint equals the C++/numba value for N=10^6: True
+Lean smallCerts = first-entry indices of the primes < 211: True
+Lean largePrimes = primes in [211, 1009), max F = 42611: True
+RESULT PASS
+real 61.67
+user 48.02
+sys 2.10

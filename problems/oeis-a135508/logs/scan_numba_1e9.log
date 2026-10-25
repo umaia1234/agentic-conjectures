@@ -1,0 +1,12 @@
+# python3 a135508_scan_numba.py 1000000000   (numpy + numba; Apple M5 Max, 2026-10-24)
+N=1000000000
+fingerprint: count_a1=843268629 count_a2=15 sum_a=35999661488869551 hash=d10d4d138b066d11
+primes p<=N+1 with p-2 not prime: 47423028
+primes p<=N+1 with p-2 prime and a(p-1)=p: 1
+C5 range: 3401 primes r with r^2<=N+1
+C1 fails=0 C2 fails=0 C3 fails=0 C4 fails=0 C5 fails=0
+timing: sieve 2.7s, scan 88.6s
+RESULT PASS
+# exit status 0; /usr/bin/time -l:
+# 91.76 real        66.49 user         0.88 sys
+# 3654680576  maximum resident set size

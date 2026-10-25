@@ -1,0 +1,90 @@
+id: oeis-a135508
+title: OEIS A135508 — McEachen's conjecture a(p-1) = p (criterion and partial results)
+title_ko: OEIS A135508 — McEachen 추측 a(p-1) = p (판정 기준과 부분 결과)
+domain: oeis
+source_url: https://oeis.org/A135508
+claimed_status: partial
+claim: Lean-verifies, against the upstream definitions, that for primes p >= 5 a(p-1) = p iff
+  gcd(x(p-3), p-2) > 1, and that a(p-1) = p for every prime p >= 7 with p = 2 mod 3 or mod 5 and for
+  every prime p with p-2 composite with least prime factor below 1009 (all primes p < 1018083
+  included); two independent scans check the conjecture for all primes p <= 10^9+1, but the full
+  conjecture remains open.
+claim_ko: >-
+  상류 정의 그대로, 소수 p >= 5에서 a(p-1) = p와 gcd(x(p-3), p-2) > 1이 동치임을 Lean으로
+  검증했다. 또 p가 3 또는 5를 법으로 2와 합동인 모든 소수 p >= 7과, p-2가 1009 미만의 최소
+  소인수를 갖는 합성수인 모든 소수 p(1018083 미만의 모든 소수 포함)에서 a(p-1) = p임을 Lean으로
+  검증했다. 독립적인 두 탐색이 p <= 10^9+1인 모든 소수에서 추측을 확인했지만, 추측 전체는
+  미해결이다.
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: a135508_check.py
+  kind: certificate-script
+- path: a135508_scan.cpp
+  kind: search-code
+- path: a135508_scan_numba.py
+  kind: search-code
+- path: logs/scan_cpp_1e9.log
+  kind: data
+- path: logs/scan_numba_1e9.log
+  kind: data
+- path: logs/check_literal_200000.log
+  kind: data
+- path: upstream/135508.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 a135508_check.py
+  expected_runtime: ~2 s (literal definition to n = 5000, bookkeeping scan to 10^6)
+  ci_feasible: true
+- cmd: g++ -O3 -std=c++17 a135508_scan.cpp -o /tmp/a135508_scan && /tmp/a135508_scan 10000000
+  expected_runtime: ~2 s including compilation
+  ci_feasible: true
+  requires: [g++]
+- cmd: g++ -O3 -std=c++17 a135508_scan.cpp -o /tmp/a135508_scan && /tmp/a135508_scan 1000000000
+  expected_runtime: ~65 s and 1.5 GB RAM on an Apple M5 Max
+  ci_feasible: false
+  requires: [g++]
+- cmd: python3 a135508_scan_numba.py 1000000000
+  expected_runtime: ~92 s and 3.7 GB RAM on an Apple M5 Max; needs numpy and numba
+  ci_feasible: false
+- cmd: python3 a135508_check.py --literal 200000
+  expected_runtime: ~62 s
+  ci_feasible: false
+lean:
+  modules:
+  - AgenticConjectures.OeisA135508
+  theorems:
+  - AgenticConjectures.OeisA135508.a_eq
+  - AgenticConjectures.OeisA135508.x_succ_eq
+  - AgenticConjectures.OeisA135508.x_dvd_x
+  - AgenticConjectures.OeisA135508.a_pred_eq_iff
+  - AgenticConjectures.OeisA135508.a_pred_eq_of_dvd
+  - AgenticConjectures.OeisA135508.a_pred_eq_of_mod_three_or_five
+  - AgenticConjectures.OeisA135508.prime_dvd_x_sq_sub_one
+  - AgenticConjectures.OeisA135508.a_pred_eq_of_minFac_dvd
+  - AgenticConjectures.OeisA135508.a_pred_eq_of_minFac_lt
+  - AgenticConjectures.OeisA135508.a_pred_eq_of_mod_eq_two
+  - AgenticConjectures.OeisA135508.a_pred_eq_of_lt
+  - AgenticConjectures.OeisA135508.statement_of_forall_prime_dvd
+  - AgenticConjectures.OeisA135508.statement_of_a_eq_one_or_prime
+  - AgenticConjectures.OeisA135508.exists_prime_of_a_eq_one_or_prime
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: criterion, residue-class and least-prime-factor theorems with a kernel-checked certificate
+    (AgenticConjectures.OeisA135508), conditional reductions, two independent scans to 10^9, the
+    standard-library check script, and the documentation
+notes: The full conjecture is not proved; `statement` is stated but not derived, and the two
+  conditional reductions assume unproved hypotheses (every prime r divides x(r^2-1); a(n) is 1 or
+  prime). The Lean module copies the upstream x and a term for term; for n >= 1 the natural division
+  is exact and the truncated subtraction inactive (a_eq). The certificate that every prime r < 1009
+  divides x(r^2-1) is evaluated by the kernel with decide +kernel (largest instance x(42611)); no
+  native_decide. Everything about primes beyond 1018083 whose p-2 has no prime factor below 1009 is
+  script-checked only - the 10^9 scans (C++ and numba, written separately, identical fingerprints) and
+  the r <= 31622 extension of the certificate - and relies on the Lean-proved identities a_eq and
+  x_succ_eq; the C++ exponent cap of 255 is harmless because every exponent in n+1 <= 4e9 is at most
+  31. The density figures (5/8, about 0.89 and 0.93) follow from Dirichlet's theorem and are not
+  formalized. The criterion and the mod-3/mod-5 classes were found in the harvest triage; Schepke's
+  2009 thesis already gives the quotient formula and the experimental observations. Attempts in the
+  OEIS Open benchmark on the full statement were all scored I. No novelty is claimed and nothing was
+  reported to OEIS or Formal Conjectures.

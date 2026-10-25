@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-57-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-18-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
+**문제 57개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 18 · ⚪ 미해결: 6
 
 ### OEIS
 
@@ -147,6 +147,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 | [OEIS A076141 — n의 이진 표현은 n^2의 이진 표현에서 최대 한 번 등장, 2^40까지 확인](problems/oeis-a076141/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | 출현 배치를 정확히 완전탐색하여 0 < n < 2^40에서 반례가 없음을 확인하고, OEIS에 기록된 10^6까지의 검증 범위를 약 110만 배 확장했다. 이는 엄밀한 유한 범위 검증이며 전체 추측의 증명은 아니다. |
 | [OEIS A112970 — 2의 거듭제곱 항등식과 사분제곱 공식 증명](problems/oeis-a112970/README.ko.md) | ✅ 증명 | Lean + 인증서 | `GPT-5.6 Sol` | 기존 형식화에서 누락되어 있던 A033638의 닫힌형 a(2^n) = floor(n^2/4) + 1도 포함하여, 모든 n >= 0에 대해 추측된 두 연쇄 항등식을 Lean으로 검증했다. |
 | [OEIS A113249 — 전체 매개변수족 제곱수 추측 증명](problems/oeis-a113249/README.ko.md) | ✅ 증명 | Lean + 인증서 | `GPT-5.6 Sol` | OEIS A113249의 4계 수열족에서 홀수 첨자의 모든 항이 제곱수임을 Lean으로 증명했다. 즉, 모든 정수 매개변수 m과 모든 n>=0에 대해 a(m,2*n+1)=Y(m,n)^2이다. |
+| [OEIS A135508 — McEachen 추측 a(p-1) = p (판정 기준과 부분 결과)](problems/oeis-a135508/README.ko.md) | 🟡 부분 결과 | Lean + 인증서 | `Claude Opus 5.5 (max effort)` | 상류 정의 그대로, 소수 p >= 5에서 a(p-1) = p와 gcd(x(p-3), p-2) > 1이 동치임을 Lean으로 검증했다. 또 p가 3 또는 5를 법으로 2와 합동인 모든 소수 p >= 7과, p-2가 1009 미만의 최소 소인수를 갖는 합성수인 모든 소수 p(1018083 미만의 모든 소수 포함)에서 a(p-1) = p임을 Lean으로 검증했다. 독립적인 두 탐색이 p <= 10^9+1인 모든 소수에서 추측을 확인했지만, 추측 전체는 미해결이다. |
 | [OEIS A136433 — 모든 n>=10에 대해 시차 9 선형 점화식 증명](problems/oeis-a136433/README.ko.md) | ✅ 증명 | Lean + 인증서 | `GPT-5.6 Sol` · `Claude Fable 5` | OEIS에서 추측한 상수계수 점화식 a_n = 6*a_{n-3} + a_{n-6} - 6*a_{n-9}가 주기적 계수를 갖는 비자율 수열에 대해 모든 n>=10에서 성립함을 완전히 증명했다고 주장한다. 이 증명은 주기가 6인 B_t를 사용한 a_{t+3}=6*a_t+B_t 관계를 이용한다. |
 | [OEIS A190363 — 시차 21 점화식 추측 반박](problems/oeis-a190363/README.ko.md) | 🔴 반례 | Lean + 인증서 | `GPT-5.6 Sol` · `Claude Fable 5` | OEIS에서 추측한 점화식 a(n+21)=a(n+17)+a(n+4)-a(n)을 반박했다. 첫 실패는 기준 첨자 n=140 (출력 항 a(161), 541 != 542)에서 발생한다. Pell 방정식으로 생성한 무한 실패 사례족은 임의의 시작 첨자보다 뒤에도 실패 사례가 존재함을 보여, 어느 첨자부터 줄곧 이 점화식이 성립하는 일은 없음을 증명한다. |
 | [OEIS A197702 — 홀수 부호합의 정확한 최소 길이](problems/oeis-a197702/README.ko.md) | ✅ 증명 | Lean | `GPT-5.6 Sol` | n이 1,3,...,2k-1의 부호합이 되는 최소 k의 추측 공식을 Lean으로 완전히 증명했다. (k-1)^2<n<=k^2에서 k^2-n=4이면 답은 k+2, 그 차이가 홀수이면 k+1, 그 밖에는 k이다. |
