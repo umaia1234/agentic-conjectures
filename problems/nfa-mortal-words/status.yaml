@@ -4,13 +4,16 @@ title_ko: 도달 상태 집합의 크기가 작게 제한된 NFA의 소멸 단�
 domain: other
 source_url: https://doi.org/10.4230/LIPIcs.MFCS.2025.62
 claimed_status: partial
-claim: Claims exact extremal shortest-mortal-word lengths 1,3,7,10 for labelled ordered binary 2-image-bounded
-  NFAs with up to 4 states, plus a 5-state lower-bound witness of length 17; the paper's general n^(k+1)
-  tightness question is not resolved.
+claim: Claims exact maximum shortest-mortal-word lengths 1,3,7,10,17,24 for labelled ordered binary
+  2-image-bounded NFAs with n=1..6 states (n=5,6 by two separately written exhaustive enumerators that
+  agree on all counts; all maximizers classified up to isomorphism), plus a 7-state lower-bound witness of
+  length 35; the paper's general n^(k+1) tightness question is not resolved.
 claim_ko: >-
-  레이블된 상태가 최대 4개이고 두 알파벳 기호가 구별되는 이진 2-image-bounded NFA에서, 상태 수
-  1,2,3,4에 따른 최단 소멸 단어 길이의 정확한 최댓값이 각각 1,3,7,10임을 주장한다. 또한 5개
-  상태에서 최단 길이가 적어도 17임을 보이는 증거를 제시한다. 논문이 제기한 일반적인 n^(k+1)
+  레이블된 상태가 n=1..6개이고 두 알파벳 기호가 구별되는 이진 2-image-bounded NFA에서 최단 소멸
+  단어 길이의 정확한 최댓값이 각각 1,3,7,10,17,24임을 주장한다. n=5,6의 값은 따로 작성된 두 전수
+  열거 프로그램이 모든 개수와 히스토그램에서 일치하여 확인되었고, 최댓값을 갖는 NFA를 동형 기준으로
+  모두 분류했다. 또한
+  7개 상태에서 최단 길이가 적어도 35임을 보이는 증거를 제시한다. 논문이 제기한 일반적인 n^(k+1)
   상한의 최적성 문제는 해결하지 않는다.
 artifacts:
 - path: enumerate_binary.py
@@ -25,6 +28,54 @@ artifacts:
   kind: search-code
 - path: search_random_n5.cpp
   kind: search-code
+- path: enumerate_binary_canonical.cpp
+  kind: search-code
+- path: enumerate_binary_crosscheck.cpp
+  kind: search-code
+- path: run_exhaustive_enumerations.py
+  kind: certificate-script
+- path: check_exhaustive_maximizers.py
+  kind: certificate-script
+- path: exhaustive_maximizers.json
+  kind: data
+- path: search_local.cpp
+  kind: search-code
+- path: logs/canonical_n1.txt
+  kind: data
+- path: logs/canonical_n2.txt
+  kind: data
+- path: logs/canonical_n3.txt
+  kind: data
+- path: logs/canonical_n4.txt
+  kind: data
+- path: logs/canonical_n5.txt
+  kind: data
+- path: logs/canonical_n6.txt
+  kind: data
+- path: logs/crosscheck_orbit_n1.txt
+  kind: data
+- path: logs/crosscheck_orbit_n2.txt
+  kind: data
+- path: logs/crosscheck_orbit_n3.txt
+  kind: data
+- path: logs/crosscheck_orbit_n4.txt
+  kind: data
+- path: logs/crosscheck_orbit_n5.txt
+  kind: data
+- path: logs/crosscheck_orbit_n6.txt
+  kind: data
+- path: logs/crosscheck_full_n1.txt
+  kind: data
+- path: logs/crosscheck_full_n2.txt
+  kind: data
+- path: logs/crosscheck_full_n3.txt
+  kind: data
+- path: logs/crosscheck_full_n4.txt
+  kind: data
+- path: logs/crosscheck_full_n5.txt
+  kind: data
+- path: logs/search_local_runs.txt
+  kind: data
 verify:
 - cmd: python3 verify_witnesses.py
   expected_runtime: unknown
@@ -35,10 +86,33 @@ verify:
 - cmd: python3 search_random_n4.py
   expected_runtime: normally a few seconds
   ci_feasible: true
+- cmd: python3 check_exhaustive_maximizers.py
+  expected_runtime: under 1 second (71 maximizer classes, n <= 6)
+  ci_feasible: true
+- cmd: python3 run_exhaustive_enumerations.py
+  expected_runtime: about 25 s locally with 2 threads (compiles both programs for n=1..5 and runs them)
+  ci_feasible: true
+- cmd: python3 run_exhaustive_enumerations.py --full --threads 6 --native
+  expected_runtime: 2-5 minutes with 6 threads (n=1..5, includes the unreduced n=5 run)
+  ci_feasible: false
+- cmd: python3 run_exhaustive_enumerations.py --n 6 --threads 6 --native
+  expected_runtime: 10-20 minutes with 6 threads (two n=6 enumerations)
+  ci_feasible: false
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: README explicitly makes no claim that the small extremal values are new; exhaustive claim is limited
-  to labelled, ordered-alphabet binary NFAs (no state-isomorphism quotient); the 5-state value 17 is a
-  lower bound only; the n=4 exhaustive enumeration (107M letter pairs, 16 threads) is local-only.
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: exhaustive n=5 and n=6 enumerations with a separately written cross-check enumerator,
+    maximizer classification up to isomorphism, seeded local search giving the n=7 lower bound,
+    and documentation
+notes: README explicitly makes no claim that the small extremal values are new. The exhaustive claims
+  are limited to binary alphabets, k=2 and n<=6; counts are for labelled states and ordered letters, with
+  isomorphism classes reported separately. The n=5 and n=6 values rest on two C++ enumerators written by
+  the same agent in one session but with no shared code and different algorithms and symmetry reductions
+  (state-relabelling orbits of the first letter vs. of the second letter, plus a fully unreduced run for
+  n<=5); they agree on every count and histogram for n<=6 and reproduce the earlier n<=4 results. CI reruns
+  both for n<=5 only; the n=6 runs (minutes with 6 threads) and the n=4 run of enumerate_binary_n4.cpp are
+  local-only. The 7-state value 35 is a lower bound from a heuristic search only. Small-n binary data do
+  not bear on the asymptotic n^(k+1) tightness question.

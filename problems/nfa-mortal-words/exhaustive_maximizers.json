@@ -1,0 +1,1002 @@
+{
+  "format_version": 1,
+  "automata": [
+    {
+      "id": "binary-k2-n1-exhaustive-maximizer-0",
+      "n": 1,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[]],
+        "b": [[]]
+      },
+      "claimed_shortest_mortal_word": "a",
+      "claimed_shortest_mortal_length": 1,
+      "claim_scope": "Representative (minimum-code S_1 relabelling) of one of the 3 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 1 labelled state, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n1-exhaustive-maximizer-1",
+      "n": 1,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[]],
+        "b": [[0]]
+      },
+      "claimed_shortest_mortal_word": "a",
+      "claimed_shortest_mortal_length": 1,
+      "claim_scope": "Representative (minimum-code S_1 relabelling) of one of the 3 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 1 labelled state, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n1-exhaustive-maximizer-2",
+      "n": 1,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[0]],
+        "b": [[]]
+      },
+      "claimed_shortest_mortal_word": "b",
+      "claimed_shortest_mortal_length": 1,
+      "claim_scope": "Representative (minimum-code S_1 relabelling) of one of the 3 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 1 labelled state, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n2-exhaustive-maximizer-0",
+      "n": 2,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[0], []],
+        "b": [[1], [0]]
+      },
+      "claimed_shortest_mortal_word": "aba",
+      "claimed_shortest_mortal_length": 3,
+      "claim_scope": "Representative (minimum-code S_2 relabelling) of one of the 4 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 2 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n2-exhaustive-maximizer-1",
+      "n": 2,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[0], []],
+        "b": [[1], [0, 1]]
+      },
+      "claimed_shortest_mortal_word": "aba",
+      "claimed_shortest_mortal_length": 3,
+      "claim_scope": "Representative (minimum-code S_2 relabelling) of one of the 4 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 2 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n2-exhaustive-maximizer-2",
+      "n": 2,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[1], [0]],
+        "b": [[0], []]
+      },
+      "claimed_shortest_mortal_word": "bab",
+      "claimed_shortest_mortal_length": 3,
+      "claim_scope": "Representative (minimum-code S_2 relabelling) of one of the 4 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 2 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n2-exhaustive-maximizer-3",
+      "n": 2,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[0, 1], [0]],
+        "b": [[], [1]]
+      },
+      "claimed_shortest_mortal_word": "bab",
+      "claimed_shortest_mortal_length": 3,
+      "claim_scope": "Representative (minimum-code S_2 relabelling) of one of the 4 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 2 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n3-exhaustive-maximizer-0",
+      "n": 3,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[0, 2], [0], []],
+        "b": [[1], [2], [0]]
+      },
+      "claimed_shortest_mortal_word": "abbabba",
+      "claimed_shortest_mortal_length": 7,
+      "claim_scope": "Representative (minimum-code S_3 relabelling) of one of the 4 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 3 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n3-exhaustive-maximizer-1",
+      "n": 3,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[0, 1], [1], []],
+        "b": [[2], [0], [1]]
+      },
+      "claimed_shortest_mortal_word": "abbabba",
+      "claimed_shortest_mortal_length": 7,
+      "claim_scope": "Representative (minimum-code S_3 relabelling) of one of the 4 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 3 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n3-exhaustive-maximizer-2",
+      "n": 3,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[1], [2], [0]],
+        "b": [[0, 2], [0], []]
+      },
+      "claimed_shortest_mortal_word": "baabaab",
+      "claimed_shortest_mortal_length": 7,
+      "claim_scope": "Representative (minimum-code S_3 relabelling) of one of the 4 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 3 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n3-exhaustive-maximizer-3",
+      "n": 3,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[1], [2], [0]],
+        "b": [[0], [0, 1], []]
+      },
+      "claimed_shortest_mortal_word": "baabaab",
+      "claimed_shortest_mortal_length": 7,
+      "claim_scope": "Representative (minimum-code S_3 relabelling) of one of the 4 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 3 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-0",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[1, 2], [1], [0], []],
+        "b": [[1], [2], [3], [0]]
+      },
+      "claimed_shortest_mortal_word": "abaababbba",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-1",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [2], [0], []],
+        "b": [[2], [3], [1], [0]]
+      },
+      "claimed_shortest_mortal_word": "abbabbabba",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-2",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [2], [0], []],
+        "b": [[2], [3], [1], [0, 1]]
+      },
+      "claimed_shortest_mortal_word": "abbabbabba",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-3",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [3], [0], []],
+        "b": [[2], [2, 3], [1], [0]]
+      },
+      "claimed_shortest_mortal_word": "abbaaabbaa",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-4",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [3], [0], []],
+        "b": [[2], [3], [1], [0, 1]]
+      },
+      "claimed_shortest_mortal_word": "abbaaabbaa",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-5",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [3], [0], []],
+        "b": [[2], [2, 3], [1], [0, 1]]
+      },
+      "claimed_shortest_mortal_word": "abbaaabbaa",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-6",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2], [0, 3], [0], []],
+        "b": [[1], [3], [0, 3], [2]]
+      },
+      "claimed_shortest_mortal_word": "aabbaaabba",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-7",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2], [0, 3], [0], []],
+        "b": [[1], [3], [0], [1, 2]]
+      },
+      "claimed_shortest_mortal_word": "aabbaaabba",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-8",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2], [0, 3], [0], []],
+        "b": [[1], [3], [0, 3], [1, 2]]
+      },
+      "claimed_shortest_mortal_word": "aabbaaabba",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-9",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [2, 3], [0], []],
+        "b": [[2], [3], [1], [0]]
+      },
+      "claimed_shortest_mortal_word": "abbbaabbba",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-10",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [2, 3], [0], []],
+        "b": [[2], [3], [1], [0, 1]]
+      },
+      "claimed_shortest_mortal_word": "abbbaabbba",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-11",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[0, 1], [1], [2], []],
+        "b": [[3], [0], [1], [2]]
+      },
+      "claimed_shortest_mortal_word": "ababbabbba",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-12",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2], [3], [1], [0]],
+        "b": [[2, 3], [2], [0], []]
+      },
+      "claimed_shortest_mortal_word": "baaabbaaab",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-13",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2], [3], [1], [0]],
+        "b": [[2, 3], [2, 3], [0], []]
+      },
+      "claimed_shortest_mortal_word": "baaabbaaab",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-14",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2], [3], [1], [0]],
+        "b": [[1, 2], [0], [2], []]
+      },
+      "claimed_shortest_mortal_word": "babaabaaab",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-15",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2], [3], [1], [0]],
+        "b": [[0], [1, 2], [2], []]
+      },
+      "claimed_shortest_mortal_word": "babaabaaab",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-16",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [3], [1], [0]],
+        "b": [[2], [2, 3], [0], []]
+      },
+      "claimed_shortest_mortal_word": "bbaabbbaab",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-17",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [3], [1], [0]],
+        "b": [[], [2], [0, 1], [0]]
+      },
+      "claimed_shortest_mortal_word": "baaabbaaab",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-18",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [3], [1], [0]],
+        "b": [[2], [2, 3], [], [1]]
+      },
+      "claimed_shortest_mortal_word": "baabbbaabb",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-19",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [3], [1], [0]],
+        "b": [[], [2], [0, 1], [1]]
+      },
+      "claimed_shortest_mortal_word": "baaabbaaab",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-20",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [3], [1], [0]],
+        "b": [[], [2], [1], [0, 1]]
+      },
+      "claimed_shortest_mortal_word": "baaabbaaab",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-21",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [3], [1], [0]],
+        "b": [[], [2], [0, 1], [0, 1]]
+      },
+      "claimed_shortest_mortal_word": "baaabbaaab",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-22",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [3], [0, 1], [0]],
+        "b": [[2], [2, 3], [], [1]]
+      },
+      "claimed_shortest_mortal_word": "baabbbaabb",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n4-exhaustive-maximizer-23",
+      "n": 4,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [3], [0, 1], [0]],
+        "b": [[], [2], [1], [0, 1]]
+      },
+      "claimed_shortest_mortal_word": "bbaabbbaab",
+      "claimed_shortest_mortal_length": 10,
+      "claim_scope": "Representative (minimum-code S_4 relabelling) of one of the 24 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 4 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n5-exhaustive-maximizer-0",
+      "n": 5,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[1, 4], [0, 2], [1], [0], []],
+        "b": [[2], [3], [0], [4], [1]]
+      },
+      "claimed_shortest_mortal_word": "abbababbabbababba",
+      "claimed_shortest_mortal_length": 17,
+      "claim_scope": "Representative (minimum-code S_5 relabelling) of one of the 8 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 5 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n5-exhaustive-maximizer-1",
+      "n": 5,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[1, 4], [0, 2], [1], [0], []],
+        "b": [[2], [3], [0, 2], [4], [1]]
+      },
+      "claimed_shortest_mortal_word": "abbababbabbababba",
+      "claimed_shortest_mortal_length": 17,
+      "claim_scope": "Representative (minimum-code S_5 relabelling) of one of the 8 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 5 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n5-exhaustive-maximizer-2",
+      "n": 5,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [3], [0, 1], [0], []],
+        "b": [[1], [0], [4], [2], [3]]
+      },
+      "claimed_shortest_mortal_word": "abbababbabbababba",
+      "claimed_shortest_mortal_length": 17,
+      "claim_scope": "Representative (minimum-code S_5 relabelling) of one of the 8 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 5 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n5-exhaustive-maximizer-3",
+      "n": 5,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[2, 3], [3], [0, 1], [0], []],
+        "b": [[1], [0, 1], [4], [2], [3]]
+      },
+      "claimed_shortest_mortal_word": "abbababbabbababba",
+      "claimed_shortest_mortal_length": 17,
+      "claim_scope": "Representative (minimum-code S_5 relabelling) of one of the 8 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 5 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n5-exhaustive-maximizer-4",
+      "n": 5,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4], [2], [3], [1], [0]],
+        "b": [[1, 3], [0, 4], [0], [], [1]]
+      },
+      "claimed_shortest_mortal_word": "baababaabaababaab",
+      "claimed_shortest_mortal_length": 17,
+      "claim_scope": "Representative (minimum-code S_5 relabelling) of one of the 8 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 5 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n5-exhaustive-maximizer-5",
+      "n": 5,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4], [2], [3], [1], [0]],
+        "b": [[1, 2], [0], [0, 4], [], [1]]
+      },
+      "claimed_shortest_mortal_word": "baababaabaababaab",
+      "claimed_shortest_mortal_length": 17,
+      "claim_scope": "Representative (minimum-code S_5 relabelling) of one of the 8 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 5 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n5-exhaustive-maximizer-6",
+      "n": 5,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[0, 4], [2], [3], [1], [0]],
+        "b": [[1], [4], [0, 4], [], [1, 2]]
+      },
+      "claimed_shortest_mortal_word": "baababaabaababaab",
+      "claimed_shortest_mortal_length": 17,
+      "claim_scope": "Representative (minimum-code S_5 relabelling) of one of the 8 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 5 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n5-exhaustive-maximizer-7",
+      "n": 5,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[0, 4], [2], [3], [1], [0]],
+        "b": [[2], [], [0, 4], [4], [1, 2]]
+      },
+      "claimed_shortest_mortal_word": "baababaabaababaab",
+      "claimed_shortest_mortal_length": 17,
+      "claim_scope": "Representative (minimum-code S_5 relabelling) of one of the 8 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 5 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-0",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[1, 4], [3], [2], [1], [0], []],
+        "b": [[2], [4], [0], [2], [5], [1]]
+      },
+      "claimed_shortest_mortal_word": "abbaabbababbaabbabbaabba",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-1",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[1, 4], [3], [2], [1], [0], []],
+        "b": [[2], [4], [0, 3], [2], [5], [1]]
+      },
+      "claimed_shortest_mortal_word": "abbaabbababbaabbabbaabba",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-2",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[1, 4], [3], [2], [1], [0], []],
+        "b": [[5], [2], [1, 4], [0], [], [3]]
+      },
+      "claimed_shortest_mortal_word": "abbaabbababbaabbabbaabba",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-3",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[1, 4], [3], [2], [1], [0], []],
+        "b": [[5], [2], [1, 4], [0], [2], [3]]
+      },
+      "claimed_shortest_mortal_word": "abbaabbababbaabbabbaabba",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-4",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4, 5], [4], [2], [1], [0], []],
+        "b": [[2], [2], [0], [5], [3], [4]]
+      },
+      "claimed_shortest_mortal_word": "abbaabbababbaabbabbaabba",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-5",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4, 5], [4], [2], [1], [0], []],
+        "b": [[2], [2], [0, 1], [5], [3], [4]]
+      },
+      "claimed_shortest_mortal_word": "abbaabbababbaabbabbaabba",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-6",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4, 5], [2], [3], [1], [0], []],
+        "b": [[0], [], [4, 5], [4], [2], [1]]
+      },
+      "claimed_shortest_mortal_word": "baabbaabaabbaababaabbaab",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-7",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4, 5], [2], [3], [1], [0], []],
+        "b": [[0], [4, 5], [], [4], [3], [1]]
+      },
+      "claimed_shortest_mortal_word": "baabbaabaabbaababaabbaab",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-8",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4, 5], [2], [3], [1], [0], []],
+        "b": [[0], [4], [4, 5], [], [1], [1, 2]]
+      },
+      "claimed_shortest_mortal_word": "baabbaabaabbaababaabbaab",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-9",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4, 5], [2], [3], [1], [0], []],
+        "b": [[0], [], [4, 5], [4], [2], [1, 2]]
+      },
+      "claimed_shortest_mortal_word": "baabbaabaabbaababaabbaab",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-10",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4], [3, 4], [2], [0, 1], [0], []],
+        "b": [[1], [5], [3, 4], [], [2], [0]]
+      },
+      "claimed_shortest_mortal_word": "abbaabbababbaabbabbaabba",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-11",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4], [3, 4], [2], [0, 1], [0], []],
+        "b": [[1], [5], [3], [2], [2], [0]]
+      },
+      "claimed_shortest_mortal_word": "abbaabbababbaabbabbaabba",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-12",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4], [3, 4], [2], [0, 1], [0], []],
+        "b": [[1], [5], [3, 4], [2], [2], [0]]
+      },
+      "claimed_shortest_mortal_word": "abbaabbababbaabbabbaabba",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-13",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[3], [5], [2], [0, 1], [0], []],
+        "b": [[2], [], [0, 1], [4], [5], [3]]
+      },
+      "claimed_shortest_mortal_word": "abbaabbababbaabbabbaabba",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-14",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[3], [5], [2], [0, 1], [0], []],
+        "b": [[2], [2], [0, 1], [4], [5], [3]]
+      },
+      "claimed_shortest_mortal_word": "abbaabbababbaabbabbaabba",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-15",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[3], [3, 5], [2], [0, 1], [0], []],
+        "b": [[2], [2], [1], [4], [5], [3]]
+      },
+      "claimed_shortest_mortal_word": "abbaabbababbaabbabbaabba",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-16",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[3], [3, 5], [2], [0, 1], [0], []],
+        "b": [[2], [], [0, 1], [4], [5], [3]]
+      },
+      "claimed_shortest_mortal_word": "abbaabbababbaabbabbaabba",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-17",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[3], [3, 5], [2], [0, 1], [0], []],
+        "b": [[2], [2], [0, 1], [4], [5], [3]]
+      },
+      "claimed_shortest_mortal_word": "abbaabbababbaabbabbaabba",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-18",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4], [2], [3], [1], [0], [0]],
+        "b": [[0], [5], [4], [], [1, 2], [1]]
+      },
+      "claimed_shortest_mortal_word": "baabbaabaabbaababaabbaab",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-19",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4], [2], [3], [1], [0], [0]],
+        "b": [[0], [5], [4, 5], [], [1, 2], [1]]
+      },
+      "claimed_shortest_mortal_word": "baabbaabaabbaababaabbaab",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-20",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4], [2], [3], [1], [0], [0]],
+        "b": [[0], [4], [5], [], [1, 3], [1]]
+      },
+      "claimed_shortest_mortal_word": "baabbaabaabbaababaabbaab",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-21",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4], [2], [3], [1], [0], [0]],
+        "b": [[0], [4, 5], [5], [], [1, 3], [1]]
+      },
+      "claimed_shortest_mortal_word": "baabbaabaabbaababaabbaab",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-22",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4, 5], [2], [3], [1], [0], [0]],
+        "b": [[0], [5], [4, 5], [], [2], [1]]
+      },
+      "claimed_shortest_mortal_word": "baabbaabaabbaababaabbaab",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-23",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4, 5], [2], [3], [1], [0], [0]],
+        "b": [[0], [], [4, 5], [4], [2], [1]]
+      },
+      "claimed_shortest_mortal_word": "baabbaabaabbaababaabbaab",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-24",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4, 5], [2], [3], [1], [0], [0]],
+        "b": [[0], [5], [4], [], [1, 2], [1]]
+      },
+      "claimed_shortest_mortal_word": "baabbaabaabbaababaabbaab",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-25",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4, 5], [2], [3], [1], [0], [0]],
+        "b": [[0], [5], [4, 5], [], [1, 2], [1]]
+      },
+      "claimed_shortest_mortal_word": "baabbaabaabbaababaabbaab",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-26",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4, 5], [2], [3], [1], [0], [0]],
+        "b": [[0], [4], [5], [], [1, 3], [1]]
+      },
+      "claimed_shortest_mortal_word": "baabbaabaabbaababaabbaab",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    },
+    {
+      "id": "binary-k2-n6-exhaustive-maximizer-27",
+      "n": 6,
+      "k": 2,
+      "alphabet": ["a", "b"],
+      "transitions": {
+        "a": [[4, 5], [2], [3], [1], [0], [0]],
+        "b": [[0], [4, 5], [5], [], [1, 3], [1]]
+      },
+      "claimed_shortest_mortal_word": "baabbaabaabbaababaabbaab",
+      "claimed_shortest_mortal_length": 24,
+      "claim_scope": "Representative (minimum-code S_6 relabelling) of one of the 28 relabelling classes of maximizers among ordered binary 2-image-bounded NFAs on 6 labelled states, by exhaustive enumeration."
+    }
+  ],
+  "summaries": [
+    {
+      "n": 1,
+      "k": 2,
+      "maximum_shortest_mortal_length": 1,
+      "labelled_maximizers": 3,
+      "orbits_relabelling": 3,
+      "orbits_relabelling_swap": 2,
+      "ordered_2_image_bounded": 4,
+      "ordered_incomplete": 3,
+      "ordered_histogram": {"1": 3},
+      "source": "enumerate_binary_canonical.cpp (-DNFA_STATES=1), cross-checked by enumerate_binary_crosscheck.cpp"
+    },
+    {
+      "n": 2,
+      "k": 2,
+      "maximum_shortest_mortal_length": 3,
+      "labelled_maximizers": 8,
+      "orbits_relabelling": 4,
+      "orbits_relabelling_swap": 2,
+      "ordered_2_image_bounded": 256,
+      "ordered_incomplete": 109,
+      "ordered_histogram": {"1": 31, "2": 70, "3": 8},
+      "source": "enumerate_binary_canonical.cpp (-DNFA_STATES=2), cross-checked by enumerate_binary_crosscheck.cpp"
+    },
+    {
+      "n": 3,
+      "k": 2,
+      "maximum_shortest_mortal_length": 7,
+      "labelled_maximizers": 24,
+      "orbits_relabelling": 4,
+      "orbits_relabelling_swap": 2,
+      "ordered_2_image_bounded": 42451,
+      "ordered_incomplete": 16957,
+      "ordered_histogram": {"1": 445, "2": 6684, "3": 7824, "4": 1500, "5": 444, "6": 36, "7": 24},
+      "source": "enumerate_binary_canonical.cpp (-DNFA_STATES=3), cross-checked by enumerate_binary_crosscheck.cpp"
+    },
+    {
+      "n": 4,
+      "k": 2,
+      "maximum_shortest_mortal_length": 10,
+      "labelled_maximizers": 576,
+      "orbits_relabelling": 24,
+      "orbits_relabelling_swap": 12,
+      "ordered_2_image_bounded": 15167209,
+      "ordered_incomplete": 6573243,
+      "ordered_histogram": {"1": 10657, "2": 1037030, "3": 2854956, "4": 1884216, "5": 553800, "6": 179160, "7": 39024, "8": 10704, "9": 3120, "10": 576},
+      "source": "enumerate_binary_canonical.cpp (-DNFA_STATES=4), cross-checked by enumerate_binary_crosscheck.cpp"
+    },
+    {
+      "n": 5,
+      "k": 2,
+      "maximum_shortest_mortal_length": 17,
+      "labelled_maximizers": 960,
+      "orbits_relabelling": 8,
+      "orbits_relabelling_swap": 4,
+      "ordered_2_image_bounded": 9216856696,
+      "ordered_incomplete": 4469395126,
+      "ordered_histogram": {"1": 349231, "2": 240841345, "3": 1419363730, "4": 1657101820, "5": 754842780, "6": 268169340, "7": 89933400, "8": 26796840, "9": 8868960, "10": 2400720, "11": 459360, "12": 130560, "13": 101520, "14": 19680, "15": 14400, "16": 480, "17": 960},
+      "source": "enumerate_binary_canonical.cpp (-DNFA_STATES=5), cross-checked by enumerate_binary_crosscheck.cpp"
+    },
+    {
+      "n": 6,
+      "k": 2,
+      "maximum_shortest_mortal_length": 24,
+      "labelled_maximizers": 20160,
+      "orbits_relabelling": 28,
+      "orbits_relabelling_swap": 14,
+      "ordered_2_image_bounded": 8696091964576,
+      "ordered_incomplete": 4706072918662,
+      "ordered_histogram": {"1": 14892787, "2": 82299111405, "3": 1009569452790, "4": 1761562446000, "5": 1115628961260, "6": 465182293500, "7": 174900813960, "8": 63542838960, "9": 22311447120, "10": 7510644720, "11": 2266094880, "12": 801053280, "13": 316814400, "14": 106312320, "15": 35527680, "16": 12785760, "17": 6649920, "18": 2612160, "19": 977760, "20": 643680, "21": 374400, "22": 105120, "23": 44640, "24": 20160},
+      "source": "enumerate_binary_canonical.cpp (-DNFA_STATES=6), cross-checked by enumerate_binary_crosscheck.cpp"
+    }
+  ]
+}

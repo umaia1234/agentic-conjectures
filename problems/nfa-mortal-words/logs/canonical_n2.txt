@@ -1,0 +1,11 @@
+N=2 row_options=4 letters=16 self_bounded_letters=16 canonical_self_bounded_letters=10 orbit_size_sum=16 setup_seconds=0.0
+canonical_first_letters=10 pairs_examined=160
+ordered_raw=256 ordered_row_restricted=256 ordered_2_image_bounded=256 ordered_incomplete=109 maximum_shortest_mortal_length=3
+ordered_histogram={1: 31, 2: 70, 3: 8}
+canonical_first_letter_histogram={1: 25, 2: 38, 3: 5}
+labelled_maximizers=8 canonical_first_letter_maximizer_pairs=5 maximizer_orbits_relabelling=4 maximizer_orbits_relabelling_swap=2
+maximizer 0 a=[[0],[]] b=[[1],[0]]
+maximizer 1 a=[[0],[]] b=[[1],[0,1]]
+maximizer 2 a=[[1],[0]] b=[[0],[]]
+maximizer 3 a=[[0,1],[0]] b=[[],[1]]
+threads=6 elapsed_seconds=0.0

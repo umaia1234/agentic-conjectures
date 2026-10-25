@@ -1,0 +1,11 @@
+bruteforce_self_bounded_letters=2 generated=2 MATCH
+orbit_representatives=2 orbit_size_sum=2 MATCH
+N=1 mode=orbit letters=2 second_letters=2 setup_seconds=0.0
+pairs_examined=4
+ordered_2_image_bounded=4 ordered_incomplete=3 maximum_shortest_mortal_length=1
+ordered_histogram={1: 3}
+labelled_maximizers=3 examined_maximizer_pairs=3
+pair a=[[]] b=[[]]
+pair a=[[]] b=[[0]]
+pair a=[[0]] b=[[]]
+threads=6 elapsed_seconds=0.0

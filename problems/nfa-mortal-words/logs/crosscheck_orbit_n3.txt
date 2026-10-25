@@ -1,0 +1,16 @@
+bruteforce_self_bounded_letters=223 generated=223 MATCH
+orbit_representatives=48 orbit_size_sum=223 MATCH
+N=3 mode=orbit letters=223 second_letters=48 setup_seconds=0.0
+pairs_examined=10704
+ordered_2_image_bounded=42451 ordered_incomplete=16957 maximum_shortest_mortal_length=7
+ordered_histogram={1: 445, 2: 6684, 3: 7824, 4: 1500, 5: 444, 6: 36, 7: 24}
+labelled_maximizers=24 examined_maximizer_pairs=8
+pair a=[[0,1],[1],[]] b=[[2],[0],[1]]
+pair a=[[1],[1,2],[]] b=[[2],[0],[1]]
+pair a=[[0,1],[],[0]] b=[[2],[0],[1]]
+pair a=[[1],[2],[0]] b=[[2],[],[1,2]]
+pair a=[[1],[2],[0]] b=[[],[1],[1,2]]
+pair a=[[],[1,2],[2]] b=[[2],[0],[1]]
+pair a=[[0],[],[0,2]] b=[[2],[0],[1]]
+pair a=[[],[2],[0,2]] b=[[2],[0],[1]]
+threads=6 elapsed_seconds=0.0
