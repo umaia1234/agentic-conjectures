@@ -209,7 +209,30 @@ def kostka_translation_triples(
                 yield outer, inner, content
 
 
-def self_test(calculator: ClassicLrCalc) -> None:
+class PythonLrCalc:
+    """lrcalc 2.x Python bindings (``pip install lrcalc``), used without --library."""
+
+    def __init__(self) -> None:
+        import lrcalc
+
+        self._lrcalc = lrcalc
+        self.library_path = f"lrcalc Python package ({lrcalc.__file__})"
+
+    def coefficient(
+        self,
+        outer: Sequence[int],
+        inner: Sequence[int],
+        content: Sequence[int],
+        stretch: int = 1,
+    ) -> int:
+        return int(
+            self._lrcalc.lrcoef(
+                *[[stretch * int(part) for part in p] for p in (outer, inner, content)]
+            )
+        )
+
+
+def self_test(calculator: ClassicLrCalc | PythonLrCalc) -> None:
     tests = [
         ((3, 2, 1), (2, 1), (2, 1), 1, 2),
         ((3, 2, 1), (2, 1), (2, 1), 2, 3),
@@ -228,7 +251,10 @@ def fraction_text(value: Fraction) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--library", required=True, help="path to liblrcalc.so")
+    parser.add_argument(
+        "--library",
+        help="path to classic liblrcalc.so (default: the pip `lrcalc` package)",
+    )
     parser.add_argument("--mode", choices=("random", "kostka"), default="random")
     parser.add_argument("--iterations", type=int, default=100_000)
     parser.add_argument("--rows", type=int, default=7)
@@ -241,7 +267,7 @@ def main() -> None:
     if not 1 <= args.max_total <= 30:
         parser.error("--max-total must lie in 1..30")
 
-    calculator = ClassicLrCalc(args.library)
+    calculator = ClassicLrCalc(args.library) if args.library else PythonLrCalc()
     self_test(calculator)
     if args.self_test:
         print(json.dumps({"self_test": "passed", "library": calculator.library_path}))

@@ -4,13 +4,16 @@ title_ko: 신장된 Littlewood–Richardson 음수 계수 탐색
 domain: other
 source_url: https://epoch.ai/frontiermath/open-problems/stretched-lr-coefficients
 claimed_status: partial
-claim: 'Claims only a negative search: across ~243k classic-lrcalc triples, 9M Rust random trials with
-  exact interpolation, and an exhausted 10,312-pair stretched-Kostka subfamily, no triple in the FrontierMath
-  box produced a negative ordinary power-basis coefficient.'
+claim: 'Claims only negative searches: for every triple of the FrontierMath box with at most six parts
+  and every triple with |lambda| <= 27 (48,992,614 triples with c > 0), the exactly computed stretched
+  LR polynomial has no negative (indeed no zero) power-basis coefficient, as in the earlier random and
+  stretched-Kostka searches; 7-part triples with 28 <= |lambda| <= 30 remain unchecked.'
 claim_ko: >-
-  음수 계수를 찾지 못했다는 탐색 결과만 주장한다. 약 243k개의 classic-lrcalc 삼중항, 정확한 보간을
-  사용한 9M회의 Rust 무작위 시행과 완전히 탐색한 10,312쌍의 stretched-Kostka 부분족 전반에서
-  FrontierMath 범위 안의 어떤 삼중항도 음의 보통 멱기저 계수를 만들지 않았다.
+  음수 계수를 찾지 못했다는 탐색 결과만 주장한다. FrontierMath 범위에서 부분이 6개 이하인 모든
+  삼중항과 |lambda| <= 27인 모든 삼중항(c > 0인 삼중항 48,992,614개)에 대해 신장 LR 다항식을 정확히
+  계산했으며, 보통 멱기저 계수 가운데 음수는 없었다(0도 없었다). 이전의 무작위 탐색과
+  stretched-Kostka 탐색에서도 음수 계수는 나오지 않았다. 부분이 7개이고 28 <= |lambda| <= 30인
+  삼중항은 아직 확인하지 않았다.
 artifacts:
 - path: search_stretched.py
   kind: search-code
@@ -24,13 +27,53 @@ artifacts:
   kind: data
 - path: closest_positive.json
   kind: data
-verify: []
+- path: exhaustive_search.py
+  kind: search-code
+- path: lr_count.cpp
+  kind: search-code
+- path: exhaustive_summary.json
+  kind: data
+verify:
+- cmd: python3 lr_tableau_dp.py --self-test
+  expected_runtime: under 1 second
+  ci_feasible: true
+- cmd: python3 exhaustive_search.py --self-test --rows 7 --max-size 10
+  expected_runtime: about 5 seconds
+  ci_feasible: true
+- cmd: g++ -O3 -std=c++17 -shared -fPIC lr_count.cpp -o /tmp/liblrcount_selftest.so && python3 exhaustive_search.py
+    --self-test --rows 7 --max-size 10 --library /tmp/liblrcount_selftest.so
+  expected_runtime: about 10 seconds including compilation
+  ci_feasible: true
+- cmd: python3 search_stretched.py --self-test
+  expected_runtime: under 1 second (needs the lrcalc Python package)
+  ci_feasible: false
+- cmd: mkdir -p build && c++ -O2 -std=c++17 -shared -fPIC lr_count.cpp -o build/liblrcount.so && python3
+    exhaustive_search.py --library build/liblrcount.so --rows 5 --min-size 1 --max-size 30
+  expected_runtime: about 30 minutes (needs lrcalc 2.1 and PyNormaliz 2.24)
+  ci_feasible: false
+- cmd: mkdir -p build && c++ -O2 -std=c++17 -shared -fPIC lr_count.cpp -o build/liblrcount.so && python3
+    exhaustive_search.py --library build/liblrcount.so --rows 7 --min-size 1 --max-size 27
+  expected_runtime: about 4.7 hours summed over shards (needs lrcalc 2.1 and PyNormaliz 2.24; split with --shard K --shards N)
+  ci_feasible: false
+- cmd: mkdir -p build && c++ -O2 -std=c++17 -shared -fPIC lr_count.cpp -o build/liblrcount.so && python3
+    exhaustive_search.py --library build/liblrcount.so --rows 6 --min-size 28 --max-size 30
+  expected_runtime: about 3.9 hours summed over shards (needs lrcalc 2.1 and PyNormaliz 2.24; split with --shard K --shards N)
+  ci_feasible: false
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: Header states Status UNKNOWN / negative result of the search, explicitly neither a proof of the
-  King-Tollu-Toumazet conjecture nor an exhaustion of the box; random trials contain duplicates and dimension
-  thresholds skip regimes; classic lrcalc has signed 64-bit overflow risk, motivating the exact Rust route;
-  problem page still listed unsolved on 2026-08-11. Self-tests require a locally extracted liblrcalc,
-  so no CI-runnable command.
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: exhaustive sub-box search (exact LR-tableau DP, lrcalc and Normaliz cross-checks, merged summary),
+    CI self-tests, and the pip-lrcalc fallback of search_stretched.py
+notes: The exhaustive part (2026-10-24) covers B(7, 1..27), B(6, 28..30) and B(5, 1..30) as listed
+  in exhaustive_summary.json. Each polynomial rests on two independent exact computations. In regime
+  A the DP and lrcalc both supply every interpolation value. In regime B the DP interpolation must equal
+  Normaliz's Ehrhart polynomial, and lrcalc spot-checks P(1) and P(2), and in this regime the degree
+  comes from Normaliz's dimension, which is checked against a rigorous bound and one extra stretch. The
+  full runs need lrcalc 2.1, PyNormaliz and CPU-hours, so CI only re-runs self-tests, which recompute
+  B(7, 1..10) in pure Python and match its digests. Only digests and statistics are stored, not the
+  individual polynomials. For the older random searches, trials contain duplicates, dimension
+  thresholds skip regimes and classic lrcalc has signed 64-bit overflow risk. The problem page still
+  listed the problem as unsolved on 2026-08-11. 7-part triples with 28 <= |lambda| <= 30 are not covered.

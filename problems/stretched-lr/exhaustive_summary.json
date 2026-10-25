@@ -1,0 +1,3516 @@
+{
+ "exhausted": [
+  {
+   "rows_at_most": 5,
+   "min_size": 1,
+   "max_size": 30,
+   "pairs": 295667,
+   "triples": 16425716
+  },
+  {
+   "rows_at_most": 6,
+   "min_size": 28,
+   "max_size": 30,
+   "pairs": 253072,
+   "triples": 27587273
+  },
+  {
+   "rows_at_most": 7,
+   "min_size": 1,
+   "max_size": 27,
+   "pairs": 278507,
+   "triples": 21405341
+  }
+ ],
+ "negative_records": [],
+ "per_size": [
+  {
+   "rows": 5,
+   "size": 1,
+   "shards": 1,
+   "pairs": 1,
+   "triples": 1,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 1,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 1
+   },
+   "digest": "e24a8b45cfcc507965cc7548deeb1cca690a1c9f93d3d784e2071dd24849d359",
+   "shard_seconds": 0.0
+  },
+  {
+   "rows": 5,
+   "size": 2,
+   "shards": 1,
+   "pairs": 3,
+   "triples": 4,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 4,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 4
+   },
+   "digest": "bf4c0d234aa2b7b0587be6b6955dca6b9c090c6c37d128fa11a8404aff087725",
+   "shard_seconds": 0.0
+  },
+  {
+   "rows": 5,
+   "size": 3,
+   "shards": 1,
+   "pairs": 5,
+   "triples": 7,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 7,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 7
+   },
+   "digest": "9234b32088953c951ce581716177eeb9a7aba61f8f0daedef63ac6ec5aa3795f",
+   "shard_seconds": 0.0
+  },
+  {
+   "rows": 5,
+   "size": 4,
+   "shards": 1,
+   "pairs": 11,
+   "triples": 20,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 20,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 20
+   },
+   "digest": "97effd1a6290077e17a9374b1b2121c022602677c47dadc47f3cd48f184b68be",
+   "shard_seconds": 0.0
+  },
+  {
+   "rows": 5,
+   "size": 5,
+   "shards": 1,
+   "pairs": 18,
+   "triples": 37,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 37,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 37
+   },
+   "digest": "d1791705ceb62885483dbe3111423f428111120ec1251bd796d588cf0e852d56",
+   "shard_seconds": 0.0
+  },
+  {
+   "rows": 5,
+   "size": 6,
+   "shards": 1,
+   "pairs": 33,
+   "triples": 85,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 85,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 84,
+    "1": 1
+   },
+   "digest": "c1b65131685e6bfffde7775267d37b97cf45846b6a08a407ade90db33c1d1f3f",
+   "shard_seconds": 0.0,
+   "smallest_normalized_coefficient": {
+    "value": "1/2",
+    "power": 1,
+    "record": {
+     "outer": [
+      3,
+      2,
+      1
+     ],
+     "inner": [
+      2,
+      1
+     ],
+     "content": [
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 2,
+     "degree": 1,
+     "values": [
+      "1",
+      "2",
+      "3"
+     ],
+     "coefficients": [
+      "1",
+      "1"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 7,
+   "shards": 1,
+   "pairs": 52,
+   "triples": 156,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 156,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 154,
+    "1": 2
+   },
+   "digest": "0718350a5471655e8d4ea12839b8ee3a96a7580d3f2be7c489ea4d9ed7c54612",
+   "shard_seconds": 0.0,
+   "smallest_normalized_coefficient": {
+    "value": "1/2",
+    "power": 1,
+    "record": {
+     "outer": [
+      4,
+      2,
+      1
+     ],
+     "inner": [
+      3,
+      1
+     ],
+     "content": [
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 2,
+     "degree": 1,
+     "values": [
+      "1",
+      "2",
+      "3"
+     ],
+     "coefficients": [
+      "1",
+      "1"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 8,
+   "shards": 1,
+   "pairs": 87,
+   "triples": 321,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 321,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 311,
+    "1": 10
+   },
+   "digest": "fbb149793a464dd57364f4d8e4a9e71544ad3c40b8e2121fc2870bf272667f60",
+   "shard_seconds": 0.0,
+   "smallest_normalized_coefficient": {
+    "value": "1/2",
+    "power": 1,
+    "record": {
+     "outer": [
+      5,
+      2,
+      1
+     ],
+     "inner": [
+      4,
+      1
+     ],
+     "content": [
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 2,
+     "degree": 1,
+     "values": [
+      "1",
+      "2",
+      "3"
+     ],
+     "coefficients": [
+      "1",
+      "1"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 9,
+   "shards": 1,
+   "pairs": 132,
+   "triples": 571,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 571,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 547,
+    "1": 24
+   },
+   "digest": "b0e32db07b334a5ab198d1cf9063eb53d7fd5eee1dfececd0ac508ce19e025df",
+   "shard_seconds": 0.0,
+   "smallest_normalized_coefficient": {
+    "value": "1/2",
+    "power": 1,
+    "record": {
+     "outer": [
+      6,
+      2,
+      1
+     ],
+     "inner": [
+      5,
+      1
+     ],
+     "content": [
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 2,
+     "degree": 1,
+     "values": [
+      "1",
+      "2",
+      "3"
+     ],
+     "coefficients": [
+      "1",
+      "1"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 10,
+   "shards": 1,
+   "pairs": 206,
+   "triples": 1080,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 1080,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 1010,
+    "1": 68,
+    "2": 2
+   },
+   "digest": "12998ceace75ab0b4c5a8c0dcba69c8a5fccf8d6e3acb394a40ab83d330fbcc5",
+   "shard_seconds": 0.0,
+   "smallest_normalized_coefficient": {
+    "value": "1/6",
+    "power": 2,
+    "record": {
+     "outer": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "inner": [
+      3,
+      2,
+      1
+     ],
+     "content": [
+      3,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 3,
+     "degree": 2,
+     "values": [
+      "1",
+      "3",
+      "6",
+      "10"
+     ],
+     "coefficients": [
+      "1",
+      "3/2",
+      "1/2"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 11,
+   "shards": 1,
+   "pairs": 302,
+   "triples": 1857,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 1857,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 1709,
+    "1": 138,
+    "2": 10
+   },
+   "digest": "6f045dcb344943e2957dec8c2d54d042781e0fd3b358a09668d5fee3fcfd1c56",
+   "shard_seconds": 0.1,
+   "smallest_normalized_coefficient": {
+    "value": "1/6",
+    "power": 2,
+    "record": {
+     "outer": [
+      5,
+      3,
+      2,
+      1
+     ],
+     "inner": [
+      4,
+      2,
+      1
+     ],
+     "content": [
+      3,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 3,
+     "degree": 2,
+     "values": [
+      "1",
+      "3",
+      "6",
+      "10"
+     ],
+     "coefficients": [
+      "1",
+      "3/2",
+      "1/2"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 12,
+   "shards": 1,
+   "pairs": 449,
+   "triples": 3296,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 3296,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 2951,
+    "1": 306,
+    "2": 36,
+    "3": 3
+   },
+   "digest": "8c2887f2c3e71ccc69d48dcf51949d6755ce964a0dd2381804f9d7d851d523f5",
+   "shard_seconds": 0.2,
+   "smallest_normalized_coefficient": {
+    "value": "1/24",
+    "power": 3,
+    "record": {
+     "outer": [
+      4,
+      3,
+      2,
+      2,
+      1
+     ],
+     "inner": [
+      3,
+      2,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 4,
+     "degree": 3,
+     "values": [
+      "1",
+      "4",
+      "10",
+      "20",
+      "35"
+     ],
+     "coefficients": [
+      "1",
+      "11/6",
+      "1",
+      "1/6"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 13,
+   "shards": 1,
+   "pairs": 639,
+   "triples": 5478,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 5478,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 4794,
+    "1": 589,
+    "2": 87,
+    "3": 8
+   },
+   "digest": "083bd12910509979aaa39694bde9c1124dd618ea99f9861f493e0cb777b889b6",
+   "shard_seconds": 0.3,
+   "smallest_normalized_coefficient": {
+    "value": "1/24",
+    "power": 3,
+    "record": {
+     "outer": [
+      5,
+      3,
+      2,
+      2,
+      1
+     ],
+     "inner": [
+      4,
+      2,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 4,
+     "degree": 3,
+     "values": [
+      "1",
+      "4",
+      "10",
+      "20",
+      "35"
+     ],
+     "coefficients": [
+      "1",
+      "11/6",
+      "1",
+      "1/6"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 14,
+   "shards": 1,
+   "pairs": 914,
+   "triples": 9252,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 9252,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 7863,
+    "1": 1132,
+    "2": 221,
+    "3": 36
+   },
+   "digest": "3e40f9cc076740d1d300f8289ab86ff2f9ea09debffca577cf5fdfdc79f093b0",
+   "shard_seconds": 0.6,
+   "smallest_normalized_coefficient": {
+    "value": "1/24",
+    "power": 3,
+    "record": {
+     "outer": [
+      6,
+      3,
+      2,
+      2,
+      1
+     ],
+     "inner": [
+      5,
+      2,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 4,
+     "degree": 3,
+     "values": [
+      "1",
+      "4",
+      "10",
+      "20",
+      "35"
+     ],
+     "coefficients": [
+      "1",
+      "11/6",
+      "1",
+      "1/6"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 15,
+   "shards": 1,
+   "pairs": 1268,
+   "triples": 14889,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 14889,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 12309,
+    "1": 2059,
+    "2": 431,
+    "3": 78,
+    "4": 12
+   },
+   "digest": "564611441fda85cc272ba847ca4e7d00a94a9da9e0d3d62a5151aef7a7490794",
+   "shard_seconds": 0.9,
+   "smallest_normalized_coefficient": {
+    "value": "1/120",
+    "power": 4,
+    "record": {
+     "outer": [
+      5,
+      4,
+      3,
+      2,
+      1
+     ],
+     "inner": [
+      4,
+      3,
+      1
+     ],
+     "content": [
+      4,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 5,
+     "degree": 4,
+     "values": [
+      "1",
+      "5",
+      "15",
+      "35",
+      "70",
+      "126"
+     ],
+     "coefficients": [
+      "1",
+      "25/12",
+      "35/24",
+      "5/12",
+      "1/24"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 16,
+   "shards": 1,
+   "pairs": 1760,
+   "triples": 24131,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 24131,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 19340,
+    "1": 3610,
+    "2": 937,
+    "3": 214,
+    "4": 29,
+    "5": 1
+   },
+   "digest": "2485f93920571c7ae65f4ef6918b8abe24454ecb32a4a0bd083d4bd5bc4b0ee2",
+   "shard_seconds": 1.5,
+   "smallest_normalized_coefficient": {
+    "value": "1/160",
+    "power": 5,
+    "record": {
+     "outer": [
+      6,
+      4,
+      3,
+      2,
+      1
+     ],
+     "inner": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 6,
+     "degree": 5,
+     "values": [
+      "1",
+      "8",
+      "36",
+      "116",
+      "301",
+      "672",
+      "1344"
+     ],
+     "coefficients": [
+      "1",
+      "38/15",
+      "31/12",
+      "17/12",
+      "5/12",
+      "1/20"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 17,
+   "shards": 1,
+   "pairs": 2386,
+   "triples": 37685,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 37685,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 29302,
+    "1": 6116,
+    "2": 1735,
+    "3": 440,
+    "4": 87,
+    "5": 5
+   },
+   "digest": "fca7a4a9daa79b8fb42c9c62d98c7bf3788b3b71f689806a1c3de64f25ba19a9",
+   "shard_seconds": 2.6,
+   "smallest_normalized_coefficient": {
+    "value": "1/720",
+    "power": 5,
+    "record": {
+     "outer": [
+      6,
+      5,
+      3,
+      2,
+      1
+     ],
+     "inner": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      1,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 6,
+     "degree": 5,
+     "values": [
+      "1",
+      "6",
+      "21",
+      "56",
+      "126",
+      "252",
+      "462"
+     ],
+     "coefficients": [
+      "1",
+      "137/60",
+      "15/8",
+      "17/24",
+      "1/8",
+      "1/120"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 18,
+   "shards": 1,
+   "pairs": 3230,
+   "triples": 58983,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 58983,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 44371,
+    "1": 10179,
+    "2": 3213,
+    "3": 991,
+    "4": 212,
+    "5": 17
+   },
+   "digest": "edaf2de33b1e0ea08d893c8b9e533de6a52ae8667e9367c2ea3f0f876a5bd0c7",
+   "shard_seconds": 4.0,
+   "smallest_normalized_coefficient": {
+    "value": "1/720",
+    "power": 5,
+    "record": {
+     "outer": [
+      6,
+      5,
+      4,
+      2,
+      1
+     ],
+     "inner": [
+      5,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      1,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 6,
+     "degree": 5,
+     "values": [
+      "1",
+      "6",
+      "21",
+      "56",
+      "126",
+      "252",
+      "462"
+     ],
+     "coefficients": [
+      "1",
+      "137/60",
+      "15/8",
+      "17/24",
+      "1/8",
+      "1/120"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 19,
+   "shards": 1,
+   "pairs": 4293,
+   "triples": 89706,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 89706,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 65378,
+    "1": 16359,
+    "2": 5631,
+    "3": 1798,
+    "4": 486,
+    "5": 54
+   },
+   "digest": "d4d2cdd6051e25ea5c1c6cee588728323e8bc9af08d48ac298aaaa60b7e2d531",
+   "shard_seconds": 6.0,
+   "smallest_normalized_coefficient": {
+    "value": "1/720",
+    "power": 5,
+    "record": {
+     "outer": [
+      7,
+      5,
+      4,
+      2,
+      1
+     ],
+     "inner": [
+      6,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      1,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 6,
+     "degree": 5,
+     "values": [
+      "1",
+      "6",
+      "21",
+      "56",
+      "126",
+      "252",
+      "462"
+     ],
+     "coefficients": [
+      "1",
+      "137/60",
+      "15/8",
+      "17/24",
+      "1/8",
+      "1/120"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 20,
+   "shards": 1,
+   "pairs": 5691,
+   "triples": 136278,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 136276,
+   "regime_B": 2,
+   "degree_histogram": {
+    "0": 95950,
+    "1": 26039,
+    "2": 9639,
+    "3": 3481,
+    "4": 1022,
+    "5": 144,
+    "6": 3
+   },
+   "digest": "193f5e0c0937f3abba81e4141eb9debdb00b5601cdd2c9eb3a5ddcd247aedd42",
+   "shard_seconds": 12.3,
+   "smallest_normalized_coefficient": {
+    "value": "1/2880",
+    "power": 6,
+    "record": {
+     "outer": [
+      7,
+      6,
+      4,
+      2,
+      1
+     ],
+     "inner": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 7,
+     "degree": 6,
+     "values": [
+      "1",
+      "8",
+      "35",
+      "112",
+      "294",
+      "672",
+      "1386",
+      "2640"
+     ],
+     "coefficients": [
+      "1",
+      "157/60",
+      "949/360",
+      "4/3",
+      "13/36",
+      "1/20",
+      "1/360"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 21,
+   "shards": 1,
+   "pairs": 7433,
+   "triples": 202284,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 202281,
+   "regime_B": 3,
+   "degree_histogram": {
+    "0": 137802,
+    "1": 40144,
+    "2": 15950,
+    "3": 6053,
+    "4": 1996,
+    "5": 334,
+    "6": 5
+   },
+   "digest": "0a4d052bfb5c024187dacc37f6090059c2b4161a091cf5eb9d4165d361a55a15",
+   "shard_seconds": 15.7,
+   "smallest_normalized_coefficient": {
+    "value": "1/2880",
+    "power": 6,
+    "record": {
+     "outer": [
+      7,
+      6,
+      5,
+      2,
+      1
+     ],
+     "inner": [
+      5,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 7,
+     "degree": 6,
+     "values": [
+      "1",
+      "8",
+      "35",
+      "112",
+      "294",
+      "672",
+      "1386",
+      "2640"
+     ],
+     "coefficients": [
+      "1",
+      "157/60",
+      "949/360",
+      "4/3",
+      "13/36",
+      "1/20",
+      "1/360"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 22,
+   "shards": 1,
+   "pairs": 9676,
+   "triples": 299391,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 299378,
+   "regime_B": 13,
+   "degree_histogram": {
+    "0": 196964,
+    "1": 61252,
+    "2": 25889,
+    "3": 10750,
+    "4": 3787,
+    "5": 728,
+    "6": 21
+   },
+   "digest": "b2cce317ae3960e183cf9ebb9ddc8da5f330b7fd629e3e21b5b0e540a0ff850f",
+   "shard_seconds": 23.3,
+   "smallest_normalized_coefficient": {
+    "value": "1/2880",
+    "power": 6,
+    "record": {
+     "outer": [
+      7,
+      6,
+      5,
+      3,
+      1
+     ],
+     "inner": [
+      6,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 7,
+     "degree": 6,
+     "values": [
+      "1",
+      "8",
+      "35",
+      "112",
+      "294",
+      "672",
+      "1386",
+      "2640"
+     ],
+     "coefficients": [
+      "1",
+      "157/60",
+      "949/360",
+      "4/3",
+      "13/36",
+      "1/20",
+      "1/360"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 23,
+   "shards": 1,
+   "pairs": 12445,
+   "triples": 434796,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 434768,
+   "regime_B": 28,
+   "degree_histogram": {
+    "0": 276450,
+    "1": 91529,
+    "2": 40792,
+    "3": 17696,
+    "4": 6793,
+    "5": 1491,
+    "6": 45
+   },
+   "digest": "6c8c0dd344080606efe8f2ac57ccfe3275f3c4ad6a515bf15664ccb65832ed15",
+   "shard_seconds": 35.1,
+   "smallest_normalized_coefficient": {
+    "value": "1/2880",
+    "power": 6,
+    "record": {
+     "outer": [
+      8,
+      6,
+      5,
+      3,
+      1
+     ],
+     "inner": [
+      7,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 7,
+     "degree": 6,
+     "values": [
+      "1",
+      "8",
+      "35",
+      "112",
+      "294",
+      "672",
+      "1386",
+      "2640"
+     ],
+     "coefficients": [
+      "1",
+      "157/60",
+      "949/360",
+      "4/3",
+      "13/36",
+      "1/20",
+      "1/360"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 24,
+   "shards": 1,
+   "pairs": 15949,
+   "triples": 629061,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 628983,
+   "regime_B": 78,
+   "degree_histogram": {
+    "0": 386232,
+    "1": 135136,
+    "2": 63370,
+    "3": 29350,
+    "4": 11937,
+    "5": 2912,
+    "6": 124
+   },
+   "digest": "eae536d7635f516c17a29bfbb84094ac6751526bbd6544d4b72891b5063f83fc",
+   "shard_seconds": 55.2,
+   "smallest_normalized_coefficient": {
+    "value": "1/2880",
+    "power": 6,
+    "record": {
+     "outer": [
+      9,
+      6,
+      5,
+      3,
+      1
+     ],
+     "inner": [
+      8,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 7,
+     "degree": 6,
+     "values": [
+      "1",
+      "8",
+      "35",
+      "112",
+      "294",
+      "672",
+      "1386",
+      "2640"
+     ],
+     "coefficients": [
+      "1",
+      "157/60",
+      "949/360",
+      "4/3",
+      "13/36",
+      "1/20",
+      "1/360"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 25,
+   "shards": 1,
+   "pairs": 20233,
+   "triples": 895673,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 895516,
+   "regime_B": 157,
+   "degree_histogram": {
+    "0": 531150,
+    "1": 196277,
+    "2": 96249,
+    "3": 46232,
+    "4": 20112,
+    "5": 5406,
+    "6": 247
+   },
+   "digest": "2c631335b2694001c8a86ba4a04b096e3d7cd8bb2c3811df5e2703f5120e4b75",
+   "shard_seconds": 83.5,
+   "smallest_normalized_coefficient": {
+    "value": "1/2880",
+    "power": 6,
+    "record": {
+     "outer": [
+      10,
+      6,
+      5,
+      3,
+      1
+     ],
+     "inner": [
+      9,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 7,
+     "degree": 6,
+     "values": [
+      "1",
+      "8",
+      "35",
+      "112",
+      "294",
+      "672",
+      "1386",
+      "2640"
+     ],
+     "coefficients": [
+      "1",
+      "157/60",
+      "949/360",
+      "4/3",
+      "13/36",
+      "1/20",
+      "1/360"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 26,
+   "shards": 1,
+   "pairs": 25573,
+   "triples": 1269782,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 1269423,
+   "regime_B": 359,
+   "degree_histogram": {
+    "0": 727134,
+    "1": 281702,
+    "2": 144229,
+    "3": 73183,
+    "4": 33231,
+    "5": 9756,
+    "6": 547
+   },
+   "digest": "6dd7b66842151d6e70212934e1e89c278af8627c0cd4561148a88933136d413c",
+   "shard_seconds": 130.2,
+   "smallest_normalized_coefficient": {
+    "value": "1/2880",
+    "power": 6,
+    "record": {
+     "outer": [
+      11,
+      6,
+      5,
+      3,
+      1
+     ],
+     "inner": [
+      10,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 7,
+     "degree": 6,
+     "values": [
+      "1",
+      "8",
+      "35",
+      "112",
+      "294",
+      "672",
+      "1386",
+      "2640"
+     ],
+     "coefficients": [
+      "1",
+      "157/60",
+      "949/360",
+      "4/3",
+      "13/36",
+      "1/20",
+      "1/360"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 27,
+   "shards": 1,
+   "pairs": 32046,
+   "triples": 1775917,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 1775219,
+   "regime_B": 698,
+   "degree_histogram": {
+    "0": 982230,
+    "1": 398944,
+    "2": 212208,
+    "3": 111323,
+    "4": 53251,
+    "5": 16934,
+    "6": 1027
+   },
+   "digest": "04c60f9c72ca647d4ccbc448a44393a53582ec4e8f0c72efcad97d1f509ba2db",
+   "shard_seconds": 215.9,
+   "smallest_normalized_coefficient": {
+    "value": "1/2880",
+    "power": 6,
+    "record": {
+     "outer": [
+      12,
+      6,
+      5,
+      3,
+      1
+     ],
+     "inner": [
+      11,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 7,
+     "degree": 6,
+     "values": [
+      "1",
+      "8",
+      "35",
+      "112",
+      "294",
+      "672",
+      "1386",
+      "2640"
+     ],
+     "coefficients": [
+      "1",
+      "157/60",
+      "949/360",
+      "4/3",
+      "13/36",
+      "1/20",
+      "1/360"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 28,
+   "shards": 1,
+   "pairs": 40011,
+   "triples": 2472476,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 2471028,
+   "regime_B": 1448,
+   "degree_histogram": {
+    "0": 1320510,
+    "1": 559622,
+    "2": 308396,
+    "3": 169075,
+    "4": 84124,
+    "5": 28728,
+    "6": 2021
+   },
+   "digest": "2d4b6f39a54973fc04104eb64110779c039e2899c5eead45c9613706a68f8002",
+   "shard_seconds": 290.9,
+   "smallest_normalized_coefficient": {
+    "value": "1/2880",
+    "power": 6,
+    "record": {
+     "outer": [
+      13,
+      6,
+      5,
+      3,
+      1
+     ],
+     "inner": [
+      12,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 7,
+     "degree": 6,
+     "values": [
+      "1",
+      "8",
+      "35",
+      "112",
+      "294",
+      "672",
+      "1386",
+      "2640"
+     ],
+     "coefficients": [
+      "1",
+      "157/60",
+      "949/360",
+      "4/3",
+      "13/36",
+      "1/20",
+      "1/360"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 29,
+   "shards": 1,
+   "pairs": 49586,
+   "triples": 3402310,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 3399566,
+   "regime_B": 2744,
+   "degree_histogram": {
+    "0": 1755186,
+    "1": 775255,
+    "2": 442149,
+    "3": 249544,
+    "4": 129280,
+    "5": 47318,
+    "6": 3578
+   },
+   "digest": "5c934dddfddd421f15b98491099aa256d16a94e9be4c414459b2ec286694237c",
+   "shard_seconds": 357.1,
+   "smallest_normalized_coefficient": {
+    "value": "1/2880",
+    "power": 6,
+    "record": {
+     "outer": [
+      14,
+      6,
+      5,
+      3,
+      1
+     ],
+     "inner": [
+      13,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 7,
+     "degree": 6,
+     "values": [
+      "1",
+      "8",
+      "35",
+      "112",
+      "294",
+      "672",
+      "1386",
+      "2640"
+     ],
+     "coefficients": [
+      "1",
+      "157/60",
+      "949/360",
+      "4/3",
+      "13/36",
+      "1/20",
+      "1/360"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 5,
+   "size": 30,
+   "shards": 1,
+   "pairs": 61235,
+   "triples": 4660189,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 4654894,
+   "regime_B": 5295,
+   "degree_histogram": {
+    "0": 2322235,
+    "1": 1065502,
+    "2": 625767,
+    "3": 366960,
+    "4": 196815,
+    "5": 76459,
+    "6": 6451
+   },
+   "digest": "2e373eb233e3ae2857719b9cce6e63eac361ea09b924d4787b15ceea9593d591",
+   "shard_seconds": 521.8,
+   "smallest_normalized_coefficient": {
+    "value": "1/2880",
+    "power": 6,
+    "record": {
+     "outer": [
+      15,
+      6,
+      5,
+      3,
+      1
+     ],
+     "inner": [
+      14,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 7,
+     "degree": 6,
+     "values": [
+      "1",
+      "8",
+      "35",
+      "112",
+      "294",
+      "672",
+      "1386",
+      "2640"
+     ],
+     "coefficients": [
+      "1",
+      "157/60",
+      "949/360",
+      "4/3",
+      "13/36",
+      "1/20",
+      "1/360"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 6,
+   "size": 28,
+   "shards": 4,
+   "pairs": 65449,
+   "triples": 6157261,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 6090556,
+   "regime_B": 66705,
+   "degree_histogram": {
+    "0": 3062670,
+    "1": 1313691,
+    "2": 769907,
+    "3": 468289,
+    "4": 295664,
+    "5": 152401,
+    "6": 65166,
+    "7": 25165,
+    "8": 4161,
+    "9": 147
+   },
+   "digest": "b0225e3fabc510e28aba8f74973b9e0db517451f1a222d02257248a0d50dda71",
+   "shard_seconds": 2311.8,
+   "smallest_normalized_coefficient": {
+    "value": "1/1451520",
+    "power": 9,
+    "record": {
+     "outer": [
+      8,
+      7,
+      6,
+      4,
+      2,
+      1
+     ],
+     "inner": [
+      7,
+      4,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      1,
+      1
+     ],
+     "orientation": 1,
+     "regime": "B",
+     "lrcalc_stretches": 2,
+     "degree": 9,
+     "values": [
+      "1",
+      "12",
+      "75",
+      "330",
+      "1155",
+      "3432",
+      "9009",
+      "21450",
+      "47190",
+      "97240",
+      "189618"
+     ],
+     "coefficients": [
+      "1",
+      "2563/840",
+      "38663/10080",
+      "39997/15120",
+      "2137/1920",
+      "1717/5760",
+      "49/960",
+      "109/20160",
+      "13/40320",
+      "1/120960"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 6,
+   "size": 29,
+   "shards": 4,
+   "pairs": 82932,
+   "triples": 8825971,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 8703761,
+   "regime_B": 122210,
+   "degree_histogram": {
+    "0": 4211106,
+    "1": 1878948,
+    "2": 1138259,
+    "3": 713332,
+    "4": 466713,
+    "5": 250261,
+    "6": 112023,
+    "7": 46097,
+    "8": 8814,
+    "9": 418
+   },
+   "digest": "17d4c4b485692786f274c60efca91e8d2c15399853173ce9fdc2d90f89653aba",
+   "shard_seconds": 4308.5,
+   "smallest_normalized_coefficient": {
+    "value": "1/1451520",
+    "power": 9,
+    "record": {
+     "outer": [
+      8,
+      7,
+      6,
+      5,
+      2,
+      1
+     ],
+     "inner": [
+      7,
+      4,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      5,
+      3,
+      2,
+      1,
+      1
+     ],
+     "orientation": 0,
+     "regime": "B",
+     "lrcalc_stretches": 2,
+     "degree": 9,
+     "values": [
+      "1",
+      "12",
+      "75",
+      "330",
+      "1155",
+      "3432",
+      "9009",
+      "21450",
+      "47190",
+      "97240",
+      "189618"
+     ],
+     "coefficients": [
+      "1",
+      "2563/840",
+      "38663/10080",
+      "39997/15120",
+      "2137/1920",
+      "1717/5760",
+      "49/960",
+      "109/20160",
+      "13/40320",
+      "1/120960"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 6,
+   "size": 30,
+   "shards": 4,
+   "pairs": 104691,
+   "triples": 12604041,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 12384148,
+   "regime_B": 219893,
+   "degree_histogram": {
+    "0": 5783965,
+    "1": 2667890,
+    "2": 1658381,
+    "3": 1070692,
+    "4": 725001,
+    "5": 407145,
+    "6": 188504,
+    "7": 83828,
+    "8": 17626,
+    "9": 1002,
+    "10": 7
+   },
+   "digest": "dd556f3677e6f79d0fc8df9df77c12c2a938891df9003c7631dc6763336bc18a",
+   "shard_seconds": 7419.2,
+   "smallest_normalized_coefficient": {
+    "value": "1/5806080",
+    "power": 10,
+    "record": {
+     "outer": [
+      9,
+      8,
+      6,
+      4,
+      2,
+      1
+     ],
+     "inner": [
+      5,
+      4,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      5,
+      4,
+      3,
+      2,
+      1
+     ],
+     "orientation": 0,
+     "regime": "B",
+     "lrcalc_stretches": 2,
+     "degree": 10,
+     "values": [
+      "1",
+      "16",
+      "125",
+      "660",
+      "2695",
+      "9152",
+      "27027",
+      "71500",
+      "173030",
+      "388960",
+      "821678",
+      "1646008"
+     ],
+     "coefficients": [
+      "1",
+      "2843/840",
+      "1087/224",
+      "16951/4320",
+      "723869/362880",
+      "1927/2880",
+      "2599/17280",
+      "113/5040",
+      "257/120960",
+      "1/8640",
+      "1/362880"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 1,
+   "shards": 2,
+   "pairs": 1,
+   "triples": 1,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 1,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 1
+   },
+   "digest": "e24a8b45cfcc507965cc7548deeb1cca690a1c9f93d3d784e2071dd24849d359",
+   "shard_seconds": 0.0
+  },
+  {
+   "rows": 7,
+   "size": 2,
+   "shards": 2,
+   "pairs": 3,
+   "triples": 4,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 4,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 4
+   },
+   "digest": "bf4c0d234aa2b7b0587be6b6955dca6b9c090c6c37d128fa11a8404aff087725",
+   "shard_seconds": 0.0
+  },
+  {
+   "rows": 7,
+   "size": 3,
+   "shards": 2,
+   "pairs": 5,
+   "triples": 7,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 7,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 7
+   },
+   "digest": "9234b32088953c951ce581716177eeb9a7aba61f8f0daedef63ac6ec5aa3795f",
+   "shard_seconds": 0.0
+  },
+  {
+   "rows": 7,
+   "size": 4,
+   "shards": 2,
+   "pairs": 11,
+   "triples": 20,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 20,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 20
+   },
+   "digest": "97effd1a6290077e17a9374b1b2121c022602677c47dadc47f3cd48f184b68be",
+   "shard_seconds": 0.0
+  },
+  {
+   "rows": 7,
+   "size": 5,
+   "shards": 2,
+   "pairs": 18,
+   "triples": 37,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 37,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 37
+   },
+   "digest": "d1791705ceb62885483dbe3111423f428111120ec1251bd796d588cf0e852d56",
+   "shard_seconds": 0.0
+  },
+  {
+   "rows": 7,
+   "size": 6,
+   "shards": 2,
+   "pairs": 34,
+   "triples": 89,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 89,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 88,
+    "1": 1
+   },
+   "digest": "746e0e3e093212daec3817dd48ca37e7d7c743762f239f5e5361624bf4d2589d",
+   "shard_seconds": 0.0,
+   "smallest_normalized_coefficient": {
+    "value": "1/2",
+    "power": 1,
+    "record": {
+     "outer": [
+      3,
+      2,
+      1
+     ],
+     "inner": [
+      2,
+      1
+     ],
+     "content": [
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 2,
+     "degree": 1,
+     "values": [
+      "1",
+      "2",
+      "3"
+     ],
+     "coefficients": [
+      "1",
+      "1"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 7,
+   "shards": 2,
+   "pairs": 55,
+   "triples": 169,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 169,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 167,
+    "1": 2
+   },
+   "digest": "966b5367bd23068f37b71a14442c66480b658ab8883b7f468b7a57dd8b4d717c",
+   "shard_seconds": 0.0,
+   "smallest_normalized_coefficient": {
+    "value": "1/2",
+    "power": 1,
+    "record": {
+     "outer": [
+      4,
+      2,
+      1
+     ],
+     "inner": [
+      3,
+      1
+     ],
+     "content": [
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 2,
+     "degree": 1,
+     "values": [
+      "1",
+      "2",
+      "3"
+     ],
+     "coefficients": [
+      "1",
+      "1"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 8,
+   "shards": 2,
+   "pairs": 94,
+   "triples": 363,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 363,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 353,
+    "1": 10
+   },
+   "digest": "214f51c63f4c76e410764f175f9f937f8a89968abc3649666ed54bc137f52837",
+   "shard_seconds": 0.0,
+   "smallest_normalized_coefficient": {
+    "value": "1/2",
+    "power": 1,
+    "record": {
+     "outer": [
+      4,
+      3,
+      1
+     ],
+     "inner": [
+      3,
+      2
+     ],
+     "content": [
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 2,
+     "degree": 1,
+     "values": [
+      "1",
+      "2",
+      "3"
+     ],
+     "coefficients": [
+      "1",
+      "1"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 9,
+   "shards": 2,
+   "pairs": 147,
+   "triples": 678,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 678,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 652,
+    "1": 26
+   },
+   "digest": "62f3555a7547db17b58734f2d5d487ea02680ddddc3eab9546c8dddf9eac56b5",
+   "shard_seconds": 0.0,
+   "smallest_normalized_coefficient": {
+    "value": "1/2",
+    "power": 1,
+    "record": {
+     "outer": [
+      5,
+      3,
+      1
+     ],
+     "inner": [
+      4,
+      2
+     ],
+     "content": [
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 2,
+     "degree": 1,
+     "values": [
+      "1",
+      "2",
+      "3"
+     ],
+     "coefficients": [
+      "1",
+      "1"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 10,
+   "shards": 2,
+   "pairs": 236,
+   "triples": 1354,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 1354,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 1272,
+    "1": 80,
+    "2": 2
+   },
+   "digest": "b9fbae6ade552dc3e6de8896e5a7e8ef6f97972ca94e08aa93a4db4c98da7792",
+   "shard_seconds": 0.1,
+   "smallest_normalized_coefficient": {
+    "value": "1/6",
+    "power": 2,
+    "record": {
+     "outer": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "inner": [
+      3,
+      2,
+      1
+     ],
+     "content": [
+      3,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 3,
+     "degree": 2,
+     "values": [
+      "1",
+      "3",
+      "6",
+      "10"
+     ],
+     "coefficients": [
+      "1",
+      "3/2",
+      "1/2"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 11,
+   "shards": 2,
+   "pairs": 358,
+   "triples": 2468,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 2468,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 2275,
+    "1": 183,
+    "2": 10
+   },
+   "digest": "7370547a1f3a111158770ba909f0906f360d9d6dd995eecf0850686203a3dec8",
+   "shard_seconds": 0.1,
+   "smallest_normalized_coefficient": {
+    "value": "1/6",
+    "power": 2,
+    "record": {
+     "outer": [
+      5,
+      3,
+      2,
+      1
+     ],
+     "inner": [
+      4,
+      2,
+      1
+     ],
+     "content": [
+      3,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 3,
+     "degree": 2,
+     "values": [
+      "1",
+      "3",
+      "6",
+      "10"
+     ],
+     "coefficients": [
+      "1",
+      "3/2",
+      "1/2"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 12,
+   "shards": 2,
+   "pairs": 550,
+   "triples": 4660,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 4660,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 4172,
+    "1": 440,
+    "2": 45,
+    "3": 3
+   },
+   "digest": "221ef440367025a961c6ab6420e4855d9f304df109be5339328fc18f17444fc8",
+   "shard_seconds": 0.2,
+   "smallest_normalized_coefficient": {
+    "value": "1/24",
+    "power": 3,
+    "record": {
+     "outer": [
+      4,
+      3,
+      2,
+      2,
+      1
+     ],
+     "inner": [
+      3,
+      2,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 4,
+     "degree": 3,
+     "values": [
+      "1",
+      "4",
+      "10",
+      "20",
+      "35"
+     ],
+     "coefficients": [
+      "1",
+      "11/6",
+      "1",
+      "1/6"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 13,
+   "shards": 2,
+   "pairs": 811,
+   "triples": 8268,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 8268,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 7213,
+    "1": 916,
+    "2": 128,
+    "3": 11
+   },
+   "digest": "faec3c1cc04790b186a961de41320bf590841f7d276206abf28adc5bc46ed7b5",
+   "shard_seconds": 0.6,
+   "smallest_normalized_coefficient": {
+    "value": "1/24",
+    "power": 3,
+    "record": {
+     "outer": [
+      4,
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "inner": [
+      3,
+      2,
+      1,
+      1
+     ],
+     "content": [
+      2,
+      2,
+      1,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 6,
+     "degree": 3,
+     "values": [
+      "1",
+      "4",
+      "10",
+      "20",
+      "35",
+      "56",
+      "84"
+     ],
+     "coefficients": [
+      "1",
+      "11/6",
+      "1",
+      "1/6"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 14,
+   "shards": 2,
+   "pairs": 1201,
+   "triples": 14922,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 14922,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 12592,
+    "1": 1905,
+    "2": 364,
+    "3": 59,
+    "4": 2
+   },
+   "digest": "c495ffdfa43bee833fc4397f4f9c6f55a4d3e3266231d7a01d489f2b4349e69b",
+   "shard_seconds": 1.1,
+   "smallest_normalized_coefficient": {
+    "value": "1/120",
+    "power": 4,
+    "record": {
+     "outer": [
+      4,
+      3,
+      3,
+      2,
+      1,
+      1
+     ],
+     "inner": [
+      3,
+      2,
+      1,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      1,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 7,
+     "degree": 4,
+     "values": [
+      "1",
+      "5",
+      "15",
+      "35",
+      "70",
+      "126",
+      "210",
+      "330"
+     ],
+     "coefficients": [
+      "1",
+      "25/12",
+      "35/24",
+      "5/12",
+      "1/24"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 15,
+   "shards": 2,
+   "pairs": 1729,
+   "triples": 25753,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 25753,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 21058,
+    "1": 3671,
+    "2": 838,
+    "3": 166,
+    "4": 20
+   },
+   "digest": "d85fcab9171e165c5ee1335d77f538049f814836f8b2c5648590ae7050c128b8",
+   "shard_seconds": 1.9,
+   "smallest_normalized_coefficient": {
+    "value": "1/120",
+    "power": 4,
+    "record": {
+     "outer": [
+      4,
+      3,
+      3,
+      2,
+      1,
+      1,
+      1
+     ],
+     "inner": [
+      3,
+      2,
+      1,
+      1,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      1,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 7,
+     "degree": 4,
+     "values": [
+      "1",
+      "5",
+      "15",
+      "35",
+      "70",
+      "126",
+      "210",
+      "330"
+     ],
+     "coefficients": [
+      "1",
+      "25/12",
+      "35/24",
+      "5/12",
+      "1/24"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 16,
+   "shards": 2,
+   "pairs": 2488,
+   "triples": 44768,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 44768,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 35305,
+    "1": 6942,
+    "2": 1929,
+    "3": 500,
+    "4": 82,
+    "5": 10
+   },
+   "digest": "ac3c5f57b655afe186aeb8ed37ff48dd062665cf882d7eecdd2b2a51e78cf710",
+   "shard_seconds": 3.4,
+   "smallest_normalized_coefficient": {
+    "value": "1/720",
+    "power": 5,
+    "record": {
+     "outer": [
+      4,
+      3,
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "inner": [
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      1,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 8,
+     "degree": 5,
+     "values": [
+      "1",
+      "6",
+      "21",
+      "56",
+      "126",
+      "252",
+      "462",
+      "792",
+      "1287"
+     ],
+     "coefficients": [
+      "1",
+      "137/60",
+      "15/8",
+      "17/24",
+      "1/8",
+      "1/120"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 17,
+   "shards": 2,
+   "pairs": 3504,
+   "triples": 75222,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 75222,
+   "regime_B": 0,
+   "degree_histogram": {
+    "0": 57224,
+    "1": 12596,
+    "2": 3924,
+    "3": 1151,
+    "4": 271,
+    "5": 54,
+    "6": 2
+   },
+   "digest": "f9dfbc21fde2dd4876a3e8eceb6df295330418c0607f9442004c9d2ae6636563",
+   "shard_seconds": 6.5,
+   "smallest_normalized_coefficient": {
+    "value": "1/1080",
+    "power": 6,
+    "record": {
+     "outer": [
+      5,
+      4,
+      3,
+      2,
+      2,
+      1
+     ],
+     "inner": [
+      4,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      1,
+      1
+     ],
+     "regime": "A",
+     "lrcalc_stretches": 7,
+     "degree": 6,
+     "values": [
+      "1",
+      "9",
+      "45",
+      "161",
+      "462",
+      "1134",
+      "2478",
+      "4950"
+     ],
+     "coefficients": [
+      "1",
+      "161/60",
+      "349/120",
+      "41/24",
+      "7/12",
+      "13/120",
+      "1/120"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 18,
+   "shards": 2,
+   "pairs": 4923,
+   "triples": 126575,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 126568,
+   "regime_B": 7,
+   "degree_histogram": {
+    "0": 92633,
+    "1": 22324,
+    "2": 7855,
+    "3": 2772,
+    "4": 767,
+    "5": 194,
+    "6": 28,
+    "7": 2
+   },
+   "digest": "79e2de8649c83c2a1af56b0f21a47e1967e4ec047c9389a31840d0f19bb5731d",
+   "shard_seconds": 11.1,
+   "smallest_normalized_coefficient": {
+    "value": "1/40320",
+    "power": 7,
+    "record": {
+     "outer": [
+      5,
+      4,
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "inner": [
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "regime": "B",
+     "lrcalc_stretches": 9,
+     "degree": 7,
+     "values": [
+      "1",
+      "8",
+      "36",
+      "120",
+      "330",
+      "792",
+      "1716",
+      "3432",
+      "6435",
+      "11440"
+     ],
+     "coefficients": [
+      "1",
+      "363/140",
+      "469/180",
+      "967/720",
+      "7/18",
+      "23/360",
+      "1/180",
+      "1/5040"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 19,
+   "shards": 2,
+   "pairs": 6802,
+   "triples": 207419,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 207369,
+   "regime_B": 50,
+   "degree_histogram": {
+    "0": 146022,
+    "1": 38438,
+    "2": 14742,
+    "3": 5577,
+    "4": 1927,
+    "5": 579,
+    "6": 121,
+    "7": 13
+   },
+   "digest": "1c4cda7cf27ab960d8c6192fe69054c62482f9f054f7ec1bd94c4ece5ff83dc1",
+   "shard_seconds": 24.7,
+   "smallest_normalized_coefficient": {
+    "value": "1/40320",
+    "power": 7,
+    "record": {
+     "outer": [
+      5,
+      4,
+      3,
+      3,
+      2,
+      1,
+      1
+     ],
+     "inner": [
+      4,
+      3,
+      2,
+      1,
+      1
+     ],
+     "content": [
+      4,
+      2,
+      1,
+      1
+     ],
+     "regime": "B",
+     "lrcalc_stretches": 9,
+     "degree": 7,
+     "values": [
+      "1",
+      "8",
+      "36",
+      "120",
+      "330",
+      "792",
+      "1716",
+      "3432",
+      "6435",
+      "11440"
+     ],
+     "coefficients": [
+      "1",
+      "363/140",
+      "469/180",
+      "967/720",
+      "7/18",
+      "23/360",
+      "1/180",
+      "1/5040"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 20,
+   "shards": 2,
+   "pairs": 9363,
+   "triples": 339246,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 339003,
+   "regime_B": 243,
+   "degree_histogram": {
+    "0": 229259,
+    "1": 65119,
+    "2": 26955,
+    "3": 11385,
+    "4": 4470,
+    "5": 1561,
+    "6": 408,
+    "7": 85,
+    "8": 4
+   },
+   "digest": "86755f3bcf3ef9128a6d78e12a166e1c398534972964559c048632f7b8b4008b",
+   "shard_seconds": 49.1,
+   "smallest_normalized_coefficient": {
+    "value": "1/362880",
+    "power": 8,
+    "record": {
+     "outer": [
+      6,
+      5,
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "inner": [
+      4,
+      3,
+      2,
+      1,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "orientation": 0,
+     "regime": "B",
+     "lrcalc_stretches": 9,
+     "degree": 8,
+     "values": [
+      "1",
+      "9",
+      "45",
+      "165",
+      "495",
+      "1287",
+      "3003",
+      "6435",
+      "12870",
+      "24310"
+     ],
+     "coefficients": [
+      "1",
+      "761/280",
+      "29531/10080",
+      "267/160",
+      "1069/1920",
+      "9/80",
+      "13/960",
+      "1/1120",
+      "1/40320"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 21,
+   "shards": 2,
+   "pairs": 12717,
+   "triples": 543063,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 542267,
+   "regime_B": 796,
+   "degree_histogram": {
+    "0": 352241,
+    "1": 107292,
+    "2": 47681,
+    "3": 21420,
+    "4": 9381,
+    "5": 3604,
+    "6": 1120,
+    "7": 289,
+    "8": 35
+   },
+   "digest": "5fa16136a542549a0a7e91066086114a7225ba60727d9709c926d9ff6bbc5df2",
+   "shard_seconds": 89.7,
+   "smallest_normalized_coefficient": {
+    "value": "1/362880",
+    "power": 8,
+    "record": {
+     "outer": [
+      6,
+      5,
+      4,
+      2,
+      2,
+      1,
+      1
+     ],
+     "inner": [
+      5,
+      3,
+      2,
+      1,
+      1
+     ],
+     "content": [
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "orientation": 0,
+     "regime": "B",
+     "lrcalc_stretches": 9,
+     "degree": 8,
+     "values": [
+      "1",
+      "9",
+      "45",
+      "165",
+      "495",
+      "1287",
+      "3003",
+      "6435",
+      "12870",
+      "24310"
+     ],
+     "coefficients": [
+      "1",
+      "761/280",
+      "29531/10080",
+      "267/160",
+      "1069/1920",
+      "9/80",
+      "13/960",
+      "1/1120",
+      "1/40320"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 22,
+   "shards": 2,
+   "pairs": 17198,
+   "triples": 865911,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 863553,
+   "regime_B": 2358,
+   "degree_histogram": {
+    "0": 538339,
+    "1": 174352,
+    "2": 82098,
+    "3": 40092,
+    "4": 19181,
+    "5": 8064,
+    "6": 2733,
+    "7": 866,
+    "8": 163,
+    "9": 22,
+    "10": 1
+   },
+   "digest": "2152ac5daccb0420dbacfbe1964254d4cb0d45a102665575ad7274f5809976fc",
+   "shard_seconds": 207.9,
+   "smallest_normalized_coefficient": {
+    "value": "1/3628800",
+    "power": 9,
+    "record": {
+     "outer": [
+      7,
+      6,
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "inner": [
+      4,
+      3,
+      2,
+      1,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      1,
+      1
+     ],
+     "orientation": 0,
+     "regime": "B",
+     "lrcalc_stretches": 10,
+     "degree": 9,
+     "values": [
+      "1",
+      "10",
+      "55",
+      "220",
+      "715",
+      "2002",
+      "5005",
+      "11440",
+      "24310",
+      "48620",
+      "92378"
+     ],
+     "coefficients": [
+      "1",
+      "7129/2520",
+      "6515/2016",
+      "4523/2268",
+      "95/128",
+      "3013/17280",
+      "5/192",
+      "29/12096",
+      "1/8064",
+      "1/362880"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 23,
+   "shards": 2,
+   "pairs": 23003,
+   "triples": 1356475,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 1350592,
+   "regime_B": 5883,
+   "degree_histogram": {
+    "0": 808166,
+    "1": 277756,
+    "2": 137544,
+    "3": 70521,
+    "4": 36754,
+    "5": 16730,
+    "6": 6237,
+    "7": 2142,
+    "8": 535,
+    "9": 86,
+    "10": 4
+   },
+   "digest": "5d01abfaf004b5d4ebe6c7f1401f3e9b64310d094a6044de9f6ebaeab39f8106",
+   "shard_seconds": 447.7,
+   "smallest_normalized_coefficient": {
+    "value": "1/3628800",
+    "power": 9,
+    "record": {
+     "outer": [
+      8,
+      6,
+      3,
+      2,
+      2,
+      1,
+      1
+     ],
+     "inner": [
+      5,
+      3,
+      2,
+      1,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      1,
+      1
+     ],
+     "orientation": 0,
+     "regime": "B",
+     "lrcalc_stretches": 10,
+     "degree": 9,
+     "values": [
+      "1",
+      "10",
+      "55",
+      "220",
+      "715",
+      "2002",
+      "5005",
+      "11440",
+      "24310",
+      "48620",
+      "92378"
+     ],
+     "coefficients": [
+      "1",
+      "7129/2520",
+      "6515/2016",
+      "4523/2268",
+      "95/128",
+      "3013/17280",
+      "5/192",
+      "29/12096",
+      "1/8064",
+      "1/362880"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 24,
+   "shards": 2,
+   "pairs": 30631,
+   "triples": 2114204,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 2099879,
+   "regime_B": 14325,
+   "degree_histogram": {
+    "0": 1206409,
+    "1": 436227,
+    "2": 226236,
+    "3": 122868,
+    "4": 68260,
+    "5": 33467,
+    "6": 13649,
+    "7": 5163,
+    "8": 1551,
+    "9": 344,
+    "10": 30
+   },
+   "digest": "50a450182bde94e4bb8679916ca8f9d3926df2879d8c8be410018b9450639348",
+   "shard_seconds": 1031.6,
+   "smallest_normalized_coefficient": {
+    "value": "1/21772800",
+    "power": 10,
+    "record": {
+     "outer": [
+      7,
+      6,
+      4,
+      3,
+      2,
+      1,
+      1
+     ],
+     "inner": [
+      4,
+      3,
+      2,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      2,
+      1
+     ],
+     "orientation": 0,
+     "regime": "B",
+     "lrcalc_stretches": 2,
+     "degree": 10,
+     "values": [
+      "1",
+      "12",
+      "77",
+      "352",
+      "1287",
+      "4004",
+      "11011",
+      "27456",
+      "63206",
+      "136136",
+      "277134",
+      "537472"
+     ],
+     "coefficients": [
+      "1",
+      "7633/2520",
+      "63797/16800",
+      "47911/18144",
+      "414061/362880",
+      "2789/8640",
+      "5263/86400",
+      "23/3024",
+      "73/120960",
+      "1/36288",
+      "1/1814400"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 25,
+   "shards": 2,
+   "pairs": 40409,
+   "triples": 3246263,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 3214509,
+   "regime_B": 31754,
+   "degree_histogram": {
+    "0": 1773223,
+    "1": 674351,
+    "2": 364805,
+    "3": 205582,
+    "4": 121091,
+    "5": 62979,
+    "6": 27806,
+    "7": 11448,
+    "8": 3843,
+    "9": 1012,
+    "10": 123
+   },
+   "digest": "1101eb3c50f202090d91df14d5e45360a272be70b90e8a5e20c20d883b3ed733",
+   "shard_seconds": 1693.1,
+   "smallest_normalized_coefficient": {
+    "value": "1/39916800",
+    "power": 10,
+    "record": {
+     "outer": [
+      7,
+      6,
+      5,
+      3,
+      2,
+      1,
+      1
+     ],
+     "inner": [
+      4,
+      3,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      2,
+      1
+     ],
+     "orientation": 1,
+     "regime": "B",
+     "lrcalc_stretches": 2,
+     "degree": 10,
+     "values": [
+      "1",
+      "11",
+      "66",
+      "286",
+      "1001",
+      "3003",
+      "8008",
+      "19448",
+      "43758",
+      "92378",
+      "184756",
+      "352716"
+     ],
+     "coefficients": [
+      "1",
+      "7381/2520",
+      "177133/50400",
+      "84095/36288",
+      "341693/362880",
+      "8591/34560",
+      "7513/172800",
+      "121/24192",
+      "11/30240",
+      "11/725760",
+      "1/3628800"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 26,
+   "shards": 2,
+   "pairs": 53070,
+   "triples": 4956634,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 4888684,
+   "regime_B": 67950,
+   "degree_histogram": {
+    "0": 2591200,
+    "1": 1030149,
+    "2": 576918,
+    "3": 340924,
+    "4": 211267,
+    "5": 115635,
+    "6": 54130,
+    "7": 24127,
+    "8": 9035,
+    "9": 2783,
+    "10": 457,
+    "11": 9
+   },
+   "digest": "c3927d571ab96071adbc158c8c4964f3bed85e66b6210693d1989c2482ad187d",
+   "shard_seconds": 3314.9,
+   "smallest_normalized_coefficient": {
+    "value": "1/39916800",
+    "power": 10,
+    "record": {
+     "outer": [
+      7,
+      6,
+      5,
+      3,
+      2,
+      2,
+      1
+     ],
+     "inner": [
+      4,
+      3,
+      3,
+      2,
+      1,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      2,
+      1
+     ],
+     "orientation": 0,
+     "regime": "B",
+     "lrcalc_stretches": 2,
+     "degree": 10,
+     "values": [
+      "1",
+      "11",
+      "66",
+      "286",
+      "1001",
+      "3003",
+      "8008",
+      "19448",
+      "43758",
+      "92378",
+      "184756",
+      "352716"
+     ],
+     "coefficients": [
+      "1",
+      "7381/2520",
+      "177133/50400",
+      "84095/36288",
+      "341693/362880",
+      "8591/34560",
+      "7513/172800",
+      "121/24192",
+      "11/30240",
+      "11/725760",
+      "1/3628800"
+     ]
+    }
+   }
+  },
+  {
+   "rows": 7,
+   "size": 27,
+   "shards": 4,
+   "pairs": 69146,
+   "triples": 7470768,
+   "negative": 0,
+   "with_zero_coefficient": 0,
+   "regime_A": 7333967,
+   "regime_B": 136801,
+   "degree_histogram": {
+    "0": 3736824,
+    "1": 1548882,
+    "2": 899639,
+    "3": 549738,
+    "4": 355953,
+    "5": 203622,
+    "6": 101052,
+    "7": 47684,
+    "8": 19390,
+    "9": 6596,
+    "10": 1336,
+    "11": 52
+   },
+   "digest": "93c6ff668ee5ebab55ef863124aa5d438bb6547249b55ab523e5358ff8d9141e",
+   "shard_seconds": 10003.1,
+   "smallest_normalized_coefficient": {
+    "value": "1/186278400",
+    "power": 11,
+    "record": {
+     "outer": [
+      8,
+      7,
+      5,
+      3,
+      2,
+      1,
+      1
+     ],
+     "inner": [
+      5,
+      4,
+      3,
+      2,
+      1
+     ],
+     "content": [
+      4,
+      3,
+      2,
+      2,
+      1
+     ],
+     "orientation": 0,
+     "regime": "B",
+     "lrcalc_stretches": 2,
+     "degree": 11,
+     "values": [
+      "1",
+      "14",
+      "102",
+      "520",
+      "2093",
+      "7098",
+      "21112",
+      "56576",
+      "139230",
+      "319124",
+      "688636",
+      "1410864",
+      "2762942"
+     ],
+     "coefficients": [
+      "1",
+      "88751/27720",
+      "217393/50400",
+      "2971937/907200",
+      "571043/362880",
+      "122263/241920",
+      "4807/43200",
+      "20393/1209600",
+      "209/120960",
+      "83/725760",
+      "1/226800",
+      "1/13305600"
+     ]
+    }
+   }
+  }
+ ]
+}
