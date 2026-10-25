@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-57-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-25-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
+**문제 57개** — ✅ 증명: 25 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
 
 ### OEIS
 
@@ -192,6 +192,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 | [R(3,10)의 C20-bicirculant 부분 경우 배제](problems/ramsey-r3-10/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | 자기동형 작용의 한 부류만을 SAT/DRUP 인증으로 배제한다. 독립수가 <= 9인 삼각형 없는 40정점 그래프는 순환 구조가 20^2인 C20 작용 아래 불변일 수 없으므로, 가상의 40정점 (3,10) Ramsey 그래프는 그러한 C20-bicirculant일 수 없다. R(3,10)이 {40,41} 중 어느 값인지는 결정하지 못한다. |
 | [그래프 재색칠 반지름 — 세분된 클로 반례](problems/recoloring-radius-q15/README.ko.md) | 🔴 반례 | 인증서 | `GPT-5.6 Sol` | 꼭짓점 7개의 세분된 클로는 k=4에서 질문 15를 반박한다. C_4(G)와 C_5(G)는 모두 연결이지만, 정확한 완전 탐색으로 얻은 두 반지름은 각각 9와 10이다. |
 | [WOWII 그래프 추측 61의 부분 결과](problems/wowii-graph-conjecture-61/README.ko.md) | 🟡 부분 결과 | — | `GPT-5.6 Sol` | 부분 결과의 비형식적 증명만 주장한다. 일반적으로 f(G) >= alpha(G) + ceil(D(G)/4)가 성립하고, 지름에 관한 귀결과 함께 f(G) >= alpha(G)+1이 성립하며, 지름이 {0,1,2,3,5,6,9} 중 하나인 모든 연결 그래프와 모든 트리에 대해 원래 추측 f(G) >= r(G) + ceil(D(G)/3)이 성립한다. |
+| [WOWII 그래프 추측 96 — 꼭짓점이 두 개 이상인 연결 그래프에서 증명](problems/wowii-graph-conjecture-96/README.ko.md) | ✅ 증명 | Lean + 인증서 | `Claude Opus 5.5 (max effort)` | WOWII 추측 96의 Formal Conjectures 명제, 즉 꼭짓점이 두 개 이상인 모든 유한 단순 연결 그래프가 alpha(G) <= 1 + min_v dist_even(v) * (max_v lambda(v) - 1)을 만족한다는 것을 Lean으로 증명했습니다. 모든 별 그래프 K_{1,m}에서 등호가 성립합니다(직접 계산이며 Lean 증명에는 포함되지 않습니다). 원문 행은 upstream 명제가 제외하는 K_1에서만 성립하지 않습니다. |
 
 ### 기타
 

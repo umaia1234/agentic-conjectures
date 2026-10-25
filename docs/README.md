@@ -41,4 +41,5 @@ problem rather than assembling another global copy.
 | [OEIS A354747 first unknown case a(100943)](../problems/oeis-a354747/README.md) | 🔴 refuted | [Detailed derivation](../problems/oeis-a354747/DETAILS.md) |
 | [OEIS A395412 certified finite nonvanishing extension](../problems/oeis-a395412/README.md) | 🟡 partial | [Detailed derivation](../problems/oeis-a395412/DETAILS.md) |
 | [Graph recoloring radius — subdivided-claw counterexample](../problems/recoloring-radius-q15/README.md) | 🔴 refuted | [Detailed derivation](../problems/recoloring-radius-q15/DETAILS.md) |
+| [WOWII Graph Conjecture 96 — proved for connected graphs on at least two vertices](../problems/wowii-graph-conjecture-96/README.md) | ✅ proved | [Detailed derivation](../problems/wowii-graph-conjecture-96/DETAILS.md) |
 <!-- DETAILS:END -->

@@ -1,0 +1,83 @@
+id: wowii-graph-conjecture-96
+title: WOWII Graph Conjecture 96 — proved for connected graphs on at least two vertices
+title_ko: WOWII 그래프 추측 96 — 꼭짓점이 두 개 이상인 연결 그래프에서 증명
+domain: graph-combinatorics
+source_url: http://cms.dt.uh.edu/faculty/delavinae/research/wowII/
+claimed_status: proved
+claim: >-
+  Lean-proves the Formal Conjectures statement of WOWII Conjecture 96: every finite connected
+  simple graph on at least two vertices satisfies alpha(G) <= 1 + min_v dist_even(v) * (max_v
+  lambda(v) - 1). Every star K_{1,m} attains the bound (a direct computation, not part of the Lean
+  proof); the literal row fails only on K_1, which the upstream statement excludes.
+claim_ko: >-
+  WOWII 추측 96의 Formal Conjectures 명제, 즉 꼭짓점이 두 개 이상인 모든 유한 단순 연결 그래프가
+  alpha(G) <= 1 + min_v dist_even(v) * (max_v lambda(v) - 1)을 만족한다는 것을 Lean으로
+  증명했습니다. 모든 별 그래프 K_{1,m}에서 등호가 성립합니다(직접 계산이며 Lean 증명에는 포함되지
+  않습니다). 원문 행은 upstream 명제가 제외하는 K_1에서만 성립하지 않습니다.
+artifacts:
+- path: ../../AgenticConjectures/WowiiGraphConjecture96.lean
+  kind: lean-proof
+- path: DETAILS.md
+  kind: mathematical-details
+- path: verify_wowii96.py
+  kind: search-code
+- path: check_wowii96.c
+  kind: search-code
+- path: upstream_statement_check.lean
+  kind: other
+- path: upstream/GraphConjecture96.lean
+  kind: upstream-lean
+- path: upstream/README.md
+  kind: upstream-source
+verify:
+- cmd: python3 verify_wowii96.py
+  expected_runtime: under 1 second
+  ci_feasible: true
+- cmd: for n in 2 3 4 5 6 7 8 9; do geng -cq $n; done | python3 verify_wowii96.py --graph6
+  expected_runtime: about 25 seconds
+  ci_feasible: false
+  requires: [geng]
+- cmd: for k in 0 1 2; do geng -cq 10 $k/3 | python3 verify_wowii96.py --graph6; done
+  expected_runtime: about 25 minutes on one thread (the three parts can run in parallel)
+  ci_feasible: false
+  requires: [geng]
+- cmd: cc -O2 -o /tmp/check_wowii96 check_wowii96.c && /tmp/check_wowii96 --selftest && for n in 2 3 4 5 6 7 8 9; do geng -cq $n; done | /tmp/check_wowii96
+  expected_runtime: under 1 second
+  ci_feasible: false
+  requires: [cc, geng]
+- cmd: cc -O2 -o /tmp/check_wowii96 check_wowii96.c && geng -cq 10 | /tmp/check_wowii96
+  expected_runtime: about 6 seconds
+  ci_feasible: false
+  requires: [cc, geng]
+- cmd: cd ../.. && lake env lean problems/wowii-graph-conjecture-96/upstream_statement_check.lean
+  expected_runtime: about 5 seconds after lake build
+  ci_feasible: false
+  requires: [lake]
+lean:
+  modules:
+  - AgenticConjectures.WowiiGraphConjecture96
+  theorems:
+  - AgenticConjectures.WowiiGraphConjecture96.conjecture96
+  - AgenticConjectures.WowiiGraphConjecture96.statement_holds
+  - AgenticConjectures.WowiiGraphConjecture96.indepNum_le_perRoot
+  - AgenticConjectures.WowiiGraphConjecture96.indepNum_le_of_two_le
+  - AgenticConjectures.WowiiGraphConjecture96.indepNum_le_one
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: proof, Lean 4 formalization, numerical check, and documentation
+notes: >-
+  The proved statement is the Formal Conjectures theorem at c094b97, which assumes [Nontrivial α]
+  (at least two vertices); the literal WOWII row has no such hypothesis and is false on K_1
+  (1 <= 0), as the upstream docstring and an earlier public formalization (txmy/ultra-mathematician,
+  2026-07-25) note. The definitions distEven and indepNeighborsCard are copied term for term and
+  the theorem text is verbatim; upstream_statement_check.lean re-elaborates the upstream statement
+  over the upstream-namespaced definitions and closes it with our proof, but it is not imported by
+  the library, so CI does not run it. The Python script is only a cross-check (all connected graphs
+  up to 10 vertices, no violations), and check_wowii96.c, a second implementation in C that shares
+  no code with it, reproduces every count. Searches on 2026-10-25 (UTC) found no earlier proof;
+  this is not a novelty claim, no human has reviewed the proof, and nothing has been submitted
+  externally. The proof is compiled against Lean/mathlib v4.30.0, while FC c094b97 pins v4.33.1;
+  the graph definitions the statement uses are textually identical in both, except that
+  SimpleGraph.symm changed from Symmetric to the equivalent Std.Symm. The proof has not been
+  compiled against v4.33.1.
