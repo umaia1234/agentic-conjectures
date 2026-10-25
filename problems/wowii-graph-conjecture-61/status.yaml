@@ -4,24 +4,108 @@ title_ko: WOWII 그래프 추측 61의 부분 결과
 domain: graph-combinatorics
 source_url: http://cms.dt.uh.edu/faculty/delavinae/research/wowII/
 claimed_status: partial
-claim: 'Claims informal proofs of partial results only: f(G) >= alpha(G) + ceil(D(G)/4) in general, f(G)
-  >= alpha(G)+1 with diameter consequences, and the original conjecture f(G) >= r(G) + ceil(D(G)/3) for
-  all connected graphs of diameter in {0,1,2,3,5,6,9} and for all trees.'
+claim: 'Claims informal proofs of partial results (f(G) >= alpha(G) + ceil(D(G)/4); f(G) >= alpha(G)+1,
+  also proved in Lean, with f = alpha+1 forcing D(G) <= 4; the original conjecture f(G) >= r(G) + ceil(D(G)/3)
+  for diameters {0,1,2,3,5,6,9} and for all trees) and an exhaustive two-implementation computer check
+  finding no counterexample among all connected graphs with n <= 11 vertices, all trees with n <= 26,
+  connected graphs of cyclomatic number <= 4, 3, 2 with n = 12-15, 16-17, 18-20, and connected graphs
+  with diameter D >= n-5 and n = 12-18.'
 claim_ko: >-
-  부분 결과의 비형식적 증명만 주장한다. 일반적으로 f(G) >= alpha(G) + ceil(D(G)/4)가 성립하고, 지름에 관한
-  귀결과 함께 f(G) >= alpha(G)+1이 성립하며, 지름이 {0,1,2,3,5,6,9} 중 하나인 모든 연결 그래프와 모든
-  트리에 대해 원래 추측 f(G) >= r(G) + ceil(D(G)/3)이 성립한다.
+  부분 결과의 비형식적 증명과 두 구현으로 한 전수 컴퓨터 검증을 주장한다. 증명한 것은 f(G) >= alpha(G) +
+  ceil(D(G)/4), f(G) >= alpha(G)+1(Lean으로도 증명)과 f = alpha+1이면 D(G) <= 4라는 귀결, 그리고 지름이
+  {0,1,2,3,5,6,9}인 연결 그래프와 모든 트리에서의 원래 추측 f(G) >= r(G) + ceil(D(G)/3)이다. 전수 검증에서는
+  n <= 11인 모든 연결 그래프, n <= 26인 모든 트리, n = 12-15, 16-17, 18-20에서 순환 차수가 각각 4, 3, 2
+  이하인 연결 그래프, n = 12-18에서 지름 D >= n-5인 연결 그래프 중에 반례가 없었다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof
+- path: ../../AgenticConjectures/WowiiGraphConjecture61.lean
+  kind: lean-proof
+- path: wowii61.cpp
+  kind: search-code
+- path: wowii61_ref.py
+  kind: certificate-script
+- path: wowii61_summary.py
+  kind: certificate-script
+- path: diampath_gen.cpp
+  kind: search-code
+- path: run_exhaustive.sh
+  kind: search-code
+- path: verify_small.py
+  kind: certificate-script
+- path: results/connected_n1-10.txt
+  kind: data
+- path: results/connected_n11.txt
+  kind: data
+- path: results/trees_n1-26.txt
+  kind: data
+- path: results/sparse.txt
+  kind: data
+- path: results/diampath_n12-18.txt
+  kind: data
+- path: results/diampath_validation.log
+  kind: data
+- path: results/reference_check.log
+  kind: data
 - path: upstream/GraphConjecture61.lean
   kind: upstream-lean
-verify: []
+verify:
+- cmd: python3 verify_small.py
+  expected_runtime: ~5 s (Apple M5 Max); compiles wowii61.cpp, labeled n <= 7 with brute-force crosscheck, Python
+    reference on labeled n <= 6, re-checks the committed results/ summaries
+  ci_feasible: true
+  requires: [g++]
+- cmd: bash run_exhaustive.sh /tmp/wowii61-out conn 3 && diff /tmp/wowii61-out/connected_n1-10.txt
+    results/connected_n1-10.txt
+  expected_runtime: ~45 s wall with 3 jobs (70 s CPU); all connected graphs n <= 10 with brute-force crosscheck
+  ci_feasible: false
+  requires: [geng, g++]
+- cmd: bash run_exhaustive.sh /tmp/wowii61-out conn11 3 && diff /tmp/wowii61-out/connected_n11.txt results/connected_n11.txt
+  expected_runtime: ~15 min wall with 3 jobs (27 min CPU) for the 1006700565 connected graphs on 11 vertices
+  ci_feasible: false
+  requires: [geng, g++]
+- cmd: bash run_exhaustive.sh /tmp/wowii61-out trees 2 && diff /tmp/wowii61-out/trees_n1-26.txt results/trees_n1-26.txt
+  expected_runtime: ~26 min wall with 2 jobs (30 min CPU) for the 447672596 trees with n <= 26
+  ci_feasible: false
+  requires: [gentreeg, g++]
+- cmd: bash run_exhaustive.sh /tmp/wowii61-out sparse 3 && diff /tmp/wowii61-out/sparse.txt results/sparse.txt
+  expected_runtime: ~37 min wall with 3 jobs (73 min CPU) for the 626942607 sparse connected graphs with n = 12..20
+  ci_feasible: false
+  requires: [geng, g++]
+- cmd: bash run_exhaustive.sh /tmp/wowii61-out diampath 3 && diff /tmp/wowii61-out/diampath_n12-18.txt
+    results/diampath_n12-18.txt
+  expected_runtime: ~30 s wall with 3 jobs; needs the conn and conn11 outputs (generator validation against geng
+    for n <= 11)
+  ci_feasible: false
+  requires: [shortg, g++]
+- cmd: bash run_exhaustive.sh /tmp/wowii61-out ref 1
+  expected_runtime: ~21 min wall with 1 job (11 min CPU); needs the conn and conn11 outputs; set PYTHON to a python3
+    with networkx to add the networkx cross-check
+  ci_feasible: false
+  requires: [geng, g++]
+lean:
+  modules:
+  - AgenticConjectures.WowiiGraphConjecture61
+  theorems:
+  - AgenticConjectures.WowiiGraphConjecture61.card_le_largestInducedForestSize
+  - AgenticConjectures.WowiiGraphConjecture61.isAcyclic_induce_insert
+  - AgenticConjectures.WowiiGraphConjecture61.indepNum_add_one_le_largestInducedForestSize
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: README states the results do not close the remaining diameters, so the original conjecture is not
-  resolved; there is no computational certificate and no completed Lean proof; arguments rely on the basic
-  inequality r(G) <= alpha(G); the upstream FormalConjectures declaration remains sorry-marked and research
-  open.
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: exhaustive computer check (C++ checker, Python/networkx reference, nauty runs, diametral-path generator,
+    CI check) and Lean proof of inequality (5)
+notes: 'r(G) is the Havel-Hakimi residue (SimpleGraph.residue), not the radius. The computer check is a finite
+  negative search, not a proof: it covers only the listed families, and its completeness relies on nauty (geng,
+  gentreeg, shortg), with counts matching OEIS A001349 and A000055; the sparse-family counts are not compared
+  with an independent source. The large runs are local; CI re-runs the labeled n <= 7 enumeration with the
+  brute-force crosscheck and the Python reference on labeled n <= 6, and re-reads the committed summaries.
+  The minimum slack f - r - ceil(D/3) is 0 at every order (stars, K_n) and is 0, 1, 2, 2 at the residual
+  diameters 4, 7, 8, >= 10 within the families. The stronger inequality f >= alpha + ceil(D/3) fails at
+  diameters 4, 7, 8 and 10-14 in the data, so those diameters need more about r than r <= alpha. The Lean
+  module proves only inequality (5), with a local copy of the upstream largestInducedForestSize body; Theorems
+  1, 3, 4 and implication (6) stay informal and rely on r(G) <= alpha(G) from the literature. The upstream
+  FormalConjectures declaration remains sorry-marked and research open.'

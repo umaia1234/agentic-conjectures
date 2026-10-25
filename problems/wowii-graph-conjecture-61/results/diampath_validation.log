@@ -1,0 +1,44 @@
+# diampath_gen validation (stage "diampath" of run_exhaustive.sh, 2026-10-24):
+# number of isomorphism classes printed by 'diampath_gen n D | shortg -q' versus
+# the number of connected graphs with n vertices and diameter D in the geng runs
+# (results/connected_n1-10.txt, results/connected_n11.txt), D >= max(1, n-5).
+validate n=2 D=1: diampath_gen classes 1, geng 1
+validate n=3 D=1: diampath_gen classes 1, geng 1
+validate n=3 D=2: diampath_gen classes 1, geng 1
+validate n=4 D=1: diampath_gen classes 1, geng 1
+validate n=4 D=2: diampath_gen classes 4, geng 4
+validate n=4 D=3: diampath_gen classes 1, geng 1
+validate n=5 D=1: diampath_gen classes 1, geng 1
+validate n=5 D=2: diampath_gen classes 14, geng 14
+validate n=5 D=3: diampath_gen classes 5, geng 5
+validate n=5 D=4: diampath_gen classes 1, geng 1
+validate n=6 D=1: diampath_gen classes 1, geng 1
+validate n=6 D=2: diampath_gen classes 59, geng 59
+validate n=6 D=3: diampath_gen classes 43, geng 43
+validate n=6 D=4: diampath_gen classes 8, geng 8
+validate n=6 D=5: diampath_gen classes 1, geng 1
+validate n=7 D=2: diampath_gen classes 373, geng 373
+validate n=7 D=3: diampath_gen classes 387, geng 387
+validate n=7 D=4: diampath_gen classes 82, geng 82
+validate n=7 D=5: diampath_gen classes 9, geng 9
+validate n=7 D=6: diampath_gen classes 1, geng 1
+validate n=8 D=3: diampath_gen classes 5797, geng 5797
+validate n=8 D=4: diampath_gen classes 1027, geng 1027
+validate n=8 D=5: diampath_gen classes 125, geng 125
+validate n=8 D=6: diampath_gen classes 12, geng 12
+validate n=8 D=7: diampath_gen classes 1, geng 1
+validate n=9 D=4: diampath_gen classes 19320, geng 19320
+validate n=9 D=5: diampath_gen classes 1818, geng 1818
+validate n=9 D=6: diampath_gen classes 180, geng 180
+validate n=9 D=7: diampath_gen classes 13, geng 13
+validate n=9 D=8: diampath_gen classes 1, geng 1
+validate n=10 D=5: diampath_gen classes 37856, geng 37856
+validate n=10 D=6: diampath_gen classes 2928, geng 2928
+validate n=10 D=7: diampath_gen classes 239, geng 239
+validate n=10 D=8: diampath_gen classes 16, geng 16
+validate n=10 D=9: diampath_gen classes 1, geng 1
+validate n=11 D=6: diampath_gen classes 62819, geng 62819
+validate n=11 D=7: diampath_gen classes 4243, geng 4243
+validate n=11 D=8: diampath_gen classes 310, geng 310
+validate n=11 D=9: diampath_gen classes 17, geng 17
+validate n=11 D=10: diampath_gen classes 1, geng 1
