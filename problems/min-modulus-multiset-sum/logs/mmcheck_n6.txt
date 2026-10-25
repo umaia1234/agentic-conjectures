@@ -1,0 +1,158 @@
+# mmcheck 6 6 72   (mmcheck.c sha256 a2d7dba06bc1b4d8...; gcc -O3 -std=c11; 2026-10-24)
+N=6 n=6 found=0 nodes=1 secs=0.000 depth: 1 0 0 0
+N=7 n=6 found=0 nodes=1 secs=0.000 depth: 1 0 0 0
+N=8 n=6 found=0 nodes=2 secs=0.000 depth: 2 0 0 0
+N=9 n=6 found=0 nodes=1 secs=0.000 depth: 1 0 0 0
+N=10 n=6 found=0 nodes=2 secs=0.000 depth: 2 0 0 0
+N=11 n=6 found=0 nodes=1 secs=0.000 depth: 1 0 0 0
+N=12 n=6 found=0 nodes=5 secs=0.000 depth: 5 0 0 0
+N=13 n=6 found=0 nodes=2 secs=0.000 depth: 2 0 0 0
+N=14 n=6 found=0 nodes=4 secs=0.000 depth: 4 0 0 0
+N=15 n=6 found=0 nodes=4 secs=0.000 depth: 4 0 0 0
+N=16 n=6 found=0 nodes=7 secs=0.000 depth: 6 1 0 0
+N=17 n=6 found=0 nodes=2 secs=0.000 depth: 2 0 0 0
+N=18 n=6 found=0 nodes=13 secs=0.000 depth: 7 6 0 0
+N=19 n=6 found=0 nodes=5 secs=0.000 depth: 3 2 0 0
+N=20 n=6 found=0 nodes=15 secs=0.000 depth: 8 7 0 0
+N=21 n=6 found=0 nodes=14 secs=0.000 depth: 7 7 0 0
+N=22 n=6 found=0 nodes=16 secs=0.000 depth: 6 10 0 0
+N=23 n=6 found=0 nodes=9 secs=0.000 depth: 3 6 0 0
+N=24 n=6 found=0 nodes=41 secs=0.000 depth: 17 24 0 0
+N=25 n=6 found=0 nodes=16 secs=0.000 depth: 4 12 0 0
+N=26 n=6 found=0 nodes=26 secs=0.000 depth: 8 18 0 0
+N=27 n=6 found=0 nodes=24 secs=0.000 depth: 6 18 0 0
+N=28 n=6 found=0 nodes=38 secs=0.000 depth: 12 26 0 0
+N=29 n=6 found=0 nodes=20 secs=0.000 depth: 4 16 0 0
+N=30 n=6 found=0 nodes=71 secs=0.000 depth: 19 52 0 0
+N=31 n=6 found=0 nodes=24 secs=0.000 depth: 5 19 0 0
+N=32 n=6 found=0 nodes=53 secs=0.000 depth: 14 39 0 0
+N=33 n=6 found=0 nodes=42 secs=0.000 depth: 9 33 0 0
+N=34 n=6 found=0 nodes=51 secs=0.000 depth: 10 41 0 0
+N=35 n=6 found=0 nodes=51 secs=0.000 depth: 9 42 0 0
+N=36 n=6 found=0 nodes=106 secs=0.000 depth: 23 83 0 0
+N=37 n=6 found=0 nodes=36 secs=0.000 depth: 6 30 0 0
+N=38 n=6 found=0 nodes=70 secs=0.000 depth: 12 58 0 0
+N=39 n=6 found=0 nodes=67 secs=0.000 depth: 12 55 0 0
+N=40 n=6 found=0 nodes=123 secs=0.000 depth: 24 99 0 0
+N=41 n=6 found=0 nodes=46 secs=0.000 depth: 6 40 0 0
+N=42 n=6 found=0 nodes=161 secs=0.000 depth: 27 134 0 0
+N=43 n=6 found=0 nodes=52 secs=0.000 depth: 7 45 0 0
+N=44 n=6 found=0 nodes=121 secs=0.000 depth: 18 103 0 0
+N=45 n=6 found=0 nodes=116 secs=0.000 depth: 17 99 0 0
+N=46 n=6 found=0 nodes=116 secs=0.000 depth: 14 102 0 0
+N=47 n=6 found=0 nodes=66 secs=0.000 depth: 7 59 0 0
+N=48 n=6 found=0 nodes=240 secs=0.000 depth: 39 201 0 0
+N=49 n=6 found=0 nodes=87 secs=0.000 depth: 10 77 0 0
+N=50 n=6 found=0 nodes=179 secs=0.000 depth: 20 159 0 0
+N=51 n=6 found=0 nodes=123 secs=0.000 depth: 14 109 0 0
+N=52 n=6 found=0 nodes=182 secs=0.000 depth: 22 160 0 0
+N=53 n=6 found=0 nodes=91 secs=0.000 depth: 8 83 0 0
+N=54 n=6 found=0 nodes=262 secs=0.000 depth: 29 233 0 0
+N=55 n=6 found=0 nodes=138 secs=0.000 depth: 13 125 0 0
+N=56 n=6 found=0 nodes=261 secs=0.000 depth: 32 229 0 0
+N=57 n=6 found=0 nodes=166 secs=0.000 depth: 17 149 0 0
+N=58 n=6 found=0 nodes=206 secs=0.000 depth: 18 188 0 0
+N=59 n=6 found=0 nodes=113 secs=0.000 depth: 9 104 0 0
+SOL N=60 0 1 3 31 15 7
+N=60 n=6 found=1 nodes=475 secs=0.000 depth: 55 418 1 1
+N=61 n=6 found=0 nodes=118 secs=0.000 depth: 10 108 0 0
+SOL N=62 0 1 3 31 15 7
+SOL N=62 0 1 16 30 28 24
+N=62 n=6 found=2 nodes=240 secs=0.000 depth: 20 215 3 2
+SOL N=63 0 1 3 31 15 7
+N=63 n=6 found=1 nodes=266 secs=0.000 depth: 24 240 1 1
+SOL N=64 0 1 3 51 39 7
+SOL N=64 0 1 3 31 15 7
+N=64 n=6 found=2 nodes=303 secs=0.000 depth: 30 267 4 2
+N=65 n=6 found=0 nodes=196 secs=0.000 depth: 16 180 0 0
+N=66 n=6 found=0 nodes=455 secs=0.000 depth: 39 416 0 0
+N=67 n=6 found=0 nodes=152 secs=0.000 depth: 11 141 0 0
+SOL N=68 0 1 3 63 29 17
+SOL N=68 0 1 3 55 43 7
+SOL N=68 0 1 3 55 35 27
+SOL N=68 0 1 4 62 54 34
+SOL N=68 0 1 4 52 40 6
+SOL N=68 0 1 6 52 40 32
+N=68 n=6 found=6 nodes=357 secs=0.000 depth: 28 312 11 6
+N=69 n=6 found=0 nodes=247 secs=0.000 depth: 19 228 0 0
+SOL N=70 0 1 3 65 55 35
+SOL N=70 0 1 4 54 44 36
+SOL N=70 0 1 4 36 16 6
+SOL N=70 0 1 5 37 17 7
+SOL N=70 0 1 5 35 27 25
+SOL N=70 0 1 9 39 35 19
+SOL N=70 0 1 9 35 31 11
+N=70 n=6 found=7 nodes=485 secs=0.000 depth: 38 430 10 7
+N=71 n=6 found=0 nodes=172 secs=0.000 depth: 11 161 0 0
+SOL N=72 0 1 3 67 57 37
+SOL N=72 0 1 3 67 51 39
+SOL N=72 0 1 3 67 31 19
+SOL N=72 0 1 3 66 54 37
+SOL N=72 0 1 3 66 37 18
+SOL N=72 0 1 3 63 57 37
+SOL N=72 0 1 3 63 55 39
+SOL N=72 0 1 3 63 39 19
+SOL N=72 0 1 3 63 37 21
+SOL N=72 0 1 3 57 45 37
+SOL N=72 0 1 3 57 43 7
+SOL N=72 0 1 3 57 37 27
+SOL N=72 0 1 3 57 37 9
+SOL N=72 0 1 3 55 45 39
+SOL N=72 0 1 3 55 43 7
+SOL N=72 0 1 3 55 39 27
+SOL N=72 0 1 3 55 39 9
+SOL N=72 0 1 3 55 39 7
+SOL N=72 0 1 3 54 48 37
+SOL N=72 0 1 3 54 37 30
+SOL N=72 0 1 3 54 37 12
+SOL N=72 0 1 3 53 37 29
+SOL N=72 0 1 3 51 43 15
+SOL N=72 0 1 3 51 31 15
+SOL N=72 0 1 3 48 37 18
+SOL N=72 0 1 3 45 39 19
+SOL N=72 0 1 3 45 37 21
+SOL N=72 0 1 3 43 15 7
+SOL N=72 0 1 3 39 27 19
+SOL N=72 0 1 3 39 19 9
+SOL N=72 0 1 3 39 19 7
+SOL N=72 0 1 3 39 15 7
+SOL N=72 0 1 3 37 30 18
+SOL N=72 0 1 3 37 27 21
+SOL N=72 0 1 3 37 21 9
+SOL N=72 0 1 3 37 18 12
+SOL N=72 0 1 3 31 15 7
+SOL N=72 0 1 4 64 58 36
+SOL N=72 0 1 4 64 36 22
+SOL N=72 0 1 4 60 52 46
+SOL N=72 0 1 4 60 36 6
+SOL N=72 0 1 4 58 36 28
+SOL N=72 0 1 4 54 48 12
+SOL N=72 0 1 4 54 42 6
+SOL N=72 0 1 4 54 40 6
+SOL N=72 0 1 4 52 46 12
+SOL N=72 0 1 4 42 18 6
+SOL N=72 0 1 4 40 18 6
+SOL N=72 0 1 4 36 28 22
+SOL N=72 0 1 4 36 24 6
+SOL N=72 0 1 5 65 63 29
+SOL N=72 0 1 5 65 29 19
+SOL N=72 0 1 5 63 29 27
+SOL N=72 0 1 5 63 27 25
+SOL N=72 0 1 5 61 59 37
+SOL N=72 0 1 5 61 53 51
+SOL N=72 0 1 5 55 41 7
+SOL N=72 0 1 5 51 49 13
+SOL N=72 0 1 5 49 47 13
+SOL N=72 0 1 5 43 41 19
+SOL N=72 0 1 5 41 17 7
+SOL N=72 0 1 5 41 13 11
+SOL N=72 0 1 5 37 27 25
+SOL N=72 0 1 5 37 25 23
+SOL N=72 0 1 5 37 17 7
+SOL N=72 0 1 5 37 13 11
+SOL N=72 0 1 6 52 36 24
+SOL N=72 0 1 6 42 34 18
+SOL N=72 0 1 7 53 41 17
+SOL N=72 0 1 8 32 28 10
+SOL N=72 0 1 8 28 24 10
+N=72 n=6 found=71 nodes=777 secs=0.000 depth: 61 550 95 71

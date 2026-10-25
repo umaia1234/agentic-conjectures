@@ -1,0 +1,95 @@
+id: min-modulus-multiset-sum
+title: "Fonollosa's Conjecture 1 — minimum modulus for unique multiset sums"
+title_ko: "Fonollosa 추측 1 — 유일 중복집합 합 문제의 최소 법"
+domain: other
+source_url: "https://arxiv.org/abs/2607.08366"
+claimed_status: partial
+claim: >-
+  Lean-proves that every valid n-subset of ZMod N has N >= 2^(n-1)+n-2 and N >= n(n-1), hence
+  Conjecture 1 for n <= 4; two independent exhaustive searches confirm Conjecture 1 for n <= 9 and
+  find that at N = 2^n-2^floor(log2 n) the valid n-sets form the single affine orbit of {2^k-1},
+  while the conjecture remains open for n >= 10.
+claim_ko: >-
+  Lean으로 ZMod N의 모든 유효한 n-부분집합이 N >= 2^(n-1)+n-2와 N >= n(n-1)을 만족함을 증명하여
+  n <= 4에서 추측 1을 얻었다. 서로 독립적인 두 전수 탐색은 n <= 9에서 추측 1을 확인하고,
+  N = 2^n-2^floor(log2 n)에서 유효한 n-집합이 {2^k-1}의 아핀 궤도 하나뿐임을 보인다.
+  n >= 10에서는 추측이 여전히 미해결이다.
+artifacts:
+- path: DETAILS.md
+  kind: mathematical-details
+- path: ../../AgenticConjectures/MinModulusMultisetSum.lean
+  kind: lean-proof
+- path: verify_search.py
+  kind: certificate-script
+- path: mmsearch.cpp
+  kind: search-code
+- path: mmcheck.c
+  kind: search-code
+- path: brute.py
+  kind: search-code
+- path: logs/mmsearch_n3.txt
+  kind: data
+- path: logs/mmsearch_n4.txt
+  kind: data
+- path: logs/mmsearch_n5.txt
+  kind: data
+- path: logs/mmsearch_n6.txt
+  kind: data
+- path: logs/mmsearch_n7.txt
+  kind: data
+- path: logs/mmsearch_n8.txt
+  kind: data
+- path: logs/mmsearch_n9.txt
+  kind: data
+- path: logs/mmcheck_n3.txt
+  kind: data
+- path: logs/mmcheck_n4.txt
+  kind: data
+- path: logs/mmcheck_n5.txt
+  kind: data
+- path: logs/mmcheck_n6.txt
+  kind: data
+- path: logs/mmcheck_n7.txt
+  kind: data
+- path: logs/mmcheck_n8.txt
+  kind: data
+- path: logs/mmcheck_n9.txt
+  kind: data
+- path: upstream/MinModulus.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 verify_search.py
+  expected_runtime: "about 4 s (all committed logs; recomputation for n<=7; brute force for n<=5)"
+  ci_feasible: true
+  requires: [g++, gcc]
+- cmd: python3 verify_search.py --recompute 8 --no-brute
+  expected_runtime: "about 1 min (53 s locally)"
+  ci_feasible: false
+  requires: [g++, gcc]
+- cmd: python3 verify_search.py --recompute 9 --threads 3 --no-brute
+  expected_runtime: "about 6 single-thread hours (1.8 h mmsearch + 4.4 h mmcheck); roughly 2 h wall with 3 threads"
+  ci_feasible: false
+  requires: [g++, gcc]
+lean:
+  modules:
+  - AgenticConjectures.MinModulusMultisetSum
+  theorems:
+  - AgenticConjectures.MinModulusMultisetSum.IsValidMod.two_pow_le
+  - AgenticConjectures.MinModulusMultisetSum.IsValidMod.card_mul_card_sub_one_le
+  - AgenticConjectures.MinModulusMultisetSum.IsValidMod.two_pow_add_le
+  - AgenticConjectures.MinModulusMultisetSum.statement_of_le_four
+attribution:
+- model: "Claude Opus 5.5 (max effort)"
+  harness: "Claude Code"
+  scope: >-
+    problem setup and prior-art check; Lean 4 lower bounds and the cases n <= 4; two exhaustive
+    search implementations, brute-force cross-check and n <= 9 runs; documentation
+notes: >-
+  Partial result only: Conjecture 1 is open for n >= 10, and the Lean bounds are far below the
+  conjectured 2^n-2^floor(log2 n). The bound N >= 2^(n-1) is M. Inal's theorem (OSF preprint,
+  July 2026) specialized to cyclic groups; the paper's own CP-SAT certificates cover n <= 7, so the
+  new exhaustive range is n = 8, 9. The n = 8, 9 claims rest on two independently written C/C++
+  searches that agree on every modulus, plus brute force for n <= 5; CI re-runs n <= 7 and re-checks
+  the committed n = 8, 9 logs without recomputing them. The search reduction is proved in DETAILS.md
+  but not formalized. No novelty or priority is claimed; nothing has been reported to the author or
+  submitted upstream.

@@ -1,0 +1,203 @@
+# mmcheck 5 5 40   (mmcheck.c sha256 a2d7dba06bc1b4d8...; gcc -O3 -std=c11; 2026-10-24)
+N=5 n=5 found=0 nodes=0 secs=0.000 depth: 0 0 0
+N=6 n=5 found=0 nodes=1 secs=0.000 depth: 1 0 0
+N=7 n=5 found=0 nodes=1 secs=0.000 depth: 1 0 0
+N=8 n=5 found=0 nodes=2 secs=0.000 depth: 2 0 0
+N=9 n=5 found=0 nodes=1 secs=0.000 depth: 1 0 0
+N=10 n=5 found=0 nodes=2 secs=0.000 depth: 2 0 0
+N=11 n=5 found=0 nodes=1 secs=0.000 depth: 1 0 0
+N=12 n=5 found=0 nodes=5 secs=0.000 depth: 5 0 0
+N=13 n=5 found=0 nodes=2 secs=0.000 depth: 2 0 0
+N=14 n=5 found=0 nodes=4 secs=0.000 depth: 4 0 0
+N=15 n=5 found=0 nodes=4 secs=0.000 depth: 4 0 0
+N=16 n=5 found=0 nodes=6 secs=0.000 depth: 6 0 0
+N=17 n=5 found=0 nodes=2 secs=0.000 depth: 2 0 0
+N=18 n=5 found=0 nodes=7 secs=0.000 depth: 7 0 0
+N=19 n=5 found=0 nodes=3 secs=0.000 depth: 3 0 0
+N=20 n=5 found=0 nodes=8 secs=0.000 depth: 8 0 0
+N=21 n=5 found=0 nodes=7 secs=0.000 depth: 7 0 0
+N=22 n=5 found=0 nodes=6 secs=0.000 depth: 6 0 0
+N=23 n=5 found=0 nodes=3 secs=0.000 depth: 3 0 0
+N=24 n=5 found=0 nodes=17 secs=0.000 depth: 17 0 0
+N=25 n=5 found=0 nodes=4 secs=0.000 depth: 4 0 0
+N=26 n=5 found=0 nodes=8 secs=0.000 depth: 8 0 0
+N=27 n=5 found=0 nodes=6 secs=0.000 depth: 6 0 0
+SOL N=28 0 1 3 15 7
+N=28 n=5 found=1 nodes=15 secs=0.000 depth: 12 2 1
+N=29 n=5 found=0 nodes=4 secs=0.000 depth: 4 0 0
+SOL N=30 0 1 3 25 15
+SOL N=30 0 1 3 15 7
+SOL N=30 0 1 4 24 16
+SOL N=30 0 1 4 16 6
+SOL N=30 0 1 9 19 15
+N=30 n=5 found=5 nodes=31 secs=0.000 depth: 19 7 5
+SOL N=31 0 1 3 15 7
+N=31 n=5 found=1 nodes=7 secs=0.000 depth: 5 1 1
+SOL N=32 0 1 3 27 17
+SOL N=32 0 1 3 25 19
+SOL N=32 0 1 3 19 7
+SOL N=32 0 1 3 15 7
+SOL N=32 0 1 4 20 6
+N=32 n=5 found=5 nodes=28 secs=0.000 depth: 14 9 5
+N=33 n=5 found=0 nodes=9 secs=0.000 depth: 9 0 0
+SOL N=34 0 1 3 29 17
+SOL N=34 0 1 3 27 21
+SOL N=34 0 1 3 17 11
+SOL N=34 0 1 4 28 20
+SOL N=34 0 1 4 27 21
+SOL N=34 0 1 4 21 6
+SOL N=34 0 1 4 18 6
+SOL N=34 0 1 5 25 17
+SOL N=34 0 1 5 17 7
+N=34 n=5 found=9 nodes=31 secs=0.000 depth: 10 12 9
+SOL N=35 0 1 3 30 20
+N=35 n=5 found=1 nodes=13 secs=0.000 depth: 9 3 1
+SOL N=36 0 1 3 31 21
+SOL N=36 0 1 3 31 19
+SOL N=36 0 1 3 31 15
+SOL N=36 0 1 3 30 19
+SOL N=36 0 1 3 30 18
+SOL N=36 0 1 3 29 17
+SOL N=36 0 1 3 28 21
+SOL N=36 0 1 3 27 21
+SOL N=36 0 1 3 27 19
+SOL N=36 0 1 3 21 10
+SOL N=36 0 1 3 21 9
+SOL N=36 0 1 3 21 7
+SOL N=36 0 1 3 19 12
+SOL N=36 0 1 3 19 9
+SOL N=36 0 1 3 19 7
+SOL N=36 0 1 3 18 12
+SOL N=36 0 1 3 15 7
+SOL N=36 0 1 4 30 22
+SOL N=36 0 1 4 28 22
+SOL N=36 0 1 4 28 18
+SOL N=36 0 1 4 24 6
+SOL N=36 0 1 4 22 6
+SOL N=36 0 1 4 18 12
+SOL N=36 0 1 4 18 10
+SOL N=36 0 1 4 18 6
+SOL N=36 0 1 5 29 27
+SOL N=36 0 1 5 29 19
+SOL N=36 0 1 5 27 25
+SOL N=36 0 1 5 25 23
+SOL N=36 0 1 5 19 7
+SOL N=36 0 1 5 17 7
+SOL N=36 0 1 5 13 11
+SOL N=36 0 1 6 28 18
+SOL N=36 0 1 6 18 10
+SOL N=36 0 1 11 23 18
+SOL N=36 0 1 11 18 13
+N=36 n=5 found=36 nodes=96 secs=0.000 depth: 23 37 36
+SOL N=37 0 1 3 32 22
+SOL N=37 0 1 3 29 22
+SOL N=37 0 1 3 25 7
+SOL N=37 0 1 3 21 9
+SOL N=37 0 1 3 18 12
+N=37 n=5 found=5 nodes=16 secs=0.000 depth: 6 5 5
+SOL N=38 0 1 3 33 23
+SOL N=38 0 1 3 33 15
+SOL N=38 0 1 3 32 20
+SOL N=38 0 1 3 31 25
+SOL N=38 0 1 3 31 19
+SOL N=38 0 1 3 29 23
+SOL N=38 0 1 3 28 22
+SOL N=38 0 1 3 26 7
+SOL N=38 0 1 3 25 7
+SOL N=38 0 1 3 22 9
+SOL N=38 0 1 3 22 7
+SOL N=38 0 1 3 20 13
+SOL N=38 0 1 3 19 13
+SOL N=38 0 1 3 19 12
+SOL N=38 0 1 3 19 9
+SOL N=38 0 1 3 19 7
+SOL N=38 0 1 3 17 11
+SOL N=38 0 1 3 15 7
+SOL N=38 0 1 4 32 20
+SOL N=38 0 1 4 28 20
+SOL N=38 0 1 4 23 6
+SOL N=38 0 1 4 20 6
+SOL N=38 0 1 4 18 6
+SOL N=38 0 1 5 31 29
+SOL N=38 0 1 5 29 21
+SOL N=38 0 1 5 19 7
+SOL N=38 0 1 6 20 8
+N=38 n=5 found=27 nodes=70 secs=0.000 depth: 12 31 27
+SOL N=39 0 1 3 34 22
+SOL N=39 0 1 3 33 22
+SOL N=39 0 1 3 32 26
+SOL N=39 0 1 3 32 19
+SOL N=39 0 1 3 31 24
+SOL N=39 0 1 3 31 18
+SOL N=39 0 1 3 29 22
+SOL N=39 0 1 3 27 7
+SOL N=39 0 1 3 26 7
+SOL N=39 0 1 3 24 10
+SOL N=39 0 1 3 23 11
+SOL N=39 0 1 3 22 9
+SOL N=39 0 1 3 19 13
+SOL N=39 0 1 3 19 9
+SOL N=39 0 1 3 19 7
+SOL N=39 0 1 3 15 7
+SOL N=39 0 1 6 22 9
+SOL N=39 0 1 6 15 13
+N=39 n=5 found=18 nodes=53 secs=0.000 depth: 12 23 18
+SOL N=40 0 1 3 35 25
+SOL N=40 0 1 3 35 23
+SOL N=40 0 1 3 35 20
+SOL N=40 0 1 3 35 17
+SOL N=40 0 1 3 35 15
+SOL N=40 0 1 3 34 23
+SOL N=40 0 1 3 34 20
+SOL N=40 0 1 3 33 27
+SOL N=40 0 1 3 33 21
+SOL N=40 0 1 3 33 20
+SOL N=40 0 1 3 33 19
+SOL N=40 0 1 3 31 23
+SOL N=40 0 1 3 30 23
+SOL N=40 0 1 3 29 23
+SOL N=40 0 1 3 29 21
+SOL N=40 0 1 3 27 7
+SOL N=40 0 1 3 26 7
+SOL N=40 0 1 3 23 11
+SOL N=40 0 1 3 23 10
+SOL N=40 0 1 3 23 7
+SOL N=40 0 1 3 21 14
+SOL N=40 0 1 3 21 13
+SOL N=40 0 1 3 21 10
+SOL N=40 0 1 3 21 9
+SOL N=40 0 1 3 21 7
+SOL N=40 0 1 3 20 14
+SOL N=40 0 1 3 20 13
+SOL N=40 0 1 3 19 12
+SOL N=40 0 1 3 19 9
+SOL N=40 0 1 3 19 7
+SOL N=40 0 1 3 18 12
+SOL N=40 0 1 3 17 11
+SOL N=40 0 1 3 15 7
+SOL N=40 0 1 4 34 16
+SOL N=40 0 1 4 33 24
+SOL N=40 0 1 4 33 20
+SOL N=40 0 1 4 32 26
+SOL N=40 0 1 4 28 6
+SOL N=40 0 1 4 26 6
+SOL N=40 0 1 4 24 9
+SOL N=40 0 1 4 24 6
+SOL N=40 0 1 4 21 6
+SOL N=40 0 1 4 20 9
+SOL N=40 0 1 4 20 6
+SOL N=40 0 1 4 19 9
+SOL N=40 0 1 4 18 6
+SOL N=40 0 1 4 16 6
+SOL N=40 0 1 5 33 31
+SOL N=40 0 1 5 33 15
+SOL N=40 0 1 5 31 29
+SOL N=40 0 1 5 29 19
+SOL N=40 0 1 5 25 8
+SOL N=40 0 1 5 25 7
+SOL N=40 0 1 5 21 8
+SOL N=40 0 1 5 17 15
+SOL N=40 0 1 5 17 7
+SOL N=40 0 1 6 32 30
+SOL N=40 0 1 6 32 22
+N=40 n=5 found=58 nodes=134 secs=0.000 depth: 24 52 58

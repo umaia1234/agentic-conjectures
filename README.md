@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-56-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
+![problems](https://img.shields.io/badge/problems-57-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-18-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**56 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
+**57 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 18 · ⚪ open: 6
 
 ### OEIS
 
@@ -204,6 +204,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 | [Let's Prove Goldbach prize problem 2 — exact periodic formula](problems/goldbach-prize-2/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Under the per-fixed-triple finite-case interpretation, proves an exact periodic residue-list formula for the x-th positive integer divisible by none of n1,n2,n3, so the advertised n3^2/2 error bound holds with zero error. |
 | [Let's Prove Goldbach prize problem 3 — literal finite-set representation proved](problems/goldbach-prize-3/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Proves the advertised finite-sumset representation literally by folding positive indices modulo M=n2*...*nk, storing the admissible residues in the permitted finite set I2, and taking I3=...=Ik={1}. |
 | [Let's Prove Goldbach prize problem 4 — universal assertion refuted](problems/goldbach-prize-4/README.md) | 🔴 refuted | lean | `GPT-5.6 Sol` | Refutes the advertised universal assertion with the exact counterexample (n1,n2,n3,n)=(2,3,5,5): every positive split h+k=5 violates at least one required nondivisibility condition. |
+| [Fonollosa's Conjecture 1 — minimum modulus for unique multiset sums](problems/min-modulus-multiset-sum/README.md) | 🟡 partial | lean + cert | `Claude Opus 5.5 (max effort)` | Lean-proves that every valid n-subset of ZMod N has N >= 2^(n-1)+n-2 and N >= n(n-1), hence Conjecture 1 for n <= 4; two independent exhaustive searches confirm Conjecture 1 for n <= 9 and find that at N = 2^n-2^floor(log2 n) the valid n-sets form the single affine orbit of {2^k-1}, while the conjecture remains open for n >= 10. |
 | [Mortal words in small image-bounded NFAs (Kiefer–Ryzhikov)](problems/nfa-mortal-words/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims exact extremal shortest-mortal-word lengths 1,3,7,10 for labelled ordered binary 2-image-bounded NFAs with up to 4 states, plus a 5-state lower-bound witness of length 17; the paper's general n^(k+1) tightness question is not resolved. |
 | [Powers-of-two translational tiles (BKT Question 9)](problems/powers-of-two-tiles/README.md) | 🔴 refuted | cert | `GPT-5.6 Sol` | Claims explicit counterexamples refuting the suggested one-or-two-cardinality restriction in the yes/no clause of Benjamini-Kozma-Tzalik Question 9: translational tiles of every positive odd cardinality exist inside {1,2,4,...,2^n}, the smallest being A={1,4,16} with B={0,1,2}+9Z. |
 | [Independent Schur-6 attempt](problems/schur-6/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims only independent reverification of the published S(6) >= 536 partition and negative search results toward [1,537]: the best saved 537-coloring has exactly two monochromatic Schur triples, a depth-5 repair exclusion around it found nothing, and the full SAT instance remained undecided. |

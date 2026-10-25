@@ -1,0 +1,149 @@
+# mmsearch 6 6 72 1   (mmsearch.cpp sha256 dbd42c1712919e35...; g++ -O3 -std=c++17 -pthread; 2026-10-24)
+# mmsearch n=6 N=6..72
+N=6 found=0 orbits=0 nodes=3 secs=0.000 depth: 3 0 0 0 0
+N=7 found=0 orbits=0 nodes=1 secs=0.000 depth: 1 0 0 0 0
+N=8 found=0 orbits=0 nodes=3 secs=0.000 depth: 3 0 0 0 0
+N=9 found=0 orbits=0 nodes=2 secs=0.000 depth: 2 0 0 0 0
+N=10 found=0 orbits=0 nodes=3 secs=0.000 depth: 3 0 0 0 0
+N=11 found=0 orbits=0 nodes=1 secs=0.000 depth: 1 0 0 0 0
+N=12 found=0 orbits=0 nodes=5 secs=0.000 depth: 5 0 0 0 0
+N=13 found=0 orbits=0 nodes=1 secs=0.000 depth: 1 0 0 0 0
+N=14 found=0 orbits=0 nodes=3 secs=0.000 depth: 3 0 0 0 0
+N=15 found=0 orbits=0 nodes=3 secs=0.000 depth: 3 0 0 0 0
+N=16 found=0 orbits=0 nodes=5 secs=0.000 depth: 4 1 0 0 0
+N=17 found=0 orbits=0 nodes=1 secs=0.000 depth: 1 0 0 0 0
+N=18 found=0 orbits=0 nodes=9 secs=0.000 depth: 5 4 0 0 0
+N=19 found=0 orbits=0 nodes=3 secs=0.000 depth: 1 2 0 0 0
+N=20 found=0 orbits=0 nodes=10 secs=0.000 depth: 5 5 0 0 0
+N=21 found=0 orbits=0 nodes=7 secs=0.000 depth: 3 4 0 0 0
+N=22 found=0 orbits=0 nodes=8 secs=0.000 depth: 3 5 0 0 0
+N=23 found=0 orbits=0 nodes=4 secs=0.000 depth: 1 3 0 0 0
+N=24 found=0 orbits=0 nodes=16 secs=0.000 depth: 7 9 0 0 0
+N=25 found=0 orbits=0 nodes=6 secs=0.000 depth: 2 4 0 0 0
+N=26 found=0 orbits=0 nodes=9 secs=0.000 depth: 3 6 0 0 0
+N=27 found=0 orbits=0 nodes=8 secs=0.000 depth: 3 5 0 0 0
+N=28 found=0 orbits=0 nodes=13 secs=0.000 depth: 5 8 0 0 0
+N=29 found=0 orbits=0 nodes=5 secs=0.000 depth: 1 4 0 0 0
+N=30 found=0 orbits=0 nodes=20 secs=0.000 depth: 7 13 0 0 0
+N=31 found=0 orbits=0 nodes=6 secs=0.000 depth: 1 5 0 0 0
+N=32 found=0 orbits=0 nodes=16 secs=0.000 depth: 5 9 2 0 0
+N=33 found=0 orbits=0 nodes=11 secs=0.000 depth: 3 8 0 0 0
+N=34 found=0 orbits=0 nodes=12 secs=0.000 depth: 3 8 1 0 0
+N=35 found=0 orbits=0 nodes=11 secs=0.000 depth: 3 8 0 0 0
+N=36 found=0 orbits=0 nodes=33 secs=0.000 depth: 8 16 9 0 0
+N=37 found=0 orbits=0 nodes=8 secs=0.000 depth: 1 6 1 0 0
+N=38 found=0 orbits=0 nodes=22 secs=0.000 depth: 3 11 8 0 0
+N=39 found=0 orbits=0 nodes=17 secs=0.000 depth: 3 10 4 0 0
+N=40 found=0 orbits=0 nodes=46 secs=0.000 depth: 7 19 20 0 0
+N=41 found=0 orbits=0 nodes=11 secs=0.000 depth: 1 6 4 0 0
+N=42 found=0 orbits=0 nodes=68 secs=0.000 depth: 7 20 41 0 0
+N=43 found=0 orbits=0 nodes=17 secs=0.000 depth: 1 7 9 0 0
+N=44 found=0 orbits=0 nodes=57 secs=0.000 depth: 5 17 35 0 0
+N=45 found=0 orbits=0 nodes=46 secs=0.000 depth: 5 12 29 0 0
+N=46 found=0 orbits=0 nodes=60 secs=0.000 depth: 3 14 43 0 0
+N=47 found=0 orbits=0 nodes=30 secs=0.000 depth: 1 7 22 0 0
+N=48 found=0 orbits=0 nodes=132 secs=0.000 depth: 9 28 95 0 0
+N=49 found=0 orbits=0 nodes=44 secs=0.000 depth: 2 9 33 0 0
+N=50 found=0 orbits=0 nodes=108 secs=0.000 depth: 5 18 85 0 0
+N=51 found=0 orbits=0 nodes=75 secs=0.000 depth: 3 12 60 0 0
+N=52 found=0 orbits=0 nodes=113 secs=0.000 depth: 5 20 88 0 0
+N=53 found=0 orbits=0 nodes=54 secs=0.000 depth: 1 8 45 0 0
+N=54 found=0 orbits=0 nodes=180 secs=0.000 depth: 7 26 147 0 0
+N=55 found=0 orbits=0 nodes=87 secs=0.000 depth: 3 12 72 0 0
+N=56 found=0 orbits=0 nodes=176 secs=0.000 depth: 7 26 143 0 0
+N=57 found=0 orbits=0 nodes=113 secs=0.000 depth: 3 16 94 0 0
+N=58 found=0 orbits=0 nodes=147 secs=0.000 depth: 3 18 126 0 0
+N=59 found=0 orbits=0 nodes=85 secs=0.000 depth: 1 9 75 0 0
+N=60 found=1 orbits=1 nodes=345 secs=0.000 depth: 11 45 287 1 1
+  orbit N=60: 0 1 3 7 15 31
+N=61 found=0 orbits=0 nodes=90 secs=0.000 depth: 1 10 79 0 0
+N=62 found=2 orbits=2 nodes=185 secs=0.000 depth: 3 20 158 2 2
+  orbit N=62: 0 1 3 7 15 31
+  orbit N=62: 0 1 16 24 28 30
+N=63 found=1 orbits=1 nodes=206 secs=0.000 depth: 5 20 179 1 1
+  orbit N=63: 0 1 3 7 15 31
+N=64 found=2 orbits=2 nodes=222 secs=0.000 depth: 6 25 187 2 2
+  orbit N=64: 0 1 3 7 15 31
+  orbit N=64: 0 1 3 7 39 51
+N=65 found=0 orbits=0 nodes=152 secs=0.000 depth: 3 14 135 0 0
+N=66 found=0 orbits=0 nodes=366 secs=0.000 depth: 7 37 322 0 0
+N=67 found=0 orbits=0 nodes=122 secs=0.000 depth: 1 11 110 0 0
+N=68 found=6 orbits=6 nodes=275 secs=0.000 depth: 5 26 230 8 6
+  orbit N=68: 0 1 3 7 43 55
+  orbit N=68: 0 1 3 17 29 63
+  orbit N=68: 0 1 3 27 35 55
+  orbit N=68: 0 1 4 6 40 52
+  orbit N=68: 0 1 4 34 54 62
+  orbit N=68: 0 1 6 32 40 52
+N=69 found=0 orbits=0 nodes=208 secs=0.000 depth: 3 19 186 0 0
+N=70 found=7 orbits=6 nodes=397 secs=0.000 depth: 7 32 342 9 7
+  orbit N=70: 0 1 3 35 55 65
+  orbit N=70: 0 1 4 6 16 36
+  orbit N=70: 0 1 4 36 44 54
+  orbit N=70: 0 1 5 7 17 37
+  orbit N=70: 0 1 5 25 27 35
+  orbit N=70: 0 1 9 11 31 35
+N=71 found=0 orbits=0 nodes=143 secs=0.000 depth: 1 11 131 0 0
+N=72 found=71 orbits=61 nodes=617 secs=0.000 depth: 11 51 409 75 71
+  orbit N=72: 0 1 3 7 15 31
+  orbit N=72: 0 1 3 7 15 39
+  orbit N=72: 0 1 3 7 15 43
+  orbit N=72: 0 1 3 7 19 39
+  orbit N=72: 0 1 3 7 39 55
+  orbit N=72: 0 1 3 7 43 55
+  orbit N=72: 0 1 3 7 43 57
+  orbit N=72: 0 1 3 9 19 39
+  orbit N=72: 0 1 3 9 21 37
+  orbit N=72: 0 1 3 9 37 57
+  orbit N=72: 0 1 3 9 39 55
+  orbit N=72: 0 1 3 12 18 37
+  orbit N=72: 0 1 3 12 37 54
+  orbit N=72: 0 1 3 15 31 51
+  orbit N=72: 0 1 3 15 43 51
+  orbit N=72: 0 1 3 18 37 48
+  orbit N=72: 0 1 3 19 27 39
+  orbit N=72: 0 1 3 19 31 67
+  orbit N=72: 0 1 3 19 39 45
+  orbit N=72: 0 1 3 19 39 63
+  orbit N=72: 0 1 3 21 27 37
+  orbit N=72: 0 1 3 21 37 45
+  orbit N=72: 0 1 3 21 37 63
+  orbit N=72: 0 1 3 27 37 57
+  orbit N=72: 0 1 3 27 39 55
+  orbit N=72: 0 1 3 29 37 53
+  orbit N=72: 0 1 3 30 37 54
+  orbit N=72: 0 1 3 37 45 57
+  orbit N=72: 0 1 3 37 57 63
+  orbit N=72: 0 1 3 39 45 55
+  orbit N=72: 0 1 3 39 51 67
+  orbit N=72: 0 1 3 39 55 63
+  orbit N=72: 0 1 4 6 18 40
+  orbit N=72: 0 1 4 6 18 42
+  orbit N=72: 0 1 4 6 24 36
+  orbit N=72: 0 1 4 6 36 60
+  orbit N=72: 0 1 4 6 40 54
+  orbit N=72: 0 1 4 6 42 54
+  orbit N=72: 0 1 4 12 46 52
+  orbit N=72: 0 1 4 22 28 36
+  orbit N=72: 0 1 4 22 36 64
+  orbit N=72: 0 1 4 28 36 58
+  orbit N=72: 0 1 4 36 58 64
+  orbit N=72: 0 1 4 46 52 60
+  orbit N=72: 0 1 5 7 17 37
+  orbit N=72: 0 1 5 7 17 41
+  orbit N=72: 0 1 5 7 41 55
+  orbit N=72: 0 1 5 11 13 37
+  orbit N=72: 0 1 5 11 13 41
+  orbit N=72: 0 1 5 13 47 49
+  orbit N=72: 0 1 5 13 49 51
+  orbit N=72: 0 1 5 19 29 65
+  orbit N=72: 0 1 5 19 41 43
+  orbit N=72: 0 1 5 25 27 37
+  orbit N=72: 0 1 5 25 27 63
+  orbit N=72: 0 1 5 37 59 61
+  orbit N=72: 0 1 5 51 53 61
+  orbit N=72: 0 1 6 18 34 42
+  orbit N=72: 0 1 6 24 36 52
+  orbit N=72: 0 1 7 17 41 53
+  orbit N=72: 0 1 8 10 24 28
+# total nodes=5262 cpu_secs=0.0

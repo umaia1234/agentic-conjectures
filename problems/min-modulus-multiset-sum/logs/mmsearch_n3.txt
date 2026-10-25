@@ -1,0 +1,46 @@
+# mmsearch 3 3 16 1   (mmsearch.cpp sha256 dbd42c1712919e35...; g++ -O3 -std=c++17 -pthread; 2026-10-24)
+# mmsearch n=3 N=3..16
+N=3 found=0 orbits=0 nodes=1 secs=0.000 depth: 1 0
+N=4 found=0 orbits=0 nodes=2 secs=0.000 depth: 2 0
+N=5 found=0 orbits=0 nodes=1 secs=0.000 depth: 1 0
+N=6 found=1 orbits=1 nodes=4 secs=0.000 depth: 3 1
+  orbit N=6: 0 1 3
+N=7 found=1 orbits=1 nodes=2 secs=0.000 depth: 1 1
+  orbit N=7: 0 1 3
+N=8 found=2 orbits=2 nodes=5 secs=0.000 depth: 3 2
+  orbit N=8: 0 1 3
+  orbit N=8: 0 1 4
+N=9 found=1 orbits=1 nodes=3 secs=0.000 depth: 2 1
+  orbit N=9: 0 1 3
+N=10 found=2 orbits=2 nodes=5 secs=0.000 depth: 3 2
+  orbit N=10: 0 1 3
+  orbit N=10: 0 1 5
+N=11 found=1 orbits=1 nodes=2 secs=0.000 depth: 1 1
+  orbit N=11: 0 1 3
+N=12 found=5 orbits=5 nodes=10 secs=0.000 depth: 5 5
+  orbit N=12: 0 1 3
+  orbit N=12: 0 1 4
+  orbit N=12: 0 1 5
+  orbit N=12: 0 1 6
+  orbit N=12: 0 2 6
+N=13 found=2 orbits=2 nodes=3 secs=0.000 depth: 1 2
+  orbit N=13: 0 1 3
+  orbit N=13: 0 1 4
+N=14 found=4 orbits=4 nodes=7 secs=0.000 depth: 3 4
+  orbit N=14: 0 1 3
+  orbit N=14: 0 1 4
+  orbit N=14: 0 1 7
+  orbit N=14: 0 2 6
+N=15 found=4 orbits=4 nodes=7 secs=0.000 depth: 3 4
+  orbit N=15: 0 1 3
+  orbit N=15: 0 1 4
+  orbit N=15: 0 1 5
+  orbit N=15: 0 1 6
+N=16 found=6 orbits=6 nodes=10 secs=0.000 depth: 4 6
+  orbit N=16: 0 1 3
+  orbit N=16: 0 1 4
+  orbit N=16: 0 1 7
+  orbit N=16: 0 1 8
+  orbit N=16: 0 2 6
+  orbit N=16: 0 2 8
+# total nodes=62 cpu_secs=0.0
