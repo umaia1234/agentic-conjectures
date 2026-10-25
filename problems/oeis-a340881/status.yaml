@@ -4,12 +4,13 @@ title_ko: OEIS A340881 모듈러 주기성
 domain: oeis
 source_url: https://oeis.org/A340881
 claimed_status: proved
-claim: Claims a complete informal proof of both OEIS periodicity conjectures, giving explicit pure periods
-  mod odd m (period 2*ord_m(2) from n=1) and eventual periodicity of A340881(n) mod m for every m >= 2.
+claim: Lean-proves both OEIS periodicity conjectures, including the minimum-period clause for primes
+  (minimal period divides 2*(p-1)), with explicit pure period 2*ord_m(2) from n=1 for odd m and period
+  2*ord_u(2) from n>=max(1,e) for every m=2^e*u >= 2, u odd.
 claim_ko: >-
-  홀수 m을 법으로 하는 명시적 순수 주기(n=1부터 주기 2*ord_m(2))와 모든
-  m >= 2에 대한 A340881(n) mod m의 궁극적 주기성을 제시하여, OEIS의 두 주기성
-  추측에 대한 완전한 비형식적 증명을 제시한다.
+  소수 법의 최소주기 조건(최소주기가 2*(p-1)의 약수)을 포함해 OEIS의 두 주기성 추측을
+  Lean으로 증명한다. 홀수 m에서는 n=1부터 2*ord_m(2)가 명시적 순수 주기이고, u가 홀수인
+  모든 m=2^e*u >= 2에서는 n>=max(1,e)부터 2*ord_u(2)가 주기이다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof
@@ -23,11 +24,28 @@ verify:
 - cmd: python3 -m py_compile a340881_certificate.py && python3 a340881_certificate.py
   expected_runtime: unknown
   ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.OeisA340881
+  theorems:
+  - AgenticConjectures.OeisA340881.statement1_holds
+  - AgenticConjectures.OeisA340881.statement2_holds
+  - AgenticConjectures.OeisA340881.oeis_340881_conjecture_0
+  - AgenticConjectures.OeisA340881.period_odd
+  - AgenticConjectures.OeisA340881.modEq_two_pow_mul_odd
+  - AgenticConjectures.OeisA340881.eventually_periodic
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: Lean 4 formalization of both conjectures, the upstream prime-period statement, and the explicit
+    periods
 notes: Not peer reviewed and not confirmed by OEIS editors; novelty rests only on a negative public search
   as of 2026-08-11; PROOF.md warns that stated periods are a period, not necessarily minimal (prime minimal
   period only claimed to divide 2(p-1)); upstream Lean snapshot covers only the prime-modulus statement
-  and is sorry-marked.
+  and is sorry-marked. The Lean module copies the upstream definition term for term and proves the upstream
+  statement verbatim; it formalizes "minimum period divides 2(p-1)" as every positive period with no smaller
+  positive period dividing 2(p-1), and proves eventual periodicity for every modulus although the OEIS
+  conjecture names only composite moduli.
