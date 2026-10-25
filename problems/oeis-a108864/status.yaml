@@ -1,0 +1,50 @@
+id: oeis-a108864
+title: OEIS A108864 — 1155 is not the last odd term (815634435)
+title_ko: OEIS A108864 — 1155는 마지막 홀수 항이 아님 (815634435)
+domain: oeis
+source_url: https://oeis.org/A108864
+claimed_status: refuted
+claim: 'Lean-refutes the Formal Conjectures statement that every term a(n), n > 58, is even: the odd
+  number 815634435 = 3*5*7*11*547*1291 has sigma = 2n - 6, hence perfect deficiency 6 <= 10, and it
+  is the term of index Nat.count A 815634435 > 58, so 1155 is not the last odd term.'
+claim_ko: >-
+  n > 58인 모든 항 a(n)이 짝수라는 Formal Conjectures 명제를 Lean으로 반박했다. 홀수
+  815634435 = 3*5*7*11*547*1291은 sigma = 2n - 6이므로 perfect deficiency가 6 <= 10이고,
+  색인 Nat.count A 815634435 > 58의 항이므로 1155는 마지막 홀수 항이 아니다.
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: a108864_certificate.py
+  kind: certificate-script
+- path: upstream/108864.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 a108864_certificate.py
+  expected_runtime: under 1 second
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.OeisA108864
+  theorems:
+  - AgenticConjectures.OeisA108864.not_statement
+  - AgenticConjectures.OeisA108864.perfectDeficiency_eq
+  - AgenticConjectures.OeisA108864.sigma_witness
+  - AgenticConjectures.OeisA108864.A_witness
+  - AgenticConjectures.OeisA108864.count_witness
+  - AgenticConjectures.OeisA108864.a_count_witness
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: counterexample identification, Lean 4 refutation, independent certificate, upstream snapshot,
+    and documentation
+notes: The definitions are copied term for term from the upstream snapshot; only the module header,
+  namespace, attributes, and test theorems were adapted or dropped, and the five upstream test proofs
+  still pass against the local definitions. The fold is evaluated by the kernel only on the 59 small
+  terms 1..1155 (about 11,500 steps). The witness is handled by the key lemma (proper-divisor sum at most
+  n implies perfect deficiency 2n - sigma(n)) and by the multiplicativity of sigma, never by running the
+  fold. Only index > 58 is proved; the exact index of 815634435 is not determined, and it is not claimed
+  to be the smallest odd term after 1155. The index base (0-indexed a 58 = 1155) and the agreement of the
+  upstream skip-and-continue fold with the A109883 stop-at-first PARI program (n <= 2000) are checked by
+  the Python certificate, not in Lean. sigma(815634435) = 2n - 6 is long known (A087485, A141548,
+  A077374, A088012); none of those entries mentions A108864. Unreviewed, no novelty is claimed, and
+  nothing was submitted externally.
