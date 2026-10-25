@@ -19,7 +19,7 @@ C(n):=\prod_{e_p\ge2}p^{e_p}
 
 를 \(n\)의 powerful core라 하면, 이 폴더에서는 다음을 증명한다.
 
-> \(\omega(C(n))\le2\)인 모든 해에서 \(C(n)=108\)이다. 따라서 이
+> \(\omega(C(n))\le3\)인 모든 해에서 \(C(n)=108\)이다. 따라서 이
 > 부분족의 해는 정확히
 > \[
 > n=108s,\qquad s\text{ squarefree},\qquad\gcd(s,108)=1
@@ -27,11 +27,13 @@ C(n):=\prod_{e_p\ge2}p^{e_p}
 > 이며, 이 부분족의 유일한 primitive 해는 \(108\)이고 모든 해가
 > \(108\pmod{216}\)이다.
 
-상세 증명은 [PROOF.md](PROOF.ko.md)에 있으며, 이 정리는
+\(\omega(C(n))\le2\)인 경우는 [PROOF.md](PROOF.ko.md)에서 증명하고,
+소수가 세 개인 경우는 [THREE_PRIMES.md](THREE_PRIMES.ko.md)에서 더한다
+([세 소수로 이루어진 core](#세-소수로-이루어진-core) 참조). 두 결과 모두
 [`AgenticConjectures/OeisA063880.lean`](../../AgenticConjectures/OeisA063880.lean)에서
 **Lean 4로 커널 검사**되었다([아래](#lean-4-형식화) 참조). 이 정리는
 가상적인 추가 primitive 해의 powerful core가 서로 다른 소수를 적어도
-세 개 가져야 함을 보일 뿐, 그 경우를 배제하지는 않는다. 따라서 원
+네 개 가져야 함을 보일 뿐, 그 경우를 배제하지는 않는다. 따라서 원
 추측 전체의 해결이 아니다.
 
 ## 원문 상태와 검증 범위
@@ -45,11 +47,14 @@ C(n):=\prod_{e_p\ge2}p^{e_p}
   [`63880.lean`](https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/OEIS/63880.lean)은
   유일한 primitive 항과 합동류라는 두 전역 명제를 모두
   `category research open`으로 표시했다.
-- 이 폴더에는 계산 인증서가 없다. 결과는 유한 탐색이 아니라
-  [PROOF.md](PROOF.ko.md)의 곱셈적 국소비율 논증으로
-  \(\omega(C(n))\le2\)인 모든 해를 완전히 분류한다. 기계 검증
-  산출물은 아래의 Lean 모듈이다(CI가 no-`sorry` 게이트와 공리 감사를
-  거쳐 다시 빌드한다).
+- \(\omega(C(n))\le3\)인 모든 해의 분류는 탐색이 아니라 증명이다.
+  [PROOF.md](PROOF.ko.md)의 곱셈적 국소비율 논증과
+  [THREE_PRIMES.md](THREE_PRIMES.ko.md)의 세 소수 논증을 쓰며, 그 안에
+  남는 유한 개의 경우는 Lean 안에서 검사한다. 기계 검증 산출물은 아래의
+  Lean 모듈이다(CI가 no-`sorry` 게이트와 공리 감사를 거쳐 다시
+  빌드한다). [THREE_PRIMES.md](THREE_PRIMES.ko.md) 8절의 두 Python
+  탐색은 세 소수 경우의 일부를 독립적으로 교차 검증할 뿐 인증서가
+  아니다.
 - 같은 공개 부분정리를 당시 공개 웹, arXiv, 수학 Q&A, SeqFan,
   GitHub에서 찾지 못했으나 이는 음성 검색 결과일 뿐이다. 동료평가 전에는
   신규성을 단정하지 않는다.
@@ -103,17 +108,89 @@ Lean 증명은 PROOF.md를 따른다: \(\sigma\)와 \(\sigma^*\)의 곱셈성으
 캐시 `lake exe cache get`이 필요):
 
 ```bash
-lake build AgenticConjectures.OeisA063880   # 이 모듈만, mathlib 캐시 후 약 10초
+lake build AgenticConjectures.OeisA063880   # 이 모듈만, mathlib 캐시 후 약 20초
 lake build                                  # 전체 라이브러리 (check_axioms.py에 필요)
 python3 scripts/check_sorry.py
 python3 scripts/check_axioms.py             # propext / Classical.choice / Quot.sound만
 ```
+
+## 세 소수로 이루어진 core
+
+**결과.** 서로 다른 소수 \(p,q,r\)와 \(a,b,c\ge2\)에 대해 powerful 수
+\(n=p^aq^br^c\)는 \(\sigma(n)=2\sigma^*(n)\)을 만족하지 않는다. 두 소수
+정리와 합치면 \(\omega(C(n))\le3\)인 모든 해에서 \(C(n)=108\)이다.
+따라서 이 더 큰 부분족에서도 모든 항이 \(108\pmod{216}\)이고 \(108\)이
+유일한 primitive 항이다. 이 결과는 같은 상류 술어에 대해 Lean으로 커널
+검사를 거쳤고, 비형식 증명은 [THREE_PRIMES.md](THREE_PRIMES.ko.md)에 있다.
+
+**방법.** 소수를 \(p<q<r\)로 정렬한다.
+
+- 인수 \(2\)가 없을 때: 부등식 \(\sigma(p^e)/(1+p^e)<p/(p-1)\)에 의해
+  \(r\le13\)인 \(\{3,5,r\}\)만 남고, 이는 유한 상자 세 개로 배제한다.
+- \(\{2,3,r\}\): 비율 부등식으로 \(a=2\), \(b\in\{2,3\}\)을 뺀 모든
+  경우가 해결된다. 남은 경우에 방정식은 불가능한
+  \(\sigma(r^c)=1+r^c\)가 되거나, \(r\mid9\)를 강제하는
+  \(91\sigma(r^c)=100(1+r^c)\)가 된다.
+- \(2<5\le q<r\): \(K=2^{a+1}-1\)로 두면 방정식은 정수 항등식
+  \(W_qW_r=K(K+3)t_qt_r\)가 된다. 2진 값매김 항등식이 \(b\)와 \(c\)를
+  묶어 준다(예를 들어 \(c\)가 짝수이면 \(b\equiv7\pmod{16}\)이다).
+  이어서 보조 정수 \(\Omega,H,G\)에서 얻는 크기 부등식이 유한 개의
+  경우를 빼고 모든 지수 조합을 배제한다. 남는 것은 상자 다섯 개와,
+  16개의 쌍 \((a,q)\)에 대해 허용되는 근이 없는 \(r\)의 이차방정식이다.
+- 두 소수 정리의 squarefree 부분 귀납법을 상한 \(3\)으로 다시 적용하면
+  powerful 경우의 결과가 모든 \(n\)으로 확장된다.
+
+**재현.** 탐색은 이 폴더에서, 나머지 명령은 저장소 루트에서 실행한다.
+시간은 개발 기기에서 측정했다.
+
+```bash
+lake build AgenticConjectures.OeisA063880   # mathlib 캐시 후 약 20초, 증명 전체를 검사
+lake build && python3 scripts/check_axioms.py   # propext / Classical.choice / Quot.sound만
+cd problems/oeis-a063880
+python3 three_prime_search.py --amax 22       # 4.0초 (CI)
+python3 three_prime_search_int.py --amax 22   # 8.3초 (CI)
+python3 three_prime_search.py --amax 28       # 5분 06초 (기기 부하 상태)
+python3 three_prime_search_int.py --amax 28   # 16분 08초 (기기 부하 상태)
+```
+
+두 탐색은 \(2\le a\le\) `AMAX`(모든 \(q,b,r,c\))에서 경우
+\(2<5\le q<r\)를 서로 독립적으로, 정확한 산술로 교차 검증한다. 둘 다
+해를 찾지 못했으며, 어느 쪽도 증명의 일부가 아니다.
+
+| 선언 | 내용 |
+|---|---|
+| `not_a_three_prime_pow` | 서로 다른 소수 \(p,q,r\)와 \(a,b,c\ge2\)에 대해 `¬ A (p ^ a * q ^ b * r ^ c)` |
+| `three_prime_sorted`, `caseB`, `case23`, `caseA` | 정렬 후의 경우 나누기: 인수 \(2\) 없음, \(\{2,3,r\}\), \(2<5\le q<r\) |
+| `two_adic_rel`, `caseA_two_adic` | 2진 항등식과 그로부터 나오는 \((b,c)\)에 대한 제약 |
+| `caseA_c7`, `caseA_c46`, `caseA_c2`, `caseA_c5b`, `caseA_c3a`, `caseA_c3b` | \(c\)에 따른 경우 나누기의 크기 부등식 |
+| `caseA_c3b_finite`, `box_*`(상자 여덟 개) | 유한 검사 |
+| `eq_108_of_powerful_of_card_le_three` | 소인수가 세 개 이하인 powerful 해는 \(108\)이다 |
+| `exists_eq_108_mul_of_card_le` | powerful 해가 \(108\)뿐인 임의의 상한 \(k\)에 대한 squarefree 부분 귀납법 |
+| `exists_eq_108_mul_of_card_le_three` | **주정리**: `A n`이고 \(p^2\mid n\)인 소수 \(p\)가 세 개 이하이면 `n = 108 * s`이고 `s`는 squarefree이며 \(108\)과 서로소 |
+| `mod_216_of_card_le_three`, `eq_108_of_isPrimitiveTerm_of_card_le_three` | 따름정리: \(n\equiv108\pmod{216}\)이고, 이 부분족의 유일한 primitive 항은 \(108\) |
+
+증명 단계와 Lean 보조정리의 전체 대응표는
+[THREE_PRIMES.md](THREE_PRIMES.ko.md) 9절에 있다.
+
+명제의 충실성. `not_a_three_prime_pow`는 상류 술어 `A` 자체(위와 같이
+글자 그대로 옮긴 것)에 대해 진술되며, 가정은 `p.Prime`, `q.Prime`,
+`r.Prime`, 쌍마다 `≠`, 그리고 `2 ≤ a`, `2 ≤ b`, `2 ≤ c`이다. 가정
+\(\omega(C(n))\le3\)은 두 소수의 경우와 똑같이
+`(n.primeFactors.filter fun p => p ^ 2 ∣ n).card ≤ 3`으로 나타내고, 결론
+\(C(n)=108\)도 같은 `∃ s, Squarefree s ∧ Nat.Coprime 108 s ∧ n = 108 * s`로
+나타낸다. 경우 \(2<5\le q<r\)는 증명 안에서 `ℕ`의 값을 `ℤ`로 옮긴 뒤
+`ℤ` 위에서 논증한다. 새 `ℕ` 명제에 나오는 뺄셈은 `1 ≤ p`일 때의
+`p - 1`뿐이므로 정확한 뺄셈이다. 위의 두 소수 정리들은 바뀌지 않았다.
+
+**주장하지 않는 것.** 서로 다른 소수를 네 개 이상 가진 core는 다루지
+않으므로 OEIS의 두 추측은 여전히 미해결이다. \(10^{18}\)까지의 OEIS
+탐색은 다시 실행하지 않았다. 새로움은 주장하지 않는다.
 
 ## 상류 Lean 형식화
 
 감사에 사용한 FormalConjectures 원문과 고정 출처는
 [upstream 기록](upstream/README.md) 및 [`63880.lean`](upstream/63880.lean)에
 보존했다. 전역 합동·유일성 추측은 `by sorry`로 적힌 **statement**이지 형식
-증명이 아니다. 이 폴더는 powerful core의 소인수가 두 개 이하인 부분족만
+증명이 아니다. 이 폴더는 powerful core의 소인수가 세 개 이하인 부분족만
 증명하며, 그 증명은 (독립 빌드가 불가능한) 스냅샷을 import하는 대신 상류
 정의를 글자 그대로 다시 적은 위의 이 저장소 모듈에 들어 있다.

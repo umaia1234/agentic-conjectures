@@ -5,20 +5,38 @@ domain: oeis
 source_url: https://oeis.org/A063880
 claimed_status: partial
 claim: Lean-verifies (kernel-checked against the upstream predicate) that every solution of
-  sigma(n)=2*sigma*(n) whose powerful core has at most two distinct primes has core exactly 108, so
-  within that subfamily 108 is the only primitive term and all terms are 108 mod 216; cores with >=3
-  distinct primes are not excluded, so the full conjecture is unresolved.
+  sigma(n)=2*sigma*(n) whose powerful core has at most three distinct primes has core exactly 108,
+  so within that subfamily 108 is the only primitive term and all terms are 108 mod 216; cores with
+  >=4 distinct primes are not excluded, so the full conjecture is unresolved.
 claim_ko: >-
-  강력수 핵의 서로 다른 소인수가 2개 이하인 sigma(n)=2*sigma*(n)의 모든 해에서 그 핵은 정확히
-  108임을 Lean으로 검증했다(상류 술어 그대로 커널 검사). 따라서 이 부분족에서는 108이 유일한 원시
-  항이고 모든 항은 216을 법으로 108과 합동이다. 서로 다른 소인수가 3개 이상인 핵은 배제하지
-  못했으므로 전체 추측은 미해결이다.
+  강력수 핵의 서로 다른 소인수가 3개 이하인 sigma(n)=2*sigma*(n)의 모든 해에서 그 핵이 정확히
+  108임을 상류 술어 그대로 Lean으로 커널 검사했으며(따라서 이 부분족에서는 108이 유일한 원시 항이고
+  모든 항이 216을 법으로 108과 합동이다), 서로 다른 소인수가 4개 이상인 핵은 배제하지 못했으므로
+  전체 추측은 미해결이다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof
+- path: THREE_PRIMES.md
+  kind: informal-proof
+- path: three_prime_search.py
+  kind: search-code
+- path: three_prime_search_int.py
+  kind: search-code
 - path: upstream/63880.lean
   kind: upstream-lean
-verify: []
+verify:
+- cmd: python3 three_prime_search.py --amax 22
+  expected_runtime: 4 s (Case A cross-check, 2 <= a <= 22)
+  ci_feasible: true
+- cmd: python3 three_prime_search_int.py --amax 22
+  expected_runtime: 8 s (independent integer-only Case A cross-check, 2 <= a <= 22)
+  ci_feasible: true
+- cmd: python3 three_prime_search.py --amax 28
+  expected_runtime: 5 min (measured 5 min 06 s under load)
+  ci_feasible: false
+- cmd: python3 three_prime_search_int.py --amax 28
+  expected_runtime: 16 min (measured 16 min 08 s under load)
+  ci_feasible: false
 lean:
   modules:
   - AgenticConjectures.OeisA063880
@@ -40,6 +58,17 @@ lean:
   - AgenticConjectures.OeisA063880.mod_216_of_card_le_two
   - AgenticConjectures.OeisA063880.eq_108_of_isPrimitiveTerm_of_card_le_two
   - AgenticConjectures.OeisA063880.isPrimitiveTerm_108
+  - AgenticConjectures.OeisA063880.two_adic_rel
+  - AgenticConjectures.OeisA063880.caseA_c3b_finite
+  - AgenticConjectures.OeisA063880.caseA
+  - AgenticConjectures.OeisA063880.caseB
+  - AgenticConjectures.OeisA063880.case23
+  - AgenticConjectures.OeisA063880.not_a_three_prime_pow
+  - AgenticConjectures.OeisA063880.eq_108_of_powerful_of_card_le_three
+  - AgenticConjectures.OeisA063880.exists_eq_108_mul_of_card_le
+  - AgenticConjectures.OeisA063880.exists_eq_108_mul_of_card_le_three
+  - AgenticConjectures.OeisA063880.mod_216_of_card_le_three
+  - AgenticConjectures.OeisA063880.eq_108_of_isPrimitiveTerm_of_card_le_three
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
@@ -48,15 +77,26 @@ attribution:
   harness: Claude Code
   scope: Lean 4 formalization of the two-prime-core classification (AgenticConjectures.OeisA063880)
     and the accompanying documentation
-notes: The subfamily theorem is now kernel-checked in AgenticConjectures/OeisA063880.lean against a
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: three-prime-core extension (omega(C(n)) <= 3) - informal proof THREE_PRIMES.md, its Lean 4
+    formalization in AgenticConjectures.OeisA063880, and the two Case A cross-check searches
+notes: The subfamily theorem is kernel-checked in AgenticConjectures/OeisA063880.lean against a
   term-for-term copy of the upstream predicate OeisA63880.A (with usigma defined by the upstream
   unitary-divisor sum, and Set.IsPrimitive / Nat.Powerful copied from the upstream companion files);
-  "omega(C(n)) <= 2" is encoded as "at most two primes p with p^2 | n" and "C(n) = 108" as
-  "n = 108 * s with s squarefree and coprime to 108". The Lean proof follows PROOF.md (multiplicativity
-  of sigma and sigma*, the local-ratio bounds, and the q | 3 argument), recovering the solutions by
-  strong induction that peels off exponent-1 primes instead of naming the powerful core explicitly.
-  The converse (108*s is a term of the subfamily for every squarefree s coprime to 108) and the two
-  upstream `textbook` lemmas (primitive terms are powerful; primitive x coprime squarefree is a term)
-  are also proved. No computational certificate in the folder; OEIS's reported primitive-term
-  search to 10^18 was not independently rerun; the upstream global statements remain sorry-backed and
-  are recorded here only as Props; novelty explicitly not asserted before peer review.
+  "omega(C(n)) <= k" is encoded as "at most k primes p with p^2 | n" and "C(n) = 108" as
+  "n = 108 * s with s squarefree and coprime to 108". The two-prime case (k = 2) follows PROOF.md
+  (multiplicativity of sigma and sigma*, the local-ratio bounds, and the q | 3 argument), recovering
+  the solutions by strong induction that peels off exponent-1 primes instead of naming the powerful
+  core explicitly. The three-prime case (k = 3, THREE_PRIMES.md) shows that no powerful p^a q^b r^c
+  is a term, via local-ratio bounds and three finite boxes when 2 is absent, ratio bounds and an
+  r | 9 congruence for {2,3,r}, and, for 2^a q^b r^c with 5 <= q < r, an integer reformulation, a
+  2-adic valuation identity, size bounds, five boxes and a 16-case quadratic table, all checked
+  inside Lean (norm_num / interval_cases / omega, no native_decide). The two Python searches (exact rational and
+  integer-only, no solution for 2 <= a <= 28) are an independent cross-check of part of the
+  three-prime case, not part of the proof. The converse (108*s is a term of the subfamily for every
+  squarefree s coprime to 108) and the two upstream `textbook` lemmas (primitive terms are powerful;
+  primitive x coprime squarefree is a term) are also proved. Cores with >= 4 distinct primes are not
+  treated; OEIS's reported primitive-term search to 10^18 was not independently rerun; the upstream
+  global statements remain sorry-backed and are recorded here only as Props; novelty explicitly not
+  asserted before peer review.
