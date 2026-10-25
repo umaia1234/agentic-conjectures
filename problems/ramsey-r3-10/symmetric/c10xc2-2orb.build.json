@@ -1,0 +1,20 @@
+{
+  "class": "c10xc2-2orb",
+  "normalised": false,
+  "final_cadical_flags": "--unsat",
+  "trim_rounds": [],
+  "final_separators": 3168,
+  "cnf_sha256": "e55ec00928f6c250e4ac993044f324282921f7ef04598a8c008959673678c16d",
+  "cnf_bytes": 218718,
+  "separators_sha256": "0904ec7c4001d4b851365a2f17833b428326c13f6bd80f6f3dae35fae04abe3b",
+  "proof_sha256": "5a3ec0759da5fcfd01f0eae198185aad63b745cc07b043988ab5f03bdf645460",
+  "proof_bytes": 858501,
+  "final_cadical_s": 0.6,
+  "drat_trim_s": 0.6,
+  "drat_trim_summary": [
+    "c 3579 of 3612 clauses in core",
+    "c 24873 of 25148 lemmas in core using 422712 resolution steps",
+    "c 0 RAT lemmas in core; 958 redundant literals in core lemmas",
+    "s VERIFIED"
+  ]
+}

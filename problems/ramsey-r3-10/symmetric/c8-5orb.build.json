@@ -1,0 +1,21 @@
+{
+  "class": "c8-5orb",
+  "normalised": true,
+  "final_cadical_flags": "--unsat",
+  "trim_rounds": [],
+  "final_separators": 292542,
+  "cnf_sha256": "071704c2b10c71893e9e06e564863184fbc28ce05f73ce3eb0227a2cb8b934c1",
+  "cnf_bytes": 30632589,
+  "separators_sha256": "83a1957517b53eeb4aabd1e539e0320a232f73c61a56cd9c43bae2b7204476f6",
+  "proof": "raw CaDiCaL proof, not stored",
+  "proof_sha256": "fc039656b902c4af9f4f0758c8c4d6a03a85fdd08f1ff2ae75415eae756cc2d9",
+  "proof_bytes": 360045378,
+  "final_cadical_s": 2775.9,
+  "drat_trim_s": 5348.5,
+  "drat_trim_summary": [
+    "c 237167 of 293855 clauses in core",
+    "c 4411496 of 6422834 lemmas in core using 178901629 resolution steps",
+    "c 0 RAT lemmas in core; 654563 redundant literals in core lemmas",
+    "s VERIFIED"
+  ]
+}

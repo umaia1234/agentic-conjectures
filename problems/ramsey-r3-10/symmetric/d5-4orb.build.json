@@ -1,0 +1,39 @@
+{
+  "class": "d5-4orb",
+  "normalised": true,
+  "final_cadical_flags": "--unsat",
+  "trim_rounds": [
+    {
+      "separators": 168651,
+      "kept": 142159,
+      "cadical_s": 1226.9,
+      "drat_trim_s": 2062.7
+    },
+    {
+      "separators": 142159,
+      "kept": 131820,
+      "cadical_s": 549.1,
+      "drat_trim_s": 1288.2
+    },
+    {
+      "separators": 131820,
+      "kept": 125459,
+      "cadical_s": 345.9,
+      "drat_trim_s": 823.5
+    }
+  ],
+  "final_separators": 125459,
+  "cnf_sha256": "7c6e1822ef33c1c073c1d8fe6fa25bedfc080f44050291325da6738558c99c2c",
+  "cnf_bytes": 12700447,
+  "separators_sha256": "d842009d9e475a1861b3981f510471cdaadd1f6d11864c8ab5ab58961fb8b633",
+  "proof_sha256": "90938b3ecfcca77d88b194acf3348aa77a52a4fb73a493f2996194d985243c06",
+  "proof_bytes": 127005764,
+  "final_cadical_s": 252.1,
+  "drat_trim_s": 406.5,
+  "drat_trim_summary": [
+    "c 122103 of 126479 clauses in core",
+    "c 2478984 of 2517278 lemmas in core using 86452968 resolution steps",
+    "c 0 RAT lemmas in core; 106048 redundant literals in core lemmas",
+    "s VERIFIED"
+  ]
+}

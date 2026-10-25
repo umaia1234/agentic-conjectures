@@ -1,17 +1,20 @@
 id: ramsey-r3-10
-title: R(3,10) C20-bicirculant subcase exclusion
-title_ko: R(3,10)의 C20-bicirculant 부분 경우 배제
+title: R(3,10) symmetric-subcase exclusions
+title_ko: R(3,10)의 대칭 부분 경우 배제
 domain: graph-combinatorics
 source_url: ''
 claimed_status: partial
-claim: 'Claims a SAT/DRUP-certified exclusion of one automorphism class only: no triangle-free 40-vertex
-  graph with independence number <= 9 is invariant under the C20 action with cycle structure 20^2, so
-  a hypothetical 40-vertex (3,10) Ramsey graph cannot be such a bicirculant; R(3,10) in {40,41} is not
-  determined.'
+claim: 'Claims SAT/DRAT-certified exclusions of a few automorphism classes only: no triangle-free 40-vertex
+  graph with independence number <= 9 is invariant under a semiregular action of C20, C10xC2, D10, Dic5
+  or F20 with two orbits, of C10 or D5 with four orbits, or of C8 or Q8 with five orbits (the four- and
+  five-orbit cases use a hand-proved normalisation lemma, and the D5, C8 and Q8 proofs are too large to
+  commit and were checked locally); R(3,10) in {40,41} is not determined.'
 claim_ko: >-
-  자기동형 작용의 한 부류만을 SAT/DRUP 인증으로 배제한다. 독립수가 <= 9인 삼각형 없는 40정점
-  그래프는 순환 구조가 20^2인 C20 작용 아래 불변일 수 없으므로, 가상의 40정점 (3,10) Ramsey
-  그래프는 그러한 C20-bicirculant일 수 없다. R(3,10)이 {40,41} 중 어느 값인지는 결정하지 못한다.
+  몇몇 자기동형 부류만을 SAT/DRAT 인증으로 배제한다. 독립수가 9 이하인 삼각형 없는 40정점
+  그래프는 두 궤도로 반정칙 작용하는 C20, C10xC2, D10, Dic5, F20, 네 궤도로 반정칙 작용하는
+  C10, D5, 다섯 궤도로 반정칙 작용하는 C8, Q8 가운데 어느 작용 아래에서도 불변일 수 없다(네 궤도와
+  다섯 궤도 경우는 손으로 증명한 정규화 보조정리를 쓰며, D5, C8, Q8의 증명은 너무 커서 커밋하지
+  않고 로컬에서 검사했다). R(3,10)이 {40,41} 중 어느 값인지는 결정하지 못한다.
 artifacts:
 - path: c20_final_nopb.cnf
   kind: sat-cnf
@@ -25,6 +28,56 @@ artifacts:
   kind: certificate-script
 - path: search_c20_bicirculant_r310.py
   kind: search-code
+- path: audit_symmetric_certificate.py
+  kind: certificate-script
+- path: search_symmetric_r310.py
+  kind: search-code
+- path: cegar_symmetric_r310.cpp
+  kind: search-code
+- path: build_symmetric_certificate.py
+  kind: search-code
+- path: symmetric/c10xc2-2orb.separators.txt.xz
+  kind: data
+- path: symmetric/c10xc2-2orb.drat.xz
+  kind: sat-drat
+- path: symmetric/c10xc2-2orb.build.json
+  kind: data
+- path: symmetric/dic5-2orb.separators.txt.xz
+  kind: data
+- path: symmetric/dic5-2orb.drat.xz
+  kind: sat-drat
+- path: symmetric/dic5-2orb.build.json
+  kind: data
+- path: symmetric/f20-2orb.separators.txt.xz
+  kind: data
+- path: symmetric/f20-2orb.drat.xz
+  kind: sat-drat
+- path: symmetric/f20-2orb.build.json
+  kind: data
+- path: symmetric/d10-2orb.separators.txt.xz
+  kind: data
+- path: symmetric/d10-2orb.drat.xz
+  kind: sat-drat
+- path: symmetric/d10-2orb.build.json
+  kind: data
+- path: symmetric/c10-4orb.separators.txt.xz
+  kind: data
+- path: symmetric/c10-4orb.drat.xz
+  kind: sat-drat
+- path: symmetric/c10-4orb.build.json
+  kind: data
+- path: symmetric/d5-4orb.separators.txt.xz
+  kind: data
+- path: symmetric/d5-4orb.build.json
+  kind: data
+- path: symmetric/q8-5orb.separators.txt.xz
+  kind: data
+- path: symmetric/q8-5orb.build.json
+  kind: data
+- path: symmetric/c8-5orb.separators.txt.xz
+  kind: data
+- path: symmetric/c8-5orb.build.json
+  kind: data
 verify:
 - cmd: python3 audit_c20_certificate.py c20_final_nopb.cnf c20_separators_nopb.txt
   expected_runtime: unknown (stdlib-only semantic audit of 15,804 clauses)
@@ -34,11 +87,108 @@ verify:
   ci_feasible: true
   requires:
   - drat-trim
+- cmd: python3 audit_symmetric_certificate.py c10xc2-2orb symmetric/c10xc2-2orb.separators.txt.xz --write-cnf
+    /tmp/r310-c10xc2-2orb.cnf && xz -dc symmetric/c10xc2-2orb.drat.xz | drat-trim /tmp/r310-c10xc2-2orb.cnf
+    -i && rm /tmp/r310-c10xc2-2orb.cnf
+  expected_runtime: '~1 s locally (stdlib audit writes the CNF; drat-trim checks the 25,148-lemma proof)'
+  ci_feasible: true
+  requires:
+  - drat-trim
+  - xz
+- cmd: python3 audit_symmetric_certificate.py dic5-2orb symmetric/dic5-2orb.separators.txt.xz --write-cnf
+    /tmp/r310-dic5-2orb.cnf && xz -dc symmetric/dic5-2orb.drat.xz | drat-trim /tmp/r310-dic5-2orb.cnf -i
+    && rm /tmp/r310-dic5-2orb.cnf
+  expected_runtime: '~1 s locally (stdlib audit writes the CNF; drat-trim checks the 12,668-lemma proof)'
+  ci_feasible: true
+  requires:
+  - drat-trim
+  - xz
+- cmd: python3 audit_symmetric_certificate.py f20-2orb symmetric/f20-2orb.separators.txt.xz --write-cnf
+    /tmp/r310-f20-2orb.cnf && xz -dc symmetric/f20-2orb.drat.xz | drat-trim /tmp/r310-f20-2orb.cnf -i &&
+    rm /tmp/r310-f20-2orb.cnf
+  expected_runtime: '~3-5 s locally (stdlib audit writes the CNF; drat-trim checks the 89,487-lemma proof)'
+  ci_feasible: true
+  requires:
+  - drat-trim
+  - xz
+- cmd: python3 audit_symmetric_certificate.py d10-2orb symmetric/d10-2orb.separators.txt.xz --write-cnf
+    /tmp/r310-d10-2orb.cnf && xz -dc symmetric/d10-2orb.drat.xz | drat-trim /tmp/r310-d10-2orb.cnf -i &&
+    rm /tmp/r310-d10-2orb.cnf
+  expected_runtime: '~20-40 s locally on a loaded machine (drat-trim checks the 324,773-lemma proof)'
+  ci_feasible: true
+  requires:
+  - drat-trim
+  - xz
+- cmd: python3 audit_symmetric_certificate.py c10-4orb symmetric/c10-4orb.separators.txt.xz --normalised
+    --sorted-orbits --write-cnf /tmp/r310-c10-4orb.cnf && xz -dc symmetric/c10-4orb.drat.xz | drat-trim
+    /tmp/r310-c10-4orb.cnf -i && rm /tmp/r310-c10-4orb.cnf
+  expected_runtime: '~17-30 s locally on a loaded machine (drat-trim checks the 276,690-lemma proof)'
+  ci_feasible: true
+  requires:
+  - drat-trim
+  - xz
+- cmd: python3 audit_symmetric_certificate.py d5-4orb symmetric/d5-4orb.separators.txt.xz --normalised
+    --sorted-orbits --write-cnf /tmp/r310-d5-4orb.cnf --expect-sha256 7c6e1822ef33c1c073c1d8fe6fa25bedfc080f44050291325da6738558c99c2c
+    && rm /tmp/r310-d5-4orb.cnf
+  expected_runtime: '~2 s locally (semantic audit of 125,459 separators and SHA-256 of the written CNF only; the UNSAT proof is checked by the next, local-only entry)'
+  ci_feasible: true
+- cmd: python3 audit_symmetric_certificate.py d5-4orb symmetric/d5-4orb.separators.txt.xz --normalised
+    --sorted-orbits --write-cnf /tmp/r310-d5-4orb.cnf --expect-sha256 7c6e1822ef33c1c073c1d8fe6fa25bedfc080f44050291325da6738558c99c2c
+    && { cadical -q --unsat /tmp/r310-d5-4orb.cnf /tmp/r310-d5-4orb.drat; test $? -eq 20; } && drat-trim
+    /tmp/r310-d5-4orb.cnf /tmp/r310-d5-4orb.drat && rm /tmp/r310-d5-4orb.cnf /tmp/r310-d5-4orb.drat
+  expected_runtime: '~45 min locally on a loaded shared machine (CaDiCaL ~8 min writes the 178 MB proof, drat-trim ~35 min checks it)'
+  ci_feasible: false
+  requires:
+  - cadical
+  - drat-trim
+- cmd: python3 audit_symmetric_certificate.py q8-5orb symmetric/q8-5orb.separators.txt.xz --normalised
+    --sorted-orbits --write-cnf /tmp/r310-q8-5orb.cnf --expect-sha256 42a69ef999a4c653e1268ece7e020c6c99dac91848b9f851497af19c34026beb
+    && rm /tmp/r310-q8-5orb.cnf
+  expected_runtime: '~4 s locally (semantic audit of 269,223 separators and SHA-256 of the written CNF only; the UNSAT proof is checked by the next, local-only entry)'
+  ci_feasible: true
+- cmd: python3 audit_symmetric_certificate.py q8-5orb symmetric/q8-5orb.separators.txt.xz --normalised
+    --sorted-orbits --write-cnf /tmp/r310-q8-5orb.cnf --expect-sha256 42a69ef999a4c653e1268ece7e020c6c99dac91848b9f851497af19c34026beb
+    && { cadical -q --unsat /tmp/r310-q8-5orb.cnf /tmp/r310-q8-5orb.drat; test $? -eq 20; } && drat-trim
+    /tmp/r310-q8-5orb.cnf /tmp/r310-q8-5orb.drat && rm /tmp/r310-q8-5orb.cnf /tmp/r310-q8-5orb.drat
+  expected_runtime: '~2.2 h locally on a loaded shared machine (CaDiCaL 46 min writes the 290 MB proof, drat-trim 83 min checks it)'
+  ci_feasible: false
+  requires:
+  - cadical
+  - drat-trim
+- cmd: python3 audit_symmetric_certificate.py c8-5orb symmetric/c8-5orb.separators.txt.xz --normalised
+    --sorted-orbits --write-cnf /tmp/r310-c8-5orb.cnf --expect-sha256 071704c2b10c71893e9e06e564863184fbc28ce05f73ce3eb0227a2cb8b934c1
+    && rm /tmp/r310-c8-5orb.cnf
+  expected_runtime: '~4 s locally (semantic audit of 292,542 separators and SHA-256 of the written CNF only; the UNSAT proof is checked by the next, local-only entry)'
+  ci_feasible: true
+- cmd: python3 audit_symmetric_certificate.py c8-5orb symmetric/c8-5orb.separators.txt.xz --normalised
+    --sorted-orbits --write-cnf /tmp/r310-c8-5orb.cnf --expect-sha256 071704c2b10c71893e9e06e564863184fbc28ce05f73ce3eb0227a2cb8b934c1
+    && { cadical -q --unsat /tmp/r310-c8-5orb.cnf /tmp/r310-c8-5orb.drat; test $? -eq 20; } && drat-trim
+    /tmp/r310-c8-5orb.cnf /tmp/r310-c8-5orb.drat && rm /tmp/r310-c8-5orb.cnf /tmp/r310-c8-5orb.drat
+  expected_runtime: '~2.3 h locally on a loaded shared machine (CaDiCaL 46 min writes the 360 MB proof, drat-trim 89 min checks it)'
+  ci_feasible: false
+  requires:
+  - cadical
+  - drat-trim
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: symmetric-class extension (generalised encoder, IPASIR-UP CEGAR back end, independent audit,
+    certificates for the C10xC2, D10, Dic5, F20 two-orbit, C10, D5 four-orbit and C8, Q8 five-orbit
+    classes)
 notes: Status line reads computationally certified but not peer reviewed; README explicitly makes no literature-novelty
   claim and says the one-orbit circulant exclusion is already implied by published results; four SAT backends
   agree UNSAT and official drat-trim reported s VERIFIED; regenerated certificates need not be byte-identical.
-  Full SAT+CEGAR regeneration and cross-solving are local-only.
+  Full SAT+CEGAR regeneration and cross-solving are local-only. Symmetric classes (symmetric/, added 2026-10-24)
+  are checked by a stdlib-only audit that rebuilds each group from its multiplication law, checks group axioms,
+  identifying invariants and semiregularity, and writes the exact CNF (not committed; SHA-256 in README); drat-trim
+  then checks a CaDiCaL 3.0.1 proof reduced to binary DRAT core lemmas and stored xz-compressed. The four- and
+  five-orbit classes add clauses justified by a hand-proved normalisation lemma (single-orbit right translations
+  and orbit sorting, README); the audit checks its hypotheses and rebuilds the clauses, but the lemma itself and
+  the Cayley-graph and cycle-type corollaries are pen-and-paper. The D5, Q8 and C8 proofs (raw CaDiCaL proofs of
+  178-360 MB) are not committed; CI only re-runs their audit with --expect-sha256, and the proof regeneration
+  plus drat-trim check (ci_feasible false) was run on one local machine. C5 with eight orbits ran 5.2 h without a
+  result and was stopped; C4xC2, C2^3, D4, the order-4 classes and fixed-point-free involutions were not
+  attempted.

@@ -1,0 +1,20 @@
+{
+  "class": "dic5-2orb",
+  "normalised": false,
+  "final_cadical_flags": "--unsat",
+  "trim_rounds": [],
+  "final_separators": 2474,
+  "cnf_sha256": "855674742fcf30e55e1f88de2ae6547096ef2004cdb40f0726d1147d82f2c105",
+  "cnf_bytes": 166411,
+  "separators_sha256": "9eef83176273af761c42416ff968015e8e635851a60cec63d896a27b550bd761",
+  "proof_sha256": "336adf2b4e030a30a26cc6139b68853c483e98191c8bf63b1914376bb6a8d07a",
+  "proof_bytes": 423645,
+  "final_cadical_s": 0.2,
+  "drat_trim_s": 0.2,
+  "drat_trim_summary": [
+    "c 2913 of 2918 clauses in core",
+    "c 12562 of 12668 lemmas in core using 203300 resolution steps",
+    "c 0 RAT lemmas in core; 415 redundant literals in core lemmas",
+    "s VERIFIED"
+  ]
+}
