@@ -4,13 +4,15 @@ title_ko: OEIS A067720 — phi(k^2+1)=k*phi(k+1)의 소수 거듭제곱 부분�
 domain: oeis
 source_url: https://oeis.org/A067720
 claimed_status: partial
-claim: Lean-verifies that no solution has k+1=2^a with a>=2; an informal proof additionally shows that
-  for odd prime p with V=v2(p^a-1)+v2(p-1)<=5 the only prime-power solution is (p,a,k)=(3,2,8), while
-  general composite k+1 and the V>=6 prime-power cases remain open.
+claim: Lean-verifies that for k+1=p^a with p prime and a>=2 there is no solution when p=2, and that
+  for odd p with V=v2(p^a-1)+v2(p-1)<=6, or with k^2+1 a product of two primes, the only solution is
+  (p,a,k)=(3,2,8); general composite k+1 and odd prime powers with V>=7 whose k^2+1 has at least three
+  prime factors remain open.
 claim_ko: >-
-  k+1=2^a이고 a>=2인 해가 없음을 Lean으로 검증했고, 비형식적 증명으로 홀수 소수 p에 대해
-  V=v2(p^a-1)+v2(p-1)<=5이면 소수 거듭제곱 해는 (p,a,k)=(3,2,8)뿐임을 보였으나, 일반적인 합성수
-  k+1과 V>=6인 소수 거듭제곱 경우는 여전히 미해결이다.
+  p가 소수이고 a>=2인 k+1=p^a에 대해, p=2이면 해가 없고, p가 홀수이며
+  V=v2(p^a-1)+v2(p-1)<=6이거나 k^2+1이 두 소수의 곱이면 해는 (p,a,k)=(3,2,8)뿐임을 Lean으로
+  검증했으나, 일반적인 합성수 k+1과 V>=7이면서 k^2+1의 소인수가 세 개 이상인 홀수 소수 거듭제곱
+  경우는 여전히 미해결이다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof
@@ -22,6 +24,10 @@ lean:
   - AgenticConjectures.OeisA067720
   theorems:
   - AgenticConjectures.OeisA067720.power_two_add_one_not_solution
+  - AgenticConjectures.OeisA067720.a_eight
+  - AgenticConjectures.OeisA067720.odd_prime_power_solution_of_two_prime_factors
+  - AgenticConjectures.OeisA067720.odd_prime_power_solution_iff_of_two_adic_le_six
+  - AgenticConjectures.OeisA067720.odd_prime_power_solution_iff_of_two_adic_le_five
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
@@ -29,7 +35,15 @@ attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: Lean 4 formalization of the power-of-two exclusion and bilingual documentation
-notes: The power-of-two exclusion is kernel-checked against the exact upstream equation; the odd-prime
-  V<=5 result remains an informal proof. Neither result covers general composite k+1 or odd-prime cases
-  with V>=6; b-file length is not treated as a verified range; novelty is not asserted before peer review;
-  the upstream universal Lean statement remains sorry-backed.
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: Lean 4 formalization of the odd-prime V<=5 theorem, its V<=6 extension and the two-prime-factor
+    case, and bilingual documentation
+notes: The power-of-two exclusion and the odd-prime V<=6 classification, which contains the V<=5 theorem
+  of PROOF.md, are kernel-checked against the exact upstream equation, with V written via padicValNat. The
+  V=6 step (three prime factors of k^2+1 would all be 5 mod 8, while V>=6 forces 8 to divide k) is not in
+  PROOF.md; it is explained in the README and checked in Lean. The Lean proof peels off least prime factors
+  instead of counting the prime factors of k^2+1. Nothing here covers general composite k+1 or odd prime
+  powers with V>=7 whose k^2+1 has at least three prime factors; b-file length is not treated as a
+  verified range; novelty is not asserted before peer review; the upstream universal Lean statement
+  remains sorry-backed.
