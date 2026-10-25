@@ -3,7 +3,9 @@
 
 Statements of open problems must be written as `def ... : Prop := ...`
 (no proof term needed), so nothing in this library ever requires `sorry`.
-`native_decide` is banned because it extends the trusted base to the compiler.
+`native_decide` is banned because it extends the trusted base to the compiler,
+and so are its other spelling `decide +native` and the deprecated
+`ofReduceBool`/`ofReduceNat` axioms.
 """
 import re
 import sys
@@ -11,7 +13,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 LIB = "AgenticConjectures"
-BANNED = re.compile(r"(?<![A-Za-z0-9_'])(sorry|admit|native_decide|axiom)(?![A-Za-z0-9_'])")
+BANNED = re.compile(
+    r"(?<![A-Za-z0-9_'])(sorry|admit|native_decide|axiom|ofReduceBool|ofReduceNat)(?![A-Za-z0-9_'])"
+    r"|\+native(?![A-Za-z0-9_'])"
+)
 
 
 def strip_comments(src: str) -> str:
@@ -46,7 +51,7 @@ def main() -> int:
         for n, line in enumerate(clean.splitlines(), 1):
             m = BANNED.search(line)
             if m:
-                hits.append((p.relative_to(ROOT), n, m.group(1)))
+                hits.append((p.relative_to(ROOT), n, m.group(0)))
     if hits:
         print("Banned tokens found:")
         for path, n, tok in hits:

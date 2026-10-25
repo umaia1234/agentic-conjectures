@@ -4,6 +4,7 @@ run `#print axioms` and require that only the three standard axioms appear
 (propext, Classical.choice, Quot.sound). Catches sorryAx and ofReduceBool
 even if source-level greps are evaded. Requires a completed `lake build`.
 """
+import re
 import subprocess
 import sys
 import tempfile
@@ -13,6 +14,9 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 ALLOWED = {"propext", "Classical.choice", "Quot.sound"}
+AXIOMS_RE = re.compile(
+    r"^'(.+?)' (?:depends on axioms: \[([^\]]*)\]|does not depend on any axioms)", re.M
+)
 
 
 def main() -> int:
@@ -46,16 +50,21 @@ def main() -> int:
         print(r.stdout + r.stderr)
         return 1
 
+    # "'thm' depends on axioms: [a, b]" / "'thm' does not depend on any axioms".
+    # Lean wraps long axiom lists over several lines, so parse the whole output.
+    found = {}
+    for m in AXIOMS_RE.finditer(r.stdout):
+        found[m.group(1)] = {a.strip() for a in (m.group(2) or "").split(",") if a.strip()}
     bad = False
-    for line in r.stdout.splitlines():
-        # "'thm' depends on axioms: [a, b]" / "'thm' does not depend on any axioms"
-        if "depends on axioms:" in line:
-            inside = line.split("[", 1)[1].rsplit("]", 1)[0] if "[" in line else ""
-            axioms = {a.strip() for a in inside.split(",") if a.strip()}
-            extra = axioms - ALLOWED
-            if extra:
-                print(f"DISALLOWED axioms in {line.split(chr(39))[1]}: {sorted(extra)}")
-                bad = True
+    missing = [t for t in theorems if t not in found]
+    if missing:
+        print(f"axiom check: no #print axioms output parsed for {missing}")
+        bad = True
+    for name, axioms in found.items():
+        extra = axioms - ALLOWED
+        if extra:
+            print(f"DISALLOWED axioms in {name}: {sorted(extra)}")
+            bad = True
     if bad:
         return 1
     print(f"axiom check OK: {len(theorems)} theorem(s), standard axioms only")
