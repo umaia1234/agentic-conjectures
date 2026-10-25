@@ -4,18 +4,23 @@ title_ko: 작은 Diophantine 방정식에 대한 저차 ansatz 시도
 domain: other
 source_url: https://epoch.ai/frontiermath/open-problems/small-diophantine
 claimed_status: partial
-claim: 'Claims only exact negative results: three low-degree rational-curve ansatz classes and a narrow
-  integer-Q Pell-factor spot-check admit no solutions for the six remaining equations z^2 + y^2*z + x^3
-  + a*x + b = 0, none of which is claimed solved.'
+claim: 'Claims only exact negative results for the six remaining equations z^2 + y^2*z + x^3 + a*x
+  + b = 0: three low-degree rational-curve ansatz classes and a narrow integer-Q Pell-factor spot-check
+  admit no solutions, and every curve z = A(y) with A in Q[y] of degree at most 5 carries only finitely
+  many integer points; no equation is claimed solved.'
 claim_ko: >-
-  여섯 잔여 방정식에 대해 세 가지 저차 유리곡선 ansatz 부류에는 해가 없다는 정확한 결과와, 제한된
-  정수 Q 범위에서의 Pell 인자 ansatz 표본 검사 결과만 주장한다. 이는 제한된 ansatz에 대한 배제일
-  뿐이며, 여섯 방정식 가운데 어느 것도 해결했다고 주장하지 않는다.
+  여섯 잔여 방정식 z^2 + y^2*z + x^3 + a*x + b = 0에 대해, 세 가지 저차 유리곡선 ansatz 부류와 제한된
+  정수 Q 범위의 Pell 인자 ansatz에는 해가 없고 차수 5 이하의 A ∈ Q[y]로 정해지는 모든 곡선 z = A(y)
+  위에는 정수점이 유한개뿐이라는 정확한 부정적 결과만 주장하며, 어느 방정식도 해결했다고 주장하지 않는다.
 artifacts:
 - path: analyze_ansatze.py
   kind: search-code
 - path: search_pell_factor.py
   kind: search-code
+- path: analyze_z_poly_y.py
+  kind: certificate-script
+- path: crosscheck_z_poly_y.gp
+  kind: certificate-script
 verify:
 - cmd: python3 analyze_ansatze.py
   expected_runtime: unknown
@@ -23,11 +28,26 @@ verify:
 - cmd: python3 search_pell_factor.py
   expected_runtime: roughly a minute (stated), substantial memory
   ci_feasible: false
+- cmd: python3 analyze_z_poly_y.py
+  expected_runtime: about 3 s
+  ci_feasible: true
+- cmd: gp -q crosscheck_z_poly_y.gp < /dev/null | grep "ALL CROSS-CHECKS PASSED"
+  expected_runtime: under 1 s (PARI/GP 2.15 or later)
+  ci_feasible: false
+  requires: [gp]
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: finiteness of integer points on all curves z = A(y) with deg A <= 5 (exact eliminations,
+    descent for k^2 = r^4 - 4b, residue obstructions) and an independent PARI/GP cross-check
 notes: README opens by saying no solution meeting Epoch's threshold (three integer solutions with |x|
   > 10^50) was found and no equation is claimed solved; obstructions are ansatz-specific and say nothing
   about more complicated curves or non-parametric families; rational Q, other integer Q, and higher-degree
-  Pell factorizations remain untested.
+  Pell factorizations remain untested. The z = A(y) finiteness result combines Siegel's theorem, the
+  Riemann-Hurwitz formula and a 2-isogeny descent (used as stated, not formalized) with exact eliminations
+  checked by analyze_z_poly_y.py (sympy, CI) and re-derived in a different normalization by
+  crosscheck_z_poly_y.gp (PARI/GP, not run in CI); it is ineffective, gives no bound on solutions, and
+  covers only curves on which z is a polynomial in y of degree at most 5.
