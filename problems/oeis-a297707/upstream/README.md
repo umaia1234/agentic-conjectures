@@ -15,7 +15,7 @@ This directory preserves the exact Lean source used to connect the A297707 work 
 
 ## Relation to this problem
 
-The upstream theorem states only that any index producing a composite previous-prime gap is greater than `250`. The parent directory contains an experimental probable-prime search; it does not supply a formal proof of that bound or a certified answer to the least-index question.
+The upstream theorem states only that any index producing a composite previous-prime gap is greater than `250`. The parent directory certifies, with compositeness witnesses and ECPP primality certificates, that the gap is `1` or prime for every `2 < n <= 175`, which settles those instances computationally; for `176 <= n <= 250` it has only a probable-prime screen. It therefore does not supply a proof of the bound `250`, a formal (Lean) proof, or a certified answer to the least-index question.
 
 The conjectural declaration still closes with `by sorry`. It is a machine-readable statement of the conjecture, not a formal proof. The copied file retains its original copyright and license header.
 

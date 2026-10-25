@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-18-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-5-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
+**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 18 · ⚪ 미해결: 5
 
 ### OEIS
 
@@ -155,7 +155,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 | [OEIS A245211: a(n)=n인 것은 n=21뿐](problems/oeis-a245211/README.ko.md) | 🟡 부분 결과 | 인증서(로컬) | `GPT-5.6 Sol` | 부분적 진전만을 주장한다. n=21의 유일성에 대한 모든 반례가 2310과 서로소이고 제한된 인수분해 형태를 가져야 한다는 필요조건을 증명했으며, 모든 n <= 10^9와 서로 다른 소인수가 두 개이고 각 지수가 <= 200인 모든 n을 정확히 검증했다. |
 | [OEIS A270361 — 더 작은 소수의 유일성](problems/oeis-a270361/README.ko.md) | ✅ 증명 | Lean | `GPT-5.6 Sol` | 각 홀수 소수 p에 대해 p*q-1을 제곱수로 만드는 홀수 소수 q<p가 최대 하나라는 OEIS 추측을 Lean으로 증명했다. p를 법으로 한 두 제곱근과 이들의 엄격한 범위, 홀짝성 모순을 이용한다. |
 | [OEIS A286185 & A286183 — 뫼비우스 사다리와 엇각기둥의 연결 유도 부분그래프](problems/oeis-a286185-a286183/README.ko.md) | ✅ 증명 | Lean + 인증서 | `Claude Opus 5` | 꼭짓점이 2n개인 뫼비우스 사다리(A286185, a(n)=A002203(n)+3n*A000129(n)-n-1)와 엇각기둥(A286183, a(n)=A005248(n)-2n+2n*A001906(n))의 공집합이 아닌 연결 유도 부분그래프 수에 대해 OEIS가 추측한 닫힌 형식의 완전한 비형식적 증명을 제시한다. 열 전이행렬 논증을 통해 해당 항목들에서 추측된 6계 점화식과 생성함수도 증명하며, 이미 Vince 2021의 보조정리 7.2로 출판된 각기둥 경우 A286182도 다시 유도한다. 새로운 결과라고 주장하지 않는다. |
-| [OEIS A297707 소수 간격 탐색 코드](problems/oeis-a297707/README.ko.md) | ⚪ 미해결 | — | `GPT-5.6 Sol` | 아무 결과도 주장하지 않는다. 이 디렉터리에는 보고된 양 끝점이 Baillie–PSW 추정 소수 판정만 통과한 실험적 소수 간격 탐색 코드가 있을 뿐이며, 이로써 추측에 관해 인증되는 것은 없다. |
+| [OEIS A297707 — 인증된 이전 소수 간격](problems/oeis-a297707/README.ko.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` · `Claude Opus 5.5 (max effort)` | 인증된 유한 범위만을 주장한다. 모든 2 < n <= 175에 대해 간격 a(n) - prevprime(a(n))이 1(n = 3에서만)이거나 소수임을, 간격 전체의 합성수 증거와 아래 끝점의 ECPP 인증서로 증명한다. 176 <= n <= 250에서는 끝점이 BPSW 추정 소수일 뿐이어서 기록된 간격은 하한으로만 인증되므로, 상류의 경계 250은 인증되지 않는다. |
 | [OEIS A319197 — 명시된 I(n,1)=1 정규화는 n=7에서 반박됨](problems/oeis-a319197/README.ko.md) | 🔴 반례 | Lean + 인증서 | `GPT-5.6 Sol` | 공개된 인수들에 따르면 I(7,1)=769이므로, 항목에 명시된 I(n,1)=1 정규화에 대해 Lean으로 검증된 완전한 반박을 제시한다. 별개의 모든 m에 대한 정수성 추측은 여전히 미해결이다. |
 | [OEIS A340881 모듈러 주기성](problems/oeis-a340881/README.ko.md) | ✅ 증명 | 인증서 | `GPT-5.6 Sol` | 홀수 m을 법으로 하는 명시적 순수 주기(n=1부터 주기 2*ord_m(2))와 모든 m >= 2에 대한 A340881(n) mod m의 궁극적 주기성을 제시하여, OEIS의 두 주기성 추측에 대한 완전한 비형식적 증명을 제시한다. |
 | [OEIS A354747 최초 미해결 항 a(100943)](problems/oeis-a354747/README.md) | 🔴 반례 | 인증서(로컬) | `GPT-5.6 Sol` | 201886*3^39101-1에 대한 서로 독립적인 두 결정론적 소수 인증서(GMP Lucas-rank와 OpenPFGW BLS)와 지수 1..39100 전체에 대한 빠짐없는 합성수 검사를 통해 a(100943)=39101임을 밝히고, 업스트림 FormalConjectures의 명제 a(100943)=0을 반박한다. |

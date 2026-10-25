@@ -1,25 +1,49 @@
 id: oeis-a297707
-title: OEIS A297707 prime-gap search code
-title_ko: OEIS A297707 소수 간격 탐색 코드
+title: OEIS A297707 certified previous-prime gaps
+title_ko: OEIS A297707 — 인증된 이전 소수 간격
 domain: oeis
 source_url: https://oeis.org/A297707
-claimed_status: open
-claim: 'Claims no result: the directory contains only experimental prime-gap search code whose reported
-  endpoints are Baillie-PSW probable primes, certifying nothing about the conjecture.'
+claimed_status: partial
+claim: 'Claims a certified finite range only: for every 2 < n <= 175 the gap a(n) - prevprime(a(n))
+  is 1 (only n = 3) or prime, proved by compositeness witnesses for the whole gap and ECPP certificates
+  for its lower endpoint; for 176 <= n <= 250 the endpoints are only BPSW probable primes (the
+  recorded gaps are certified only as lower bounds), so the upstream bound 250 is not certified.'
 claim_ko: >-
-  아무 결과도 주장하지 않는다. 이 디렉터리에는 보고된 양 끝점이 Baillie–PSW 추정 소수
-  판정만 통과한 실험적 소수 간격 탐색 코드가 있을 뿐이며, 이로써 추측에 관해 인증되는
-  것은 없다.
+  인증된 유한 범위만을 주장한다. 모든 2 < n <= 175에 대해 간격 a(n) - prevprime(a(n))이
+  1(n = 3에서만)이거나 소수임을, 간격 전체의 합성수 증거와 아래 끝점의 ECPP 인증서로
+  증명한다. 176 <= n <= 250에서는 끝점이 BPSW 추정 소수일 뿐이어서 기록된 간격은
+  하한으로만 인증되므로, 상류의 경계 250은 인증되지 않는다.
 artifacts:
 - path: oeis_a297707_search.py
   kind: search-code
+- path: certify_a297707.py
+  kind: certificate-script
+- path: verify_a297707.py
+  kind: certificate-script
+- path: a297707_gaps.jsonl
+  kind: data
+- path: certs
+  kind: ecpp-certificates
 - path: upstream/297707_fd3973db.lean
   kind: upstream-lean
-verify: []
+verify:
+- cmd: python3 verify_a297707.py --certs certs --max-n 50 --require-certified-through 50
+  expected_runtime: '26 s locally in pure Python (3 <= n <= 50: witnesses + ECPP certificates)'
+  ci_feasible: true
+- cmd: python3 verify_a297707.py --certs /path/to/out/certs --pari gp --require-certified-through 175
+  expected_runtime: '86 CPU-min with gmpy2; about 35 min wall when split into four n-ranges on the loaded machine (needs the local-only certificates for 51 <= n <= 175, regenerated
+    with certify_a297707.py prove; /path/to/out is a placeholder)'
+  ci_feasible: false
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: The search command takes a user-chosen bound placeholder, not a fixed reproduction; README says
-  endpoints need separate primality certification before use in any proof; the upstream Lean theorem (counterexample
-  index > 250) is a sorry-marked conjecture statement that this folder's search does not certify.
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: certified gap computation for 2 < n <= 175 (witnesses, ECPP certificates, independent verifier)
+notes: Primality of the gap endpoints rests on PARI/GP 2.19.0 ECPP certificates, re-checked by an
+  independent pure-Python affine elliptic-curve checker and by primecertisvalid; compositeness inside
+  the gaps rests on explicit factors or base-2 Fermat witnesses. Only the certificates for n <= 50 are
+  committed and checked in CI; those for 51 <= n <= 175 are local-only (SHA-256 recorded, deterministic
+  regeneration with one PARI thread). For 176 <= n <= 250 the endpoints are BPSW probable primes
+  only, so the upstream statement with bound 250 remains uncertified; no Lean proof is added.
