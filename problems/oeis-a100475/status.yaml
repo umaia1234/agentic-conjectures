@@ -1,0 +1,44 @@
+id: oeis-a100475
+title: OEIS A100475 — no start of the prime-reversal recurrence goes into a loop
+title_ko: OEIS A100475 — 소수 뒤집기 점화식은 어떤 시작값에서도 고리에 빠지지 않음
+domain: oeis
+source_url: https://oeis.org/A100475
+claimed_status: refuted
+claim: 'Refutes the Formal Conjectures loop conjecture in Lean: for every start x >= 1 the orbit of
+  k -> reversal(p_k) is not ultimately periodic, because digit length never decreases and
+  pi(10^d) < 10^(d-1) for d >= 5, while a kernel search settles d <= 4.'
+claim_ko: >-
+  Formal Conjectures의 고리 추측을 Lean으로 반박했다. 자릿수가 줄어들지 않고 d>=5에서
+  pi(10^d)<10^(d-1)이며 d<=4는 커널 탐색으로 처리되므로, 모든 시작값 x>=1에 대해
+  k -> reversal(p_k)의 궤도는 결국 주기적이 되지 않는다.
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: a100475_certificate.py
+  kind: certificate-script
+- path: upstream/100475.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 a100475_certificate.py
+  expected_runtime: about 3 seconds
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.OeisA100475
+  theorems:
+  - AgenticConjectures.OeisA100475.not_statement
+  - AgenticConjectures.OeisA100475.not_isUltimatelyPeriodic
+  - AgenticConjectures.OeisA100475.count_prime_pow_ten_lt
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: refutation proof, Lean 4 formalization with kernel computations, independent Python
+    certificate, and documentation
+notes: The refutation is complete in Lean; every finite step (pi(10^4)=1229, exact prime counts below
+  100112 and 509712, the d<=4 band search) is a decide +kernel evaluation linked to Nat.Prime and Nat.nth
+  by proved lemmas, and no step relies on the Python script, which only re-derives the same numbers by
+  a sieve. Definitions are copied term for term from the upstream snapshot; the theorem
+  not_isUltimatelyPeriodic is stronger than the negated conjecture because it also covers x=1. The
+  start x=0, a totalization artifact with constant orbit 0, is excluded by upstream as well. The argument
+  is elementary (the OEIS entry already links Rosser's theorem), so no novelty is claimed; unreviewed and
+  not reported to OEIS or Formal Conjectures.

@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-56-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
+![problems](https://img.shields.io/badge/problems-57-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-10-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**56 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
+**57 problems** — ✅ proved: 24 · 🔴 refuted: 10 · 🟡 partial: 17 · ⚪ open: 6
 
 ### OEIS
 
@@ -147,6 +147,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 | [OEIS A067720 — phi(k^2+1)=k*phi(k+1) prime-power subfamily](problems/oeis-a067720/README.md) | 🟡 partial | lean | `GPT-5.6 Sol` | Lean-verifies that no solution has k+1=2^a with a>=2; an informal proof additionally shows that for odd prime p with V=v2(p^a-1)+v2(p-1)<=5 the only prime-power solution is (p,a,k)=(3,2,8), while general composite k+1 and the V>=6 prime-power cases remain open. |
 | [OEIS A072780 — Goldbach-like equivalence refuted at (m,r)=(8,7)](problems/oeis-a072780/README.md) | 🔴 refuted | lean + cert | `GPT-5.6 Sol` | Refutes the claim that a(m^2-r^2)=2 iff m-r and m+r are prime: at (m,r)=(8,7), a(15)=2 while the selected factors 1 and 15 are nonprime. |
 | [OEIS A076141 — n occurs at most once in binary of n^2, checked to 2^40](problems/oeis-a076141/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | An exact exhaustive occurrence-geometry search found no counterexample for 0 < n < 2^40, extending the OEIS-recorded 10^6 verification by a factor of about 1.1 million; explicitly a rigorous bounded verification, not a proof of the full conjecture. |
+| [OEIS A100475 — no start of the prime-reversal recurrence goes into a loop](problems/oeis-a100475/README.md) | 🔴 refuted | lean + cert | `Claude Opus 5.5 (max effort)` | Refutes the Formal Conjectures loop conjecture in Lean: for every start x >= 1 the orbit of k -> reversal(p_k) is not ultimately periodic, because digit length never decreases and pi(10^d) < 10^(d-1) for d >= 5, while a kernel search settles d <= 4. |
 | [OEIS A112970 — power-of-two identities and quarter-square formula proved](problems/oeis-a112970/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` | Lean-verifies both conjectured chains for all n >= 0, including the omitted closed form a(2^n) = floor(n^2/4) + 1 from A033638. |
 | [OEIS A113249 — full parameter-family square conjecture proved](problems/oeis-a113249/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` | Lean-proves that every odd-indexed term in the OEIS A113249 fourth-order family is a square: a(m,2*n+1)=Y(m,n)^2 for every integer parameter m and every n>=0. |
 | [OEIS A136433 — 9-lag linear recurrence proved for all n>=10](problems/oeis-a136433/README.md) | ✅ proved | lean + cert | `GPT-5.6 Sol` · `Claude Fable 5` | Claims a complete proof that the OEIS-conjectured constant-coefficient recurrence a_n = 6*a_{n-3} + a_{n-6} - 6*a_{n-9} holds for all n>=10 for the periodic-coefficient nonautonomous sequence, via a_{t+3}=6*a_t+B_t with B_t of period 6. |
