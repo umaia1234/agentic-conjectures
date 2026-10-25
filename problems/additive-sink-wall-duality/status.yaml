@@ -1,0 +1,90 @@
+id: additive-sink-wall-duality
+title: Additive sink subtraction — the sink–wall duality conjecture, proved
+title_ko: 덧셈형 싱크 빼기 게임 — 싱크–벽 쌍대성 추측의 증명
+domain: other
+source_url: https://arxiv.org/abs/2601.18715v3
+claimed_status: proved
+claim: >-
+  Lean-proves equation (3) of arXiv:2601.18715v3 (Bhagat, Larsson, Manabe and Yamashita): for every
+  additive set S = {s1, s2, s1 + s2} with 1 <= s1 < s2 and every integer x,
+  v_wall([x]_p) = sigma(v_sink([-s2 - x]_p)), where p is the period length of their Theorem 3 and
+  sigma swaps the values 0 and 2 (AgenticConjectures.AdditiveSinkWallDuality.statement_holds).
+claim_ko: >-
+  arXiv:2601.18715v3(Bhagat, Larsson, Manabe, Yamashita)의 식 (3)을 Lean으로 증명했다. 1 <= s1 < s2인
+  모든 덧셈형 집합 S = {s1, s2, s1 + s2}와 모든 정수 x에 대해 v_wall([x]_p) = sigma(v_sink([-s2 - x]_p))가
+  성립한다. 여기서 p는 논문 정리 3의 주기 길이이고, sigma는 값 0과 2를 맞바꾼다
+  (AgenticConjectures.AdditiveSinkWallDuality.statement_holds).
+artifacts:
+- path: ../../AgenticConjectures/AdditiveSinkWallDuality.lean
+  kind: lean-proof
+- path: ../../AgenticConjectures/AdditiveSinkWallDuality/Games.lean
+  kind: lean-proof
+- path: ../../AgenticConjectures/AdditiveSinkWallDuality/Classes.lean
+  kind: lean-proof
+- path: ../../AgenticConjectures/AdditiveSinkWallDuality/Explicit.lean
+  kind: lean-proof
+- path: DETAILS.md
+  kind: mathematical-details
+- path: check_duality.py
+  kind: search-code
+- path: check_translates.py
+  kind: search-code
+verify:
+- cmd: python3 check_duality.py 100
+  expected_runtime: about 3 seconds
+  ci_feasible: true
+- cmd: python3 check_translates.py 100
+  expected_runtime: about 7 seconds
+  ci_feasible: true
+- cmd: python3 check_duality.py 200
+  expected_runtime: about 40 seconds
+  ci_feasible: false
+lean:
+  modules:
+  - AgenticConjectures.AdditiveSinkWallDuality
+  - AgenticConjectures.AdditiveSinkWallDuality.Games
+  - AgenticConjectures.AdditiveSinkWallDuality.Classes
+  - AgenticConjectures.AdditiveSinkWallDuality.Explicit
+  theorems:
+  - AgenticConjectures.AdditiveSinkWallDuality.statement_holds
+  - AgenticConjectures.AdditiveSinkWallDuality.wall_eq_wallClass
+  - AgenticConjectures.AdditiveSinkWallDuality.sink_eq_sinkClass
+  - AgenticConjectures.AdditiveSinkWallDuality.wall_periodic
+  - AgenticConjectures.AdditiveSinkWallDuality.sink_periodic
+  - AgenticConjectures.AdditiveSinkWallDuality.wall_zero_reflect_period
+  - AgenticConjectures.AdditiveSinkWallDuality.wall_ne_zero_of_gap
+  - AgenticConjectures.AdditiveSinkWallDuality.sink_period_eq_zero
+  - AgenticConjectures.AdditiveSinkWallDuality.wall_zero_iff_W
+  - AgenticConjectures.AdditiveSinkWallDuality.conj_of_gap
+  - AgenticConjectures.AdditiveSinkWallDuality.wall_zero_reflect
+  - AgenticConjectures.AdditiveSinkWallDuality.wall_add_period
+  - AgenticConjectures.AdditiveSinkWallDuality.sink_add_period
+  - AgenticConjectures.AdditiveSinkWallDuality.wall_zero_iff_of_kernel
+  - AgenticConjectures.AdditiveSinkWallDuality.wall_eq_iff
+  - AgenticConjectures.AdditiveSinkWallDuality.sink_eq_iff
+  - AgenticConjectures.AdditiveSinkWallDuality.W_indep
+  - AgenticConjectures.AdditiveSinkWallDuality.W_cover
+  - AgenticConjectures.AdditiveSinkWallDuality.W_neg_gap
+  - AgenticConjectures.AdditiveSinkWallDuality.W_top_gap
+  - AgenticConjectures.AdditiveSinkWallDuality.period_gt
+  - AgenticConjectures.AdditiveSinkWallDuality.Explicit.period_spec
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: >-
+    human-readable proof, Lean 4 formalization (games, value classes, periodicity, reflection,
+    explicit wall P-positions, period identity), two independent checkers, check of the paper's final
+    remarks, and documentation
+notes: >-
+  The conjecture is due to Anjali Bhagat, Urban Larsson, Hikaru Manabe and Takahiro Yamashita
+  (arXiv:2601.18715v3, equation (3)). Searches on 2026-10-25 found no earlier proof or disproof, but no
+  novelty is claimed. The statement is ours (Formal Conjectures has none); its choices are listed in
+  the module docstring and DETAILS.md: both games are defined by their mex recursions, p is the formula
+  of Theorem 3 (proved here to be a period of both nim-sequences, not the least one; check_duality.py
+  confirms minimality for s2 <= 200), x ranges over the integers, and every 1 <= s1 < s2 is covered,
+  with no gcd or regime condition. The wall side (the value classes and the bracket formula) is known
+  for coprime pairs with s1 >= 2 (Manabe, arXiv:2609.05358v2, whose Lean formalization was used as a
+  reference only), and the bracket formula itself is classical (Winning Ways; Flammenkamp's thesis);
+  this proof re-proves what it needs for every pair. An earlier scouting run of this
+  project found the route through (T1)-(T3). No human has reviewed the proof, and nothing has been
+  reported to the authors or submitted anywhere.

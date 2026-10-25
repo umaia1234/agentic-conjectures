@@ -29,6 +29,7 @@ problem rather than assembling another global copy.
 <!-- DETAILS:BEGIN (scripts/gen_readme.py) -->
 | Problem | Claimed status | Mathematical details |
 |---|---|---|
+| [Additive sink subtraction — the sink–wall duality conjecture, proved](../problems/additive-sink-wall-duality/README.md) | ✅ proved | [Detailed derivation](../problems/additive-sink-wall-duality/DETAILS.md) |
 | [Erdős #385 / #430(i) — odd indices and exact verification through 10^9](../problems/erdos-385/README.md) | 🟡 partial | [Detailed derivation](../problems/erdos-385/DETAILS.md) |
 | [Erdős #671 — everywhere-unbounded Lagrange arrays proved](../problems/erdos-671/README.md) | ✅ proved | [Detailed derivation](../problems/erdos-671/DETAILS.md) |
 | [Let's Prove Goldbach prize problem 2 — exact periodic formula](../problems/goldbach-prize-2/README.md) | ✅ proved | [Detailed derivation](../problems/goldbach-prize-2/DETAILS.md) |
