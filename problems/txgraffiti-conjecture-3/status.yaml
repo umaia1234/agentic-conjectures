@@ -1,0 +1,141 @@
+id: txgraffiti-conjecture-3
+title: "TxGraffiti Conjecture 3: i(G) <= mu*(G) for regular graphs"
+title_ko: "TxGraffiti 추측 3: 정칙 그래프에서 i(G) <= mu*(G)"
+domain: graph-combinatorics
+source_url: "https://arxiv.org/abs/2507.17780"
+claimed_status: refuted
+claim: >-
+  Refutes the statement and its restriction to degrees r >= 4: Lean proves that the public 48-vertex
+  cubic graph G48 has mu* = 15 and, given i(G48) >= 16 (a DRAT certificate checked in CI), that its
+  blow-up G48[K2bar] is a 6-regular counterexample on 96 vertices and that every degree divisible by
+  3 fails. Degrees r >= 4 not divisible by 3, including 4 and 5, stay open; unformalized searches
+  find no counterexample among connected 4-regular graphs on at most 17 vertices or 5-regular graphs
+  on at most 14 vertices.
+claim_ko: >-
+  명제와, 차수를 r >= 4로 제한한 명제를 모두 반증한다. 공개된 48정점 3-정칙 그래프 G48에서
+  mu* = 15임을 Lean으로 증명했고, i(G48) >= 16(CI가 검사하는 DRAT 인증서)을 전제로 그 블로업
+  G48[K2bar]가 정점 96개인 6-정칙 반례이며 3의 배수인 모든 차수에서 추측이 거짓임도 Lean으로
+  증명했다. 4와 5를 포함해 3의 배수가 아닌 차수 r >= 4는 여전히 미해결이다. 형식화되지 않은
+  탐색에서 정점 17개 이하의 연결 4-정칙 그래프와 정점 14개 이하의 연결 5-정칙 그래프 가운데
+  반례는 나오지 않았다.
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: DETAILS.md
+  kind: mathematical-details
+- path: certificates/g48_cnf.py
+  kind: certificate-script
+- path: certificates/g48_ids_le15.cnf
+  kind: sat-cnf
+- path: certificates/g48_ids_le15.drat
+  kind: sat-drup
+- path: search/tx3check.c
+  kind: search-code
+- path: search/transform.c
+  kind: search-code
+- path: search/wblow.c
+  kind: search-code
+- path: search/sa_balanced_cnf.c
+  kind: search-code
+- path: search/tx3lib.py
+  kind: search-code
+- path: search/crosscheck.py
+  kind: search-code
+- path: search/xcheck_c.py
+  kind: search-code
+- path: search/check_blowup.py
+  kind: search-code
+- path: search/prod_check.py
+  kind: search-code
+- path: search/reproduce.sh
+  kind: search-code
+- path: search/search_summary.txt
+  kind: data
+- path: upstream_statement_check.lean
+  kind: other
+- path: upstream/3.lean
+  kind: upstream-lean
+- path: upstream/README.md
+  kind: upstream-lean
+verify:
+- cmd: python3 certificates/g48_cnf.py --check
+  expected_runtime: under 1 second (regenerates the CNF from the Lean source and checks its SHA-256)
+  ci_feasible: true
+- cmd: drat-trim certificates/g48_ids_le15.cnf certificates/g48_ids_le15.drat
+  expected_runtime: about 0.1 seconds
+  ci_feasible: true
+  requires: [drat-trim]
+- cmd: "cc -O2 -o /tmp/txgraffiti3_tx3check search/tx3check.c && python3 certificates/g48_cnf.py --g6 | /tmp/txgraffiti3_tx3check | grep -q 'COUNTEREXAMPLE i=16 mu.=15'"
+  expected_runtime: about 1 second (independent branch and bound for i(G48) = 16 and mu*(G48) = 15)
+  ci_feasible: true
+  requires: [cc]
+- cmd: sh search/reproduce.sh
+  expected_runtime: "about 2.5 hours on one core (default stages); `sh search/reproduce.sh quartic17`
+    adds the n = 17 quartic search, about 2 CPU-hours"
+  ci_feasible: false
+  requires: [cc, geng]
+- cmd: cd ../.. && lake env lean problems/txgraffiti-conjecture-3/upstream_statement_check.lean
+  expected_runtime: about 10 seconds after lake build
+  ci_feasible: false
+  requires: [lake]
+lean:
+  modules:
+  - AgenticConjectures.TxGraffitiConjecture3
+  theorems:
+  - AgenticConjectures.TxGraffitiConjecture3.statement_iff
+  - AgenticConjectures.TxGraffitiConjecture3.statementGeFour_iff
+  - AgenticConjectures.TxGraffitiConjecture3.isMaximalEdgeMatching_iff
+  - AgenticConjectures.TxGraffitiConjecture3.exists_isMaximalEdgeMatching
+  - AgenticConjectures.TxGraffitiConjecture3.card_edgeFinset_le_of_isMaximalEdgeMatching
+  - AgenticConjectures.TxGraffitiConjecture3.card_edgeFinset_le_mul_saturationNumber
+  - AgenticConjectures.TxGraffitiConjecture3.exists_isNIndepDominatingSet
+  - AgenticConjectures.TxGraffitiConjecture3.degree_blowup
+  - AgenticConjectures.TxGraffitiConjecture3.isNIndepDominatingSet_of_blowup
+  - AgenticConjectures.TxGraffitiConjecture3.isNIndepDominatingSet_blowup
+  - AgenticConjectures.TxGraffitiConjecture3.indepDominationNumber_blowup
+  - AgenticConjectures.TxGraffitiConjecture3.card_blowupMatching
+  - AgenticConjectures.TxGraffitiConjecture3.isMaximalEdgeMatching_blowupMatching
+  - AgenticConjectures.TxGraffitiConjecture3.saturationNumber_blowup_le
+  - AgenticConjectures.TxGraffitiConjecture3.adj48_symm
+  - AgenticConjectures.TxGraffitiConjecture3.adj48_irrefl
+  - AgenticConjectures.TxGraffitiConjecture3.G48_degree
+  - AgenticConjectures.TxGraffitiConjecture3.card_edgeFinset_G48
+  - AgenticConjectures.TxGraffitiConjecture3.card_M48
+  - AgenticConjectures.TxGraffitiConjecture3.isMaximalEdgeMatching_M48
+  - AgenticConjectures.TxGraffitiConjecture3.saturationNumber_G48
+  - AgenticConjectures.TxGraffitiConjecture3.isNIndepDominatingSet_D48
+  - AgenticConjectures.TxGraffitiConjecture3.indepDominationNumber_G48
+  - AgenticConjectures.TxGraffitiConjecture3.not_statementDeg
+  - AgenticConjectures.TxGraffitiConjecture3.not_statement
+  - AgenticConjectures.TxGraffitiConjecture3.not_statementGeFour
+attribution:
+- model: "Claude Opus 5.5 (max effort)"
+  harness: "Claude Code"
+  scope: "Lean 4 formalization (G48, the edge bound, the blow-up lemma, the refutations given the
+    certified lower bound), CNF generator and DRAT certificate, independent C checker, searches for
+    degrees 4 to 6, pen-and-paper class results and documentation"
+notes: >-
+  Trust split: Lean proves mu*(G48) = 15, the independent dominating set D48 of size 16, the
+  bound |E| <= (2r-1) mu*, the blow-up lemma, and not statement / not statementGeFour from the
+  hypothesis G48LowerBound (no independent dominating set of G48 has at most 15 vertices).
+  G48LowerBound itself rests on a DRAT proof that drat-trim checks in CI, for a CNF that CI
+  regenerates from the Lean source and hash-checks; that the CNF encodes G48LowerBound is a
+  pen-and-paper argument (g48_cnf.py docstring, DETAILS.md section 3). An independent C branch and
+  bound recomputes i(G48) = 16 and mu*(G48) = 15 in CI. The cubic counterexamples are not ours and
+  were public before this work: the earliest we found is the 50-vertex graph of
+  djma/TxGraffiti-conjecture3-counterexample (2026-07-23, with a CNF and LRAT proof of i >= 16),
+  from which Zenodo 10.5281/zenodo.21852504 (2026-08-08) is derived and which Afrasyab
+  (arXiv:2609.10783) also studies; Iwane gives 113 more (GitHub 2026-07-27, Zenodo
+  10.5281/zenodo.22924244); G48 is the graph of the anonymous ipitchford/txgraffiti-order48-successor
+  release (2026-08-24, with a proof-tree certificate of i >= 16); and Formal Conjectures issue #6737
+  reports the conjecture false. The refutation for r >= 4 goes only through degrees divisible by 3;
+  degrees
+  4, 5, 7, 8 and every other r >= 4 not divisible by 3 remain open. The searches are computer-assisted,
+  local only and unformalized, and rely on nauty geng. The r >= 7 result for graphs with an efficient
+  edge dominating set (a direct corollary of Gupta, arXiv:2608.22498, Theorem 1) and the MU(1)
+  remark are pen and paper only. The paper's sharpness clause is not addressed. The definitions are
+  copied from formal-conjectures c094b97, but the module is compiled only against this
+  repository's pinned mathlib; upstream_statement_check.lean re-elaborates the upstream statement
+  over the verbatim upstream definitions and derives its negation from not_statement, but it is
+  not imported by the library, so CI does not run it. No novelty is claimed, and no human has
+  reviewed these results.

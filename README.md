@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-56-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
+![problems](https://img.shields.io/badge/problems-57-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-10-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**56 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
+**57 problems** — ✅ proved: 24 · 🔴 refuted: 10 · 🟡 partial: 17 · ⚪ open: 6
 
 ### OEIS
 
@@ -193,6 +193,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 | [Exact computation of L(6) for Pulse Graphs](problems/pulse-graphs-l6/README.md) | ✅ proved | cert | `GPT-5.6 Sol` | Claims the exact value L(6)=17 for the paper's open case n=6, via exhaustive isomorph-free enumeration of all 1,540,944 loopless 6-vertex digraphs with two independent cycle analyzers, plus an independently verified explicit 17-cycle witness. |
 | [R(3,10) C20-bicirculant subcase exclusion](problems/ramsey-r3-10/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims a SAT/DRUP-certified exclusion of one automorphism class only: no triangle-free 40-vertex graph with independence number <= 9 is invariant under the C20 action with cycle structure 20^2, so a hypothetical 40-vertex (3,10) Ramsey graph cannot be such a bicirculant; R(3,10) in {40,41} is not determined. |
 | [Graph recoloring radius — subdivided-claw counterexample](problems/recoloring-radius-q15/README.md) | 🔴 refuted | cert | `GPT-5.6 Sol` | The 7-vertex subdivided claw refutes Question 15 at k=4: C_4(G) and C_5(G) are connected, but exact exhaustive computations give radii 9 and 10. |
+| [TxGraffiti Conjecture 3: i(G) <= mu*(G) for regular graphs](problems/txgraffiti-conjecture-3/README.md) | 🔴 refuted | lean + cert | `Claude Opus 5.5 (max effort)` | Refutes the statement and its restriction to degrees r >= 4: Lean proves that the public 48-vertex cubic graph G48 has mu* = 15 and, given i(G48) >= 16 (a DRAT certificate checked in CI), that its blow-up G48[K2bar] is a 6-regular counterexample on 96 vertices and that every degree divisible by 3 fails. Degrees r >= 4 not divisible by 3, including 4 and 5, stay open; unformalized searches find no counterexample among connected 4-regular graphs on at most 17 vertices or 5-regular graphs on at most 14 vertices. |
 | [WOWII Graph Conjecture 61 partial results](problems/wowii-graph-conjecture-61/README.md) | 🟡 partial | — | `GPT-5.6 Sol` | Claims informal proofs of partial results only: f(G) >= alpha(G) + ceil(D(G)/4) in general, f(G) >= alpha(G)+1 with diameter consequences, and the original conjecture f(G) >= r(G) + ceil(D(G)/3) for all connected graphs of diameter in {0,1,2,3,5,6,9} and for all trees. |
 
 ### Other

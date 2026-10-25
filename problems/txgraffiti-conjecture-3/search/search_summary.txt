@@ -1,0 +1,121 @@
+TxGraffiti Conjecture 3 (i(G) <= mu*(G) for r-regular G): search summary
+=========================================================================
+
+Everything below is computer-assisted and local only (not run in CI, not formalized).
+`sh reproduce.sh STAGE` reruns each block; the stage names are given in brackets.
+Timings are wall-clock seconds on one core of an Apple-silicon Mac (October 2026).
+
+Checker: tx3check.c.  For each graph6 graph it computes i(G) exactly by branch and bound.  If
+i < LB = ceil(m/(2r-1)) then i < LB <= mu*, so the graph is not a counterexample and nothing more
+is computed.  Otherwise it computes mu* exactly (the least k >= LB with a maximal matching of size
+<= k).  Columns: graphs = graphs read; needmu = graphs with i >= LB (mu* computed); tight = graphs
+with i = mu*; cex = graphs with i > mu*.
+Generation: nauty geng -c -dR -DR n (connected R-regular graphs, one per isomorphism class).
+
+Checker validation [xcheck]
+---------------------------
+* tx3check -v (exact i and mu* for every graph) agrees with the pysat solvers of tx3lib.py
+  (xcheck_c.py) on all 18,058 connected r-regular graphs with r = 3..6 and 6 <= n <= 12.
+* crosscheck.py 2000: random r-regular graphs (r = 3..6, n <= 14); i by pysat, CP-SAT and
+  enumeration of maximal independent sets, mu* by pysat and CP-SAT (and brute force on every
+  fifth graph with at most 30 edges); witnesses checked.  No disagreement (about 10 s).
+* G48 [g48]: tx3check prints COUNTEREXAMPLE i=16 mu*=15 (also a CI check in status.yaml).
+
+Connected 4-regular graphs [quartic, quartic17]  (counts = OEIS A006820)
+n    graphs        needmu   tight   cex   secs
+5    1             0        0       0     0
+6    1             1        1       0     0
+7    2             2        1       0     0
+8    6             1        1       0     0
+9    16            3        3       0     0
+10   59            24       5       0     0
+11   265           2        2       0     0
+12   1,544         26       25      0     0
+13   10,778        394      142     0     1
+14   88,168        27,993   229     0     3
+15   805,491       155      144     0     44
+16   8,037,418     10,862   5,274   0     583
+17   86,221,634    1,593,475 34,670 0     7,708  (geng res/mod slices 0/3, 1/3, 2/3:
+                                                   19,688,946 + 31,510,017 + 35,022,671 graphs;
+                                                   1,858 + 2,780 + 3,070 s)
+total n <= 17: 95,165,383 graphs, 0 counterexamples.
+
+Connected 5-regular graphs [quintic]  (counts = OEIS A006821)
+n    graphs        needmu   tight   cex   secs
+6    1             0        0       0     0
+8    3             0        0       0     0
+10   60            4        1       0     0
+12   7,848         3        3       0     0
+14   3,459,383     5,922    9       0     158
+total n <= 14: 3,467,295 graphs, 0 counterexamples.
+
+Connected 6-regular graphs [sextic]  (counts = OEIS A006822)
+n    graphs        needmu   tight   cex   secs
+7    1             0        0       0     0
+8    1             0        0       0     0
+9    4             1        1       0     0
+10   21            0        0       0     0
+11   266           5        1       0     0
+12   7,849         2        2       0     0
+13   367,860       2        1       0     31
+14   21,609,300    273      0       0     2,213
+total n <= 14: 21,985,302 graphs, 0 counterexamples.
+
+Families built from connected cubic graphs G, 4 <= |G| <= 20 [families]
+(transform.c; 556,471 cubic graphs, counts = OEIS A002851)
+  line graph L(G)  (4-regular, 3|G|/2 vertices): needmu 2 in total, 0 counterexamples
+  prism G x K2     (4-regular, 2|G| vertices):   needmu 25 in total, 0 counterexamples
+  G x K3           (5-regular, 3|G| vertices):   needmu 2 in total, 0 counterexamples
+  (per-|G| lines: |G| = 20 took 113 s, 114 s and 149 s; all smaller orders took under 10 s)
+
+Weighted blow-ups B[t] [wblow]
+(wblow.c: every weighting t : V(B) -> {1..T} with sum_{w ~ v} t(w) = r for every v, vertex v
+replaced by t(v) pairwise non-adjacent twins; blow-ups with more than 62 vertices are skipped;
+graphs are not reduced up to isomorphism)
+  base             r   T   |B|              blow-ups   needmu   cex
+  connected cubic  4   2   6, 8, ..., 18    21,252     4,035    0
+  connected cubic  5   3   6, 8, ..., 18    79,158     11,532   0
+  connected quartic 5  2   8, 9, ..., 14    28         18       0
+  connected cubic  6   4   4, 6, ..., 14    3,671      2,993    0
+  total 104,109 blow-ups, 0 counterexamples (cubic |B| = 18 to r = 5 took 310 s).
+
+The cubic counterexamples, blown up [blowup]  (check_blowup.py, pysat and CP-SAT)
+  G48        n = 48,  3-regular: i = 16 (no IDS of size 15), maximal matching of size 15
+  G48[K2bar] n = 96,  6-regular: i = 32 (no IDS of size 31), mu* = 30 (CP-SAT)  -> counterexample
+  G50        n = 50,  3-regular: i = 16 (no IDS of size 15), maximal matching of size 15
+  G50[K2bar] n = 100, 6-regular: i = 32 (no IDS of size 31), mu* = 30 (CP-SAT)  -> counterexample
+  G50 is rebuilt from the 15-variable, 20-clause formula of Afrasyab (arXiv:2609.10783, Sec. 2).
+  The Lean module proves the G48 lines and the blow-up lemma; this check is independent.
+
+Cartesian products of G48 [products]  (prod_check.py)
+  G48 x K2: n = 96,  4-regular, m = 192: an IDS of size <= 28 = ceil(m/7) exists, so i <= mu*.
+  G48 x K3: n = 144, 5-regular, m = 360: an IDS of size <= 40 = ceil(m/9) exists (one of size 37
+  found), so i <= mu*.
+
+Total perfect codes (not in reproduce.sh; recorded for completeness)
+  A total perfect code W of a cubic graph (every vertex has exactly one neighbour in W) gives
+  two weighted blow-ups: t = 2 on W and 1 elsewhere is 4-regular, t = 1 on W and 2 elsewhere is
+  5-regular.  None of the 114 cubic counterexamples we had (G48, and the 41 graphs on 50 and 72 on
+  60 vertices of Iwane's collection) has a total perfect code: pysat finds none; for the 50-vertex
+  graphs this is forced by 3 not dividing 50.
+
+Unsatisfiable balanced CNF formulas [sa]  (sa_balanced_cnf.c)
+  For an r-regular graph with an efficient edge dominating set (an induced matching M that
+  dominates every edge), the M-edges are complementary literal pairs and the other vertices are
+  clauses of an r-CNF in which every literal occurs exactly r - 1 times, and mu* = |M|.  If the
+  formula is satisfiable then the true literals form an IDS of size |M|, so i <= mu*.  A
+  counterexample of this kind therefore needs an unsatisfiable (r-1)-balanced r-CNF (DETAILS.md).
+  Simulated annealing over such formulas (exact #SAT over all 2^v assignments, temperature on
+  log(#SAT + 1)), seeds as in reproduce.sh:
+    k = 3, v = 15, c = 20:  T = (0.3, 0.01): unsatisfiable formula at restart 1 (19 s);
+                            T = (0.1, 0.005): best #SAT 4;  T = (0.05, 0.002): unsatisfiable
+                            formula at restart 2.  Both formulas were re-checked with CaDiCaL and
+                            by counting (0 satisfying assignments, every literal exactly twice).
+    k = 4 (each literal exactly 3 times), 4 restarts of 2,000,000 steps, T = (0.3, 0.01):
+      v = 12, c = 18:  best #SAT 424 of 4,096
+      v = 14, c = 21:  best #SAT 1,183 of 16,384
+      v = 16, c = 24:  best #SAT 3,516 of 65,536
+      v = 18, c = 27:  best #SAT 10,356 of 262,144
+      v = 20, c = 30:  best #SAT 30,860 of 1,048,576
+  The k = 4 runs come nowhere near an unsatisfiable formula.  Whether an unsatisfiable
+  (4,3,3)-formula exists is open (Zhang-Peitl-Szeider, arXiv:2405.16149; Iwane, Problem 17).

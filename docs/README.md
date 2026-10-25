@@ -41,4 +41,5 @@ problem rather than assembling another global copy.
 | [OEIS A354747 first unknown case a(100943)](../problems/oeis-a354747/README.md) | 🔴 refuted | [Detailed derivation](../problems/oeis-a354747/DETAILS.md) |
 | [OEIS A395412 certified finite nonvanishing extension](../problems/oeis-a395412/README.md) | 🟡 partial | [Detailed derivation](../problems/oeis-a395412/DETAILS.md) |
 | [Graph recoloring radius — subdivided-claw counterexample](../problems/recoloring-radius-q15/README.md) | 🔴 refuted | [Detailed derivation](../problems/recoloring-radius-q15/DETAILS.md) |
+| [TxGraffiti Conjecture 3: i(G) <= mu*(G) for regular graphs](../problems/txgraffiti-conjecture-3/README.md) | 🔴 refuted | [Detailed derivation](../problems/txgraffiti-conjecture-3/DETAILS.md) |
 <!-- DETAILS:END -->
