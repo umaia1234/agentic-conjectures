@@ -30,6 +30,7 @@
 | 문제 | 주장 상태 | 수학 상세 |
 |---|---|---|
 | [에르되시 #385 / #430(i) — 홀수 지표 정리와 10^9까지의 정확한 검증](../problems/erdos-385/README.ko.md) | 🟡 부분 결과 | [상세 전개](../problems/erdos-385/DETAILS.ko.md) |
+| [Erdős #424 — mod 3 장애물, √N/4 ≤ A(N) ≤ 2N/3, 10^10까지의 정확한 개수](../problems/erdos-424/README.ko.md) | 🟡 부분 결과 | [상세 전개](../problems/erdos-424/DETAILS.ko.md) |
 | [에르되시 #671 — 모든 점에서 비유계인 라그랑주 배열 증명](../problems/erdos-671/README.ko.md) | ✅ 증명 | [상세 전개](../problems/erdos-671/DETAILS.ko.md) |
 | [‘골드바흐를 증명하자’ 상금 문제 2 — 정확한 주기 공식](../problems/goldbach-prize-2/README.ko.md) | ✅ 증명 | [상세 전개](../problems/goldbach-prize-2/DETAILS.ko.md) |
 | [‘골드바흐를 증명하자’ 상금 문제 3 — 문언상 유한집합 표현 증명](../problems/goldbach-prize-3/README.ko.md) | ✅ 증명 | [상세 전개](../problems/goldbach-prize-3/DETAILS.ko.md) |

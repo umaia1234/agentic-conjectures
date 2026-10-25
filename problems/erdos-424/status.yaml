@@ -1,27 +1,85 @@
 id: erdos-424
-title: 'Erdős #424 — positive density of the generated set (finite probe)'
-title_ko: 'Erdős #424 — 생성 집합의 양의 밀도(유한 탐색)'
+title: 'Erdős #424 — mod-3 obstruction, √N/4 ≤ A(N) ≤ 2N/3, exact counts to 10^10'
+title_ko: 'Erdős #424 — mod 3 장애물, √N/4 ≤ A(N) ≤ 2N/3, 10^10까지의 정확한 개수'
 domain: erdos
 source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/ErdosProblems/424.lean
-claimed_status: open
-claim: Describes an exact finite experiment generating the set via n+1=xy with distinct members and scanning
-  residue classes for omissions; the README explicitly says the finite search does not prove positive
-  density.
+claimed_status: partial
+claim: >-
+  Lean-proves that the generated set misses the class 1 mod 3 (so A(N) <= 2N/3), that A(N) >= sqrt(N)/4,
+  and that both other classes mod 3 contain infinitely many non-members; two independent exact sieves
+  give A(10^10) = 5,473,663,856 (ratio 0.5474, still rising), while positive density remains open.
 claim_ko: >-
-  서로 다른 원소를 사용한 n+1=xy를 통해 집합을 생성하고 누락 여부를 확인하기 위해 잉여류를 탐색하는 정확한
-  유한 실험을 설명한다. README는 이 유한 탐색이 양의 밀도를 증명하지 않는다고 명시한다.
+  생성 집합이 mod 3에서 1인 잉여류와 만나지 않으므로 A(N) <= 2N/3이고, A(N) >= sqrt(N)/4이며, 나머지 두
+  잉여류 각각에 비원소가 무한히 많음을 Lean으로 증명했다. 서로 독립적인 두 정확한 체로
+  A(10^10) = 5,473,663,856(비율 0.5474, 계속 증가 중)을 얻었으나, 양의 밀도 문제는 여전히 미해결이다.
 artifacts:
+- path: DETAILS.md
+  kind: mathematical-details
+- path: ../../AgenticConjectures/Erdos424.lean
+  kind: lean-proof
+- path: verify_counts.py
+  kind: certificate-script
+- path: erdos424_ascending.cpp
+  kind: search-code
+- path: erdos424_generations.cpp
+  kind: search-code
+- path: erdos424_factorable.cpp
+  kind: search-code
+- path: counts_result.json
+  kind: data
 - path: erdos424_probe.cpp
   kind: search-code
 - path: upstream/README.md
   kind: upstream-lean
 verify:
-- cmd: g++ -O3 -std=c++17 erdos424_probe.cpp -o build_probe && ./build_probe 1000000 500 && rm -f build_probe
-  expected_runtime: unknown
+- cmd: python3 verify_counts.py --part sieves
+  expected_runtime: about 30 s (N = 10^9, 0.25 GB)
   ci_feasible: true
+  requires: [g++]
+- cmd: python3 verify_counts.py --part factorable
+  expected_runtime: about 20 s (N = 10^9, 0.13 GB)
+  ci_feasible: true
+  requires: [g++]
+- cmd: python3 verify_counts.py --limit 10000000000
+  expected_runtime: about 12 min (N = 10^10, 2.5 GB RAM)
+  ci_feasible: false
+  requires: [g++]
+- cmd: g++ -O3 -std=c++17 erdos424_probe.cpp -o build_probe && ./build_probe 1000000 500 && rm -f build_probe
+  expected_runtime: about 1-2 s after compilation
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.Erdos424
+  theorems:
+  - AgenticConjectures.Erdos424.mul_sub_one_mem
+  - AgenticConjectures.Erdos424.mem_generatedSet_iff
+  - AgenticConjectures.Erdos424.lt_mul_sub_one
+  - AgenticConjectures.Erdos424.mod_three_ne_one
+  - AgenticConjectures.Erdos424.three_mul_countingFn_le
+  - AgenticConjectures.Erdos424.le_two_thirds_of_tendsto
+  - AgenticConjectures.Erdos424.pow_two_add_one_mem
+  - AgenticConjectures.Erdos424.generatedSet_infinite
+  - AgenticConjectures.Erdos424.le_sixteen_mul_countingFn_sq
+  - AgenticConjectures.Erdos424.not_mem_of_prime_succ
+  - AgenticConjectures.Erdos424.three_mul_prime_sub_one_not_mem
+  - AgenticConjectures.Erdos424.infinite_nonmembers_zero_mod_three
+  - AgenticConjectures.Erdos424.infinite_nonmembers_two_mod_three
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: Korean README with no stated experimental outcome, so no partial result is claimed; notes that
-  Green's open problem 63 is an alias of the same statement; upstream Lean statement is sorry-backed.
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: >-
+    Lean 4 structural theorems (mod-3 obstruction, counting bounds, infinite families), the two
+    independent exact sieves and factorable-count program through 10^10, the verifier, and documentation
+notes: >-
+  Partial result only: positive density is neither proved nor refuted, and the increasing ratios
+  A(N)/N are numerical evidence, not a proof. The Lean bounds sqrt(N)/4 <= A(N) <= 2N/3 are elementary
+  and far from deciding the question. The module copies the upstream definitions verbatim but does not
+  restate erdos_424, because Set.HasPosDensity lives in FormalConjecturesForMathlib; the counting function
+  uses n <= N. The ascending sieve and the generation-by-generation evaluation share only the output format
+  and the bitset hash; both match a literal Python transcription of the upstream recursion up to 10^5. CI
+  re-verifies through 10^9; the 10^10 run needs about 2.5 GB and minutes, so it is not CI-feasible. The
+  mod-3 obstruction and the 2^k+1 family are elementary and likely known; no literature search beyond the
+  upstream references was done, and no novelty is claimed.
