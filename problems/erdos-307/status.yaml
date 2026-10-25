@@ -4,25 +4,44 @@ title_ko: 'Erdős #307 — 소수 역수합들의 곱이 1이 되는 문제'
 domain: erdos
 source_url: https://www.erdosproblems.com/307
 claimed_status: partial
-claim: Re-proves forcing identities and local Legendre/mod-8/mod-24 necessary conditions and exhaustively
-  shows |P union Q| >= 60 and max(P union Q) >= 347; the problem itself remains open and no novelty is
-  claimed.
+claim: >-
+  Re-proves the forcing identities and local Legendre/mod-8/mod-24 necessary conditions, now Lean-checked
+  together with |P union Q| >= 59, and exhaustively shows |P union Q| >= 60 and max(P union Q) >= 467 (no
+  solution inside the first 90 primes, cross-checked by a second implementation); the problem itself
+  remains open and no novelty is claimed.
 claim_ko: >-
-  강제 항등식과 국소 Legendre/mod-8/mod-24 필요조건을 다시 증명하고, 완전탐색으로 |P union Q| >= 60 및
-  max(P union Q) >= 347을 보인다. 문제 자체는 여전히 미해결이며 새로움을 주장하지 않는다.
+  강제 항등식과 국소 Legendre/mod-8/mod-24 필요조건을 다시 증명하고 |P union Q| >= 59와 함께 Lean으로
+  검증하며, 완전탐색으로 |P union Q| >= 60 및 max(P union Q) >= 467(처음 90개 소수 안에는 해가 없음,
+  두 번째 구현으로 교차검증)을 보인다. 문제 자체는 여전히 미해결이며 새로움을 주장하지 않는다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof
+- path: ../../AgenticConjectures/Erdos307.lean
+  kind: lean-proof
 - path: test_identities.py
+  kind: certificate-script
+- path: exact_checker.py
   kind: certificate-script
 - path: enumerate_59.py
   kind: search-code
+- path: enumerate_bounded_union.py
+  kind: search-code
 - path: enumerate_bounded_support_fast.py
+  kind: search-code
+- path: support_mitm.cpp
+  kind: search-code
+- path: cross_check_support.py
   kind: search-code
 - path: enumeration_59_result.json
   kind: data
+- path: bounded_union_result.json
+  kind: data
 - path: bounded_support_68_result.json
   kind: data
+- path: bounded_support_90_result.json
+  kind: data
+- path: upstream/307.lean
+  kind: upstream-lean
 verify:
 - cmd: python3 test_identities.py
   expected_runtime: unknown
@@ -36,10 +55,59 @@ verify:
 - cmd: python3 enumerate_bounded_support_fast.py --prime-count 68
   expected_runtime: unknown (checks 9,926,250 unions)
   ci_feasible: false
+- cmd: python3 cross_check_support.py fiftynine
+  expected_runtime: ~1 s (standard library only; second implementation of the 59-prime exclusion)
+  ci_feasible: true
+- cmd: mkdir -p build && g++ -O3 -std=c++17 -pthread support_mitm.cpp -o build/support_mitm && build/support_mitm 80 --threads 2
+  expected_runtime: ~3 s plus compilation (excludes supports inside the first 80 primes)
+  ci_feasible: true
+  requires: [g++]
+- cmd: mkdir -p build && g++ -O3 -std=c++17 -pthread support_mitm.cpp -o build/support_mitm && build/support_mitm 90 --key 33 --threads 3
+  expected_runtime: 753 s wall with 3 threads on a heavily loaded 18-core machine (1,542 s CPU); peak memory 3.4 GB
+  ci_feasible: false
+  requires: [g++]
+- cmd: python3 cross_check_support.py mitm --K 90 --key 33 --threads 3
+  expected_runtime: 1,578 s wall with 3 threads under load (3,912 s CPU); peak memory 6.9 GB; needs numpy and numba
+  ci_feasible: false
+- cmd: python3 cross_check_support.py brute --K 76 --keys 12,16,20,24,30 --threads 3
+  expected_runtime: 529 s with 3 threads; needs numpy and numba
+  ci_feasible: false
+lean:
+  modules:
+  - AgenticConjectures.Erdos307
+  theorems:
+  - AgenticConjectures.Erdos307.forcing
+  - AgenticConjectures.Erdos307.isSolution_of_forcing
+  - AgenticConjectures.Erdos307.statement_iff_forcing
+  - AgenticConjectures.Erdos307.disjoint_of_isSolution
+  - AgenticConjectures.Erdos307.union_identity
+  - AgenticConjectures.Erdos307.two_lt_sum_inv_union
+  - AgenticConjectures.Erdos307.isSquare_prod_erase
+  - AgenticConjectures.Erdos307.prod_jacobiSym_eq_one
+  - AgenticConjectures.Erdos307.even_card_nonresidues
+  - AgenticConjectures.Erdos307.sum_cast_eq_M
+  - AgenticConjectures.Erdos307.sum_cast_eq_of_two_mem
+  - AgenticConjectures.Erdos307.mod_eight
+  - AgenticConjectures.Erdos307.mod_eight_of_two_mem
+  - AgenticConjectures.Erdos307.mod_twentyFour
+  - AgenticConjectures.Erdos307.mod_twentyFour_of_two_mem
+  - AgenticConjectures.Erdos307.odd_card_of_two_not_mem
+  - AgenticConjectures.Erdos307.even_card_of_two_mem
+  - AgenticConjectures.Erdos307.card_union_ge_59
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: 'README: ''The problem remains open; nothing here is presented as a solution or as a proof of novelty.''
-  Forcing theorem already appears in Bado''s 2026 preprint; AlphaProof Nexus lists attempts but no result
-  for #307; the |U|>=60 bound matches the existing database statement; upstream Lean declaration is sorry-backed.'
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: 90-prime meet-in-the-middle exclusion with a second implementation; Lean 4 formalization of
+    the forcing identities, local conditions and the 59-prime bound
+notes: >-
+  README: 'The problem remains open; nothing here is presented as a solution or as a proof of novelty.'
+  Forcing theorem already appears in Bado's 2026 preprint; AlphaProof Nexus lists attempts but no result
+  for #307; the |U|>=60 bound matches the existing database statement; upstream Lean declaration is
+  sorry-backed. The max(P union Q)>=467 exclusion is computational: support_mitm.cpp and the separately
+  written cross_check_support.py share the reduction and the meet-in-the-middle design (their key-matched
+  counts and histograms agree at K=84 and K=90), and the keyless brute-force mode agrees with the C++
+  program for every even K through 76. It relies on the 59-prime enumeration for |U|>=60. The Lean module
+  proves the necessary conditions, not the enumerations; its 59 bound uses decide +kernel, not native_decide.

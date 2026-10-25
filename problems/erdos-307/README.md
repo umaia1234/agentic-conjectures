@@ -1,3 +1,5 @@
+**English** | [한국어](README.ko.md)
+
 # Erdős problem #307 audit
 
 This directory contains a proof audit and exact computations for the question
@@ -34,8 +36,87 @@ presented as a solution or as a proof of novelty.
   this to the first 68 primes: 9,926,250 reciprocal-feasible unions are checked
   and none passes the local conditions.  Thus `max(P union Q)>=347`, without
   claiming novelty.
+- **2026-10-24 update.**  A meet-in-the-middle search extends the
+  bounded-support exclusion to the first 90 primes: no union contained in the
+  primes up to 463 passes the reciprocal-mass, cardinality and local Legendre
+  conditions, so `max(P union Q)>=467`.  A separately written second
+  implementation reproduces the frontier counts, and its brute-force mode
+  checks every candidate union directly through 76 primes.
+- The same update re-runs the 59-prime exclusion with the second
+  implementation (now in CI) and formalizes the forcing identities, the local
+  square/Legendre condition, the mod-8/mod-24 and parity conditions, and the
+  bound `|P union Q|>=59` in Lean 4 (`AgenticConjectures/Erdos307.lean`,
+  kernel-checked without `native_decide`).
 
 The full argument is in `PROOF.md`.
+
+## Bounded support to 90 primes (2026-10-24)
+
+**Result.**  Let `F_90` be the first 90 primes, `2,...,463`.  No set
+`U ⊆ F_90` satisfies all of
+
+1. `sum_{r in U} 1/r >= 2`,
+2. `|U| >= 60`,
+3. for every odd `r in U`, `prod_{s in U, s != r} (s|r) = 1`.
+
+Every solution `(P,Q)` gives such a `U=P union Q`: condition 1 and condition 3
+are Lean theorems (`two_lt_sum_inv_union`, `prod_jacobiSym_eq_one`), and
+condition 2 is the exact 59-prime exclusion.  Hence every solution contains a
+prime `>= 467`, the next prime after 463.  This replaces the previous
+computational bound `max(P union Q)>=347`.
+
+**Method.**  `support_mitm.cpp` (C++17, `std::thread`) enumerates removal sets
+`R=F_90-U` in integer arithmetic.  Condition 3 is linear over GF(2), so the
+search fixes it first on the 33 smallest odd primes (the *key*), combining two
+half-tables of removable primes by key lookup, and then tests the full
+condition on every key-matched set.  The reduction, the budget arithmetic and
+why each removal set is produced exactly once are written out in `PROOF.md`,
+section 6, "Meet-in-the-middle extension to 90 primes".
+
+| `K` | largest prime | key size | key-matched removal sets | survivors | wall time |
+|---:|---:|---:|---:|---:|---:|
+| 80 | 409 | 30 | 16,626 | 0 | 2.9 s (1 thread) |
+| 84 | 433 | 30 | 1,054,762 | 0 | 33.6 s (1 thread) |
+| 86 | 443 | 31 | 4,454,518 | 0 | 119.7 s (1 thread) |
+| 88 | 457 | 32 | 18,447,093 | 0 | 171.4 s (3 threads) |
+| 90 | 463 | 33 | 75,000,754 | 0 | 752.7 s (3 threads) |
+
+No run reported an ambiguous budget case, so the key-matched counts are exact.
+The `K=88` and `K=90` runs were made on a shared 18-core Apple machine under
+heavy load (load average 40–70); the `K=90` run used 1,542 s of CPU time and
+3.4 GB of memory.  The `K=80`–`86` rows are single-threaded re-runs on the
+same machine at lower load.
+
+**Cross-checks.**  `cross_check_support.py` is a separately written
+implementation (numba).  It uses quadratic-residue tables, row bitsets, exact
+`Fraction` budgets, sorted tables, the opposite half split and a different
+weight boundary.
+
+- `brute` mode enumerates every removal set without keys.  It reproduces the
+  exact totals 644,666 (`K=66`) and 9,926,250 (`K=68`) of the earlier scripts
+  and checks all 128,295,786,172 candidate unions for `K=76` in 529 s
+  (3 threads).  It finds no survivor, which independently gives
+  `max(P union Q)>=389`.
+- For every even `K` from 66 to 76 and every key size in `{12,16,20,24,30}`,
+  the key-matched counts of `brute` and `support_mitm.cpp` agree exactly
+  (30 comparisons).
+- `mitm` mode reproduces the `K=84` and `K=90` key-matched counts and their
+  distributions by `|R|`, and finds no survivor (`K=90`: 1,578 s with 3
+  threads under load, 6.9 GB).
+- `fiftynine` mode re-enumerates the 49,961 reciprocal-feasible 59-prime
+  unions (same counts by number of replacements as `enumerate_59.py`) and
+  confirms that none passes the local conditions.
+
+All counts and timings are recorded in `bounded_support_90_result.json`.
+
+**Not claimed.**  This is a finite computer exclusion, not a nonexistence
+proof.  It depends on the exact 59-prime enumeration for `|U|>=60`.  The two
+search implementations share the mathematical reduction and the
+meet-in-the-middle design.  The brute-force mode, which is a different
+algorithm, only reaches 76 primes.  Pushing `|P union Q|>=61` by the same
+method is not possible: the reciprocal-mass condition alone does not bound the
+largest prime of a 60-prime union, so that case has no finite candidate list.
+No novelty is claimed for either bound.
 
 ## Reproduction
 
@@ -72,6 +153,21 @@ counts in every column.  The 67-prime cached result was also reproduced by the
 slow implementation; 5,000 deterministic 68-prime subsets were checked by
 both local-symbol formulas.
 
+Run the 90-prime exclusion and its cross-checks (from `problems/erdos-307`;
+the `brute` and `mitm` modes need numpy and numba):
+
+```bash
+mkdir -p build && g++ -O3 -std=c++17 -pthread support_mitm.cpp -o build/support_mitm
+build/support_mitm 80 --threads 2               # seconds; also run by CI
+build/support_mitm 90 --key 33 --threads 3      # ~13 min under load, 3.4 GB
+python3 cross_check_support.py fiftynine        # 0.7 s, standard library only; CI
+python3 cross_check_support.py brute --K 76 --keys 12,16,20,24,30 --threads 3  # 529 s
+python3 cross_check_support.py mitm --K 90 --key 33 --threads 3     # ~26 min, 6.9 GB
+```
+
+Each command prints one JSON object and exits with status 0 exactly when there
+is no survivor.
+
 Check a proposed prime pair, for example:
 
 ```bash
@@ -89,6 +185,47 @@ The exact Lean statement and immutable source metadata are preserved in the
 local [upstream snapshot](upstream/README.md).  Its main declaration remains a
 `sorry`-backed open statement; the stronger finite exclusions here do not
 settle it.
+
+## Lean formalization
+
+`AgenticConjectures/Erdos307.lean` proves the elementary necessary conditions
+for every witness of the upstream statement.  Here `M S = ∏ p ∈ S, p` and
+`A S = ∑ p ∈ S, ∏ q ∈ S.erase p, q`, so `∑ p ∈ S, 1/p = A S / M S`.
+
+| Declaration | Statement |
+|---|---|
+| `statement` | the right-hand side of upstream `erdos_307`, verbatim |
+| `IsSolution P Q` | the body of that existential |
+| `forcing`, `isSolution_of_forcing` | `IsSolution P Q ↔` (primes and `A P = M Q ∧ A Q = M P`) |
+| `statement_iff_forcing` | `statement ↔ ∃ P Q`, primes with `A P = M Q ∧ A Q = M P` |
+| `disjoint_of_isSolution` | `Disjoint P Q` |
+| `union_identity` | `A (P ∪ Q) = M P ^ 2 + M Q ^ 2` |
+| `two_lt_sum_inv_union` | `2 < ∑ r ∈ P ∪ Q, 1/r` |
+| `isSquare_prod_erase` | for `r ∈ P ∪ Q`, `∏ ((P ∪ Q).erase r)` is a nonzero square in `ZMod r` |
+| `prod_jacobiSym_eq_one` | `∏ s ∈ (P ∪ Q).erase r, J(s \| r) = 1` |
+| `even_card_nonresidues` | an even number of `s ∈ (P ∪ Q).erase r` have `J(s \| r) = -1` (the search's pruning rule) |
+| `sum_cast_eq_M`, `sum_cast_eq_of_two_mem` | (8a)–(8d) for any modulus in which the primes square to 1 |
+| `mod_eight`, `mod_eight_of_two_mem` | (8a)–(8d) modulo 8 |
+| `mod_twentyFour`, `mod_twentyFour_of_two_mem` | the mod-24 conditions when `3 ∉ P ∪ Q` |
+| `odd_card_of_two_not_mem`, `even_card_of_two_mem` | the parity restrictions |
+| `card_union_ge_59` | `59 ≤ #(P ∪ Q)` |
+
+The case `2 ∈ Q` follows from `IsSolution.symm`.  The `59` bound compares any
+58 primes with the first 58 primes and evaluates `∑ 1/p < 2` for the latter
+as a natural-number inequality with `decide +kernel`; there is no
+`native_decide`.  `#print axioms` shows only `propext`, `Classical.choice` and
+`Quot.sound`.
+
+**Statement faithfulness.**  `statement` and `IsSolution` copy the upstream
+proposition exactly: `Finset ℕ` witnesses, `Nat.Prime` membership hypotheses
+and the equation `1 = (∑ p ∈ P, (p : ℚ)⁻¹) * (∑ q ∈ Q, (q : ℚ)⁻¹)` in `ℚ`.
+No other definitions or boundary conventions are involved, and every theorem
+is a consequence of that equation.  `card_union_ge_59` is the left conjunct of
+the upstream `erdos_307.barrier`.  Upstream also assumes `Q.Nonempty`, which
+the equation already implies; the right conjunct, a lower bound for `∏ P`, is
+not formalized here.  The `answer(sorry)` of `erdos_307` is untouched.  The
+computational bounds `|P union Q|>=60` and `max(P union Q)>=467` are not
+formalized.
 
 ## AlphaProof Nexus benchmark provenance
 

@@ -1,0 +1,534 @@
+{
+ "problem": "erdos-307",
+ "claim": "No set U of primes contained in the first 90 primes (2..463) satisfies sum_{r in U} 1/r >= 2, |U| >= 60 and, for every odd r in U, prod_{s in U, s != r} (s|r) = 1.  Hence every solution of Erdos #307 has max(P union Q) >= 467.",
+ "inputs": {
+  "|U|>=60": "enumerate_59.py, re-run by cross_check_support.py fiftynine",
+  "sum >= 2 and local condition": "AgenticConjectures/Erdos307.lean (two_lt_sum_inv_union, prod_jacobiSym_eq_one, even_card_nonresidues)"
+ },
+ "implementation_A": {
+  "source": "support_mitm.cpp",
+  "build": "g++ -O3 -std=c++17 -pthread support_mitm.cpp -o build/support_mitm",
+  "runs": [
+   {
+    "K": 80,
+    "largest_support_prime": 409,
+    "next_prime": 419,
+    "max_removed": 20,
+    "budget_lo_2^-64": "1175339459752130585",
+    "budget_hi_2^-64": "1175339459752130664",
+    "never_removable_odd_primes": 5,
+    "key_coordinates": 30,
+    "x_patterns": 8967,
+    "table1": 27832497,
+    "table2": 15013963,
+    "iterated_nodes": 26643277,
+    "bucket_visits": 45295019,
+    "scanned": 225275082,
+    "key_matched_feasible": 16626,
+    "ambiguous_budget": 0,
+    "survivors": 0,
+    "key_matched_by_removed": {
+     "6": 1,
+     "7": 3,
+     "8": 29,
+     "9": 117,
+     "10": 411,
+     "11": 1125,
+     "12": 2370,
+     "13": 3706,
+     "14": 3953,
+     "15": 2917,
+     "16": 1501,
+     "17": 428,
+     "18": 60,
+     "19": 5
+    },
+    "seconds": 2.9,
+    "threads": 1,
+    "machine_note": "single-threaded re-run, moderate load"
+   },
+   {
+    "K": 84,
+    "largest_support_prime": 433,
+    "next_prime": 439,
+    "max_removed": 24,
+    "budget_lo_2^-64": "1348583646719084877",
+    "budget_hi_2^-64": "1348583646719084960",
+    "never_removable_odd_primes": 5,
+    "key_coordinates": 30,
+    "x_patterns": 20009,
+    "table1": 126394816,
+    "table2": 65176417,
+    "iterated_nodes": 257912149,
+    "bucket_visits": 575150567,
+    "scanned": 4402832600,
+    "key_matched_feasible": 1054762,
+    "ambiguous_budget": 0,
+    "survivors": 0,
+    "key_matched_by_removed": {
+     "7": 6,
+     "8": 49,
+     "9": 379,
+     "10": 1894,
+     "11": 7584,
+     "12": 24214,
+     "13": 62354,
+     "14": 124029,
+     "15": 193163,
+     "16": 230294,
+     "17": 202160,
+     "18": 129927,
+     "19": 58111,
+     "20": 17244,
+     "21": 3058,
+     "22": 287,
+     "23": 9
+    },
+    "seconds": 33.6,
+    "threads": 1,
+    "machine_note": "single-threaded re-run, moderate load"
+   },
+   {
+    "K": 86,
+    "largest_support_prime": 443,
+    "next_prime": 449,
+    "max_removed": 26,
+    "budget_lo_2^-64": "1432244070692160481",
+    "budget_hi_2^-64": "1432244070692160566",
+    "never_removable_odd_primes": 4,
+    "key_coordinates": 31,
+    "x_patterns": 44107,
+    "table1": 132414260,
+    "table2": 133005607,
+    "iterated_nodes": 963252886,
+    "bucket_visits": 2384530934,
+    "scanned": 18859188168,
+    "key_matched_feasible": 4454518,
+    "ambiguous_budget": 0,
+    "survivors": 0,
+    "key_matched_by_removed": {
+     "7": 9,
+     "8": 44,
+     "9": 339,
+     "10": 1935,
+     "11": 8714,
+     "12": 32939,
+     "13": 100099,
+     "14": 247184,
+     "15": 488725,
+     "16": 760033,
+     "17": 920333,
+     "18": 856655,
+     "19": 597329,
+     "20": 303867,
+     "21": 107227,
+     "22": 25268,
+     "23": 3572,
+     "24": 239,
+     "25": 7
+    },
+    "seconds": 119.7,
+    "threads": 1,
+    "machine_note": "single-threaded re-run, moderate load"
+   },
+   {
+    "K": 88,
+    "largest_support_prime": 457,
+    "next_prime": 461,
+    "max_removed": 28,
+    "budget_lo_2^-64": "1513692999899203867",
+    "budget_hi_2^-64": "1513692999899203954",
+    "never_removable_odd_primes": 4,
+    "key_coordinates": 32,
+    "x_patterns": 96936,
+    "table1": 267460421,
+    "table2": 134077127,
+    "iterated_nodes": 3591037071,
+    "bucket_visits": 9820855411,
+    "scanned": 78386261320,
+    "key_matched_feasible": 18447093,
+    "ambiguous_budget": 0,
+    "survivors": 0,
+    "key_matched_by_removed": {
+     "6": 2,
+     "7": 1,
+     "8": 36,
+     "9": 270,
+     "10": 1668,
+     "11": 9056,
+     "12": 38893,
+     "13": 138536,
+     "14": 406147,
+     "15": 971026,
+     "16": 1879921,
+     "17": 2927769,
+     "18": 3629068,
+     "19": 3519620,
+     "20": 2633403,
+     "21": 1477835,
+     "22": 604827,
+     "23": 172737,
+     "24": 32457,
+     "25": 3622,
+     "26": 194,
+     "27": 5
+    },
+    "seconds": 171.4,
+    "threads": 3,
+    "machine_note": "heavily loaded shared 18-core machine"
+   },
+   {
+    "K": 90,
+    "largest_support_prime": 463,
+    "next_prime": 467,
+    "max_removed": 30,
+    "budget_lo_2^-64": "1593549408983163638",
+    "budget_hi_2^-64": "1593549408983163727",
+    "never_removable_odd_primes": 4,
+    "key_coordinates": 33,
+    "x_patterns": 211800,
+    "table1": 268349802,
+    "table2": 268395077,
+    "iterated_nodes": 13147549881,
+    "bucket_visits": 40219774342,
+    "scanned": 321680844533,
+    "key_matched_feasible": 75000754,
+    "ambiguous_budget": 0,
+    "survivors": 0,
+    "key_matched_by_removed": {
+     "6": 1,
+     "7": 1,
+     "8": 26,
+     "9": 209,
+     "10": 1457,
+     "11": 8648,
+     "12": 41590,
+     "13": 168829,
+     "14": 572403,
+     "15": 1605147,
+     "16": 3730190,
+     "17": 7131413,
+     "18": 11120533,
+     "19": 14011969,
+     "20": 14118772,
+     "21": 11174731,
+     "22": 6827794,
+     "23": 3142202,
+     "24": 1055351,
+     "25": 247932,
+     "26": 37952,
+     "27": 3420,
+     "28": 181,
+     "29": 3
+    },
+    "seconds": 752.7,
+    "threads": 3,
+    "machine_note": "heavily loaded shared 18-core machine; 1542 s CPU, 3.37 GB RSS"
+   }
+  ]
+ },
+ "implementation_B": {
+  "source": "cross_check_support.py",
+  "fiftynine": {
+   "by_replacements": {
+    "0": 1,
+    "1": 701,
+    "2": 11902,
+    "3": 27071,
+    "4": 9915,
+    "5": 371
+   },
+   "max_replacements": 5,
+   "mode": "fiftynine",
+   "reciprocal_feasible_59_sets": 49961,
+   "survivors": 0
+  },
+  "brute": [
+   {
+    "K": 66,
+    "removal_sets_exact": 644666,
+    "survivors": 0,
+    "seconds_3_threads": 0.2,
+    "key_matched_A_vs_B": {
+     "12": [
+      148,
+      148
+     ],
+     "16": [
+      12,
+      12
+     ],
+     "20": [
+      0,
+      0
+     ],
+     "24": [
+      0,
+      0
+     ],
+     "30": [
+      0,
+      0
+     ]
+    },
+    "all_key_counts_agree": true
+   },
+   {
+    "K": 68,
+    "removal_sets_exact": 9926250,
+    "survivors": 0,
+    "seconds_3_threads": 0.2,
+    "key_matched_A_vs_B": {
+     "12": [
+      2421,
+      2421
+     ],
+     "16": [
+      176,
+      176
+     ],
+     "20": [
+      6,
+      6
+     ],
+     "24": [
+      0,
+      0
+     ],
+     "30": [
+      0,
+      0
+     ]
+    },
+    "all_key_counts_agree": true
+   },
+   {
+    "K": 70,
+    "removal_sets_exact": 125669193,
+    "survivors": 0,
+    "seconds_3_threads": 0.7,
+    "key_matched_A_vs_B": {
+     "12": [
+      30831,
+      30831
+     ],
+     "16": [
+      1974,
+      1974
+     ],
+     "20": [
+      141,
+      141
+     ],
+     "24": [
+      13,
+      13
+     ],
+     "30": [
+      0,
+      0
+     ]
+    },
+    "all_key_counts_agree": true
+   },
+   {
+    "K": 72,
+    "removal_sets_exact": 1406993396,
+    "survivors": 0,
+    "seconds_3_threads": 6.8,
+    "key_matched_A_vs_B": {
+     "12": [
+      343323,
+      343323
+     ],
+     "16": [
+      21606,
+      21606
+     ],
+     "20": [
+      1384,
+      1384
+     ],
+     "24": [
+      108,
+      108
+     ],
+     "30": [
+      3,
+      3
+     ]
+    },
+    "all_key_counts_agree": true
+   },
+   {
+    "K": 74,
+    "removal_sets_exact": 14030728694,
+    "survivors": 0,
+    "seconds_3_threads": 65.5,
+    "key_matched_A_vs_B": {
+     "12": [
+      3426419,
+      3426419
+     ],
+     "16": [
+      215947,
+      215947
+     ],
+     "20": [
+      14168,
+      14168
+     ],
+     "24": [
+      992,
+      992
+     ],
+     "30": [
+      16,
+      16
+     ]
+    },
+    "all_key_counts_agree": true
+   },
+   {
+    "K": 76,
+    "removal_sets_exact": 128295786172,
+    "survivors": 0,
+    "seconds_3_threads": 528.9,
+    "key_matched_A_vs_B": {
+     "12": [
+      31343888,
+      31343888
+     ],
+     "16": [
+      1979691,
+      1979691
+     ],
+     "20": [
+      130519,
+      130519
+     ],
+     "24": [
+      9272,
+      9272
+     ],
+     "30": [
+      173,
+      173
+     ]
+    },
+    "all_key_counts_agree": true
+   }
+  ],
+  "mitm": [
+   {
+    "K": 84,
+    "ambiguous_budget": 0,
+    "build_seconds": 7.3,
+    "iterated_nodes": 257912149,
+    "key_coordinates": 30,
+    "key_matched_by_removed": {
+     "10": 1894,
+     "11": 7584,
+     "12": 24214,
+     "13": 62354,
+     "14": 124029,
+     "15": 193163,
+     "16": 230294,
+     "17": 202160,
+     "18": 129927,
+     "19": 58111,
+     "20": 17244,
+     "21": 3058,
+     "22": 287,
+     "23": 9,
+     "7": 6,
+     "8": 49,
+     "9": 379
+    },
+    "key_matched_feasible": 1054762,
+    "largest_support_prime": 433,
+    "max_removed": 24,
+    "mode": "mitm",
+    "next_prime": 439,
+    "seconds": 29.8,
+    "survivors": 0,
+    "table_a": 65176417,
+    "table_b": 126394816,
+    "x_patterns": 20009,
+    "threads": 3,
+    "machine_note": "3 threads, moderate load; 66 s CPU, 2.45 GB RSS"
+   },
+   {
+    "K": 90,
+    "ambiguous_budget": 0,
+    "build_seconds": 23.7,
+    "iterated_nodes": 13147549881,
+    "key_coordinates": 33,
+    "key_matched_by_removed": {
+     "10": 1457,
+     "11": 8648,
+     "12": 41590,
+     "13": 168829,
+     "14": 572403,
+     "15": 1605147,
+     "16": 3730190,
+     "17": 7131413,
+     "18": 11120533,
+     "19": 14011969,
+     "20": 14118772,
+     "21": 11174731,
+     "22": 6827794,
+     "23": 3142202,
+     "24": 1055351,
+     "25": 247932,
+     "26": 37952,
+     "27": 3420,
+     "28": 181,
+     "29": 3,
+     "6": 1,
+     "7": 1,
+     "8": 26,
+     "9": 209
+    },
+    "key_matched_feasible": 75000754,
+    "largest_support_prime": 463,
+    "max_removed": 30,
+    "mode": "mitm",
+    "next_prime": 467,
+    "seconds": 1577.6,
+    "survivors": 0,
+    "table_a": 268395077,
+    "table_b": 268349802,
+    "x_patterns": 211800,
+    "threads": 3,
+    "machine_note": "3 threads, shared 18-core machine at load 25-37; 3912 s CPU, 6.88 GB RSS"
+   }
+  ]
+ },
+ "comparisons": {
+  "brute_vs_A": "key_matched_A_vs_B inside implementation_B.brute",
+  "mitm_A_vs_B": [
+   {
+    "K": 84,
+    "key_coordinates": 30,
+    "key_matched_A": 1054762,
+    "key_matched_B": 1054762,
+    "histograms_equal": true,
+    "x_patterns_equal": true,
+    "survivors_A": 0,
+    "survivors_B": 0
+   },
+   {
+    "K": 90,
+    "key_coordinates": 33,
+    "key_matched_A": 75000754,
+    "key_matched_B": 75000754,
+    "histograms_equal": true,
+    "x_patterns_equal": true,
+    "survivors_A": 0,
+    "survivors_B": 0
+   }
+  ]
+ },
+ "all_checks_consistent": true
+}

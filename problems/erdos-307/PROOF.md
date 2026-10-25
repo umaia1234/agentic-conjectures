@@ -309,6 +309,74 @@ product-based implementation; at 67 it reproduces a complete slow run, and
 This remains a finite, inspectable computer exclusion, not a nonexistence
 theorem and not a claim of novelty.
 
+### Meet-in-the-middle extension to 90 primes
+
+Beyond 68 primes the removal sets are too many to list one by one (a
+dynamic-programming count gives about `1.4*10^17` of them for 90 primes).
+`support_mitm.cpp` therefore enumerates only the removal sets that already
+satisfy the local conditions at a block of *key* denominators, and tests every
+other denominator afterwards.
+
+Let `F` be the first `K` primes, `R` the removed set and `U=F-R`.  The
+necessary conditions are
+
+1. `sum_{p in R} 1/p <= sum_{p in F} 1/p - 2` (reciprocal mass, from
+   `sum_{r in U} 1/r >= 2`);
+2. `|R| <= K-60` (from `|U|>=60`);
+3. for every odd `r in U`, an even number of `s in U-{r}` are quadratic
+   non-residues mod `r` (this is `(L_r)`).
+
+Write `t_s` for the set of odd `r != s` such that `s` is a non-residue mod
+`r`, and `z(R) = (XOR_{s in F} t_s) XOR (XOR_{s in R} t_s)`.  Since `t_r`
+never contains `r`, condition 3 says exactly that `z(R)` has no element
+outside `R`; this is the cached-bitset identity above.
+
+The key block `C` consists of the `CK` smallest odd primes.  The removable
+primes of `C` are enumerated in an outer loop `X=R∩C`; the other removable
+primes are split alternately into halves `H_1,H_2`, and `R_i=R∩H_i`.  On the
+coordinates of `C-X`, condition 3 is the linear equation
+`key(R_1) XOR key(R_2) = c(X)`; the coordinates in `X` are wildcards.  Tables
+of all `R_1` and all `R_2` within the budget are bucketed by key, and the
+iterated half looks up exactly the entries with the required key.  To produce
+each pair once, pairs are split by weight: either `w(R_1)<=h` (iterate `R_1`,
+look up `R_2`) or `w(R_1)>h` (iterate `R_2` with `w(R_2)<=b-h-1`, look up
+`R_1` among the entries of weight `>h`), where `b` is the budget left by `X`
+and `h=floor(b/2)`.  Every pair that satisfies the key equation is then tested
+against conditions 1–3 in full.
+
+Budgets are integers.  With `w(p)=floor(2^64/p)` and odd `p`, condition 1
+implies `sum_R w(p) < sum_F ceil(2^64/p) - 2^65`, which is the enumeration
+bound; the enumerated sets therefore contain all feasible ones.  A set is
+reported as ambiguous if `sum_R w(p) + |R| > sum_F floor(2^64/p) - 2^65`;
+otherwise condition 1 holds exactly.  No run reported an ambiguous set, so the
+key-matched counts are exact counts of removal sets satisfying conditions 1,
+2 and the key part of 3.
+
+For `K=90` (largest prime 463) and `CK=33` there are 75,000,754 such sets,
+and none satisfies condition 3 at all odd denominators.  Hence no solution is
+supported on the primes up to 463, and
+
+\[
+ \boxed{\max(P\cup Q)\ge467.}
+\]
+
+`cross_check_support.py` is a separately written second implementation: it
+uses quadratic-residue tables instead of Euler's criterion, row bitsets for
+the final test, budgets at scale `2^62` with exact `Fraction` resolution of
+ambiguous cases, sorted rather than counting-sorted tables, the opposite half
+split, and the weight boundary `ceil(b/2)`.  Its `brute` mode enumerates every
+removal set directly, without keys.  The validation chain is recorded in
+`bounded_support_90_result.json`:
+
+- `brute` gives exact totals 644,666 and 9,926,250 at `K=66,68` (the counts
+  of the slower scripts above) and continues through `K=76`, where it checks
+  all 128,295,786,172 removal sets; it finds no survivor;
+- for `K=66,...,76` (even) and every key size in `{12,16,20,24,30}`, the
+  key-matched counts of `brute` and `support_mitm.cpp` agree exactly;
+- at the frontier `K=90`, `CK=33`, the meet-in-the-middle mode of the second
+  implementation reproduces the key-matched count and its distribution by
+  `|R|`, and finds no survivor.
+
 ## 7. Scope
 
 None of these conditions proves nonexistence, and no solution was found.
@@ -317,3 +385,8 @@ product, while the mod-8/mod-24 conditions are independent inexpensive
 filters.  The literature search in `README.md` did not locate these exact
 Legendre or mod-24 formulations, but a negative search is not a novelty
 proof.
+
+Sections 1, 2, 4 and 5, and the reciprocal-mass bound `|U|>=59` of
+section 6, are formalized in `AgenticConjectures/Erdos307.lean` (see the
+README for the declaration table).  The aggregate reciprocity conditions of
+section 3 and all enumerations are not formalized.
