@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-56-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
+![problems](https://img.shields.io/badge/problems-57-8250df) ![proved](https://img.shields.io/badge/proved-25-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**56 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
+**57 problems** — ✅ proved: 25 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
 
 ### OEIS
 
@@ -210,6 +210,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 | [Small Diophantine equations low-degree ansatz attempt](problems/small-diophantine/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims only exact negative results: three low-degree rational-curve ansatz classes and a narrow integer-Q Pell-factor spot-check admit no solutions for the six remaining equations z^2 + y^2*z + x^3 + a*x + b = 0, none of which is claimed solved. |
 | [Stretched Littlewood-Richardson negative-coefficient search](problems/stretched-lr/README.md) | 🟡 partial | — | `GPT-5.6 Sol` | Claims only a negative search: across ~243k classic-lrcalc triples, 9M Rust random trials with exact interpolation, and an exhausted 10,312-pair stretched-Kostka subfamily, no triple in the FrontierMath box produced a negative ordinary power-basis coefficient. |
 | [Computable transcendental with all floored powers composite](problems/transcendental-composite-powers/README.md) | ✅ proved | — | `GPT-5.6 Sol` | Claims a complete informal proof that there is a computable transcendental alpha in (10,11) with floor(alpha^n) composite (an even integer >= 10) for every n >= 1, answering the transcendental part of the open question in Section 7 of Hahn-Ismailescu-Kim-Kim. |
+| [Vieta jumping with r = 2 — the values of 2(a+b)/gcd(a,b)^2](problems/vieta-r2-gcd/README.md) | ✅ proved | lean + cert | `Claude Opus 5.5 (max effort)` | Lean-proves Conjecture 4.2 of Miller, Nikolakopoulos and Srinivasan (arXiv:2605.19083v2) as AgenticConjectures.VietaR2Gcd.statement_holds: for positive integers a, b and an integer k with (a+2)/b + (b+2)/a = k, the value 2(a+b)/gcd(a,b)^2 lies in {1,2,3,4,5,8}, and the values for k = 3, 4, 6 are exactly {1,5}, {2,3}, {4,8}; for every r > 0 the same module proves 3 <= k <= 2r+2 (GeneralR.k_range), descent to finitely many reduced solutions (GeneralR.descent, GeneralR.reduced_bounds), two-periodicity of r(a+b)/gcd(a,b)^2 along Vieta chains (GeneralR.two_periodic, GeneralR.values_eq) and the value sets for r = 1, 2, 3 (GeneralR.values_one, GeneralR.values_two, GeneralR.values_three). |
 
 <!-- STATUS:END -->
 

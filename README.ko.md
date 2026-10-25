@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-57-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-25-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
+**문제 57개** — ✅ 증명: 25 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
 
 ### OEIS
 
@@ -208,6 +208,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 | [작은 Diophantine 방정식에 대한 저차 ansatz 시도](problems/small-diophantine/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | 여섯 잔여 방정식에 대해 세 가지 저차 유리곡선 ansatz 부류에는 해가 없다는 정확한 결과와, 제한된 정수 Q 범위에서의 Pell 인자 ansatz 표본 검사 결과만 주장한다. 이는 제한된 ansatz에 대한 배제일 뿐이며, 여섯 방정식 가운데 어느 것도 해결했다고 주장하지 않는다. |
 | [신장된 Littlewood–Richardson 음수 계수 탐색](problems/stretched-lr/README.md) | 🟡 부분 결과 | — | `GPT-5.6 Sol` | 음수 계수를 찾지 못했다는 탐색 결과만 주장한다. 약 243k개의 classic-lrcalc 삼중항, 정확한 보간을 사용한 9M회의 Rust 무작위 시행과 완전히 탐색한 10,312쌍의 stretched-Kostka 부분족 전반에서 FrontierMath 범위 안의 어떤 삼중항도 음의 보통 멱기저 계수를 만들지 않았다. |
 | [모든 거듭제곱의 바닥값이 합성수인 계산 가능한 초월수](problems/transcendental-composite-powers/README.md) | ✅ 증명 | — | `GPT-5.6 Sol` | 모든 n >= 1에 대해 floor(alpha^n)가 합성수(>= 10인 짝수)인 계산 가능한 초월수 alpha가 (10,11)에 존재한다는 완전한 비형식적 증명을 주장하며, Hahn-Ismailescu-Kim-Kim의 7절에 제시된 미해결 질문 중 초월수 부분에 답한다. |
+| [r = 2인 Vieta jumping — 2(a+b)/gcd(a,b)^2의 값](problems/vieta-r2-gcd/README.ko.md) | ✅ 증명 | Lean + 인증서 | `Claude Opus 5.5 (max effort)` | Miller, Nikolakopoulos, Srinivasan의 Conjecture 4.2(arXiv:2605.19083v2)를 AgenticConjectures.VietaR2Gcd.statement_holds로 Lean에서 증명한다. 양의 정수 a, b와 정수 k가 (a+2)/b + (b+2)/a = k를 만족하면 2(a+b)/gcd(a,b)^2는 {1,2,3,4,5,8}에 속하고, k = 3, 4, 6일 때의 값은 정확히 {1,5}, {2,3}, {4,8}이다. 같은 모듈은 모든 r > 0에 대해 3 <= k <= 2r+2(GeneralR.k_range), 유한 개의 기약해로의 강하(GeneralR.descent, GeneralR.reduced_bounds), Vieta 사슬을 따른 r(a+b)/gcd(a,b)^2의 주기 2(GeneralR.two_periodic, GeneralR.values_eq), r = 1, 2, 3의 값 집합(GeneralR.values_one, GeneralR.values_two, GeneralR.values_three)도 증명한다. |
 
 <!-- STATUS:END -->
 

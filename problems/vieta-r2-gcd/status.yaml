@@ -1,0 +1,107 @@
+id: vieta-r2-gcd
+title: Vieta jumping with r = 2 — the values of 2(a+b)/gcd(a,b)^2
+title_ko: r = 2인 Vieta jumping — 2(a+b)/gcd(a,b)^2의 값
+domain: other
+source_url: https://arxiv.org/abs/2605.19083v2
+claimed_status: proved
+claim: >-
+  Lean-proves Conjecture 4.2 of Miller, Nikolakopoulos and Srinivasan (arXiv:2605.19083v2) as
+  AgenticConjectures.VietaR2Gcd.statement_holds: for positive integers a, b and an integer k with
+  (a+2)/b + (b+2)/a = k, the value 2(a+b)/gcd(a,b)^2 lies in {1,2,3,4,5,8}, and the values for k = 3, 4, 6
+  are exactly {1,5}, {2,3}, {4,8}; for every r > 0 the same module proves 3 <= k <= 2r+2 (GeneralR.k_range),
+  descent to finitely many reduced solutions (GeneralR.descent, GeneralR.reduced_bounds), two-periodicity of
+  r(a+b)/gcd(a,b)^2 along Vieta chains (GeneralR.two_periodic, GeneralR.values_eq) and the value sets for
+  r = 1, 2, 3 (GeneralR.values_one, GeneralR.values_two, GeneralR.values_three).
+claim_ko: >-
+  Miller, Nikolakopoulos, Srinivasan의 Conjecture 4.2(arXiv:2605.19083v2)를
+  AgenticConjectures.VietaR2Gcd.statement_holds로 Lean에서 증명한다. 양의 정수 a, b와 정수 k가
+  (a+2)/b + (b+2)/a = k를 만족하면 2(a+b)/gcd(a,b)^2는 {1,2,3,4,5,8}에 속하고, k = 3, 4, 6일 때의 값은
+  정확히 {1,5}, {2,3}, {4,8}이다. 같은 모듈은 모든 r > 0에 대해 3 <= k <= 2r+2(GeneralR.k_range), 유한 개의
+  기약해로의 강하(GeneralR.descent, GeneralR.reduced_bounds), Vieta 사슬을 따른 r(a+b)/gcd(a,b)^2의 주기
+  2(GeneralR.two_periodic, GeneralR.values_eq), r = 1, 2, 3의 값 집합(GeneralR.values_one,
+  GeneralR.values_two, GeneralR.values_three)도 증명한다.
+artifacts:
+- path: DETAILS.md
+  kind: mathematical-details
+- path: ../../AgenticConjectures/VietaR2Gcd.lean
+  kind: lean-proof
+- path: programs/vieta_brute.c
+  kind: search-code
+- path: programs/vieta_chains.py
+  kind: search-code
+- path: logs/vieta_brute_r2_60000.log
+  kind: data
+- path: logs/vieta_brute_r3_20000.log
+  kind: data
+- path: logs/vieta_brute_r11_20000.log
+  kind: data
+- path: logs/vieta_chains_r40.log
+  kind: data
+verify:
+- cmd: mkdir -p build && cc -O2 -std=c99 -Wall -Wextra -o build/vieta_brute programs/vieta_brute.c && build/vieta_brute 60000
+  expected_runtime: ~1 s including compilation (r = 2, all pairs a <= b <= 60000)
+  ci_feasible: true
+  requires: [cc]
+- cmd: python3 programs/vieta_chains.py --height 200 --max-r 40 --brute 20000
+  expected_runtime: ~5 s (r = 2 chains to 10^200; r <= 40 tables and divisor cross-check to 20000)
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.VietaR2Gcd
+  theorems:
+  - AgenticConjectures.VietaR2Gcd.Sol.symm
+  - AgenticConjectures.VietaR2Gcd.Sol.next
+  - AgenticConjectures.VietaR2Gcd.diag
+  - AgenticConjectures.VietaR2Gcd.k_cases
+  - AgenticConjectures.VietaR2Gcd.key
+  - AgenticConjectures.VietaR2Gcd.no_6_1
+  - AgenticConjectures.VietaR2Gcd.no_6_2
+  - AgenticConjectures.VietaR2Gcd.no_6_16
+  - AgenticConjectures.VietaR2Gcd.no_4_1
+  - AgenticConjectures.VietaR2Gcd.no_4_4
+  - AgenticConjectures.VietaR2Gcd.no_4_6
+  - AgenticConjectures.VietaR2Gcd.no_4_12
+  - AgenticConjectures.VietaR2Gcd.no_3_2
+  - AgenticConjectures.VietaR2Gcd.no_3_10
+  - AgenticConjectures.VietaR2Gcd.IsSolution.sol
+  - AgenticConjectures.VietaR2Gcd.normSum_cases
+  - AgenticConjectures.VietaR2Gcd.statement_holds
+  - AgenticConjectures.VietaR2Gcd.GeneralR.k_ge_three
+  - AgenticConjectures.VietaR2Gcd.GeneralR.descent
+  - AgenticConjectures.VietaR2Gcd.GeneralR.reduced_bounds
+  - AgenticConjectures.VietaR2Gcd.GeneralR.k_le_reduced
+  - AgenticConjectures.VietaR2Gcd.GeneralR.k_range
+  - AgenticConjectures.VietaR2Gcd.GeneralR.k_range_sharp
+  - AgenticConjectures.VietaR2Gcd.GeneralR.thm12
+  - AgenticConjectures.VietaR2Gcd.GeneralR.normVal_comm
+  - AgenticConjectures.VietaR2Gcd.GeneralR.normVal_eq
+  - AgenticConjectures.VietaR2Gcd.GeneralR.two_periodic
+  - AgenticConjectures.VietaR2Gcd.GeneralR.chainVals_jump
+  - AgenticConjectures.VietaR2Gcd.GeneralR.chainVals_swap
+  - AgenticConjectures.VietaR2Gcd.GeneralR.descent_chainVals
+  - AgenticConjectures.VietaR2Gcd.GeneralR.values_eq
+  - AgenticConjectures.VietaR2Gcd.GeneralR.mem_values
+  - AgenticConjectures.VietaR2Gcd.GeneralR.reduced_one
+  - AgenticConjectures.VietaR2Gcd.GeneralR.reduced_two
+  - AgenticConjectures.VietaR2Gcd.GeneralR.reduced_three
+  - AgenticConjectures.VietaR2Gcd.GeneralR.values_one
+  - AgenticConjectures.VietaR2Gcd.GeneralR.values_two
+  - AgenticConjectures.VietaR2Gcd.GeneralR.values_three
+  - AgenticConjectures.VietaR2Gcd.GeneralR.eleven_three
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: proof of Conjecture 4.2 (divisibility and congruence steps), Lean 4 formalization with the general-r
+    results, independent search code and documentation
+notes: >-
+  The owner chose to publish this entry with full credit to the paper's authors: the problem, the r = 1
+  results, the r = 2 descent to k in {3,4,6} (Remark 4.1), the general-r diagonal analysis and Conjecture 4.2
+  itself (in §4.1 of v2) are theirs; DETAILS.md#credit lists the split. No Formal Conjectures statement
+  exists, so the Lean statement is ours. It reads k as an integer, as in the paper's setup (with rational k,
+  (a,b) = (1,2) gives the value 6); reads "the values are" as set equality, proving both inclusion and
+  attainment; computes both fractions and 2(a+b)/gcd(a,b)^2 in Q with Nat.gcd; and takes a, b positive. The C
+  and Python programs are supporting evidence only; the Lean proof uses no computation. The value tables for
+  4 <= r <= 40 are computational (the Lean theorem values_eq applied to reduced solutions found by the
+  program). They show that the values for k = 3 are not {1,5} for every r: at r = 11 they are {1,5,11,55},
+  and GeneralR.eleven_three proves that 11 occurs. The write-up is unreviewed, nothing has been reported to
+  the authors, and no novelty is claimed.

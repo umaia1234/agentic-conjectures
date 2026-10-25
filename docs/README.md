@@ -41,4 +41,5 @@ problem rather than assembling another global copy.
 | [OEIS A354747 first unknown case a(100943)](../problems/oeis-a354747/README.md) | 🔴 refuted | [Detailed derivation](../problems/oeis-a354747/DETAILS.md) |
 | [OEIS A395412 certified finite nonvanishing extension](../problems/oeis-a395412/README.md) | 🟡 partial | [Detailed derivation](../problems/oeis-a395412/DETAILS.md) |
 | [Graph recoloring radius — subdivided-claw counterexample](../problems/recoloring-radius-q15/README.md) | 🔴 refuted | [Detailed derivation](../problems/recoloring-radius-q15/DETAILS.md) |
+| [Vieta jumping with r = 2 — the values of 2(a+b)/gcd(a,b)^2](../problems/vieta-r2-gcd/README.md) | ✅ proved | [Detailed derivation](../problems/vieta-r2-gcd/DETAILS.md) |
 <!-- DETAILS:END -->
