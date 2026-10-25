@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-58-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-26-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
+**문제 58개** — ✅ 증명: 26 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
 
 ### OEIS
 
@@ -197,6 +197,8 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 | 문제 | 주장 상태 | 기계 검증 | 작업 모델 | 주장 |
 |---|---|---|---|---|
+| [CRIM의 지는 훅 쌓기(arXiv:2606.16828) — conj:bloby와 conj:main의 Lean 증명](problems/crim-hook-stacks/README.ko.md) | ✅ 증명 | Lean + 인증서 | `Claude Opus 5.5 (max effort)` | 지는 훅 쌓기 추측 conj:bloby(statement_holds)와 짝수 랭크 추측 conj:main(mainConjecture_holds)을 Lean으로 증명했습니다. conj:main은 Zijian Zeng이 심사 전 프리프린트에서 제시하고 증명한 경계 단어에 의한 P-위치 분류(isP_ofPairs_iff)를 Lean으로 형식화해 얻었고, conj:bloby는 후수 전략으로 conj:main에서 이끌어 냈습니다(statement_of_mainConjecture). 이 전략에는 국소형 (isP_stack_of_localEvenRank)도 있습니다. 크기 110까지의 전수 계산과 크기 60까지의 전략 재현도 같은 결과를 줍니다. |
+| [CRIM의 지는 두꺼운 훅 멜드, 홀짝 자기켤레 분할, 미제르 규칙(arXiv:2606.16828) — 멜드 추측, conj:pself, 미제르 분류의 Lean 증명](problems/crim-pself-meld/README.ko.md) | ✅ 증명 | Lean + 인증서 | `Claude Opus 5.5 (max effort)` | 두꺼운 훅 멜드 추측(meldConjecture_holds: 지는 두꺼운 훅들의 멜드는 괄호 묶는 방식에 관계없이 P-위치)과 conj:pself(pselfConjecture_holds: 홀짝 자기켤레 분할이 N에 속할 필요충분조건은 홀수 자기켤레 훅들과 [1]의 스택인 것이며, 더 강한 형태는 paritySelfConj_and_not_isP_iff, 스택의 모든 괄호 묶기에 대한 형태는 pselfConjecture_anyBracketing)를 Lean으로 증명했습니다. 두 결과 모두 Zijian Zeng이 심사 전 프리프린트에서 제시하고 증명한 경계 단어에 의한 P-위치 분류의 따름정리이며, 이 분류는 crim-hook-stacks에서 형식화되었습니다(isP_ofPairs_iff). 또한 미제르 P-위치의 분류(misereP_iff_isP: 분할이 미제르 P-위치일 필요충분조건은 "정상 규칙의 P-위치이다"와 "L + R >= k" 중 정확히 하나가 성립하는 것)를 Lean으로 증명했으며, 이 분류의 이전 진술은 찾지 못했습니다. 크기 50까지의 전수 계산도 같은 결과를 줍니다. |
 | [차수와 민감도 — n=14, 차수 5의 층별 총계 제약](problems/degree-vs-sensitivity/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | n=14이고 차수가 5 이하인 모든 변수에 민감한 함수의 경우, 정확한 층별 필요조건(B_2>=84)과 가능한 (B_2,B_3,B_4,B_5) 프로파일이 정확히 247개뿐임을 보인다. 다만 진리표의 존재 여부를 찾는 탐색은 UNKNOWN 상태로 종료되었다. |
 | [Floridian solitaire — 모든 n > 6에서의 즉시 패배](problems/floridian-solitaire/README.md) | ✅ 증명 | 인증서 | `GPT-5.6 Sol` | 모든 정수 n > 6에 즉시 패배 국면이 존재한다는, 아직 동료 검토를 받지 않은 완전한 증명을 주장한다. 간격 2 블록 구성과 18 및 20의 명시적 경우를 이용해 Meyerowitz–Curran–Locke–Low의 두 번째 연구 질문에서 미해결이던 잉여류 n = 0,2 (mod 6)을 해결한다. |
 | [‘골드바흐를 증명하자’ 상금 문제 2 — 정확한 주기 공식](problems/goldbach-prize-2/README.ko.md) | ✅ 증명 | Lean | `GPT-5.6 Sol` | 각 고정 삼중항별 유한 경우라는 해석 아래에서 n1,n2,n3 어느 것으로도 나누어지지 않는 x번째 양의 정수의 정확한 주기 잔여 리스트 공식을 증명하므로, 게시된 n3^2/2 오차 한계가 오차 0으로 성립한다. |

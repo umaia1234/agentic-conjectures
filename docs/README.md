@@ -29,6 +29,8 @@ problem rather than assembling another global copy.
 <!-- DETAILS:BEGIN (scripts/gen_readme.py) -->
 | Problem | Claimed status | Mathematical details |
 |---|---|---|
+| [CRIM losing-hook stacks (arXiv:2606.16828) — Lean proof of conj:bloby and conj:main](../problems/crim-hook-stacks/README.md) | ✅ proved | [Detailed derivation](../problems/crim-hook-stacks/DETAILS.md) |
+| [CRIM melds of losing thick hooks, parity self-conjugate partitions and misère play (arXiv:2606.16828) — Lean proofs of the meld conjecture, conj:pself and a misère classification](../problems/crim-pself-meld/README.md) | ✅ proved | [Detailed derivation](../problems/crim-pself-meld/DETAILS.md) |
 | [Erdős #385 / #430(i) — odd indices and exact verification through 10^9](../problems/erdos-385/README.md) | 🟡 partial | [Detailed derivation](../problems/erdos-385/DETAILS.md) |
 | [Erdős #671 — everywhere-unbounded Lagrange arrays proved](../problems/erdos-671/README.md) | ✅ proved | [Detailed derivation](../problems/erdos-671/DETAILS.md) |
 | [Let's Prove Goldbach prize problem 2 — exact periodic formula](../problems/goldbach-prize-2/README.md) | ✅ proved | [Detailed derivation](../problems/goldbach-prize-2/DETAILS.md) |

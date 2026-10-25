@@ -1,0 +1,70 @@
+$ python3 programs/pself_meld_check.py --max-n 50 --misere --hookswap
+n=0 partitions=1 P=1 misereP=0 pself=1
+n=1 partitions=1 P=0 misereP=1 pself=1
+n=2 partitions=2 P=0 misereP=0 pself=0
+n=3 partitions=3 P=1 misereP=2 pself=1
+n=4 partitions=5 P=1 misereP=1 pself=1
+n=5 partitions=7 P=3 misereP=3 pself=1
+n=6 partitions=11 P=2 misereP=3 pself=1
+n=7 partitions=15 P=7 misereP=4 pself=1
+n=8 partitions=22 P=6 misereP=8 pself=4
+n=9 partitions=30 P=10 misereP=6 pself=2
+n=10 partitions=42 P=11 misereP=15 pself=2
+n=11 partitions=56 P=18 misereP=11 pself=2
+n=12 partitions=77 P=21 misereP=29 pself=7
+n=13 partitions=101 P=27 misereP=19 pself=5
+n=14 partitions=135 P=40 misereP=50 pself=3
+n=15 partitions=176 P=47 misereP=37 pself=4
+n=16 partitions=231 P=69 misereP=81 pself=11
+n=17 partitions=297 P=77 misereP=67 pself=11
+n=18 partitions=385 P=118 misereP=129 pself=5
+n=19 partitions=490 P=129 misereP=119 pself=10
+n=20 partitions=627 P=189 misereP=199 pself=17
+n=21 partitions=792 P=210 misereP=203 pself=18
+n=22 partitions=1002 P=303 misereP=306 pself=8
+n=23 partitions=1255 P=339 misereP=338 pself=17
+n=24 partitions=1575 P=465 misereP=461 pself=29
+n=25 partitions=1958 P=534 misereP=545 pself=30
+n=26 partitions=2436 P=715 misereP=695 pself=16
+n=27 partitions=3010 P=836 misereP=861 pself=28
+n=28 partitions=3718 P=1067 misereP=1032 pself=46
+n=29 partitions=4565 P=1279 misereP=1325 pself=45
+n=30 partitions=5604 P=1599 misereP=1539 pself=28
+n=31 partitions=6842 P=1937 misereP=2009 pself=42
+n=32 partitions=8349 P=2350 misereP=2265 pself=77
+n=33 partitions=10143 P=2891 misereP=2992 pself=69
+n=34 partitions=12310 P=3451 misereP=3330 pself=48
+n=35 partitions=14883 P=4264 misereP=4402 pself=65
+n=36 partitions=17977 P=4999 misereP=4846 pself=119
+n=37 partitions=21637 P=6219 misereP=6393 pself=103
+n=38 partitions=26015 P=7224 misereP=7029 pself=77
+n=39 partitions=31185 P=8981 misereP=9194 pself=97
+n=40 partitions=37338 P=10329 misereP=10101 pself=182
+n=41 partitions=44583 P=12847 misereP=13094 pself=157
+n=42 partitions=53174 P=14717 misereP=14453 pself=118
+n=43 partitions=63261 P=18223 misereP=18502 pself=149
+n=44 partitions=75175 P=20787 misereP=20501 pself=267
+n=45 partitions=89134 P=25653 misereP=25947 pself=236
+n=46 partitions=105558 P=29227 misereP=28925 pself=176
+n=47 partitions=124754 P=35851 misereP=36153 pself=222
+n=48 partitions=147273 P=40798 misereP=40508 pself=389
+n=49 partitions=173525 P=49778 misereP=50057 pself=353
+n=50 partitions=204226 P=56677 misereP=56414 pself=258
+meld: 1714 thick hooks, 844 losing; 1732 melds of losing thick hooks of size <= 50 (888 with >= 2 pieces), all P; 27000 triples associative
+pself reading hooks=odd base=ends in [1] nesting=right: 56 stacks; paper reading: 0 N not stacks, 0 stacks not pself-N; weak reading: 778, 0
+pself reading hooks=odd base=any nesting=right: 116 stacks; paper reading: 0 N not stacks, 60 stacks not pself-N; weak reading: 778, 60; first: (3, 1, 1)
+pself reading hooks=odd base=ends in [1] nesting=left: 56 stacks; paper reading: 0 N not stacks, 0 stacks not pself-N; weak reading: 778, 0
+pself reading hooks=odd base=any nesting=left: 116 stacks; paper reading: 0 N not stacks, 60 stacks not pself-N; weak reading: 778, 60; first: (3, 1, 1)
+pself reading hooks=odd base=ends in [1] nesting=any: 56 stacks; paper reading: 0 N not stacks, 0 stacks not pself-N; weak reading: 778, 0
+pself reading hooks=odd base=any nesting=any: 116 stacks; paper reading: 0 N not stacks, 60 stacks not pself-N; weak reading: 778, 60; first: (3, 1, 1)
+pself reading hooks=all base=ends in [1] nesting=right: 581 stacks; paper reading: 0 N not stacks, 525 stacks not pself-N; weak reading: 778, 525; first: (2, 2)
+pself reading hooks=all base=any nesting=right: 1212 stacks; paper reading: 0 N not stacks, 1156 stacks not pself-N; weak reading: 778, 1156; first: (2, 1)
+pself reading hooks=all base=ends in [1] nesting=left: 581 stacks; paper reading: 0 N not stacks, 525 stacks not pself-N; weak reading: 778, 525; first: (2, 2)
+pself reading hooks=all base=any nesting=left: 1212 stacks; paper reading: 0 N not stacks, 1156 stacks not pself-N; weak reading: 778, 1156; first: (2, 1)
+pself reading hooks=all base=ends in [1] nesting=any: 581 stacks; paper reading: 0 N not stacks, 525 stacks not pself-N; weak reading: 778, 525; first: (2, 2)
+pself reading hooks=all base=any nesting=any: 1212 stacks; paper reading: 0 N not stacks, 1156 stacks not pself-N; weak reading: 778, 1156; first: (2, 1)
+pself: 3559 parity self-conjugate partitions (56 N); weak reading: 33013 (834 N)
+hookswap: cp([]) = (0, 1); 300 nonempty positions with Conway pair (0, 1) and 300 even-by-even hooks of size <= 50
+summary: OK N=50 partitions=1295971 P=365327 misereP=365204 cover=23447 misere_checked=True hookswap_checked=True failures=0
+exit status: 0
+wall time: 26.11 s

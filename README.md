@@ -11,7 +11,7 @@
 [![dashboard](https://img.shields.io/badge/dashboard-live-0969da)](https://umaia1234.github.io/agentic-conjectures/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![problems](https://img.shields.io/badge/problems-56-8250df) ![proved](https://img.shields.io/badge/proved-24-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
+![problems](https://img.shields.io/badge/problems-58-8250df) ![proved](https://img.shields.io/badge/proved-26-2da44e) ![refuted](https://img.shields.io/badge/refuted-9-cf222e) ![partial](https://img.shields.io/badge/partial-17-bf8700) ![open](https://img.shields.io/badge/open-6-848d97)
 <!-- COUNTS:END -->
 
 **English** | [한국어](README.ko.md)
@@ -133,7 +133,7 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**56 problems** — ✅ proved: 24 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
+**58 problems** — ✅ proved: 26 · 🔴 refuted: 9 · 🟡 partial: 17 · ⚪ open: 6
 
 ### OEIS
 
@@ -199,6 +199,8 @@ in the [releases feed](https://github.com/umaia1234/agentic-conjectures/releases
 
 | Problem | Claimed status | Machine checks | Solved by | Claim |
 |---|---|---|---|---|
+| [CRIM losing-hook stacks (arXiv:2606.16828) — Lean proof of conj:bloby and conj:main](problems/crim-hook-stacks/README.md) | ✅ proved | lean + cert | `Claude Opus 5.5 (max effort)` | Lean-proves the losing-hook stacking conjecture conj:bloby (statement_holds) and the even-rank conjecture conj:main (mainConjecture_holds). conj:main comes from a Lean formalization of the boundary-word classification of the P-positions (isP_ofPairs_iff) that Zijian Zeng stated and proved in an unrefereed preprint; conj:bloby follows from conj:main by a second-player strategy (statement_of_mainConjecture), which also has a local form (isP_stack_of_localEvenRank). Exhaustive computation to size 110 and a replay of the strategy to size 60 agree. |
+| [CRIM melds of losing thick hooks, parity self-conjugate partitions and misère play (arXiv:2606.16828) — Lean proofs of the meld conjecture, conj:pself and a misère classification](problems/crim-pself-meld/README.md) | ✅ proved | lean + cert | `Claude Opus 5.5 (max effort)` | Lean-proves the thick-hook meld conjecture (meldConjecture_holds: every meld of losing thick hooks, in any bracketing, is a P-position) and conj:pself (pselfConjecture_holds: a parity self-conjugate partition is in N iff it is a stack of odd self-conjugate hooks and [1], with the stronger form paritySelfConj_and_not_isP_iff, and pselfConjecture_anyBracketing for every bracketing of the stack). Both are corollaries of the boundary-word classification of the P-positions that Zijian Zeng stated and proved in an unrefereed preprint, formalized in crim-hook-stacks (isP_ofPairs_iff). It also Lean-proves a classification of the misère P-positions (misereP_iff_isP: a partition is a misère P-position iff exactly one of "it is a normal-play P-position" and "L + R >= k" holds), for which no prior statement was found. Exhaustive computation to size 50 agrees. |
 | [Degree vs sensitivity — n=14 degree-5 aggregate constraints](problems/degree-vs-sensitivity/README.md) | 🟡 partial | cert | `GPT-5.6 Sol` | Claims exact necessary layer constraints (B_2>=84, exactly 247 feasible (B_2,B_3,B_4,B_5) profiles) for the n=14 degree<=5 fully sensitive case, while the truth-table existence search ended with status UNKNOWN. |
 | [Floridian solitaire — immediate losses for every n > 6](problems/floridian-solitaire/README.md) | ✅ proved | cert | `GPT-5.6 Sol` | Claims a complete (unreviewed) proof that every integer n > 6 has an immediate-loss position, resolving the open residue classes n = 0,2 (mod 6) of Meyerowitz–Curran–Locke–Low's second research question via a gap-two block construction plus explicit cases 18 and 20. |
 | [Let's Prove Goldbach prize problem 2 — exact periodic formula](problems/goldbach-prize-2/README.md) | ✅ proved | lean | `GPT-5.6 Sol` | Under the per-fixed-triple finite-case interpretation, proves an exact periodic residue-list formula for the x-th positive integer divisible by none of n1,n2,n3, so the advertised n3^2/2 error bound holds with zero error. |

@@ -29,6 +29,8 @@
 <!-- DETAILS:BEGIN (scripts/gen_readme.py) -->
 | 문제 | 주장 상태 | 수학 상세 |
 |---|---|---|
+| [CRIM의 지는 훅 쌓기(arXiv:2606.16828) — conj:bloby와 conj:main의 Lean 증명](../problems/crim-hook-stacks/README.ko.md) | ✅ 증명 | [상세 전개](../problems/crim-hook-stacks/DETAILS.ko.md) |
+| [CRIM의 지는 두꺼운 훅 멜드, 홀짝 자기켤레 분할, 미제르 규칙(arXiv:2606.16828) — 멜드 추측, conj:pself, 미제르 분류의 Lean 증명](../problems/crim-pself-meld/README.ko.md) | ✅ 증명 | [상세 전개](../problems/crim-pself-meld/DETAILS.ko.md) |
 | [에르되시 #385 / #430(i) — 홀수 지표 정리와 10^9까지의 정확한 검증](../problems/erdos-385/README.ko.md) | 🟡 부분 결과 | [상세 전개](../problems/erdos-385/DETAILS.ko.md) |
 | [에르되시 #671 — 모든 점에서 비유계인 라그랑주 배열 증명](../problems/erdos-671/README.ko.md) | ✅ 증명 | [상세 전개](../problems/erdos-671/DETAILS.ko.md) |
 | [‘골드바흐를 증명하자’ 상금 문제 2 — 정확한 주기 공식](../problems/goldbach-prize-2/README.ko.md) | ✅ 증명 | [상세 전개](../problems/goldbach-prize-2/DETAILS.ko.md) |

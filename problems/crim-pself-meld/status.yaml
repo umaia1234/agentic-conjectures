@@ -1,0 +1,125 @@
+id: crim-pself-meld
+title: 'CRIM melds of losing thick hooks, parity self-conjugate partitions and misère play (arXiv:2606.16828) — Lean proofs of the meld conjecture, conj:pself and a misère classification'
+title_ko: 'CRIM의 지는 두꺼운 훅 멜드, 홀짝 자기켤레 분할, 미제르 규칙(arXiv:2606.16828) — 멜드 추측, conj:pself, 미제르 분류의 Lean 증명'
+domain: other
+source_url: https://arxiv.org/abs/2606.16828
+claimed_status: proved
+claim: >-
+  Lean-proves the thick-hook meld conjecture (meldConjecture_holds: every meld of losing thick
+  hooks, in any bracketing, is a P-position) and conj:pself (pselfConjecture_holds: a parity
+  self-conjugate partition is in N iff it is a stack of odd self-conjugate hooks and [1], with the
+  stronger form paritySelfConj_and_not_isP_iff, and pselfConjecture_anyBracketing for every
+  bracketing of the stack). Both are corollaries of the boundary-word classification of the
+  P-positions that Zijian Zeng stated and proved in an unrefereed preprint, formalized in
+  crim-hook-stacks (isP_ofPairs_iff). It also Lean-proves a classification of the misère
+  P-positions (misereP_iff_isP: a partition is a misère P-position iff exactly one of "it is a
+  normal-play P-position" and "L + R >= k" holds), for which no prior statement was found.
+  Exhaustive computation to size 50 agrees.
+claim_ko: >-
+  두꺼운 훅 멜드 추측(meldConjecture_holds: 지는 두꺼운 훅들의 멜드는 괄호 묶는 방식에 관계없이
+  P-위치)과 conj:pself(pselfConjecture_holds: 홀짝 자기켤레 분할이 N에 속할 필요충분조건은 홀수
+  자기켤레 훅들과 [1]의 스택인 것이며, 더 강한 형태는 paritySelfConj_and_not_isP_iff, 스택의 모든
+  괄호 묶기에 대한 형태는 pselfConjecture_anyBracketing)를 Lean으로 증명했습니다. 두 결과 모두
+  Zijian Zeng이 심사 전 프리프린트에서 제시하고 증명한 경계 단어에 의한 P-위치 분류의
+  따름정리이며, 이 분류는 crim-hook-stacks에서 형식화되었습니다(isP_ofPairs_iff). 또한 미제르
+  P-위치의 분류(misereP_iff_isP: 분할이 미제르 P-위치일 필요충분조건은 "정상 규칙의 P-위치이다"와
+  "L + R >= k" 중 정확히 하나가 성립하는 것)를 Lean으로 증명했으며, 이 분류의 이전 진술은 찾지
+  못했습니다. 크기 50까지의 전수 계산도 같은 결과를 줍니다.
+artifacts:
+- path: DETAILS.md
+  kind: mathematical-details
+- path: ../../AgenticConjectures/CrimPselfMeld.lean
+  kind: lean-proof
+- path: programs/pself_meld_check.py
+  kind: certificate-script
+- path: logs/pself_meld_check_n35.log
+  kind: data
+- path: logs/pself_meld_check_n50.log
+  kind: data
+verify:
+- cmd: python3 programs/pself_meld_check.py --max-n 35 --misere --hookswap
+  expected_runtime: about 1 second
+  ci_feasible: true
+- cmd: python3 programs/pself_meld_check.py --max-n 50 --misere --hookswap
+  expected_runtime: about 26 seconds, 0.5 GB (output in logs/pself_meld_check_n50.log)
+  ci_feasible: false
+lean:
+  modules:
+  - AgenticConjectures.CrimPselfMeld
+  theorems:
+  - AgenticConjectures.CrimPselfMeld.meldConjecture_holds
+  - AgenticConjectures.CrimPselfMeld.isP_meldAll
+  - AgenticConjectures.CrimPselfMeld.pselfConjecture_holds
+  - AgenticConjectures.CrimPselfMeld.paritySelfConj_and_not_isP_iff
+  - AgenticConjectures.CrimPselfMeld.pselfConjecture_anyBracketing
+  - AgenticConjectures.CrimPselfMeld.exists_hookTree_iff
+  - AgenticConjectures.CrimPselfMeld.HookTree.eval_eq_nest
+  - AgenticConjectures.CrimPselfMeld.stack_hook_assoc
+  - AgenticConjectures.CrimPselfMeld.misereP_iff
+  - AgenticConjectures.CrimPselfMeld.misereP_iff_isP
+  - AgenticConjectures.CrimPselfMeld.misere_classification
+  - AgenticConjectures.CrimPselfMeld.isMP_iff
+  - AgenticConjectures.CrimPselfMeld.misere_hook
+  - AgenticConjectures.CrimPselfMeld.conwayPair_hook_iff
+  - AgenticConjectures.CrimPselfMeld.conwayPair_of_eeHook
+  - AgenticConjectures.CrimPselfMeld.hookswapConjecture_iff
+  - AgenticConjectures.CrimPselfMeld.covered_of_conwayPair
+  - AgenticConjectures.CrimPselfMeld.nil_conwayPair
+  - AgenticConjectures.CrimPselfMeld.isMV1_iff
+  - AgenticConjectures.CrimPselfMeld.oddHookStack_iff
+  - AgenticConjectures.CrimPselfMeld.oddHookStack_of_paritySelfConj
+  - AgenticConjectures.CrimPselfMeld.conjPart_of_oddHookStack
+  - AgenticConjectures.CrimPselfMeld.isP_thickHook_iff
+  - AgenticConjectures.CrimPselfMeld.exists_pairs_of_melds
+  - AgenticConjectures.CrimPselfMeld.meld_assoc
+  - AgenticConjectures.CrimPselfMeld.melds_iff
+  - AgenticConjectures.CrimPselfMeld.meld_ofPairs
+  - AgenticConjectures.CrimPselfMeld.countP_ofPairs
+  - AgenticConjectures.CrimPselfMeld.endL_eq_endR_of_paritySelfConj
+  - AgenticConjectures.CrimPselfMeld.pdual_eq_self_of_parity
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: proofs of the meld conjecture and conj:pself from Zeng's classification, the settling
+    of the stack reading (including a proof that its bracketing does not matter), a proof of the
+    misère classification, a nonempty statement of conj:hookswap with a proof of one direction,
+    Lean 4 formalization, the exhaustive check program, and documentation, building on routes,
+    the misère hypothesis and a Lean draft of the meld argument from an earlier scouting run of
+    this project
+notes: >-
+  The conjectures are from Ina Bašić, Eric Gottlieb and Matjaž Krnc, arXiv:2606.16828, section 5.
+  No Formal Conjectures statement exists, so both formal statements (meldConjecture,
+  pselfConjecture) are ours; DETAILS.md section 1.1 and the module docstring list every reading.
+  A meld of losing thick hooks is any member of the closure of the losing thick hooks under the
+  binary meld, so every bracketing, a single piece and the empty meld [] (which is P) are
+  included; melds_iff shows this is the set of right-nested melds of finite lists. Thick hooks use
+  the paper's conditions r > a >= 2 and c > b >= 2. Parity self-conjugacy compares lambda_k and
+  lambda'_k for every k >= 1 (both 0 past the end); comparing only k <= min(length, lambda_1)
+  makes conj:pself false at [3]. Odd self-conjugate hooks are the hooks Gamma_{r,r} with r odd.
+  The stack is the paper's general Durfee-length stack (crim-hook-stacks), nested to the right
+  with [1] last and every intermediate stack defined, j >= 0; the paper writes such stacks without
+  brackets and calls the operation associative, and pselfConjecture_anyBracketing proves
+  conj:pself for every bracketing (stack_hook_assoc, exists_hookTree_iff). Allowing all
+  Gamma_{r,r} fails at [2,2]; dropping [1] fails at [3,1,1]. Both proofs are corollaries of the
+  classification in Zijian Zeng's unrefereed preprint "A Boundary-Word Classification of Losing
+  Positions in CRIM" (GitHub ArtificialZeng/AI-Has-Taste, dated 2026-08-29), formalized as
+  isP_ofPairs_iff in crim-hook-stacks; the preprint does not mention these two conjectures. An
+  earlier scouting run of this project found both routes and the misère hypothesis and wrote a Lean
+  draft of the meld argument for right-nested melds; the module reuses its definitions (meld,
+  thickHook, ThickParams, thickPairs) and meld_ofPairs. The misère classification (misereP_iff,
+  misereP_iff_isP) is that run's hypothesis, proved here by reusing the move analysis of Zeng's
+  proof with three cases changed; misère play makes [] an N-position (the player to move cannot
+  move, and wins), and no prior statement of the classification was found. The program also
+  checks it to size 50. conj:hookswap (Conway pair (0, 1) iff even-by-even hook) is stated for
+  nonempty partitions as hookswapConjecture, because the paper's own cp([]) = (0, 1) makes the
+  literal statement fail at [] (nil_conwayPair; an edge case of the wording, not a refutation).
+  It is not proved: conwayPair_of_eeHook proves the (<=) direction, which follows from the
+  paper's thm:cgpairshooks, via misere_hook; hookswapConjecture_iff reduces the conjecture to
+  (=>); and covered_of_conwayPair shows that Conway pair (0, 1) forces L + R >= k with k even.
+  The program confirms the nonempty statement to size 50, and OpenConjecture (3663) and MathDB
+  (375373) list it as open. The computations are not used by the Lean proofs. S. S. Mehat's Zenodo
+  artifact 10.5281/zenodo.22070744 classifies the P-positions with at most six parts and is not
+  used here; the repository the-omega-institute/trureturing has Lean refutations of two other
+  conjectures of the paper and, on these two, only an open issue (#8292) registering a bounded
+  counterexample search for the meld conjecture that evaluated no case. No human has reviewed
+  this work, no novelty is claimed, and nothing has been submitted externally.
