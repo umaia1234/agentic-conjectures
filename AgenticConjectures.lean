@@ -1,4 +1,5 @@
 import AgenticConjectures.Erdos671
+import AgenticConjectures.FranklUnionClosed
 import AgenticConjectures.GoldbachPrize2
 import AgenticConjectures.GoldbachPrize3
 import AgenticConjectures.GoldbachPrize4

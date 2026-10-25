@@ -3,23 +3,57 @@ title: Frankl's union-closed sets conjecture
 title_ko: Frankl의 합집합 닫힌 집합족 추측
 domain: graph-combinatorics
 source_url: https://github.com/google-deepmind/formal-conjectures/blob/9118d083ffca1536f521f9a7d103201f537ea670/FormalConjectures/Wikipedia/UnionClosed.lean
-claimed_status: open
-claim: 'Status survey only: records that the conjecture is known for ground sets of size <= 12 and the
-  general 0.38234|F| frequency lower bound, and explicitly resolves nothing (including the 13-element
-  case).'
+claimed_status: partial
+claim: >-
+  Lean-verifies the classical singleton and two-element-set special cases (Sarvate–Renaud: if {a} is a
+  member then a lies in at least half of the members, and if {a,b} is a member then a or b does), the
+  averaging lemma, and the conjecture for families whose union has at most 6 elements, all against the
+  upstream definitions; the conjecture remains open.
 claim_ko: >-
-  상태 조사만 제공한다. 바탕 집합의 크기가 <= 12인 경우에 추측이 성립한다는 알려진 결과와 일반적인
-  0.38234|F| 빈도 하한을 기록하며, 원소가 13개인 경우를 포함해 아무것도 해결하지 않았다고 명시한다.
+  고전적인 한원소 집합·두원소 집합 특수 경우(Sarvate–Renaud: {a}가 집합족에 속하면 a가 구성원 집합의
+  절반 이상에 들어 있고, {a,b}가 속하면 a나 b가 그러하다), 평균 보조정리, 그리고 모든 구성원 집합의
+  합집합이 원소 6개 이하인 집합족에 대한 추측을 upstream 정의에 맞춰 Lean으로 검증했다. 추측 자체는
+  여전히 미해결이다.
 artifacts:
 - path: README.md
   kind: other
+- path: ../../AgenticConjectures/FranklUnionClosed.lean
+  kind: lean-proof
 - path: upstream/README.md
   kind: upstream-lean
 verify: []
+lean:
+  modules:
+  - AgenticConjectures.FranklUnionClosed
+  theorems:
+  - AgenticConjectures.FranklUnionClosed.half_le_card_filter_mem_of_singleton_mem
+  - AgenticConjectures.FranklUnionClosed.singleton_mem
+  - AgenticConjectures.FranklUnionClosed.card_le_card_filter_mem_add_card_filter_mem_of_pair_mem
+  - AgenticConjectures.FranklUnionClosed.pair_mem
+  - AgenticConjectures.FranklUnionClosed.exists_of_pair_mem
+  - AgenticConjectures.FranklUnionClosed.sum_card_filter_mem_eq_sum_card
+  - AgenticConjectures.FranklUnionClosed.exists_card_le_two_mul_card_filter_mem_of_average
+  - AgenticConjectures.FranklUnionClosed.union_closed_of_card_sup_le_six
+  - AgenticConjectures.FranklUnionClosed.univ_card_le_six
+  - AgenticConjectures.FranklUnionClosed.univ_card_two
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
-notes: Korean-language survey dated 2026-08-11; the cited partial results (Vuckovic–Zivkovic 12-element
-  computation, Yu's 0.38234 bound, Bouchard 2026) are literature, not work done here; upstream Lean statements
-  are sorry-backed.
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: Lean 4 formalization of the singleton and two-element-set cases, the averaging lemma and the
+    union-size <= 6 case (AgenticConjectures.FranklUnionClosed) and the accompanying documentation
+notes: >-
+  Partial result only: the conjecture itself (recorded as the Prop `statement`) is not proved, and nothing
+  is said about ground sets of 13 or more elements. Everything in the Lean module is classical and no
+  novelty is claimed: the 1-set and 2-set cases are Sarvate–Renaud (1989), the averaging lemma is standard
+  double counting, and the union-size <= 6 case is far weaker than the known ground-set <= 12 theorem of
+  Vuckovic–Zivkovic. IsUnionClosed is a term-for-term copy of the upstream definition; `statement` binds
+  the upstream section variables explicitly (universe-polymorphic via a universe parameter), and all
+  theorems use the upstream rational form (1/2 : Q) * #A <= #{x in A | i in x} on Finset (Finset n).
+  `singleton_mem` and `univ_card_two` repeat upstream declarations that upstream already proves
+  (re-proved here against the copied definition, the latter without `decide`); `univ_card_le_six` is the
+  sorry-backed upstream `univ_card` with 12 replaced by 6. The upstream statements union_closed, yu,
+  univ_card, family_card and the tightness conjecture remain sorry-backed and are not formalized here;
+  the cited Vuckovic–Zivkovic, Yu and Bouchard results are literature, not work done here.
