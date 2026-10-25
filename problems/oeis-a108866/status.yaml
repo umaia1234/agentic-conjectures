@@ -1,0 +1,66 @@
+id: oeis-a108866
+title: OEIS A108866 — Ordowski's prime criterion, prime direction and composite families
+title_ko: OEIS A108866 — Ordowski의 소수 판정 추측, 소수 방향과 합성수 족
+domain: oeis
+source_url: https://oeis.org/A108866
+claimed_status: partial
+claim: Lean-verifies that p^2 divides the numerator of -2/p + sum_{k=1}^p 2^k/k for every prime p>3 (a
+  short classical argument), and that n^2 does not divide the numerator for every even n, every multiple
+  of 3 other than a power of 3, and two leading-digit families; two independent programs check the
+  composite direction for 3<n<=2*10^6, but the conjecture remains open (no odd prime power is covered).
+claim_ko: >-
+  모든 소수 p>3에 대해 -2/p + sum_{k=1}^p 2^k/k의 분자가 p^2으로 나누어떨어짐(짧은 고전적
+  논증)과, 모든 짝수 n, 3의 거듭제곱이 아닌 모든 3의 배수, 두 가지 최고 자릿수 족에서는 분자가
+  n^2으로 나누어떨어지지 않음을 Lean으로 검증했다. 합성수 방향은 3<n<=2*10^6에서 독립적인 두
+  프로그램으로 확인했지만, 홀수 소수 거듭제곱은 하나도 다루지 못하므로 추측은 여전히 미해결이다.
+artifacts:
+- path: README.md
+  kind: informal-proof
+- path: a108866_check.py
+  kind: certificate-script
+- path: a108866_qadic.cpp
+  kind: search-code
+- path: upstream/108866.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 a108866_check.py
+  expected_runtime: about 3 seconds
+  ci_feasible: true
+- cmd: mkdir -p build && g++ -O2 -std=c++17 -o build/a108866_qadic a108866_qadic.cpp && ./build/a108866_qadic
+    100000 > build/qadic_1e5.tsv && python3 a108866_check.py --limit 100000 --skip-qadic --literal-limit 0
+    --compare build/qadic_1e5.tsv && rm -f build/a108866_qadic build/qadic_1e5.tsv
+  expected_runtime: about 20 seconds including compilation
+  ci_feasible: true
+  requires: [g++]
+- cmd: mkdir -p build && g++ -O2 -std=c++17 -o build/a108866_qadic a108866_qadic.cpp && ./build/a108866_qadic
+    2000000 > build/qadic_2e6.tsv && python3 a108866_check.py --limit 2000000 --skip-qadic --literal-limit
+    0 --gmpy2 --compare build/qadic_2e6.tsv && rm -f build/a108866_qadic build/qadic_2e6.tsv
+  expected_runtime: 6.4 minutes with gmpy2 on a loaded Apple M5 Max (C++ 26 s, Python 357 s); writes a 59
+    MB temporary file
+  ci_feasible: false
+  requires: [g++]
+lean:
+  modules:
+  - AgenticConjectures.OeisA108866
+  theorems:
+  - AgenticConjectures.OeisA108866.prime_imp
+  - AgenticConjectures.OeisA108866.not_modEq_of_even
+  - AgenticConjectures.OeisA108866.not_modEq_of_three_dvd
+  - AgenticConjectures.OeisA108866.not_modEq_of_lead_one
+  - AgenticConjectures.OeisA108866.not_modEq_of_top_digit
+  - AgenticConjectures.OeisA108866.not_modEq_of_mul_pow
+  - AgenticConjectures.OeisA108866.statement_iff_composite
+  - AgenticConjectures.OeisA108866.iff_of_families
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: proofs, Lean 4 formalization (AgenticConjectures.OeisA108866), verification programs, and
+    documentation
+notes: The definitions a and ratExpression are term-for-term copies of the upstream file; statement is the
+  upstream conjecture with n > 3 under the quantifier and is NOT proved. The prime direction is equivalent
+  to sum_{k<p} 2^k/k == -2 q_p(2) (mod p^2) for the Fermat quotient q_p(2) and follows from Wolstenholme's
+  theorem; it is classical, and no novelty is claimed. The composite families come from the leading q-adic
+  terms of E_n; they cover no odd prime power q^k (k >= 2), and up to 2*10^6 they miss only 1027 and 55225
+  among the other composites. Method B and the C++ program share the q-adic method; method A (exact
+  integers) is algorithmically independent of both. CI reruns 3<n<=10^4 (literal, A, B) and 3<n<=10^5
+  (C++ against A); the 2*10^6 run is local only. Nothing has been reported to OEIS or upstream.
