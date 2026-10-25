@@ -1,0 +1,55 @@
+# python tinv/test_sb.py groups_1_31.txt cases_gen_1_20.txt 1 20   (general mode; PySAT 1.9.dev17, solver cadical153)
+# Each line: all solutions f without symmetry breaking ('full') versus the solutions inside the
+# symmetry-breaking cases; the Aut(G)-conjugates of the case solutions were asserted to be exactly
+# the full solution set.  The run hit its 3000 s limit during order 20, after SmallGroup(20,1);
+# SmallGroup(20,2..5) are not covered.  columns: order id group full <#solutions> cases <#cases> case-sols <#solutions in cases> OK
+1 1 1 full 1 cases 1 case-sols 1 OK
+2 1 C2 full 0 cases 4 case-sols 0 OK
+3 1 C3 full 0 cases 5 case-sols 0 OK
+4 1 C4 full 0 cases 10 case-sols 0 OK
+4 2 C2xC2 full 0 cases 5 case-sols 0 OK
+5 1 C5 full 1 cases 7 case-sols 1 OK
+6 1 S3 full 0 cases 11 case-sols 0 OK
+6 2 C6 full 0 cases 20 case-sols 0 OK
+7 1 C7 full 0 cases 9 case-sols 0 OK
+8 1 C8 full 0 cases 22 case-sols 0 OK
+8 2 C4xC2 full 0 cases 19 case-sols 0 OK
+8 3 D8 full 0 cases 19 case-sols 0 OK
+8 4 Q8 full 0 cases 11 case-sols 0 OK
+8 5 C2xC2xC2 full 0 cases 5 case-sols 0 OK
+9 1 C9 full 0 cases 17 case-sols 0 OK
+9 2 C3xC3 full 0 cases 6 case-sols 0 OK
+10 1 D10 full 0 cases 13 case-sols 0 OK
+10 2 C10 full 0 cases 28 case-sols 0 OK
+11 1 C11 full 4 cases 13 case-sols 4 OK
+12 1 C3:C4 full 0 cases 32 case-sols 0 OK
+12 2 C12 full 0 cases 50 case-sols 0 OK
+12 3 A4 full 0 cases 13 case-sols 0 OK
+12 4 D12 full 0 cases 32 case-sols 0 OK
+12 5 C6xC2 full 0 cases 25 case-sols 0 OK
+13 1 C13 full 0 cases 15 case-sols 0 OK
+14 1 D14 full 0 cases 15 case-sols 0 OK
+14 2 C14 full 0 cases 36 case-sols 0 OK
+15 1 C15 full 0 cases 35 case-sols 0 OK
+16 1 C16 full 0 cases 46 case-sols 0 OK
+16 2 C4xC4 full 0 cases 15 case-sols 0 OK
+16 3 (C4xC2):C2 full 0 cases 34 case-sols 0 OK
+16 4 C4:C4 full 0 cases 43 case-sols 0 OK
+16 5 C8xC2 full 0 cases 46 case-sols 0 OK
+16 6 C8:C2 full 0 cases 46 case-sols 0 OK
+16 7 D16 full 0 cases 34 case-sols 0 OK
+16 8 QD16 full 0 cases 46 case-sols 0 OK
+16 9 Q16 full 0 cases 34 case-sols 0 OK
+16 10 C4xC2xC2 full 0 cases 20 case-sols 0 OK
+16 11 C2xD8 full 0 cases 31 case-sols 0 OK
+16 12 C2xQ8 full 0 cases 20 case-sols 0 OK
+16 13 (C4xC2):C2 full 0 cases 32 case-sols 0 OK
+16 14 C2xC2xC2xC2 full 1344 cases 5 case-sols 1344 OK
+17 1 C17 full 0 cases 19 case-sols 0 OK
+18 1 D18 full 0 cases 26 case-sols 0 OK
+18 2 C18 full 0 cases 68 case-sols 0 OK
+18 3 C3xS3 full 0 cases 55 case-sols 0 OK
+18 4 (C3xC3):C2 full 0 cases 12 case-sols 0 OK
+18 5 C6xC3 full 0 cases 24 case-sols 0 OK
+19 1 C19 full 0 cases 21 case-sols 0 OK
+20 1 C5:C4 full 0 cases 40 case-sols 0 OK

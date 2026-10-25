@@ -1,0 +1,22 @@
+# Anti-E255 CNFs from search/gen_cnf.py n, solved by CaDiCaL 3.0.1
+# (`cadical -q --binary=false a<n>.cnf a<n>.drat` for n <= 8, default binary proofs for n = 9, 10)
+# and checked by drat-trim (commit 2e3b2dc0ecf938addbd779d42877b6ed69d9a985) on an Apple-silicon laptop,
+# single thread.  Every run answered UNSATISFIABLE and drat-trim printed "s VERIFIED".
+# For n = 1 no solve log was kept; re-running CaDiCaL reproduces the committed proof byte for byte.
+# drat-trim warns about duplicate literals: the CNFs contain clauses such as -1 -1 9 when two
+# premises of a clause template coincide; duplicate literals do not change a clause.
+# columns: n vars clauses solve_s proof_bytes proof drat_check_s core_lemmas/lemmas
+1 3 9 - 93 text/committed 0.014 -
+2 24 103 0.00 266 text/committed 0.022 1/17
+3 84 495 0.00 656 text/committed 0.019 1/62
+4 203 1544 0.00 1072 text/committed 0.019 2/89
+5 401 3755 0.00 2403 text/committed 0.024 19/208
+6 698 7779 0.00 7038 text/committed 0.025 134/389
+7 1114 14413 0.02 128931 text/committed 0.048 1231/2641
+8 1669 24600 0.27 1346385 text/committed 0.236 10515/17966
+9 2383 39429 5.22 12709530 binary/regenerated 3.572 110544/219596
+10 3276 60135 474.56 630736323 binary/regenerated 421.889 3840664/7420841
+# SHA-256 of the uncommitted binary proofs (CaDiCaL output can differ between builds;
+# verify_drat.py --solve regenerates and checks fresh proofs instead of comparing hashes):
+#   a9.drat   edd13533fb1d8cca34bff8024d2528c0b238b0a89b139e225df6b10b9a5b42cb
+#   a10.drat  931c4583016d97db59ad0bcc448a278674b22fc6e3434e52b1367ef3c876924b

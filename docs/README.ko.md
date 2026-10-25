@@ -31,6 +31,7 @@
 |---|---|---|
 | [에르되시 #385 / #430(i) — 홀수 지표 정리와 10^9까지의 정확한 검증](../problems/erdos-385/README.ko.md) | 🟡 부분 결과 | [상세 전개](../problems/erdos-385/DETAILS.ko.md) |
 | [에르되시 #671 — 모든 점에서 비유계인 라그랑주 배열 증명](../problems/erdos-671/README.ko.md) | ✅ 증명 | [상세 전개](../problems/erdos-671/DETAILS.ko.md) |
+| [ETP 문제 8.1 — 유한 마그마의 등식 677과 255: 크기 10까지 반례 모델 없음](../problems/etp-677-255-finite/README.ko.md) | 🟡 부분 결과 | [상세 전개](../problems/etp-677-255-finite/DETAILS.ko.md) |
 | [‘골드바흐를 증명하자’ 상금 문제 2 — 정확한 주기 공식](../problems/goldbach-prize-2/README.ko.md) | ✅ 증명 | [상세 전개](../problems/goldbach-prize-2/DETAILS.ko.md) |
 | [‘골드바흐를 증명하자’ 상금 문제 3 — 문언상 유한집합 표현 증명](../problems/goldbach-prize-3/README.ko.md) | ✅ 증명 | [상세 전개](../problems/goldbach-prize-3/DETAILS.ko.md) |
 | [‘골드바흐를 증명하자’ 상금 문제 4 — 보편 명제 반박](../problems/goldbach-prize-4/README.ko.md) | 🔴 반례 | [상세 전개](../problems/goldbach-prize-4/DETAILS.ko.md) |

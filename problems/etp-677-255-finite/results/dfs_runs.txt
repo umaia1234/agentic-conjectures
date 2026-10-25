@@ -1,0 +1,25 @@
+# search/dfs677.cpp compiled with g++ -O2 -std=c++17, single thread on an Apple-silicon laptop.
+# n <= 9: the runs of verify_dfs.py (anti-E255 'sel 2' and general 'general print sel 2');
+# n = 10: 'dfs677 10 sel 2'.  n = 11 is in dfs_n11.txt.
+RESULT n=1 mode=anti255 split=0/1 split2=0/1 nodes=1 (static 0 dyn 1) solutions=0 time=0.00s
+RESULT n=1 mode=general split=0/1 split2=0/1 nodes=2 (static 0 dyn 2) solutions=1 time=0.00s
+RESULT n=2 mode=anti255 split=0/1 split2=0/1 nodes=1 (static 1 dyn 0) solutions=0 time=0.00s
+RESULT n=2 mode=general split=0/1 split2=0/1 nodes=2 (static 2 dyn 0) solutions=0 time=0.00s
+RESULT n=3 mode=anti255 split=0/1 split2=0/1 nodes=2 (static 2 dyn 0) solutions=0 time=0.00s
+RESULT n=3 mode=general split=0/1 split2=0/1 nodes=3 (static 3 dyn 0) solutions=0 time=0.00s
+RESULT n=4 mode=anti255 split=0/1 split2=0/1 nodes=4 (static 3 dyn 1) solutions=0 time=0.00s
+RESULT n=4 mode=general split=0/1 split2=0/1 nodes=5 (static 4 dyn 1) solutions=0 time=0.00s
+RESULT n=5 mode=anti255 split=0/1 split2=0/1 nodes=12 (static 8 dyn 4) solutions=0 time=0.00s
+RESULT n=5 mode=general split=0/1 split2=0/1 nodes=17 (static 9 dyn 8) solutions=0 time=0.00s
+RESULT n=6 mode=anti255 split=0/1 split2=0/1 nodes=60 (static 32 dyn 28) solutions=0 time=0.00s
+RESULT n=6 mode=general split=0/1 split2=0/1 nodes=82 (static 33 dyn 49) solutions=0 time=0.00s
+RESULT n=7 mode=anti255 split=0/1 split2=0/1 nodes=612 (static 181 dyn 431) solutions=0 time=0.00s
+RESULT n=7 mode=general split=0/1 split2=0/1 nodes=789 (static 182 dyn 607) solutions=2 time=0.00s
+RESULT n=8 mode=anti255 split=0/1 split2=0/1 nodes=13705 (static 1824 dyn 11881) solutions=0 time=0.02s
+RESULT n=8 mode=general split=0/1 split2=0/1 nodes=17896 (static 1846 dyn 16050) solutions=0 time=0.02s
+RESULT n=9 mode=anti255 split=0/1 split2=0/1 nodes=831060 (static 51156 dyn 779904) solutions=0 time=1.24s
+RESULT n=9 mode=general split=0/1 split2=0/1 nodes=1120086 (static 51323 dyn 1068763) solutions=1 time=1.76s
+RESULT n=10 mode=anti255 split=0/1 split2=0/1 nodes=179952881 (static 5142275 dyn 174810606) solutions=0 time=293.97s
+# Consistency check: an earlier build of the same search, split into 3 parts at depth 6, gave
+# 85,947,553 + 34,705,642 + 59,299,918 = 179,953,113 nodes for n = 10, i.e. the single run plus
+# 232 = 2 x 116 nodes of depth <= 6, which every part visits.

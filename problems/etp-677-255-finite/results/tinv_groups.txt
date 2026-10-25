@@ -1,0 +1,105 @@
+# Translation-invariant search x<>y = x f(x^-1 y), anti mode (f fixed-point free): one CaDiCaL 3.0.1
+# run per symmetry-breaking case of tinv/export_cases.py, CNF from tinv/tinv_cnf.py, limit 600 s;
+# the two order-28 cases that hit the limit were re-run with limit 3600 s (see the rerun lines at the
+# end); the order-30 timeout was not re-run.
+# Groups: GAP SmallGroups library via passagemath-gap 10.8.13 (tinv/export_groups.py).
+# status: 'excluded' = every case UNSAT; 'open' = some case UNKNOWN or not run (orders 30 and 31 were
+# stopped when the compute budget ran out). Times are wall-clock seconds, one or two cases at a time
+# on an Apple-silicon laptop; total_s and max_s include both attempts of a re-run case.
+# order id group cases unsat sat unknown not_run total_s max_s status
+1 1 1 0 0 0 0 0 0.00 0.00 excluded
+2 1 C2 1 1 0 0 0 0.06 0.06 excluded
+3 1 C3 2 2 0 0 0 0.12 0.06 excluded
+4 1 C4 5 5 0 0 0 0.29 0.06 excluded
+4 2 C2xC2 2 2 0 0 0 0.12 0.06 excluded
+5 1 C5 4 4 0 0 0 0.24 0.06 excluded
+6 1 S3 6 6 0 0 0 0.35 0.06 excluded
+6 2 C6 13 13 0 0 0 0.73 0.06 excluded
+7 1 C7 6 6 0 0 0 0.36 0.06 excluded
+8 1 C8 15 15 0 0 0 0.86 0.06 excluded
+8 2 C4xC2 12 12 0 0 0 0.69 0.06 excluded
+8 3 D8 12 12 0 0 0 0.68 0.06 excluded
+8 4 Q8 6 6 0 0 0 0.36 0.06 excluded
+8 5 C2xC2xC2 2 2 0 0 0 0.12 0.06 excluded
+9 1 C9 12 12 0 0 0 0.70 0.06 excluded
+9 2 C3xC3 3 3 0 0 0 0.18 0.06 excluded
+10 1 D10 8 8 0 0 0 0.44 0.06 excluded
+10 2 C10 21 21 0 0 0 1.19 0.06 excluded
+11 1 C11 10 10 0 0 0 0.56 0.06 excluded
+12 1 C3:C4 23 23 0 0 0 1.33 0.06 excluded
+12 2 C12 39 39 0 0 0 2.27 0.06 excluded
+12 3 A4 8 8 0 0 0 0.44 0.06 excluded
+12 4 D12 23 23 0 0 0 1.25 0.06 excluded
+12 5 C6xC2 18 18 0 0 0 1.06 0.06 excluded
+13 1 C13 12 12 0 0 0 0.70 0.06 excluded
+14 1 D14 10 10 0 0 0 0.59 0.06 excluded
+14 2 C14 29 29 0 0 0 1.67 0.06 excluded
+15 1 C15 28 28 0 0 0 1.63 0.06 excluded
+16 1 C16 37 37 0 0 0 2.14 0.06 excluded
+16 2 C4xC4 10 10 0 0 0 0.58 0.06 excluded
+16 3 (C4xC2):C2 25 25 0 0 0 1.43 0.06 excluded
+16 4 C4:C4 32 32 0 0 0 1.86 0.06 excluded
+16 5 C8xC2 35 35 0 0 0 2.04 0.06 excluded
+16 6 C8:C2 35 35 0 0 0 2.01 0.06 excluded
+16 7 D16 25 25 0 0 0 1.47 0.06 excluded
+16 8 QD16 35 35 0 0 0 2.01 0.06 excluded
+16 9 Q16 25 25 0 0 0 1.48 0.06 excluded
+16 10 C4xC2xC2 13 13 0 0 0 0.81 0.11 excluded
+16 11 C2xD8 22 22 0 0 0 1.33 0.12 excluded
+16 12 C2xQ8 13 13 0 0 0 0.73 0.06 excluded
+16 13 (C4xC2):C2 23 23 0 0 0 1.46 0.12 excluded
+16 14 C2xC2xC2xC2 2 2 0 0 0 0.12 0.06 excluded
+17 1 C17 16 16 0 0 0 0.94 0.06 excluded
+18 1 D18 19 19 0 0 0 1.11 0.06 excluded
+18 2 C18 57 57 0 0 0 3.25 0.06 excluded
+18 3 C3xS3 44 44 0 0 0 2.62 0.12 excluded
+18 4 (C3xC3):C2 7 7 0 0 0 0.41 0.06 excluded
+18 5 C6xC3 17 17 0 0 0 1.10 0.12 excluded
+19 1 C19 18 18 0 0 0 1.41 0.12 excluded
+20 1 C5:C4 31 31 0 0 0 3.73 0.63 excluded
+20 2 C20 59 59 0 0 0 7.26 0.46 excluded
+20 3 C5:C4 28 28 0 0 0 2.98 0.40 excluded
+20 4 D20 31 31 0 0 0 3.49 0.30 excluded
+20 5 C10xC2 28 28 0 0 0 3.20 0.29 excluded
+21 1 C7:C3 18 18 0 0 0 3.39 0.36 excluded
+21 2 C21 38 38 0 0 0 7.70 0.39 excluded
+22 1 D22 14 14 0 0 0 4.93 0.72 excluded
+22 2 C22 45 45 0 0 0 16.61 0.74 excluded
+23 1 C23 22 22 0 0 0 17.22 1.05 excluded
+24 1 C3:C8 61 61 0 0 0 84.25 16.76 excluded
+24 2 C24 95 95 0 0 0 138.40 14.30 excluded
+24 3 SL(2,3) 34 34 0 0 0 59.29 19.06 excluded
+24 4 C3:Q8 55 55 0 0 0 111.50 30.47 excluded
+24 5 C4xS3 71 71 0 0 0 110.10 26.07 excluded
+24 6 D24 55 55 0 0 0 67.67 12.60 excluded
+24 7 C2x(C3:C4) 55 55 0 0 0 74.74 31.81 excluded
+24 8 (C6xC2):C2 71 71 0 0 0 65.31 13.48 excluded
+24 9 C12xC2 80 80 0 0 0 100.54 19.88 excluded
+24 10 C3xD8 80 80 0 0 0 95.72 11.81 excluded
+24 11 C3xQ8 44 44 0 0 0 62.25 16.59 excluded
+24 12 S4 34 34 0 0 0 29.04 9.52 excluded
+24 13 C2xA4 41 41 0 0 0 31.64 3.88 excluded
+24 14 C2xC2xS3 28 28 0 0 0 20.07 2.90 excluded
+24 15 C6xC2xC2 18 18 0 0 0 14.71 3.62 excluded
+25 1 C25 32 32 0 0 0 99.19 7.98 excluded
+25 2 C5xC5 5 5 0 0 0 13.52 9.13 excluded
+26 1 D26 16 16 0 0 0 81.68 11.68 excluded
+26 2 C26 53 53 0 0 0 353.56 13.17 excluded
+27 1 C27 46 46 0 0 0 720.89 27.95 excluded
+27 2 C9xC3 22 22 0 0 0 323.80 34.99 excluded
+27 3 (C3xC3):C3 9 9 0 0 0 81.28 20.78 excluded
+27 4 C9:C3 32 32 0 0 0 403.52 23.77 excluded
+27 5 C3xC3xC3 3 3 0 0 0 16.83 16.71 excluded
+28 1 C7:C4 39 39 0 0 0 3637.19 2827.52 excluded
+28 2 C28 79 79 0 0 0 4646.65 2174.64 excluded
+28 3 D28 39 39 0 0 0 625.42 58.25 excluded
+28 4 C14xC2 38 38 0 0 0 1038.02 57.35 excluded
+29 1 C29 28 28 0 0 0 2657.49 164.27 excluded
+30 1 C5xS3 66 60 0 1 5 12342.21 600.02 open
+30 2 C3xD10 54 0 0 0 54 0.00 0.00 open
+30 3 D30 38 0 0 0 38 0.00 0.00 open
+30 4 C30 125 0 0 0 125 0.00 0.00 open
+31 1 C31 30 0 0 0 30 0.00 0.00 open
+# rerun: 28 2 1 5 was UNKNOWN after 600.07 s, then UNSAT in 1574.57 s
+# rerun: 28 1 1 4 was UNKNOWN after 600.06 s, then UNSAT in 2227.46 s
+# all groups of every order 1..29 excluded; total 28226 s over 2478 cases

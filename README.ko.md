@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-57-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-18-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
+**문제 57개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 18 · ⚪ 미해결: 6
 
 ### OEIS
 
@@ -198,6 +198,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 | 문제 | 주장 상태 | 기계 검증 | 작업 모델 | 주장 |
 |---|---|---|---|---|
 | [차수와 민감도 — n=14, 차수 5의 층별 총계 제약](problems/degree-vs-sensitivity/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | n=14이고 차수가 5 이하인 모든 변수에 민감한 함수의 경우, 정확한 층별 필요조건(B_2>=84)과 가능한 (B_2,B_3,B_4,B_5) 프로파일이 정확히 247개뿐임을 보인다. 다만 진리표의 존재 여부를 찾는 탐색은 UNKNOWN 상태로 종료되었다. |
+| [ETP 문제 8.1 — 유한 마그마의 등식 677과 255: 크기 10까지 반례 모델 없음](problems/etp-677-255-finite/README.ko.md) | 🟡 부분 결과 | Lean + 인증서 | `Claude Opus 5.5 (max effort)` | 유한 마그마에서 등식 677이 등식 255를 함의하는지는 해결하지 못한다. 원소가 10개 이하인 반례 모델이 없음을 (Lean으로 정당화한 한 원소 생성 표준 표로의 환원을 거쳐) DRAT로 인증하고 독립적인 전수 DFS로도(인증서 없이) 확인하며, 위수 29 이하의 어떤 군 위에도 평행이동 불변 반례 모델 x*y = x f(x^-1 y)가 없음을 자기동형 대칭 깨기를 쓴 SAT로(인증서 없이) 보인다. |
 | [Floridian solitaire — 모든 n > 6에서의 즉시 패배](problems/floridian-solitaire/README.md) | ✅ 증명 | 인증서 | `GPT-5.6 Sol` | 모든 정수 n > 6에 즉시 패배 국면이 존재한다는, 아직 동료 검토를 받지 않은 완전한 증명을 주장한다. 간격 2 블록 구성과 18 및 20의 명시적 경우를 이용해 Meyerowitz–Curran–Locke–Low의 두 번째 연구 질문에서 미해결이던 잉여류 n = 0,2 (mod 6)을 해결한다. |
 | [‘골드바흐를 증명하자’ 상금 문제 2 — 정확한 주기 공식](problems/goldbach-prize-2/README.ko.md) | ✅ 증명 | Lean | `GPT-5.6 Sol` | 각 고정 삼중항별 유한 경우라는 해석 아래에서 n1,n2,n3 어느 것으로도 나누어지지 않는 x번째 양의 정수의 정확한 주기 잔여 리스트 공식을 증명하므로, 게시된 n3^2/2 오차 한계가 오차 0으로 성립한다. |
 | [‘골드바흐를 증명하자’ 상금 문제 3 — 문언상 유한집합 표현 증명](problems/goldbach-prize-3/README.ko.md) | ✅ 증명 | Lean | `GPT-5.6 Sol` | 양의 지표를 M=n2*...*nk로 접고 허용되는 잔여를 문제에서 허용한 유한집합 I2에 저장하며 I3=...=Ik={1}로 두어, 게시된 유한 합집합 표현을 문언 그대로 증명한다. |

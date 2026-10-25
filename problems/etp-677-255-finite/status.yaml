@@ -1,0 +1,115 @@
+id: etp-677-255-finite
+title: 'ETP Problem 8.1 — Equation 677 vs 255 in finite magmas: no countermodel up to size 10'
+title_ko: 'ETP 문제 8.1 — 유한 마그마의 등식 677과 255: 크기 10까지 반례 모델 없음'
+domain: other
+source_url: https://arxiv.org/abs/2512.07087
+claimed_status: partial
+claim: >-
+  Does not resolve whether Equation 677 implies Equation 255 in every finite magma. Shows that no
+  countermodel has at most 10 elements (DRAT-certified via a Lean-justified reduction to one-generated
+  canonical tables, and independently by an uncertified exhaustive DFS), and that no
+  translation-invariant countermodel x*y = x f(x^-1 y) exists over any group of order at most 29
+  (SAT with automorphism symmetry breaking, uncertified).
+claim_ko: >-
+  유한 마그마에서 등식 677이 등식 255를 함의하는지는 해결하지 못한다. 원소가 10개 이하인 반례 모델이
+  없음을 (Lean으로 정당화한 한 원소 생성 표준 표로의 환원을 거쳐) DRAT로 인증하고 독립적인 전수
+  DFS로도(인증서 없이) 확인하며, 위수 29 이하의 어떤 군 위에도 평행이동 불변 반례 모델
+  x*y = x f(x^-1 y)가 없음을 자기동형 대칭 깨기를 쓴 SAT로(인증서 없이) 보인다.
+artifacts:
+- path: DETAILS.md
+  kind: mathematical-details
+- path: ../../AgenticConjectures/Etp677Implies255Finite.lean
+  kind: lean-proof
+- path: search/gen_cnf.py
+  kind: search-code
+- path: search/enum_sat.py
+  kind: search-code
+- path: search/dfs677.cpp
+  kind: search-code
+- path: certificates/SHA256SUMS
+  kind: checksum
+- path: certificates/a8.drat
+  kind: sat-drat
+- path: verify_drat.py
+  kind: certificate-script
+- path: verify_dfs.py
+  kind: certificate-script
+- path: tinv/tinv_cnf.py
+  kind: search-code
+- path: tinv/export_cases.py
+  kind: search-code
+- path: tinv/run_cases.py
+  kind: search-code
+- path: tinv/test_sb.py
+  kind: certificate-script
+- path: results/general_tables.txt
+  kind: data
+- path: results/sat_runs.txt
+  kind: data
+- path: results/dfs_runs.txt
+  kind: data
+- path: results/dfs_n11.txt
+  kind: data
+- path: results/tinv_groups.txt
+  kind: data
+- path: results/tinv_symmetry_test.txt
+  kind: data
+- path: upstream/EquationalTheories_677_255.lean
+  kind: upstream-lean
+verify:
+- cmd: python3 verify_drat.py
+  expected_runtime: ~1s (drat-trim on the committed proofs for n = 1..8; CNFs regenerated and hash-checked)
+  ci_feasible: true
+  requires: [drat-trim]
+- cmd: python3 verify_dfs.py
+  expected_runtime: ~5s (compiles the DFS, reruns n <= 9 in anti-E255 and general mode)
+  ci_feasible: true
+  requires: [g++]
+- cmd: python3 verify_drat.py --solve 9 10
+  expected_runtime: ~16min and ~0.7GB temporary disk (CaDiCaL re-solve, then drat-trim)
+  ci_feasible: false
+  requires: [cadical, drat-trim]
+- cmd: >-
+    mkdir -p build && g++ -O2 -std=c++17 search/dfs677.cpp -o build/dfs677 && build/dfs677 10 sel 2
+  expected_runtime: ~5min single thread (179,952,881 nodes, no solution)
+  ci_feasible: false
+  requires: [g++]
+lean:
+  modules:
+  - AgenticConjectures.Etp677Implies255Finite
+  theorems:
+  - AgenticConjectures.Etp677Implies255Finite.statement_iff_forall_noCountermodelUpTo
+  - AgenticConjectures.Etp677Implies255Finite.leftMul_bijective
+  - AgenticConjectures.Etp677Implies255Finite.inv_form
+  - AgenticConjectures.Etp677Implies255Finite.inv_form₂
+  - AgenticConjectures.Etp677Implies255Finite.backward_recurrence
+  - AgenticConjectures.Etp677Implies255Finite.fixer_unique
+  - AgenticConjectures.Etp677Implies255Finite.eq255_at_iff_exists_fixer
+  - AgenticConjectures.Etp677Implies255Finite.fixer_free_of_not255
+  - AgenticConjectures.Etp677Implies255Finite.ne_of_not255_v
+  - AgenticConjectures.Etp677Implies255Finite.ne_of_not255_vii
+  - AgenticConjectures.Etp677Implies255Finite.exists_generated_countermodel
+  - AgenticConjectures.Etp677Implies255Finite.not_statement_iff
+  - AgenticConjectures.Etp677Implies255Finite.tinv_translate
+  - AgenticConjectures.Etp677Implies255Finite.tinv_eq677_iff
+  - AgenticConjectures.Etp677Implies255Finite.tinv_fixer_iff
+  - AgenticConjectures.Etp677Implies255Finite.tinv_eq255_iff
+  - AgenticConjectures.Etp677Implies255Finite.not_statement_of_tinv
+  - AgenticConjectures.Etp677Implies255Finite.tinv_cnf_constraints
+  - AgenticConjectures.Etp677Implies255Finite.tinv_conj_solution
+  - AgenticConjectures.Etp677Implies255Finite.tinv_conj_fixed_iff
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: Lean 4 formalization, SAT encoding with DRAT certificates, exhaustive DFS, translation-invariant group search, documentation
+notes: >-
+  Partial result only; the problem stays open and no novelty is claimed. Countermodels up to size 11 were
+  already excluded by uncertified Mace4 and DPLL searches reported in the ETP Zulip thread, and
+  translation-invariant countermodels over all groups of order <= 26 by explicit-group searches and
+  over Z/n for n <= 37 by the eq677 database search; the additions here are DRAT certificates for
+  n <= 10 and the seven non-cyclic groups of orders 27 and 28. An n = 11 DFS was stopped with 3 of its 27
+  subtrees unfinished and is not claimed. CI re-checks the DRAT proofs for n <= 8 and the DFS for n <= 9;
+  the n = 9, 10 proofs (12.7 MB and 631 MB) are regenerated locally, the n = 10 DFS run and the group
+  search are local-only and uncertified.
+  The DRAT results trust gen_cnf.py and the encoding argument in DETAILS.md, whose finite-magma facts are
+  Lean-checked.
