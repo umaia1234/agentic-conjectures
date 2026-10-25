@@ -1,22 +1,61 @@
 id: oeis-a056777
-title: OEIS A056777 / Choudhury–Wei Conjecture 1.1 — n+12 not a prime power
-title_ko: OEIS A056777 / Choudhury–Wei 추측 1.1 — n+12는 소수 거듭제곱이 아님
+title: OEIS A056777 / Choudhury–Wei Conjecture 1.1 — structural lemmas, search to 10^12
+title_ko: OEIS A056777 / Choudhury–Wei 추측 1.1 — 구조 보조정리와 10^12까지의 탐색
 domain: oeis
 source_url: https://arxiv.org/abs/2606.10331v3
 claimed_status: partial
-claim: Lean-verifies that for composite n>=4 with phi(n+12)=phi(n)+12 and sigma(n+12)=sigma(n)+12,
-  n+12 cannot be a prime power (kernel-checked against the upstream predicate); the original
-  Choudhury–Wei Conjecture 1.1 remains unresolved.
+claim: >-
+  Lean-verifies that for composite n with phi(n+12)=phi(n)+12 and sigma(n+12)=sigma(n)+12, neither
+  n nor n+12 is a prime power, sigma(n) is even, and if n and n+12 are both products of two distinct
+  primes then n=p(p+8) from a prime quadruple; two independent exact sieves (the second through
+  10^11, closed-form totals to 10^12) find exactly the 166 predicted solutions n<=10^12, while
+  Conjecture 1.1 remains open.
 claim_ko: >-
-  phi(n+12)=phi(n)+12이고 sigma(n+12)=sigma(n)+12인 합성수 n>=4에 대해 n+12는 소수 거듭제곱일 수
-  없음을 Lean으로 검증했다(상류 술어 그대로 커널 검사). 원래의 Choudhury–Wei 추측 1.1은 여전히
-  미해결이다.
+  phi(n+12)=phi(n)+12이고 sigma(n+12)=sigma(n)+12인 합성수 n에 대해 n과 n+12는 소수 거듭제곱이
+  아니고 sigma(n)은 짝수이며, n과 n+12가 모두 서로 다른 두 소수의 곱이면 n은 소수 사중쌍에서 오는
+  p(p+8)임을 Lean으로 검증했다. 독립적인 두 정확한 체(두 번째는 10^11까지, 10^12까지는 닫힌 식
+  합계로 대조)가 n<=10^12에서 예측된 166개의 해만 찾았다. 추측 1.1은 여전히 미해결이다.
 artifacts:
 - path: PROOF.md
   kind: informal-proof
+- path: a056777_search.cpp
+  kind: search-code
+- path: a056777_independent.py
+  kind: search-code
+- path: a056777_sums.cpp
+  kind: certificate-script
+- path: a056777_verify.py
+  kind: certificate-script
+- path: a056777_hits.txt
+  kind: data
+- path: logs/main_1e11.log
+  kind: data
+- path: logs/main_1e12_part1.log
+  kind: data
+- path: logs/main_1e12_part2.log
+  kind: data
+- path: logs/main_1e12_part3.log
+  kind: data
+- path: logs/independent_1e11.log
+  kind: data
 - path: upstream/56777.lean
   kind: upstream-lean
-verify: []
+verify:
+- cmd: python3 a056777_verify.py
+  expected_runtime: ~17s on a lightly loaded Apple M5 Max (builds both C++ programs,
+    reruns implementation 1 to 10^9, audits the committed logs); allow ~1 min on CI runners
+  ci_feasible: true
+  requires: [g++]
+- cmd: python3 a056777_verify.py --limit 1000000000000 --threads 3
+  expected_runtime: ~65-90 min on 3 threads (reruns implementation 1 on [1, 10^12]; the logged
+    runs took 3914s in total on a shared Apple M5 Max)
+  ci_feasible: false
+  requires: [g++]
+- cmd: python3 a056777_verify.py --independent 100000000000 --threads 2
+  expected_runtime: ~27 min on 2 processes (implementation 2 on [1, 10^11], 1600s logged) plus
+    the CI checks; needs a Python with sympy, numpy and numba
+  ci_feasible: false
+  requires: [g++]
 lean:
   modules:
   - AgenticConjectures.OeisA056777
@@ -24,6 +63,12 @@ lean:
   - AgenticConjectures.OeisA056777.add_twelve_ne_prime_pow
   - AgenticConjectures.OeisA056777.not_isPrimePow_add_twelve
   - AgenticConjectures.OeisA056777.totient_mul_sigma_add_lt_of_not_isPrimePow
+  - AgenticConjectures.OeisA056777.not_isPrimePow
+  - AgenticConjectures.OeisA056777.semiprime_case
+  - AgenticConjectures.OeisA056777.comesFromPrimeQuadruple_of_semiprime
+  - AgenticConjectures.OeisA056777.sq_or_two_mul_sq_of_odd_sigma
+  - AgenticConjectures.OeisA056777.even_sigma
+  - AgenticConjectures.OeisA056777.even_sigma_add_twelve
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
@@ -32,13 +77,27 @@ attribution:
   harness: Claude Code
   scope: Lean 4 formalization of the prime-power exclusion for n+12 (AgenticConjectures.OeisA056777)
     and the accompanying documentation
-notes: The n+12 prime-power exclusion is now kernel-checked in AgenticConjectures/OeisA056777.lean
-  against a term-for-term copy of the upstream predicate OeisA56777.A (composite n, both equations
-  additive in Nat; the only spelling difference is mathlib's phi notation for Nat.totient); the Lean
-  proof follows PROOF.md except that the q=2 case reuses the key inequality phi(m)*sigma(m)+m<m^2
-  for non-prime-powers (plus the equations phi(w)=w-3, 7*sigma(w)=8w+11 for n=4w) instead of the
-  sigma-parity argument, and the q=3 case closes with the parity of phi.
-  The authors' reported 10^12 search was not independently rerun; negative public searches for
-  the same lemma are noted but novelty is explicitly not asserted before peer review; the upstream
-  universal Lean statement (Conjecture 1.1) remains sorry-backed and is recorded here only as a
-  Prop (`statement`).
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: independent exhaustive search to 10^12 (two implementations, closed-form audits, CI
+    verifier and logs) and the Lean lemmas not_isPrimePow, semiprime_case and even_sigma with
+    the accompanying documentation
+notes: >-
+  The n+12 prime-power exclusion is kernel-checked in AgenticConjectures/OeisA056777.lean against a
+  term-for-term copy of the upstream predicate OeisA56777.A (composite n, both equations additive in
+  Nat; the only spelling difference is mathlib's phi notation for Nat.totient); the Lean proof
+  follows PROOF.md except that the q=2 case reuses the key inequality phi(m)*sigma(m)+m<m^2 for
+  non-prime-powers (plus the equations phi(w)=w-3, 7*sigma(w)=8w+11 for n=4w) instead of the
+  sigma-parity argument, and the q=3 case closes with the parity of phi. The later lemmas
+  (n not a prime power, the semiprime case, sigma parity) reprove facts stated in the paper
+  (Theorem 3.1, Theorem 2.2) or follow from elementary parity arguments; none is claimed to be new.
+  The search is finite evidence only and adds nothing beyond 10^12: it reproduces the authors'
+  reported search and the OEIS b-file. Implementation 1 follows the same general cofactor scheme
+  as the paper's program (written without seeing its code); implementation 2 (an exponent-count
+  sieve) covers only n<=10^11, so above 10^11 the individual phi and sigma values are backed only
+  by the aggregate closed-form checks at 4*10^11, 7*10^11 and 10^12 and by the hit list matching an
+  independent prime-quadruple sieve. There is no Lean certificate for the search; CI rebuilds the
+  C++ programs, reruns implementation 1 through 10^9 against a pure-Python reference and the
+  closed forms, and audits the committed logs, but does not rerun the 10^12 search. Novelty is
+  explicitly not asserted; the upstream universal Lean statement (Conjecture 1.1) remains
+  sorry-backed and is recorded here only as a Prop (`statement`).

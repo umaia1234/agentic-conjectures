@@ -13,6 +13,16 @@ This module formalizes the *partial* theorem of
 `problems/oeis-a056777/PROOF.md`: for every `n ∈ A056777`, `n + 12` is not a
 prime power (`add_twelve_ne_prime_pow`, `not_isPrimePow_add_twelve`).
 
+It also contains three further structural constraints, none of which resolves the conjecture:
+
+* `not_isPrimePow`: `n` itself is not a prime power (Choudhury–Wei Theorem 3.1, reproved here
+  from the key inequality applied to `n + 12`);
+* `semiprime_case`, `comesFromPrimeQuadruple_of_semiprime`: if `n = p q` and `n + 12 = p' q'`
+  are products of two distinct primes, then `(p, p', q', q) = (p, p+2, p+6, p+8)` (the `⇒`
+  direction of Choudhury–Wei Theorem 2.2; only the totient equation is used);
+* `even_sigma`, `even_sigma_add_twelve`: `σ(n)` and `σ(n + 12)` are even, i.e. neither `n` nor
+  `n + 12` is a square or twice a square (via `sq_or_two_mul_sq_of_odd_sigma`).
+
 ## Correspondence with the upstream snapshot
 
 * `A` is the upstream predicate `OeisA56777.A` from
@@ -430,5 +440,188 @@ theorem not_isPrimePow_add_twelve {n : ℕ} (h : A n) : ¬ IsPrimePow (n + 12) :
   intro hpp
   obtain ⟨q, ℓ, hq, -, hN⟩ := (isPrimePow_nat_iff _).mp hpp
   exact add_twelve_ne_prime_pow h hq ℓ hN.symm
+
+/-! ### `n` itself is not a prime power (Choudhury–Wei Theorem 3.1) -/
+
+/-- **Choudhury–Wei Theorem 3.1**: for `n ∈ A056777`, `n` itself is not a prime power.
+With `n = r^(b+2)` and `x = r^(b+1)` one has `φ(n)σ(n) + x = n²`, `φ(n) + x = n` and
+`σ(n) ≥ n + x`; since `n + 12` is not a prime power (`not_isPrimePow_add_twelve`), the key
+inequality for `n + 12` then forces `n + 12 < x`, impossible as `x < n`. -/
+theorem not_isPrimePow {n : ℕ} (h : A n) : ¬ IsPrimePow n := by
+  intro hpp
+  have hN := not_isPrimePow_add_twelve h
+  obtain ⟨hnp, hn1, hφ, hσ⟩ := h
+  obtain ⟨r, a, hr, ha, hra⟩ := (isPrimePow_nat_iff _).mp hpp
+  -- `a ≥ 2`, since `n` is not prime
+  obtain ⟨b, rfl⟩ : ∃ b, a = b + 2 := by
+    rcases a with _ | _ | b
+    · omega
+    · rw [pow_one] at hra; exact absurd (hra ▸ hr) hnp
+    · exact ⟨b, rfl⟩
+  -- the key inequality for `n + 12`, rewritten with the two equations
+  have hQ := totient_mul_sigma_add_lt_of_not_isPrimePow (by omega : 1 < n + 12) hN
+  rw [hφ, hσ] at hQ
+  -- prime-power data for `n = r ^ (b + 2)`, with `x = r ^ (b + 1)`
+  have hr1 : 1 ≤ r := hr.one_le
+  set x := r ^ (b + 1) with hx
+  have hnx : n = x * r := by rw [← hra, hx, pow_succ]
+  have hP : φ n * σ 1 n + x = n * n := by
+    have := totient_mul_sigma_prime_pow_succ hr (b + 1)
+    rw [show b + 1 + 1 = b + 2 from rfl, hra, ← hx] at this
+    rw [this, ← hra]
+    ring
+  have hφx : φ n + x = n := by
+    have h1 : φ n = x * (r - 1) := by
+      rw [← hra, Nat.totient_prime_pow hr (by omega), show b + 2 - 1 = b + 1 by omega]
+    rw [h1, hnx]
+    zify [hr1]
+    ring
+  have hσx : n + x ≤ σ 1 n := by
+    rw [← hra, ArithmeticFunction.sigma_one_apply_prime_pow hr, Finset.sum_range_succ,
+      Finset.sum_range_succ, ← hx]
+    omega
+  have hxn : 2 * x ≤ n := by rw [hnx]; nlinarith [hr.two_le]
+  nlinarith [hQ, hP, hφx, hσx, hxn]
+
+/-! ### The semiprime case (Choudhury–Wei Theorem 2.2) -/
+
+/-- For distinct primes `p ≠ q`: `φ(pq) + p + q = pq + 1`. -/
+theorem totient_mul_add_of_primes {p q : ℕ} (hp : p.Prime) (hq : q.Prime) (hpq : p ≠ q) :
+    φ (p * q) + p + q = p * q + 1 := by
+  rw [Nat.totient_mul ((Nat.coprime_primes hp hq).mpr hpq), Nat.totient_prime hp,
+    Nat.totient_prime hq]
+  zify [hp.one_le, hq.one_le]
+  ring
+
+/-- **Choudhury–Wei Theorem 2.2** (`⇒`; only the totient equation is needed): if `n = p q` and
+`n + 12 = p' q'` with primes `p < q`, `p' < q'` and `φ(n + 12) = φ(n) + 12`, then
+`(p, p', q', q) = (p, p + 2, p + 6, p + 8)`. The totient equation gives `p' + q' = p + q`;
+then `p < p'` and `(p' - p)(q' - p) = 12`, and parity leaves only `(2, 6)`. -/
+theorem semiprime_case {n p q p' q' : ℕ} (hp : p.Prime) (hq : q.Prime) (hp' : p'.Prime)
+    (hq' : q'.Prime) (hpq : p < q) (hpq' : p' < q') (hn : n = p * q) (hN : n + 12 = p' * q')
+    (hφ : φ (n + 12) = φ n + 12) : p' = p + 2 ∧ q' = p + 6 ∧ q = p + 8 := by
+  have h1 := totient_mul_add_of_primes hp hq hpq.ne
+  have h2 := totient_mul_add_of_primes hp' hq' hpq'.ne
+  rw [← hn] at h1
+  rw [← hN, hφ] at h2
+  have hs : p' + q' = p + q := by omega
+  have hprod : p' * q' = p * q + 12 := by rw [← hN, hn]
+  -- `p < p'`: otherwise `(p - p') (q - p') ≥ 0` contradicts `p' q' = p q + 12`
+  have hlt : p < p' := by
+    by_contra hle
+    push Not at hle
+    have hq'q : q' = q + (p - p') := by omega
+    rw [hq'q] at hprod
+    have e : p = p' + (p - p') := by omega
+    set d := p - p'
+    rw [e] at hprod
+    nlinarith [Nat.mul_le_mul_left d (show p' ≤ q by omega)]
+  obtain ⟨x, rfl⟩ : ∃ x, p' = p + x := ⟨p' - p, by omega⟩
+  obtain ⟨y, rfl⟩ : ∃ y, q' = p + y := ⟨q' - p, by omega⟩
+  have hq_eq : q = p + x + y := by omega
+  subst hq_eq
+  have hxy : x * y = 12 := by nlinarith
+  have hx12 : x ≤ 12 := by
+    rcases Nat.eq_zero_or_pos y with hy | hy
+    · subst hy; omega
+    · nlinarith
+  have hxy' : x < y := by omega
+  have hp2 := hp.two_le
+  -- `x * y = 12` with `x < y`: `(x, y) = (2, 6)` is the prime quadruple (closed by `omega`);
+  -- `(1, 12)` needs `p = 2` and then `q' = 14`; `(3, 4)` fails by parity
+  interval_cases x
+  all_goals first
+    | omega
+    | (have hy : y = 12 := by omega
+       subst hy
+       rcases hp.eq_two_or_odd with h2 | h2
+       · subst h2; norm_num at hq'
+       · rcases hp'.eq_two_or_odd with h2' | h2' <;> omega)
+    | (rcases hp'.eq_two_or_odd with h2 | h2 <;> rcases hq'.eq_two_or_odd with h2' | h2' <;>
+        omega)
+
+/-- The semiprime case in the form of the conjecture: if `n ∈ A056777` and both `n` and
+`n + 12` are products of two distinct primes, then `n` comes from a prime quadruple. -/
+theorem comesFromPrimeQuadruple_of_semiprime {n p q p' q' : ℕ} (h : A n) (hp : p.Prime)
+    (hq : q.Prime) (hp' : p'.Prime) (hq' : q'.Prime) (hpq : p < q) (hpq' : p' < q')
+    (hn : n = p * q) (hN : n + 12 = p' * q') : ComesFromPrimeQuadruple n := by
+  obtain ⟨h2, h6, h8⟩ := semiprime_case hp hq hp' hq' hpq hpq' hn hN h.2.2.1
+  subst h2 h6 h8
+  exact ⟨p, hp, hp', hq', hq, hn⟩
+
+/-! ### Parity of `σ`: neither `n` nor `n + 12` is a square or twice a square -/
+
+/-- For odd `p`, `∑_{i<k} p^i ≡ k (mod 2)`. -/
+theorem geom_sum_mod_two_of_odd {p : ℕ} (hp : Odd p) (k : ℕ) :
+    (∑ i ∈ range k, p ^ i) % 2 = k % 2 := by
+  induction k with
+  | zero => simp
+  | succ k ih =>
+    rw [Finset.sum_range_succ, Nat.add_mod, ih, Nat.odd_iff.mp hp.pow]
+    omega
+
+/-- If `σ(m)` is odd, then `m` is a square or twice a square. -/
+theorem sq_or_two_mul_sq_of_odd_sigma (m : ℕ) (h : Odd (σ 1 m)) :
+    ∃ k, m = k ^ 2 ∨ m = 2 * k ^ 2 := by
+  induction m using Nat.recOnPosPrimePosCoprime with
+  | prime_pow p e hp he =>
+    rw [ArithmeticFunction.sigma_one_apply_prime_pow hp] at h
+    rcases hp.eq_two_or_odd' with rfl | hpo
+    · rcases Nat.even_or_odd e with ⟨t, rfl⟩ | ⟨t, rfl⟩
+      · exact ⟨2 ^ t, Or.inl (by ring)⟩
+      · exact ⟨2 ^ t, Or.inr (by ring)⟩
+    · -- `σ(p^e) ≡ e + 1 (mod 2)` for odd `p`, so `e` is even
+      have h2 := geom_sum_mod_two_of_odd hpo (e + 1)
+      rw [Nat.odd_iff] at h
+      obtain ⟨t, rfl⟩ : ∃ t, e = 2 * t := ⟨e / 2, by omega⟩
+      exact ⟨p ^ t, Or.inl (by ring)⟩
+  | zero => exact ⟨0, Or.inl (by simp)⟩
+  | one => exact ⟨1, Or.inl (by simp)⟩
+  | coprime a b ha hb hab iha ihb =>
+    rw [ArithmeticFunction.isMultiplicative_sigma.map_mul_of_coprime hab] at h
+    obtain ⟨s, hs⟩ := iha (Nat.odd_mul.mp h).1
+    obtain ⟨t, ht⟩ := ihb (Nat.odd_mul.mp h).2
+    rcases hs with rfl | rfl <;> rcases ht with rfl | rfl
+    · exact ⟨s * t, Or.inl (by ring)⟩
+    · exact ⟨s * t, Or.inr (by ring)⟩
+    · exact ⟨s * t, Or.inr (by ring)⟩
+    · exact ⟨2 * s * t, Or.inl (by ring)⟩
+
+/-- **`σ`-parity.** For `n ∈ A056777`, `σ(n)` is even (hence so is `σ(n + 12) = σ(n) + 12`):
+otherwise `n` and `n + 12` would both be squares or twice squares. `k² + 12 = j²` forces
+`(k, j) = (2, 4)`, i.e. `n = 4 ∉ A056777`; `k² + 12 = 2j²` and `2k² + 12 = j²` are impossible
+mod 32, and `2k² + 12 = 2j²` mod 8. -/
+theorem even_sigma {n : ℕ} (h : A n) : Even (σ 1 n) := by
+  by_contra hev
+  rw [Nat.not_even_iff_odd] at hev
+  obtain ⟨hnp, hn1, hφ, hσ⟩ := h
+  have hodd : Odd (σ 1 (n + 12)) := by
+    rw [hσ]
+    exact hev.add_even (by decide)
+  obtain ⟨k, hk⟩ := sq_or_two_mul_sq_of_odd_sigma n hev
+  obtain ⟨j, hj⟩ := sq_or_two_mul_sq_of_odd_sigma (n + 12) hodd
+  have h32a : ∀ a b : ZMod 32, a ^ 2 + 12 ≠ 2 * b ^ 2 := by decide
+  have h32b : ∀ a b : ZMod 32, 2 * a ^ 2 + 12 ≠ b ^ 2 := by decide
+  have h8 : ∀ a b : ZMod 8, 2 * a ^ 2 + 12 ≠ 2 * b ^ 2 := by decide
+  rcases hk with rfl | rfl <;> rcases hj with hj | hj
+  · -- `k² + 12 = j²`: then `k < j`, so `2k + 1 ≤ 12`; only `(k, j) = (2, 4)`, i.e. `n = 4`
+    have hkj : k < j := by
+      by_contra hc
+      push Not at hc
+      nlinarith [Nat.mul_le_mul hc hc]
+    have hk5 : k ≤ 5 := by
+      nlinarith [Nat.mul_le_mul (Nat.succ_le_of_lt hkj) (Nat.succ_le_of_lt hkj)]
+    have hj6 : j ≤ 6 := by nlinarith [Nat.mul_le_mul hk5 hk5]
+    interval_cases k <;> interval_cases j <;> first
+      | (norm_num at hj; done)
+      | exact absurd hφ (by decide)
+  · exact h32a k j (by exact_mod_cast congrArg (Nat.cast : ℕ → ZMod 32) hj)
+  · exact h32b k j (by exact_mod_cast congrArg (Nat.cast : ℕ → ZMod 32) hj)
+  · exact h8 k j (by exact_mod_cast congrArg (Nat.cast : ℕ → ZMod 8) hj)
+
+/-- For `n ∈ A056777`, `σ(n + 12)` is even as well. -/
+theorem even_sigma_add_twelve {n : ℕ} (h : A n) : Even (σ 1 (n + 12)) := by
+  rw [h.2.2.2]
+  exact (even_sigma h).add (by decide)
 
 end AgenticConjectures.OeisA056777
