@@ -1,16 +1,20 @@
 id: degree-vs-sensitivity
-title: Degree vs sensitivity — n=14 degree-5 aggregate constraints
-title_ko: 차수와 민감도 — n=14, 차수 5의 층별 총계 제약
+title: Degree vs sensitivity — n=14 degree-5 aggregate constraints and symmetric exclusions
+title_ko: 차수와 민감도 — n=14, 차수 5의 층별 총계 제약과 대칭 부분류 배제
 domain: other
 source_url: https://epoch.ai/frontiermath/open-problems/degree-sensitivity-boolean
 claimed_status: partial
-claim: Claims exact necessary layer constraints (B_2>=84, exactly 247 feasible (B_2,B_3,B_4,B_5) profiles)
-  for the n=14 degree<=5 fully sensitive case, while the truth-table existence search ended with status
-  UNKNOWN.
+claim: Claims exact layer constraints (B_2>=84, exactly 247 feasible (B_2,B_3,B_4,B_5) profiles) for
+  the n=14 degree<=5 fully sensitive case and exact Farkas-tree/counting exclusions of every solution
+  invariant under a permutation of cycle type 7^2 (hence any 14-cycle), under C13:C3 or D13, or under
+  any Young subgroup with at most four blocks, plus that no degree<=4 function on 10 variables is fully
+  sensitive (so degree 4 cannot beat the exponent); the full n=14 search remains UNKNOWN.
 claim_ko: >-
-  n=14이고 차수가 5 이하인 모든 변수에 민감한 함수의 경우, 정확한 층별 필요조건(B_2>=84)과 가능한
-  (B_2,B_3,B_4,B_5) 프로파일이 정확히 247개뿐임을 보인다. 다만 진리표의 존재 여부를 찾는 탐색은
-  UNKNOWN 상태로 종료되었다.
+  n=14이고 차수가 5 이하인 모든 변수에 민감한 함수의 경우, 정확한 층별 필요조건(B_2>=84, 가능한
+  (B_2,B_3,B_4,B_5) 프로파일이 정확히 247개)을 보이고, 순환 구조가 7^2인 치환(따라서 모든
+  14-순환), C13:C3 또는 D13, 또는 블록이 네 개 이하인 Young 부분군 아래 불변인 해를
+  정확한 Farkas 트리와 개수 세기 인증서로 배제한다. 또한 10변수에서 차수 4 이하이면서 모든 변수에
+  민감한 함수가 없으므로 차수 4로는 지수를 개선할 수 없다. n=14 전체 탐색은 여전히 UNKNOWN이다.
 artifacts:
 - path: degree_sensitivity_pair_bound.py
   kind: certificate-script
@@ -18,15 +22,78 @@ artifacts:
   kind: search-code
 - path: degree_sensitivity_milp.py
   kind: search-code
+- path: degree_sensitivity_symmetric.py
+  kind: certificate-script
+- path: degree_sensitivity_symmetric_search.py
+  kind: search-code
+- path: symmetric_certificates/AGL1_13.json
+  kind: data
+- path: symmetric_certificates/C13_C3.json
+  kind: data
+- path: symmetric_certificates/C13_C4.json
+  kind: data
+- path: symmetric_certificates/C13_C6.json
+  kind: data
+- path: symmetric_certificates/C14.json
+  kind: data
+- path: symmetric_certificates/C7xC7.json
+  kind: data
+- path: symmetric_certificates/D7-regular.json
+  kind: data
+- path: symmetric_certificates/F56-planes.json
+  kind: data
+- path: symmetric_certificates/young_9_3_2.json
+  kind: data
+- path: symmetric_certificates/young_8_3_3.json
+  kind: data
+- path: symmetric_certificates/young_7_5_2.json
+  kind: data
+- path: symmetric_certificates/young_6_6_2.json
+  kind: data
+- path: symmetric_certificates/young_7_4_3.json
+  kind: data
+- path: symmetric_certificates/young_6_5_3.json
+  kind: data
+- path: symmetric_certificates/young_6_4_4.json
+  kind: data
+- path: symmetric_certificates/young_5_5_4.json
+  kind: data
 verify:
 - cmd: python3 degree_sensitivity_pair_bound.py
   expected_runtime: unknown
   ci_feasible: true
+- cmd: python3 degree_sensitivity_symmetric.py
+  expected_runtime: about 3 s (stdlib only; counting exclusions plus 16 committed Farkas trees)
+  ci_feasible: true
+- cmd: python3 degree_sensitivity_symmetric_search.py --group 'C7(7^2)' --out /tmp/dvs_c7_7x2.json
+    && python3 degree_sensitivity_symmetric_search.py --group D13 --out /tmp/dvs_d13.json && python3
+    degree_sensitivity_symmetric_search.py --group trivial --n 10 --degree 4 --out /tmp/dvs_n10_d4.json
+    && python3 degree_sensitivity_symmetric.py --skip-counting /tmp/dvs_c7_7x2.json /tmp/dvs_d13.json
+    /tmp/dvs_n10_d4.json
+  expected_runtime: about 40 min single-threaded (needs numpy and highspy for the search; the check is
+    stdlib only and takes seconds)
+  ci_feasible: false
+- cmd: mkdir -p /tmp/dvs_young4 && for p in 9,3,1,1 8,4,1,1 9,2,2,1 7,5,1,1 6,6,1,1 8,3,2,1 7,4,2,1
+    8,2,2,2 6,5,2,1 7,3,3,1 6,4,3,1 5,5,3,1 7,3,2,2 5,4,4,1 6,4,2,2 5,5,2,2 6,3,3,2 5,4,3,2 4,4,4,2 5,3,3,3
+    4,4,3,3; do python3 degree_sensitivity_symmetric_search.py --group "young:$p" --out "/tmp/dvs_young4/young_$(echo
+    "$p" | tr , _).json" || exit 1; done && python3 degree_sensitivity_symmetric.py --young-blocks 4 /tmp/dvs_young4/*.json
+  expected_runtime: about 10 min single-threaded plus 30 s of checking (needs numpy and highspy; writes 89 MB)
+  ci_feasible: false
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: original research artifacts (proofs, certificates, searches, surveys)
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: symmetric-subclass exclusions for n=14 degree<=5 (orbit reduction, counting and integer
+    Farkas-tree certificates with a stdlib checker, Young subgroups with at most four blocks) and the
+    n=10 degree<=4 exclusion
 notes: README stresses the full-search outcome is UNKNOWN (timeout only, no evidence either way), that
   no nonexistence proof was obtained, and that the necessary conditions are not claimed to be new to the
   literature; intermediate symmetry branches were not exhausted. Heavy CP-SAT/MILP searches (ortools)
-  are local-only.
+  are local-only. Symmetric-subclass exclusions are certificates (integer Farkas multipliers at the
+  leaves of a 0/1 branching tree, rechecked from row keys by a stdlib checker); HiGHS floating point
+  only proposes them. The C7(7^2), D13, D7-diagonal, n=10 degree-4 and four-block Young certificates
+  (0.3-17 MB each) are not committed; README gives regeneration commands and the SHA256 of the checked
+  files. CI checks counting exclusions and the 16 committed certificates (three-block Young claim). C13 and C11 were
+  not decided, and the sensitivity<=9 corollary for degree 4 may already be known.
