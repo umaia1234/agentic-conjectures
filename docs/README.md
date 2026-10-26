@@ -41,4 +41,5 @@ problem rather than assembling another global copy.
 | [OEIS A354747 first unknown case a(100943)](../problems/oeis-a354747/README.md) | 🔴 refuted | [Detailed derivation](../problems/oeis-a354747/DETAILS.md) |
 | [OEIS A395412 certified finite nonvanishing extension](../problems/oeis-a395412/README.md) | 🟡 partial | [Detailed derivation](../problems/oeis-a395412/DETAILS.md) |
 | [Graph recoloring radius — subdivided-claw counterexample](../problems/recoloring-radius-q15/README.md) | 🔴 refuted | [Detailed derivation](../problems/recoloring-radius-q15/DETAILS.md) |
+| [WOWII Graph Conjecture 300 — Lean refutation by an unbounded family and a 12-vertex graph](../problems/wowii-graph-conjecture-300/README.md) | 🔴 refuted | [Detailed derivation](../problems/wowii-graph-conjecture-300/DETAILS.md) |
 <!-- DETAILS:END -->

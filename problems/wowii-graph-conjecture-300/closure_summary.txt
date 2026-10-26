@@ -1,0 +1,3 @@
+n=12: 889 connected graphs; gamma_t histogram {7: 883, 8: 6}; 2*gamma_t >= n on 889, slack histogram {-1: 10, 0: 10, 1: 12, 2: 60, 3: 122, 4: 208, 5: 169, 6: 97, 8: 3, 10: 198}; violations 10
+n=13: 406 connected graphs; gamma_t histogram {8: 406}; 2*gamma_t >= n on 406, slack histogram {-2: 6, -1: 4, 0: 5, 1: 28, 2: 50, 3: 85, 4: 79, 5: 48, 10: 101}; violations 10
+n=14: 39316 connected graphs; gamma_t histogram {8: 39258, 9: 58}; 2*gamma_t >= n on 39316, slack histogram {-1: 989, 0: 663, 1: 1283, 2: 3183, 3: 6380, 4: 9140, 5: 7813, 6: 3953, 7: 1632, 8: 1, 10: 16, 12: 4263}; violations 989

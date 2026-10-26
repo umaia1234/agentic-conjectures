@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-57-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-10-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
+**문제 57개** — ✅ 증명: 24 · 🔴 반례: 10 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
 
 ### OEIS
 
@@ -191,6 +191,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 | [Pulse Graph에서 L(6)의 정확한 계산](problems/pulse-graphs-l6/README.md) | ✅ 증명 | 인증서 | `GPT-5.6 Sol` | 논문의 미해결 경우 n=6에 대해 L(6)=17이라는 정확한 값을 주장한다. 서로 독립적인 두 주기 분석기로 고리가 없는 6정점 유향 그래프 1,540,944개를 동형 중복 없이 완전열거하고, 주기 17을 실현하는 명시적 증거도 독립적으로 검증했다. |
 | [R(3,10)의 C20-bicirculant 부분 경우 배제](problems/ramsey-r3-10/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | 자기동형 작용의 한 부류만을 SAT/DRUP 인증으로 배제한다. 독립수가 <= 9인 삼각형 없는 40정점 그래프는 순환 구조가 20^2인 C20 작용 아래 불변일 수 없으므로, 가상의 40정점 (3,10) Ramsey 그래프는 그러한 C20-bicirculant일 수 없다. R(3,10)이 {40,41} 중 어느 값인지는 결정하지 못한다. |
 | [그래프 재색칠 반지름 — 세분된 클로 반례](problems/recoloring-radius-q15/README.ko.md) | 🔴 반례 | 인증서 | `GPT-5.6 Sol` | 꼭짓점 7개의 세분된 클로는 k=4에서 질문 15를 반박한다. C_4(G)와 C_5(G)는 모두 연결이지만, 정확한 완전 탐색으로 얻은 두 반지름은 각각 9와 10이다. |
+| [WOWII 그래프 추측 300 — 무한 그래프족과 꼭짓점 12개 그래프로 Lean 반박](problems/wowii-graph-conjecture-300/README.ko.md) | 🔴 반례 | Lean + 인증서 | `Claude Opus 5.5 (max effort)` | WOWII 추측 300, 즉 꼭짓점이 세 개 이상인 모든 연결 그래프 G에서 gamma_t(G) <= (n + f)/2라는 주장을 Lean에서 반박한다. 막대는 여그래프로, f는 여그래프에서 계산한 lambda가 최소인 꼭짓점의 개수로 읽고, 상한은 반올림하지 않는다. not_statement는 꼭짓점 15개 그래프(gamma_t = 10 > 19/2)를, not_statement_graph12는 꼭짓점 12개 그래프(gamma_t = 7 > 13/2)를 쓴다. family_gap과 family_violates는 K4의 한 꼭짓점에 매달린 꼭짓점 t개를 붙인 그래프의 2-corona G_t(n = 3(t + 4))에서 2 gamma_t = n + f + t임을 보이므로, 위반량에는 상한이 없다(family_violates_ceil: t >= 2이면 올림한 상한도 성립하지 않는다). 반례의 최소 꼭짓점 수가 12라는 것은 Lean이 아닌 계산 결과다. 이 반박은 새롭지 않다. c5-k4가 실제 페이지를 감사한 결과에 따르면 William Weishuhn이 2026년 7월 26일 자 메모에서 위반량이 한없이 커지는 그래프족을 제시했다. |
 | [WOWII 그래프 추측 61의 부분 결과](problems/wowii-graph-conjecture-61/README.ko.md) | 🟡 부분 결과 | — | `GPT-5.6 Sol` | 부분 결과의 비형식적 증명만 주장한다. 일반적으로 f(G) >= alpha(G) + ceil(D(G)/4)가 성립하고, 지름에 관한 귀결과 함께 f(G) >= alpha(G)+1이 성립하며, 지름이 {0,1,2,3,5,6,9} 중 하나인 모든 연결 그래프와 모든 트리에 대해 원래 추측 f(G) >= r(G) + ceil(D(G)/3)이 성립한다. |
 
 ### 기타

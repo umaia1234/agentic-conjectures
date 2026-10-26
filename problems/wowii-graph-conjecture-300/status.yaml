@@ -1,0 +1,128 @@
+id: wowii-graph-conjecture-300
+title: WOWII Graph Conjecture 300 — Lean refutation by an unbounded family and a 12-vertex graph
+title_ko: WOWII 그래프 추측 300 — 무한 그래프족과 꼭짓점 12개 그래프로 Lean 반박
+domain: graph-combinatorics
+source_url: http://cms.dt.uh.edu/faculty/delavinae/research/wowII/
+claimed_status: refuted
+claim: >-
+  Lean-refutes WOWII Conjecture 300, gamma_t(G) <= (n + f)/2 for every connected G with n > 2,
+  read with the bar as the complement, f as the number of vertices at which lambda computed in the
+  complement is smallest, and no rounding: not_statement (15 vertices, gamma_t = 10 > 19/2) and
+  not_statement_graph12 (12 vertices, gamma_t = 7 > 13/2). family_gap and family_violates show
+  2 gamma_t = n + f + t for G_t, the 2-corona of K4 with t pendant vertices at one vertex
+  (n = 3(t + 4)), so the violation is unbounded (family_violates_ceil: for t >= 2 the rounded-up
+  bound fails too). That 12
+  is the smallest order is computation, not Lean. Not new: the c5-k4 audit of the live page reports
+  a July 26, 2026 note by William Weishuhn giving a family with arbitrarily large violation.
+claim_ko: >-
+  WOWII 추측 300, 즉 꼭짓점이 세 개 이상인 모든 연결 그래프 G에서 gamma_t(G) <= (n + f)/2라는 주장을
+  Lean에서 반박한다. 막대는 여그래프로, f는 여그래프에서 계산한 lambda가 최소인 꼭짓점의 개수로 읽고,
+  상한은 반올림하지 않는다. not_statement는 꼭짓점 15개 그래프(gamma_t = 10 > 19/2)를,
+  not_statement_graph12는 꼭짓점 12개 그래프(gamma_t = 7 > 13/2)를 쓴다. family_gap과 family_violates는
+  K4의 한 꼭짓점에 매달린 꼭짓점 t개를 붙인 그래프의 2-corona G_t(n = 3(t + 4))에서 2 gamma_t = n + f + t임을
+  보이므로,
+  위반량에는 상한이 없다(family_violates_ceil: t >= 2이면 올림한 상한도 성립하지 않는다). 반례의 최소
+  꼭짓점 수가 12라는 것은 Lean이 아닌 계산 결과다. 이 반박은 새롭지 않다. c5-k4가 실제 페이지를 감사한
+  결과에 따르면 William Weishuhn이 2026년 7월 26일 자 메모에서 위반량이 한없이 커지는 그래프족을 제시했다.
+artifacts:
+- path: ../../AgenticConjectures/WowiiGraphConjecture300.lean
+  kind: lean-proof
+- path: DETAILS.md
+  kind: mathematical-details
+- path: check_wowii300.py
+  kind: search-code
+- path: sweep_wowii300.c
+  kind: search-code
+- path: closure_wowii300.sh
+  kind: search-code
+- path: closure_summary.txt
+  kind: data
+verify:
+- cmd: python3 check_wowii300.py
+  expected_runtime: about 1 second
+  ci_feasible: true
+- cmd: for n in 3 4 5 6 7 8 9; do geng -cq $n; done | python3 check_wowii300.py --graph6
+  expected_runtime: about 4 seconds
+  ci_feasible: false
+  requires: [geng]
+- cmd: geng -cq 10 | python3 check_wowii300.py --graph6
+  expected_runtime: about 4 minutes
+  ci_feasible: false
+  requires: [geng]
+- cmd: >-
+    mkdir -p build && cc -O2 -o build/sweep_wowii300 sweep_wowii300.c &&
+    for n in 3 4 5 6 7 8 9 10; do geng -cq $n; done | build/sweep_wowii300
+  expected_runtime: about 3 seconds
+  ci_feasible: false
+  requires: [geng, cc]
+- cmd: >-
+    mkdir -p build && cc -O2 -o build/sweep_wowii300 sweep_wowii300.c &&
+    for r in $(seq 0 19); do geng -cq 11 $r/20 | build/sweep_wowii300 || exit 1; done
+  expected_runtime: about 5 minutes on one thread (the 20 parts can run in parallel)
+  ci_feasible: false
+  requires: [geng, cc]
+- cmd: >-
+    mkdir -p build && cc -O2 -o build/sweep_wowii300 sweep_wowii300.c &&
+    sh closure_wowii300.sh 10 6 | sort > build/closure10.txt &&
+    geng -cq 10 | build/sweep_wowii300 -p | awk -F'[ =]' '$1 == "NEAR" && $6 >= 6 {print $2}' |
+    labelg -qg | sort | diff - build/closure10.txt
+  expected_runtime: about 3 seconds
+  ci_feasible: false
+  requires: [geng, gentreeg, addedgeg, labelg, cc]
+- cmd: >-
+    mkdir -p build && cc -O2 -o build/sweep_wowii300 sweep_wowii300.c &&
+    for n in 12 13 14; do sh closure_wowii300.sh $n $(( (n + 1) / 2 + 1 )) | build/sweep_wowii300 |
+    grep "^n=$n:"; done | diff - closure_summary.txt
+  expected_runtime: about 25 seconds
+  ci_feasible: false
+  requires: [gentreeg, addedgeg, labelg, cc]
+- cmd: >-
+    mkdir -p build && cc -O2 -o build/sweep_wowii300 sweep_wowii300.c &&
+    for n in 12 13 14; do sh closure_wowii300.sh $n $(( (n + 1) / 2 + 1 )) |
+    python3 check_wowii300.py --graph6 | grep "^n=$n:"; done | diff - closure_summary.txt
+  expected_runtime: about 2 minutes
+  ci_feasible: false
+  requires: [gentreeg, addedgeg, labelg, cc]
+lean:
+  modules:
+  - AgenticConjectures.WowiiGraphConjecture300
+  theorems:
+  - AgenticConjectures.WowiiGraphConjecture300.not_statement
+  - AgenticConjectures.WowiiGraphConjecture300.not_statement_graph12
+  - AgenticConjectures.WowiiGraphConjecture300.family_violates
+  - AgenticConjectures.WowiiGraphConjecture300.family_violates_ceil
+  - AgenticConjectures.WowiiGraphConjecture300.family_gap
+  - AgenticConjectures.WowiiGraphConjecture300.family_connected
+  - AgenticConjectures.WowiiGraphConjecture300.totalDominationNumber_family
+  - AgenticConjectures.WowiiGraphConjecture300.localIndependenceMin_compl_family
+  - AgenticConjectures.WowiiGraphConjecture300.localIndependenceMinFreq_compl_family
+  - AgenticConjectures.WowiiGraphConjecture300.counterexample_adj_iff
+  - AgenticConjectures.WowiiGraphConjecture300.totalDominationNumber_counterexample
+  - AgenticConjectures.WowiiGraphConjecture300.indepNeighborsCard_compl_counterexample
+  - AgenticConjectures.WowiiGraphConjecture300.localIndependenceMinFreq_compl_counterexample
+  - AgenticConjectures.WowiiGraphConjecture300.graph12_violates
+  - AgenticConjectures.WowiiGraphConjecture300.graph12_connected
+  - AgenticConjectures.WowiiGraphConjecture300.totalDominationNumber_graph12
+  - AgenticConjectures.WowiiGraphConjecture300.indepNeighborsCard_compl_graph12
+  - AgenticConjectures.WowiiGraphConjecture300.localIndependenceMinFreq_compl_graph12
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: >-
+    Lean 4 statement and formal refutation (the 15-vertex counterexample, the family G_t for every t,
+    the 12-vertex graph), the numerical checks, the minimum-order computation, and documentation; the
+    15-vertex counterexample was first found by an earlier scouting run of this project
+notes: >-
+  Not novel: the Kuberwastaken/c5-k4 transcription audit (commit 2448b85, 2026-08-12), made from a live
+  fetch of the page, lists 300 as false with the note "July 26 2026 William Weishuhn (CU Boulder),
+  family with arbitrarily large violation; Codex-assisted verification". We could not read that note
+  (the page is unreachable and its last Wayback capture, 2026-07-26, still shows 300 as open), so we
+  cannot compare that family with G_t; we found no earlier formal proof. Formal Conjectures has no
+  statement of 300, so the Lean statement is ours. It mirrors their definitions (commit 49ba26b) with
+  three differences listed in the module docstring, and it fixes a reading: the bar is the complement
+  (in the HTML of every capture, definition 31 linked, as in Conjecture 301 and Theorem 10 of
+  DeLaViña-Liu-Pepper-Waller-West 2007), the frequency counts vertices, and the bound is real-valued.
+  Without the complement, G_t attains equality; we claim nothing about that reading. That no connected
+  graph on at most 11 vertices violates the bound, the lists on 12 to 14 vertices and the minimum
+  order 12 are computation, not Lean; they depend on nauty 2.9.3 and on the spanning-tree argument in
+  DETAILS.md. No human has reviewed this work, and nothing has been submitted externally.
