@@ -11,7 +11,7 @@
 [![대시보드](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-live-0969da)](https://umaia1234.github.io/agentic-conjectures/ko/)
 
 <!-- COUNTS:BEGIN (scripts/gen_readme.py) -->
-![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-56-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-17-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
+![문제](https://img.shields.io/badge/%EB%AC%B8%EC%A0%9C-57-8250df) ![증명](https://img.shields.io/badge/%EC%A6%9D%EB%AA%85-24-2da44e) ![반례](https://img.shields.io/badge/%EB%B0%98%EB%A1%80-9-cf222e) ![부분 결과](https://img.shields.io/badge/%EB%B6%80%EB%B6%84%20%EA%B2%B0%EA%B3%BC-18-bf8700) ![미해결](https://img.shields.io/badge/%EB%AF%B8%ED%95%B4%EA%B2%B0-6-848d97)
 <!-- COUNTS:END -->
 
 [English](README.md) | **한국어**
@@ -131,7 +131,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 
 <!-- STATUS:BEGIN (scripts/gen_readme.py) -->
 
-**문제 56개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 17 · ⚪ 미해결: 6
+**문제 57개** — ✅ 증명: 24 · 🔴 반례: 9 · 🟡 부분 결과: 18 · ⚪ 미해결: 6
 
 ### OEIS
 
@@ -188,6 +188,7 @@ status.yaml attribution 블록에도 자신을 추가하라.
 | [Conway의 99-그래프 문제 srg(99,14,1,2)](problems/conway-99-graph/README.ko.md) | ⚪ 미해결 | — | `GPT-5.6 Sol` | 상태 조사만 제공한다. srg(99,14,1,2)의 존재 여부가 미해결임을 기록하고 2025년 자기동형군 제약 (Cesarz–Woldar)을 인용하며, 새로운 계산이나 해결 결과를 주장하지 않는다. |
 | [Frankl의 합집합 닫힌 집합족 추측](problems/frankl-union-closed/README.ko.md) | ⚪ 미해결 | — | `GPT-5.6 Sol` | 상태 조사만 제공한다. 바탕 집합의 크기가 <= 12인 경우에 추측이 성립한다는 알려진 결과와 일반적인 0.38234\|F\| 빈도 하한을 기록하며, 원소가 13개인 경우를 포함해 아무것도 해결하지 않았다고 명시한다. |
 | [668차 Hadamard 행렬](problems/hadamard-668/README.ko.md) | ⚪ 미해결 | — | `GPT-5.6 Sol` | 상태 조사만 제공한다. 668이 해결되지 않은 최소 Hadamard 차수임을 기록하고 2026년 Legendre 쌍(길이 333) 탐색 상태 보고서를 요약하며, 새로운 존재 또는 비존재 결과를 주장하지 않는다. |
+| [표준화 라플라시안의 4차 다각형 질문](problems/laplacian-polygon-order-four/README.ko.md) | 🟡 부분 결과 | Lean + 인증서 | `Claude Opus 5.5 (max effort)` | 질문 1(Λ₄ = S₄)이, 분수 가중치가 네 개 이하이고 행마다 두 개 이하인 가중치 큐브의 면 위에서 성립하는 두 다항식 부등식과 동치이고, 그 동치 형태 z(4) = 1/4는 첫 번째 부등식과 동치임을 Lean으로 증명했다(statement_iff_faceBounds, z4_statement_iff_faceBound). 두 부등식은 Lean 밖의 정확한 Bernstein 인증서로 검증하므로, Λ₄ = S₄는 컴퓨터 보조 결과로만 주장한다. |
 | [Pulse Graph에서 L(6)의 정확한 계산](problems/pulse-graphs-l6/README.md) | ✅ 증명 | 인증서 | `GPT-5.6 Sol` | 논문의 미해결 경우 n=6에 대해 L(6)=17이라는 정확한 값을 주장한다. 서로 독립적인 두 주기 분석기로 고리가 없는 6정점 유향 그래프 1,540,944개를 동형 중복 없이 완전열거하고, 주기 17을 실현하는 명시적 증거도 독립적으로 검증했다. |
 | [R(3,10)의 C20-bicirculant 부분 경우 배제](problems/ramsey-r3-10/README.md) | 🟡 부분 결과 | 인증서 | `GPT-5.6 Sol` | 자기동형 작용의 한 부류만을 SAT/DRUP 인증으로 배제한다. 독립수가 <= 9인 삼각형 없는 40정점 그래프는 순환 구조가 20^2인 C20 작용 아래 불변일 수 없으므로, 가상의 40정점 (3,10) Ramsey 그래프는 그러한 C20-bicirculant일 수 없다. R(3,10)이 {40,41} 중 어느 값인지는 결정하지 못한다. |
 | [그래프 재색칠 반지름 — 세분된 클로 반례](problems/recoloring-radius-q15/README.ko.md) | 🔴 반례 | 인증서 | `GPT-5.6 Sol` | 꼭짓점 7개의 세분된 클로는 k=4에서 질문 15를 반박한다. C_4(G)와 C_5(G)는 모두 연결이지만, 정확한 완전 탐색으로 얻은 두 반지름은 각각 9와 10이다. |

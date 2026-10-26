@@ -1,0 +1,77 @@
+id: laplacian-polygon-order-four
+title: Order-four polygon question for standardized Laplacians
+title_ko: 표준화 라플라시안의 4차 다각형 질문
+domain: graph-combinatorics
+source_url: https://arxiv.org/abs/2610.14100v2
+claimed_status: partial
+claim: >-
+  Proves in Lean (statement_iff_faceBounds, z4_statement_iff_faceBound) that Question 1 (Λ₄ = S₄)
+  is equivalent to two polynomial inequalities on the faces of the weight cube with at most four
+  fractional weights, at most two per row, and its form z(4) = 1/4 to the first; an exact
+  Bernstein certificate outside Lean verifies both inequalities, so Λ₄ = S₄ is claimed only as a
+  computer-assisted result.
+claim_ko: >-
+  질문 1(Λ₄ = S₄)이, 분수 가중치가 네 개 이하이고 행마다 두 개 이하인 가중치 큐브의 면 위에서
+  성립하는 두 다항식 부등식과 동치이고, 그 동치 형태 z(4) = 1/4는 첫 번째 부등식과 동치임을
+  Lean으로 증명했다(statement_iff_faceBounds, z4_statement_iff_faceBound). 두 부등식은 Lean 밖의
+  정확한 Bernstein 인증서로 검증하므로, Λ₄ = S₄는 컴퓨터 보조 결과로만 주장한다.
+artifacts:
+- path: DETAILS.md
+  kind: mathematical-details
+- path: ../../AgenticConjectures/LaplacianPolygonOrderFour.lean
+  kind: lean-proof
+- path: face_certificate.py
+  kind: certificate-script
+- path: face_orbits.tsv
+  kind: data
+- path: numerical_check.py
+  kind: search-code
+- path: orbit_table.py
+  kind: other
+verify:
+- cmd: python3 face_certificate.py
+  expected_runtime: about 17 s with the default 4 worker processes on an Apple M5 Max (about 64 s of CPU time)
+  ci_feasible: true
+- cmd: python3 numerical_check.py
+  expected_runtime: about 2 s
+  ci_feasible: true
+- cmd: python3 orbit_table.py
+  expected_runtime: under 1 s
+  ci_feasible: true
+lean:
+  modules:
+  - AgenticConjectures.LaplacianPolygonOrderFour
+  theorems:
+  - AgenticConjectures.LaplacianPolygonOrderFour.statement_iff_faceBounds
+  - AgenticConjectures.LaplacianPolygonOrderFour.z4_statement_iff_faceBound
+  - AgenticConjectures.LaplacianPolygonOrderFour.statement_of_faceBounds
+  - AgenticConjectures.LaplacianPolygonOrderFour.z4_statement_of_faceBound
+  - AgenticConjectures.LaplacianPolygonOrderFour.S4_eq
+  - AgenticConjectures.LaplacianPolygonOrderFour.S4_subset_Λ4
+  - AgenticConjectures.LaplacianPolygonOrderFour.cycle_eig
+  - AgenticConjectures.LaplacianPolygonOrderFour.h4_eig
+  - AgenticConjectures.LaplacianPolygonOrderFour.mem_Λ₄_iff
+  - AgenticConjectures.LaplacianPolygonOrderFour.isEig_iff_det
+  - AgenticConjectures.LaplacianPolygonOrderFour.exists_sparse
+  - AgenticConjectures.LaplacianPolygonOrderFour.phi_criterion
+  - AgenticConjectures.LaplacianPolygonOrderFour.phi_nonneg_of_im_le
+  - AgenticConjectures.LaplacianPolygonOrderFour.sector_criterion
+  - AgenticConjectures.LaplacianPolygonOrderFour.psi_nonneg_of_sector
+  - AgenticConjectures.LaplacianPolygonOrderFour.im_le_three_halves
+attribution:
+- model: Claude Opus 5.5 (max effort)
+  harness: Claude Code
+  scope: >-
+    Lean 4 statement, reduction and criteria with the equivalence to the face bounds; exact face
+    certificate; independent numerical check; documentation
+notes: >-
+  Partial result: Lean proves only the equivalences, and FaceBound and SectorFaceBound appear there
+  as hypotheses. The two inequalities are verified by face_certificate.py alone (Python standard
+  library, exact integers and fractions, deterministic, compared with face_orbits.tsv); its trusted
+  base is the Python interpreter and the script's own polynomial code, which it cross-checks at random
+  rational points against a separate evaluation of the Lean formulas. numerical_check.py is a
+  floating-point check that shares no code with it. A Zenodo preprint by Dylan Z. Liu (2026-10-25,
+  not refereed) reports a computer-assisted proof of Λ₄ = S₄ by a related Bernstein method; its
+  script was not on the record and was not run. Chebotarev's arXiv paper is AI-assisted by its own
+  declaration; every fact used here is re-derived. No novelty is claimed, no human has reviewed this
+  work, and nothing has been reported to the authors or submitted anywhere.

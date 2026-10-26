@@ -34,6 +34,7 @@ problem rather than assembling another global copy.
 | [Let's Prove Goldbach prize problem 2 — exact periodic formula](../problems/goldbach-prize-2/README.md) | ✅ proved | [Detailed derivation](../problems/goldbach-prize-2/DETAILS.md) |
 | [Let's Prove Goldbach prize problem 3 — literal finite-set representation proved](../problems/goldbach-prize-3/README.md) | ✅ proved | [Detailed derivation](../problems/goldbach-prize-3/DETAILS.md) |
 | [Let's Prove Goldbach prize problem 4 — universal assertion refuted](../problems/goldbach-prize-4/README.md) | 🔴 refuted | [Detailed derivation](../problems/goldbach-prize-4/DETAILS.md) |
+| [Order-four polygon question for standardized Laplacians](../problems/laplacian-polygon-order-four/README.md) | 🟡 partial | [Detailed derivation](../problems/laplacian-polygon-order-four/DETAILS.md) |
 | [OEIS A000224 — R(n)(R(n)-1) divides n^2-1 iff n is an odd prime](../problems/oeis-a000224/README.md) | 🟡 partial | [Detailed derivation](../problems/oeis-a000224/DETAILS.md) |
 | [OEIS A076141 — n occurs at most once in binary of n^2, checked to 2^40](../problems/oeis-a076141/README.md) | 🟡 partial | [Detailed derivation](../problems/oeis-a076141/DETAILS.md) |
 | [OEIS A197702 — exact least length for signed odd sums](../problems/oeis-a197702/README.md) | ✅ proved | [Detailed derivation](../problems/oeis-a197702/DETAILS.md) |
