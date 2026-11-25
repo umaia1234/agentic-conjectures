@@ -11,7 +11,41 @@ The expanded arguments are in the
 
 **The full conjecture is not yet resolved.** What this document proves is
 only a strong necessary condition, a few complete partial classifications,
-and an exact computation over the stated range.
+and an exact computation over the stated range. Four of those pieces are
+now kernel-checked; see the next section. The coprimality-to-2310
+reduction, the squarefree three-prime and even-count exclusions, and both
+finite searches remain informal or computational.
+
+## Kernel-checked subcases
+
+The Lean module
+[`OeisA245211.lean`](../../AgenticConjectures/OeisA245211.lean) proves the
+following with no `sorry`, extra axioms, or `native_decide`. `A n` is the
+OEIS sum of `d · τ(d)` over positive proper divisors. The open statement
+
+```text
+∀ n, 0 < n → (A n = n ↔ n = 21)
+```
+
+is recorded as `statement` and is not proved.
+
+| Theorem | Result |
+|---|---|
+| `A_21` | `A 21 = 21` |
+| `prime_power_ne` | `A (p ^ k) ≠ p ^ k` for every prime `p` and every `k ≥ 1` |
+| `squarefree_semiprime_iff` | if `p` and `q` are distinct primes, then `A (p * q) = p * q` if and only if `p * q = 21` |
+| `divisors_card_lt_of_solution` | if `0 < n`, `A n = n`, and `p` is a prime divisor of `n`, then `τ(n / p) < p` |
+
+`A_eq_full_sub` shows this `A` agrees with the upstream subtraction form
+`(∑_{d ∣ n} d·τ(d)) - n·τ(n)` for every `n`, including `n = 0`, where both
+sides are `0`. `A_one` records the boundary `A 1 = 0`. The positive
+quantifier in `statement` matches the upstream conjecture and the OEIS
+indexing; it is essential because `A 0 = 0`.
+
+`divisors_card_lt_of_solution` is the strict single-term bound behind
+inequality (2) below. The rewritten shape
+`p > v_p(n) · τ(n) / (v_p(n) + 1)` is not formalized separately. These
+theorems do not use the `n ≤ 10^9` scan or the exponent-`200` search.
 
 [OEIS A245211](https://oeis.org/A245211) is defined by
 
@@ -368,6 +402,7 @@ address.
 The FormalConjectures [original snapshot and provenance record](upstream/README.md)
 is preserved in [`245211_cbf46b82.lean`](upstream/245211_cbf46b82.lean).
 The theorem recording the uniqueness of `21` is a `by sorry` **conjecture
-statement**, not a formal proof. The results of this folder are likewise
-limited to the necessary conditions and partial classifications stated
-above.
+statement**, not a formal proof. The module
+[`OeisA245211.lean`](../../AgenticConjectures/OeisA245211.lean) proves only
+the subcases in "Kernel-checked subcases" above. Its `statement` is the
+same positive uniqueness claim and is left unproved.
