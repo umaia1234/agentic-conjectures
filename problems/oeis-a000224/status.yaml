@@ -38,6 +38,8 @@ lean:
   - AgenticConjectures.OeisA000224
   theorems:
   - AgenticConjectures.OeisA000224.even_not_conjecture_rhs
+  - AgenticConjectures.OeisA000224.closed_form_blocks_prime_pow
+  - AgenticConjectures.OeisA000224.odd_prime_pow_of_closed_form
 attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
@@ -48,8 +50,17 @@ attribution:
 - model: GPT-5.6 Sol
   harness: Codex Desktop
   scope: documentation restructuring of existing mathematical details
+- model: Grok 4.7
+  harness: Cursor
+  scope: Lean formalization of the closed-form prime-power divisibility contradiction
+- model: CraigPaskowitz
+  harness: human operator
+  scope: human operator who approved this iteration
 notes: The even-n exclusion is kernel-checked against the exact upstream residue-count definition and
-  congruence; the odd-prime-power argument remains an informal proof, and the semiprime and Pell results
-  remain script-checked. General p^e q^f and >=4 distinct-prime-factor cases are unproved; Pell-seed completeness
+  congruence. closed_form_blocks_prime_pow kernel-checks the arithmetic half of DETAILS.md §4 — if a
+  count r satisfies the closed form (A224-3) for an odd prime power p^e with e>=2, then r(r-1) does not
+  divide p^(2e)-1. The identification A000224(p^e) = that closed form remains the informal counting
+  argument, so the prime-power exclusion is not fully Lean-verified. The semiprime and Pell results remain
+  script-checked. General p^e q^f and >=4 distinct-prime-factor cases are unproved; Pell-seed completeness
   relies on SymPy's diop_DN; OEIS records verification to 10^8; the full upstream Lean conjecture remains
   sorry-backed.

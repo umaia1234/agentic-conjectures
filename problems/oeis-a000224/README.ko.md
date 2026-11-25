@@ -79,6 +79,25 @@ python3 scripts/check_axioms.py
 mathlib cache가 이미 채워진 확인 머신에서 전체 build는 7.3초,
 공리 감사는 3.6초가 걸렸습니다(2026-08-12).
 
+홀수 소수 거듭제곱 배제의 산술적 절반도 커널로 검사됩니다.
+[`closed_form_blocks_prime_pow`](../../AgenticConjectures/OeisA000224.lean)는
+[DETAILS.ko.md](DETAILS.ko.md)의 닫힌 형식 (A224-3)을 가정합니다. 홀수 소수
+`p`와 `e >= 2`에 대해
+
+```text
+2(p+1) r = p^(e+1) + p + 2     (e가 짝수),
+2(p+1) r = p^(e+1) + 2p + 1    (e가 홀수)
+```
+
+이면 `r(r-1)`이 `p^(2e)-1`을 나누지 않음을 증명합니다. 동반 정리
+`odd_prime_pow_of_closed_form`은 `r = A000224 (p^e)`인 같은 명제입니다.
+이것은 `A000224 (p^e)`가 그 닫힌 형식과 같다는 것을 증명하지 않습니다.
+그 개수 논증은 DETAILS.ko.md §2와 §4의 비형식적 증명으로 남습니다.
+소수 거듭제곱과 서로 다른 두 소수의 곱이 아닌 일반적인 합성수 형태는
+여전히 미해결입니다. 2026-11-25에 이 모듈의 웜 `lake build`는 7.8초,
+라이브러리 전체 공리 감사는 4초, CI 인증서 검사는 `/tmp`에 빌드한
+`drat-trim`을 `PATH`에 두고 178초가 걸렸습니다.
+
 이제 `n=p^e`, `p` 홀수, `e>=2`라 하겠습니다.
 
 - `e`가 짝수이면 위 식을 modulo `p`로 줄여 `r == 1 (mod p)`를 얻습니다.

@@ -85,6 +85,26 @@ python3 scripts/check_axioms.py
 With the mathlib cache already populated, the full build took 7.3 seconds and
 the axiom audit took 3.6 seconds on the verification machine (2026-08-12).
 
+The arithmetic half of the odd prime-power exclusion is also kernel-checked.
+[`closed_form_blocks_prime_pow`](../../AgenticConjectures/OeisA000224.lean)
+assumes the closed form (A224-3) from [DETAILS.md](DETAILS.md): for an odd
+prime `p` and `e >= 2`,
+
+```text
+2(p+1) r = p^(e+1) + p + 2     if e is even,
+2(p+1) r = p^(e+1) + 2p + 1    if e is odd,
+```
+
+and proves that `r(r-1)` does not divide `p^(2e)-1`. The companion
+`odd_prime_pow_of_closed_form` is the same statement with
+`r = A000224 (p^e)`. This does not prove that `A000224 (p^e)` equals the
+closed form; that counting argument stays informal in DETAILS.md §2 and §4.
+General composite shapes other than prime powers and distinct semiprimes
+remain open. On 2026-11-25 a warm `lake build` of this module took 7.8
+seconds and the axiom audit of the whole library took 4 seconds; the
+CI certificate sweep took 178 seconds with `drat-trim` on `PATH` from a
+build under `/tmp`.
+
 Now let `n=p^e` with `p` odd and `e>=2`.
 
 - If `e` is even, reducing the identity above modulo `p` gives
