@@ -31,6 +31,13 @@ k+1=p^a,\qquad p\text{ prime},\qquad a\ge2
 This theorem does not treat every composite \(k+1\), and it also leaves
 the cases with odd \(p\) and \(V\ge6\).
 
+Both clauses are formalized in
+[`AgenticConjectures/OeisA067720.lean`](../../AgenticConjectures/OeisA067720.lean)
+as `power_two_add_one_not_solution` and
+`odd_prime_power_small_two_valuation_iff`. The \(v_2\) of the formal
+statement is `padicValNat 2`, and `A k` is the upstream totient equation.
+The write-up below is the same argument in prose.
+
 ## Excluding \(p=2\)
 
 \[
