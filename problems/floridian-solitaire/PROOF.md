@@ -280,3 +280,27 @@ python3 problems/floridian-solitaire/verify_independent.py
 A separate indexed subset audit checked the new residue classes through
 \(n=10000\). These computations support the proof but are not a substitute
 for peer review.
+
+## Lean formalization
+
+The argument above is kernel-checked in
+`AgenticConjectures/FloridianSolitaire.lean` as `exists_immediateLoss`.
+A position is a multiset of positive part sizes. `Separated` means that no
+two consecutive integers both occur, which is the paper's separation
+condition. A legal α-move is a nonempty submultiset selection whose result
+differs from the start and for which both the result and its Ω-image are
+separated. That is the paper's literal three-point definition. An immediate
+loss is a separated positive position with no legal α-move, which is a losing
+position in the sense of the research question.
+
+The paper's Lemma 7 is formalized as `omega_separated_iff` under the extra
+hypothesis that the partition has at least two parts. The unrestricted
+wording fails for the singleton partition `(1)`: it contains a part of size
+`p = 1`, but `Ω(1) = (1)` is separated. Every partition of an integer `n > 1`
+to which the equivalence is applied in the formalization has at least two
+parts.
+
+The odd family and the `1, 3^m` family are the constructions already recorded
+in the paper. The block family and the witnesses `(1,5,5,7)` and `(4,4,6,6)`
+are the argument in this note. No novelty or priority is claimed. The
+formalization is unreviewed and has not been submitted externally.
