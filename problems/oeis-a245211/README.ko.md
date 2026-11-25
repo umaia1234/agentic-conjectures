@@ -9,7 +9,40 @@
 ## 결론과 한계
 
 **전체 추측은 아직 해결되지 않았다.** 이 문서가 증명하는 것은 강한 필요조건,
-몇 가지 완전한 부분분류, 그리고 명시된 범위의 exact 계산뿐이다.
+몇 가지 완전한 부분분류, 그리고 명시된 범위의 exact 계산뿐이다. 그 가운데
+네 가지는 이제 커널 검증을 통과했다. 아래 절을 본다. 2310과의 서로소 축소,
+squarefree 세 소수 및 짝수 개 소인수 배제, 두 유한 검색은 비형식적 논증
+또는 계산으로 남아 있다.
+
+## 커널로 검증한 부분 경우
+
+Lean 모듈 [`OeisA245211.lean`](../../AgenticConjectures/OeisA245211.lean)은
+`sorry`, 추가 공리, `native_decide` 없이 다음을 증명한다. `A n`은 양의
+진약수에 대한 OEIS 합 `d · τ(d)`이다. 열린 명제
+
+```text
+∀ n, 0 < n → (A n = n ↔ n = 21)
+```
+
+는 `statement`로 적혀 있으며 증명되지 않았다.
+
+| 정리 | 결과 |
+|---|---|
+| `A_21` | `A 21 = 21` |
+| `prime_power_ne` | 모든 소수 `p`와 모든 `k ≥ 1`에 대해 `A (p ^ k) ≠ p ^ k` |
+| `squarefree_semiprime_iff` | `p`, `q`가 서로 다른 소수이면 `A (p * q) = p * q`는 `p * q = 21`일 때 그리고 그때만 성립 |
+| `divisors_card_lt_of_solution` | `0 < n`, `A n = n`이고 `p`가 `n`의 소인수이면 `τ(n / p) < p` |
+
+`A_eq_full_sub`는 이 `A`가 상류의 뺄셈 꼴
+`(∑_{d ∣ n} d·τ(d)) - n·τ(n)`과 모든 `n`에서 일치함을 보인다. `n = 0`에서도
+양쪽은 `0`이다. `A_one`은 경계값 `A 1 = 0`을 기록한다. `statement`의 양의
+한정은 상류 추측 및 OEIS 첨자와 같으며, `A 0 = 0`이므로 0을 넣으면
+동치가 깨진다.
+
+`divisors_card_lt_of_solution`은 아래 부등식 (2)로 가는 엄밀한 한 항
+하계이다. `p > v_p(n) · τ(n) / (v_p(n) + 1)`로 다시 쓴 꼴은 따로
+형식화하지 않았다. 이 정리들은 `n ≤ 10^9` 검색이나 지수 `200` 검색을
+쓰지 않는다.
 
 [OEIS A245211](https://oeis.org/A245211)은
 
@@ -356,4 +389,6 @@ python3 problems/oeis-a245211/a245211_two_prime.py 200
 FormalConjectures의 [원문 스냅샷과 출처 기록](upstream/README.md)을
 [`245211_cbf46b82.lean`](upstream/245211_cbf46b82.lean)에 보존했다. `21`의
 유일성을 적은 정리는 `by sorry`인 **추측 statement**이지 형식 증명이 아니다.
-이 폴더의 결과도 위에 명시한 필요조건과 부분분류에 한정된다.
+모듈 [`OeisA245211.lean`](../../AgenticConjectures/OeisA245211.lean)은
+위의 "커널로 검증한 부분 경우"만 증명한다. 그 `statement`는 같은 양의
+유일성 주장이며 증명하지 않은 채로 둔다.
