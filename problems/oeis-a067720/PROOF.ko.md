@@ -32,6 +32,13 @@ k+1=p^a,\qquad p\text{ prime},\qquad a\ge2
 이 정리는 모든 합성수 \(k+1\)을 다루지 않으며, 홀수 \(p\)에서
 \(V\ge6\)인 경우도 남긴다.
 
+두 조항은
+[`AgenticConjectures/OeisA067720.lean`](../../AgenticConjectures/OeisA067720.lean)의
+`power_two_add_one_not_solution`과
+`odd_prime_power_small_two_valuation_iff`로 형식화되어 있다. 형식 명제의
+\(v_2\)는 `padicValNat 2`이고, `A k`는 upstream의 오일러 함수 방정식이다.
+아래 글은 같은 논증을 풀어 쓴 것이다.
+
 ## \(p=2\)의 배제
 
 \[

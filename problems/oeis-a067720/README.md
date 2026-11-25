@@ -25,27 +25,29 @@ general composite \(k+1\), and it also leaves open the prime-power
 cases with odd \(p\) and \(V\ge6\). It is therefore not a resolution of
 the full original conjecture.
 
-## Lean formal proof of the power-of-two case
+## Lean formal proof of the prime-power subfamily
 
 [`AgenticConjectures/OeisA067720.lean`](../../AgenticConjectures/OeisA067720.lean)
 copies the upstream membership predicate exactly and proves, without `sorry`,
-extra axioms, or `native_decide`:
+extra axioms, or `native_decide`, both halves of the partial theorem:
 
 ```text
 power_two_add_one_not_solution {k a : ℕ} (ha : 2 ≤ a)
     (hk : k + 1 = 2 ^ a) : ¬ A k
+
+odd_prime_power_small_two_valuation_iff {p a k : ℕ}
+    (hp : p.Prime) (hodd : Odd p) (ha : 2 ≤ a) (hk : k + 1 = p ^ a)
+    (hV : padicValNat 2 (p ^ a - 1) + padicValNat 2 (p - 1) ≤ 5) :
+    A k ↔ p = 3 ∧ a = 2 ∧ k = 8
 ```
 
-The proof writes \(k=2t+1\) and \(k^2+1=2N\) with \(N\) odd. It then uses
-\(\varphi(2N)=\varphi(N)\le N\) and proves the strict inequality
-
-\[
-N < k\,2^{a-1}=k\varphi(2^a),
-\]
-
-contradicting the defining A067720 equation. The odd-prime \(V\le5\) branch
-in [PROOF.md](PROOF.md) remains an informal proof and is not registered as a
-Lean theorem.
+The power-of-two proof writes \(k=2t+1\) and \(k^2+1=2N\) with \(N\) odd, then
+uses \(\varphi(2N)=\varphi(N)\le N\) and the strict inequality
+\(N < k\,2^{a-1}\). The odd-prime proof follows [PROOF.md](PROOF.md): \(M=k^2+1\)
+is an odd squarefree composite whose prime factors are \(1\pmod 4\), the
+hypothesis \(V\le5\) forces \(M\) to be a product of two distinct primes, and
+the resulting quadratic has an integer root only for \((p,a,k)=(3,2,8)\).
+Direct evaluation gives \(\varphi(65)=48=8\varphi(9)\).
 
 ### Statement faithfulness
 
@@ -54,9 +56,12 @@ Lean theorem.
   indexing or subtraction convention to translate.
 - The hypotheses `2 ≤ a` and `k + 1 = 2 ^ a` are precisely the \(p=2\),
   \(a\ge2\) subfamily. They exclude the prime boundary case \(a=1\).
-- The theorem says nothing about odd prime powers, arbitrary composite
-  \(k+1\), or the upstream universal claim that every member other than
-  \(k=8\) has \(k+1\) prime.
+- For odd \(p\), `padicValNat 2` is the 2-adic valuation \(v_2\), and
+  `p ^ a - 1` is the same positive integer as \(k\). The bound `≤ 5` is the
+  \(V\le5\) hypothesis of [PROOF.md](PROOF.md).
+- Neither theorem says anything about odd prime powers with \(V\ge6\),
+  arbitrary composite \(k+1\), or the upstream universal claim that every
+  member other than \(k=8\) has \(k+1\) prime.
 
 ## Status of the source and scope of verification
 
@@ -71,10 +76,11 @@ Lean theorem.
   at FormalConjectures main commit
   `9118d083ffca1536f521f9a7d103201f537ea670` likewise marked this
   statement as `category research open`.
-- This folder contains no finite-search certificate. The power-of-two
-  exclusion is kernel-checked in Lean; the elementary inequalities and
-  prime-factor structure arguments of [PROOF.md](PROOF.md) apply exactly to
-  the larger stated subfamily.
+- This folder contains no finite-search certificate. Both the power-of-two
+  exclusion and the odd-prime \(V\le5\) uniqueness statement are
+  kernel-checked in Lean; the argument is the one written in
+  [PROOF.md](PROOF.md). Cases with \(V\ge6\), and composite \(k+1\) that are
+  not prime powers, stay open.
 - The same public partial theorem could not be found on the open web,
   arXiv, math Q&A sites, SeqFan, or GitHub at the time, but this is
   only a negative search result. We do not assert novelty before peer
@@ -105,11 +111,12 @@ python3 scripts/gen_upstream_docs.py --check
 python3 scripts/check_docs.py
 ```
 
-On the development machine, direct module elaboration took 4.45 seconds. A
-warm-cache run of the eight repository gates on 2026-08-12 took 84.87 seconds
-in total: 0.02 seconds for import reachability, 0.03 for the banned-construct
-scan, 6.60 for `lake build`, 3.42 for the axiom audit, 74.59 for the 42
-CI-feasible certificate checks, 0.09 for dashboard freshness, 0.02 for
-upstream-documentation freshness, and 0.10 for the documentation audit. The
-certificate sweep used the existing `drat-trim` build under `/tmp`, exposed on
-`PATH`; no binary was committed.
+On 2026-11-25, direct elaboration of this module with `lake env lean` took
+about 16 seconds. A warm-cache pass of the repository gates then took about
+190 seconds: import reachability and the banned-construct scan each finished
+in under a second, `lake build` took 3 seconds once the oleans were current
+(the module itself built in 18 seconds), the axiom audit took 5 seconds, the
+44 CI-feasible certificate checks took 181 seconds, and the dashboard,
+upstream-documentation, and documentation audits each finished in under a
+second. The certificate sweep used `drat-trim` built under `/tmp` and placed
+on `PATH`; no binary was committed.
